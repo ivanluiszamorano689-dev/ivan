@@ -18,7 +18,7 @@ for ax, title, (xm, ym), py in [(axs[0], "Ayuna por decisión (persona rica)", (
                                 (axs[1], "Pasa hambre (persona pobre)", (0.95, 0.75), 0.33)]:
     frontier(ax, xm, ym, C["violet"], C["violet_bg"])
     econ_axes(ax, "nutrición", "otros\nfuncionamientos", xlim=(0, 4.6), ylim=(0, 3.8))
-    ax.set_title(title, fontsize=9.4, pad=14)
+    ax.text(4.6, 3.75, title, ha="right", va="top", fontsize=9.2, fontweight="bold", color=C["ink"])
     ax.plot([xf, xf], [0, py], ls=(0, (3, 3)), lw=0.9, color=C["ink3"])
     point(ax, xf, py, C["orange"])
     ax.annotate("desnutrición", (xf, 0), xytext=(0, -11), textcoords="offset points", ha="center", va="top",
@@ -28,16 +28,16 @@ for ax, title, (xm, ym), py in [(axs[0], "Ayuna por decisión (persona rica)", (
 a = axs[0]
 a.text(2.25, 1.0, "conjunto de capacidad\n(el menú): amplio", ha="center", fontsize=8.2, color=C["violet"],
        fontweight="bold")
-a.annotate("elige ayunar\n(el plato)", (xf, 2.25), xytext=(1.25, 3.25), fontsize=8, color=C["ink"],
+a.annotate("elige ayunar\n(el plato)", (xf, 2.25), xytext=(1.0, 2.75), fontsize=8, color=C["ink"],
            fontweight="bold", ha="left", arrowprops=dict(arrowstyle="-", color=C["ink3"], lw=0.8))
 a.plot([3.0], [1.9], "o", ms=6.5, mfc="white", mec=C["ink2"], mew=1.3, zorder=5)
 a.annotate("podía comer bien", (3.0, 1.9), xytext=(3.2, 2.75), fontsize=7.8, color=C["ink2"], ha="left",
            arrowprops=dict(arrowstyle="-", color=C["ink3"], lw=0.8))
 # panel pobre
 b = axs[1]
-b.annotate("conjunto de capacidad:\ncasi vacío", (0.75, 0.45), xytext=(1.6, 1.55), fontsize=8.2,
-           color=C["violet"], fontweight="bold", ha="left",
+b.annotate("conjunto de capacidad:\ncasi vacío", (0.9, 0.3), xytext=(1.5, 0.55), fontsize=8.2,
+           color=C["violet"], fontweight="bold", ha="left", va="center",
            arrowprops=dict(arrowstyle="-", color=C["violet"], lw=0.8))
-b.annotate("no tiene otra opción", (xf, 0.33), xytext=(1.6, 2.85), fontsize=8, color=C["ink"],
+b.annotate("no tiene otra opción\n(el único plato)", (xf, 0.33), xytext=(1.5, 1.75), fontsize=8, color=C["ink"],
            fontweight="bold", ha="left", arrowprops=dict(arrowstyle="-", color=C["ink3"], lw=0.8))
 save(fig, "t1_ayuno")

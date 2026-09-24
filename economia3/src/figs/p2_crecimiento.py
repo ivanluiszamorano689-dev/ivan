@@ -121,7 +121,7 @@ ax.plot(yrs, Y[0] * (1 + g_geo) ** (yrs - 2010) / 1000, color=C["ink"], lw=1.3, 
 ax.plot(yrs, Y[0] * (1 + g_ari) ** (yrs - 2010) / 1000, color=C["orange"], lw=1.5, ls=(0, (1.5, 2)), zorder=2,
         label=f"a {coma(100 * g_ari, 3)}% anual (promedio aritmético):\nllega a {miles(Y[0] * (1 + g_ari) ** 13 / 1000, 1)}, se pasa")
 ax.legend(loc="lower left", fontsize=7.0, handlelength=2.2, borderaxespad=0.3, labelspacing=0.5)
-ax.annotate("2020: −9,9%", (2020, Y[10] / 1000), xytext=(-5, -1), textcoords="offset points", ha="right",
+ax.annotate("2020: −9,9%", (2020, Y[10] / 1000), xytext=(3, -6), textcoords="offset points", ha="left",
             va="top", fontsize=7.4, color=C["red"])
 ax.set_ylim(560, 740)
 ax.set_xticks([2010, 2013, 2016, 2019, 2022])

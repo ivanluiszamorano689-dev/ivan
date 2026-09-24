@@ -12,7 +12,7 @@ from matplotlib.patches import FancyBboxPatch  # noqa: E402
 def fmt(v, d=0):
     """Número con coma decimal y punto de miles: fmt(1234.5, 1) -> '1.234,5'."""
     s = f"{v:,.{d}f}"
-    return s.replace(",", "X").replace(".", ",").replace("X", ".")
+    return s.replace(",", "X").replace(".", ",").replace("X", ".").replace("-", "\u2212")
 
 
 def comma_axis(ax, axis="y", d=2):

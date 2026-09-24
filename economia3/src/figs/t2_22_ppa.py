@@ -6,7 +6,7 @@ SUB, SOB = C["orange"], C["blue"]   # subvaluada (factor < 1) / sobrevaluada (fa
 # ---------------------------------------------------------------- Figura 2.3
 # Datos: Parcial 2023, Ej. 3 (Dolar City / Ciudad Pesos). TCm = 2.500/100 = 25.
 fig, (a1, a2) = plt.subplots(1, 2, figsize=(6.7, 2.75), gridspec_kw=dict(width_ratios=[1, 1.25]))
-fig.subplots_adjust(wspace=0.32)
+fig.subplots_adjust(wspace=0.5)
 x = np.array([0, 1])
 w = 0.34
 dc = [100, 200]
@@ -29,8 +29,7 @@ a1.yaxis.label.set_size(8.4)
 a1.tick_params(axis="x", length=0)
 a1.legend(loc="upper left", fontsize=7.8, handlelength=1.0, borderaxespad=0.1)
 a1.annotate("mismo precio:\nun solo precio", (0, 150), ha="center", fontsize=7.4, color=C["ink2"])
-a1.annotate("60 % más barato\nen el país pobre", (1.0, 238), ha="center", fontsize=7.4, color=C["red"],
-            fontweight="bold")
+a1.annotate("−60 %", (1.18, 112), ha="center", fontsize=8.0, color=C["red"], fontweight="bold")
 a1.set_title("Precio de cada bien en US\$ (CP: \$ ÷ 25)", fontsize=8.6, pad=6)
 
 labels = ["CP a TC de mercado\n(\\$25 por US\\$)", "CP a TC de PPA\n(\\$10,88 por US\\$)", "Dolar City"]
