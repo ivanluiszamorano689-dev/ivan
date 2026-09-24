@@ -99,10 +99,13 @@ a) k*, y*: i) k*=11,455 y*=18,656 · ii) k*=18,656 y*=11,455 · iii) k*=1,637 y*
    → **v) Ninguna**. sA = 0,285; n+δ = 0,175; k* = (0,285/0,175)^6 = 1,62857^6 = 18,657 (≈18,656).
    y* = 1,5·18,657^(5/6) = 1,5·11,456 = 17,184. La opción ii pone y* = 11,455 = k*^(5/6): se olvidó de multiplicar por A.
    Control: y* = k*(n+δ)/s = 18,657·0,175/0,19 = 17,184.
-b) Funciones de ahorro y depreciación: i) FA = 0,19/(1/k^(1/6)) FD = 0,175 · ii) FA = 0,19k^(5/6) FD = 0,175k ·
-   iii) CA = 0,285/k^(1/6) CD = 0,175 · iv) FA = 0,285k^(5/6) FD = 0,175k · v) Ninguna.
-   → **iv**. Pide FUNCIONES (en niveles): FA = s·A·k^α = 0,285k^(5/6); FD = (n+δ)k = 0,175k.
-   Ojo: iii es correcta como CURVAS (versión en tasas), pero el inciso pide "funciones" (FA/FD). ii olvida A.
+b) Funciones de ahorro y depreciación: i) FA = 0,19/k^(1/6) FD = 0,175 · ii) FA = 0,19k^(5/6) FD = 0,175k ·
+   iii) CA = 0,285/k^(5/6) CD = 0,175 · iv) FA = 0,285k^(5/6) FD = 0,175k · v) Ninguna.
+   (Transcripción verificada con la foto ampliada: en iii el exponente es 5/6, en i es 1/6.)
+   → **iv** (única correcta). Funciones en niveles: FA = s·A·k^α = 0,285k^(5/6); FD = (n+δ)k = 0,175k.
+   i: le falta A (0,19 en vez de 0,285) y mezcla forma de curva con "FA" → mal. ii: olvida A.
+   iii: la curva en tasas correcta sería CA = sA/k^(1−α) = 0,285/k^(1/6); con k^(5/6) en el denominador está mal
+   (usa α en lugar de 1−α). Trampa: iii "se parece" a la curva de ahorro, pero el exponente no es el correcto.
 c) Con k = 30,7, ¿cuánto tendría que ser el coeficiente técnico del capital para obtener y = 20,5?
    i) 0,12 · ii) 0,88 · iii) 0,24 · iv) 0,76 · v) Ninguna.
    → **iv) 0,76**. "Coeficiente técnico del capital" = exponente α (elasticidad producto-capital) de y = 1,5·k^α.
@@ -178,13 +181,14 @@ a) Completar IDH, IDH-D y pérdida (%) (11 ptos, sólo suma). Datos:
 | Desigualdad esperanza de vida As (%) | 22,1 | 13,3 | | |
 | Desigualdad educación Ae (%) | 25,0 | 23,3 | | |
 | Índice de ingresos ajustado por desigualdad | 0,318 | 0,373 | | |
-   Namibia: I_vida 0,672; I_edu (0,467+0,700)/2 = 0,583; I_ing ln(93,57)/ln(750) = 0,686 → **IDH = 0,646** (0,6454).
+   Namibia: I_vida 0,672; I_edu (0,467+0,700)/2 = 0,583; I_ing ln(93,57)/ln(750) = 0,686 → **IDH = 0,645** (0,6454).
+   (La resolución manuscrita de la foto pone 0,646 porque redondea I_edu a 0,584; bien redondeado es 0,645.)
    Ajustados: vida 0,672·0,779 = 0,524; edu 0,583·0,75 = 0,438; ing 0,318 → **IDH-D = 0,418**; **pérdida = 35,3 %**.
    Honduras: I_vida 0,866; I_edu (0,440+0,561)/2 = 0,501; I_ing 0,600 → **IDH = 0,638** (con índices redondeados a 3 decimales da 0,639).
    Ajustados: vida 0,866·0,867 = 0,751; edu 0,501·0,767 = 0,384; ing 0,373 → **IDH-D = 0,476** (0,4755); **pérdida = 25,5 %**.
 b) Nivel de desarrollo según IDH (3 ptos / −1,5): ambos **medio** (0,550 ≤ IDH < 0,700).
 c) Con IDH, IDH-D y pérdida, ¿cuál tiene mejor desarrollo? a) Namibia b) Honduras c) No hay datos suficientes d) Nada → **b) Honduras**:
-   IDH casi igual (0,646 vs 0,638) pero Honduras pierde mucho menos por desigualdad (25,5 % vs 35,3 %) y su IDH-D es mayor (0,476 vs 0,418).
+   IDH casi igual (0,645 vs 0,638) pero Honduras pierde mucho menos por desigualdad (25,5 % vs 35,3 %) y su IDH-D es mayor (0,476 vs 0,418).
 d) Salud de las mujeres según el IDG (3 ptos / −1,5). TMM: Namibia 195, Honduras 63,6; TNA: 65 y 72,9.
    Índice de salud reproductiva de las mujeres = (10/TMM · 1/TNA)^(1/2): Namibia 0,0281; Honduras 0,0464.
    (En la referencia estándar "salud" = (índice + 1)/2: Namibia 0,514; Honduras 0,523.)
@@ -213,8 +217,10 @@ d) Salud de las mujeres según el IDG (3 ptos / −1,5). TMM: Namibia 195, Hondu
    suficiente para mejorar el DH, ya que incrementa el ingreso per cápita. b) El DH podría mejorar sostenidamente sin
    crecimiento económico si se enfocan políticas en salud, educación y equidad. c) Un alto nivel de CE es necesario,
    pero no suficiente, para garantizar avances sostenibles en DH. d) Las mejoras en el DH siempre ralentizan el CE a
-   corto plazo debido a la redistribución de recursos. e) Ninguna. → **c**. (b dice "sostenidamente": sin CE las
-   mejoras en DH no se sostienen en el largo plazo.)
+   corto plazo debido a la redistribución de recursos. e) Ninguna. → **c**. Justificación con el manual (Tema 1.1, visión amplia): el crecimiento es un MEDIO y
+   la correlación con el bienestar "no es automática" → necesario pero no suficiente (a es falsa por "suficiente";
+   d por "siempre"). b dice "sostenidamente": sin crecimiento no hay recursos para sostener en el tiempo el gasto en
+   salud y educación. (Complemento fuera de la bibliografía obligatoria: Ranis y Stewart, las dos cadenas CE→DH y DH→CE.)
 
 ## P5 · Primera prueba teórica 28/9/2024
 1) Teniendo en cuenta el enfoque de Sen, la evaluación de la calidad de vida como del desarrollo que ofrece una
@@ -228,6 +234,9 @@ d) Salud de las mujeres según el IDG (3 ptos / −1,5). TMM: Namibia 195, Hondu
    investigadores con los que cuenta una economía. d) El aumento en la población activa. e) Ninguna.
    → **e**. En Solow el progreso tecnológico es EXÓGENO (cae del cielo, tasa g constante). Que dependa de la
    cantidad de investigadores es el modelo de Romer (crecimiento endógeno). El ahorro sólo tiene efecto nivel.
+   d) tampoco: "crecimiento económico" en la cátedra es el aumento sostenido del producto PER CÁPITA (Tema 1.1); un
+   n mayor no genera crecimiento per cápita (en EE sin tecnología el agregado crece a n pero el per cápita no crece,
+   y un n mayor reduce k* e y*). Conclusión del Tema 3: sólo hay crecimiento de largo plazo si hay progreso tecnológico.
    (Trampa: comparar con P4-3, donde la opción "innovaciones tecnológicas" sin ese agregado sí era correcta.)
 4) Algunos de los vínculos entre CE y DH involucran alguna de estas relaciones: a) Un alto nivel de CE es suficiente
    para garantizar avances sostenibles en DH. b) El DH podría mejorar en el corto plazo sin que existiese crecimiento
@@ -249,8 +258,9 @@ a) IDH de Barbados (5 ptos): 0,593 · 0,79 · 0,714 · 0,886 → **0,79** = (0,8
 b) IDH-D de Guyana (10 ptos): 0,593 · 0,79 · 0,714 · 0,886 → **0,593**.
    I_vida = (65,7−20)/65 = 0,703; I_edu = (12,5/18 + 8,6/15)/2 = (0,694+0,573)/2 = 0,634; I_ing = ln(224,65)/ln(750) = 0,818.
    Ajustados: 0,703·0,842 = 0,592; 0,634·0,896 = 0,568; 0,818·0,749 = 0,613 → IDH-D = (0,592·0,568·0,613)^(1/3) = 0,591.
-   La cuenta da 0,591; la opción más cercana (y la única compatible) es 0,593 — la diferencia de 0,002 viene del redondeo
-   de los datos publicados. Las otras son distractores: 0,714 = IDH de Guyana (sin ajustar), 0,79 = IDH de Barbados, 0,886 = índice de salud de Barbados.
+   La cuenta da 0,591 (0,5906, con o sin redondeo intermedio); se marca la opción más cercana, 0,593, que es además la única
+   compatible: las otras son distractores identificables (0,714 = IDH de Guyana sin ajustar, 0,79 = IDH de Barbados,
+   0,886 = índice de salud de Barbados). No afirmar de dónde sale la diferencia de 0,002: no se reproduce con los datos dados.
 c) IDG Guyana 0,454; Barbados 0,268 (5 ptos): "Ambos países tienen un desarrollo humano **alto**" (0,790 y 0,714 ∈ [0,700; 0,800));
    "Sin embargo, **Barbados** muestra un mejor desempeño en DH y en las oportunidades que brinda a hombres y mujeres…" (IDG menor = menos desigualdad de género).
 ### Ejercicio 2 (20 ptos) — Ucrania y EEUU (PBI per cápita)
@@ -362,4 +372,8 @@ c) Libertades instrumentales de Sen (6 ptos):
 4) ¿Cuál refleja un vínculo fuerte entre crecimiento económico y desarrollo humano? a) A mayor PBI per cápita, menor
    pobreza estructural. b) Aumento del ingreso acompañado de mejoras en salud, educación y libertades. c) El crecimiento
    del producto garantiza el desarrollo humano. d) Aumento del empleo informal como estrategia de expansión. e) La única
-   vía de desarrollo es el crecimiento del capital físico. → **b** (círculo virtuoso de Ranis-Stewart; a no es automático, c "garantiza" es falso).
+   vía de desarrollo es el crecimiento del capital físico. → **b**. Con el manual: el ingreso es un medio que se traduce en desarrollo cuando se convierte en
+   capacidades (salud, educación, libertades) — visión amplia del Tema 1.1 y Sen (libertad como fin y medio).
+   a) la relación no es automática ni lineal (la correlación PBI–esperanza de vida es débil y se aplana);
+   c) "garantiza" es la visión estricta, descartada; d) el empleo informal no es desarrollo; e) "la única vía" y
+   "capital físico" contradicen la visión amplia. (Complemento: círculo virtuoso de Ranis y Stewart.)
