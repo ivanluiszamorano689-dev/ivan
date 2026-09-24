@@ -1,0 +1,12 @@
+src/_build/
+src/node_modules
+src/node_modules/
+src/figs/__pycache__/
+src/lib/__pycache__/
+src/package-lock.json
+pdf/_demo.pdf
+pdf/*.render.json
+pdf/*.tmp.pdf
+src/docs/_demo/
+src/figs/demo_solow.py
+src/figs/out/demo_solow.svg

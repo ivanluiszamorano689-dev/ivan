@@ -1,0 +1,28 @@
+{
+ "title": "Manual de teoría<br>Temas 1 a 3",
+ "title_plain": "Economía III — Manual de teoría (Temas 1 a 3)",
+ "short_title": "Economía III · Manual de teoría (Temas 1 a 3)",
+ "subtitle": "Desarrollo, indicadores del bienestar y teoría del crecimiento: explicado con gráficos, fórmulas paso a paso y las preguntas reales de parcial.",
+ "subtitle_plain": "Desarrollo, indicadores del bienestar y teoría del crecimiento",
+ "cover_class": "teoria",
+ "kicker": "Economía III · FCEJyS · UNSa · 1er parcial",
+ "chips": [
+  "Tema 1 · Desarrollo y libertad",
+  "Tema 2 · Indicadores del bienestar",
+  "Tema 3 · Crecimiento económico"
+ ],
+ "meta_left": "Facultad de Ciencias Económicas, Jurídicas y Sociales — UNSa",
+ "meta_right": "Edición ampliada y graficada",
+ "cover_art": "figs/out/cover_teoria.svg",
+ "filename": "1_Manual_de_teoria_Temas_1_a_3.pdf",
+ "mermaid": true,
+ "toc_depth": 3,
+ "fragments": [
+  "00-intro.html",
+  "10-tema1.html",
+  "20-tema2.html",
+  "30-tema3a.html",
+  "31-tema3b.html",
+  "90-banco.html"
+ ]
+}

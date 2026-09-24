@@ -1,0 +1,29 @@
+{
+ "title": "Práctica resuelta<br>1er parcial",
+ "title_plain": "Economía III — Práctica resuelta para el 1er parcial",
+ "short_title": "Economía III · Práctica resuelta (TP1 a TP4)",
+ "subtitle": "Los cuatro trabajos prácticos desarrollados paso a paso, con gráficos, verificaciones y ejercicios extra tipo parcial.",
+ "subtitle_plain": "TP1 a TP4 resueltos paso a paso",
+ "cover_class": "practica",
+ "kicker": "Economía III · FCEJyS · UNSa · 1er parcial",
+ "chips": [
+  "TP1 · Desarrollo y libertad",
+  "TP2 · Producto, crecimiento y PPA",
+  "TP3 · IDH, IDH-D, IDG, IPS",
+  "TP4 · Modelos de crecimiento"
+ ],
+ "meta_left": "Facultad de Ciencias Económicas, Jurídicas y Sociales — UNSa",
+ "meta_right": "Edición ampliada y graficada",
+ "cover_art": "figs/out/cover_practica.svg",
+ "filename": "2_Practica_resuelta_1er_parcial.pdf",
+ "mermaid": true,
+ "toc_depth": 3,
+ "fragments": [
+  "00-formulario.html",
+  "10-tp1.html",
+  "20-tp2.html",
+  "30-tp3.html",
+  "40-tp4.html",
+  "90-extras.html"
+ ]
+}

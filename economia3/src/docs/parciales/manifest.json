@@ -1,0 +1,31 @@
+{
+ "title": "Parciales resueltos",
+ "title_plain": "Economía III — Parciales resueltos (1er parcial, 2022-2025)",
+ "short_title": "Economía III · Parciales resueltos 2022–2025",
+ "subtitle": "Nueve exámenes reales del primer parcial, transcriptos y resueltos: respuesta correcta, por qué las otras opciones no, y las trampas de cada consigna.",
+ "subtitle_plain": "Nueve exámenes reales del primer parcial resueltos",
+ "cover_class": "parciales",
+ "kicker": "Economía III · FCEJyS · UNSa · 1er parcial",
+ "chips": [
+  "2022",
+  "2023",
+  "2024",
+  "2025",
+  "Teóricos y prácticos"
+ ],
+ "meta_left": "Facultad de Ciencias Económicas, Jurídicas y Sociales — UNSa",
+ "meta_right": "Con grilla de respuestas",
+ "cover_art": "figs/out/cover_parciales.svg",
+ "filename": "3_Parciales_resueltos.pdf",
+ "mermaid": true,
+ "toc_depth": 3,
+ "fragments": [
+  "00-intro.html",
+  "10-p2022.html",
+  "20-p2023.html",
+  "30-p2024-teoricos.html",
+  "40-p2024-practicos.html",
+  "50-p2025.html",
+  "90-grilla.html"
+ ]
+}

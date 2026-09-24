@@ -1,0 +1,27 @@
+{
+ "title": "Paso a paso<br>de cada ejercicio",
+ "title_plain": "Economía III — Paso a paso de cada ejercicio de parcial",
+ "short_title": "Economía III · Paso a paso de los ejercicios de parcial",
+ "subtitle": "Cómo se resuelve cada ejercicio de los parciales: el método general de cada tipo, y cada cuenta desarrollada con sus controles y errores típicos.",
+ "subtitle_plain": "Método y cuentas de cada ejercicio de parcial",
+ "cover_class": "pasoapaso",
+ "kicker": "Economía III · FCEJyS · UNSa · 1er parcial",
+ "chips": [
+  "Recetas por tipo de ejercicio",
+  "Cuentas desarrolladas",
+  "Controles y trampas"
+ ],
+ "meta_left": "Facultad de Ciencias Económicas, Jurídicas y Sociales — UNSa",
+ "meta_right": "Complemento de «Parciales resueltos»",
+ "cover_art": "figs/out/cover_pasoapaso.svg",
+ "filename": "4_Paso_a_paso_ejercicios.pdf",
+ "mermaid": true,
+ "toc_depth": 3,
+ "fragments": [
+  "00-recetas.html",
+  "10-solow.html",
+  "20-pbi-ppa-crecimiento.html",
+  "30-indices.html",
+  "40-teoricas.html"
+ ]
+}

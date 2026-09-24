@@ -1,0 +1,8 @@
+{
+  "name": "economia3-pdfs",
+  "private": true,
+  "type": "module",
+  "description": "Genera los PDFs de Economía III (Chromium + KaTeX + matplotlib)",
+  "scripts": { "build": "python3 build.py" },
+  "dependencies": { "playwright-core": "^1.55.0" }
+}
