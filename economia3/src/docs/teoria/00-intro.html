@@ -1,0 +1,168 @@
+<style>
+.t1-kit { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55em; margin: 0.6em 0 1em; }
+.t1-kit .card { padding: 0.5em 0.65em; font-size: 8.4pt; line-height: 1.38; }
+.t1-kit .card-title { font-size: 8.8pt; }
+.t1-kit .t1-num { font: 800 15pt/1 "Inter"; color: var(--accent); display: block; margin-bottom: 0.15em; }
+.t1-kit .t1-here { background: var(--violet-bg); }
+.t1-legend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; margin: 0.5em 0 1em; }
+.t1-legend .box { margin: 0; padding: 0.45em 0.7em 0.35em; font-size: 8.3pt; line-height: 1.35; }
+.t1-legend .box p { margin: 0; }
+.t1-reg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin: 0.7em 0 0.9em; }
+.t1-reg .card { font-size: 8.7pt; line-height: 1.42; }
+.t1-reg .card p { margin: 0.2em 0 0; }
+.t1-reg .t1-big { font: 700 10.5pt "Inter"; display: block; margin-bottom: 0.1em; }
+table.t1-hits { font-size: 8pt; }
+table.t1-hits th, table.t1-hits td { padding: 0.3em 0.42em; vertical-align: middle; }
+table.t1-hits td.y { text-align: center; white-space: nowrap; }
+table.t1-hits tr.t1-grp td { background: #fff !important; font: 700 7.6pt "Inter"; letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.7em; border-bottom: 1.5px solid currentColor; }
+table.t1-hits tr.g1 td { color: var(--violet-ink); }
+table.t1-hits tr.g2 td { color: var(--blue-ink); }
+table.t1-hits tr.g3 td { color: var(--aqua-ink); }
+.t1-h { display: inline-block; border-radius: 99px; padding: 0.06em 0.5em; font: 600 7.3pt "Inter"; margin: 0.05em 0; }
+.t1-h.a { background: var(--violet-bg); color: var(--violet-ink); }
+.t1-h.b { background: var(--blue-bg); color: var(--blue-ink); }
+.t1-h.c { background: var(--aqua-bg); color: var(--aqua-ink); }
+.t1-dash { color: #c9c7c0; }
+.t1-ev .calc { margin: 0.35em 0 0.5em; }
+.t1-exam-cards .card p { margin: 0.25em 0 0; font-size: 8.8pt; }
+.t1-exam-cards .card ul { margin: 0.3em 0 0; font-size: 8.8pt; }
+.t1-score { display: flex; gap: 0.4em; margin: 0.35em 0 0.1em; flex-wrap: wrap; }
+.t1-score span { font: 700 8pt "Inter"; border-radius: 6px; padding: 0.18em 0.55em; }
+.t1-score .ok { background: var(--green-bg); color: var(--green-ink); border: 1px solid var(--green); }
+.t1-score .ko { background: var(--red-bg); color: var(--red-ink); border: 1px solid var(--red); }
+.t1-score .zero { background: var(--paper-2); color: var(--ink-2); border: 1px solid var(--rule); }
+</style>
+
+<section class="tema-1 t1-intro">
+
+<h2>Cómo usar este manual</h2>
+
+<p>Este manual cubre los <b>Temas 1, 2 y 3</b> del programa: exactamente lo que entra en el <b>primer parcial del 28 de septiembre</b>. Son los tres únicos temas publicados en el aula hasta hoy; el programa completo tiene nueve, y los seis restantes se agregarán acá cuando la cátedra los suba.</p>
+<p>Cada tema sigue el orden en que lo dicta la cátedra y termina anclado en la <b>bibliografía obligatoria</b>, con el capítulo y las páginas exactas. Las preguntas de las guías de lectura están respondidas en el texto: si podés contestarlas sin releer, el tema está.</p>
+
+<h3>Los tres temas de un vistazo</h3>
+<p>Los tres temas cuentan una sola historia. El Tema 1 define <b>qué buscamos</b> (el desarrollo, que no es lo mismo que crecer); el Tema 2 explica <b>cómo se mide</b> (y por qué el PBI per cápita no alcanza); el Tema 3 explica <b>cómo crece</b> el ingreso, que es un medio para el desarrollo. El Tema 4 cierra el círculo: ¿el crecimiento se traduce en desarrollo humano? Como eso ya se pregunta en el primer parcial, lo adelantamos en la sección 1.6.</p>
+
+<figure><img src="figs/out/t1_mapa_temas.svg" alt="Mapa de los tres temas">
+<figcaption><b>Figura 0.1.</b> Mapa del primer parcial. Leelo de izquierda a derecha: <i>qué es desarrollarse → cómo se mide → cómo se crece</i>. Abajo de cada tema está el trabajo práctico que lo ejercita; la flecha punteada es la pregunta del Tema 4, que ya aparece en las teóricas del primer parcial.</figcaption></figure>
+
+<h3 data-toc="no">El kit completo: cuatro documentos</h3>
+<div class="t1-kit">
+  <div class="card violet t1-here"><span class="t1-num">1</span><div class="card-title">Manual de teoría</div>Este documento: conceptos, gráficos, fórmulas y las preguntas reales de parcial de cada tema.</div>
+  <div class="card aqua"><span class="t1-num">2</span><div class="card-title">Práctica resuelta</div>Los cuatro TPs desarrollados paso a paso, más ejercicios extra.</div>
+  <div class="card blue"><span class="t1-num">3</span><div class="card-title">Parciales resueltos</div>Todos los parciales 2022–2025 con la clave y el porqué de cada opción.</div>
+  <div class="card orange"><span class="t1-num">4</span><div class="card-title">Paso a paso</div>Cómo se resuelve cada tipo de ejercicio, en pasos numerados.</div>
+</div>
+
+<h3 data-toc="no">Cómo leer las cajas</h3>
+<p>Cada tema abre con un resumen <i>En 30 segundos</i> y cierra con una <i>Autoevaluación</i>. En el medio, el color de cada caja te dice para qué sirve:</p>
+<div class="t1-legend">
+  <div class="box def"><div class="box-title">Definición</div><p>Lo que tenés que poder escribir de memoria.</p></div>
+  <div class="box intuition"><div class="box-title">La intuición</div><p>El porqué, en palabras simples.</p></div>
+  <div class="box example"><div class="box-title">Ejemplo</div><p>Un caso o una cuenta resuelta.</p></div>
+  <div class="box warn"><div class="box-title">Error típico</div><p>Donde se pierde puntaje.</p></div>
+  <div class="box tip"><div class="box-title">Truco</div><p>Atajos y reglas para decidir rápido.</p></div>
+  <div class="box exam"><div class="box-title">Así lo preguntan</div><p>Pregunta real de parcial, resuelta.</p></div>
+</div>
+
+<h3>Lo que hay que saber del régimen</h3>
+<table>
+  <thead><tr><th>Instancia</th><th>Fecha</th><th>Condición</th></tr></thead>
+  <tbody>
+    <tr><td><b>1er parcial</b></td><td>28/09/2026, 14:00, Anf. G</td><td>Temas 1 a 3 — TP 1 a 4</td></tr>
+    <tr><td><b>2do parcial</b></td><td>09/11/2026, 14:00, Anf. G</td><td>Temas siguientes</td></tr>
+    <tr><td><b>Recuperatorio</b></td><td>18/11/2026, 14:00, Anf. G</td><td>Una oportunidad por parcial desaprobado</td></tr>
+  </tbody>
+</table>
+<div class="t1-reg">
+  <div class="card aqua"><div class="card-title">Promoción</div><span class="t1-big">7 o más en ambos parciales</span><p>+ 80 % de asistencia a teóricas y a prácticas → <b>promocionás sin final</b>.</p></div>
+  <div class="card blue"><div class="card-title">Regular</div><span class="t1-big">Los dos parciales aprobados</span><p>Rendís un <b>final escrito y solo teórico</b>, que se aprueba con 4.</p></div>
+  <div class="card red"><div class="card-title">Libre</div><span class="t1-big">No alcanzaste la regularidad</span><p>Primero un <b>práctico escrito</b>; después un <b>teórico</b>, que podés pedir oral avisando antes al responsable de cátedra.</p></div>
+</div>
+<p>Todos los exámenes, en cualquier régimen, son <b>individuales</b> y <b>sin consulta bibliográfica</b>: las fórmulas hay que llevarlas en la cabeza.</p>
+
+<h3>Cómo es el parcial</h3>
+<div class="grid-2 t1-exam-cards" style="margin-bottom:0.6em">
+  <div class="card violet"><div class="card-title">Parte teórica · opción múltiple</div>
+    <p>Cuatro preguntas con opciones a) a e). La 1 siempre es de Sen; otras dos son de medición (PPA o índices) y de Solow; desde 2024, la 4 es de crecimiento y desarrollo humano.</p>
+    <div class="t1-score"><span class="ok">correcta +10</span><span class="ko">incorrecta −5</span><span class="zero">en blanco 0</span></div>
+    <p>Total de la parte: <b>40 puntos</b>.</p>
+  </div>
+  <div class="card aqua"><div class="card-title">Parte práctica · ejercicios con incisos</div>
+    <p>Dos o tres ejercicios (Solow, TC y PPA, IDH-D e IDG) con incisos de opción múltiple o a completar.</p>
+    <div class="t1-score"><span class="ok">correcta: suma el puntaje del inciso</span><span class="ko">incorrecta: resta la mitad</span></div>
+    <p>Ej.: un inciso de 5 puntos vale +5 o −2,5. Total de la parte en 2023, 2024 y 2025: <b>60 puntos</b>.</p>
+  </div>
+</div>
+<p class="small">En 2022 y 2023 la teórica y la práctica venían juntas en el mismo examen; en 2024 y 2025 aparecen como pruebas separadas (la práctica de 2025 duraba 60 minutos). En 2024 se pidió redondear a tres decimales.</p>
+
+<h3>Qué cayó en cada parcial (2022–2025)</h3>
+<p>Armado a partir de todos los parciales que tenemos. <b>T3</b> = pregunta 3 de la teórica; <b>Ej. 2</b> = ejercicio 2 de la práctica; <b>×2</b> = apareció en las dos versiones o fechas de ese año. La columna <i>s/f</i> es el ejercicio de Namibia y Honduras (sin fecha visible, formato 2022–2023).</p>
+<table class="t1-hits compact">
+  <thead><tr><th>Contenido</th><th class="num" style="text-align:center">2022</th><th style="text-align:center">2023</th><th style="text-align:center">s/f</th><th style="text-align:center">2024</th><th style="text-align:center">2025</th></tr></thead>
+  <tbody>
+    <tr class="t1-grp g1"><td colspan="6">Tema 1 · Desarrollo y libertad</td></tr>
+    <tr><td>Sen: bienestar, capacidades, libertad (1.2)</td><td class="y"><span class="t1-h a">T1</span></td><td class="y"><span class="t1-h a">T1</span></td><td class="y t1-dash">—</td><td class="y"><span class="t1-h a">T1 ×2</span></td><td class="y"><span class="t1-h a">T1</span></td></tr>
+    <tr><td>Libertades instrumentales: clasificar casos (1.3)</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y"><span class="t1-h a">Ej. 3 c</span></td></tr>
+    <tr><td>Crecimiento y desarrollo humano (1.6)</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y"><span class="t1-h a">T4 ×2</span></td><td class="y"><span class="t1-h a">T4</span></td></tr>
+    <tr class="t1-grp g2"><td colspan="6">Tema 2 · Indicadores del bienestar</td></tr>
+    <tr><td>Comparar PBI: TC de mercado vs PPA</td><td class="y"><span class="t1-h b">T2 · Ej. 2</span></td><td class="y"><span class="t1-h b">T2 · Ej. 3</span></td><td class="y t1-dash">—</td><td class="y"><span class="t1-h b">T2 ×2 · Ej. 2</span></td><td class="y t1-dash">—</td></tr>
+    <tr><td>Índice Big Mac</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y"><span class="t1-h b">Ej. 2</span></td></tr>
+    <tr><td>Tasas de crecimiento del PBI per cápita</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y"><span class="t1-h b">Ej. 2</span></td><td class="y t1-dash">—</td></tr>
+    <tr><td>IDH e IDH-D (cálculo y nivel de desarrollo)</td><td class="y t1-dash">—</td><td class="y"><span class="t1-h b">Ej. 2</span></td><td class="y"><span class="t1-h b">Ej. 3</span></td><td class="y"><span class="t1-h b">Ej. 1</span></td><td class="y"><span class="t1-h b">Ej. 3</span></td></tr>
+    <tr><td>IDG (desigualdad de género)</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y"><span class="t1-h b">Ej. 3 d</span></td><td class="y"><span class="t1-h b">Ej. 1 c</span></td><td class="y"><span class="t1-h b">T2</span></td></tr>
+    <tr><td>Índice de Progreso Social y otros índices</td><td class="y"><span class="t1-h b">T3</span></td><td class="y"><span class="t1-h b">T4</span></td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td></tr>
+    <tr class="t1-grp g3"><td colspan="6">Tema 3 · Crecimiento económico</td></tr>
+    <tr><td>Solow-Swan sin tecnología</td><td class="y"><span class="t1-h c">T4 · Ej. 1</span></td><td class="y"><span class="t1-h c">Ej. 1</span></td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td></tr>
+    <tr><td>Solow con progreso tecnológico</td><td class="y t1-dash">—</td><td class="y"><span class="t1-h c">T3</span></td><td class="y t1-dash">—</td><td class="y"><span class="t1-h c">T3 ×2 · Ej. 3</span></td><td class="y"><span class="t1-h c">T3 · Ej. 1</span></td></tr>
+    <tr><td>Harrod-Domar</td><td class="y t1-dash">—</td><td class="y"><span class="t1-h c">Ej. 1 d</span></td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td></tr>
+    <tr><td>Romer, como opción trampa</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y t1-dash">—</td><td class="y"><span class="t1-h c">T3 (28/9)</span></td><td class="y t1-dash">—</td></tr>
+  </tbody>
+</table>
+<div class="box tip"><div class="box-title">Lo que cae siempre</div>
+<p>Todos los años hubo una pregunta de <b>Sen</b> (siempre la teórica 1), algo de <b>tipo de cambio de mercado vs PPA</b> (en 2025, con el Big Mac) y un <b>Solow</b> (desde 2023, casi siempre con progreso tecnológico). El cálculo de <b>IDH / IDH-D</b> está en todos los parciales que tenemos desde 2023, y desde 2024 la teórica 4 es sobre <b>crecimiento y desarrollo humano</b>. Si tenés poco tiempo, esos cinco bloques son la prioridad.</p></div>
+
+<h3>Estrategia: ¿conviene contestar si no estás seguro?</h3>
+<p>Con penalización, contestar al azar tiene un <b>valor esperado</b>. Si \(p\) es la probabilidad de acertar, en la teórica:</p>
+<div class="grid-2 t1-ev">
+<div>
+<div class="formula-card" style="max-width:100%"><div class="fc-label">Valor esperado de contestar</div>
+\[ E = p\cdot 10 - (1-p)\cdot 5 \]</div>
+<div class="calc">\[\begin{aligned}
+\text{5 opciones al azar: } E &= 0{,}2\cdot 10 - 0{,}8\cdot 5 = -2 \\
+\text{descartaste hasta 2: } E &= 0{,}5\cdot 10 - 0{,}5\cdot 5 = +2{,}5
+\end{aligned}\]</div>
+<p>Con 3 opciones en pie, \(E = 0\): da lo mismo. La regla: <b>contestá solo si \(p > 1/3\)</b>, es decir, si pudiste descartar hasta quedarte con dos.</p>
+<p class="small">En la práctica la incorrecta resta la mitad del inciso: es la misma proporción (−5 contra +10), así que vale la misma regla.</p>
+</div>
+<figure style="margin-top:0"><img src="figs/out/t1_valor_esperado.svg" alt="Valor esperado según opciones">
+<figcaption><b>Figura 0.2.</b> Puntos esperados por pregunta teórica si elegís al azar entre las opciones que quedan. Con 5 o 4 opciones perdés en promedio; con 2, ganás.</figcaption></figure>
+</div>
+<div class="box warn"><div class="box-title">“Ninguna es correcta” no es relleno</div>
+<p>Fue la respuesta correcta en <b>seis incisos</b>: 2022 teórica 4; 2023 Ej. 1 a) y el INB de Australia del Ej. 2; 2024 teórica 3 (28/9) y la práctica de 2024 (Ej. 3 c en la versión Guyana, Ej. 2 b en la versión Jamaica). Antes de descartarla, hacé la cuenta: muchas opciones son el resultado de un error típico (olvidarse de <span class="nowrap">\(A\),</span> invertir el cociente, tomar el dato del otro país).</p></div>
+
+<h3>Las trampas que más se repiten</h3>
+<p>Casi todas las opciones incorrectas de la práctica salen de un puñado de errores. Si los conocés, las reconocés de lejos:</p>
+<table class="compact">
+  <thead><tr><th style="width:34%">Trampa</th><th style="width:26%">Dónde apareció</th><th>Cómo evitarla</th></tr></thead>
+  <tbody>
+    <tr><td>Olvidarse de multiplicar por \(A\) en \(y^* = A\,(k^*)^{\alpha}\)</td><td>2023, Ej. 1 a (la opción ii era \(k^{*\,5/6}\) sin \(A\))</td><td>Verificá con \(y^* = k^*(n+\delta)/s\).</td></tr>
+    <tr><td>Tomar la participación del <b>trabajo</b> como \(\alpha\)</td><td>2025, Ej. 1 (dato 0,6 ⇒ \(\alpha = 0{,}4\))</td><td>\(\alpha\) es la participación del <b>capital</b>: \(\alpha = 1 - 0{,}6\).</td></tr>
+    <tr><td>Confundir <i>funciones</i> (en niveles) con <i>curvas</i> (en tasas) de ahorro y depreciación</td><td>2022, Ej. 1 b · 2023, Ej. 1 b</td><td>Funciones: \(sAk^{\alpha}\) y \((n+\delta)k\). Curvas: \(sA/k^{1-\alpha}\) y \(n+\delta\).</td></tr>
+    <tr><td>Usar 27 % en vez de 2,7 % al ajustar por desigualdad</td><td>2023, Ej. 2 (0,725 en vez de 0,966)</td><td>Los porcentajes entran en tanto por uno: \(1 - 0{,}027\).</td></tr>
+    <tr><td>Contar 6 períodos en la tasa media 2018–2023</td><td>2024, Ej. 2 b</td><td>Períodos = año final − año inicial = 5.</td></tr>
+    <tr><td>Elegir el cociente a TC de mercado cuando piden PPA (o al revés)</td><td>2023, Ej. 3 d (2,76 vs 1,2)</td><td>Releé qué conversión pide el inciso antes de marcar.</td></tr>
+    <tr><td>“Más cerca de 0 es mejor” para cualquier índice</td><td>Namibia–Honduras, Ej. 3 d</td><td>Sólo vale para el IDG final (mide desigualdad); los demás índices miden logros.</td></tr>
+  </tbody>
+</table>
+
+<h3 data-toc="no">Cómo repasar cada tema</h3>
+<div class="flow">
+  <div class="node"><b>1 · En 30 segundos</b>el mapa del tema</div><div class="arrow">→</div>
+  <div class="node"><b>2 · Desarrollo</b>definiciones y gráficos</div><div class="arrow">→</div>
+  <div class="node"><b>3 · Así lo preguntan</b>tapá la respuesta y contestá</div><div class="arrow">→</div>
+  <div class="node"><b>4 · Autoevaluación</b>sin mirar</div><div class="arrow">→</div>
+  <div class="node"><b>5 · Práctica</b>TP y paso a paso</div>
+</div>
+
+</section>

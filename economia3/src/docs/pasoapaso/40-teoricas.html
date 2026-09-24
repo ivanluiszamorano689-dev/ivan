@@ -1,0 +1,737 @@
+<style>
+.s0-keys { line-height: 2.05; }
+.s0 kbd { display: inline-block; font: 600 7.8pt "DejaVu Sans Mono", monospace; color: var(--ink); background: #fff;
+  border: 1px solid #cfcdc6; border-bottom-width: 2px; border-radius: 4px; padding: 0 0.34em; margin: 0 0.05em; line-height: 1.5; white-space: nowrap; }
+.s0 kbd.op { background: var(--violet-bg); border-color: #c9c3ea; color: var(--violet-ink); }
+.s0 kbd.eq { background: var(--green-bg); border-color: #b5d9b5; color: var(--green-ink); }
+.s0-res { font-weight: 700; color: var(--green-ink); white-space: nowrap; }
+ol.steps > li > .mcq { margin: 0.25em 0 0.05em; }
+ol.steps > li > .mcq > li { padding: 0.1em 0.5em; margin: 0.06em 0; }
+ol.steps > li > .mcq .why { display: inline; font-size: 8.2pt; margin: 0; }
+ol.steps > li > .mcq .why::before { content: " — "; color: var(--ink-3); }
+table.s0-trap { break-inside: auto; }
+table.s0-trap tr { break-inside: avoid; }
+.s0-q { display: flex; align-items: baseline; gap: 0.5em; }
+.s0-q .tag { margin-left: auto; }
+table.s0-trap td { font-size: 8.4pt; }
+table.s0-trap td:first-child { font-weight: 700; white-space: nowrap; color: var(--red-ink); }
+table.s0-grid td { text-align: center; font-size: 8.4pt; }
+table.s0-grid td:first-child { text-align: left; font-weight: 650; white-space: nowrap; }
+table.s0-grid td b { display: block; font-size: 10pt; color: var(--green-ink); }
+.s0-defs .card { font-size: 8.8pt; }
+.s0-defs .card p { margin: 0; }
+</style>
+
+<section class="tema-1 s0">
+
+<div class="chapter-head">
+  <div class="kicker">Paso a paso · Parte teórica</div>
+  <h2><span class="num">§4</span>Preguntas teóricas: cómo razonarlas</h2>
+  <p>Qué vas a poder hacer: contestar una pregunta de opción múltiple en dos minutos con un método fijo (ubicar el tema,
+  recordar la definición, cazar la palabra trampa, descartar y decidir), clasificar un caso según las libertades de Sen y
+  justificar qué país está mejor con IDH, IDH-D e IDG.</p>
+</div>
+
+<div class="box summary"><div class="box-title">En 30 segundos</div><ul>
+  <li>Las teóricas valen +10 / −5 y no llevan cuentas: se ganan con <b>definiciones exactas</b> del manual, no con intuición.</li>
+  <li>Método de seis pasos: tema → definición → palabras trampa → descarte → elección → valor esperado si hay dudas.</li>
+  <li>Las trampas se repiten: «suficiente», «siempre», «garantiza», «exclusivamente», «endógena», «todas» y las palabras de
+  dirección («subestima / sobreestima»).</li>
+  <li>Una palabra fuerte te hace sospechar, pero <b>decide la definición</b>: en P1, «exclusivamente sociales y ambientales» era
+  verdadera (es un principio del IPS).</li>
+  <li>Las mismas preguntas vuelven con otra letra (P4-1 = P5-1) o con una frase agregada que da vuelta la respuesta
+  (P4-3 contra P5-3; P4-4 contra P5-4).</li>
+  <li>Casos de Sen: la pregunta es «¿qué institución falla o funciona?», no «¿de qué tema habla?».</li>
+</ul></div>
+
+<h3>El método: seis pasos para cada pregunta</h3>
+
+<div class="recipe"><div class="recipe-title">Receta: razonar una pregunta teórica de opción múltiple</div><ol>
+  <li><b>Ubicá el tema y el concepto clave.</b> ¿Es Tema 1 (Sen y desarrollo), Tema 2 (PBI, PPA, índices) o Tema 3
+  (crecimiento)? Anotá «Tema X.Y» y el concepto en dos palabras.</li>
+  <li><b>Recordá la definición exacta de la cátedra</b>, con las palabras del manual. Si no te sale, no leas las opciones
+  todavía: te van a convencer las que «suenan bien».</li>
+  <li><b>Buscá palabras trampa</b>: «siempre», «suficiente», «garantiza», «exclusivamente», «endógena», «todas», y también
+  las de dirección («sub/sobreestima») y de horizonte («sostenidamente», «en el corto plazo»).</li>
+  <li><b>Descartá</b> opción por opción contra la definición: afuera la que contradice, la que exagera, la que invierte el
+  sentido y la que describe otro concepto (otro modelo, otro índice).</li>
+  <li><b>Elegí.</b> Si queda una, esa. Si varias son ciertas y existe «Todas», es «Todas». Si cayeron todas, «Ninguna».</li>
+  <li><b>Si quedan dudas, calculá el valor esperado</b>: con 2 en pie arriesgá (+2,5 en promedio); con 3 da 0; con 4 o 5,
+  en blanco (ver §0 b).</li>
+</ol></div>
+
+<figure><img src="figs/out/s0_metodo_teoricas.svg">
+  <figcaption><b>Figura §4.1.</b> El método como diagrama de flujo. Los pasos 1 a 4 son análisis (violeta); el rombo es la
+  única decisión: cuántas opciones siguen en pie después del descarte. Mirá la rama roja: con 4 o 5 opciones vivas,
+  arriesgar te resta en promedio, así que la respuesta correcta es dejarla en blanco.</figcaption></figure>
+
+<h4>Palabras trampa, con ejemplos reales</h4>
+<table class="compact s0-trap">
+  <thead><tr><th>Palabra</th><th>Por qué suele ser trampa</th><th>Dónde apareció</th><th>Resultado</th></tr></thead>
+  <tbody>
+    <tr><td>siempre</td><td>casi ninguna relación económica vale en todos los casos</td><td>P4-4 d y P5-4 d: «las mejoras en el DH <i>siempre</i> ralentizan el CE»</td><td>falsa</td></tr>
+    <tr><td>suficiente</td><td>para la cátedra el crecimiento es necesario pero <b>no suficiente</b> (Tema 1.1)</td><td>P4-4 a, P5-4 a y c: «el CE es <i>suficiente</i> para mejorar el DH»</td><td>falsa</td></tr>
+    <tr><td>garantiza</td><td>la relación CE → DH «no es automática»</td><td>P9-4 c: «el crecimiento del producto <i>garantiza</i> el DH»</td><td>falsa (en P4-4 c aparece negada, «no suficiente para garantizar», y es la correcta)</td></tr>
+    <tr><td>exclusivamente · la única</td><td>reduce algo multicausal a una sola causa</td><td>P9-3 a: «depende <i>exclusivamente</i> del capital físico» · P9-4 e: «<i>la única</i> vía»</td><td>falsas… pero P1-3 a, «indicadores <i>exclusivamente</i> sociales y ambientales», es <b>verdadera</b></td></tr>
+    <tr><td>endógena</td><td>en Solow la tecnología es exógena; lo endógeno es Romer (Tema 3.8)</td><td>P2-3 d: «tasa constante y <i>endógena</i>» · P5-3 c: «dependerá de la cantidad de investigadores»</td><td>falsas si preguntan por Solow</td></tr>
+    <tr><td>todas · todo lo anterior</td><td>alcanza con una opción falsa para voltearla</td><td>P2-1 d, P4-2 e, P9-3 e</td><td>falsas… pero P1-3 c, «todas las premisas», es <b>verdadera</b></td></tr>
+    <tr><td>indiferente · de la misma manera</td><td>niega la diferencia que el tema existe para explicar</td><td>P1-2 c y P4-2 d (TCm = PPA) · P2-4 b (índices = PBI)</td><td>falsas</td></tr>
+    <tr><td>subestima · sobreestima</td><td>la opción invierte el sentido del efecto</td><td>P4-2 b: «a precios de mercado <i>subestima</i> las desigualdades» (las sobreestima) · P4-2 c</td><td>falsas</td></tr>
+    <tr><td>absolutamente ninguna</td><td>exageración: hay correlación, sólo que no automática</td><td>P2-4 e: «ninguna correlación con el PBI per cápita»</td><td>falsa</td></tr>
+    <tr><td>sostenidamente · en el corto plazo</td><td>cambian el horizonte y con él la respuesta</td><td>P4-4 b («sostenidamente» sin crecimiento) · P5-4 b («en el corto plazo»)</td><td>P4: falsa · P5: <b>verdadera</b></td></tr>
+  </tbody>
+</table>
+<div class="box tip"><div class="box-title">La regla de la palabra trampa</div><p>La palabra fuerte te dice <b>dónde mirar</b>, no
+qué contestar. Frente a «exclusivamente», «todas» o «en el corto plazo», volvé a la definición del paso 2: si la definición
+dice lo mismo, la opción es verdadera aunque suene exagerada.</p></div>
+
+<h4>Las definiciones que resuelven casi todas las teóricas</h4>
+<div class="grid-2 s0-defs">
+  <div class="card violet"><div class="card-title">Desarrollo según Sen · Tema 1.2</div><p>«Proceso de expansión de las
+  <b>libertades reales</b> que disfrutan los individuos.» Bien-estar = <b>funcionamientos</b> logrados; capacidad = el menú de
+  funcionamientos entre los que se puede elegir. Hedonismo y utilitarismo (placer, utilidad, felicidad) quedan descartados.</p></div>
+  <div class="card violet"><div class="card-title">Crecimiento y desarrollo · Tema 1.1</div><p>Crecimiento = aumento sostenido
+  del producto <b>per cápita</b>. Visión amplia: el crecimiento es un <b>medio</b>, necesario pero no suficiente; la
+  correlación con el bienestar no es automática.</p></div>
+  <div class="card blue"><div class="card-title">Comparar países · Tema 2.2</div><p>Tres problemas = los tres términos de
+  \(\text{PBI}=\sum P\,Q\): <b>moneda</b>, <b>precios</b> (PPA) y <b>cantidades</b>. A TC de mercado se subestima a los pobres
+  (no transables baratos) y la brecha se agranda; la PPA la achica.</p></div>
+  <div class="card blue"><div class="card-title">Índices · Temas 2.4 a 2.6</div><p>IDH: logros en vida, conocimiento y nivel
+  de vida. IDH-D: el IDH descontada la desigualdad. <b>IDG</b>: salud reproductiva, empoderamiento y mercado laboral (0 =
+  igualdad). <b>IPS</b>: sólo indicadores sociales y ambientales, resultados, holístico, aplicable.</p></div>
+  <div class="card aqua"><div class="card-title">Solow · Temas 3.4 y 3.6</div><p>Sin tecnología, en el EE las per cápita no
+  crecen (\(g_y = 0\)). Con tecnología crecen a \(g_A\), <b>exógena</b>. El ahorro tiene efecto <b>nivel</b>, no efecto
+  crecimiento; un \(n\) mayor baja \(k^*\).</p></div>
+  <div class="card aqua"><div class="card-title">Romer · Tema 3.8</div><p>La tecnología es <b>endógena</b>: las ideas se
+  producen con investigadores (\(\dot A = \delta L_A^{\lambda}A^{\phi}\)). Si una opción dice que la tecnología «depende de los
+  investigadores», está describiendo Romer, no Solow.</p></div>
+</div>
+
+<div class="box tip"><div class="box-title">Controles antes de pasar a la siguiente</div><ul>
+  <li>¿La opción coincide con la definición <b>completa</b> o sólo con la mitad? (P1-2 b: primera mitad bien, porqué mal.)</li>
+  <li>¿Leíste la opción hasta el punto final? (P5-3 c arranca bien y termina en Romer.)</li>
+  <li>¿La letra que marcaste es la de la idea correcta <b>en este examen</b>? (P4-1 y P5-1: misma idea, letras b y c.)</li>
+</ul></div>
+
+<h3>P1 · Teórica (08/10/2022) — Sen, PPA, IPS y Solow básico</h3>
+<p>Cuatro preguntas de +10 / −5. Respuestas y justificación completa: ver <i>Parciales resueltos</i>, P1.</p>
+
+<h4 class="s0-q">Pregunta 1 · El bien-estar según Sen <span class="tag">⏱ 1 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P1 · 2022 · Teórica 1 <span class="pts">+10 / −5</span></div>
+<p>Considerar el concepto de bien-estar individual desde la perspectiva de Sen, consiste en analizar:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 1.2 (enfoque de capacidades) · TP1. Concepto clave: en qué
+  «espacio» evalúa Sen el bienestar.</li>
+  <li><span class="step-title">Recordá la definición</span>Sen descarta las definiciones que describen un estado mental
+  (placer, utilidad, felicidad) y mira lo que la persona <b>efectivamente logra ser o hacer</b>: sus funcionamientos. El
+  bien-estar (<i>being well</i>) son los funcionamientos logrados.</li>
+  <li><span class="step-title">Palabras trampa</span>a, b y c dicen lo mismo con otras palabras («estado agradable de
+  conciencia», «utilidad», «feliz»): es la familia hedonista-utilitarista. Si cae una, caen las tres.</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>Si logra un estado agradable de conciencia<span class="why">hedonismo: un estado mental</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>El nivel de utilidad alcanzado<span class="why">utilitarismo; además, las preferencias se adaptan a la privación</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>Si el individuo es feliz<span class="why">otra vez un estado mental</span></span></li>
+    <li class="correct"><span class="opt">d)</span><span>Los funcionamientos logrados por la persona<span class="why">definición de Sen</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Ninguna opción es correcta<span class="why">d es correcta</span></span></li>
+  </ul></li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>d) Los funcionamientos logrados por la persona.</div></div>
+
+<h4 class="s0-q">Pregunta 2 · ¿Con qué medida hay más desigualdad entre países? <span class="tag">⏱ 2 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P1 · 2022 · Teórica 2 <span class="pts">+10 / −5</span></div>
+<p>Si comparamos países a través de su producto per cápita:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 2.2 (los tres problemas de comparar países y la PPA) · TP2 parte C.
+  Concepto clave: qué pasa con la brecha entre países a TC de mercado y a PPA.</li>
+  <li><span class="step-title">Recordá la definición</span>El TC de mercado depende sólo de los transables; los no
+  transables son más baratos en los países pobres. Al convertir con el TCm se <b>subestima</b> el producto de los pobres,
+  y la desigualdad entre países <b>se agranda</b>. La PPA valora la misma canasta en los dos países y la achica.</li>
+  <li><span class="step-title">Palabras trampa</span>Cada opción tiene dos partes: <i>con qué medida hay más
+  desigualdad</i> y <i>por qué</i>. Hay que controlar las dos. «Indiferente» (c) niega el problema que el tema resuelve.</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="correct"><span class="opt">a)</span><span>Más desigualdad a precios de mercado, por los precios que se comercian internamente<span class="why">las dos partes bien: los no transables son los que se comercian adentro</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>Más desigualdad a precios de mercado, porque se usa la misma canasta<span class="why">primera parte bien, pero «la misma canasta» es lo que define a la PPA, no al TCm</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>Es indiferente, porque los precios internacionales son los mismos<span class="why">los no transables no valen lo mismo en todos lados</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Más desigualdad a PPA, por los precios internos<span class="why">la PPA achica la brecha, no la agranda</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Más desigualdad a PPA, porque se usa la misma canasta<span class="why">el porqué describe bien a la PPA, pero la dirección está al revés</span></span></li>
+  </ul></li>
+  <li><span class="step-title">Controlá</span>Con números de otro parcial: en P6, EEUU era 17,1 veces Ucrania a
+  TC de mercado y sólo 4,1 veces a PPA (2020). A precios de mercado, más desigualdad.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a) Habrá mayor desigualdad si usamos el producto per cápita a precio de mercado, por los precios de lo que se comercia internamente.</div></div>
+
+<h4 class="s0-q">Pregunta 3 · Qué mide el Índice de Progreso Social <span class="tag">⏱ 1,5 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P1 · 2022 · Teórica 3 <span class="pts">+10 / −5</span></div>
+<p>El Índice de Progreso Social intenta medir:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 2.6 · TP3. Concepto clave: los cuatro principios de diseño del IPS y sus
+  tres dimensiones.</li>
+  <li><span class="step-title">Recordá la definición</span>Principios: (1) indicadores <b>exclusivamente sociales y
+  ambientales</b>, sin PBI, ingreso ni empleo; (2) resultados, no esfuerzos; (3) <b>holístico</b> y relevante para todos los
+  países; (4) aplicable. Dimensiones: necesidades humanas básicas · fundamentos del bienestar · oportunidades.</li>
+  <li><span class="step-title">Palabras trampa</span>«Exclusivamente» (a) hace sospechar, pero acá es textual del principio 1.
+  Y hay una opción «Todas»: en cuanto encontrás dos verdaderas, ya sabés que la respuesta es esa.</li>
+  <li><span class="step-title">Confirmá una por una</span><ul class="mcq">
+    <li><span class="opt">a)</span><span>Indicadores exclusivamente sociales y ambientales<span class="why">verdadera: principio 1</span></span></li>
+    <li><span class="opt">b)</span><span>De manera holística el bienestar humano<span class="why">verdadera: principio 3</span></span></li>
+    <li><span class="opt">d)</span><span>El bienestar independientemente de indicadores económicos<span class="why">verdadera: no incluye variables económicas</span></span></li>
+    <li><span class="opt">e)</span><span>Necesidades básicas, fundamentos del bienestar y oportunidades<span class="why">verdadera: sus tres dimensiones</span></span></li>
+    <li class="correct"><span class="opt">c)</span><span>Todas las premisas son correctas<span class="why">la única que abarca a las cuatro</span></span></li>
+  </ul></li>
+  <li><span class="step-title">Elegí</span>c. Marcar a, b, d o e no es un error de contenido, pero el examen pide <b>una</b>
+  opción y la que es cierta en su totalidad es c: cualquier otra cuenta como incorrecta (−5).</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>c) Todas las premisas son correctas.</div></div>
+
+<h4 class="s0-q">Pregunta 4 · ¿Crecen las per cápita en el Solow básico? <span class="tag">⏱ 1,5 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P1 · 2022 · Teórica 4 <span class="pts">+10 / −5</span></div>
+<p>El modelo de Solow-Swan (1956) básico explica que, en el equilibrio de largo plazo, puede existir crecimiento de las
+variables capital y producto per cápita debido a:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Temas 3.3 y 3.4 (Solow sin tecnología, estado estacionario) · TP4.
+  Concepto clave: qué crece en el estado estacionario del modelo <b>básico</b>.</li>
+  <li><span class="step-title">Recordá la definición</span>En el EE del modelo básico todas las per cápita son constantes:
+  \(g_k^* = g_y^* = 0\); sólo las agregadas crecen, a la tasa \(n\). Sin progreso tecnológico no hay crecimiento per cápita
+  sostenido.</li>
+  <li><span class="step-title">Palabras trampa</span>La pregunta da por hecho algo falso («puede existir crecimiento… per
+  cápita»). Las opciones a–d salen de la lista de factores que afectan el crecimiento (Tema 3.1): existen en la realidad,
+  pero no están en el modelo.</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>La religión<span class="why">factor de la lista, fuera del modelo</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>La ubicación geográfica<span class="why">ídem</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>Los recursos naturales<span class="why">ídem</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Las políticas del Estado<span class="why">aunque suban el ahorro, eso es efecto nivel: sube \(k^*\) pero \(g_y\) vuelve a 0</span></span></li>
+    <li class="correct"><span class="opt">e)</span><span>Ninguna opción es correcta<span class="why">en el EE básico no crecen por ningún motivo</span></span></li>
+  </ul></li>
+  <li><span class="step-title">Para recordar</span>Comparalo con P2-3 (Solow <b>con</b> tecnología): ahí sí crecen, a la tasa \(g\).</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>e) Ninguna opción es correcta.</div></div>
+
+<h3>P2 · Teórica (2023) — Sen, comparabilidad, Solow con tecnología e índices</h3>
+<p>Ver <i>Parciales resueltos</i>, P2.</p>
+
+<h4 class="s0-q">Pregunta 1 · Bienes primarios y condición de la persona <span class="tag">⏱ 1,5 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P2 · 2023 · Teórica 1 <span class="pts">+10 / −5</span></div>
+<p>Al evaluar qué tan bien está una persona hay que tener en cuenta los bienes primarios que posee, pero también se debe
+observar su condición, es decir que es relevante:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 1.2, «Por qué los recursos no alcanzan» · TP1. Concepto clave:
+  factores de conversión.</li>
+  <li><span class="step-title">Recordá la definición</span>No basta con repartir bienes primarios (Rawls), porque la tasa a la
+  que cada persona convierte recursos en capacidades es distinta: edad, género, salud, discapacidad, entorno. «Importa no
+  sólo lo que se tiene, sino lo que se puede hacer con eso.»</li>
+  <li><span class="step-title">Palabras trampa</span>«Utilidad» (a) y «estado agradable de conciencia» (c): utilitarismo y
+  hedonismo. «Todo lo anterior» (d) necesita que a y c sean ciertas.</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>La utilidad que obtiene de los bienes y de su condición<span class="why">utilitarismo</span></span></li>
+    <li class="correct"><span class="opt">b)</span><span>Las características personales que determinan la conversión de los bienes primarios en capacidad<span class="why">factores de conversión</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>Si está en un estado deseable o agradable de conciencia<span class="why">hedonismo</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Todo lo anterior<span class="why">incluye a y c, que son falsas</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Ninguna es correcta<span class="why">b es correcta</span></span></li>
+  </ul></li>
+  <li><span class="step-title">La pista del enunciado</span>Está en la propia consigna: «bienes primarios… pero también su
+  condición» es la crítica de Sen a Rawls.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) Las características personales que determinan la conversión de los bienes primarios en capacidad.</div></div>
+
+<h4 class="s0-q">Pregunta 2 · Los problemas de comparabilidad internacional <span class="tag">⏱ 2 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P2 · 2023 · Teórica 2 <span class="pts">+10 / −5</span></div>
+<p>Los principales problemas de comparabilidad internacional entre medidas de producto per cápita se deben a:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 2.2 · TP2. Concepto clave: los tres problemas de comparar países.</li>
+  <li><span class="step-title">Recordá la definición</span>Son los tres términos de \(\text{PBI} = \sum P\cdot Q\):
+  (1) los <b>signos monetarios</b>; (2) la <b>elección de los precios correctos</b> (diversidad de precios, de ahí la PPA);
+  (3) la <b>contabilización de las cantidades</b> (Q subestimada por informalidad, autoconsumo, producción doméstica).</li>
+  <li><span class="step-title">Palabras trampa</span>Opciones que mezclan un problema con una consecuencia o con una causa
+  inventada. Truco: escribí P, moneda y Q, y tachá con qué letra se corresponde cada parte de la opción.</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>Unidades monetarias y TC; subestimación de las rentas de los pobres<span class="why">la subestimación es una consecuencia del problema 1, no un problema; falta Q</span></span></li>
+    <li class="correct"><span class="opt">b)</span><span>Unidades monetarias; diversidad de precios; subestimación de las cantidades<span class="why">moneda, P y Q: los tres</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>Unidades monetarias; diversidad de precios; diferencias en el comercio de transables<span class="why">el tercero no es uno de los problemas</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Subestimación de cantidades por diferencias en el comercio internacional<span class="why">causa inventada (es la informalidad) y faltan dos problemas</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Ninguna es correcta<span class="why">b es correcta</span></span></li>
+  </ul></li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) Distintas unidades monetarias; diversidad de precios y subestimación de las cantidades de bienes y servicios finales.</div></div>
+
+<h4 class="s0-q">Pregunta 3 · Por qué crecen las per cápita en Solow con tecnología <span class="tag">⏱ 1 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P2 · 2023 · Teórica 3 <span class="pts">+10 / −5</span></div>
+<p>El modelo de Solow con tecnología explica que las variables capital y producto per cápita en el estado estacionario se
+incrementan debido a:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 3.6 · TP4 ej. 9. Concepto clave: la senda de crecimiento
+  equilibrado.</li>
+  <li><span class="step-title">Recordá la definición</span>En el EE, \(\kt\) e \(\yt\) son constantes; como \(k = A\,\kt\) e
+  \(y = A\,\yt\), las per cápita crecen a la tasa \(g_A\) del progreso técnico, que es <b>constante y exógena</b> («cae del
+  cielo»).</li>
+  <li><span class="step-title">Palabras trampa</span>«Endógena… explicada por el modelo» (d) es Romer. «No es posible» (c)
+  describe el modelo sin tecnología.</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>Las políticas del Estado sobre ahorro e inversión<span class="why">efecto nivel, no efecto crecimiento</span></span></li>
+    <li class="correct"><span class="opt">b)</span><span>Que la tecnología crece a una tasa constante y exógena<span class="why">definición</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>No es posible que las per cápita se modifiquen en el EE<span class="why">vale sólo para Solow sin tecnología</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Que la tecnología crece a una tasa constante y endógena, explicada por el modelo<span class="why">eso es Romer (Tema 3.8)</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Ninguna<span class="why">b es correcta</span></span></li>
+  </ul></li>
+  <li><span class="step-title">Para recordar</span>Entre b y d cambia una sola palabra: «exógena» contra «endógena».</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) Que la tecnología crece a una tasa constante y exógena.</div></div>
+
+<h4 class="s0-q">Pregunta 4 · Qué captan el IPS y los índices del PNUD <span class="tag">⏱ 1,5 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P2 · 2023 · Teórica 4 <span class="pts">+10 / −5</span></div>
+<p>Los índices como el de Progreso Social o los publicados por el PNUD captan el concepto de bienestar de un país:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Temas 2.4 a 2.6 (IDH e IPS), con la visión amplia del Tema 1.1. Concepto
+  clave: qué miden los índices multidimensionales y por qué existen.</li>
+  <li><span class="step-title">Recordá la definición</span>El IDH mide <b>logros</b> en tres capacidades básicas; el IPS,
+  resultados sociales y ambientales. Nacen porque el PBI per cápita «mide medios, no fines».</li>
+  <li><span class="step-title">Palabras trampa</span>«De la misma manera» (b), «en tanto y en cuanto» (c: una condición
+  inventada), «no son objetivas ni representativas» (d), «absolutamente ninguna» (e).</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="correct"><span class="opt">a)</span><span>En la medida en que intentan representar logros en algunas dimensiones de la vida<span class="why">definición</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>De la misma manera que el PBI per cápita<span class="why">existen justamente porque el PBI no alcanza; el IPS ni siquiera usa ingreso</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>En tanto los ingresos per cápita sean suficientemente altos<span class="why">ningún índice pone un umbral de ingreso</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Aunque no son objetivos ni representativos para comparar países<span class="why">los mínimos y máximos fijos están para que sean comparables</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Aunque no tienen absolutamente ninguna correlación con el PBI<span class="why">la correlación existe, sólo que no es automática</span></span></li>
+  </ul></li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a) En la medida en que intentan representar logros en algunas dimensiones de la vida de las personas.</div></div>
+
+<h3>P4 · Teórica (20/9/2024) — Sen, PPA, Solow y crecimiento contra desarrollo</h3>
+<p>Ver <i>Parciales resueltos</i>, P4. Esta prueba y la P5 comparten temas: leelas juntas.</p>
+
+<h4 class="s0-q">Pregunta 1 · Qué es lo más relevante para evaluar el desarrollo <span class="tag">⏱ 1 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P4 · 20/9/2024 · Teórica 1 <span class="pts">+10 / −5</span></div>
+<p>Para evaluar la calidad de vida y el nivel de desarrollo que ofrece una economía lo más relevante a tener en cuenta es:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Temas 1.2 y 1.3 · TP1. Concepto clave: la definición de desarrollo de Sen.</li>
+  <li><span class="step-title">Recordá la definición</span>«El desarrollo es un proceso de expansión de las libertades reales
+  que disfrutan los individuos.» Es la frase que hay que poder escribir de memoria.</li>
+  <li><span class="step-title">Palabras trampa</span>«Acceso equitativo a servicios públicos y bienes de consumo» (a) suena
+  bien, pero habla de <b>recursos</b> (medios), no de libertades (fines).</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>El acceso equitativo a servicios públicos y bienes de consumo<span class="why">medios; Sen evalúa lo que la persona puede ser o hacer con ellos</span></span></li>
+    <li class="correct"><span class="opt">b)</span><span>La libertad de las personas para elegir y alcanzar vidas que valoran<span class="why">capacidades: la definición</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>La felicidad alcanzada por la población<span class="why">utilitarismo</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>El crecimiento sostenido medido por el PIB per cápita<span class="why">visión estricta (desarrollo = crecimiento)</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Ninguna<span class="why">b es correcta</span></span></li>
+  </ul></li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) La libertad de las personas para elegir y alcanzar vidas que valoran.</div></div>
+
+<h4 class="s0-q">Pregunta 2 · PPA contra precios de mercado <span class="tag">⏱ 2 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P4 · 20/9/2024 · Teórica 2 <span class="pts">+10 / −5</span></div>
+<p>Cuando se pretende comparar países a través de su producto per cápita:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 2.2 · TP2 parte C. Es la P1-2 con otra redacción.</li>
+  <li><span class="step-title">Recordá la definición</span>A TC de mercado se subestima el producto de los pobres, así que la
+  brecha entre países se <b>sobreestima</b>; la PPA usa la misma canasta y la <b>reduce</b>.</li>
+  <li><span class="step-title">Palabras trampa</span>Palabras de dirección («subestima», «sobreestimar»). Antes de leer las
+  opciones dibujá la flecha: TCm → brecha grande; PPA → brecha chica. Además, «indiferente» (d) y «todas» (e).</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="correct"><span class="opt">a)</span><span>La PPA reduce las diferencias debidas a las variaciones en los precios internos<span class="why">definición</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>A precios de mercado se subestiman las desigualdades por las fluctuaciones del TC<span class="why">al revés: se sobreestiman</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>La PPA tiende a sobreestimar las diferencias de poder adquisitivo<span class="why">al revés: la PPA las achica</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Es indiferente, porque los precios internacionales son los mismos<span class="why">los no transables no valen lo mismo</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Todas las opciones son correctas<span class="why">b, c y d son falsas</span></span></li>
+  </ul></li>
+  <li><span class="step-title">Controlá</span>Con números: P6, EEUU/Ucrania 2020 = 17,1 veces a TCm y 4,1 a PPA.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a) El uso del producto per cápita a PPA reduce las diferencias debidas a las variaciones en los precios internos.</div></div>
+
+<h4 class="s0-q">Pregunta 3 · De dónde sale el crecimiento de largo plazo en Solow <span class="tag">⏱ 1,5 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P4 · 20/9/2024 · Teórica 3 <span class="pts">+10 / −5</span></div>
+<p>En el modelo de Solow-Swan (1956), el crecimiento de largo plazo en el capital y el producto per cápita se debe
+principalmente a:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Temas 3.4 y 3.6 · TP4. Concepto clave: efecto nivel contra efecto crecimiento.</li>
+  <li><span class="step-title">Recordá la definición</span>«Sólo puede haber crecimiento económico en el largo plazo si existe
+  progreso tecnológico» (conclusión 1 del Tema 3.6). El ahorro sube \(k^*\) pero no la tasa de largo plazo; un \(n\) mayor
+  diluye el capital.</li>
+  <li><span class="step-title">Palabras trampa</span>«La tasa de ahorro y la inversión» (a) es la intuición de Harrod-Domar,
+  no la conclusión de Solow.</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>La tasa de ahorro y la inversión<span class="why">efecto nivel: \(g_y\) vuelve a 0</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>La influencia cultural<span class="why">fuera del modelo</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>El aumento de la población activa<span class="why">diluye el capital: baja \(k^*\) e \(y^*\)</span></span></li>
+    <li class="correct"><span class="opt">d)</span><span>Las innovaciones tecnológicas que aumentan la productividad<span class="why">conclusión del Tema 3.6</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Ninguna<span class="why">d es correcta</span></span></li>
+  </ul></li>
+  <li><span class="step-title">Para recordar</span>Guardá esta redacción: en P5-3 la misma idea viene con un agregado que la vuelve falsa.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>d) Las innovaciones tecnológicas que aumentan la productividad.</div></div>
+
+<h4 class="s0-q">Pregunta 4 · Crecimiento económico y desarrollo humano <span class="tag">⏱ 2 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P4 · 20/9/2024 · Teórica 4 <span class="pts">+10 / −5</span></div>
+<p>¿Cuál de las siguientes afirmaciones refleja mejor la interacción entre Crecimiento Económico (CE) y Desarrollo Humano (DH)?</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 1.1 (visión estricta contra visión amplia) · TP1.</li>
+  <li><span class="step-title">Recordá la definición</span>En la visión amplia el crecimiento es un <b>medio</b> y la
+  correlación con el bienestar «no es automática»: el CE es necesario (da recursos) pero no suficiente.</li>
+  <li><span class="step-title">Palabras trampa</span>«Suficiente» (a), «sostenidamente» (b), «siempre» (d).</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>El CE es suficiente para mejorar el DH<span class="why">visión estricta</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>El DH podría mejorar sostenidamente sin CE con políticas de salud, educación y equidad<span class="why">sin crecimiento no hay recursos para sostener ese gasto en el tiempo</span></span></li>
+    <li class="correct"><span class="opt">c)</span><span>Un alto nivel de CE es necesario, pero no suficiente, para garantizar avances sostenibles en DH<span class="why">visión amplia</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Las mejoras en el DH siempre ralentizan el CE a corto plazo<span class="why">«siempre»</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Ninguna<span class="why">c es correcta</span></span></li>
+  </ul></li>
+  <li><span class="step-title">Si dudás</span>Entre b y c quedan 2 (valor esperado +2,5), pero no hace falta
+  arriesgar: «sostenidamente» decide contra b.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>c) Un alto nivel de CE es necesario, pero no suficiente, para garantizar avances sostenibles en DH.</div></div>
+
+<h3>P5 · Teórica (28/9/2024) — los mismos temas con otras trampas</h3>
+<p>Ver <i>Parciales resueltos</i>, P5. Repite los temas de P4 con cambios chicos que dan vuelta la respuesta: en la 3 y en
+la 4 lo que decide es una frase agregada.</p>
+
+<h4 class="s0-q">Pregunta 1 · La evaluación del desarrollo según Sen <span class="tag">⏱ 1 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P5 · 28/9/2024 · Teórica 1 <span class="pts">+10 / −5</span></div>
+<p>Teniendo en cuenta el enfoque de Sen, la evaluación de la calidad de vida como del desarrollo que ofrece una economía tiene
+que analizarse en términos de:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 1.2 · TP1. Es la P4-1 con las opciones en otro orden.</li>
+  <li><span class="step-title">Recordá la definición</span>Desarrollo = expansión de las libertades reales.</li>
+  <li><span class="step-title">Palabras trampa</span>No hay palabra fuerte: la trampa es la <b>letra</b>. Ahora la libertad
+  es la c.</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>El crecimiento sostenido medido por el PIB per cápita<span class="why">visión estricta</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>La felicidad alcanzada por la población<span class="why">utilitarismo</span></span></li>
+    <li class="correct"><span class="opt">c)</span><span>La libertad de las personas para elegir y alcanzar vidas que valoran<span class="why">definición</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>El acceso equitativo a servicios públicos y bienes de consumo<span class="why">medios, no fines</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Ninguna<span class="why">c es correcta</span></span></li>
+  </ul></li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>c) La libertad de las personas para elegir y alcanzar vidas que valoran.</div></div>
+
+<h4 class="s0-q">Pregunta 2 · PPA contra precios de mercado (repetida) <span class="tag">⏱ 30 s</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P5 · 28/9/2024 · Teórica 2 <span class="pts">+10 / −5</span></div>
+<p>Cuando se pretende comparar países a través de su producto per cápita: (mismas cinco opciones, en el mismo orden, que P4-2)</p></div>
+<ol class="steps">
+  <li><span class="step-title">Reconocé la pregunta</span>Es textual la P4-2. Verificá que las opciones estén en el mismo
+  orden antes de copiar la letra.</li>
+  <li><span class="step-title">Aplicá el mismo descarte</span>b y c invierten la dirección, d dice «indiferente», e dice
+  «todas»: queda a.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a) El uso del producto per cápita a PPA reduce las diferencias debidas a las variaciones en los precios internos.</div></div>
+
+<h4 class="s0-q">Pregunta 3 · Solow y el crecimiento de largo plazo (con agregado) <span class="tag">⏱ 2 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P5 · 28/9/2024 · Teórica 3 <span class="pts">+10 / −5</span></div>
+<p>El crecimiento económico en el largo plazo es explicado por el modelo de Solow-Swan (1956) a partir de:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Temas 3.6 y 3.8 (Solow contra Romer). Concepto clave: de dónde sale la
+  tecnología en Solow.</li>
+  <li><span class="step-title">Recordá la definición</span>En Solow el progreso tecnológico es <b>exógeno</b>: crece a una
+  tasa constante \(g_A\) y el modelo no explica de dónde sale. Que dependa de la cantidad de investigadores es Romer. Y
+  «crecimiento económico» es el aumento sostenido del producto <b>per cápita</b> (Tema 1.1).</li>
+  <li><span class="step-title">Palabras trampa</span>c arranca bien («el progreso tecnológico») y termina mal («que
+  dependerá de la cantidad de investigadores»). Leé hasta el punto final.</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>La influencia de las instituciones<span class="why">factor de la lista (Tema 3.1), fuera del modelo</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>Las mayores tasas de ahorro e inversión<span class="why">efecto nivel, no crecimiento de largo plazo</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>El progreso tecnológico que dependerá de la cantidad de investigadores<span class="why">tecnología endógena: Romer, \(\dot A = \delta L_A^{\lambda}A^{\phi}\)</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>El aumento en la población activa<span class="why">el agregado crece a \(n\), el per cápita no; un \(n\) mayor baja \(k^*\) e \(y^*\)</span></span></li>
+    <li class="correct"><span class="opt">e)</span><span>Ninguna opción es correcta<span class="why">ninguna describe a Solow</span></span></li>
+  </ul></li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>e) Ninguna opción es correcta.</div></div>
+
+<h4 class="s0-q">Pregunta 4 · Vínculos entre CE y DH (con otro horizonte) <span class="tag">⏱ 2 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P5 · 28/9/2024 · Teórica 4 <span class="pts">+10 / −5</span></div>
+<p>Algunos de los vínculos entre el Crecimiento Económico (CE) y el Desarrollo Humano (DH) involucran alguna de estas relaciones:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 1.1 · TP1.</li>
+  <li><span class="step-title">Recordá la definición</span>El CE es necesario pero no suficiente. Las políticas de salud,
+  educación y equidad pueden mejorar el DH <b>en el corto plazo</b> aun sin crecimiento; para <b>sostenerlo</b> hacen falta
+  recursos.</li>
+  <li><span class="step-title">Palabras trampa</span>«Suficiente» (a y c), «siempre» (d). Y el horizonte: «en el corto plazo» (b).</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>Un alto nivel de CE es suficiente para garantizar avances sostenibles<span class="why">«suficiente»</span></span></li>
+    <li class="correct"><span class="opt">b)</span><span>El DH podría mejorar en el corto plazo sin CE con políticas de salud, educación y equidad<span class="why">en el corto plazo, sí</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>El CE es suficiente para mejorar el DH<span class="why">«suficiente»</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Las mejoras en el DH siempre ralentizan el CE a largo plazo<span class="why">«siempre»</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Ninguna<span class="why">b es correcta</span></span></li>
+  </ul></li>
+  <li><span class="step-title">Para recordar</span>Acá no está «necesario pero no suficiente» (la correcta de P4-4); la que queda
+  es b, que en P4 decía «sostenidamente» y era falsa.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) El DH podría mejorar en el corto plazo sin que existiese crecimiento económico si se enfocan políticas en salud, educación y equidad.</div></div>
+
+<div class="versus">
+  <div class="card orange"><div class="card-title">P4 (20/9/2024)</div>
+    <p><b>Preg. 3 d)</b> «Las innovaciones tecnológicas que aumentan la productividad» → <b>verdadera</b>.</p>
+    <p><b>Preg. 4 b)</b> «El DH podría mejorar <b>sostenidamente</b> sin CE…» → <b>falsa</b>.</p></div>
+  <div class="vs">vs</div>
+  <div class="card violet"><div class="card-title">P5 (28/9/2024)</div>
+    <p><b>Preg. 3 c)</b> «El progreso tecnológico <b>que dependerá de la cantidad de investigadores</b>» → <b>falsa</b> (Romer).</p>
+    <p><b>Preg. 4 b)</b> «El DH podría mejorar <b>en el corto plazo</b> sin CE…» → <b>verdadera</b>.</p></div>
+</div>
+<div class="box warn"><div class="box-title">Si te equivocás acá</div><p>El error típico de P5 es contestar de memoria lo que
+se marcó en P4: «tecnología» en la 3 (c, que ahora es Romer) y descartar b en la 4 «porque en P4 era falsa». En P5-1 el
+error es marcar b por reflejo (era la letra correcta en P4-1; ahora b es «felicidad»). Leé siempre la versión que tenés
+delante.</p></div>
+
+<h3>P9 · Teórica (27/09/2025) — Sen, IDG, Solow con tecnología y CE–DH</h3>
+<p>Ver <i>Parciales resueltos</i>, P9. Es la parte teórica de 2025; la parte práctica de ese año es P8.</p>
+
+<h4 class="s0-q">Pregunta 1 · El concepto de desarrollo según Sen <span class="tag">⏱ 1 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P9 · 27/09/2025 · Teórica 1 <span class="pts">+10 / −5</span></div>
+<p>Según la perspectiva de Amartya Sen, el concepto de desarrollo debe entenderse como:</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 1.2 · TP1.</li>
+  <li><span class="step-title">Recordá la definición</span>«Proceso de expansión de las libertades reales que disfrutan los
+  individuos.» La opción b la repite casi textual.</li>
+  <li><span class="step-title">Palabras trampa</span>PBI (visión estricta), deuda y déficit (metas macroeconómicas),
+  felicidad (utilitarismo).</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>El aumento sostenido del PBI per cápita<span class="why">eso es crecimiento, no desarrollo</span></span></li>
+    <li class="correct"><span class="opt">b)</span><span>La expansión de las libertades reales que disfrutan las personas<span class="why">definición textual</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>La reducción de la deuda externa y el déficit fiscal<span class="why">metas macro; no son libertades</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>La felicidad alcanzada por la población<span class="why">utilitarismo</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Ninguna<span class="why">b es correcta</span></span></li>
+  </ul></li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) La expansión de las libertades reales que disfrutan las personas.</div></div>
+
+<h4 class="s0-q">Pregunta 2 · La preocupación central del IDG <span class="tag">⏱ 2 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P9 · 27/09/2025 · Teórica 2 <span class="pts">+10 / −5</span></div>
+<p>¿Cuál de las siguientes afirmaciones refleja una preocupación central del Índice de Desigualdad de Género (IDG)?</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 2.5 (IDG) · TP3 parte C.</li>
+  <li><span class="step-title">Recordá la definición</span>El IDG capta la desventaja de las mujeres en <b>tres
+  dimensiones</b>: salud reproductiva (mortalidad materna y fecundidad adolescente), empoderamiento (escaños y educación
+  secundaria) y mercado laboral (participación). 0 = igualdad perfecta.</li>
+  <li><span class="step-title">Palabras trampa</span>Opciones «parecidas»: el ingreso (b), la mortalidad <b>infantil</b> en
+  vez de la materna (d) y la descripción de otro índice (e).</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>Da preponderancia a la participación de las mujeres en el empleo<span class="why">es una de tres dimensiones y pesan igual (media geométrica)</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>Se basa en las diferencias de ingresos entre hombres y mujeres<span class="why">el IDG no usa ingresos</span></span></li>
+    <li class="correct"><span class="opt">c)</span><span>Busca captar la desventaja de las mujeres en salud, empoderamiento y trabajo<span class="why">sus tres dimensiones</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Se centra en las tasas de natalidad y mortalidad infantil<span class="why">usa mortalidad materna y fecundidad adolescente</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Salud, educación y nivel de vida ajustadas por la desigualdad<span class="why">eso es el IDH-D</span></span></li>
+  </ul></li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>c) Busca captar la desventaja de las mujeres en salud, empoderamiento y trabajo.</div></div>
+
+<h4 class="s0-q">Pregunta 3 · Qué define a Solow con progreso tecnológico <span class="tag">⏱ 1 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P9 · 27/09/2025 · Teórica 3 <span class="pts">+10 / −5</span></div>
+<p>¿Qué característica define al modelo de crecimiento de Solow con progreso tecnológico?</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 3.6 · TP4.</li>
+  <li><span class="step-title">Recordá la definición</span>Con \(A\) creciendo a \(g_A\) exógena, en el EE las per cápita
+  crecen a \(g_A\): el crecimiento sostenido de la renta per cápita es posible <b>gracias al progreso técnico</b>.</li>
+  <li><span class="step-title">Palabras trampa</span>«Exclusivamente» (a), «permanece constante» (b), «no considera» (d),
+  «Todas» (e).</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>Depende exclusivamente del capital físico<span class="why">el capital tiene rendimientos decrecientes: solo no sostiene el crecimiento</span></span></li>
+    <li class="wrong"><span class="opt">b)</span><span>La productividad total de los factores permanece constante<span class="why">\(A\) crece a \(g_A\)</span></span></li>
+    <li class="correct"><span class="opt">c)</span><span>El crecimiento sostenido de la renta per cápita es posible gracias al progreso tecnológico<span class="why">definición</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>No considera el rol del ahorro<span class="why">\(s\) está en \(\kt^*\): determina el nivel</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>Todas<span class="why">a, b y d son falsas</span></span></li>
+  </ul></li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>c) El crecimiento sostenido de la renta per cápita es posible gracias al progreso tecnológico.</div></div>
+
+<h4 class="s0-q">Pregunta 4 · Un vínculo fuerte entre CE y DH <span class="tag">⏱ 2 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P9 · 27/09/2025 · Teórica 4 <span class="pts">+10 / −5</span></div>
+<p>¿Cuál de las siguientes afirmaciones refleja un vínculo fuerte entre crecimiento económico y desarrollo humano?</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 1.1 (visión amplia) y Tema 1.3 (libertad como fin y como medio).</li>
+  <li><span class="step-title">Recordá la definición</span>El ingreso es un <b>medio</b>: se traduce en desarrollo cuando se
+  convierte en capacidades (salud, educación, libertades). La relación no es automática ni lineal.</li>
+  <li><span class="step-title">Palabras trampa</span>«Garantiza» (c), «la única vía» (e), y una relación automática
+  disfrazada de dato (a).</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a)</span><span>A mayor PBI per cápita, menor pobreza estructural<span class="why">relación automática; la correlación ingreso–vida es débil y se aplana (Sudáfrica contra Sri Lanka)</span></span></li>
+    <li class="correct"><span class="opt">b)</span><span>Aumento del ingreso acompañado de mejoras en salud, educación y libertades<span class="why">el ingreso convertido en capacidades</span></span></li>
+    <li class="wrong"><span class="opt">c)</span><span>El crecimiento del producto garantiza el desarrollo humano<span class="why">«garantiza»: visión estricta</span></span></li>
+    <li class="wrong"><span class="opt">d)</span><span>Aumento del empleo informal como estrategia de expansión<span class="why">la informalidad es un rasgo del subdesarrollo (Tema 1.5)</span></span></li>
+    <li class="wrong"><span class="opt">e)</span><span>La única vía de desarrollo es el crecimiento del capital físico<span class="why">«la única» y «capital físico» contradicen la visión amplia</span></span></li>
+  </ul></li>
+  <li><span class="step-title">La que tienta</span>Es la a: suena a dato, pero afirma un vínculo automático.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) Aumento del ingreso acompañado de mejoras en salud, educación y libertades.</div></div>
+
+<h3>P8 · Ej.3 c (2025) — Libertades instrumentales de Sen: el caso Yemen</h3>
+<div class="statement"><div class="statement-title">Enunciado · P8 · 2025 · Ej. 3 c) <span class="pts">6 ptos</span> <span class="tag">⏱ 3 min</span></div>
+<p>Clasifique estas afirmaciones sobre el país teniendo en cuenta las libertades instrumentales que propone Amartya Sen:</p>
+<ol style="margin-bottom:0">
+  <li>«Yemen lleva más de una década sumido en una guerra civil entre los rebeldes hutíes, también conocidos como Ansar
+  Allah, y las fuerzas gubernamentales respaldadas por Arabia Saudí y sus aliados.»</li>
+  <li>«Alrededor del 20 % de los niños nunca han sido vacunados, una de las peores tasas de vacunación del mundo.»</li>
+  <li>«Ibrahim, un hombre de 70 años, fue desplazado por las fuertes inundaciones en Ma'rib. Cuando las aguas arrasaron el
+  asentamiento, cargó a la espalda a su hijo adulto, que vive con una discapacidad, para ponerlo a salvo. Lo perdieron todo.»</li>
+</ol></div>
+
+<div class="recipe"><div class="recipe-title">Receta: clasificar un caso según las libertades instrumentales</div><ol>
+  <li>Subrayá el <b>hecho central</b> del caso (una frase).</li>
+  <li>Preguntá <b>qué institución falla o funciona</b> (no «de qué tema habla»): el criterio del manual, Tema 1.3.</li>
+  <li>Recorré el árbol de la Figura §4.2 y quedate con la rama que describe esa institución.</li>
+  <li>Descartá las libertades que tientan por el tema pero no por la institución.</li>
+  <li>Escribí la libertad y, si hay lugar, la justificación en una línea.</li>
+</ol></div>
+
+<figure><img src="figs/out/s0_arbol_sen.svg">
+  <figcaption><b>Figura §4.2.</b> Árbol de decisión del manual (Tema 1.3) para las cinco libertades instrumentales, con los
+  tres casos de Yemen enchufados en su rama. Fijate que la pregunta de la raíz es por la <b>institución</b>: la guerra no
+  va a «seguridad», va a «libertades políticas», porque lo que falla es el mecanismo para decidir quién gobierna.</figcaption></figure>
+
+<h4>Caso 1 · La guerra civil</h4>
+<ol class="steps">
+  <li><span class="step-title">Hecho central</span>Más de diez años de guerra civil entre rebeldes y el gobierno.</li>
+  <li><span class="step-title">¿Qué institución falla?</span>La que decide <b>quién gobierna y cómo</b>: el poder se disputa
+  con armas en lugar de elecciones, crítica pública y oposición legal.</li>
+  <li><span class="step-title">Rama del árbol</span>«Elecciones, crítica, prensa, reclamo, justicia» → <b>libertades políticas</b>.</li>
+  <li><span class="step-title">Descartá las tentadoras</span>Seguridad protectora: la guerra produce víctimas, pero el caso no
+  habla de una red de ayuda que falle o funcione. Transparencia: no hay información ocultada ni corrupción.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>Libertades políticas.</div></div>
+
+<h4>Caso 2 · El 20 % de los niños sin vacunar</h4>
+<ol class="steps">
+  <li><span class="step-title">Hecho central</span>Uno de cada cinco niños nunca fue vacunado.</li>
+  <li><span class="step-title">¿Qué institución falla?</span>El sistema de <b>salud</b> (sanidad pública).</li>
+  <li><span class="step-title">Rama del árbol</span>«Acceso a salud o educación» → <b>oportunidades sociales</b> («sistemas de
+  educación y de sanidad que permiten vivir mejor»).</li>
+  <li><span class="step-title">Descartá las tentadoras</span>Seguridad protectora: la vacunación es un servicio permanente, no
+  una red que ataja a quien cae en una crisis. Servicios económicos: no hay ingresos, crédito ni mercados en juego.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>Oportunidades sociales.</div></div>
+
+<h4>Caso 3 · Ibrahim y la inundación</h4>
+<ol class="steps">
+  <li><span class="step-title">Hecho central</span>Una catástrofe natural dejó sin nada a una familia vulnerable (un hombre
+  de 70 años y su hijo con discapacidad).</li>
+  <li><span class="step-title">¿Qué institución hace falta?</span>La <b>red de protección</b> que impide que quien cae quede en
+  la miseria absoluta: ayuda de emergencia ante el desastre.</li>
+  <li><span class="step-title">Rama del árbol</span>«Ayuda de emergencia o red de asistencia» → <b>seguridad protectora</b>, en
+  su mecanismo <b>ad hoc</b> (se activa ante una crisis puntual), no en el fijo por ley.</li>
+  <li><span class="step-title">Descartá las tentadoras</span>Oportunidades sociales: la discapacidad del hijo tienta, pero el caso
+  no trata de acceso a salud o educación. Servicios económicos: «lo perdieron todo» suena a ingresos, pero lo que falta es la
+  red que los ataje.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>Seguridad protectora (mecanismo ad hoc: ayuda de emergencia).</div></div>
+
+<div class="box warn"><div class="box-title">Si te equivocás acá</div><p>Los tres errores salen de clasificar por el
+<b>tema</b> y no por la <b>institución</b>: «guerra» → seguridad protectora (caso 1); «vacunas = emergencia sanitaria» →
+seguridad protectora (caso 2); «discapacidad» → oportunidades sociales o «perdieron todo» → servicios económicos (caso 3).
+Ver <i>Parciales resueltos</i>, P8, y los casos del TP1 (consigna 4).</p></div>
+
+<h3>P3 · Ej.3 c–d (sin fecha) — ¿Qué país tiene mejor desarrollo? ¿Y mejor salud de las mujeres?</h3>
+<p>Los resultados del inciso a) (IDH, IDH-D y pérdida de Namibia y Honduras) se calculan paso a paso en §3. Acá se usan para
+razonar. Ver <i>Parciales resueltos</i>, P3.</p>
+
+<h4 class="s0-q">Inciso c · ¿Cuál tiene mejor desarrollo? <span class="tag">⏱ 1,5 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P3 · Ej. 3 c) <span class="pts">+3 / −1,5</span></div>
+<p>Teniendo en cuenta la relación entre IDH e IDH-D y la pérdida por desigualdad, ¿cuál es el país con mejor desarrollo?
+a. Namibia · b. Honduras · c. No tenemos los datos suficientes · d. Nada de lo anterior.</p></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 2.5 (IDH-D) · TP3 parte B. Concepto clave: el IDH es el desarrollo
+  <b>potencial</b> (si los logros estuvieran repartidos por igual); el IDH-D, el <b>efectivamente disfrutado</b>; la pérdida,
+  cuánto se va por la desigualdad.</li>
+  <li><span class="step-title">Juntá los datos (de a)</span>
+    <table class="compact" style="margin:0.3em 0 0.2em">
+      <thead><tr><th>País</th><th class="num">IDH</th><th class="num">IDH-D</th><th class="num">Pérdida</th></tr></thead>
+      <tbody>
+        <tr><td>Namibia</td><td class="num">0,645</td><td class="num">0,418</td><td class="num">35,3 %</td></tr>
+        <tr><td>Honduras</td><td class="num">0,638</td><td class="num">0,476</td><td class="num">25,5 %</td></tr>
+      </tbody>
+    </table></li>
+  <li><span class="step-title">Compará indicador por indicador</span>IDH: Namibia gana por \(0{,}645 - 0{,}638 = 0{,}007\),
+  prácticamente un empate (los dos son DH medio). IDH-D: Honduras gana por \(0{,}476 - 0{,}418 = 0{,}058\), ocho veces más.
+  Pérdida: Honduras pierde \(35{,}3 - 25{,}5 = 9{,}8\) puntos menos.</li>
+  <li><span class="step-title">Decidí con el criterio de la consigna</span>La consigna pide mirar la <b>relación</b> entre IDH e
+  IDH-D: con el mismo potencial, en Honduras la gente disfruta efectivamente de más desarrollo.</li>
+  <li><span class="step-title">Descartá y elegí</span><ul class="mcq">
+    <li class="wrong"><span class="opt">a.</span><span>Namibia<span class="why">sólo gana en el potencial, por 0,007, y pierde más de un tercio por desigualdad</span></span></li>
+    <li class="correct"><span class="opt">b.</span><span>Honduras<span class="why">mayor IDH-D y menor pérdida con el mismo IDH</span></span></li>
+    <li class="wrong"><span class="opt">c.</span><span>No tenemos los datos suficientes<span class="why">la consigna da exactamente los tres datos que hacen falta</span></span></li>
+    <li class="wrong"><span class="opt">d.</span><span>Nada de lo anterior<span class="why">b es correcta</span></span></li>
+  </ul></li>
+</ol>
+<figure class="w80"><img src="figs/out/s0_nam_hon.svg">
+  <figcaption><b>Figura §4.3.</b> IDH (azul) contra IDH-D (naranja) de Namibia y Honduras; la barra gris es lo que se pierde
+  por desigualdad. Los puntos azules están casi en el mismo lugar; los naranjas, no: Honduras conserva más de su desarrollo
+  potencial. Datos: P3, inciso a (cálculo en §3).</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) Honduras: IDH casi igual, pero mayor IDH-D (0,476 contra 0,418) y menor pérdida (25,5 % contra 35,3 %).</div></div>
+<div class="box warn"><div class="box-title">Si te equivocás acá</div><p><b>a) Namibia</b> sale de mirar sólo el IDH (el
+que «da más»). <b>c) No hay datos</b> sale de pensar que hace falta el ingreso o la población: la consigna define el criterio
+(IDH, IDH-D y pérdida) y los tres están en la tabla.</p></div>
+
+<h4 class="s0-q">Inciso d · ¿Cuál tiene mejor salud de las mujeres (IDG)? <span class="tag">⏱ 3 min</span></h4>
+<div class="statement"><div class="statement-title">Enunciado · P3 · Ej. 3 d) <span class="pts">+3 / −1,5</span></div>
+<p>A partir de los siguientes datos, justifique qué país tiene mejor indicador de salud en mujeres, correspondiente al Índice
+de Desigualdad de Género (IDG).</p>
+<table class="compact" style="margin-bottom:0.2em">
+  <thead><tr><th>Indicador</th><th class="num">Namibia</th><th class="num">Honduras</th></tr></thead>
+  <tbody>
+    <tr><td>Tasa de mortalidad materna (TMM)</td><td class="num">195</td><td class="num">63,6</td></tr>
+    <tr><td>Tasa de natalidad en adolescentes (TNA)</td><td class="num">65</td><td class="num">72,9</td></tr>
+  </tbody>
+</table></div>
+<ol class="steps">
+  <li><span class="step-title">Ubicá el tema</span>Tema 2.5, IDG, dimensión <b>salud reproductiva</b> (sólo mujeres) · TP3
+  parte C.</li>
+  <li><span class="step-title">Elegí la fórmula</span>\(\text{Índice de salud reproductiva} = \left(\dfrac{10}{\text{TMM}}\cdot
+  \dfrac{1}{\text{TNA}}\right)^{1/2}\). Es un <b>logro</b>: sube cuando bajan la mortalidad materna y la fecundidad adolescente.
+  Los datos van tal cual (no son porcentajes).</li>
+  <li><span class="step-title">Reemplazá y calculá</span>
+    <div class="calc">\[\begin{aligned}
+    \text{Namibia:}\;& \frac{10}{195} = 0{,}05128 \quad \frac{1}{65} = 0{,}015385 \quad 0{,}05128\cdot 0{,}015385 = 0{,}000789 \quad \sqrt{0{,}000789} = 0{,}0281\\
+    \text{Honduras:}\;& \frac{10}{63{,}6} = 0{,}15723 \quad \frac{1}{72{,}9} = 0{,}013717 \quad 0{,}15723\cdot 0{,}013717 = 0{,}002157 \quad \sqrt{0{,}002157} = 0{,}0464
+    \end{aligned}\]</div>
+    <p class="s0-keys" style="margin:0">En la calculadora, de un tirón: <kbd>(</kbd><kbd>10</kbd><kbd class="op">÷</kbd><kbd>195</kbd><kbd class="op">×</kbd><kbd>1</kbd><kbd class="op">÷</kbd><kbd>65</kbd><kbd>)</kbd><kbd class="op">^</kbd><kbd>0,5</kbd><kbd class="eq">=</kbd>
+    <span class="s0-res">0,0281</span> · <kbd>(</kbd><kbd>10</kbd><kbd class="op">÷</kbd><kbd>63,6</kbd><kbd class="op">×</kbd><kbd>1</kbd><kbd class="op">÷</kbd><kbd>72,9</kbd><kbd>)</kbd><kbd class="op">^</kbd><kbd>0,5</kbd><kbd class="eq">=</kbd> <span class="s0-res">0,0464</span></p></li>
+  <li><span class="step-title">Si querés, la versión «referencia estándar»</span>El paso 3 del IDG promedia el índice de las
+  mujeres con el de los varones (que vale 1): \((0{,}0281 + 1)/2 = 0{,}514\) y \((0{,}0464 + 1)/2 = 0{,}523\). El orden no cambia.</li>
+  <li><span class="step-title">Leé la dirección</span>Más alto = mejor. Honduras (0,0464) supera a Namibia (0,0281): su
+  mortalidad materna es tres veces menor (63,6 contra 195), aunque su fecundidad adolescente es algo mayor (72,9 contra 65).</li>
+  <li><span class="step-title">Control con otra cuenta</span>El cociente entre los dos índices sale directo de los datos, sin
+  calcular cada uno:
+  <div class="calc">\[ \frac{I_{Honduras}}{I_{Namibia}} = \sqrt{\frac{195}{63{,}6}\cdot\frac{65}{72{,}9}} = \sqrt{3{,}066\cdot 0{,}892} = \sqrt{2{,}73} = 1{,}65 \qquad \frac{0{,}0464}{0{,}0281} = 1{,}65 \;\checkmark \]</div>
+  El efecto de la mortalidad materna (×3,07) le gana al de la fecundidad adolescente (×0,89).</li>
+</ol>
+<figure class="w80"><img src="figs/out/s0_salud_idg.svg">
+  <figcaption><b>Figura §4.4.</b> Dos escalas que se leen al revés. Arriba, el índice de salud reproductiva de P3: es un logro,
+  y más a la derecha es mejor (Honduras). Abajo, el IDG final de los países de P6 y P7: mide desigualdad, y más a la izquierda
+  (más cerca de 0) es mejor (Barbados). Confundir las dos direcciones es el error de este inciso.</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>Honduras: su índice de salud reproductiva (0,0464) es mayor que el de Namibia (0,0281), porque su mortalidad materna es tres veces menor.</div></div>
+<div class="box warn"><div class="box-title">Si te equivocás acá</div><p><b>Namibia «porque está más cerca de 0»</b>: es el
+error de la resolución manuscrita que circula de este examen. «Más cerca de 0 es mejor» vale para el <b>IDG final</b> (un
+índice de desigualdad), no para el índice de salud, que es un logro. Si te olvidás del 10 de la fórmula, los números cambian
+(0,0089 y 0,0147) pero el orden no: la respuesta sigue siendo Honduras.</p></div>
+
+<div class="avoid-break">
+<h3>Resumen: las 20 teóricas en una tabla</h3>
+<p>La letra correcta y la idea que la decide. No hay letra «favorita» que sirva: las cinco fueron correctas al menos dos veces.</p>
+<table class="compact s0-grid">
+  <thead><tr><th>Examen</th><th>Pregunta 1</th><th>Pregunta 2</th><th>Pregunta 3</th><th>Pregunta 4</th></tr></thead>
+  <tbody>
+    <tr><td>P1 · 2022</td><td><b>d</b>funcionamientos</td><td><b>a</b>a TCm, más brecha</td><td><b>c</b>todas (IPS)</td><td><b>e</b>sin tecnología no crece</td></tr>
+    <tr><td>P2 · 2023</td><td><b>b</b>conversión</td><td><b>b</b>moneda, P y Q</td><td><b>b</b>exógena</td><td><b>a</b>logros en dimensiones</td></tr>
+    <tr><td>P4 · 20/9/2024</td><td><b>b</b>libertad</td><td><b>a</b>la PPA reduce</td><td><b>d</b>tecnología</td><td><b>c</b>necesario, no suficiente</td></tr>
+    <tr><td>P5 · 28/9/2024</td><td><b>c</b>libertad</td><td><b>a</b>la PPA reduce</td><td><b>e</b>investigadores = Romer</td><td><b>b</b>en el corto plazo</td></tr>
+    <tr><td>P9 · 27/09/2025</td><td><b>b</b>libertades reales</td><td><b>c</b>salud, poder, trabajo</td><td><b>c</b>gracias a la tecnología</td><td><b>b</b>ingreso + capacidades</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="check"><div class="check-title">Autoevaluación</div><ol>
+  <li>¿Qué palabra hace falsa la opción b de P4-4 y verdadera la b de P5-4? <span class="muted">— «Sostenidamente» contra «en
+  el corto plazo».</span></li>
+  <li>¿Por qué «exclusivamente sociales y ambientales» es verdadera en P1-3 y «exclusivamente del capital físico» es falsa en
+  P9-3? <span class="muted">— La primera es un principio textual del IPS; la segunda contradice a Solow (rendimientos decrecientes y
+  papel de la tecnología).</span></li>
+  <li>Te quedan 3 opciones y ninguna te convence más que otra. ¿Arriesgás? <span class="muted">— Da igual en promedio (valor
+  esperado 0); si el examen está justo, dejala en blanco.</span></li>
+  <li>Una noticia dice que un hospital no tiene insumos porque un funcionario desvió los fondos. ¿Qué libertad?
+  <span class="muted">— Garantías de transparencia: lo que falla es el control de la corrupción, aunque el tema sea salud.</span></li>
+</ol></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este capítulo</div>
+<p>Sen (2000) <i>Desarrollo y libertad</i>, Introducción pp. 19-28 y cap. 2 «Los fines y los medios del desarrollo», pp. 54-75 ·
+Sen (1988) «El concepto de desarrollo» · Paz caps. 3 y 4 · PNUD (2016) <i>Notas técnicas</i> (IDH, IDH-D, IDG) · Stern, Wares y
+Orzell (2014), cap. 1 (IPS) · Sala-i-Martín cap. 1 · Larraín y Sachs cap. 4 · Jones caps. 4 y 5 (Romer). Manual de teoría,
+Temas 1.1 a 3.8; práctica resuelta, TP1 a TP4.</p></div>
+
+</section>

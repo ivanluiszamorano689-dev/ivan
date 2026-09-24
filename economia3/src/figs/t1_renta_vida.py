@@ -4,7 +4,7 @@ from econ_style import *
 
 x = np.linspace(0.02, 10, 400)
 f = lambda v: 1.0 + 3.0 * (1 - np.exp(-v / 1.9))           # forma cóncava que se aplana
-fig, ax = new_fig(6.2, 3.4)
+fig, ax = new_fig(6.2, 3.1)
 ax.fill_between(x, f(x) - 0.55, f(x) + 0.55, color=C["gray_bg"], lw=0, zorder=1)
 ax.plot(x, f(x), color=C["blue"], lw=LW, zorder=3)
 econ_axes(ax, "PBI per cápita", "Esperanza de vida", xlim=(0, 10.4), ylim=(0.5, 5.0))

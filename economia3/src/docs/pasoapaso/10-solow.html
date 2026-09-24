@@ -1,0 +1,621 @@
+<section class="tema-3">
+<style>
+.s1-kb { font-family: "DejaVu Sans Mono", monospace; font-size: 0.82em; background: var(--paper-2); border: 1px solid #d3d1c9; border-bottom-width: 2px; border-radius: 4px; padding: 0.02em 0.4em; white-space: nowrap; color: var(--ink); }
+.s1-out { font-weight: 700; color: var(--violet-ink); white-space: nowrap; }
+.s1-opts { font-size: 8.7pt; color: var(--ink-2); margin: 0.3em 0 0; line-height: 1.75; }
+.s1-opts > span { display: inline-block; margin-right: 1.1em; white-space: nowrap; }
+.s1-opts > span b { color: var(--ink); }
+h4 .tag, h4 .pts { vertical-align: 0.1em; margin-left: 0.4em; }
+.s1-err table { margin: 0.2em 0 0.1em; background: #fff; }
+.s1-err td:last-child, .s1-err th:last-child { white-space: nowrap; }
+.s1-strike { text-decoration: line-through; text-decoration-thickness: 1.4px; color: var(--ink-3); }
+.s1-keep { font-weight: 700; background: var(--green-bg); color: var(--green-ink); padding: 0 0.25em; border-radius: 3px; }
+.s1-ref { font-size: 8.4pt; color: var(--ink-2); margin: -0.2em 0 0.6em; }
+.s1-map td, .s1-map th { font-size: 8.4pt; }
+.s1-sheet { border: 1.5px solid var(--ink-3); border-radius: 6px; padding: 0.4em 0.9em; background: #fffdf6; margin: 0.6em 0 0.9em; break-inside: avoid; }
+.s1-sheet > .s1-sheet-title { font: 700 7.6pt "Inter"; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-2); }
+.s1-stmt, .s1-head { break-inside: avoid; }
+.flow.s1-flow > .node { font-size: 8.2pt; padding: 0.4em 0.45em; }
+ol.steps.s1-from5 { counter-reset: step 4; }
+</style>
+
+<div class="chapter-head">
+  <div class="kicker">Tipo de ejercicio 1 · Tema 3 · Modelos de crecimiento</div>
+  <h2><span class="num">§1</span>Solow-Swan y Harrod-Domar</h2>
+  <p>Qué vas a poder hacer: resolver solo, con calculadora y sin mirar nada, los cinco ejercicios de crecimiento que se tomaron entre 2022 y 2025, con cada cuenta intermedia, su control y sabiendo de dónde sale cada opción incorrecta.</p>
+</div>
+
+<div class="box summary"><div class="box-title">En 30 segundos</div><ul>
+<li>Todo Solow es <b>la misma cuenta</b>: elevás a la \(1/(1-\alpha)\) un cociente “lo que se invierte / lo que se pierde”.</li>
+<li>Sin tecnología el cociente es \(sA/(n+\delta)\); con tecnología es \(s/(n+g+\delta)\) y no hay \(A\) adelante.</li>
+<li>“<b>Funciones</b>” (FA, FD) son niveles: \(sAk^{\alpha}\) y \((n+\delta)k\). “<b>Curvas</b>” (CA, CD) son tasas: \(sA/k^{1-\alpha}\) y \(n+\delta\).</li>
+<li>Control universal: \(y^* = (n+\delta)\,k^*/s\) (con tecnología, \(n+g+\delta\)). Dos segundos y te salva el ejercicio.</li>
+<li>No redondees el cociente: se eleva a potencias como 6 o 1,75 y el error se agranda.</li>
+<li>Harrod-Domar: \(g = s/v-\delta\) (total) o \(s/v-\delta-n\) (per cápita); \(g>0\) si \(0&lt;v&lt;\) umbral.</li>
+</ul></div>
+
+<table class="compact s1-map">
+<caption>Los cinco ejercicios de esta sección</caption>
+<thead><tr><th>Ejercicio</th><th>Modelo (receta)</th><th>Datos clave</th><th>Incisos y puntos</th></tr></thead>
+<tbody>
+<tr><td>P1 · Ej. 1 (2022)</td><td>Solow sin tecnología (A)</td><td>\(A=5/2\), \(\alpha=3/7\); \(\delta\) a la mitad</td><td>a–d: 4 × 5 ptos</td></tr>
+<tr><td>P2 · Ej. 1 (2023)</td><td>Solow sin tecnología + Harrod-Domar (A&nbsp;y&nbsp;C)</td><td>\(A=3/2\), \(\alpha=5/6\); despeje de \(\alpha\)</td><td>a–d: 4 × 5 ptos</td></tr>
+<tr><td>P6 · Ej. 3 (2024)</td><td>Solow con tecnología (B)</td><td>\(g=25\,\%\); trampa del signo</td><td>a–c: 4 + 6 + 10 ptos</td></tr>
+<tr><td>P7 · Ej. 3 (2024)</td><td>Solow con tecnología (B)</td><td>\(g=17\,\%\)</td><td>a–c: 4 + 6 + 10 ptos</td></tr>
+<tr><td>P8 · Ej. 1 (2025)</td><td>Solow con tecnología (B)</td><td>dan la parte del <b>trabajo</b>; gráfico a completar</td><td>a–c: 8 + 7 + 10 ptos</td></tr>
+</tbody></table>
+
+
+
+<div class="box tip"><div class="box-title">La calculadora en este tipo de ejercicio</div>
+<p>Vas a usar cinco teclas: <span class="s1-kb">^</span> (en algunas dice \(x^y\) o \(y^x\)), los paréntesis <span class="s1-kb">( )</span>, <span class="s1-kb">ln</span>, <span class="s1-kb">Ans</span> (el último resultado) y <span class="s1-kb">÷</span>. Tres reglas:</p>
+<ul>
+<li><b>Exponente fraccionario siempre entre paréntesis</b>: \(5^{7/4}\) es <span class="s1-kb">5 ^ ( 7 ÷ 4 ) =</span>. Sin paréntesis la calculadora hace \(5^7\div 4\).</li>
+<li><b>Encadená con Ans</b>: calculás el cociente, y después <span class="s1-kb">Ans ^ …</span>. Así no copiás un número redondeado.</li>
+<li>La pantalla muestra punto decimal (16.71850762); en la hoja escribilo con coma (16,7185) y <b>redondeá recién al final</b>, a lo que pidan (en general 3 decimales).</li>
+</ul></div>
+
+<div class="check"><div class="check-title">Antes de entregar cualquier Solow: cinco preguntas</div><ol>
+<li>¿Pasé todos los % a decimales y \(\alpha\) es la parte del <b>capital</b>? (2025: \(\alpha=0{,}4\), no 0,6.)</li>
+<li>¿Sin tecnología puse \(sA\) en el cociente y multipliqué \(y^*\) por \(A\)? (2022 y 2023.)</li>
+<li>¿Con tecnología sumé \(g\) en la depreciación efectiva? (\(n+g+\delta\).)</li>
+<li>¿Hice el control \(y^*=(\text{depreciación efectiva})\cdot k^*/s\)?</li>
+<li>¿Piden funciones (niveles) o curvas (tasas)? ¿La curva de ahorro que elegí baja?</li>
+</ol></div>
+
+<!-- ============================================================ RECETA A -->
+<div class="s1-head"><h3>Receta A · Solow sin tecnología</h3>
+<p class="s1-ref">Teoría: manual, Temas 3.3 y 3.4 · Práctica: TP4, ej. 5 (estado estacionario) y ej. 7 (despeje de \(\alpha\)) · Se usa en P1 (2022) y P2 (2023).</p>
+
+<div class="recipe"><div class="recipe-title">Receta A: estado estacionario, funciones, curvas y cambios</div><ol>
+<li><b>Datos a decimales.</b> Porcentajes ÷ 100: \(26\,\%\to 0{,}26\); \(4{,}5\,\%\to 0{,}045\).</li>
+<li><b>Leé \(A\) y \(\alpha\) en la función.</b> En \(Y=A\,K^{\alpha}L^{1-\alpha}\): \(A\) es el número de adelante y \(\alpha\) el exponente de \(K\). Chequeá que los dos exponentes sumen 1.</li>
+<li><b>Pasá a per cápita</b> (dividís por \(L\)): \(y = A\,k^{\alpha}\).</li>
+<li><b>Armá las dos piezas</b>: lo que se invierte, \(sA\), y lo que se pierde por desgaste y dilución, \(n+\delta\). Calculá el cociente \(sA/(n+\delta)\) y dejalo en la calculadora.</li>
+<li><b>\(k^*\)</b>: elevá el cociente a \(1/(1-\alpha)\).</li>
+<li><b>\(y^*\)</b>: \(y^* = A\,(k^*)^{\alpha}\). ¡Multiplicá por \(A\)!</li>
+<li><b>Control</b>: \(y^* = (n+\delta)\,k^*/s\). Si no coincide, hay un error antes.</li>
+<li><b>Si piden “funciones”</b> (niveles): FA \(=sAk^{\alpha}\), FD \(=(n+\delta)k\). <b>Si piden “curvas”</b> (tasas): CA \(=sA/k^{1-\alpha}\), CD \(=n+\delta\).</li>
+<li><b>Si cambia un parámetro</b>: rehacé 4 a 7 con el valor nuevo. Si cambian \(s\) o \(A\), se mueve CA (o FA); si cambian \(n\) o \(\delta\), se mueve CD (o FD).</li>
+<li><b>Si piden \(\alpha\)</b> (“coeficiente técnico del capital”) con un par \((k, y)\): \(\alpha = \ln(y/A)/\ln k\). Es el despeje del TP4, ej. 7, donde \(A=1\).</li>
+</ol></div></div>
+
+<div class="flow s1-flow">
+<div class="node"><b>1 · Datos</b>% → decimal; \(A\), \(\alpha\)</div><div class="arrow">→</div>
+<div class="node"><b>2 · Piezas</b>\(sA\) y \(n+\delta\)</div><div class="arrow">→</div>
+<div class="node"><b>3 · Cociente</b>\(sA/(n+\delta)\) en Ans</div><div class="arrow">→</div>
+<div class="node"><b>4 · \(k^*\)</b>Ans ^ \(\frac{1}{1-\alpha}\)</div><div class="arrow">→</div>
+<div class="node"><b>5 · \(y^*\)</b>\(A\cdot (k^*)^{\alpha}\)</div><div class="arrow">→</div>
+<div class="node"><b>6 · Control</b>\((n+\delta)k^*/s\)</div>
+</div>
+
+<div class="formula-card">
+  <div class="fc-label">Estado estacionario sin tecnología (con \(A\))</div>
+  \[ k^* = \left(\frac{s\,A}{n+\delta}\right)^{\frac{1}{1-\alpha}} \qquad y^* = A\,(k^*)^{\alpha} = A\left(\frac{s\,A}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}} \]
+  <div class="fc-legend"><span>\(s\): tasa de ahorro</span><span>\(n\): crecimiento de la población</span><span>\(\delta\): depreciación</span><span>\(A\): nivel de tecnología (constante)</span><span>\(\alpha\): exponente de \(K\)</span></div>
+</div>
+
+<div class="versus">
+<div class="card blue"><div class="card-title">“Funciones” = niveles (FA y FD)</div>
+<p>\[\dot k = \underbrace{sA\,k^{\alpha}}_{\text{FA}} - \underbrace{(n+\delta)\,k}_{\text{FD}}\]</p>
+<p class="small">FA: cóncava, sale del origen. FD: recta desde el origen con pendiente \(n+\delta\). Se cortan en \(k^*\), a la altura \(s\,y^*\). Lo pidió P2 2023 b.</p></div>
+<div class="vs">÷ k</div>
+<div class="card orange"><div class="card-title">“Curvas” = tasas (CA y CD)</div>
+<p>\[\gamma_k = \frac{\dot k}{k} = \underbrace{\frac{sA}{k^{1-\alpha}}}_{\text{CA}} - \underbrace{(n+\delta)}_{\text{CD}}\]</p>
+<p class="small">CA: decreciente (\(k\) abajo). CD: recta horizontal. Se cortan en \(k^*\), a la altura \(n+\delta\). Lo pidieron 2022, 2024 y 2025.</p></div>
+</div>
+
+<div class="formula-card">
+  <div class="fc-label">Despeje del “coeficiente técnico del capital” \(\alpha\)</div>
+  \[ y = A\,k^{\alpha}\;\Longrightarrow\; k^{\alpha}=\frac{y}{A}\;\Longrightarrow\; \alpha\,\ln k = \ln\frac{y}{A}\;\Longrightarrow\; \alpha=\frac{\ln (y/A)}{\ln k} \]
+  <div class="fc-legend"><span>La incógnita está en el exponente: la bajás con logaritmos (ln o log, da lo mismo).</span></div>
+</div>
+
+<div class="grid-2">
+<div class="box warn"><div class="box-title">Las fórmulas del manual traen A = 1</div>
+<p>El manual (Tema 3.4) usa \(f(k)=k^{\alpha}\) y por eso escribe</p>
+\[ k^*=\left(\frac{s}{\delta+n}\right)^{\frac{1}{1-\alpha}} \qquad y^*=\left(\frac{s}{\delta+n}\right)^{\frac{\alpha}{1-\alpha}} \]
+<p>En los parciales 2022 y 2023 hay un \(A\neq 1\): va \(sA\) en el cociente y se multiplica \(y^*\) por \(A\). De ese olvido salen casi todas las opciones incorrectas.</p></div>
+<div class="box tip"><div class="box-title">Controles rápidos</div><ul>
+<li>\(y^* = (n+\delta)k^*/s\), o sea \(y^*/k^* = (n+\delta)/s\): delata las opciones con \(k^*\) e \(y^*\) “dados vuelta”.</li>
+<li>\((k^*)^{1-\alpha}\) tiene que dar el cociente: por eso CA\((k^*)=\) CD.</li>
+<li>Sube \(s\) o \(A\): suben \(k^*\) e \(y^*\). Sube \(n\) o \(\delta\): bajan.</li>
+<li>\(0&lt;\alpha&lt;1\) siempre.</li>
+</ul></div>
+</div>
+
+<!-- ============================================================ RECETA B -->
+<div class="s1-head"><h3>Receta B · Solow con tecnología</h3>
+<p class="s1-ref">Teoría: manual, Tema 3.6 · Práctica: TP4, ej. 9 · Se usa en P6 y P7 (2024) y P8 (2025).</p>
+
+<div class="recipe"><div class="recipe-title">Receta B: todo por unidad de trabajo efectivo</div><ol>
+<li><b>Datos a decimales</b>: \(s\), \(n\), \(\delta\) y \(g\) (tasa de progreso tecnológico; en el manual \(g_A\), en el TP4 \(x\)).</li>
+<li><b>\(\alpha\) = participación del CAPITAL.</b> Si te dan la del trabajo, \(\alpha = 1-\) eso (2025: trabajo 0,6 → \(\alpha=0{,}4\)).</li>
+<li><b>Función por unidad de trabajo efectivo</b>: dividiendo \(Y=K^{\alpha}(AL)^{1-\alpha}\) por \(AL\) queda \(\hat y=\hat k^{\alpha}\). No hay número adelante: la tecnología está adentro de \(\hat k = K/(AL)\).</li>
+<li><b>Depreciación efectiva</b>: \(n+g+\delta\).</li>
+<li><b>\(\hat k^* = \left(s/(n+g+\delta)\right)^{1/(1-\alpha)}\)</b> y <b>\(\hat y^* = (\hat k^*)^{\alpha}\)</b>.</li>
+<li><b>Control</b>: \(\hat y^* = (n+g+\delta)\,\hat k^*/s\).</li>
+<li><b>Curvas</b>: CA \(=s\,\hat k^{\,\alpha-1} = s/\hat k^{\,1-\alpha}\) (exponente negativo arriba = positivo abajo); CD \(=n+g+\delta\).</li>
+<li><b>Gráfico en tasas</b>: horizontal \(\hat k\), vertical \(\gamma_{\hat k}\); CA baja, CD es horizontal y el corte es \(\hat k^*\). La distancia vertical CA − CD es la tasa de crecimiento de \(\hat k\): eso mide la flecha doble.</li>
+<li><b>Cambios</b>: si cambia \(s\), se mueve CA (baja si \(s\) baja); si cambian \(n\), \(g\) o \(\delta\), se mueve CD.</li>
+</ol></div></div>
+
+<div class="flow s1-flow">
+<div class="node"><b>1 · \(\alpha\)</b>¿capital o trabajo?</div><div class="arrow">→</div>
+<div class="node"><b>2 · Suma</b>\(n+g+\delta\)</div><div class="arrow">→</div>
+<div class="node"><b>3 · Cociente</b>\(s/(n+g+\delta)\)</div><div class="arrow">→</div>
+<div class="node"><b>4 · \(\hat k^*\)</b>Ans ^ \(\frac{1}{1-\alpha}\)</div><div class="arrow">→</div>
+<div class="node"><b>5 · \(\hat y^*\)</b>\((\hat k^*)^{\alpha}\)</div><div class="arrow">→</div>
+<div class="node"><b>6 · Control y curvas</b>CA \(=s\hat k^{\alpha-1}\)</div>
+</div>
+
+<div class="formula-card">
+  <div class="fc-label">Solow con progreso tecnológico (Cobb-Douglas)</div>
+  \[ \hat y=\hat k^{\alpha}\qquad \hat k^*=\left(\frac{s}{n+g+\delta}\right)^{\frac{1}{1-\alpha}}\qquad \hat y^*=(\hat k^*)^{\alpha} \]
+  \[ \gamma_{\hat k}=\underbrace{s\,\hat k^{\,\alpha-1}}_{\text{CA}}-\underbrace{(n+g+\delta)}_{\text{CD}} \]
+  <div class="fc-legend"><span>\(\hat k = K/(AL)\): capital por unidad de trabajo efectivo (el manual lo escribe \(\kt\))</span><span>\(g\): progreso tecnológico</span><span>\(\alpha\): participación del capital</span></div>
+</div>
+
+<div class="grid-2">
+<div class="box warn"><div class="box-title">Exponentes negativos: la trampa de 2024</div>
+<p>Al pasar de arriba a abajo (o al revés), el exponente cambia de signo:</p>
+\[ \hat k^{-0{,}5} = \frac{1}{\hat k^{\,0{,}5}} \qquad\qquad \frac{1}{\hat k^{-0{,}5}} = \hat k^{\,0{,}5} \]
+<p>Una curva de ahorro escrita “\(0{,}2/\hat k^{-0{,}5}\)” es en realidad \(0{,}2\,\hat k^{\,0{,}5}\): <b>crece</b>, y la CA tiene que bajar.</p></div>
+<div class="box tip"><div class="box-title">Controles rápidos</div><ul>
+<li>\(\hat y^*/\hat k^* = (n+g+\delta)/s\).</li>
+<li>CA evaluada en \(\hat k^*\) da exactamente CD.</li>
+<li>CA tiene que ser decreciente: exponente de \(\hat k\) negativo si está arriba (\(\alpha-1&lt;0\)).</li>
+<li>Más \(g\) baja \(\hat k^*\) (dilución), pero el ingreso per cápita crece más rápido: crece a \(g\) (Tema 3.6; TP4, ej. 9).</li>
+</ul></div>
+</div>
+
+<!-- ============================================================ RECETA C -->
+<div class="s1-head"><h3>Receta C · Harrod-Domar</h3>
+<p class="s1-ref">Teoría: manual, Tema 3.2 · Práctica: TP4, ej. 4 (el inciso d es el umbral de \(v\)) · Se usa en P2 (2023) d.</p>
+
+<div class="recipe"><div class="recipe-title">Receta C: tasa de crecimiento y umbral de v</div><ol>
+<li><b>Datos</b>: \(s\), \(\delta\), \(n\) y, si está, \(v=K/Y\) (el manual la llama \(\theta\)). \(A\) y \(\alpha\) no se usan: el modelo tiene relación capital-producto fija.</li>
+<li><b>Elegí la versión</b>: producto total \(g_Y=s/v-\delta\); per cápita \(g_y=s/v-\delta-n\). Si las opciones no cierran con una, probá la otra (2023 usa la per cápita).</li>
+<li><b>Umbral</b>: \(g_y&gt;0 \iff s/v&gt;n+\delta \iff v&lt;s/(n+\delta)\). Como \(v&gt;0\), multiplicás sin dar vuelta la desigualdad.</li>
+<li><b>Bordes</b>: en el umbral \(g=0\) (no es positiva), así que la desigualdad es estricta; \(v=0\) no existe (dividís por \(v\)).</li>
+<li><b>Control</b>: probá un \(v\) adentro del intervalo (tiene que dar \(g&gt;0\)) y uno afuera (\(g&lt;0\)).</li>
+</ol></div></div>
+
+<div class="flow s1-flow">
+<div class="node"><b>1 · Datos</b>\(s\), \(\delta\), \(n\) (no \(A\) ni \(\alpha\))</div><div class="arrow">→</div>
+<div class="node"><b>2 · Versión</b>total o per cápita</div><div class="arrow">→</div>
+<div class="node"><b>3 · Umbral</b>\(s/(n+\delta)\) o \(s/\delta\)</div><div class="arrow">→</div>
+<div class="node"><b>4 · Bordes</b>\(0&lt;v&lt;\) umbral</div><div class="arrow">→</div>
+<div class="node"><b>5 · Control</b>un \(v\) adentro, uno afuera</div>
+</div>
+
+<div class="formula-card">
+  <div class="fc-label">Harrod-Domar</div>
+  \[ g_Y=\frac{s}{v}-\delta \qquad g_y=\frac{s}{v}-\delta-n \qquad g_y&gt;0 \iff 0&lt;v&lt;\frac{s}{n+\delta} \]
+  <div class="fc-legend"><span>\(v = K/Y\): relación capital-producto</span><span>umbral total: \(s/\delta\)</span><span>umbral per cápita: \(s/(n+\delta)\)</span></div>
+</div>
+
+<div class="box tip"><div class="box-title">Controles rápidos</div><ul>
+<li>En el umbral la tasa da exactamente 0: \(s/\text{umbral}-(n+\delta)=0\).</li>
+<li>El umbral per cápita es siempre menor que el total, porque \(n+\delta&gt;\delta\).</li>
+<li>Más \(v\) (economía que necesita más capital por unidad de producto) da menos crecimiento: \(g\) baja con \(v\).</li>
+<li>Prueba rápida con \(v=1\): \(g=s-(n+\delta)\).</li>
+</ul></div>
+
+<!-- ============================================================ P1 2022 -->
+<div class="s1-head"><h3>P1 · Ej.1 (2022) — Solow sin tecnología, δ a la mitad</h3>
+<p class="s1-ref">Ver Parciales resueltos, P1 · Receta A · Manual, Temas 3.3 y 3.4 · TP4, ej. 5.</p>
+
+<div class="statement s1-stmt"><div class="statement-title">Datos · 1er Parcial 08/10/2022, Tema A · Ej. 1 <span class="pts">20 ptos: +5 / −2,5 por inciso</span></div>
+<p>Modelo de Solow sin tecnología. Realice los cálculos y marque la opción correcta.</p>
+<table class="compact"><thead><tr><th>Depreciación \(\delta\)</th><th>Población \(n\)</th><th>Ahorro \(s\)</th><th>Función de producción</th></tr></thead>
+<tbody><tr><td>9 %</td><td>4 %</td><td>26 %</td><td>\(Y=\frac{5}{2}\,K^{3/7}\,L^{4/7}\)</td></tr></tbody></table></div></div>
+
+<h4>a) Capital y producto per cápita en estado estacionario <span class="pts">5 ptos</span><span class="tag">⏱ 4 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“El capital y la producción per cápita en estado estacionario son:”</p>
+<p class="s1-opts"><span><b>i)</b> \(k^*=3{,}363\); \(y^*=1{,}681\)</span><span><b>ii)</b> \(k^*=16{,}718\); \(y^*=1{,}681\)</span><span><b>iii)</b> \(k^*=16{,}718\); \(y^*=8{,}359\)</span><span><b>iv)</b> \(k^*=1{,}681\); \(y^*=3{,}363\)</span><span><b>v)</b> Ninguna</span></p></div>
+
+<ol class="steps">
+<li><span class="step-title">Identificá los datos (y pasalos a decimales)</span>\(\delta=9\,\%=0{,}09\); \(n=4\,\%=0{,}04\); \(s=26\,\%=0{,}26\). En \(Y=\frac52K^{3/7}L^{4/7}\): \(A=5/2=2{,}5\) (el número de adelante) y \(\alpha=3/7\) (el exponente de \(K\)). El de \(L\) es \(4/7=1-\alpha\) ✓, porque \(3/7+4/7=1\).</li>
+<li><span class="step-title">Pasá a per cápita</span>\(y=2{,}5\,k^{3/7}\).</li>
+<li><span class="step-title">Elegí la fórmula</span>\(k^*=\left(\dfrac{sA}{n+\delta}\right)^{1/(1-\alpha)}\) e \(y^*=A\,(k^*)^{\alpha}\).</li>
+<li><span class="step-title">Calculá las piezas</span>\(sA=0{,}26\cdot 2{,}5=0{,}65\); \(n+\delta=0{,}04+0{,}09=0{,}13\); cociente \(=0{,}65/0{,}13=5\) (exacto). Exponente: \(1/(1-3/7)=1/(4/7)=7/4=1{,}75\).</li>
+<li><span class="step-title">Elevá para obtener \(k^*\)</span>Calculadora: <span class="s1-kb">5 ^ 1,75 =</span> → <span class="s1-out">16,71850762</span> (o <span class="s1-kb">5 ^ ( 7 ÷ 4 ) =</span>, da lo mismo).</li>
+<li><span class="step-title">Calculá \(y^*\) multiplicando por A</span><span class="s1-kb">Ans ^ ( 3 ÷ 7 ) =</span> → <span class="s1-out">3,343701</span>; <span class="s1-kb">× 2,5 =</span> → <span class="s1-out">8,359254</span>. Atajo: \(y^*=A\cdot 5^{\alpha/(1-\alpha)}=2{,}5\cdot 5^{0{,}75}\), porque \(1{,}75\cdot 3/7=0{,}75\).
+<div class="calc">\[\begin{aligned} k^* &= \left(\frac{0{,}26\cdot 2{,}5}{0{,}04+0{,}09}\right)^{\frac{1}{1-3/7}} = \left(\frac{0{,}65}{0{,}13}\right)^{7/4} = 5^{1{,}75} = 16{,}7185\\ y^* &= 2{,}5\cdot 16{,}7185^{3/7} = 2{,}5\cdot 3{,}3437 = 8{,}3593 \end{aligned}\]</div></li>
+<li><span class="step-title">Redondeá recién ahora</span>\(k^*=16{,}719\) e \(y^*=8{,}359\). La opción escribe 16,718: corta el cuarto decimal (16,7185) en vez de redondear. Es el mismo número.</li>
+<li><span class="step-title">Control</span>\(y^*=(n+\delta)\,k^*/s=0{,}13\cdot 16{,}7185/0{,}26=8{,}359\) ✓. Y como \(y^*/k^*=0{,}13/0{,}26=0{,}5\), el producto tiene que ser la mitad del capital: \(16{,}7185/2=8{,}359\) ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iii) \(k^*=16{,}718\); \(y^*=8{,}359\)</div></div>
+
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Usar \(s\) en vez de \(sA\) (fórmulas del manual, con \(A=1\))</td><td>\(2^{1{,}75}=3{,}364\); \(2^{0{,}75}=1{,}682\) (la opción los escribe cortados: 3,363 y 1,681)</td><td>i)</td></tr>
+<tr><td>\(k^*\) bien, pero \(y^*\) con la fórmula corta del manual (sin \(A\): \(2^{0{,}75}\))</td><td>16,719 y 1,682</td><td>ii)</td></tr>
+<tr><td>Todo sin \(A\) y además dar vuelta \(k^*\) e \(y^*\)</td><td>1,681 y 3,363 (el control \(y^*=k^*/2\) lo delata)</td><td>iv)</td></tr>
+<tr><td>Exponente \(1/\alpha\) en vez de \(1/(1-\alpha)\)</td><td>\(5^{7/3}=42{,}75\); \(y^*=12{,}5\)</td><td>v) (mal)</td></tr>
+<tr><td>\(y^*=(k^*)^{\alpha}\) sin multiplicar por \(A\)</td><td>3,344</td><td>v) (mal)</td></tr>
+</tbody></table></div>
+
+<h4>b) Curvas de ahorro y de depreciación <span class="pts">5 ptos</span><span class="tag">⏱ 2 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Las curvas de ahorro y de depreciación son:”</p>
+<p class="s1-opts"><span><b>i)</b> CA \(=0{,}13\); CD \(=\frac{0{,}65}{k^{4/7}}\)</span><span><b>ii)</b> CA \(=0{,}65k^{3/7}\); CD \(=0{,}13k\)</span><span><b>iii)</b> CA \(=0{,}13k\); CD \(=0{,}65k^{3/7}\)</span><span><b>iv)</b> CA \(=\frac{0{,}65}{k^{4/7}}\); CD \(=0{,}13\)</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">¿Curvas o funciones?</span>Dice “<b>curvas</b>” (CA, CD): es la versión en tasas de crecimiento (Sala-i-Martín; manual, Tema 3.3). Se obtiene dividiendo la ecuación fundamental por \(k\).</li>
+<li><span class="step-title">Plantear y dividir por k</span>
+<div class="calc">\[\begin{aligned} \dot k &= sA\,k^{\alpha}-(n+\delta)\,k \\ \gamma_k=\frac{\dot k}{k} &= \frac{sA\,k^{\alpha}}{k}-(n+\delta) = \frac{sA}{k^{1-\alpha}}-(n+\delta) \end{aligned}\]</div></li>
+<li><span class="step-title">Reemplazar</span>CA \(=\dfrac{0{,}65}{k^{1-3/7}}=\dfrac{0{,}65}{k^{4/7}}\) y CD \(=n+\delta=0{,}13\).</li>
+<li><span class="step-title">Control de forma</span>CA decreciente (\(k\) en el denominador) y CD horizontal (un número solo) ✓. CD nunca lleva \(s\) ni \(A\).</li>
+<li><span class="step-title">Control numérico</span>En \(k^*=16{,}7185\): \((k^*)^{4/7}=5\) (es justo el cociente del inciso a), así que CA \(=0{,}65/5=0{,}13=\) CD ✓. Se cortan en el estado estacionario.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv) CA \(=0{,}65/k^{4/7}\); CD \(=0{,}13\)</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Contestar las funciones (niveles) en vez de las curvas (tasas)</td><td>\(0{,}65k^{3/7}\) y \(0{,}13k\)</td><td>ii)</td></tr>
+<tr><td>Dar vuelta cuál es de ahorro y cuál de depreciación</td><td>CA \(=0{,}13\)</td><td>i)</td></tr>
+<tr><td>Niveles y además dados vuelta</td><td>CA \(=0{,}13k\)</td><td>iii)</td></tr>
+<tr><td>Poner \(\alpha\) en vez de \(1-\alpha\) en el denominador</td><td>\(0{,}65/k^{3/7}\)</td><td>v) (mal)</td></tr>
+</tbody></table></div>
+
+<h4>c) δ se reduce a la mitad: nuevos k* e y* <span class="pts">5 ptos</span><span class="tag">⏱ 3 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Si la tasa de depreciación se reduce a la mitad, el capital y la producción per cápita en estado estacionario son:”</p>
+<p class="s1-opts"><span><b>i)</b> \(k^*=11{,}495\); \(y^*=35{,}165\)</span><span><b>ii)</b> \(k^*=7{,}074\); \(y^*=2{,}312\)</span><span><b>iii)</b> \(k^*=2{,}312\); \(y^*=7{,}074\)</span><span><b>iv)</b> \(k^*=35{,}165\); \(y^*=11{,}495\)</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Nuevo dato</span>\(\delta'=0{,}09/2=0{,}045\). Se achica \(\delta\), no \(n+\delta\). Lo demás queda igual: \(sA=0{,}65\), \(\alpha=3/7\), exponente 1,75.</li>
+<li><span class="step-title">Nueva depreciación efectiva</span>\(n+\delta'=0{,}04+0{,}045=0{,}085\).</li>
+<li><span class="step-title">Nuevo cociente (sin redondear)</span><span class="s1-kb">0,65 ÷ 0,085 =</span> → <span class="s1-out">7,647058824</span>. Queda en Ans.</li>
+<li><span class="step-title">\(k^*\)</span><span class="s1-kb">Ans ^ 1,75 =</span> → <span class="s1-out">35,16537509</span>.</li>
+<li><span class="step-title">\(y^*\)</span><span class="s1-kb">Ans ^ ( 3 ÷ 7 ) =</span> → <span class="s1-out">4,598549</span>; <span class="s1-kb">× 2,5 =</span> → <span class="s1-out">11,49637</span>.
+<div class="calc">\[\begin{aligned} k^* &= \left(\frac{0{,}65}{0{,}04+0{,}045}\right)^{7/4} = 7{,}6471^{1{,}75} = 35{,}165\\ y^* &= 2{,}5\cdot 35{,}165^{3/7} = 2{,}5\cdot 4{,}5985 = 11{,}496 \end{aligned}\]</div></li>
+<li><span class="step-title">Redondeo final</span>\(k^*=35{,}165\); \(y^*=11{,}496\). La opción iv dice 11,495: difiere en una milésima (redondeo de quien armó el examen) y es la única con \(k^*=35{,}165\) e \(y^*&lt;k^*\).</li>
+<li><span class="step-title">Control y coherencia</span>\(0{,}085\cdot 35{,}165/0{,}26=11{,}496\) ✓. Con menos depreciación hay más capital de equilibrio: \(k^*\) pasa de 16,72 a 35,17 e \(y^*\) de 8,36 a 11,50. Suben los dos ✓ (Tema 3.4).</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv) \(k^*=35{,}165\); \(y^*=11{,}495\) (la cuenta da 11,496)</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Achicar a la mitad \(n+\delta\) (0,065) en vez de \(\delta\)</td><td>\(10^{1{,}75}=56{,}23\); \(y^*=14{,}06\)</td><td>v) (mal)</td></tr>
+<tr><td>Olvidar \(A\): \(0{,}26/0{,}085=3{,}0588\)</td><td>7,075 y 2,313 (la opción corta: 7,074 y 2,312)</td><td>ii)</td></tr>
+<tr><td>Olvidar \(A\) y dar vuelta</td><td>2,313 y 7,075</td><td>iii)</td></tr>
+<tr><td>Cuenta bien, pero dada vuelta (el control \(y^*&lt;k^*\) lo delata)</td><td>11,496 y 35,165</td><td>i)</td></tr>
+</tbody></table></div>
+
+<h4>d) Nuevas curvas de ahorro y de depreciación <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Las nuevas curvas de ahorro y de depreciación son:”</p>
+<p class="s1-opts"><span><b>i)</b> CA \(=0{,}65k^{3/7}\); CD \(=0{,}085k\)</span><span><b>ii)</b> CA \(=0{,}26k^{3/7}\); CD \(=0{,}085k\)</span><span><b>iii)</b> CA \(=0{,}085k\); CD \(=0{,}65k^{3/7}\)</span><span><b>iv)</b> CA \(=\frac{0{,}65}{k^{4/7}}\); CD \(=0{,}085\)</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">¿Qué depende de δ?</span>CA \(=sA/k^{1-\alpha}\) no tiene \(\delta\): <b>no cambia</b>. CD \(=n+\delta\) sí.</li>
+<li><span class="step-title">Nueva CD</span>CD \(=0{,}04+0{,}045=0{,}085\): la recta horizontal baja de 0,13 a 0,085.</li>
+<li><span class="step-title">Control</span>En el nuevo \(k^*=35{,}165\): \((k^*)^{4/7}=7{,}647\) (el cociente nuevo), así que CA \(=0{,}65/7{,}647=0{,}085=\) CD ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv) CA \(=0{,}65/k^{4/7}\); CD \(=0{,}085\)</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Contestar en niveles (funciones)</td><td>\(0{,}65k^{3/7}\) y \(0{,}085k\)</td><td>i)</td></tr>
+<tr><td>Niveles y sin \(A\) (0,26 es \(s\) solo)</td><td>\(0{,}26k^{3/7}\) y \(0{,}085k\)</td><td>ii)</td></tr>
+<tr><td>Niveles dados vuelta</td><td>\(0{,}085k\) y \(0{,}65k^{3/7}\)</td><td>iii)</td></tr>
+<tr><td>Creer que CA cambia “porque cambió \(k^*\)”</td><td>\(k^*\) es el corte, no un parámetro de la curva</td><td>—</td></tr>
+</tbody></table></div>
+
+<h4>El gráfico que hay detrás de b) y d), construido en 4 pasos</h4>
+<figure><img src="figs/out/s1_2022_tasas.svg">
+<figcaption><b>Figura §1.1.</b> Diagrama de Solow en tasas del P1 2022, en el orden en que lo dibujás: (1) ejes, \(k\) y \(\gamma_k\); (2) CA \(=0{,}65/k^{4/7}\), que baja desde muy arriba; (3) CD \(=0{,}13\) llena y CD′ \(=0{,}085\) discontinua; (4) cortes. Al bajar \(\delta\) sólo baja la recta CD: la curva de ahorro no se mueve y el corte pasa de 16,72 a 35,17. Datos del enunciado.</figcaption></figure>
+
+<!-- ============================================================ P2 2023 -->
+<div class="s1-head"><h3>P2 · Ej.1 (2023) — Solow sin tecnología y Harrod-Domar</h3>
+<p class="s1-ref">Ver Parciales resueltos, P2 · Recetas A y C · Manual, Temas 3.2 a 3.4 · TP4, ej. 4, 5 y 7.</p>
+
+<div class="statement s1-stmt"><div class="statement-title">Datos · 1er Parcial 2023 · Ej. 1 <span class="pts">20 ptos: +5 / −2,5 por inciso</span></div>
+<p>Modelo de Solow sin tecnología. Realice los cálculos y marque la opción correcta.</p>
+<table class="compact"><thead><tr><th>Depreciación \(\delta\)</th><th>Población \(n\)</th><th>Ahorro \(s\)</th><th>Función de producción</th></tr></thead>
+<tbody><tr><td>13 %</td><td>4,5 %</td><td>19 %</td><td>\(Y=\frac{3}{2}\,K^{5/6}\,L^{1/6}\)</td></tr></tbody></table></div></div>
+
+<h4>a) Capital y producto per cápita en estado estacionario <span class="pts">5 ptos</span><span class="tag">⏱ 4 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“El capital y la producción per cápita en estado estacionario son:”</p>
+<p class="s1-opts"><span><b>i)</b> \(k^*=11{,}455\); \(y^*=18{,}656\)</span><span><b>ii)</b> \(k^*=18{,}656\); \(y^*=11{,}455\)</span><span><b>iii)</b> \(k^*=1{,}637\); \(y^*=1{,}508\)</span><span><b>iv)</b> \(k^*=1{,}508\); \(y^*=1{,}637\)</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Identificá los datos</span>\(\delta=0{,}13\); \(n=0{,}045\); \(s=0{,}19\); \(A=3/2=1{,}5\); \(\alpha=5/6\); \(1-\alpha=1/6\) ✓ (el exponente de \(L\)).</li>
+<li><span class="step-title">Per cápita</span>\(y=1{,}5\,k^{5/6}\).</li>
+<li><span class="step-title">Piezas</span>\(sA=0{,}19\cdot 1{,}5=0{,}285\); \(n+\delta=0{,}045+0{,}13=0{,}175\); exponente \(1/(1/6)=6\).</li>
+<li><span class="step-title">\(k^*\) en una sola tecleada</span><span class="s1-kb">( 0,285 ÷ 0,175 ) ^ 6 =</span> → <span class="s1-out">18,65695946</span>. El cociente es 1,628571…; no lo copies redondeado.</li>
+<li><span class="step-title">\(y^*\)</span><span class="s1-kb">Ans ^ ( 5 ÷ 6 ) =</span> → <span class="s1-out">11,45603</span>; <span class="s1-kb">× 1,5 =</span> → <span class="s1-out">17,18404</span>. Atajo: \(\alpha/(1-\alpha)=5\), así que \(y^*=1{,}5\cdot 1{,}628571^{5}\).
+<div class="calc">\[\begin{aligned} k^* &= \left(\frac{0{,}19\cdot 1{,}5}{0{,}045+0{,}13}\right)^{\frac{1}{1/6}} = \left(\frac{0{,}285}{0{,}175}\right)^{6} = 1{,}628571^{6} = 18{,}657\\ y^* &= 1{,}5\cdot 18{,}657^{5/6} = 1{,}5\cdot 11{,}456 = 17{,}184 \end{aligned}\]</div></li>
+<li><span class="step-title">Redondeo final</span>\(k^*=18{,}657\) (las opciones escriben 18,656 cortando decimales; es el mismo) e \(y^*=17{,}184\).</li>
+<li><span class="step-title">Control</span>\(y^*=0{,}175\cdot 18{,}657/0{,}19=17{,}184\) ✓. Y \(y^*/k^*=0{,}175/0{,}19=0{,}92\): \(y^*\) apenas menor que \(k^*\) ✓.</li>
+<li><span class="step-title">Compará con las opciones</span>La ii tiene el \(k^*\) correcto pero \(y^*=11{,}455\), que no es 17,184. Ninguna coincide: se marca v.</li>
+</ol>
+<div class="grid-2">
+<div class="box tip"><div class="box-title">Por qué no redondear el cociente</div>
+<p>El cociente se eleva a la 6, y el error relativo se multiplica por 6: con 1,63 da \(1{,}63^6=18{,}755\) (error en el primer decimal); con 1,629, 18,686; con 1,6286, 18,659. Sólo con el cociente completo en Ans da 18,657.</p></div>
+<div class="box intuition"><div class="box-title">Por qué la opción ii es tan tentadora</div>
+<p>11,455 es \((k^*)^{5/6}\): la cuenta está bien hecha hasta el último paso y falta sólo el “× 1,5”. Es el distractor pensado para el que usa \(y=k^{\alpha}\) del manual.</p></div>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>v) Ninguna: \(k^*=18{,}657\) e \(y^*=17{,}184\)</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>\(y^*=(k^*)^{\alpha}\), sin multiplicar por \(A\): la trampa principal</td><td>18,657 y 11,456 (la opción: 18,656 y 11,455)</td><td>ii)</td></tr>
+<tr><td>Lo anterior y además dado vuelta</td><td>11,456 y 18,657</td><td>i)</td></tr>
+<tr><td>Todo sin \(A\): \(0{,}19/0{,}175=1{,}0857\)</td><td>\(1{,}0857^6=1{,}638\); \(1{,}0857^5=1{,}509\) (la opción corta: 1,637 y 1,508)</td><td>iii)</td></tr>
+<tr><td>Todo sin \(A\) y dado vuelta</td><td>1,509 y 1,638</td><td>iv)</td></tr>
+<tr><td>Exponente \(1/\alpha=1{,}2\) en vez de 6</td><td>\(k^*=1{,}795\): marcás v de casualidad, con la cuenta mal</td><td>v)</td></tr>
+</tbody></table></div>
+
+<h4>b) Funciones de ahorro y de depreciación <span class="pts">5 ptos</span><span class="tag">⏱ 2 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Las funciones de ahorro y de depreciación son:”</p>
+<p class="s1-opts"><span><b>i)</b> FA \(=\frac{0{,}19}{k^{1/6}}\); FD \(=0{,}175\)</span><span><b>ii)</b> FA \(=0{,}19k^{5/6}\); FD \(=0{,}175k\)</span><span><b>iii)</b> CA \(=\frac{0{,}285}{k^{5/6}}\); CD \(=0{,}175\)</span><span><b>iv)</b> FA \(=0{,}285k^{5/6}\); FD \(=0{,}175k\)</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">¿Funciones o curvas?</span>Dice “<b>funciones</b>” (FA, FD): son los dos términos en niveles de \(\dot k = sAk^{\alpha}-(n+\delta)k\).</li>
+<li><span class="step-title">FA</span>\(sA\,k^{\alpha}=0{,}285\,k^{5/6}\) (reusás \(sA=0{,}285\) del inciso a).</li>
+<li><span class="step-title">FD</span>\((n+\delta)\,k=0{,}175\,k\).</li>
+<li><span class="step-title">Control: se cortan en k*</span>FA\((18{,}657)=0{,}285\cdot 11{,}456=3{,}265\); FD\((18{,}657)=0{,}175\cdot 18{,}657=3{,}265\) ✓. Y además \(3{,}265/s=3{,}265/0{,}19=17{,}184=y^*\) ✓: lo que se ahorra, dividido por \(s\), es el producto.</li>
+</ol>
+<p>Ese corte es el que se ve en el gráfico en niveles, que se arma en cuatro pasos: ejes (horizontal \(k\), vertical FA y FD); FA cóncava desde el origen; FD recta desde el origen con pendiente 0,175; corte en \(k^*\). Con \(\alpha=5/6\) la FA es casi una recta y las dos líneas quedan muy juntas: exagerá la curvatura cuando la dibujes a mano.</p>
+<figure><img src="figs/out/s1_2023_niveles.svg">
+<figcaption><b>Figura §1.2.</b> Diagrama de Solow en niveles del P2 2023, paso a paso. En el panel 4, la altura del corte (3,265) es \(s\,y^*\): dividida por \(s=0{,}19\) devuelve \(y^*=17{,}18\). Es otra forma de controlar el inciso a. Las flechas de abajo muestran que \(k\) converge a \(k^*\) desde los dos lados. Datos del enunciado.</figcaption></figure>
+<ol class="steps s1-from5">
+<li><span class="step-title">Descartá la iii aunque “se parezca”</span>La curva en tasas correcta sería CA \(=0{,}285/k^{1/6}\) y CD \(=0{,}175\): el exponente de abajo es \(1-\alpha=1/6\), no \(5/6\). Además piden funciones, no curvas.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv) FA \(=0{,}285\,k^{5/6}\); FD \(=0{,}175\,k\)</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Olvidar \(A\) (FA \(=s\,k^{\alpha}\))</td><td>\(0{,}19k^{5/6}\) y \(0{,}175k\)</td><td>ii)</td></tr>
+<tr><td>Pasar a tasas y olvidar \(A\)</td><td>\(0{,}19/k^{1/6}\) y 0,175</td><td>i)</td></tr>
+<tr><td>Tasas con \(\alpha\) en vez de \(1-\alpha\) abajo</td><td>\(0{,}285/k^{5/6}\) y 0,175</td><td>iii)</td></tr>
+</tbody></table></div>
+
+
+<h4>c) Coeficiente técnico del capital <span class="pts">5 ptos</span><span class="tag">⏱ 3 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Si se cuenta con un capital per cápita de 30,7, ¿cuánto tendría que ser igual el coeficiente técnico del capital para obtener un nivel de producción per cápita igual a 20,5?”</p>
+<p class="s1-opts"><span><b>i)</b> 0,12</span><span><b>ii)</b> 0,88</span><span><b>iii)</b> 0,24</span><span><b>iv)</b> 0,76</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Qué es el “coeficiente técnico del capital”</span>Es el exponente \(\alpha\) de \(k\) en \(y=A\,k^{\alpha}\) (la elasticidad producto-capital: si \(k\) sube 1 %, \(y\) sube \(\alpha\) %). \(A=1{,}5\) queda fijo. Los datos \(k=30{,}7\), \(y=20{,}5\) son un punto de la función, no un estado estacionario.</li>
+<li><span class="step-title">Plantear</span>\(20{,}5=1{,}5\cdot 30{,}7^{\alpha}\).</li>
+<li><span class="step-title">Aislar la potencia</span>Dividís por \(A\): \(30{,}7^{\alpha}=20{,}5/1{,}5=13{,}6667\).</li>
+<li><span class="step-title">Bajar el exponente con logaritmos</span>\(\alpha\,\ln 30{,}7=\ln 13{,}6667\), así que \(\alpha=\ln 13{,}6667/\ln 30{,}7\).
+<div class="calc">\[\begin{aligned} 20{,}5 &= 1{,}5\cdot 30{,}7^{\alpha} \\ 30{,}7^{\alpha} &= 13{,}6667 \\ \alpha\cdot \ln 30{,}7 &= \ln 13{,}6667 \\ \alpha &= \frac{2{,}6150}{3{,}4243} = 0{,}7637 \end{aligned}\]</div></li>
+<li><span class="step-title">Calculadora</span><span class="s1-kb">ln ( 20,5 ÷ 1,5 ) ÷ ln 30,7 =</span> → <span class="s1-out">0,7636563</span>. Con <span class="s1-kb">log</span> en lugar de ln da exactamente lo mismo.</li>
+<li><span class="step-title">Redondeo</span>\(\alpha=0{,}7637\approx 0{,}76\). Es el mismo despeje del TP4, ej. 7 (ahí \(A=1\): \(\alpha=\ln 358/\ln 534=0{,}9363\)); acá hay que dividir antes por \(A=1{,}5\).</li>
+<li><span class="step-title">Control</span><span class="s1-kb">1,5 × 30,7 ^ 0,7637 =</span> → <span class="s1-out">20,503</span> ≈ 20,5 ✓. Y \(0&lt;\alpha&lt;1\) ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv) 0,76</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>No dividir por \(A\): \(\ln 20{,}5/\ln 30{,}7\)</td><td>0,882</td><td>ii)</td></tr>
+<tr><td>Contestar el exponente del trabajo, \(1-\alpha\)</td><td>0,236</td><td>iii)</td></tr>
+<tr><td>Los dos errores juntos: \(1-0{,}88\)</td><td>0,118</td><td>i)</td></tr>
+<tr><td>Despejar \(A\) en vez de \(\alpha\): \(20{,}5/30{,}7^{5/6}\)</td><td>1,18</td><td>v) (mal)</td></tr>
+</tbody></table></div>
+
+<h4>d) Harrod-Domar: valores de v con crecimiento positivo <span class="pts">5 ptos</span><span class="tag">⏱ 3 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“En base al modelo de Harrod-Domar, ¿para qué valor o valores de la relación capital-producto se obtendría una tasa de crecimiento del producto positiva?” Datos del mismo ejercicio: \(s=19\,\%\), \(\delta=13\,\%\), \(n=4{,}5\,\%\).</p>
+<p class="s1-opts"><span><b>i)</b> \(v=1{,}085\)</span><span><b>ii)</b> \(0&lt;v&lt;1{,}085\)</span><span><b>iii)</b> \(0\le v\le 1{,}085\)</span><span><b>iv)</b> \(v&gt;1{,}085\)</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Datos que sirven</span>\(s=0{,}19\), \(\delta=0{,}13\), \(n=0{,}045\). \(A\) y \(\alpha\) no se usan (Harrod-Domar no tiene Cobb-Douglas).</li>
+<li><span class="step-title">¿Qué versión? Probá las dos</span>La consigna dice “del producto”, sin aclarar; los números deciden. Total: umbral \(s/\delta=0{,}19/0{,}13=1{,}4615\): no aparece en ninguna opción. Per cápita: umbral \(s/(n+\delta)=0{,}19/0{,}175=1{,}0857\): aparece (1,085). El ejercicio usa la per cápita.</li>
+<li><span class="step-title">Plantear la condición</span>\(g=\dfrac{0{,}19}{v}-0{,}175&gt;0\).</li>
+<li><span class="step-title">Despejar v</span>\(0{,}19/v&gt;0{,}175\). Como \(v&gt;0\), multiplicás por \(v\) sin dar vuelta: \(0{,}19&gt;0{,}175\,v\), o sea \(v&lt;0{,}19/0{,}175=1{,}0857\). Calculadora: <span class="s1-kb">0,19 ÷ 0,175 =</span> → <span class="s1-out">1,085714</span>.</li>
+<li><span class="step-title">Mirá los bordes</span>En \(v=1{,}0857\) queda \(g=0\), que no es positiva: desigualdad estricta. \(v=0\) no existe (dividís por \(v\); sin capital no hay producto): \(v&gt;0\) estricto.</li>
+<li><span class="step-title">Control con dos números</span>\(v=1\): \(g=0{,}19-0{,}175=+1{,}5\,\%\) ✓ (adentro, positiva). \(v=1{,}2\): \(g=0{,}1583-0{,}175=-1{,}7\,\%\) ✓ (afuera, negativa).</li>
+<li><span class="step-title">Un control más (conexión con el inciso a)</span>En el estado estacionario de Solow, \(k^*/y^*=18{,}657/17{,}184=1{,}0857=s/(n+\delta)\). El \(v\) de equilibrio de Solow es justo el que hace cero el crecimiento per cápita de Harrod-Domar.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>ii) \(0&lt;v&lt;1{,}085\)</div></div>
+<figure><img src="figs/out/s1_hd_umbral.svg">
+<figcaption><b>Figura §1.3.</b> Umbral de Harrod-Domar del P2 2023. Arriba, \(g_y\) cae con \(v\) y cruza el cero en 1,0857 (la versión agregada cruzaría en 1,46, que no está entre las opciones). Abajo, las cuatro opciones sobre la recta de \(v\): sólo la ii pinta la zona verde sin los bordes.</figcaption></figure>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Resolver la igualdad \(g=0\) y quedarse ahí (ese \(v\) da crecimiento nulo)</td><td>\(v=1{,}085\)</td><td>i)</td></tr>
+<tr><td>Incluir los bordes</td><td>\(0\le v\le 1{,}085\)</td><td>iii)</td></tr>
+<tr><td>Dar vuelta la desigualdad</td><td>\(v&gt;1{,}085\) (ahí \(g&lt;0\))</td><td>iv)</td></tr>
+<tr><td>Usar la versión total \(s/v-\delta\)</td><td>\(0&lt;v&lt;1{,}46\)</td><td>v) (no es la clave)</td></tr>
+</tbody></table></div>
+
+<!-- ============================================================ P6 2024 -->
+<div class="s1-head"><h3>P6 · Ej.3 (2024) — Solow con tecnología, g = 25 %</h3>
+<p class="s1-ref">Ver Parciales resueltos, P6 (versión Barbados–Guyana / Ucrania) · Receta B · Manual, Tema 3.6 · TP4, ej. 9.</p>
+
+<div class="statement s1-stmt"><div class="statement-title">Datos · Primera prueba práctica 28/9/2024 · Ej. 3 <span class="pts">20 ptos: correcta suma, incorrecta resta la mitad</span></div>
+<p>Modelo de Solow-Swan con progreso tecnológico. Función de producción agregada Cobb-Douglas.</p>
+<table class="compact"><thead><tr><th>Ahorro \(s\)</th><th>Depreciación \(\delta\)</th><th>Población \(n\)</th><th>Participación del capital</th><th>Progreso tecnológico \(g\)</th></tr></thead>
+<tbody><tr><td>20 %</td><td>5 %</td><td>10 %</td><td>0,5</td><td>25 %</td></tr></tbody></table></div></div>
+
+<h4>a) Función de producción por unidad de trabajo efectivo <span class="pts">4 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“La función de producción por unidad de trabajo efectivo es:”</p>
+<p class="s1-opts"><span><b>1.ª</b> \(y=(\hat k)^{0{,}5}\)</span><span><b>2.ª</b> \((\widehat{yl})^{0{,}5}\)</span><span><b>3.ª</b> Ninguna opción es correcta</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Escribí la Cobb-Douglas con tecnología</span>\(Y=K^{\alpha}(AL)^{1-\alpha}\), con \(\alpha=0{,}5\) (la participación del capital es el exponente de \(K\)).</li>
+<li><span class="step-title">Dividí por AL</span>
+<div class="calc">\[ \frac{Y}{AL}=\frac{K^{\alpha}(AL)^{1-\alpha}}{AL}=\frac{K^{\alpha}}{(AL)^{\alpha}}=\left(\frac{K}{AL}\right)^{\alpha}\;\Longrightarrow\;\hat y=\hat k^{\,0{,}5} \]</div></li>
+<li><span class="step-title">Control</span>Sin número adelante y con exponente \(\alpha=0{,}5\) ✓. La opción escribe \(y\) sin sombrero, pero la variable es \(\hat k\): es \(\hat y\).</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>1.ª opción: \(\hat y=(\hat k)^{0{,}5}\)</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<p>La 2.ª opción, \((\widehat{yl})^{0{,}5}\), mezcla producto y trabajo: no es una función de \(\hat k\). Tienta al que no sabe qué dividir por \(AL\). Si ponés “Ninguna” porque la opción dice \(y\) y no \(\hat y\), te restan 2 puntos en vez de sumar 4, por una formalidad.</p></div>
+
+<h4>b) k̂* e ŷ* en estado estacionario <span class="pts">6 ptos</span><span class="tag">⏱ 3 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“El capital y la producción por unidad de trabajo efectivo en estado estacionario son, respectivamente:”</p>
+<p class="s1-opts"><span><b>1.ª</b> 0,25 y 0,5</span><span><b>2.ª</b> 0,76 y 0,80</span><span><b>3.ª</b> Ninguna opción es correcta</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Datos a decimales</span>\(s=0{,}20\); \(n=0{,}10\); \(g=0{,}25\); \(\delta=0{,}05\); \(\alpha=0{,}5\).</li>
+<li><span class="step-title">Depreciación efectiva</span>\(n+g+\delta=0{,}10+0{,}25+0{,}05=0{,}40\).</li>
+<li><span class="step-title">Cociente y exponente</span>\(s/(n+g+\delta)=0{,}20/0{,}40=0{,}5\); \(1/(1-0{,}5)=2\).</li>
+<li><span class="step-title">\(\hat k^*\) (sale de memoria)</span>\(\hat k^*=0{,}5^{2}=0{,}25\).</li>
+<li><span class="step-title">\(\hat y^*\)</span>\(\hat y^*=0{,}25^{0{,}5}=\sqrt{0{,}25}=0{,}5\).
+<div class="calc">\[\hat k^*=\left(\frac{0{,}20}{0{,}10+0{,}25+0{,}05}\right)^{\frac{1}{1-0{,}5}}=0{,}5^{2}=0{,}25\qquad \hat y^*=0{,}25^{0{,}5}=0{,}5\]</div></li>
+<li><span class="step-title">Control</span>\(\hat y^*=(n+g+\delta)\,\hat k^*/s=0{,}40\cdot 0{,}25/0{,}20=0{,}5\) ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>0,25 y 0,5</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Olvidar \(g\) (usar \(n+\delta=0{,}15\))</td><td>1,778 y 1,333</td><td>Ninguna (mal)</td></tr>
+<tr><td>Olvidar \(n\) (usar \(g+\delta=0{,}30\))</td><td>0,444 y 0,667</td><td>Ninguna (mal)</td></tr>
+<tr><td>Dar vuelta el cociente: \((0{,}40/0{,}20)^2\)</td><td>4 y 2 (en P7 es justo una opción)</td><td>Ninguna (mal)</td></tr>
+<tr><td>“0,76 y 0,80”</td><td>no sale de ningún error típico con estos datos: si te dio algo así, rehacé la cuenta</td><td>—</td></tr>
+</tbody></table></div>
+
+<h4>c) Curvas de ahorro y de depreciación: la trampa del signo <span class="pts">10 ptos</span><span class="tag">⏱ 3 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“La curva de ahorro y de depreciación son, respectivamente:”</p>
+<p class="s1-opts"><span><b>1.ª</b> \(\dfrac{0{,}2}{\hat k^{-0{,}5}}\) y 0,4</span><span><b>2.ª</b> \(0{,}2\,\hat k^{0{,}05}\) y 0,3</span><span><b>3.ª</b> Ninguna opción es correcta</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Ecuación en tasas</span>\(\gamma_{\hat k}=\dfrac{s\,\hat y}{\hat k}-(n+g+\delta)=\dfrac{s\,\hat k^{\alpha}}{\hat k}-(n+g+\delta)=s\,\hat k^{\,\alpha-1}-(n+g+\delta)\).</li>
+<li><span class="step-title">Curva de ahorro</span>CA \(=0{,}2\,\hat k^{\,0{,}5-1}=0{,}2\,\hat k^{-0{,}5}\).</li>
+<li><span class="step-title">Bajá el exponente negativo</span>\(\hat k^{-0{,}5}=1/\hat k^{\,0{,}5}\), así que CA \(=\dfrac{0{,}2}{\hat k^{\,0{,}5}}\). Abajo el exponente es <b>positivo</b>.</li>
+<li><span class="step-title">Curva de depreciación</span>CD \(=n+g+\delta=0{,}4\).</li>
+<li><span class="step-title">Leé con lupa la 1.ª opción</span>Dice \(0{,}2/\hat k^{-0{,}5}\): el menos quedó abajo. Como \(1/\hat k^{-0{,}5}=\hat k^{+0{,}5}\), esa opción es \(0{,}2\,\hat k^{\,0{,}5}\), que <b>crece</b> con \(\hat k\). No es una curva de ahorro.</li>
+<li><span class="step-title">Control numérico (el que usás para defenderte en la revisión)</span>Evaluá en \(\hat k^*=0{,}25\). Lo correcto: \(0{,}2/0{,}25^{0{,}5}=0{,}2/0{,}5=0{,}4=\) CD ✓. La 1.ª opción: \(0{,}2/0{,}25^{-0{,}5}=0{,}2/2=0{,}1\neq 0{,}4\) ✗. La 2.ª: \(0{,}2\cdot 0{,}25^{0{,}05}=0{,}187\) y CD \(=0{,}3\neq 0{,}4\) ✗. Calculadora: <span class="s1-kb">0,2 ÷ 0,25 ^ ( (−) 0,5 ) =</span> → <span class="s1-out">0,1</span> (<span class="s1-kb">(−)</span> es la tecla de “negativo”, no la de restar; la potencia se hace antes que la división).</li>
+</ol>
+<div class="answer caution"><div class="answer-body"><span class="answer-label">Respuesta (con aclaración)</span>Estrictamente, <b>Ninguna opción es correcta</b>: lo correcto es CA \(=0{,}2/\hat k^{\,0{,}5}\) y CD \(=0{,}4\). La 1.ª opción tiene bien los números (0,2 y 0,4) pero el exponente con el signo cambiado. Si la cátedra la tomó como una errata de tipeo, esa sería la esperada: en la revisión, argumentá con el control del paso 6.</div></div>
+<figure><img src="figs/out/s1_2024_signo.svg">
+<figcaption><b>Figura §1.4.</b> La trampa del signo (P6 2024, inciso c). A la izquierda, la curva de ahorro correcta: baja y corta a CD = 0,4 en \(\hat k^*=0{,}25\). A la derecha, lo que dice la 1.ª opción: \(0{,}2\,\hat k^{\,0{,}5}\) sube y recién toca 0,4 en \(\hat k=4\), desde abajo. Esquemático, con los números del enunciado.</figcaption></figure>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Pasar \(\hat k^{-0{,}5}\) al denominador sin cambiarle el signo</td><td>\(0{,}2/\hat k^{-0{,}5}\) (creciente)</td><td>1.ª opción</td></tr>
+<tr><td>Exponente cualquiera (0,05 no es \(\alpha-1=-0{,}5\)) y CD sin \(n\): \(g+\delta=0{,}30\)</td><td>\(0{,}2\,\hat k^{0{,}05}\) y 0,3</td><td>2.ª opción</td></tr>
+<tr><td>Poner \(1-\alpha\) arriba en vez de \(\alpha-1\)</td><td>\(0{,}2\,\hat k^{\,0{,}5}\): la misma curva creciente</td><td>1.ª opción</td></tr>
+</tbody></table></div>
+
+<!-- ============================================================ P7 2024 -->
+<div class="s1-head"><h3>P7 · Ej.3 (2024) — Solow con tecnología, g = 17 %</h3>
+<p class="s1-ref">Ver Parciales resueltos, P7 (versión Barbados–Jamaica / Rusia) · Receta B · Manual, Tema 3.6 · TP4, ej. 9.</p>
+
+<div class="statement s1-stmt"><div class="statement-title">Datos · Primera prueba práctica 28/9/2024 (otra versión) · Ej. 3 <span class="pts">20 ptos: correcta suma, incorrecta resta la mitad</span></div>
+<p>Mismo molde que P6; sólo cambian los números. Cobb-Douglas.</p>
+<table class="compact"><thead><tr><th>Ahorro \(s\)</th><th>Depreciación \(\delta\)</th><th>Población \(n\)</th><th>Participación del capital</th><th>Progreso tecnológico \(g\)</th></tr></thead>
+<tbody><tr><td>15 %</td><td>5 %</td><td>8 %</td><td>0,5</td><td>17 %</td></tr></tbody></table></div></div>
+
+<h4>a) Función de producción por unidad de trabajo efectivo <span class="pts">4 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“La función de producción por unidad de trabajo efectivo es:” (igual que P6).</p>
+<p class="s1-opts"><span><b>1.ª</b> \(y=(\hat k)^{0{,}5}\)</span><span><b>2.ª</b> \((\widehat{yl})^{0{,}5}\)</span><span><b>3.ª</b> Ninguna opción es correcta</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Igual que en P6</span>\(\alpha=0{,}5\); dividiendo \(Y=K^{0{,}5}(AL)^{0{,}5}\) por \(AL\) queda \(\hat y=\hat k^{\,0{,}5}\).</li>
+<li><span class="step-title">Control</span>El exponente es la participación del capital (0,5) y no hay número adelante ✓. \(s\), \(n\), \(g\) y \(\delta\) no entran en la función de producción: si pensaste en usarlos, es para el inciso b.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>1.ª opción: \(\hat y=(\hat k)^{0{,}5}\)</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<p>Igual que en P6: la 2.ª opción no es una función de \(\hat k\), y marcar “Ninguna” porque dice \(y\) en lugar de \(\hat y\) te resta 2 puntos.</p></div>
+
+<h4>b) k̂* e ŷ* en estado estacionario <span class="pts">6 ptos</span><span class="tag">⏱ 2 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“El capital y la producción por unidad de trabajo efectivo en estado estacionario son, respectivamente:”</p>
+<p class="s1-opts"><span><b>1.ª</b> 0,25 y 0,5</span><span><b>2.ª</b> 4 y 2</span><span><b>3.ª</b> Ninguna opción es correcta</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Depreciación efectiva</span>\(n+g+\delta=0{,}08+0{,}17+0{,}05=0{,}30\).</li>
+<li><span class="step-title">Cociente y exponente</span>\(0{,}15/0{,}30=0{,}5\); exponente \(1/(1-0{,}5)=2\).</li>
+<li><span class="step-title">Resultados</span>\(\hat k^*=0{,}5^2=0{,}25\); \(\hat y^*=\sqrt{0{,}25}=0{,}5\). El mismo resultado que P6: los dos temas se armaron para que el cociente dé 0,5.</li>
+<li><span class="step-title">Control</span>\(0{,}30\cdot 0{,}25/0{,}15=0{,}5\) ✓. Y \(\hat y^*/\hat k^*=(n+g+\delta)/s=2\): \(0{,}5/0{,}25=2\) ✓; con “4 y 2” daría \(0{,}5\) ✗.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>0,25 y 0,5</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Dar vuelta el cociente: \((0{,}30/0{,}15)^2=4\) y \(\sqrt 4=2\)</td><td>4 y 2</td><td>2.ª opción</td></tr>
+<tr><td>Olvidar \(g\) (\(n+\delta=0{,}13\))</td><td>1,331 y 1,154</td><td>Ninguna (mal)</td></tr>
+</tbody></table></div>
+
+<h4>c) Curvas de ahorro y de depreciación <span class="pts">10 ptos</span><span class="tag">⏱ 2 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“La curva de ahorro y de depreciación son, respectivamente:”</p>
+<p class="s1-opts"><span><b>1.ª</b> \(0{,}15\,\hat k^{-0{,}05}\) y 0,3</span><span><b>2.ª</b> \(\dfrac{0{,}15}{\hat k^{0{,}5}}\) y 0,3</span><span><b>3.ª</b> Ninguna opción es correcta</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Curva de ahorro</span>CA \(=s\,\hat k^{\,\alpha-1}=0{,}15\,\hat k^{-0{,}5}=0{,}15/\hat k^{\,0{,}5}\).</li>
+<li><span class="step-title">Curva de depreciación</span>CD \(=n+g+\delta=0{,}3\).</li>
+<li><span class="step-title">Control</span>En \(\hat k^*=0{,}25\): \(0{,}15/0{,}5=0{,}3=\) CD ✓. La 1.ª opción da \(0{,}15\cdot 0{,}25^{-0{,}05}=0{,}161\neq 0{,}3\) ✗.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>2.ª opción: \(0{,}15/\hat k^{\,0{,}5}\) y 0,3</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<p>La 1.ª opción tiene exponente \(-0{,}05\) en vez de \(-0{,}5\) (un cero de más): con \(\alpha-1=0{,}5-1=-0{,}5\) no hay dónde perderse. Compará con P6: acá la opción correcta está bien escrita, con el exponente positivo abajo. Y al revés: si después de la trampa de P6 desconfiás de todo y marcás “Ninguna”, perdés 5 puntos, porque \(0{,}15/\hat k^{\,0{,}5}=0{,}15\,\hat k^{-0{,}5}\) es exactamente la CA.</p></div>
+
+<!-- ============================================================ P8 2025 -->
+<div class="s1-head"><h3>P8 · Ej.1 (2025) — Solow con tecnología y gráfico a completar</h3>
+<p class="s1-ref">Ver Parciales resueltos, P8 · Receta B · Manual, Tema 3.6 · TP4, ej. 9. Examen de 60 minutos: este ejercicio vale 25 de los 60 puntos, así que dale unos 20 minutos.</p>
+
+<div class="statement s1-stmt"><div class="statement-title">Datos · Primer Parcial 2025 · Ej. 1 <span class="pts">25 ptos</span></div>
+<p>Modelo de Solow-Swan con progreso tecnológico. Respuestas abiertas: hay que mostrar fórmula y cuentas.</p>
+<table class="compact"><thead><tr><th>Ahorro \(s\)</th><th>Depreciación \(\delta\)</th><th>Población \(n\)</th><th>Participación del <b>trabajo</b></th><th>Progreso tecnológico \(g\)</th></tr></thead>
+<tbody><tr><td>15 %</td><td>4 %</td><td>6 %</td><td>0,6</td><td>25 %</td></tr></tbody></table></div></div>
+
+<h4>a) k̂* e ŷ* en estado estacionario, con la fórmula <span class="pts">8 ptos</span><span class="tag">⏱ 7 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Obtenga el capital por unidad de trabajo efectivo y el producto por unidad de trabajo efectivo en estado estacionario. Indicar fórmula empleada.”</p></div>
+<ol class="steps">
+<li><span class="step-title">Datos a decimales</span>\(s=0{,}15\); \(\delta=0{,}04\); \(n=0{,}06\); \(g=0{,}25\).</li>
+<li><span class="step-title">¡Ojo con α! Y la función</span>Dan la participación del <b>trabajo</b>: \(1-\alpha=0{,}6\), así que \(\alpha=1-0{,}6=0{,}4\) y la función es \(\hat y=\hat k^{\,0{,}4}\).</li>
+<li><span class="step-title">Depreciación efectiva</span>\(n+g+\delta=0{,}06+0{,}25+0{,}04=0{,}35\).</li>
+<li><span class="step-title">Fórmula (escribila en la hoja: suma puntos)</span>\(\hat k^*=\left(\dfrac{s}{n+g+\delta}\right)^{1/(1-\alpha)}\).</li>
+<li><span class="step-title">Reemplazo</span>Cociente \(0{,}15/0{,}35=0{,}428571\) (\(=3/7\)); exponente \(1/0{,}6=1{,}6667\) (\(=5/3\)).</li>
+<li><span class="step-title">Calculadora</span><span class="s1-kb">( 0,15 ÷ 0,35 ) ^ ( 1 ÷ 0,6 ) =</span> → <span class="s1-out">0,2436157</span>. Otra forma, por logaritmos (sirve para verificar): <span class="s1-kb">ln ( 0,15 ÷ 0,35 ) =</span> → −0,8473; <span class="s1-kb">÷ 0,6 =</span> → −1,4122; <span class="s1-kb">eˣ ( Ans ) =</span> → 0,2436.</li>
+<li><span class="step-title">\(\hat y^*\)</span><span class="s1-kb">Ans ^ 0,4 =</span> → <span class="s1-out">0,5684367</span>. Atajo: \(\hat y^*=(3/7)^{\alpha/(1-\alpha)}=(3/7)^{2/3}\).</li>
+<li><span class="step-title">Redondeo final</span>\(\hat k^*=0{,}2436\); \(\hat y^*=0{,}5684\).</li>
+<li><span class="step-title">Control</span>\(\hat y^*=(n+g+\delta)\,\hat k^*/s=0{,}35\cdot 0{,}2436/0{,}15=0{,}5684\) ✓.</li>
+</ol>
+<div class="s1-sheet"><div class="s1-sheet-title">Cómo queda escrito en la hoja</div>
+\[ \alpha = 1-0{,}6=0{,}4\qquad \hat y=\hat k^{\,0{,}4}\qquad n+g+\delta=0{,}06+0{,}25+0{,}04=0{,}35 \]
+\[ \hat k^*=\left(\frac{s}{n+g+\delta}\right)^{\frac{1}{1-\alpha}}=\left(\frac{0{,}15}{0{,}35}\right)^{\frac{1}{0{,}6}}=0{,}428571^{1{,}6667}=0{,}2436 \]
+\[ \hat y^*=(\hat k^*)^{\alpha}=0{,}2436^{0{,}4}=0{,}5684 \qquad \text{control: } \frac{0{,}35\cdot 0{,}2436}{0{,}15}=0{,}5684 \]
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(\hat k^*=0{,}2436\); \(\hat y^*=0{,}5684\)</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá (respuesta abierta: esto es lo que te daría)</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Consecuencia</th></tr></thead><tbody>
+<tr><td>Tomar 0,6 como \(\alpha\) (es la parte del trabajo)</td><td>0,1202 y 0,2806</td><td>mal a) y arrastrás a b)</td></tr>
+<tr><td>Olvidar \(g\) (\(n+\delta=0{,}10\))</td><td>1,9656 y 1,3104</td><td>mal</td></tr>
+<tr><td>Teclear el exponente como 1,67</td><td>0,2429</td><td>cambia el tercer decimal</td></tr>
+<tr><td>Redondear el cociente a 0,43</td><td>0,2450</td><td>cambia el tercer decimal</td></tr>
+</tbody></table></div>
+
+<h4>b) La tasa de ahorro disminuye a 10 % <span class="pts">7 ptos</span><span class="tag">⏱ 4 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Suponga que la tasa de ahorro disminuye a 10 %. Obtenga el capital por unidad de trabajo efectivo y el producto por unidad de trabajo efectivo en estado estacionario.”</p></div>
+<ol class="steps">
+<li><span class="step-title">Leé bien el cambio</span>“Disminuye <b>a</b> 10 %”: el ahorro nuevo es \(s=0{,}10\). (“Disminuye <b>un</b> 10 %” sería \(0{,}15\cdot 0{,}9=0{,}135\): no es lo que dice.)</li>
+<li><span class="step-title">Lo que no cambia y el cociente nuevo</span>Siguen \(\alpha=0{,}4\), \(n+g+\delta=0{,}35\) y el exponente \(1/0{,}6\). Cambia el cociente: \(0{,}10/0{,}35=0{,}285714=2/7\).</li>
+<li><span class="step-title">\(\hat k^*\)</span><span class="s1-kb">( 0,10 ÷ 0,35 ) ^ ( 1 ÷ 0,6 ) =</span> → <span class="s1-out">0,1239424</span>.</li>
+<li><span class="step-title">\(\hat y^*\)</span><span class="s1-kb">Ans ^ 0,4 =</span> → <span class="s1-out">0,4337984</span>.
+<div class="calc">\[\hat k^*_b=\left(\frac{0{,}10}{0{,}35}\right)^{\frac{1}{0{,}6}}=0{,}285714^{1{,}6667}=0{,}1239\qquad \hat y^*_b=0{,}12394^{0{,}4}=0{,}4338\]</div>Ojo: si elevás el 0,1239 ya redondeado da 0,4337. Por eso se usa <span class="s1-kb">Ans</span> (o cinco decimales).</li>
+<li><span class="step-title">Redondeo final</span>\(\hat k^*=0{,}1239\); \(\hat y^*=0{,}4338\).</li>
+<li><span class="step-title">Control y coherencia</span>\(0{,}35\cdot 0{,}12394/0{,}10=0{,}4338\) ✓. Baja \(s\) y bajan los dos (0,2436 → 0,1239; 0,5684 → 0,4338) ✓. Atajo para chequear: \(\hat k^*_b=\hat k^*_a\cdot(0{,}10/0{,}15)^{5/3}=0{,}2436\cdot 0{,}5088=0{,}1239\) ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(\hat k^*=0{,}1239\); \(\hat y^*=0{,}4338\)</div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá (respuesta abierta)</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Consecuencia</th></tr></thead><tbody>
+<tr><td>Leer “un 10 %” (\(s=0{,}135\))</td><td>0,2044 y 0,5299</td><td>mal</td></tr>
+<tr><td>Restar 10 puntos (\(s=0{,}05\))</td><td>0,0390 y 0,2733</td><td>mal</td></tr>
+<tr><td>Arrastrar \(\alpha=0{,}6\) del inciso a</td><td>0,0436 y 0,1527</td><td>mal</td></tr>
+</tbody></table></div>
+
+<h4>c) Completar el gráfico, escribir las ecuaciones y tachar <span class="pts">10 ptos</span><span class="tag">⏱ 10 min</span></h4>
+<div class="statement s1-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Complete el gráfico en base a la información calculada en a) y b); también indicar las ecuaciones de las curvas y rotular los ejes. Luego, de acuerdo al gráfico, tache lo que no corresponda.”</p>
+<p>Frase 1: “La flecha doble vertical muestra que la tasa de crecimiento <i>del capital per cápita / producto por trabajador / del capital por unidad de trabajo efectivo</i> es <i>positiva / negativa / de estado estacionario</i>.” Frase 2: “La Curva de <i>Ahorro/Inversión Bruta / Depreciación / Producción</i> se desplazó <i>hacia abajo / hacia arriba</i> considerando como situación inicial el inciso a.”</p></div>
+<ol class="steps">
+<li><span class="step-title">Reconocé el gráfico y rotulá los ejes</span>El impreso viene sin rótulos: dos curvas que bajan (una arriba de la otra), una recta horizontal, punteadas desde los dos cortes y una flecha vertical en el corte de la izquierda. Curvas que bajan más una horizontal: es el gráfico en tasas. Horizontal: \(\hat k\) (capital por unidad de trabajo efectivo). Vertical: \(\gamma_{\hat k}\) (su tasa de crecimiento).</li>
+<li><span class="step-title">Escribí las ecuaciones</span>\(\text{CA}_a=s_a\,\hat k^{\,\alpha-1}=0{,}15\,\hat k^{-0{,}6}=0{,}15/\hat k^{\,0{,}6}\); \(\text{CA}_b=0{,}10/\hat k^{\,0{,}6}\); CD \(=n+g+\delta=0{,}35\). La CD es una sola para a y b porque \(s\) no aparece en ella.</li>
+<li><span class="step-title">Asigná cada línea</span>Con más ahorro la curva está más alta en cada \(\hat k\): la de <b>arriba</b> es \(\text{CA}_a\) (inciso a), la de <b>abajo</b> es \(\text{CA}_b\) (inciso b) y la horizontal es CD.</li>
+<li><span class="step-title">Poné los valores de los cortes</span>Derecha: \(\hat k^*_a=0{,}244\). Izquierda: \(\hat k^*_b=0{,}124\). Control: \(\text{CA}_a(0{,}2436)=0{,}15\cdot 2{,}333=0{,}35\) ✓ y \(\text{CA}_b(0{,}1239)=0{,}10\cdot 3{,}5=0{,}35\) ✓.</li>
+<li><span class="step-title">Medí la flecha doble</span>Está en \(\hat k=0{,}124\), entre CD (abajo) y \(\text{CA}_a\) (arriba): su largo es \(\gamma_{\hat k}=\text{CA}_a-\text{CD}\). Truco sin calculadora: en \(\hat k^*_b\) vale \(\hat k^{-0{,}6}=0{,}35/0{,}10=3{,}5\), así que \(\text{CA}_a=0{,}15\cdot 3{,}5=0{,}525\) y \(\gamma_{\hat k}=0{,}525-0{,}35=+0{,}175&gt;0\).</li>
+<li><span class="step-title">Tachá la frase 1</span>El eje es \(\hat k\): es la tasa de crecimiento <b>del capital por unidad de trabajo efectivo</b> (no la del capital per cápita ni la del producto por trabajador). \(\text{CA}_a\) está por encima de CD: es <b>positiva</b>.</li>
+<li><span class="step-title">Tachá la frase 2</span>Bajó \(s\): se movió la curva de <b>Ahorro/Inversión Bruta</b>, <b>hacia abajo</b>. La de depreciación no cambia (\(n\), \(g\) y \(\delta\) son los mismos) y en este gráfico no hay curva de producción.</li>
+</ol>
+<figure><img src="figs/out/s1_2025_tasas.svg">
+<figcaption><b>Figura §1.5.</b> El gráfico del P8 2025 completado en cuatro pasos: ejes, CA del inciso a con CD, CA del inciso b (discontinua, más abajo) y, en el panel 4, los cortes 0,124 y 0,244 y la flecha doble en 0,124, que mide \(\gamma_{\hat k}=0{,}525-0{,}35=+0{,}175\). Curvas calculadas con los datos del enunciado.</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta · las frases tachadas</span>
+<p style="margin:0.2em 0 0.3em">“La flecha doble vertical muestra que la tasa de crecimiento <span class="s1-strike">del capital per cápita</span> / <span class="s1-strike">producto por trabajador</span> / <span class="s1-keep">del capital por unidad de trabajo efectivo</span> es <span class="s1-keep">positiva</span> / <span class="s1-strike">negativa</span> / <span class="s1-strike">de estado estacionario</span>.”</p>
+<p style="margin:0">“La Curva de <span class="s1-keep">Ahorro/Inversión Bruta</span> / <span class="s1-strike">Depreciación</span> / <span class="s1-strike">Producción</span> se desplazó <span class="s1-keep">hacia abajo</span> / <span class="s1-strike">hacia arriba</span> considerando como situación inicial el inciso a.”</p></div></div>
+<div class="box warn s1-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Qué dejás sin tachar</th><th>Resultado</th></tr></thead><tbody>
+<tr><td>Rotular el eje con \(k\) (per cápita) en vez de \(\hat k\)</td><td>“del capital per cápita”</td><td>mal</td></tr>
+<tr><td>Medir la flecha contra \(\text{CA}_b\) (que en 0,124 toca a CD)</td><td>“de estado estacionario”</td><td>mal</td></tr>
+<tr><td>Creer que la de arriba es la curva nueva</td><td>“hacia arriba”</td><td>mal</td></tr>
+<tr><td>Pensar que un cambio de \(s\) mueve la depreciación</td><td>“Depreciación”</td><td>mal</td></tr>
+</tbody></table></div>
+
+
+</section>

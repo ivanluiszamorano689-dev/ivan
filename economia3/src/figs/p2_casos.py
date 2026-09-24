@@ -3,8 +3,8 @@ Datos citados en el texto del caso (práctica) y en el manual de teoría (Tema 2
 Correr desde figs/:  python3 p2_casos.py"""
 from p2_util import *  # noqa: F403
 
-fig, axs = new_fig(6.5, 4.5, ncols=2, nrows=2)
-fig.subplots_adjust(hspace=0.75, wspace=0.42)
+fig, axs = new_fig(6.5, 3.35, ncols=2, nrows=2)
+fig.subplots_adjust(hspace=0.8, wspace=0.42)
 
 # (a) PBI mundial a PPA por grupo de ingreso
 ax = axs[0, 0]
@@ -33,9 +33,10 @@ for k, (lab, (v, col)) in enumerate(vals.items()):
         ax.text(xi, vi + 0.6, coma(vi, 1), ha="center", va="bottom", fontsize=7.8, fontweight="bold")
 ax.set_xticks(xp)
 ax.set_xticklabels(["Estados Unidos", "China"], fontsize=8.2)
-ax.set_ylim(0, 34)
+ax.set_ylim(0, 42)
+ax.set_yticks([0, 10, 20, 30])
 ax.yaxis.set_major_formatter(fmt_pct())
-ax.legend(loc="upper right", fontsize=7.5, handlelength=1.0, borderaxespad=0.1)
+ax.legend(loc="upper center", fontsize=7.5, handlelength=1.0, borderaxespad=0.1, ncol=2)
 data_axes(ax)
 ax.set_title("(b) % de la economía mundial", fontsize=9, pad=7)
 
@@ -47,8 +48,11 @@ for yv, idx, tit in ((1, 1, "Población"), (0, 2, "Ingreso")):
     for nm, pob, ing, col in seg:
         v = pob if idx == 1 else ing
         ax.barh(yv, v, left=left, color=col, height=0.55, edgecolor="white", lw=1.2, zorder=2)
-        if v >= 7:
+        if v >= 15:
             ax.text(left + v / 2, yv, f"{v}%", ha="center", va="center", fontsize=8, color="white", fontweight="bold")
+        else:
+            yy = yv - 0.42 if yv == 1 else yv + 0.42
+            ax.text(left + v / 2, yy, f"{v}%", ha="center", va="center", fontsize=8, color=col, fontweight="bold")
         left += v
 ax.set_yticks([1, 0])
 ax.set_yticklabels(["Población", "Ingreso"], fontsize=8.2)
@@ -75,6 +79,6 @@ ax.set_ylim(-0.2, nfil)
 ax.set_aspect("equal")
 ax.axis("off")
 ax.set_title("(d) Salario mínimo ×2 a ×4 al pasarlo a PPA", fontsize=9, pad=7)
-ax.text(0, -0.9, "74 de 96 países de renta baja y media (■ azul)", fontsize=7.6, color=C["ink2"], va="top")
+ax.text(0, -0.9, "En azul: 74 de los 96 países de renta baja y media", fontsize=7.6, color=C["ink2"], va="top")
 save(fig, "p2_casos")
 print("ok")

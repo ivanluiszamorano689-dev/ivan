@@ -1,0 +1,356 @@
+<style>
+/* ---- p1: tarjetas del formulario ---- */
+.p1-fg { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65em; margin: 0.6em 0 0.9em; align-items: stretch; }
+.p1-fg > .p1-wide { grid-column: 1 / -1; }
+.p1-fc { border: 1px solid var(--rule); border-top: 3px solid var(--c, var(--accent)); border-radius: 8px; background: #fff;
+  padding: 0.42em 0.75em 0.5em; break-inside: avoid; display: flex; flex-direction: column; }
+.p1-fc > .p1-t { font: 700 8.7pt "Inter", sans-serif; color: var(--cink, var(--accent-ink)); }
+.p1-fc > .p1-t > .p1-nw { float: right; margin: 0.15em 0 0 0.5em; }
+.p1-fc .katex-display { margin: 0.28em 0 0.22em; }
+.p1-fc .katex-display > .katex { font-size: 1.08em; }
+.p1-fc > .p1-sym { font-size: 7.9pt; color: var(--ink-2); line-height: 1.4; margin-bottom: 0.25em; }
+.p1-fc > .p1-ej { margin-top: auto; font-size: 7.9pt; line-height: 1.4; background: var(--cbg, var(--accent-bg)); border-radius: 5px; padding: 0.22em 0.55em; }
+.p1-fc > .p1-ej::before { content: "Ej. "; font-weight: 700; color: var(--cink, var(--accent-ink)); }
+.p1-nw { font: 600 6.6pt "Inter"; letter-spacing: 0.04em; text-transform: uppercase; color: var(--orange-ink); background: var(--orange-bg);
+  border-radius: 99px; padding: 0.05em 0.55em; white-space: nowrap; }
+.p1-b1 { --c: var(--blue); --cbg: var(--blue-bg); --cink: var(--blue-ink); }
+.p1-b2 { --c: var(--orange); --cbg: var(--orange-bg); --cink: var(--orange-ink); }
+.p1-b3 { --c: var(--aqua); --cbg: var(--aqua-bg); --cink: var(--aqua-ink); }
+.p1-b4 { --c: var(--violet); --cbg: var(--violet-bg); --cink: var(--violet-ink); }
+.p1-bh { display: flex; align-items: center; gap: 0.5em; }
+.p1-bh::before { content: ""; width: 0.8em; height: 0.8em; border-radius: 3px; background: var(--c); flex: none; }
+.p1-lim { font-size: 8pt; margin: 0.25em 0 0.1em; }
+.p1-lim td, .p1-lim th { padding: 0.2em 0.5em; }
+.p1-sub { font: 700 7.8pt "Inter"; letter-spacing: 0.07em; text-transform: uppercase; color: var(--violet-ink); margin: 0.9em 0 0.2em; break-after: avoid; page-break-after: avoid; }
+.p1-tr td:first-child { width: 42%; }
+.p1-tr td { font-size: 8.1pt; }
+.p1-tr { break-inside: auto; }
+.p1-tr tr { break-inside: avoid; }
+.p1-w85 img { width: 86%; } .p1-w80 img { width: 80%; } .p1-w72 img { width: 72%; } .p1-w74 img { width: 74%; }
+.p1-w92 img { width: 92%; }
+.p1-flow6 > .node { font-size: 8pt; padding: 0.4em 0.35em; }
+.p1-flow6 > .node b { font-size: 8.4pt; }
+</style>
+
+<section class="tema-2 p1-sec">
+
+<div class="chapter-head">
+  <div class="kicker">Hoja de consulta · TP1 a TP4</div>
+  <h2>Formulario</h2>
+  <p>Todo lo que hay que tener en la cabeza para el parcial del 28/09/2026. El parcial es <b>sin consulta bibliográfica</b>: estas páginas son las que hay que saber de memoria. Cada fórmula viene con qué significa cada símbolo y un ejemplo de una línea sacado de los TP o de un parcial real.</p>
+</div>
+
+<h3>Cómo usar esta práctica</h3>
+
+<div class="grid-2">
+<div class="box summary"><div class="box-title">Cómo está armada</div>
+<ul>
+  <li>Este <b>formulario</b> y después los cuatro TP resueltos (TP1 a TP4).</li>
+  <li>Cada ejercicio sigue siempre el mismo orden (abajo): tapá la respuesta y resolvelo antes de mirar.</li>
+  <li>Las cajas naranjas <b>“Así lo preguntan en el parcial”</b> copian preguntas reales 2022–2025.</li>
+  <li><span class="p1-nw">sale en parciales</span> marca fórmulas que no estaban en el formulario original y que los parciales piden.</li>
+</ul></div>
+<div class="box tip"><div class="box-title">¿Conviene arriesgar en el multiple choice?</div>
+<p>En la teoría la correcta suma 10 y la incorrecta resta 5 (en la práctica resta la mitad del inciso). Con 5 opciones, marcar al azar <b>resta</b>: \(0{,}2\cdot 10 - 0{,}8\cdot 5 = -2\). Si quedan 3 opciones, el valor esperado es 0; si quedan 2, es \(+2{,}5\). <b>Arriesgá sólo si te quedan dos opciones o menos.</b></p></div>
+</div>
+
+<div class="flow p1-flow6">
+  <div class="node"><b>1 · Enunciado</b>caja gris con los datos</div><div class="arrow">→</div>
+  <div class="node"><b>2 · Pasos</b>numerados, en orden</div><div class="arrow">→</div>
+  <div class="node"><b>3 · Cuentas</b>cada número verificado</div><div class="arrow">→</div>
+  <div class="node"><b>4 · Respuesta</b>caja verde</div><div class="arrow">→</div>
+  <div class="node"><b>5 · Gráfico</b>si el ejercicio lo pide</div><div class="arrow">→</div>
+  <div class="node"><b>6 · Control</b>verificación y error típico</div>
+</div>
+
+<!-- ======================================================= BLOQUE 1 -->
+<h3 class="p1-bh p1-b1">Crecimiento y producto (TP2)</h3>
+
+<div class="p1-fg p1-b1">
+  <div class="p1-fc"><div class="p1-t">PBI per cápita</div>
+    \[ y = \frac{\text{PBI total}}{\text{Población}} \]
+    <div class="p1-sym">Riqueza material promedio por persona: la variable para comparar niveles de vida.</div>
+    <div class="p1-ej">Ricolandia: 800.000 / 700 = US$ 1.142,86 (TP2, ej. 9).</div></div>
+
+  <div class="p1-fc"><div class="p1-t">Tasa anual</div>
+    \[ g_t = \frac{Y_{t+1}-Y_t}{Y_t} = \frac{Y_{t+1}}{Y_t}-1 \]
+    <div class="p1-sym">\(Y_t\): valor del año \(t\). Siempre con PBI <b>real</b> (precios constantes).</div>
+    <div class="p1-ej">Ucrania 2020→2021: 4.828 / 3.752 − 1 = 28,68 % (parcial 2024).</div></div>
+
+  <div class="p1-fc"><div class="p1-t">Tasa acumulada</div>
+    \[ g_{ac} = \frac{Y_{final}-Y_{inicial}}{Y_{inicial}} = \frac{Y_T}{Y_0}-1 \]
+    <div class="p1-sym">Cambio total del período, de punta a punta.</div>
+    <div class="p1-ej">Argentina 2010–2023: 714.464 / 670.524 − 1 = 6,55 % (TP2, ej. 5).</div></div>
+
+  <div class="p1-fc"><div class="p1-t">Valor futuro</div>
+    \[ Y_{t+n} = Y_t\,(1+g)^n \]
+    <div class="p1-sym">Las tasas no se suman: se <b>componen</b>. \(n\): cantidad de años que pasan.</div>
+    <div class="p1-ej">8.000 · 1,03<sup>75</sup> = US$ 73.431,41; al 1 %: 16.873,03 → brecha de 4,35 veces (TP2, ej. 4).</div></div>
+
+  <div class="p1-fc"><div class="p1-t"><span class="p1-nw">sale en parciales</span>Tasa media anual (geométrica)</div>
+    \[ \bar g = \left(\frac{Y_T}{Y_0}\right)^{1/n}-1 \qquad 1+g_{ac} = (1+\bar g)^{\,n} \]
+    <div class="p1-sym">\(n\) = <b>períodos</b>, no datos: de 2010 a 2023 hay 14 datos y \(n = 13\) (Figura F.1).</div>
+    <div class="p1-ej">(714.464 / 670.524)<sup>1/13</sup> − 1 = 0,489 % · Ucrania 2018–23: (5.181 / 3.097)<sup>1/5</sup> − 1 = 10,84 %.</div></div>
+
+  <div class="p1-fc"><div class="p1-t"><span class="p1-nw">sale en parciales</span>“Veces más grande”</div>
+    \[ \text{veces} = \frac{Y_A}{Y_B} \]
+    <div class="p1-sym">Es el cociente directo (no el cociente menos 1). Cambia mucho según uses TC de mercado o PPA.</div>
+    <div class="p1-ej">EEUU / Ucrania 2020: 64.317 / 3.752 = 17,1 a TCm; 64.317 / 15.717 = 4,1 a PPA (parcial 2024).</div></div>
+
+  <div class="p1-fc p1-wide"><div class="p1-t">Crecimiento per cápita a partir del total</div>
+    \[ 1+g_y = \frac{1+g_Y}{1+g_L} \quad\Longrightarrow\quad g_y \approx g_Y - g_L \]
+    <div class="p1-sym">\(g_Y\): crecimiento del PBI total; \(g_L\): crecimiento de la población; \(g_y\): del PBI per cápita.</div>
+    <div class="p1-ej">Argentina 2010–23 creció 0,489 % anual con la población creciendo cerca del 1 %: \(g_y \approx 0{,}489\,\% - 1\,\% \approx -0{,}5\,\%\) anual → el PBI per cápita cayó (TP2, ej. 5).</div></div>
+</div>
+
+<figure class="p1-w80"><img src="figs/out/p1_f_periodos.svg">
+  <figcaption><b>Figura F.1.</b> PBI real de Argentina 2010–2023 (millones de $ de 2004, TP2 ej. 5). Contá los <b>saltos</b>, no los puntos: 14 datos, 13 períodos. La línea naranja es el camino que habría seguido el PBI creciendo todos los años a la tasa media \(\bar g = 0{,}489\,\%\): une el primer y el último dato. Usar \(n = 14\) da 0,45 % y es el error más frecuente.</figcaption></figure>
+
+<!-- ======================================================= BLOQUE 2 -->
+<h3 class="p1-bh p1-b2">Tipo de cambio y PPA (TP2)</h3>
+
+<div class="p1-fg p1-b2">
+  <div class="p1-fc"><div class="p1-t">Tipo de cambio de mercado</div>
+    \[ TC_m = \frac{P_{\text{transable}}\ \text{en moneda local}}{P_{\text{transable}}\ \text{en US\$}} \]
+    <div class="p1-sym">Sale <b>sólo del bien transable</b>: el arbitraje internacional iguala su precio (ley de un solo precio).</div>
+    <div class="p1-ej">Argensur: tablets 12.000 / 300 = $ 40 por US$ (parcial 2022).</div></div>
+
+  <div class="p1-fc"><div class="p1-t">PBI en US$ a tipo de cambio de mercado</div>
+    \[ PBI_{tcm} = \frac{PBI(\$)}{TC_m} \]
+    <div class="p1-sym">Se <b>divide</b>, nunca se multiplica (el TC está en $ por US$).</div>
+    <div class="p1-ej">Argensur: (50·12.000 + 800·125) / 40 = 700.000 / 40 = US$ 17.500 (parcial 2022).</div></div>
+
+  <div class="p1-fc"><div class="p1-t"><span class="p1-nw">sale en parciales</span>Tipo de cambio PPA con dos bienes (misma canasta)</div>
+    \[ TC_{ppa} = \frac{\sum P_i^{\$}\,Q_i}{\sum P_i^{US\$}\,Q_i} = \frac{P_T^{\$}Q_T + P_N^{\$}Q_N}{P_T^{US\$}Q_T + P_N^{US\$}Q_N} \]
+    <div class="p1-sym">\(T\): transable, \(N\): no transable. <b>Las mismas cantidades</b> arriba y abajo, valuadas a los precios de cada país.</div>
+    <div class="p1-ej">Argensur: 700.000 / (50·300 + 800·10) = 700.000 / 23.000 = 30,43 $ por US$ (parcial 2022).</div></div>
+
+  <div class="p1-fc"><div class="p1-t">PBI a PPA</div>
+    \[ PBI_{ppa} = \frac{PBI(\$)}{TC_{ppa}} \]
+    <div class="p1-sym">Valúa toda la producción, también los no transables, a “precios internacionales”.</div>
+    <div class="p1-ej">Ciudad Pesos: 462.500 / 10,88 = US$ 42.500 (parcial 2023).</div></div>
+
+  <div class="p1-fc p1-wide"><div class="p1-t"><span class="p1-nw">sale en parciales</span>Índice Big Mac: las tres relaciones</div>
+    \[ P_{US\$} = \frac{P_{local}}{TC_m} \qquad TC_{ppa} = \frac{P_{local}}{P_{EEUU}} \qquad \text{sub/sobre} = \frac{TC_{ppa}-TC_m}{TC_m} = \frac{TC_{ppa}}{TC_m}-1 = \frac{P_{US\$}}{P_{EEUU}}-1 \]
+    <div class="p1-sym">Resultado <b>negativo → moneda SUBvaluada</b> (la Big Mac sale más barata en dólares que en EEUU); <b>positivo → SOBREvaluada</b>. Con dos datos cualesquiera de la fila salen los demás.</div>
+    <div class="p1-ej">Australia 2024 (BM en EEUU US$ 5,69): 7,75 / 1,53 = US$ 5,07 · TC<sub>ppa</sub> = 7,75 / 5,69 = 1,362 · 1,362 / 1,53 − 1 = −11,0 % → subvaluada (parcial 2025).</div></div>
+
+  <div class="p1-fc"><div class="p1-t">Despejes del Big Mac</div>
+    \[ P_{local} = P_{US\$}\cdot TC_m \qquad TC_m = \frac{P_{local}}{P_{US\$}} = \frac{TC_{ppa}}{1+\text{sub/sobre}} \]
+    <div class="p1-sym">Para completar filas incompletas de la tabla.</div>
+    <div class="p1-ej">India: 2,59 · 73,39 = 190,08 · México: 54 / 2,68 = 20,15 · Pakistán: 181,347 / (1 − 0,3497) = 278,88 (TP2, ej. 7 y 8).</div></div>
+
+  <div class="p1-fc"><div class="p1-t">Nivel de precios relativo</div>
+    \[ \frac{TC_{ppa}}{TC_m} \]
+    <div class="p1-sym">Menor que 1: el país es “barato” (sus no transables cuestan poco). Por eso a TC<sub>m</sub> los países pobres parecen más pobres de lo que son.</div>
+    <div class="p1-ej">Los del Sur: 37,5 / 300 = 0,125; Norte/Sur da 20 veces a TC<sub>m</sub> y 2,5 veces a PPA (TP2, ej. 10).</div></div>
+</div>
+
+<div class="versus">
+  <div class="card blue"><div class="card-title">\(TC_{ppa} &lt; TC_m\) → negativo → SUBvaluada</div><p class="small" style="margin:0">La Big Mac cuesta menos en dólares que en EEUU: con la moneda local “comprás más” de lo que dice el mercado. Australia 2024: −11,0 %; Bahrein: −21,4 % (parcial 2025).</p></div>
+  <div class="vs">vs</div>
+  <div class="card orange"><div class="card-title">\(TC_{ppa} &gt; TC_m\) → positivo → SOBREvaluada</div><p class="small" style="margin:0">La Big Mac cuesta más en dólares que en EEUU. Argentina, enero de 2025: US$ 6,95 contra US$ 5,79 → +20,08 % (TP2, ej. 8).</p></div>
+</div>
+
+<!-- ======================================================= BLOQUE 3 -->
+<h3 class="p1-bh p1-b3">Índices: IDH, IDH-D e IDG (TP3)</h3>
+
+<div class="p1-fg p1-b3">
+  <div class="p1-fc"><div class="p1-t">Normalización (índice de dimensión)</div>
+    \[ I_d = \frac{\text{valor real}-\text{mínimo}}{\text{máximo}-\text{mínimo}}\ \ (\text{tope } 1) \]
+    <table class="p1-lim compact"><thead><tr><th>Indicador</th><th class="num">mín</th><th class="num">máx</th></tr></thead><tbody>
+      <tr><td>Esperanza de vida (años)</td><td class="num">20</td><td class="num">85</td></tr>
+      <tr><td>Años esperados de escolaridad</td><td class="num">0</td><td class="num">18</td></tr>
+      <tr><td>Años promedio de escolaridad</td><td class="num">0</td><td class="num">15</td></tr>
+      <tr><td>INB per cápita (US$ PPA)</td><td class="num">100</td><td class="num">75.000</td></tr></tbody></table>
+    <div class="p1-ej">Argentina: salud (77,4 − 20)/65 = 0,883; años esperados 18,8 &gt; 18 → 1,000 (TP3, ej. 2).</div></div>
+
+  <div class="p1-fc"><div class="p1-t">Educación (promedio aritmético)</div>
+    \[ I_{edu} = \frac{I_{\text{años esperados}} + I_{\text{años promedio}}}{2} \]
+    <div class="p1-sym">Entre los dos indicadores educativos el promedio es <b>aritmético</b>; la media geométrica va recién entre las tres dimensiones.</div>
+    <div class="p1-ej">Argentina: (1,000 + 11,2/15)/2 = (1,000 + 0,747)/2 = 0,873.</div>
+    <div class="p1-t" style="margin-top:0.6em">IDH (media geométrica)</div>
+    \[ IDH = \left(I_{salud}\cdot I_{edu}\cdot I_{ing}\right)^{1/3} \]
+    <div class="p1-ej">Argentina: (0,883 · 0,873 · 0,839)<sup>1/3</sup> = 0,865 → muy alto.</div></div>
+
+  <div class="p1-fc p1-wide"><div class="p1-t"><span class="p1-nw">sale en parciales</span>Índice de ingresos (en logaritmos) y su despeje</div>
+    \[ I_{ing} = \frac{\ln(INB)-\ln(100)}{\ln(75.000)-\ln(100)} = \frac{\ln(INB/100)}{\ln 750} \qquad\Longleftrightarrow\qquad INB = 100\cdot 750^{\,I_{ing}} \]
+    <div class="p1-sym">Es la única dimensión en logaritmos (rendimientos decrecientes del ingreso). El despeje sirve cuando te dan el índice y piden el INB.</div>
+    <div class="p1-ej">Argentina: (10,1611 − 4,6052)/(11,2252 − 4,6052) = 5,5559/6,6200 = 0,839 · Australia: 100 · 750<sup>0,936</sup> ≈ 49.097 → “n/a” en el parcial 2023.</div></div>
+
+  <div class="p1-fc"><div class="p1-t">IDH-D e índice ajustado</div>
+    \[ I^{*}_{x} = I_x\,(1-A_x) \]
+    \[ IDH\text{-}D = \left(I^*_s\, I^*_e\, I^*_i\right)^{1/3} = \left[(1-A_s)(1-A_e)(1-A_i)\right]^{1/3}\cdot IDH \]
+    <div class="p1-sym">\(A_x\): desigualdad de la dimensión, <b>en tanto por uno</b> (2,7 % = 0,027).</div>
+    <div class="p1-ej">Australia: 0,993 · (1 − 0,027) = 0,966; (0,966 · 0,896 · 0,776)<sup>1/3</sup> = 0,876 (parcial 2023).</div></div>
+
+  <div class="p1-fc"><div class="p1-t"><span class="p1-nw">sale en parciales</span>Despeje de la desigualdad</div>
+    \[ A_x = 1-\frac{I^*_x}{I_x} \]
+    <div class="p1-sym">Cuando te dan el índice y el índice ajustado, y falta la desigualdad.</div>
+    <div class="p1-ej">Educación de Australia: 1 − 0,896/0,925 = 0,031 → 3,1 % (parcial 2023).</div>
+    <div class="p1-t" style="margin-top:0.6em">Pérdida y coeficiente de desigualdad humana</div>
+    \[ P = 1-\frac{IDH\text{-}D}{IDH} \qquad CDH = \frac{A_s + A_e + A_i}{3} \]
+    <div class="p1-ej">Australia: 1 − 0,876/0,951 = 7,9 %. Yemen: P = 32,4 % pero CDH = 31,5 %: nunca son lo mismo.</div></div>
+</div>
+
+<figure class="p1-w80"><img src="figs/out/p1_f_idh_escala.svg">
+  <figcaption><b>Figura F.2.</b> Clasificación del PNUD por umbrales: <b>muy alto ≥ 0,800 · alto 0,700–0,799 · medio 0,550–0,699 · bajo &lt; 0,550</b>. Los países son los de los TP y parciales (años distintos): Yemen 0,455 (parcial 2025), Namibia y Honduras (parcial sin fecha), Jamaica, Guyana y Barbados (parcial 2024), Argentina y Suiza (TP3, 2023). Fijate que Guyana (0,714) y Jamaica (0,709) son “alto” por muy poco: un error de redondeo los cambia de categoría.</figcaption></figure>
+
+<div class="p1-fg p1-b3">
+  <div class="p1-fc p1-wide"><div class="p1-t">IDG: los cuatro pasos</div>
+    \[ \begin{aligned}
+    &\textbf{1)}\ \ G_M = \Big[\Big(\tfrac{10}{MMR}\cdot\tfrac{1}{AFR}\Big)^{1/2}\cdot\big(PR_M\cdot SE_M\big)^{1/2}\cdot LFPR_M\Big]^{1/3} \qquad G_V = \Big[\,1\cdot\big(PR_V\cdot SE_V\big)^{1/2}\cdot LFPR_V\Big]^{1/3} \\
+    &\textbf{2)}\ \ HARM = \left[\frac{1}{2}\left(\frac{1}{G_M}+\frac{1}{G_V}\right)\right]^{-1} \quad \text{(media ARMÓNICA)} \\
+    &\textbf{3)}\ \ \overline{salud} = \frac{\big(\tfrac{10}{MMR}\cdot\tfrac{1}{AFR}\big)^{1/2}+1}{2}\quad \overline{empod} = \frac{(PR_M SE_M)^{1/2}+(PR_V SE_V)^{1/2}}{2}\quad \overline{lab} = \frac{LFPR_M+LFPR_V}{2} \\
+    &\phantom{\textbf{3)}}\ \ \text{Referencia} = \big(\overline{salud}\cdot\overline{empod}\cdot\overline{lab}\big)^{1/3} \\
+    &\textbf{4)}\ \ IDG = 1-\frac{HARM}{\text{Referencia}} \qquad (0 = \text{igualdad},\ 1 = \text{desigualdad máxima})
+    \end{aligned} \]
+    <div class="p1-sym">MMR: mortalidad materna · AFR: natalidad adolescente · PR: bancas en el parlamento · SE: con secundaria · LFPR: participación laboral · M/V: mujeres/varones. Todo en <b>tanto por uno</b>; \(PR_V = 1-PR_M\); la salud reproductiva de los varones vale <b>1</b>, no 0.</div>
+    <div class="p1-ej">Argentina 2023: \(G_M = 0{,}3031\), \(G_V = 0{,}7719\), HARM = 0,4353, Referencia = 0,5912 → IDG = 1 − 0,4353/0,5912 = 0,264 (TP3, ej. 4).</div></div>
+</div>
+
+<div class="flow">
+  <div class="node"><b>1 · por género</b>geométrica → \(G_M\), \(G_V\)</div><div class="arrow">→</div>
+  <div class="node"><b>2 · entre géneros</b>armónica → HARM</div><div class="arrow">→</div>
+  <div class="node"><b>3 · referencia</b>aritmética y luego geométrica</div><div class="arrow">→</div>
+  <div class="node"><b>4 · IDG</b>\(1 - HARM/\text{Ref}\)</div>
+</div>
+
+<div class="p1-fg p1-b3">
+  <div class="p1-fc"><div class="p1-t"><span class="p1-nw">sale en parciales</span>Índice de salud de las mujeres (IDG)</div>
+    \[ S_M = \left(\frac{10}{MMR}\cdot\frac{1}{AFR}\right)^{1/2} \]
+    <div class="p1-sym">Es un <b>logro</b>: más alto = mejor salud reproductiva. “Más cerca de 0 es mejor” vale sólo para el IDG final.</div>
+    <div class="p1-ej">Namibia (195; 65): 0,0281 · Honduras (63,6; 72,9): 0,0464 → Honduras está mejor (parcial sin fecha).</div></div>
+  <div class="p1-fc"><div class="p1-t">Cómo leer cada índice</div>
+    <div class="p1-sym" style="margin-top:0.3em">
+    <b>IDH</b>: 0 a 1, más alto mejor; mide el potencial promedio.<br>
+    <b>IDH-D</b>: 0 a 1, siempre ≤ IDH; es el desarrollo efectivo descontada la desigualdad.<br>
+    <b>Pérdida</b>: cuánto del IDH se pierde por desigualdad (%).<br>
+    <b>IDG</b>: 0 a 1, <b>más bajo mejor</b>; mide logros no realizados por la brecha de género.</div>
+    <div class="p1-ej">Barbados (IDG 0,268) tiene menos desigualdad de género que Guyana (0,454) (parcial 2024).</div></div>
+</div>
+
+<!-- ======================================================= BLOQUE 4 -->
+<h3 class="p1-bh p1-b4">Modelos de crecimiento (TP4)</h3>
+
+<div class="p1-sub">Harrod-Domar</div>
+<div class="p1-fg p1-b4">
+  <div class="p1-fc"><div class="p1-t">Tasa de crecimiento: total y per cápita</div>
+    \[ g_Y = \frac{s}{v}-\delta \qquad g_y = \frac{s}{v}-\delta-n \]
+    <div class="p1-sym">\(v = K/Y\): relación capital-producto (fija) · \(s\): ahorro · \(\delta\): depreciación · \(n\): población.</div>
+    <div class="p1-ej">s = 25 %, v = 2, δ = 3,5 %, n = 5 %: \(g_Y\) = 0,125 − 0,035 = 9 %; \(g_y\) = 4 % (TP4, ej. 4).</div></div>
+  <div class="p1-fc"><div class="p1-t"><span class="p1-nw">sale en parciales</span>Umbral de \(v\)</div>
+    \[ g_y > 0 \iff 0 < v < \frac{s}{n+\delta} \qquad g_Y > 0 \iff v < \frac{s}{\delta} \]
+    <div class="p1-sym">En el umbral la tasa es 0 (no positiva); \(v = 0\) no tiene sentido. El \(n\) que anula \(g_y\) es \(n = s/v - \delta\).</div>
+    <div class="p1-ej">s = 0,19, n + δ = 0,175: 0,19/0,175 = 1,0857 → opción “0 &lt; v &lt; 1,085” (parcial 2023) · TP4 ej. 4: v = 0,25/0,085 = 2,94.</div></div>
+</div>
+
+<div class="grid-2">
+<figure style="margin:0.2em 0"><img src="figs/out/p1_f_harrod_umbral.svg">
+  <figcaption><b>Figura F.3.</b> Harrod-Domar con los datos del parcial 2023 (s = 0,19; n + δ = 0,175; δ = 0,13). El producto per cápita crece sólo si \(v &lt; 1{,}086\) (zona verde); el agregado, si \(v &lt; 1{,}46\).</figcaption></figure>
+<div>
+<div class="box intuition" style="margin-top:0.2em"><div class="box-title">Cómo leer \(v\)</div>
+<p>\(v = K/Y\) dice cuántas unidades de capital hacen falta para producir una de producto: un \(v\) más alto es una economía <b>menos eficiente</b>. Con \(v\) grande, todo el ahorro alcanza apenas para reponer la depreciación y equipar a los trabajadores nuevos.</p></div>
+<div class="box warn"><div class="box-title">Error típico</div>
+<p>Olvidarse de restar \(n\) cuando piden la tasa <b>per cápita</b>. En el parcial 2023 el umbral agregado (1,46) ni siquiera figuraba entre las opciones: pedían el per cápita (1,085).</p></div>
+</div>
+</div>
+
+<div class="p1-sub">Solow-Swan sin tecnología</div>
+<div class="p1-fg p1-b4">
+  <div class="p1-fc"><div class="p1-t">Función de producción per cápita</div>
+    \[ Y = A\,K^{\alpha}L^{1-\alpha} \;\Longrightarrow\; y = f(k) = A\,k^{\alpha} \]
+    <div class="p1-sym">\(k = K/L\), \(y = Y/L\). \(\alpha\) = participación del <b>capital</b> = 1 − participación del trabajo.</div>
+    <div class="p1-ej">Parcial 2025: “participación del trabajo 0,6” ⇒ α = 0,4 (no 0,6).</div></div>
+  <div class="p1-fc"><div class="p1-t">Ecuación fundamental (niveles: FA y FD)</div>
+    \[ \dot k = \underbrace{s\,A\,k^{\alpha}}_{FA} - \underbrace{(n+\delta)\,k}_{FD} \]
+    <div class="p1-sym">“Funciones” de ahorro y depreciación: panel izquierdo de la Figura F.4.</div>
+    <div class="p1-ej">Parcial 2022 (A = 5/2, s = 0,26, α = 3/7, n + δ = 0,13): FA = 0,65 k<sup>3/7</sup>; FD = 0,13 k.</div></div>
+  <div class="p1-fc"><div class="p1-t"><span class="p1-nw">sale en parciales</span>Como tasa (CA y CD)</div>
+    \[ \gamma_k = \frac{\dot k}{k} = \underbrace{\frac{s\,A}{k^{1-\alpha}}}_{CA} - \underbrace{(n+\delta)}_{CD} \qquad \gamma_y = \alpha\,\gamma_k \]
+    <div class="p1-sym">“Curvas” (Sala-i-Martin): CA decreciente, CD horizontal. La distancia vertical entre ambas es \(\gamma_k\) (panel derecho).</div>
+    <div class="p1-ej">Parcial 2022: CA = 0,65 / k<sup>4/7</sup>; CD = 0,13.</div></div>
+  <div class="p1-fc"><div class="p1-t">Estado estacionario</div>
+    \[ k^* = \left(\frac{s\,A}{n+\delta}\right)^{\frac{1}{1-\alpha}} \qquad y^* = A\,(k^*)^{\alpha} \]
+    <div class="p1-sym">Con \(A = 1\): \(k^* = [s/(\delta+n)]^{1/(1-\alpha)}\), \(y^* = [s/(\delta+n)]^{\alpha/(1-\alpha)}\). Control: \(y^* = k^*(\delta+n)/s\).</div>
+    <div class="p1-ej">Parcial 2022: k* = 5<sup>7/4</sup> = 16,718; y* = 2,5 · 16,718<sup>3/7</sup> = 8,359 = 16,718 · 0,13/0,26 ✓.</div></div>
+</div>
+
+<figure class="p1-w74"><img src="figs/out/p1_f_solow_niveles_tasas.svg">
+  <figcaption><b>Figura F.4.</b> El mismo modelo (parcial 2022) en las dos versiones que piden los parciales. Izquierda, <b>funciones</b> en niveles: FA = \(sAk^{\alpha}\) y FD = \((n+\delta)k\). Derecha, <b>curvas</b> en tasas: CA = \(sA/k^{1-\alpha}\) y CD = \(n+\delta\). Las dos se cortan en el mismo \(k^* = 16{,}72\). Si la consigna dice “funciones” (FA/FD) van en niveles; si dice “curvas” (CA/CD), en tasas.</figcaption></figure>
+
+<div class="grid-2">
+  <div class="p1-fc p1-b4" style="margin-top:0.3em"><div class="p1-t">Regla de oro</div>
+    \[ f'(k_{oro}) = n+\delta \;\Rightarrow\; s_{oro} = \alpha \]
+    \[ k_{oro} = \left(\frac{\alpha A}{n+\delta}\right)^{\frac{1}{1-\alpha}} \qquad c_{oro} = y_{oro} - (n+\delta)\,k_{oro} \]
+    <div class="p1-sym">Es el \(k\) de estado estacionario que <b>maximiza el consumo</b>. Si \(s &lt; \alpha\) hay subacumulación (subir \(s\) cuesta consumo durante la transición); si \(s &gt; \alpha\), sobreacumulación (bajar \(s\) sube el consumo hoy y siempre).</div>
+    <div class="p1-ej">E9: (0,40/0,08)<sup>1/0,6</sup> = 14,620; y = 2,924; c = 2,924 − 1,170 = 1,754 &gt; 1,603 (consumo con s = 0,25).</div></div>
+  <figure style="margin:0.3em 0 0"><img src="figs/out/p1_f_regla_oro.svg">
+    <figcaption><b>Figura F.5.</b> Consumo de estado estacionario según la tasa de ahorro (α = 0,4; n + δ = 0,08; extras E8–E9). El máximo está en \(s = \alpha\).</figcaption></figure>
+</div>
+
+<div class="p1-fg p1-b4">
+  <div class="p1-fc"><div class="p1-t"><span class="p1-nw">sale en parciales</span>Despeje de α (“coeficiente técnico del capital”)</div>
+    \[ y = A\,k^{\alpha} \;\Longrightarrow\; \alpha = \frac{\ln(y/A)}{\ln k} \]
+    <div class="p1-sym">Se toman logaritmos: \(\ln(y/A) = \alpha \ln k\).</div>
+    <div class="p1-ej">Parcial 2023: ln(20,5/1,5)/ln 30,7 = 2,6150/3,4243 = 0,76.</div></div>
+  <div class="p1-fc"><div class="p1-t">Qué crece en el estado estacionario</div>
+    \[ \gamma_k = \gamma_y = \gamma_c = 0 \qquad \gamma_K = \gamma_Y = \gamma_C = n \]
+    <div class="p1-sym">Las variables <b>per cápita</b> no crecen; las <b>agregadas</b> crecen al ritmo de la población. Subir \(s\) tiene efecto <b>nivel</b>, no efecto crecimiento.</div>
+    <div class="p1-ej">TP4 ej. 5: con k = 0,9 y k = 2 la economía crece (γ<sub>k</sub> = 16,13 % y 8,54 %) porque ambos están debajo de k* = 7,246.</div></div>
+</div>
+
+<div class="p1-sub">Solow-Swan con tecnología</div>
+<div class="p1-fg p1-b4">
+  <div class="p1-fc p1-wide"><div class="p1-t">Por unidad de trabajo efectivo</div>
+    \[ \kt = \frac{K}{AL},\quad \yt = \frac{Y}{AL} = \kt^{\alpha} \qquad \dot{\kt} = s\,\kt^{\alpha} - (n+\delta+x)\,\kt \qquad \kt^* = \left(\frac{s}{n+\delta+x}\right)^{\frac{1}{1-\alpha}},\quad \yt^* = \left(\frac{s}{n+\delta+x}\right)^{\frac{\alpha}{1-\alpha}} \]
+    <div class="p1-sym">\(x\): tasa de progreso tecnológico (en los parciales 2024–2025 se llama \(g\), y \(\hat k\) = \(\kt\)). Curvas: CA = \(s/\kt^{1-\alpha}\), CD = \(n+\delta+x\). En el EE: \(\gamma_k=\gamma_y=\gamma_c = x\) y \(\gamma_K=\gamma_Y=\gamma_C = n+x\).</div>
+    <div class="p1-ej">Parcial 2025 (s = 0,15; n + g + δ = 0,35; α = 0,4): \(\kt^*\) = (0,15/0,35)<sup>1/0,6</sup> = 0,2436; \(\yt^*\) = 0,2436<sup>0,4</sup> = 0,5684.</div></div>
+</div>
+
+<div class="p1-sub">Contabilidad del crecimiento y Romer</div>
+<div class="p1-fg p1-b4">
+  <div class="p1-fc"><div class="p1-t">Contabilidad del crecimiento</div>
+    \[ g_Y = g_A + s_K\,g_K + s_L\,g_L \qquad g_A = g_y - s_K\,g_k \]
+    <div class="p1-sym">\(g_A\): <b>residuo de Solow</b> (productividad total de los factores) · \(s_K, s_L\): participaciones del capital y del trabajo.</div>
+    <div class="p1-ej">E11: \(g_k\) = 5,6 − 1,1 = 4,5 %; \(g_y\) = 4,2 − 1,1 = 3,1 %; \(g_A\) = 3,10 − 0,35 · 4,50 = 1,525 %.</div></div>
+  <div class="p1-fc"><div class="p1-t">Romer</div>
+    \[ g = \frac{\lambda\, n}{1-\phi} \]
+    <div class="p1-sym">\(\lambda\): rendimiento del trabajo en producir ideas · \(\phi\): desbordamiento de ideas (va en el <b>denominador</b>) · \(n\): crecimiento de los investigadores.</div>
+    <div class="p1-ej">λ = 0,30; φ = 0,15; n = 0,10: g = 0,03/0,85 = 3,529 % (TP4, ej. 10).</div></div>
+</div>
+
+<div class="box tip"><div class="box-title">Dos atajos que ahorran tiempo en el parcial</div>
+<ul>
+  <li>Todas las fórmulas de Solow con tecnología son iguales a las de Solow sin tecnología cambiando \((\delta+n)\) por \((\delta+n+x)\).</li>
+  <li>Con Cobb-Douglas siempre vale \(y^* = k^*\,(\delta+n)/s\): sirve para verificar cualquier resultado en dos segundos (sale de igualar \(s\,y^* = (\delta+n)\,k^*\)).</li>
+</ul></div>
+
+<h3>Traductor: de la consigna a la fórmula</h3>
+<p class="small" style="margin-bottom:0.2em; break-after: avoid">Las consignas usan siempre las mismas palabras; todas estas salen de parciales reales 2022–2025.</p>
+<table class="p1-tr compact">
+<thead><tr><th>Si la consigna dice…</th><th>…usá</th><th>Ojo con</th></tr></thead>
+<tbody>
+<tr><td>“Tasa de crecimiento entre 2020 y 2021”</td><td>\(Y_{2021}/Y_{2020} - 1\)</td><td>los distractores son otros pares de años</td></tr>
+<tr><td>“Tasa media de crecimiento 2018–2023”</td><td>\((Y_{2023}/Y_{2018})^{1/5} - 1\)</td><td>5 períodos, no 6</td></tr>
+<tr><td>“EEUU era ___ veces más grande que…”</td><td>cociente directo \(Y_A/Y_B\)</td><td>a TC<sub>m</sub> o a PPA según diga</td></tr>
+<tr><td>“Tipo de cambio de mercado”</td><td>precio del <b>transable</b> local / en US$</td><td>nunca con el no transable</td></tr>
+<tr><td>“PBI en dólares al TC de mercado”</td><td>\(PBI(\$)/TC_m\)</td><td>dividir, no multiplicar</td></tr>
+<tr><td>“Tipo de cambio de PPA”</td><td>misma canasta a precios de cada país</td><td>no usar canastas distintas</td></tr>
+<tr><td>“Infra/sobrevaloración” (Big Mac)</td><td>\(TC_{ppa}/TC_m - 1\)</td><td>negativo = SUBvaluada</td></tr>
+<tr><td>“Nivel de desarrollo humano”</td><td>umbrales 0,550 · 0,700 · 0,800</td><td>0,700 ya es “alto”</td></tr>
+<tr><td>“INB per cápita” a partir del índice</td><td>\(100\cdot 750^{I_{ing}}\)</td><td>si no coincide: “n/a”</td></tr>
+<tr><td>“Desigualdad en educación” (falta \(A_e\))</td><td>\(1 - I^*_e/I_e\)</td><td>expresarlo en %</td></tr>
+<tr><td>“Índice ajustado por desigualdad”</td><td>\(I\,(1-A)\)</td><td>2,7 % es 0,027, no 0,27</td></tr>
+<tr><td>“IDH-D” y “pérdida”</td><td>geométrica de los ajustados; \(1 - IDH\text{-}D/IDH\)</td><td>pérdida ≠ promedio de las \(A\)</td></tr>
+<tr><td>“Salud de las mujeres” (IDG)</td><td>\((10/MMR\cdot 1/AFR)^{1/2}\): mayor es mejor</td><td>el IDG final sí es “menor mejor”</td></tr>
+<tr><td>“\(k^*\) e \(y^*\) en estado estacionario”</td><td>\((sA/(n+\delta))^{1/(1-\alpha)}\); \(y^* = A k^{*\alpha}\)</td><td>multiplicar por \(A\); controlar con \(k^*(n+\delta)/s\)</td></tr>
+<tr><td>“Funciones de ahorro y depreciación”</td><td>FA = \(sAk^{\alpha}\), FD = \((n+\delta)k\)</td><td>“curvas” es la versión en tasas</td></tr>
+<tr><td>“Curvas de ahorro y depreciación”</td><td>CA = \(sA/k^{1-\alpha}\), CD = \(n+\delta\)</td><td>el exponente va con signo positivo abajo</td></tr>
+<tr><td>“Coeficiente técnico del capital”</td><td>\(\alpha = \ln(y/A)/\ln k\)</td><td>es el exponente, no \(A\)</td></tr>
+<tr><td>“Valores de \(v\) con crecimiento positivo”</td><td>\(0 < v < s/(n+\delta)\)</td><td>desigualdad estricta</td></tr>
+<tr><td>“Participación del trabajo 0,6”</td><td>\(\alpha = 1 - 0{,}6 = 0{,}4\)</td><td>no tomar 0,6 como α</td></tr>
+<tr><td>“Por unidad de trabajo efectivo”</td><td>\(\kt^* = (s/(n+g+\delta))^{1/(1-\alpha)}\)</td><td>sumar \(g\) a la depreciación</td></tr>
+</tbody></table>
+
+</section>

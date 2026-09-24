@@ -1,0 +1,509 @@
+<style>
+/* ---- estilos propios del Tema 3, segunda parte (prefijo t3b-) ---- */
+.t3b-roadmap .node { font-size: 8.3pt; }
+.t3b-roadmap .node .t3b-sec { display: block; font: 700 7.2pt "Inter"; color: var(--ink-3); letter-spacing: 0.05em; margin-bottom: 0.1em; }
+.t3b-cards4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55em; margin: 0.7em 0 1em; }
+.t3b-cards4 .card { text-align: center; padding: 0.5em 0.5em 0.45em; }
+.t3b-cards4 .card .card-title { font-size: 8.4pt; }
+.t3b-cards4 .card p { margin: 0.1em 0 0; font-size: 8.6pt; }
+.t3b-n { display: inline-block; width: 1.5em; height: 1.5em; border-radius: 50%; background: var(--accent); color: #fff; font: 700 8pt/1.5em "Inter"; text-align: center; margin-right: 0.3em; }
+.t3b-tachar { background: #fff; border: 1.5px dashed var(--orange); border-radius: 8px; padding: 0.6em 0.9em; margin: 0.6em 0 0.9em; font-size: 9.2pt; line-height: 1.7; break-inside: avoid; }
+.t3b-tachar s { color: var(--red-ink); text-decoration-thickness: 1.6px; opacity: 0.75; }
+.t3b-tachar b.t3b-ok { color: var(--green-ink); background: var(--green-bg); border-radius: 3px; padding: 0 0.2em; }
+.t3b-matrix { display: grid; grid-template-columns: 7.5em 1fr 1fr; gap: 0.35em; margin: 0.6em 0 1em; font-size: 8.6pt; break-inside: avoid; }
+.t3b-matrix > div { border-radius: 7px; padding: 0.45em 0.6em; }
+.t3b-matrix .t3b-h { font: 700 8pt "Inter"; color: var(--ink-2); background: var(--paper-2); text-align: center; display: flex; align-items: center; justify-content: center; }
+.t3b-matrix .t3b-c { background: #fff; border: 1px solid var(--rule); }
+.t3b-matrix .t3b-c b { display: block; color: var(--ink); }
+.t3b-matrix .t3b-idea { background: var(--aqua-bg); border: 1.5px solid var(--aqua); }
+.t3b-matrix .t3b-idea b { color: var(--aqua-ink); }
+.t3b-three .card p { font-size: 8.7pt; margin-bottom: 0.2em; }
+.t3b-mini { font-size: 8.4pt; }
+figure.t3b-w90 img { width: 90%; }
+figure.t3b-w75 img { width: 75%; }
+.calc .katex-display .katex { font-size: 1.0em; }
+.box.t3b-break, .check.t3b-break { break-inside: auto; }
+.t3b-grid-fig { display: grid; grid-template-columns: 1.08fr 1fr; gap: 0.9em; align-items: center; }
+.t3b-grid-fig figure { margin: 0; }
+.t3b-grid-fig .box { margin: 0; }
+</style>
+
+<section class="tema-3">
+
+<!-- ======================================================================= 3.6 -->
+<h2><span class="num">3.6</span>Solow con progreso tecnológico</h2>
+
+<p>La pregunta que abre la clase: <b>si en el estado estacionario el ingreso per cápita no crece, ¿cómo se explica que en la realidad sí lo haga?</b> La respuesta es la <b>tecnología</b>. Estos tres puntos cierran el Tema 3: primero se mete la tecnología en Solow, después se mide cuánto pesa en los datos, y al final se explica de dónde sale.</p>
+
+<div class="flow t3b-roadmap">
+  <div class="node"><span class="t3b-sec">3.6</span><b>¿Por qué crece el ingreso per cápita?</b>tecnología exógena: \(g_A\) “cae del cielo”</div><div class="arrow">→</div>
+  <div class="node"><span class="t3b-sec">3.7</span><b>¿Cuánto explica cada fuente?</b>residuo de Solow · convergencia · trampas</div><div class="arrow">→</div>
+  <div class="node"><span class="t3b-sec">3.8</span><b>¿De dónde sale la tecnología?</b>Romer: las ideas se producen</div>
+</div>
+
+<div class="box summary"><div class="box-title">En 30 segundos (3.6 a 3.8)</div>
+<ul>
+  <li>La tecnología es <b>potenciadora del trabajo</b> (neutral de Harrod): \(Y = F(K, AL)\), con \(A\) creciendo a una tasa \(g_A\) <b>exógena</b>.</li>
+  <li>Todo se mide <b>por unidad de trabajo efectivo</b>: \(\kt = K/(AL)\). La ecuación es la de siempre con un término más: \(\dot{\kt} = s f(\kt) - (\delta+n+g_A)\kt\). Las fórmulas de EE salen cambiando \((\delta+n)\) por \((\delta+n+g_A)\).</li>
+  <li>En el EE \(\kt\) e \(\yt\) quedan quietos, las variables <b>per cápita crecen a \(g_A\)</b> y las <b>agregadas a \(n+g_A\)</b>. Sin progreso tecnológico no hay crecimiento per cápita de largo plazo.</li>
+  <li><b>Residuo de Solow</b>: \(g_A = g_y - s_K g_k\). Es la productividad total de los factores, “la medida de nuestra ignorancia”.</li>
+  <li><b>Convergencia</b>: la absoluta (todos al mismo \(k^*\)) no se ve en los datos; la <b>condicional</b> (cada uno a su \(k^*\)) sí. Con varios EE aparecen las <b>trampas de pobreza</b> y el <em>big push</em>.</li>
+  <li><b>Romer</b>: las ideas son <b>no rivales</b> ⇒ rendimientos crecientes ⇒ competencia monopolística y patentes. El crecimiento pasa a ser endógeno: \(g = \lambda n/(1-\phi)\).</li>
+</ul></div>
+
+<h3>Los supuestos nuevos</h3>
+<p>El progreso tecnológico es <b>potenciador del trabajo</b>, también llamado <b>neutral en el sentido de Harrod</b>: \(A\) multiplica a \(L\), no a \(K\) ni a toda la función. El modelo queda armado con cuatro piezas:</p>
+
+<div class="t3b-cards4">
+  <div class="card blue"><div class="card-title"><span class="t3b-n">1</span>Producción</div><p>\(Y_t = F(K_t,\ A_t L_t)\)</p></div>
+  <div class="card orange"><div class="card-title"><span class="t3b-n">2</span>Acumulación</div><p>\(\dot K = s\,F(K_t, A_tL_t) - \delta K_t\)&nbsp;(1)</p></div>
+  <div class="card aqua"><div class="card-title"><span class="t3b-n">3</span>Población</div><p>\(\dot L / L = n\)</p></div>
+  <div class="card violet"><div class="card-title"><span class="t3b-n">4</span>Tecnología</div><p>\(\dot A / A = g_A\)<br><span class="small">exógena y constante</span></p></div>
+</div>
+
+<div class="box tip"><div class="box-title">Misma cosa, distintas letras</div>
+<p>La tasa de progreso tecnológico es \(g_A\) en este manual, <b>\(x\)</b> en el TP4 y <b>\(g\)</b> en los parciales 2024 y 2025. El capital por unidad de trabajo efectivo es \(\kt\) acá y <b>\(\hat k\)</b> (“k sombrero”) en los parciales. No te confundas: son las mismas variables.</p></div>
+
+<h3>Las variables nuevas: el trabajo efectivo</h3>
+<div class="grid-2">
+<div class="box def"><div class="box-title">Definición</div>
+<p>\(A_tL_t\) = <b>unidades de trabajo efectivo</b>. Un trabajador con mejor tecnología cuenta como más de un trabajador: si \(A\) se duplica, 100 trabajadores rinden como 200 de antes.</p>
+<p>\(\kt = \dfrac{K}{AL} = \dfrac{k}{A}\) = capital por unidad de trabajo efectivo (razón capital-tecnología).</p>
+<p>\(\yt = \dfrac{Y}{AL}\) = producto por unidad de trabajo efectivo.</p></div>
+<div>
+<div class="flow" style="margin-top:0.2em">
+  <div class="node"><b>\(L\)</b>trabajadores<br>(crecen a \(n\))</div><div class="arrow">×</div>
+  <div class="node"><b>\(A\)</b>eficiencia<br>(crece a \(g_A\))</div><div class="arrow">=</div>
+  <div class="node"><b>\(AL\)</b>trabajo efectivo<br>(crece a \(n+g_A\))</div>
+</div>
+<p>Dividiendo la función de producción por \(A_tL_t\) (rendimientos constantes a escala) se obtiene la función por unidad de trabajo efectivo:</p>
+\[ \yt_t = f(\kt_t), \qquad \frac{\partial f}{\partial \kt} \gt 0 \]
+</div>
+</div>
+
+<h3>La ecuación fundamental con tecnología</h3>
+<p>Se deriva \(\kt = K/(AL)\) respecto del tiempo, igual que en 3.3 se derivaba \(k = K/L\), pero ahora el denominador tiene dos cosas que crecen:</p>
+<div class="calc">\[\begin{aligned}
+\dot{\kt} &= \frac{\dot K\,(AL) - K\,(\dot A L + A \dot L)}{(AL)^2} && \text{regla del cociente} \\
+&= \frac{\dot K}{AL} - \frac{\dot L}{L}\cdot\frac{K}{AL} - \frac{\dot A}{A}\cdot\frac{K}{AL} && \text{separar en tres términos} \\
+&= \frac{s F(K,AL) - \delta K}{AL} - n\kt - g_A\kt && \text{reemplazar } \dot K \text{ por (1)},\ \dot L/L = n,\ \dot A/A = g_A \\
+&= s f(\kt) - \delta\kt - n\kt - g_A\kt && \text{usar } F(K,AL)/(AL) = f(\kt) \\
+\dot{\kt} &= s\,f(\kt) - (\delta + n + g_A)\,\kt \qquad (2) && \text{agrupar: la ecuación fundamental con tecnología}
+\end{aligned}\]</div>
+
+<p>Es la misma ecuación que antes con un término más en la <b>depreciación efectiva</b>. Cada término de la resta es capital que hay que poner sólo para que \(\kt\) no caiga: \(\delta\kt\) repone el <b>desgaste</b>, \(n\kt\) equipa a los <b>trabajadores nuevos</b> (dilución) y \(g_A\kt\) equipa la <b>eficiencia nueva</b> de los que ya estaban.</p>
+<div class="box intuition"><div class="box-title">La intuición</div>
+<p>La lógica de \(g_A\) es <b>idéntica a la de \(n\)</b>: así como hay que equipar a los trabajadores nuevos, hay que equipar también a la mayor eficiencia de los existentes para que el capital por unidad de trabajo efectivo no caiga. Para la máquina, un trabajador el doble de eficiente “es” dos trabajadores.</p></div>
+
+<h3>El estado estacionario</h3>
+\[ \dot{\kt} = 0 \quad\Longrightarrow\quad s\,f(\kt) = (\delta + n + g_A)\,\kt \qquad (3) \]
+<p>Con Cobb-Douglas \(F(K, AL) = K^{\alpha}(AL)^{1-\alpha}\), dividir por \(AL\) da \(\dfrac{Y}{AL} = \dfrac{K^{\alpha}(AL)^{1-\alpha}}{AL} = \left(\dfrac{K}{AL}\right)^{\alpha}\), o sea \(\yt = \kt^{\alpha}\) (4). Reemplazando en (3) y despejando \(\kt^{1-\alpha} = s/(\delta+n+g_A)\):</p>
+
+<div class="formula-card">
+  <div class="fc-label">Estado estacionario con tecnología (Cobb-Douglas)</div>
+  \[ \kt^* = \left[\frac{s}{\delta + n + g_A}\right]^{\frac{1}{1-\alpha}} \qquad \yt^* = \left[\frac{s}{\delta + n + g_A}\right]^{\frac{\alpha}{1-\alpha}} \]
+  \[ k_t^* = A_t\,\kt^* \qquad\qquad y_t^* = A_t\,\yt^* \]
+  <div class="fc-legend"><span>\(s\): ahorro</span><span>\(\delta\): depreciación</span><span>\(n\): población</span><span>\(g_A\) (= \(x\) = \(g\)): progreso técnico</span><span>\(\alpha\): participación del capital</span></div>
+</div>
+
+<div class="box tip"><div class="box-title">Trucos: el atajo y el control</div>
+<p><b>Atajo:</b> son exactamente las fórmulas del modelo sin tecnología con \((\delta + n + g_A)\) en lugar de \((\delta + n)\). Por eso el ejercicio 9 del TP4 se resuelve igual que el 5. <b>Control en dos segundos:</b> de (3), \(\yt^* = \kt^*\,(\delta+n+g_A)/s\); si tu \(\yt^*\) no cumple esto, hay un error de cuenta.</p></div>
+
+<p>En la <b>versión en tasas</b> (la que se grafica en los parciales) se divide (2) por \(\kt\):</p>
+\[ \gamma_{\kt} = \frac{\dot{\kt}}{\kt} = \underbrace{s\,\frac{f(\kt)}{\kt}}_{\text{CA}\;=\;s\,\kt^{\alpha-1}\;=\;s/\kt^{1-\alpha}} - \underbrace{(\delta+n+g_A)}_{\text{CD}} \]
+
+<figure class="t3b-w90"><img src="figs/out/t3b_niveles_tasas.svg">
+  <figcaption><b>Figura 3.17.</b> Solow con progreso tecnológico con los números del parcial 2024 (prueba práctica 28/9/2024, Ej. 3: \(s = 0{,}2\); \(\alpha = 0{,}5\); \(n+g+\delta = 0{,}4\)). <b>Izquierda</b>: en niveles, el EE es el cruce de \(s\,f(\kt)\) con la recta \((n+g+\delta)\kt\); subiendo hasta \(f(\kt)\) se lee \(\yt^* = 0{,}5\). <b>Derecha</b>: en tasas, el cruce de la curva de ahorro CA (decreciente) con la recta horizontal CD; la distancia vertical entre ambas es \(\gamma_{\kt}\): verde, positiva (\(\kt\) sube); roja, negativa (\(\kt\) baja). Las flechas sobre el eje muestran que el EE es estable. Los dos gráficos dan el mismo \(\kt^* = 0{,}25\).</figcaption></figure>
+
+<div class="box example"><div class="box-title">Ejemplo numérico · Parcial 2024, prueba práctica 28/9/2024, Ej. 3 (las dos versiones)</div>
+<p><b>Versión Barbados–Guyana:</b> \(s = 20\,\%\), \(\delta = 5\,\%\), \(n = 10\,\%\), \(\alpha = 0{,}5\), \(g = 25\,\%\). <b>Versión Barbados–Jamaica:</b> \(s = 15\,\%\), \(\delta = 5\,\%\), \(n = 8\,\%\), \(\alpha = 0{,}5\), \(g = 17\,\%\).</p>
+<div class="calc">\[\begin{aligned}
+\text{a)}\quad & \yt = \frac{K^{0{,}5}(AL)^{0{,}5}}{AL} = \kt^{\,0{,}5} \\
+\text{b) Guyana:}\quad & n+g+\delta = 0{,}10+0{,}25+0{,}05 = 0{,}40 \;\Rightarrow\; \kt^* = \left(\tfrac{0{,}2}{0{,}4}\right)^{1/0{,}5} = 0{,}5^2 = 0{,}25 \qquad \yt^* = 0{,}25^{0{,}5} = 0{,}5 \\
+\text{b) Jamaica:}\quad & n+g+\delta = 0{,}08+0{,}17+0{,}05 = 0{,}30 \;\Rightarrow\; \kt^* = \left(\tfrac{0{,}15}{0{,}30}\right)^{2} = 0{,}25 \qquad \yt^* = 0{,}5 \\
+\text{control:}\quad & \yt^* = 0{,}25\cdot 0{,}4/0{,}2 = 0{,}5 \;✓ \\
+\text{c)}\quad & \text{CA} = 0{,}2\,\kt^{-0{,}5} = \frac{0{,}2}{\kt^{0{,}5}} \quad\text{y}\quad \text{CD} = 0{,}4 \qquad (\text{Jamaica: } 0{,}15/\kt^{0{,}5} \text{ y } 0{,}3)
+\end{aligned}\]</div>
+<p class="t3b-mini">En la versión Jamaica la opción “4 y 2” es la trampa de <b>invertir el cociente</b>: \((0{,}30/0{,}15)^2 = 4\) y \(4^{0{,}5} = 2\).</p>
+</div>
+
+<div class="t3b-grid-fig">
+<figure><img src="figs/out/t3b_signo.svg">
+  <figcaption><b>Figura 3.18.</b> La trampa del signo (parcial 2024, versión Guyana, Ej. 3 c). La curva correcta decrece y corta a CD = 0,4 en \(\kt^* = 0{,}25\). La opción impresa, \(0{,}2/\kt^{-0{,}5}\), es en realidad \(0{,}2\,\kt^{0{,}5}\): crece y corta a 0,4 recién en \(\kt = 4\), desde abajo.</figcaption></figure>
+<div class="box warn"><div class="box-title">Error típico: el signo del exponente</div>
+<p>La opción decía \(\dfrac{0{,}2}{\hat k^{-0{,}5}}\) y 0,4. Parece la correcta porque los números (0,2 y 0,4) están bien, pero un exponente negativo en el <b>denominador</b> sube al numerador: \(0{,}2/\hat k^{-0{,}5} = 0{,}2\,\hat k^{0{,}5}\), que es <b>creciente</b>. Una curva de ahorro en tasas nunca crece (rendimientos decrecientes).</p>
+<p>Respuesta estricta: <b>Ninguna opción es correcta</b>. Si la cátedra la tomó como errata de tipeo, argumentá en la revisión con la cuenta. En la versión Jamaica la opción correcta sí estaba bien escrita: \(0{,}15/\hat k^{0{,}5}\) y 0,3.</p></div>
+</div>
+
+<h3>Un ejemplo completo: el parcial 2025</h3>
+<div class="statement"><div class="statement-title">Enunciado · Primer parcial 2025 · Ej. 1 <span class="pts">25 ptos</span></div>
+<p>Solow-Swan con progreso tecnológico: \(s = 15\,\%\), \(\delta = 4\,\%\), \(n = 6\,\%\), participación del <b>trabajo</b> en el producto 0,6, \(g = 25\,\%\), Cobb-Douglas. a) \(\hat k^*\) e \(\hat y^*\) indicando la fórmula (8 ptos). b) Ídem si la tasa de ahorro disminuye a 10 % (7 ptos). c) Completar el gráfico, indicar las ecuaciones de las curvas, rotular los ejes y tachar lo que no corresponda (10 ptos).</p></div>
+
+<div class="box warn"><div class="box-title">Error típico: \(\alpha\) no es 0,6</div>
+<p>El dato es la participación del <b>trabajo</b>, \(1-\alpha = 0{,}6\). Entonces \(\alpha = 0{,}4\). Y “disminuye <b>a</b> 10 %” quiere decir \(s = 0{,}10\) (no 13,5 %).</p></div>
+
+<div class="calc">\[\begin{aligned}
+\text{a)}\quad & \kt^* = \left(\frac{s}{n+g+\delta}\right)^{\frac{1}{1-\alpha}} = \left(\frac{0{,}15}{0{,}35}\right)^{1/0{,}6} = 0{,}4286^{\,1{,}667} = 0{,}2436 \qquad \yt^* = 0{,}2436^{\,0{,}4} = 0{,}5684 \\
+& \text{control: } \yt^* = 0{,}2436\cdot 0{,}35/0{,}15 = 0{,}5684 \;✓ \\
+\text{b)}\quad & \kt^* = \left(\frac{0{,}10}{0{,}35}\right)^{1/0{,}6} = 0{,}2857^{\,1{,}667} = 0{,}1239 \qquad \yt^* = 0{,}1239^{\,0{,}4} = 0{,}4338
+\end{aligned}\]</div>
+
+<figure class="w80"><img src="figs/out/t3b_parcial2025.svg">
+  <figcaption><b>Figura 3.19.</b> El gráfico del parcial 2025 (Ej. 1 c) completo. Eje horizontal: \(\hat k = \kt\); eje vertical: su tasa de crecimiento. Curva de ahorro del inciso a (arriba, \(0{,}15/\kt^{0{,}6}\)) y del inciso b (abajo, punteada, \(0{,}10/\kt^{0{,}6}\)); recta de depreciación \(n+g+\delta = 0{,}35\), que no cambia. Los cortes están en 0,124 (b) y 0,244 (a). La flecha doble está en \(\kt = 0{,}124\), entre la curva de ahorro de arriba y la recta: mide \(\gamma = +0{,}175\).</figcaption></figure>
+
+<p>Con el gráfico armado, hay que tachar en las dos oraciones lo que no corresponde. Queda así (en verde lo que se deja, tachado lo que se tacha):</p>
+<div class="t3b-tachar">
+La flecha doble vertical muestra que la tasa de crecimiento <s>del capital per cápita</s> / <s>producto por trabajador</s> / <b class="t3b-ok">del capital por unidad de trabajo efectivo</b> es <b class="t3b-ok">positiva</b> / <s>negativa</s> / <s>de estado estacionario</s>.<br>
+La Curva de <b class="t3b-ok">Ahorro/Inversión Bruta</b> / <s>Depreciación</s> / <s>Producción</s> se desplazó <b class="t3b-ok">hacia abajo</b> / <s>hacia arriba</s> considerando como situación inicial el inciso a.
+</div>
+<div class="box tip t3b-break"><div class="box-title">Por qué se tacha así</div>
+<ul>
+  <li><b>¿Tasa de crecimiento de qué?</b> El eje vertical mide \(\gamma_{\kt}\): el gráfico está hecho en \(\kt\), así que la flecha mide el crecimiento del <b>capital por unidad de trabajo efectivo</b>. (El capital per cápita \(k = A\kt\) crecería a \(\gamma_{\kt} + g\): no es lo que mide la flecha.)</li>
+  <li><b>¿Positiva o negativa?</b> La flecha va de la recta CD (0,35) hacia <b>arriba</b>, hasta la curva de ahorro del inciso a: en \(\kt = 0{,}124\) con \(s = 0{,}15\), \(\gamma = 0{,}525 - 0{,}35 = +0{,}175 \gt 0\). No es “de estado estacionario”: en el EE la tasa es cero y no hay flecha.</li>
+  <li><b>¿Qué curva se movió y hacia dónde?</b> Bajó \(s\), que sólo está en la curva de ahorro: se desplazó <b>hacia abajo</b>. Ahorro e inversión bruta son la misma curva (\(S = I\)), por eso no se tacha ninguna de las dos. La depreciación \(n+g+\delta\) no depende de \(s\).</li>
+</ul></div>
+<div class="box intuition"><div class="box-title">La dinámica que cuenta el gráfico</div>
+<p>Si la economía estaba en el EE del inciso a (\(\kt = 0{,}244\)) y el ahorro baja a 10 %, en ese punto la nueva curva queda por debajo de la recta: \(\gamma = 0{,}10\cdot 0{,}244^{-0{,}6} - 0{,}35 = -0{,}117\). El capital por unidad de trabajo efectivo <b>cae</b> hasta 0,124. Durante esa transición el ingreso per cápita crece <b>menos</b> que \(g\); al llegar, vuelve a crecer a \(g = 25\,\%\), pero en un nivel más bajo. Es un <b>efecto nivel</b>, no un efecto crecimiento.</p></div>
+
+<h3>La senda de crecimiento balanceado: el resultado clave</h3>
+<p>En estado estacionario \(\kt\) e \(\yt\) son constantes. Pero como \(\kt = k/A\) y \(A\) crece a la tasa \(g_A\), <b>para que el cociente se mantenga constante \(k\) debe crecer a la tasa \(g_A\)</b>. Lo mismo vale para \(y = \yt\cdot A\). Con logaritmos se ve en una línea:</p>
+<div class="calc">\[\begin{aligned}
+\ln y &= \ln \yt + \ln A &&\Rightarrow\quad g_y = \underbrace{g_{\yt}}_{0} + g_A = g_A \\
+\ln Y &= \ln \yt + \ln A + \ln L &&\Rightarrow\quad g_Y = \underbrace{g_{\yt}}_{0} + g_A + n = n + g_A
+\end{aligned}\]</div>
+
+<div class="formula-card">
+  <div class="fc-label">Tasas de crecimiento en el estado estacionario</div>
+  \[ g_y^* = g_k^* = g_c^* = g_A \qquad\qquad g_Y^* = g_K^* = g_C^* = n + g_A \]
+  <div class="fc-legend"><span>las variables <b>per cápita</b> crecen a la tasa del progreso técnico</span><span>las <b>agregadas</b> crecen a \(n + g_A\)</span></div>
+</div>
+
+<figure class="w80"><img src="figs/out/t3b_sendas.svg">
+  <figcaption><b>Figura 3.20.</b> La senda de crecimiento balanceado (esquemático; en escala logarítmica una tasa constante es una recta y su pendiente es la tasa). <b>Izquierda</b>: en el EE \(\ln\yt\) es plana, \(\ln y\) sube con pendiente \(g\) y \(\ln Y\) con pendiente \(n+g\). <b>Derecha</b>: una economía que arranca con poco capital (\(\kt_0 \lt \kt^*\)) crece más rápido que \(g\) y se acerca a la senda desde abajo; una que arranca con mucho, crece más lento y se acerca desde arriba. Las dos terminan creciendo a \(g\).</figcaption></figure>
+
+<div class="grid-2">
+<table class="compact">
+<thead><tr><th>Variable</th><th class="num">Sin tecnología</th><th class="num">Con tecnología</th></tr></thead>
+<tbody>
+<tr><td>Por unidad de trabajo efectivo (\(\kt,\ \yt\))</td><td class="num">—</td><td class="num">0</td></tr>
+<tr><td>Per cápita (\(k,\ y,\ c\))</td><td class="num">0</td><td class="num">\(g_A\)</td></tr>
+<tr><td>Agregadas (\(K,\ Y,\ C\))</td><td class="num">\(n\)</td><td class="num">\(n + g_A\)</td></tr>
+</tbody></table>
+<div class="box example" style="margin-top:0.6em"><div class="box-title">Con números</div>
+<p>TP4, ej. 9 (\(x = 20\,\%\), \(n = 10\,\%\)): el producto per cápita crece 20 % y el total, 30 %. Parcial 2025 (\(g = 25\,\%\), \(n = 6\,\%\)): per cápita 25 %, total 31 %. Los parámetros del parcial son exagerados a propósito: en la realidad \(g_A\) ronda el 1,5–2 % anual.</p></div>
+</div>
+
+
+
+<h3>Las conclusiones que la cátedra remarca</h3>
+<div class="grid-3 t3b-three">
+  <div class="card green"><div class="card-title"><span class="t3b-n">1</span>Sin tecnología no hay crecimiento de largo plazo</div><p><b>Sólo puede haber crecimiento económico en el largo plazo si existe progreso tecnológico.</b> Es la respuesta a “¿por qué el progreso tecnológico es necesario para explicar el crecimiento sostenido del ingreso per cápita?”: sin él, los rendimientos decrecientes del capital terminan deteniendo la acumulación y el ingreso per cápita se estanca en \(y^*\).</p></div>
+  <div class="card red"><div class="card-title"><span class="t3b-n">2</span>Pero \(g_A\) cae del cielo</div><p><b>Al suponer que el aumento de \(A\) es exógeno, el modelo no explica cómo aumentar \(g_A\).</b> La variable que determina todo el crecimiento de largo plazo cae del cielo. Es la crítica central al modelo y la razón de ser del modelo de Romer (3.8).</p></div>
+  <div class="card blue"><div class="card-title"><span class="t3b-n">3</span>Explica bien la transición</div><p><b>El modelo ofrece explicaciones interesantes de la transición</b> hacia el estado estacionario (convergencia, efectos nivel), aunque no del largo plazo.</p></div>
+</div>
+
+<div class="box intuition"><div class="box-title">La paradoja de \(x\) (TP4, ej. 9 c–e)</div>
+<p>Un progreso técnico <b>más rápido baja \(\kt^*\)</b>, porque \(x\) entra en la depreciación efectiva igual que \(n\): hace falta más inversión sólo para sostener \(\kt\). Con \(s = 45\,\%\), \(\delta = 4\,\%\), \(n = 10\,\%\), \(\alpha = 1/3\): si \(x\) pasa de 16 % a 20 % y a 35 %, \(\kt^*\) cae de 1,8371 a 1,5227 y a 0,8801, pero el ingreso per cápita pasa a crecer al 16 %, 20 % y 35 % (el total, 26 %, 30 % y 45 %). Eso no empobrece al país: \(\kt\) es una variable auxiliar; el capital por trabajador de verdad es \(k = \kt\cdot A\), con \(A\) creciendo más rápido. En el largo plazo el de mayor \(x\) es inequívocamente más rico: \(x\) es el <b>único parámetro con efecto crecimiento</b>; \(s\), \(n\) y \(\delta\) sólo mueven el nivel.</p></div>
+
+<div class="box formula"><div class="box-title">Regla de oro con tecnología</div>
+<p>El consumo por unidad de trabajo efectivo en el EE es \(\tilde c^* = f(\kt^*) - (\delta+n+g_A)\kt^*\). Maximizando: \(\ f'(\kt_{oro}) = \delta + n + g_A\). Con Cobb-Douglas, \(\alpha\,\kt^{\alpha-1} = \delta+n+g_A\) da \(\kt_{oro} = \left[\alpha/(\delta+n+g_A)\right]^{1/(1-\alpha)}\) y, comparando con \(\kt^*\), sigue valiendo <b>\(s_{oro} = \alpha\)</b>. En el parcial 2025, \(s = 0{,}15 \lt \alpha = 0{,}4\): esa economía <b>subacumula</b> (\(\kt^* = 0{,}244 \lt \kt_{oro} = 1{,}249\)).</p></div>
+
+<h3>Cuadro comparativo: Solow con y sin tecnología</h3>
+<p>Lo pide el ejercicio 2 del TP4:</p>
+<table>
+<thead><tr><th></th><th>Sin tecnología</th><th>Con tecnología</th></tr></thead>
+<tbody>
+<tr><td><b>Función de producción</b></td><td>\(Y = F(K, L)\)</td><td>\(Y = F(K, AL)\)</td></tr>
+<tr><td><b>Variable de trabajo</b></td><td>Trabajadores \(L\)</td><td>Trabajo efectivo \(AL\)</td></tr>
+<tr><td><b>Variable de análisis</b></td><td>\(k = K/L\)</td><td>\(\kt = K/(AL)\)</td></tr>
+<tr><td><b>Ecuación fundamental</b></td><td>\(\dot k = s f(k) - (\delta+n)k\)</td><td>\(\dot{\kt} = s f(\kt) - (\delta+n+g_A)\kt\)</td></tr>
+<tr><td><b>Estado estacionario</b></td><td>\(k^* = [s/(\delta+n)]^{1/(1-\alpha)}\)</td><td>\(\kt^* = [s/(\delta+n+g_A)]^{1/(1-\alpha)}\)</td></tr>
+<tr><td><b>Crecimiento per cápita en EE</b></td><td>0</td><td>\(g_A\)</td></tr>
+<tr><td><b>Crecimiento agregado en EE</b></td><td>\(n\)</td><td>\(n + g_A\)</td></tr>
+<tr><td><b>¿Explica el crecimiento sostenido?</b></td><td class="bad">No</td><td>Sí, pero sin explicar su causa</td></tr>
+</tbody></table>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Parcial 2023, teórica 3</div>
+<p><b>El modelo de Solow con tecnología explica que las variables capital y producto per cápita en el EE se incrementan debido a:</b></p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>Las políticas implementadas por el Estado en relación al ahorro/inversión.<span class="why">El ahorro tiene efecto nivel: cambia \(k^*\), no la tasa de largo plazo. Y en el modelo no hay Estado.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>Que la tecnología crece a una tasa constante y exógena.<span class="why">En el EE \(k\) e \(y\) per cápita crecen a \(g_A\), que el modelo toma como dato.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>No es posible que en el EE las variables per cápita se modifiquen.<span class="why">Eso vale en el modelo <em>sin</em> tecnología.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Que la tecnología crece a una tasa constante y endógena y, por lo tanto, explicada por el modelo.<span class="why">“Endógena” es Romer; en Solow es exógena y no se explica (conclusión 2).</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.<span class="why">b es correcta.</span></span></li>
+</ul></div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Prueba teórica 27/09/2025, pregunta 3</div>
+<p><b>¿Qué característica define al modelo de crecimiento de Solow con progreso tecnológico?</b></p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El crecimiento económico depende exclusivamente del capital físico.<span class="why">Con rendimientos decrecientes el capital solo no sostiene el crecimiento: hace falta \(g_A\).</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>La productividad total de los factores permanece constante en el tiempo.<span class="why">Al revés: \(A\) crece a \(g_A\); constante es en el modelo básico.</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>El crecimiento sostenido de la renta per cápita es posible gracias al progreso tecnológico.<span class="why">Es la conclusión 1: en el EE \(g_y = g_A\).</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>El modelo no considera el rol del ahorro.<span class="why">El ahorro está en la ecuación fundamental y fija el nivel de \(\kt^*\).</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Todas.<span class="why">a, b y d son falsas.</span></span></li>
+</ul></div>
+
+
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Sala-i-Martín, cap. 1, pp. 39-47 [obligatoria] · Jones, cap. 3, pp. 56-63 [complementaria] · Weil, cap. 3, pp. 57-67 [complementaria].</p></div>
+
+<!-- ======================================================================= 3.7 -->
+<h2><span class="num">3.7</span>Contabilidad del crecimiento y convergencia</h2>
+
+<h3>El esquema contable de Solow y el residuo</h3>
+<p>Permite <b>descomponer el crecimiento observado en sus fuentes</b>: cuánto vino de más capital, cuánto de más trabajo y cuánto de mayor productividad. La derivación:</p>
+<div class="calc">\[\begin{aligned}
+& Y = A\cdot F(K, L) && (1)\ \text{punto de partida} \\
+& \Delta Y = \Delta A\cdot F(K,L) + \frac{\partial Y}{\partial K}\,\Delta K + \frac{\partial Y}{\partial L}\,\Delta L && (2)\ \text{diferenciando} \\
+& \frac{\Delta Y}{Y} = \frac{\Delta A\cdot F(K,L)}{Y} + \frac{\text{PMg}_K}{Y}\,\Delta K + \frac{\text{PMg}_L}{Y}\,\Delta L && \text{dividiendo por } Y;\ \text{como } Y = A F,\ \tfrac{\Delta A\cdot F}{Y} = \tfrac{\Delta A}{A} \\
+& \frac{\Delta Y}{Y} = \frac{\Delta A}{A} + \underbrace{\frac{\text{PMg}_K\cdot K}{Y}}_{\text{participación de }K\;=\;s_K}\cdot\frac{\Delta K}{K} + \underbrace{\frac{\text{PMg}_L\cdot L}{Y}}_{\text{participación de }L\;=\;s_L}\cdot\frac{\Delta L}{L} && \text{multiplicando y dividiendo por } K \text{ y por } L \\
+& \frac{\Delta Y}{Y} = \frac{\Delta A}{A} + s_K\,\frac{\Delta K}{K} + s_L\,\frac{\Delta L}{L} && (3)\ \text{contabilidad del crecimiento}
+\end{aligned}\]</div>
+
+<div class="box intuition"><div class="box-title">¿Por qué \(\text{PMg}_K\cdot K/Y\) es “la participación del capital”?</div>
+<p>Con mercados competitivos cada factor cobra su productividad marginal: el capital recibe \(r = \text{PMg}_K\) por unidad, así que \(rK/Y\) es la <b>fracción del ingreso que se lleva el capital</b>. Con Cobb-Douglas esa fracción es justamente \(\alpha\): por eso \(s_K = \alpha\) y \(s_L = 1-\alpha\). Se miden en las cuentas nacionales (en los ejemplos de la cátedra, \(s_K \approx 0{,}35\)).</p></div>
+
+<p>Para pasar a <b>términos per cápita</b> se resta \(\Delta L/L\) a ambos lados y se usa que \(s_K + s_L = 1\), o sea \(s_L - 1 = -s_K\). Queda:</p>
+<div class="calc">\[\begin{aligned}
+\frac{\Delta y}{y} &= \frac{\Delta A}{A} + s_K\frac{\Delta K}{K} - s_K\frac{\Delta L}{L} \\
+\frac{\Delta y}{y} &= \frac{\Delta A}{A} + s_K\,\frac{\Delta k}{k} \qquad (4)
+\end{aligned}\]</div>
+<p>Y despejando la productividad se obtiene el <b>residuo de Solow</b>:</p>
+<div class="formula-card">
+  <div class="fc-label">Contabilidad del crecimiento</div>
+  \[ g_Y = g_A + s_K\,g_K + s_L\,g_L \qquad\qquad g_y = g_A + s_K\,g_k \]
+  \[ \boxed{\;g_A = \frac{\Delta A}{A} = \frac{\Delta y}{y} - s_K\,\frac{\Delta k}{k} = g_y - s_K\,g_k\;} \qquad (5) \]
+  <div class="fc-legend"><span>\(g_k = g_K - g_L\)</span><span>\(g_y = g_Y - g_L\)</span><span>\(s_K + s_L = 1\)</span></div>
+</div>
+
+<div class="box def"><div class="box-title">Qué mide el residuo y por qué se lo interpreta como progreso tecnológico</div>
+<p>Es la parte del crecimiento del producto per cápita que <b>no</b> se explica por la acumulación de capital por trabajador. Es un <b>residuo</b>, literalmente: lo que queda. Se lo llama <b>productividad total de los factores</b> (PTF) y se lo interpreta como progreso técnico por descarte, pero en rigor recoge <b>todo lo no medido</b>: eficiencia en la asignación, calidad de las instituciones, capital humano, economías de escala, e incluso los errores de medición de \(K\) y \(L\). Por eso Abramovitz lo llamó <b>“la medida de nuestra ignorancia”</b>.</p></div>
+<div class="grid-3 t3b-three">
+  <div class="card aqua"><div class="card-title">Tecnología</div><p>El progreso técnico propiamente dicho: lo que el modelo quiere medir.</p></div>
+  <div class="card blue"><div class="card-title">Eficiencia e instituciones</div><p>Mejor asignación de los recursos, calidad de las instituciones, economías de escala, uso de la capacidad instalada.</p></div>
+  <div class="card orange"><div class="card-title">Lo que no se midió</div><p>Capital humano (no está en \(K\) ni en \(L\)) y los errores de medición de \(K\) y \(L\), que caen íntegros en el residuo.</p></div>
+</div>
+
+<div class="box example"><div class="box-title">Ejemplo · Argentina 1991, primer año de la Convertibilidad</div>
+<p>Datos: \(g_Y = 9{,}7\,\%\), \(g_L = 3{,}8\,\%\), \(g_K = -0{,}1\,\%\), \(s_K \approx 0{,}35\).</p>
+<div class="calc">\[\begin{aligned}
+g_k &= g_K - g_L = -0{,}1 - 3{,}8 = -3{,}9\,\% \\
+g_y &= g_Y - n = 9{,}7 - 3{,}8 = 5{,}9\,\% \\
+g_A &= g_y - s_K\,g_k = 5{,}9 - 0{,}35\cdot(-3{,}9) = 5{,}9 + 1{,}37 = 7{,}3\,\% \\
+\text{control agregado:}\quad g_A &= g_Y - s_K g_K - s_L g_L = 9{,}7 + 0{,}035 - 0{,}65\cdot 3{,}8 = 7{,}3\,\%\;✓
+\end{aligned}\]</div>
+<p>Del 9,7 % de crecimiento, <b>más de 7 puntos son productividad</b>: no hubo más capital ni más capital por persona —de hecho cayó—. La Convertibilidad frenó la hiperinflación y la eficiencia saltó.</p></div>
+
+<figure class="t3b-w90"><img src="figs/out/t3b_contabilidad.svg">
+  <figcaption><b>Figura 3.21.</b> La contabilidad del crecimiento en barras, en puntos porcentuales. Fuentes: Argentina 1991 (este manual, \(s_K = 0{,}35\)) y el ejercicio extra E11 de la práctica resuelta (\(g_Y = 4{,}2\,\%\), \(g_L = 1{,}1\,\%\), \(g_K = 5{,}6\,\%\), \(s_K = 0{,}35\)). La raya negra es el total (la suma con signo). <b>Izquierda</b>: el producto total se reparte entre capital, trabajo y residuo. <b>Derecha</b>: por trabajador sólo quedan capital por trabajador y residuo; en Argentina 1991 el aporte del capital es <b>negativo</b> (−1,365), así que el residuo (7,265) es mayor que el propio crecimiento (5,9). En el E11 el crecimiento per cápita se reparte casi mitad y mitad: 50,8 % capital y 49,2 % productividad.</figcaption></figure>
+
+<div class="recipe"><div class="recipe-title">Receta: calcular el residuo de Solow</div>
+<ol>
+  <li>Pasá a <b>por trabajador</b>: \(g_k = g_K - g_L\) y \(g_y = g_Y - g_L\).</li>
+  <li>Residuo: \(g_A = g_y - s_K\,g_k\). Si \(g_k\) es negativo, <b>restar un negativo suma</b>.</li>
+  <li>Controlá con la versión agregada: \(g_A = g_Y - s_K g_K - s_L g_L\) tiene que dar lo mismo.</li>
+  <li>Si piden proporciones: aporte del capital \(= s_K g_k/g_y\); de la productividad \(= g_A/g_y\) (suman 100 %).</li>
+</ol></div>
+
+<div class="box warn"><div class="box-title">Errores típicos</div>
+<ul>
+  <li>Usar \(g_K\) (agregado) en la fórmula per cápita, o \(g_Y\) en lugar de \(g_y\). En la per cápita todo va por trabajador.</li>
+  <li>Multiplicar por \(s_L\) en la versión per cápita: el trabajo desaparece justamente porque \(s_L - 1 = -s_K\).</li>
+  <li>Decir que el residuo “es” la tecnología: es todo lo que no se explica por \(K\) y \(L\), incluidos los errores de medición.</li>
+</ul></div>
+
+<h3>La hipótesis de convergencia</h3>
+<p>Sale directo de la ecuación fundamental escrita como tasa de crecimiento:</p>
+\[ \frac{\dot{\kt}}{\kt} = \gamma_{\kt} = s\,\frac{f(\kt)}{\kt} - (\delta + n + g_A) \]
+<p>Como \(f(\kt)/\kt\) es <b>decreciente</b> en \(\kt\) —rendimientos decrecientes; con Cobb-Douglas \(f(\kt)/\kt = 1/\kt^{1-\alpha}\)—, <b>cuanto menor es el capital, mayor es la tasa de crecimiento</b>. Con los números del parcial 2025 (inciso a) se ve cómo la tasa cae a medida que la economía se acerca a su EE:</p>
+<table class="compact">
+<thead><tr><th>\(\kt\)</th><th class="num">0,05</th><th class="num">0,10</th><th class="num">0,15</th><th class="num">0,20</th><th class="num">0,2436 (\(\kt^*\))</th></tr></thead>
+<tbody><tr><td>\(\gamma_{\kt} = 0{,}15/\kt^{0{,}6} - 0{,}35\)</td><td class="num">0,555</td><td class="num">0,247</td><td class="num">0,118</td><td class="num">0,044</td><td class="num">0</td></tr></tbody></table>
+
+<figure class="w80"><img src="figs/out/t3b_convergencia.svg">
+  <figcaption><b>Figura 3.22.</b> Convergencia absoluta y condicional (esquemático). <b>Arriba a la izquierda</b>: con los mismos parámetros hay una sola curva de ahorro; el pobre P está más lejos del EE y su flecha (\(\gamma_P\)) es más larga que la del rico R. <b>Arriba a la derecha</b>: si el pobre ahorra menos, su curva (punteada) está más abajo y su \(\kt^*_P\) es bajo; como ya está cerca de su EE, crece <b>menos</b> que el rico. <b>Abajo</b>: las trayectorias del ingreso per cápita en logaritmos. Con convergencia absoluta P alcanza a R en una sola senda; con condicional cada uno va a su senda, paralelas (ambas crecen a \(g\)), y la brecha no se cierra.</figcaption></figure>
+
+<table>
+<thead><tr><th></th><th>Convergencia absoluta</th><th>Convergencia condicional</th></tr></thead>
+<tbody>
+<tr><td><b>Supuesto</b></td><td>Todos los países tienen los mismos \(s\), \(n\), \(\delta\), \(g_A\)</td><td>Cada país tiene sus propios parámetros</td></tr>
+<tr><td><b>Estado estacionario</b></td><td>Uno solo, común a todos</td><td>Uno propio para cada país</td></tr>
+<tr><td><b>Predicción</b></td><td>Los países pobres crecen más rápido que los ricos, siempre</td><td>Cada país crece más rápido cuanto más lejos está <b>de su propio</b> \(k^*\)</td></tr>
+<tr><td><b>Implicancia</b></td><td>Las rentas per cápita se igualan en el largo plazo</td><td>Las rentas <b>no</b> se igualan: converge cada uno a su nivel</td></tr>
+</tbody></table>
+
+
+
+<div class="grid-2">
+<div class="box def"><div class="box-title">Convergencia absoluta</div>
+<p>Si el país P es más pobre que el país R, entonces \(\kt_P \lt \kt_R\) y, por lo tanto, \(g_P \gt g_R\). <b>A menor ingreso inicial, mayor tasa de crecimiento.</b></p></div>
+<div class="box def"><div class="box-title">Convergencia condicional</div>
+<p>Si los países difieren en sus parámetros, el modelo ya no predice mayor crecimiento para el más pobre. Si \(s_P \lt s_R\), la curva de ahorro del país pobre está por debajo, su \(k^*\) es menor y puede resultar \(g_P \lt g_R\): el pobre crece menos que el rico porque <b>ya está cerca de su propio EE, que es bajo</b>.</p></div>
+</div>
+
+<h4>La evidencia empírica</h4>
+<div class="flow">
+  <div class="node" style="background:var(--red-bg);border-color:var(--red)"><b style="color:var(--red-ink)">Muestra amplia de países</b>El gráfico de la tasa de crecimiento 1960-2022 contra el PBI per cápita de 1960 <b>no</b> muestra la relación negativa clara que predice la absoluta.</div><div class="arrow">+</div>
+  <div class="node" style="background:var(--green-bg);border-color:var(--green)"><b style="color:var(--green-ink)">Grupos homogéneos</b>Dentro de la OCDE o entre regiones de un mismo país <b>sí</b> hay convergencia: lo que predice la condicional.</div><div class="arrow">⇒</div>
+  <div class="node"><b>Veredicto</b>Ese contraste entre teoría y datos consolidó a la <b>convergencia condicional</b> como la formulación aceptada.</div>
+</div>
+<p>El caso de Japón y Alemania después de 1945 (punto 3.4) es convergencia condicional en acción: arrancaron muy por debajo de su propio \(k^*\), crecieron muy rápido durante la reconstrucción y se moderaron al acercarse.</p>
+
+<h3>Trampas de pobreza</h3>
+<div class="box def"><div class="box-title">Definición</div>
+<p>Son <b>equilibrios de bajo ingreso de los que una economía no puede salir por sí sola</b>. Aparecen cuando el modelo básico se modifica para admitir <b>múltiples estados estacionarios</b>: por ejemplo, si a niveles bajos de capital hay <b>rendimientos crecientes</b> —por indivisibilidades en la infraestructura, o porque se necesita un umbral mínimo de capital humano—, la curva de ahorro cruza a la de depreciación más de una vez (Figura 3.23).</p></div>
+
+
+
+<div class="grid-3 t3b-three">
+  <div class="card blue"><div class="card-title">\(k_P\) · equilibrio pobre</div><p><b>Estable</b>. La CA corta a la CD desde arriba: si \(k\) se aleja un poco, vuelve.</p></div>
+  <div class="card red"><div class="card-title">\(k_U\) · umbral</div><p><b>Inestable</b>. La CA corta desde abajo: cualquier desvío se amplifica. Actúa como frontera entre los dos destinos.</p></div>
+  <div class="card green"><div class="card-title">\(k_R\) · equilibrio rico</div><p><b>Estable</b>. Una vez que se cruza el umbral, la economía llega sola hasta acá.</p></div>
+</div>
+<p>Un país que arranca por debajo del umbral converge al equilibrio pobre y se queda ahí. Sólo un <b>empujón grande</b> —el <em>big push</em>, una inversión masiva que lleve el capital por encima del umbral— permite saltar al equilibrio alto. <b>La conclusión de política es fuerte: la ayuda gradual puede no servir de nada, mientras que un shock de inversión sí.</b></p>
+
+<figure class="w80"><img src="figs/out/t3b_trampa.svg">
+  <figcaption><b>Figura 3.23.</b> Una trampa de pobreza (esquemático). <b>Izquierda</b>: en niveles, \(s\,f(k)\) tiene un tramo convexo (rendimientos crecientes) y corta tres veces a la recta \((n+\delta)k\). <b>Derecha</b>: en tasas, la curva de ahorro deja de ser monótona: baja, sube y vuelve a bajar. Flechas sobre el eje: lo que arranca a la izquierda de \(k_U\) termina en \(k_P\); lo que arranca a la derecha, en \(k_R\). El <em>big push</em> salta el umbral de una sola vez.</figcaption></figure>
+<div class="grid-2">
+<div class="box tip"><div class="box-title">Truco: ¿estable o inestable?</div>
+<p>En el diagrama en tasas mirá <b>cómo corta</b> la curva de ahorro a la recta: <b>desde arriba</b> (a la izquierda \(\gamma \gt 0\), a la derecha \(\gamma \lt 0\)) es estable; <b>desde abajo</b>, inestable. Es el mismo criterio que descarta la opción mal impresa del parcial 2024 (Figura 3.18).</p></div>
+<div class="box intuition"><div class="box-title">Otra fuente de trampa (complemento)</div>
+<p>También aparece si la <b>tasa de ahorro depende del ingreso</b>: cerca del ingreso de subsistencia la gente no puede ahorrar, así que \(s\) es casi cero con poco capital y sube después. La curva de ahorro vuelve a ser no monótona y el resultado es el mismo: un equilibrio pobre, un umbral y un equilibrio rico.</p></div>
+</div>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Larraín y Sachs, cap. 4 “Fuentes de crecimiento”, pp. 104-110 y apéndice pp. 129-132 [obligatoria] · Sala-i-Martín, cap. 2, pp. 70-79 [obligatoria] · Weil, cap. 3 [complementaria].</p></div>
+
+<!-- ======================================================================= 3.8 -->
+<h2><span class="num">3.8</span>Crecimiento endógeno: la economía de las ideas y el modelo de Romer</h2>
+<p>Solow deja una pregunta abierta: el crecimiento de largo plazo depende de \(g_A\), y \(g_A\) es exógeno. <b>Romer (1990)</b> la responde <b>haciendo endógena la tecnología</b>: las ideas se producen, y alguien decide cuántos recursos destinar a producirlas.</p>
+
+<h3>La idea central: las ideas son bienes no rivales</h3>
+<p>Esta es la pieza conceptual que más se pregunta.</p>
+<table>
+<thead><tr><th></th><th>Bien rival</th><th>Bien no rival</th></tr></thead>
+<tbody>
+<tr><td><b>Definición</b></td><td>Su uso por una persona impide el uso simultáneo por otra</td><td>Puede ser usado por muchos a la vez sin agotarse</td></tr>
+<tr><td><b>Ejemplos</b></td><td>Una máquina, una hora de trabajo, una tonelada de acero</td><td>El teorema de Pitágoras, una fórmula química, un algoritmo</td></tr>
+</tbody></table>
+<p>Las ideas son <b>no rivales pero parcialmente excluibles</b>: con patentes y secreto industrial se puede impedir que otros las usen, aunque nunca del todo. Las dos propiedades son independientes, y conviene ubicarlas en un cuadro:</p>
+<div class="t3b-matrix">
+  <div class="t3b-h"></div><div class="t3b-h">Rival</div><div class="t3b-h">No rival</div>
+  <div class="t3b-h">Excluible</div>
+  <div class="t3b-c"><b>Bienes privados</b>una máquina, una tonelada de acero, una hora de trabajo</div>
+  <div class="t3b-c t3b-idea"><b>Ideas protegidas (parcialmente excluibles)</b>una fórmula patentada, un software con licencia, un secreto industrial: acá opera Romer</div>
+  <div class="t3b-h">No excluible</div>
+  <div class="t3b-c"><b>Recursos comunes</b>los peces del mar: los que saca uno no los saca otro, pero es difícil impedir que pesquen</div>
+  <div class="t3b-c t3b-idea"><b>Conocimiento libre</b>el teorema de Pitágoras, la ciencia básica publicada</div>
+</div>
+
+<h3>Qué implica para los rendimientos a escala</h3>
+<p>Es la pregunta textual de la guía. En Solow, con \(A\) dado, la función tiene rendimientos constantes en \(K\) y \(L\). Pero si se duplican también las ideas, el producto más que se duplica: <b>hay rendimientos crecientes a escala en los tres factores tomados juntos</b>.</p>
+\[ F(2K,\ 2L;\ A) = 2Y \qquad\text{pero}\qquad F(2K,\ 2L;\ 2A) \gt 2Y \]
+<p>La razón es que <b>la idea no hay que producirla de nuevo para el segundo usuario</b>: su costo marginal de replicación es casi cero. Para duplicar la producción de una vacuna se duplican las plantas y los trabajadores, pero la fórmula no hay que inventarla dos veces.</p>
+<p>Y eso trae una consecuencia incómoda: <b>con rendimientos crecientes no puede haber competencia perfecta</b>. Si cada factor cobrara su productividad marginal, la suma de los pagos superaría al producto total, y no quedaría nada para remunerar la investigación. (Con rendimientos constantes en \(K\) y \(L\), pagarles su productividad marginal ya agota todo el producto: \(\text{PMg}_K\,K + \text{PMg}_L\,L = Y\).)</p>
+<div class="flow">
+  <div class="node"><b>Idea no rival</b>costo de copia ≈ 0</div><div class="arrow">→</div>
+  <div class="node"><b>Rendimientos crecientes</b>en \(K\), \(L\) y \(A\)</div><div class="arrow">→</div>
+  <div class="node"><b>Sin competencia perfecta</b>pagar PMg no deja nada para la I+D</div><div class="arrow">→</div>
+  <div class="node"><b>Competencia monopolística</b>renta temporaria vía patente</div><div class="arrow">→</div>
+  <div class="node"><b>Incentivo a investigar</b>fundamento de la propiedad intelectual</div>
+</div>
+<p>Por eso Romer necesita <b>competencia monopolística</b>: el innovador obtiene una <b>renta temporaria</b> —vía patente— que es lo que hace rentable investigar. Es el <b>fundamento teórico de la propiedad intelectual</b>.</p>
+
+<h3>El modelo</h3>
+<p>La economía se divide en dos sectores. Una parte de los trabajadores produce bienes; otra, \(L_A\) <b>investigadores</b>, produce ideas:</p>
+
+<figure class="t3b-w90"><img src="figs/out/t3b_romer_flujo.svg">
+  <figcaption><b>Figura 3.24.</b> El modelo de Romer en un diagrama. La población se reparte entre investigadores (\(L_A\)) y trabajadores que producen bienes (\(L_Y\)). Las ideas nuevas engrosan el stock \(A\), que por ser no rival lo usan todos los productores a la vez; el mismo stock hace más productiva a la investigación (\(\phi\)). La patente le da al innovador una renta que financia la I+D. La función de producción de bienes es la de Jones, cap. 5.</figcaption></figure>
+
+<div class="formula-card">
+  <div class="fc-label">Función de producción de ideas</div>
+  \[ \dot A = \delta\, L_A^{\lambda}\, A^{\phi} \]
+  <div class="fc-legend"><span>\(\lambda\): rendimiento del factor trabajo empleado en la producción de ideas</span><span>\(\phi\): tasa de desbordamiento de ideas (productividad del stock de ideas existentes en las actividades de I+D)</span><span>\(n\): tasa de crecimiento de los investigadores</span><span>\(\delta\): parámetro de productividad de la investigación</span></div>
+</div>
+<div class="grid-2">
+<div class="box intuition"><div class="box-title">“A hombros de gigantes”</div>
+<p>El parámetro \(\phi\) captura que el stock de conocimiento existente hace más productiva a la investigación actual. <b>Si \(\phi \gt 0\), saber más ayuda a descubrir más.</b> Si \(\phi \lt 0\), cada idea nueva es más difícil de encontrar (“pescar en un estanque agotado”).</p></div>
+<div class="box warn"><div class="box-title">Ojo con la letra</div>
+<p>En esta fórmula \(\delta\) <b>no es la depreciación</b>: es la productividad de los investigadores. Y \(n\) es la tasa de crecimiento de los <b>investigadores</b> (en la senda coincide con la de la población).</p></div>
+</div>
+
+<div class="avoid-break">
+<h3>La tasa de crecimiento de la economía</h3>
+<p>En la senda de crecimiento equilibrado la tasa de crecimiento de las ideas es constante. De ahí sale la fórmula:</p>
+<div class="calc">\[\begin{aligned}
+& g_A = \frac{\dot A}{A} = \delta\,\frac{L_A^{\lambda}}{A^{1-\phi}} && \text{dividir la función de ideas por } A \\
+& \lambda\, n = (1-\phi)\, g_A && \text{si } g_A \text{ es constante, } L_A^{\lambda} \text{ (crece a } \lambda n) \text{ y } A^{1-\phi} \text{ (crece a } (1-\phi)g_A) \text{ van a la par} \\
+& g_A = \frac{\lambda\, n}{1-\phi} && \text{despejar; como en Solow, el ingreso per cápita crece a la tasa de las ideas}
+\end{aligned}\]</div>
+</div>
+<div class="formula-card">
+  <div class="fc-label">Tasa de crecimiento de largo plazo en Romer (senda equilibrada)</div>
+  \[ g = \frac{\lambda\, n}{1 - \phi} \]
+  <div class="fc-legend"><span>Esta fórmula resuelve todo el ejercicio 10 del TP4.</span></div>
+</div>
+<div class="grid-3 t3b-three">
+  <div class="card violet"><div class="card-title">Mayor \(\lambda\) → mayor \(g\)</div><p>Cada investigador adicional aporta más ideas. Está en el numerador: efecto <b>proporcional</b>.</p></div>
+  <div class="card violet"><div class="card-title">Mayor \(\phi\) → mayor \(g\), no lineal</div><p>El denominador \((1-\phi)\) se achica, así que el efecto se <b>amplifica</b>: es el efecto “a hombros de gigantes” retroalimentado.</p></div>
+  <div class="card violet"><div class="card-title">Mayor \(n\) → mayor \(g\)</div><p>Con más investigadores creciendo, más ideas. Efecto <b>proporcional</b>.</p></div>
+</div>
+
+<figure class="w80"><img src="figs/out/t3b_romer_param.svg">
+  <figcaption><b>Figura 3.25.</b> Los parámetros de Romer con los datos del TP4, ej. 10 (original: \(\lambda = 30\,\%\), \(\phi = 15\,\%\), \(n = 10\,\%\) ⇒ \(g = 3{,}529\,\%\)). <b>Izquierda</b>: \(g\) en función de \(\phi\) es una curva que se dispara cuando \(\phi \to 1\); subir \(\phi\) diez puntos (a 25 %) suma más que lo que resta bajarlo cinco (a 10 %). <b>Derecha</b>: \(g\) en función de \(n\) es una recta que pasa por el origen: ±20 % en \(n\) da ±20 % en \(g\). Lo mismo pasa con \(\lambda\): con \(\lambda = 20\,\%\), \(g = 2{,}353\,\%\) (−33,3 %); con \(\lambda = 35\,\%\), \(g = 4{,}118\,\%\) (+16,7 %).</figcaption></figure>
+
+
+<div class="box intuition"><div class="box-title">El resultado sorprendente</div>
+<p><b>El crecimiento de largo plazo depende de la tasa de crecimiento de los investigadores, no de su nivel.</b> Destinar más gente a investigar de una sola vez eleva el <b>nivel</b> de ingreso, pero no la tasa de crecimiento permanente. Por eso a esta versión se la llama de <b>crecimiento semi-endógeno</b>.</p></div>
+<figure class="t3b-w75"><img src="figs/out/t3b_romer_nivel.svg">
+  <figcaption><b>Figura 3.26.</b> Nivel contra tasa (esquemático, simulado con la función de producción de ideas). <b>Izquierda</b>: duplicar de golpe los investigadores en \(t_0\) acelera las ideas un tiempo y después vuelve la misma pendiente: efecto nivel. <b>Derecha</b>: si sube la tasa \(n\), la pendiente queda más alta para siempre: efecto crecimiento.</figcaption></figure>
+
+<h3>El efecto escala y su crítica</h3>
+<div class="box def"><div class="box-title">Efecto escala</div>
+<p>Es la predicción de que <b>una economía con más investigadores debería crecer más rápido</b>: si las ideas son no rivales, un país grande las aprovecha en toda su población y debería innovar y crecer más.</p></div>
+<p>La crítica empírica es contundente y hay que poder formularla:</p>
+<div class="grid-2">
+  <div class="card red"><div class="card-title">1 · Más investigadores, igual crecimiento</div><p>El número de investigadores en los países desarrollados se multiplicó varias veces desde 1950, y la tasa de crecimiento del ingreso per cápita no aumentó. Si el efecto escala fuera cierto, debería haberse acelerado. No lo hizo.</p></div>
+  <div class="card red"><div class="card-title">2 · Los grandes no crecen más</div><p>Los países grandes no crecen sistemáticamente más rápido que los chicos. India y China no crecieron más que Corea o Singapur por ser más grandes.</p></div>
+  <div class="card red"><div class="card-title">3 · Las ideas cruzan fronteras</div><p>La escala relevante no es la del país sino la del mundo, lo que vuelve la predicción difícil de contrastar.</p></div>
+  <div class="card red"><div class="card-title">4 · Las ideas fáciles se agotan</div><p>Cada nuevo descubrimiento es más caro que el anterior, lo que compensa el aumento de investigadores. En términos del modelo, \(\phi\) podría ser negativo: el efecto “pescar en un estanque agotado”.</p></div>
+</div>
+<p><b>La respuesta de Jones</b> fue justamente el modelo semi-endógeno de arriba: hacer depender el crecimiento de \(n\) y no del nivel de \(L_A\) elimina el efecto escala más fuerte.</p>
+
+<h3>Qué aporta Romer frente a Solow</h3>
+<table>
+<thead><tr><th></th><th>Solow</th><th>Romer</th></tr></thead>
+<tbody>
+<tr><td><b>Origen de la tecnología</b></td><td>Exógena: cae del cielo</td><td>Endógena: se produce con recursos</td></tr>
+<tr><td><b>Estructura de mercado</b></td><td>Competencia perfecta</td><td>Competencia monopolística</td></tr>
+<tr><td><b>Rendimientos</b></td><td>Constantes a escala</td><td>Crecientes, por la no rivalidad de las ideas</td></tr>
+<tr><td><b>Determinantes del crecimiento de LP</b></td><td>\(g_A\), inexplicado</td><td>\(\lambda\), \(\phi\) y \(n\)</td></tr>
+<tr><td><b>Papel de la política</b></td><td>Sólo afecta niveles</td><td>Puede afectar el crecimiento: I+D, patentes, educación</td></tr>
+</tbody></table>
+<p>Ese último renglón es la consecuencia práctica más importante: <b>en Solow, subsidiar la inversión sólo cambia el nivel; en Romer, la política de innovación puede mover la tasa de crecimiento misma.</b></p>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Prueba teórica 28/9/2024, pregunta 3 (la trampa Solow vs. Romer)</div>
+<p><b>El crecimiento económico en el largo plazo es explicado por el modelo de Solow-Swan (1956) a partir de:</b></p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>La influencia de las instituciones para asegurar la mejor toma de decisiones económicas.<span class="why">En Solow no hay instituciones; a lo sumo quedan escondidas en el residuo.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>Las mayores tasas de ahorro e inversión existentes en algunas economías.<span class="why">El ahorro tiene efecto nivel, no efecto crecimiento.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>El progreso tecnológico que dependerá de la cantidad de investigadores con los que cuenta una economía.<span class="why">La trampa: en Solow la tecnología es <b>exógena</b>. Que dependa de los investigadores es Romer.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>El aumento en la población activa.<span class="why">Un \(n\) mayor no genera crecimiento per cápita: baja \(k^*\) e \(y^*\).</span></span></li>
+  <li class="correct"><span class="opt">e)</span><span>Ninguna.<span class="why">La única fuente de crecimiento de largo plazo en Solow es el progreso tecnológico exógeno, y ninguna opción lo dice así.</span></span></li>
+</ul>
+<p class="t3b-mini">Comparala con la prueba del 20/9/2024 (pregunta 3), donde la opción “las innovaciones tecnológicas que aumentan la productividad”, sin ningún agregado, <b>sí</b> era la correcta. La diferencia está en el “que dependerá de la cantidad de investigadores”. Detalle fino: aun en Romer (versión semi-endógena) importa la <b>tasa</b> de crecimiento de los investigadores, no su cantidad.</p></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Jones, caps. 4 “La economía de las ideas” y 5 “El motor del crecimiento”, pp. 71-101 [obligatoria].</p></div>
+
+<div class="check t3b-break"><div class="check-title">Autoevaluación (3.6 a 3.8)</div>
+<ol>
+  <li><b>Con \(s = 0{,}2\), \(\alpha = 0{,}5\) y \(n+g+\delta = 0{,}4\), ¿cuánto valen \(\kt^*\) e \(\yt^*\)? ¿Cuál es la curva de ahorro en tasas?</b><br><span class="small">\(\kt^* = (0{,}5)^2 = 0{,}25\); \(\yt^* = 0{,}5\). CA \(= 0{,}2/\kt^{0{,}5}\) (decreciente) y CD \(= 0{,}4\).</span></li>
+  <li><b>En el EE con tecnología, ¿a qué tasa crecen \(\kt\), \(y\) y \(Y\)?</b><br><span class="small">\(\kt\): 0; \(y\) (y \(k\), \(c\)): \(g_A\); \(Y\) (y \(K\), \(C\)): \(n + g_A\).</span></li>
+  <li><b>El producto crece 4,2 %, el empleo 1,1 % y el capital 5,6 %, con \(s_K = 0{,}35\). ¿Residuo de Solow?</b><br><span class="small">\(g_k = 4{,}5\,\%\), \(g_y = 3{,}1\,\%\); \(g_A = 3{,}1 - 0{,}35\cdot 4{,}5 = 1{,}525\,\%\) (49,2 % del crecimiento per cápita).</span></li>
+  <li><b>Un país pobre crece menos que uno rico. ¿Refuta eso a Solow?</b><br><span class="small">No: refuta la convergencia absoluta, pero es compatible con la condicional si el pobre tiene un \(k^*\) bajo (por ejemplo, ahorra menos) y ya está cerca de él.</span></li>
+  <li><b>En Romer, con \(\lambda = 25\,\%\), \(\phi = 20\,\%\) y \(n = 4\,\%\), ¿cuánto vale \(g\)? ¿Y si se duplica de golpe el número de investigadores?</b><br><span class="small">\(g = 0{,}25\cdot 0{,}04/0{,}80 = 1{,}25\,\%\). Duplicar el nivel no cambia \(g\) de largo plazo (sólo el nivel): importa la tasa \(n\).</span></li>
+</ol></div>
+
+</section>

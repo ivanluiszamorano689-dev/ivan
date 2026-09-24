@@ -19,7 +19,7 @@ anios = list(range(2010, 2024))
 pbi = [670524, 710782, 703486, 720407, 702306, 721487, 706478, 726390, 707377, 693224, 624591, 689810,
        726162, 714464]  # TP2 ej. 5, millones de $ de 2004
 g = (pbi[-1] / pbi[0]) ** (1 / 13) - 1
-fig, ax = new_fig(6.3, 3.05)
+fig, ax = new_fig(6.3, 2.75)
 ax.plot(anios, pbi, color=C["blue"], lw=LW, marker="o", ms=4.5, mec="white", mew=1.0, zorder=3)
 t = np.linspace(0, 13, 100)
 ax.plot(2010 + t, pbi[0] * (1 + g) ** t, color=C["orange"], lw=1.6, ls="--", zorder=2)
@@ -59,7 +59,7 @@ for v in (0.55, 0.70, 0.80):
             fontweight="bold")
 ax.text(0.30, -0.12, "0", ha="left", va="top", fontsize=8, color=C["ink3"])
 ax.text(1.00, -0.12, "1", ha="right", va="top", fontsize=8, color=C["ink3"])
-paises = [("Yemen", 0.455, 1, 1), ("Honduras", 0.638, -1, 1), ("Namibia", 0.646, 1, 1), ("Jamaica", 0.709, -1, 2),
+paises = [("Yemen", 0.455, 1, 1), ("Honduras", 0.638, -1, 1), ("Namibia", 0.645, 1, 1), ("Jamaica", 0.709, -1, 2),
           ("Guyana", 0.714, 1, 2), ("Barbados", 0.790, -1, 1), ("Argentina", 0.865, 1, 1), ("Suiza", 0.970, -1, 1)]
 for nom, v, lado, niv in paises:
     y0, y1 = (1.0, 1.25 + 0.42 * (niv - 1)) if lado == 1 else (0.0, -0.5 - 0.42 * (niv - 1))
@@ -76,7 +76,7 @@ save(fig, "p1_f_idh_escala")
 sA, nd, a = 0.65, 0.13, 3 / 7
 ks = (sA / nd) ** (1 / (1 - a))
 k = np.linspace(0.02, 30, 500)
-fig, (a1, a2) = plt.subplots(1, 2, figsize=(6.5, 2.75))
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(6.5, 2.45))
 fig.subplots_adjust(wspace=0.35)
 a1.plot(k, sA * k ** a, color=C["orange"], lw=LW)
 a1.plot(k, nd * k, color=C["aqua"], lw=LW)

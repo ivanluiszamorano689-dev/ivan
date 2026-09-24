@@ -2,7 +2,7 @@
 import sys; sys.path.insert(0, "../lib")
 from econ_style import *
 
-fig, axs = plt.subplots(1, 2, figsize=(6.6, 2.9))
+fig, axs = plt.subplots(1, 2, figsize=(6.6, 2.35))
 fig.subplots_adjust(wspace=0.32)
 xf = 0.55    # nivel de nutrición observado (el mismo en los dos casos)
 

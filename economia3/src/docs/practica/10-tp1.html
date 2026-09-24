@@ -1,0 +1,416 @@
+<style>
+/* ---- p1: etiquetas y tarjetas del TP1 ---- */
+.p1-l { display: inline-block; font: 600 7.5pt "Inter", sans-serif; border-radius: 99px; padding: 0.1em 0.62em; margin: 0.05em 0.2em 0.15em 0;
+  white-space: nowrap; border: 1px solid var(--c); background: var(--cbg); color: var(--ci); line-height: 1.45; }
+.p1-l.pol, .p1-lc.pol, .p1-via.pol { --c: var(--blue); --cbg: var(--blue-bg); --ci: var(--blue-ink); }
+.p1-l.eco, .p1-lc.eco, .p1-via.eco { --c: var(--orange); --cbg: var(--orange-bg); --ci: var(--orange-ink); }
+.p1-l.soc, .p1-lc.soc, .p1-via.soc { --c: var(--aqua); --cbg: var(--aqua-bg); --ci: var(--aqua-ink); }
+.p1-l.tra, .p1-lc.tra, .p1-via.tra { --c: var(--violet); --cbg: var(--violet-bg); --ci: var(--violet-ink); }
+.p1-l.seg, .p1-lc.seg { --c: var(--yellow); --cbg: var(--yellow-bg); --ci: var(--yellow-ink); }
+.p1-l.cap { --c: var(--blue); --cbg: var(--blue-bg); --ci: var(--blue-ink); }
+.p1-l.fun { --c: var(--orange); --cbg: var(--orange-bg); --ci: var(--orange-ink); }
+.p1-l.priv { --c: var(--red); --cbg: var(--red-bg); --ci: var(--red-ink); }
+.p1-lg { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6em; margin: 0.6em 0 0.9em; }
+.p1-lg > .p1-span2 { grid-column: span 2; }
+.p1-lc { border: 1px solid var(--rule); border-top: 4px solid var(--c); border-radius: 9px; background: #fff; padding: 0.45em 0.75em 0.5em; break-inside: avoid; font-size: 8.5pt; line-height: 1.45; }
+.p1-lc > .p1-lc-t { font: 700 9.3pt "Inter"; color: var(--ci); margin-bottom: 0.2em; display: flex; align-items: center; gap: 0.4em; }
+.p1-lc > .p1-lc-t > i { font-style: normal; width: 1.45em; height: 1.45em; border-radius: 50%; background: var(--c); color: #fff; font: 700 8pt/1.45em "Inter"; text-align: center; flex: none; }
+.p1-lc p { margin: 0 0 0.3em; }
+.p1-lc .p1-k { font: 700 7pt "Inter"; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); display: block; margin-top: 0.25em; }
+.p1-lc .p1-ex { background: var(--cbg); border-radius: 5px; padding: 0.2em 0.5em; margin-top: 0.3em; font-size: 8pt; }
+.p1-via { border: 1px solid var(--rule); border-left: 4px solid var(--c); border-radius: 0 8px 8px 0; background: #fff; padding: 0.45em 0.8em; break-inside: avoid; font-size: 8.8pt; }
+.p1-via > b:first-child { color: var(--ci); }
+.p1-via.inf { --c: var(--blue); --cbg: var(--blue-bg); --ci: var(--blue-ink); }
+.p1-tb td { font-size: 8.5pt; }
+.p1-tb td:first-child { width: 34%; }
+.p1-tb td:nth-child(2) { width: 22%; }
+.p1-cf td:first-child { width: 40%; }
+.p1-cf td:nth-child(2) { width: 25%; }
+.p1-quote { border-left: 3px solid var(--ink-3); padding: 0.1em 0 0.1em 0.8em; margin: 0.35em 0; color: var(--ink); font-style: italic; }
+section.p1-sec .statement { break-inside: avoid; }
+.p1-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; align-items: center; }
+ol.steps.p1-si > li { padding: 0.32em 0.8em 0.32em 2.9em; margin-bottom: 0.35em; }
+ol.steps.p1-si > li::before { top: 0.3em; width: 1.5em; height: 1.5em; font: 700 8.4pt/1.5em "Inter"; }
+ol.steps.p1-si > li > .step-title { display: inline; margin-right: 0.35em; }
+ol.steps.p1-si > li > .step-title::after { content: " ·"; color: var(--ink-3); font-weight: 400; }
+table.p1-brk { break-inside: auto; }
+table.p1-brk tr { break-inside: avoid; }
+.p1-fig80 img { width: 80%; } .p1-fig92 img { width: 93%; } .p1-fig88 img { width: 88%; } .p1-fig72 img { width: 72%; } .p1-fig86 img { width: 86%; } .p1-fig66 img { width: 66%; }
+.box.exam .mcq { margin: 0.3em 0 0.4em; } .box.exam .mcq > li { padding: 0.15em 0.5em; }
+</style>
+
+<section class="tema-1 p1-sec">
+
+<div class="chapter-head">
+  <div class="kicker">TP1 · Tema 1 · Desarrollo y libertad</div>
+  <h2><span class="num">TP1</span>Desarrollo y Libertad</h2>
+  <p>Qué vas a poder hacer: distinguir crecimiento de desarrollo, explicar con Sen por qué más ingreso no alcanza, decidir si un caso es capacidad o funcionamiento, y asignar cada noticia a su libertad instrumental con un criterio que no falla.</p>
+</div>
+
+<div class="box summary"><div class="box-title">En 30 segundos</div>
+<ul>
+  <li><b>Crecimiento</b> = aumento sostenido del PBI per cápita (una cifra). <b>Desarrollo</b> = expansión de las libertades reales de las personas (Sen): multidimensional. Crecer es condición frecuentemente necesaria y <b>nunca suficiente</b>.</li>
+  <li>La cadena de Sen: <b>bienes</b> → (factores de conversión) → <b>capacidades</b> (el menú) → <b>funcionamientos</b> (el plato). Sen evalúa en el espacio de las capacidades (Figura TP1.1).</li>
+  <li>Mismo funcionamiento no es mismo bienestar: el ayuno del rico y el hambre del pobre; Marcos y Sofía.</li>
+  <li>Regla: si hubo <b>alternativas y elección</b> → capacidad; si es un <b>hecho consumado</b> → funcionamiento; si fue <b>forzado</b> → funcionamiento por privación de capacidad (decirlo suma).</li>
+  <li>Las cinco <b>libertades instrumentales</b>: políticas · servicios económicos · oportunidades sociales · garantías de transparencia · seguridad protectora (mecanismos fijos y ad hoc).</li>
+  <li>Para clasificar una noticia: <b>¿qué institución falla o funciona?</b>, no “¿de qué tema habla?” (Figura TP1.5).</li>
+</ul></div>
+
+<figure class="p1-fig88"><img src="figs/out/p1_cadena_sen.svg">
+  <figcaption><b>Figura TP1.1.</b> La cadena de Sen, arriba en general y abajo aplicada a Añelo (ej. 2). Los recursos no valen por sí mismos: importa a qué tasa cada persona los <b>convierte</b> en capacidades, y eso depende de su edad, salud, educación, entorno y de los servicios públicos. El desarrollo se mide en la caja verde (lo que la persona <i>puede</i> ser o hacer), no en la azul (lo que tiene) ni sólo en la naranja (lo que hizo).</figcaption></figure>
+
+<!-- ============================================================ EJ 1 -->
+<h3><span class="num">Ej. 1</span>Desarrollo económico: multidimensional y distinto del crecimiento</h3>
+
+<div class="statement"><div class="statement-title">Consigna · TP1, ej. 1</div>
+<p>Concepto de desarrollo económico. ¿Por qué es multidimensional? ¿Qué lo diferencia del crecimiento?</p></div>
+
+<ol class="steps p1-si">
+  <li><span class="step-title">Definí en una oración</span>Aumento <b>generalizado</b> (de todos, no de una minoría) y <b>sostenido</b> de los niveles de vida.</li>
+  <li><span class="step-title">Justificá lo multidimensional enumerando dimensiones</span>Salud, educación, servicios, seguridad, libertades políticas, cambios institucionales y culturales.</li>
+  <li><span class="step-title">Contrastá con crecimiento y cerrá con un ejemplo</span>Una variable contra un proceso; “necesario pero no suficiente”, con un caso concreto.</li>
+</ol>
+
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>
+<p>Es el aumento generalizado y sostenido de los niveles de vida del conjunto de la sociedad, no de una minoría. Es <b>multidimensional</b> porque no se agota en la renta: abarca logros en salud, educación, acceso a servicios, seguridad y libertades políticas, y transformaciones sociales, institucionales y culturales.</p>
+<p style="margin:0">La diferencia con el crecimiento: el <b>crecimiento</b> es el aumento sostenido del producto o la renta per cápita —una variable, medible en una sola cifra—; el <b>desarrollo</b> es un proceso que incluye al crecimiento pero no se reduce a él. Crecer es condición frecuentemente necesaria y nunca suficiente: un país puede aumentar su PBI per cápita concentrando todo el aumento en el decil superior, degradando su ambiente o sin mejorar un solo indicador de salud.</p>
+</div></div>
+
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Prueba teórica 20/9/2024, pregunta 4</div>
+<p>¿Cuál de las siguientes afirmaciones refleja mejor la interacción entre Crecimiento Económico (CE) y Desarrollo Humano (DH)?</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El CE es suficiente para mejorar el DH, ya que incrementa el ingreso per cápita.<span class="why">“Suficiente”: el ingreso puede concentrarse.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>El DH podría mejorar sostenidamente sin crecimiento económico si se enfocan políticas en salud, educación y equidad.<span class="why">“Sostenidamente”: sin CE no se financian a largo plazo.</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>Un alto nivel de CE es necesario, pero no suficiente, para garantizar avances sostenibles en DH.</span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Las mejoras en el DH siempre ralentizan el CE a corto plazo debido a la redistribución de recursos.<span class="why">“Siempre”: el DH también alimenta el CE.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna es correcta.</span></li>
+</ul>
+<p style="margin:0"><b>Trampa (28/9/2024):</b> si la opción dice “el DH podría mejorar <b>en el corto plazo</b> sin CE”, <b>sí</b> es correcta. En 27/09/2025 la correcta fue “aumento del ingreso acompañado de mejoras en salud, educación y libertades”.</p>
+</div>
+
+<div class="grid-2">
+<div class="box tip"><div class="box-title">Para sumar puntos</div>
+<p>Si piden las “falencias de mirar sólo el crecimiento”, nombrá las cinco fuentes de divergencia: <b>distribución</b>, <b>no comercialidad y externalidades</b>, <b>precios imperfectos</b>, <b>límite temporal</b> y <b>el PBI mide medios, no fines</b>. Evidencia de Sen: los sudafricanos son más ricos que los habitantes de Sri Lanka, pero viven menos.</p></div>
+<div class="box warn"><div class="box-title">Error típico</div>
+<p>Decir que desarrollo y crecimiento “son lo mismo medido distinto”, o al revés, que el crecimiento “no importa”. La cátedra quiere la relación exacta: <b>necesario (frecuentemente) pero no suficiente</b>. “Suficiente”, “garantiza” o “siempre” en una opción son señal de alarma.</p></div>
+</div>
+
+<!-- ============================================================ EJ 2 -->
+<h3><span class="num">Ej. 2</span>El caso de Añelo: crecimiento sin desarrollo</h3>
+
+<div class="statement"><div class="statement-title">Consigna · TP1, ej. 2 (texto sobre Añelo, Neuquén)</div>
+<p>a) ¿Por qué el efecto derrame no se traduce automáticamente en capacidades? &nbsp; b) ¿Qué intervenciones estructurales serían necesarias?</p></div>
+
+<ol class="steps p1-si">
+  <li><span class="step-title">Identificá el recurso que crece</span>La renta hidrocarburífera: el “derrame” es más ingreso agregado en la localidad.</li>
+  <li><span class="step-title">Buscá en el texto los datos que muestran por qué no se convierte</span>Cada dato es una traba distinta: son las cuatro vías de abajo (Figura TP1.2).</li>
+  <li><span class="step-title">Traducilo a Sen</span>Ingreso = recurso; lo que falla es la <b>tasa de conversión</b> en capacidades (Figura TP1.3).</li>
+  <li><span class="step-title">Para b), una intervención por traba</span>Y nombrá la libertad instrumental que fortalece cada una.</li>
+</ol>
+
+<figure class="p1-fig88"><img src="figs/out/p1_anelo_numeros.svg">
+  <figcaption><b>Figura TP1.2.</b> Añelo en los números del texto, coloreados por la vía que ilustran. Cada barra es una proporción sobre 100 (la de camas: menos de 10.000 camas para 35.000 personas que llegan cada día, o sea menos de 29 camas cada 100 personas). Lo que hay que ver: la renta crece, pero la educación, la infraestructura y la formalidad que permiten aprovecharla no.</figcaption></figure>
+
+<h4>a) Por qué el derrame no se traduce automáticamente en capacidades</h4>
+<p>El texto muestra <b>crecimiento sin desarrollo</b>, y lo hace por cuatro vías concretas:</p>
+<div class="grid-2">
+  <div class="p1-via eco"><b>1 · El ingreso llega a algunos y el costo de vida a todos.</b> La renta hidrocarburífera eleva precios y alquileres para el conjunto —el paralelo con Williston y Midland-Odessa es explícito—, pero el salario petrolero lo cobra una minoría. Por eso la morosidad castiga, según el texto, a quienes <b>no</b> pertenecen al sector.</div>
+  <div class="p1-via soc"><b>2 · Falta la capacidad para aprovechar la oportunidad.</b> Más del 60 % de los mayores de 18 años de Añelo no completó el secundario: hay demanda de mano de obra calificada y una oferta laboral que no puede convertirse en ella. Sin la capacidad previa, el ingreso no es accesible.</div>
+  <div class="p1-via inf"><b>3 · La infraestructura no acompaña.</b> 35.000 personas se trasladan diariamente a una localidad con menos de 10.000 camas. El municipio produce gas y la localidad no tenía gas en gran proporción. El derrame no compra por sí solo cloacas, agua ni vivienda.</div>
+  <div class="p1-via tra"><b>4 · La informalidad bloquea el acceso a derechos.</b> De 490 empresas, 310 regularizadas y el 90 % de ellas nunca había generado un impuesto; de 238 complejos habitacionales, sólo 38 habilitados. La informalidad empuja al crédito caro de billeteras digitales —el 36 % de los deudores jóvenes— y deja a la gente fuera de la protección social.</div>
+</div>
+
+<div class="p1-grid2">
+<figure style="margin:0.4em 0"><img src="figs/out/p1_conversion.svg">
+  <figcaption><b>Figura TP1.3.</b> Esquemático. El mismo aumento de recursos (de \(R_0\) a \(R_1\)) expande mucho las capacidades donde la conversión es alta y poco donde es baja, como en Añelo.</figcaption></figure>
+<div class="box intuition"><div class="box-title">En términos de Sen</div>
+<p>El ingreso es un <b>recurso</b>, y la tasa a la que cada persona lo convierte en capacidades depende de su educación, su formalidad laboral y la infraestructura de su entorno. En Añelo esas tasas de conversión son bajas, así que <b>más recursos agregados producen poca expansión de libertades reales</b>.</p>
+<p>Por eso Sen no evalúa en el espacio de los recursos (Rawls) ni en el de la utilidad: una persona con discapacidad necesita más ingreso que otra para lograr el mismo funcionamiento de desplazarse.</p></div>
+</div>
+
+<h4>b) Intervenciones estructurales necesarias</h4>
+<table class="compact p1-brk">
+<thead><tr><th>Intervención</th><th>Traba que ataca</th><th>Libertad que fortalece</th></tr></thead>
+<tbody>
+<tr><td><b>1. Educación y formación técnica</b> ligada a la demanda local, para cerrar la brecha entre calificación disponible y puestos ofrecidos.</td><td>vía 2 (capacidad)</td><td><span class="p1-l soc">Oportunidades sociales</span></td></tr>
+<tr><td><b>2. Infraestructura urbana y vivienda:</b> cloacas, agua, energía, pavimento y soluciones habitacionales, condición previa para que la población se asiente y no sólo circule.</td><td>vía 3 (infraestructura)</td><td><span class="p1-l soc">Oportunidades sociales</span> <span class="p1-l seg">Seguridad protectora</span></td></tr>
+<tr><td><b>3. Formalización de la economía local</b>, que es simultáneamente acceso a crédito barato, a protección social y a recaudación municipal para financiar lo anterior.</td><td>vía 4 (informalidad)</td><td><span class="p1-l eco">Servicios económicos</span> <span class="p1-l seg">Seguridad protectora</span></td></tr>
+<tr><td><b>4. Captura y redistribución de la renta extractiva</b> con reglas estables, para que el ingreso del recurso financie capacidades y no sólo consumo.</td><td>vía 1 (reparto del ingreso)</td><td><span class="p1-l eco">Servicios económicos</span> <span class="p1-l tra">Transparencia</span></td></tr>
+<tr><td><b>5. Diversificación productiva</b>, porque una economía monoexportadora ata el bienestar al precio internacional de un solo bien.</td><td>vía 1 (dependencia)</td><td><span class="p1-l eco">Servicios económicos</span></td></tr>
+</tbody></table>
+
+<div class="grid-2">
+<div class="box tip"><div class="box-title">Verificación rápida</div>
+<p>¿Cada vía de a) tiene al menos un <b>dato del texto</b>? ¿Cada intervención de b) ataca una vía? Si una intervención no destraba nada de lo que diagnosticaste en a), sobra.</p></div>
+<div class="box warn"><div class="box-title">Error típico</div>
+<p>Responder “porque la riqueza está mal distribuida” y nada más. La distribución es una de las cuatro vías; la idea que la cátedra quiere es la <b>conversión</b>: aunque el ingreso llegara, sin educación, infraestructura ni formalidad no se transforma en capacidades.</p></div>
+</div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · 1er Parcial 2023, teórica 1</div>
+<p>Al evaluar qué tan bien está una persona hay que tener en cuenta los bienes primarios que posee, pero también su condición, es decir que es relevante:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>evaluar la utilidad que la persona obtiene de los bienes primarios y de su condición.<span class="why">Utilitarismo.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>evaluar las características personales relevantes que determinan la conversión de los bienes primarios en la capacidad de las personas para alcanzar sus fines.<span class="why">Factores de conversión (Figura TP1.1).</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>evaluar si la persona se encuentra en un estado deseable o agradable de conciencia.<span class="why">Hedonismo.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Todo lo anterior.<span class="why">Incluye a y c, que son falsas.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna es correcta.</span></li>
+</ul></div>
+
+<!-- ============================================================ EJ 3 -->
+<h3><span class="num">Ej. 3</span>Las cinco libertades instrumentales de Sen</h3>
+
+<div class="statement"><div class="statement-title">Consigna · TP1, ej. 3</div>
+<p>Definí las libertades instrumentales que propone Amartya Sen.</p></div>
+
+<div class="p1-lg">
+  <div class="p1-lc pol"><div class="p1-lc-t"><i>1</i>Libertades políticas</div>
+    <p>Participación y derechos políticos propios de las democracias: elegir gobernantes, criticar, prensa libre, peticionar.</p>
+    <span class="p1-k">Se reconoce por</span>elecciones, oposición, prensa, derecho a peticionar.
+    <div class="p1-ex">ONPE confirma la victoria electoral.</div></div>
+  <div class="p1-lc eco"><div class="p1-lc-t"><i>2</i>Servicios económicos</div>
+    <p>Derechos económicos: ingresos, crédito, condiciones de intercambio, precios relativos, funcionamiento de los mercados.</p>
+    <span class="p1-k">Se reconoce por</span>financiamiento, crédito, precios, comercio.
+    <div class="p1-ex">Deuda bancaria ganadera en máximos de 20 años.</div></div>
+  <div class="p1-lc soc"><div class="p1-lc-t"><i>3</i>Oportunidades sociales</div>
+    <p>Sistemas de educación y sanidad que permiten vivir mejor y participar mejor en lo económico y lo político.</p>
+    <span class="p1-k">Se reconoce por</span>escuelas, hospitales, clínicas, alfabetización.
+    <div class="p1-ex">Belice: atención médica gratuita y clínicas móviles.</div></div>
+  <div class="p1-lc tra"><div class="p1-lc-t"><i>4</i>Garantías de transparencia</div>
+    <p>Información y confianza en el trato entre las personas y con el Estado; prevención de la corrupción.</p>
+    <span class="p1-k">Se reconoce por</span>acceso a la información pública, rendición de cuentas, controles.
+    <div class="p1-ex">Ex funcionarias que conocían el informe HLB y no actuaron.</div></div>
+  <div class="p1-lc seg p1-span2"><div class="p1-lc-t"><i>5</i>Seguridad protectora</div>
+    <p>Red de protección social que impide que quien cae quede en la miseria absoluta. Tiene dos tipos de mecanismos:</p>
+    <div class="grid-2" style="gap:0.5em">
+      <div><span class="p1-k">Mecanismos institucionales fijos</span>permanentes, establecidos por ley: prestaciones por desempleo, ayudas a indigentes o a sectores vulnerables.</div>
+      <div><span class="p1-k">Mecanismos ad hoc</span>se activan ante una crisis puntual: ayudas de emergencia frente a hambrunas, empleo público de emergencia.</div>
+    </div>
+    <div class="p1-ex">Sudán: recortes a la ayuda de emergencia de la que dependía el 27 % del plan 2025 (ad hoc).</div></div>
+</div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Prueba teórica 27/09/2025, pregunta 1</div>
+<p>“Según la perspectiva de Amartya Sen, el concepto de desarrollo debe entenderse como: a) el aumento sostenido del PBI per cápita; <b>b) la expansión de las libertades reales que disfrutan las personas</b>; c) la reducción de la deuda externa y el déficit fiscal; d) la felicidad alcanzada por la población; e) ninguna.” → <b>b</b>. La a) es crecimiento y la d) es utilitarismo.</p>
+<p style="margin:0">En 2024 la misma idea: lo más relevante para evaluar la calidad de vida y el desarrollo es “<b>la libertad de las personas para elegir y alcanzar vidas que valoran</b>” (opción b el 20/9, c el 28/9).</p>
+</div>
+
+<div class="p1-grid2" style="grid-template-columns: 1.2fr 1fr">
+<figure style="margin:0.3em 0"><img src="figs/out/p1_libertades_red.svg">
+  <figcaption><b>Figura TP1.4.</b> Las cinco libertades se refuerzan entre sí (líneas grises) y cada una contribuye a la libertad general (flechas): la libertad es a la vez <b>medio</b> y <b>fin</b> del desarrollo.</figcaption></figure>
+<div class="box def"><div class="box-title">Los dos papeles de la libertad</div>
+<p><b>Papel constitutivo (fin).</b> Las libertades fundamentales <i>son</i> el desarrollo: poder evitar el hambre, estar alfabetizado o participar en la comunidad valen por sí mismas, aunque no sumen un peso al PBI.</p>
+<p><b>Papel instrumental (medio).</b> Los distintos derechos y oportunidades se refuerzan entre sí y expanden la libertad general.</p>
+<p style="margin:0">Corolario de Sen: el desarrollo exige <b>eliminar las principales fuentes de privación de libertad</b>.</p></div>
+</div>
+
+<!-- ============================================================ EJ 4 -->
+<h3><span class="num">Ej. 4</span>Clasificación de los casos según la libertad instrumental</h3>
+
+<div class="statement"><div class="statement-title">Consigna · TP1, ej. 4</div>
+<p>Clasificá cada noticia según la libertad instrumental involucrada y justificá.</p></div>
+
+<ol class="steps p1-si">
+  <li><span class="step-title">Subrayá la institución, no el tema</span>¿Qué mecanismo está en juego? (un control que no se hizo, un crédito, una elección, una ayuda de emergencia…)</li>
+  <li><span class="step-title">Recorré el diagrama en orden</span>Preguntas 1 a 5 de la Figura TP1.5; la primera “Sí” es la libertad principal.</li>
+  <li><span class="step-title">Justificá en una línea</span>“El núcleo es… ” + la institución que falla o funciona. Si hay una segunda libertad, mencionala como secundaria.</li>
+</ol>
+
+<table class="p1-brk p1-tb">
+<thead><tr><th>Caso</th><th>Libertad</th><th>Por qué</th></tr></thead>
+<tbody>
+<tr><td>Ex funcionarias que conocían el informe sobre el laboratorio HLB y no actuaron, con contacto directo con los dueños</td><td><span class="p1-l tra">Garantías de transparencia</span></td><td>El núcleo es <b>información disponible que no se usó</b> y un <b>conflicto de intereses</b>. Hay un efecto sobre la salud, pero lo que falló es el control y la confianza.</td></tr>
+<tr><td>Belice: atención médica gratuita accesible, señalización multilingüe, clínicas móviles</td><td><span class="p1-l soc">Oportunidades sociales</span></td><td>Sistema de <b>sanidad</b> que amplía capacidades, con adecuación cultural.</td></tr>
+<tr><td>Ganadería argentina: saldos de deuda bancaria en su nivel más alto en 20 años</td><td><span class="p1-l eco">Servicios económicos</span></td><td>Acceso al <b>crédito</b> y condiciones de financiamiento.</td></tr>
+<tr><td>Productores de Colón: reclamo por caminos y pedido de conocer ingresos y gastos 2023–2026</td><td><span class="p1-l tra">Garantías de transparencia</span></td><td>El pedido concreto es de <b>rendición de cuentas</b>. Secundariamente hay <span class="p1-l pol">libertades políticas</span>: reclamo organizado y acceso a la Justicia.</td></tr>
+<tr><td>ONPE confirma la victoria electoral tras escrutar el 100 % de los votos</td><td><span class="p1-l pol">Libertades políticas</span></td><td><b>Proceso electoral</b> y participación.</td></tr>
+<tr><td>Sudán: recortes a la ayuda de emergencia de la que dependía el 27 % del plan 2025</td><td><span class="p1-l seg">Seguridad protectora</span></td><td><b>Mecanismo ad hoc</b> de asistencia ante crisis.</td></tr>
+</tbody></table>
+
+<figure class="p1-fig86"><img src="figs/out/p1_flujo_libertades.svg">
+  <figcaption><b>Figura TP1.5.</b> Criterio de decisión de la cátedra convertido en diagrama. El orden importa: transparencia va primero porque el caso ambiguo típico (un reclamo por caminos con pedido de información sobre ingresos y gastos) se resuelve como transparencia aunque el tema de fondo sea infraestructura. Debajo de cada libertad, los casos del TP1, del estudio CAF y del parcial 2025 que caen ahí.</figcaption></figure>
+
+<div class="grid-2">
+<div class="box warn"><div class="box-title">Error típico</div>
+<p>Clasificar por el <b>tema</b>: “HLB es salud → oportunidades sociales”. La noticia no trata del acceso a un hospital sino de funcionarias que <b>sabían y no actuaron</b>: falla el control. Con Colón pasa igual: el tema son caminos, el pedido es de información.</p></div>
+<div class="box tip"><div class="box-title">Verificación rápida</div>
+<p>Si tu justificación empieza con “habla de salud / de caminos”, está mal planteada. Tiene que empezar con “lo que falla (o funciona) es…”.</p></div>
+</div>
+
+<!-- ============================================================ EJ 5 -->
+<h3><span class="num">Ej. 5</span>Capacidad y funcionamiento</h3>
+
+<div class="statement" style="break-after: avoid"><div class="statement-title">Consigna · TP1, ej. 5</div>
+<p>Definí capacidad y funcionamiento.</p></div>
+
+<div class="versus">
+  <div class="card blue"><div class="card-title">Capacidad = el menú</div><p class="small" style="margin:0">Habilidades físicas, legales o intelectuales para <b>ser o hacer</b> algo. Es <b>potencial</b>, es libertad de hacer; refleja las combinaciones alternativas de funcionamientos entre las que una persona puede elegir. Ej.: la posibilidad real de estudiar.</p></div>
+  <div class="vs">vs</div>
+  <div class="card orange"><div class="card-title">Funcionamiento = el plato</div><p class="small" style="margin:0">Lo que <b>efectivamente</b> se logra ser o hacer —estar sano, estar alfabetizado, participar en la comunidad—. Es la <b>materialización</b> de una capacidad. Ej.: el acto concreto de estudiar.</p></div>
+</div>
+
+<div class="box def"><div class="box-title">Conjunto de capacidad y agencia</div>
+<p style="margin:0"><b>Conjunto de capacidad:</b> el menú completo, todas las combinaciones de funcionamientos que la persona <i>podría</i> alcanzar; dos personas pueden comer lo mismo con menús radicalmente distintos. <b>Agencia:</b> ser dueño de la propia voluntad; Sen trabaja con la libertad <b>positiva</b> (poder hacer o ser), que complementa a la <b>negativa</b> (ausencia de coacción): tener derecho a la educación y además poder ejercerlo.</p></div>
+
+<!-- ============================================================ EJ 6 -->
+<h3><span class="num">Ej. 6</span>Marcos y Sofía</h3>
+
+<div class="statement"><div class="statement-title">Consigna · TP1, ej. 6 (datos del caso)</div>
+<p>Marcos y Sofía están fuera del sistema educativo formal y fuera del mercado laboral regulado. Marcos abandonó el secundario porque en su hogar faltaban ingresos para la canasta básica de alimentos. Sofía terminó la secundaria con honores, tiene respaldo económico familiar y optó por el arte y el voluntariado. Analizá los dos casos con el enfoque de capacidades.</p></div>
+
+<ol class="steps p1-si">
+  <li><span class="step-title">Encontrá el funcionamiento común</span>Lo observable es idéntico: fuera de la escuela y del empleo regulado.</li>
+  <li><span class="step-title">Reconstruí el menú de cada uno</span>¿Qué otras opciones tenía? ¿Qué se lo impidió o se lo permitió?</li>
+  <li><span class="step-title">Concluí en el espacio de las capacidades</span>Privación de libertad contra ejercicio de agencia; citá el ejemplo del ayuno.</li>
+</ol>
+
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>
+<p>Ambos comparten el mismo <b>funcionamiento</b> observable: están fuera del sistema educativo formal y fuera del mercado laboral regulado. Pero el funcionamiento es el resultado; lo que Sen evalúa es el <b>conjunto de capacidad</b> del que salió ese resultado.</p>
+<p><b>Marcos no eligió.</b> Abandonó el secundario porque en su hogar faltaban ingresos para la canasta básica de alimentos. Su conjunto de capacidad tenía prácticamente una sola opción disponible, y la tomó. Su situación es una <b>privación de libertad</b>.</p>
+<p><b>Sofía sí eligió.</b> Terminó la secundaria con honores y cuenta con respaldo económico familiar: podía seguir estudiando, podía trabajar, y optó por el arte y el voluntariado. Su conjunto de capacidad es amplio y su decisión es un <b>ejercicio de agencia</b>.</p>
+<p style="margin:0">Es exactamente el ejemplo del ayuno de Sen: la persona rica que ayuna y la persona que pasa hambre presentan el mismo funcionamiento con conjuntos de capacidad opuestos. <b>Evaluar sólo funcionamientos hace invisible la diferencia; evaluar capacidades la revela.</b></p>
+</div></div>
+
+<figure class="p1-fig72"><img src="figs/out/p1_marcos_sofia.svg">
+  <figcaption><b>Figura TP1.6.</b> Esquemático. Cada panel muestra el conjunto de capacidad (zona verde) en dos funcionamientos posibles. El punto naranja —lo observado— es el mismo en los dos casos; lo que cambia es el tamaño del menú del que salió. Es el ayuno de Sen: el rico que ayuna (menú amplio) y el pobre que pasa hambre (menú vacío) están igual de desnutridos.</figcaption></figure>
+
+
+<!-- ============================================================ EJ 7 -->
+<h3><span class="num">Ej. 7</span>¿Capacidad o funcionamiento? (primera tanda)</h3>
+
+<div class="statement"><div class="statement-title">Consigna · TP1, ej. 7</div>
+<p>Indicá si cada situación refleja una capacidad o un funcionamiento, y justificá.</p></div>
+
+<figure class="p1-fig88"><img src="figs/out/p1_regla_cap_func.svg">
+  <figcaption><b>Figura TP1.7.</b> La regla que resuelve los ejercicios 7 y 8: primero buscá si hubo alternativas y elección; si no, es un hecho consumado, y todavía hay que ver si fue forzado. En cada resultado, los casos del TP que caen ahí.</figcaption></figure>
+
+<table class="p1-brk p1-cf">
+<thead><tr><th>Situación</th><th>Respuesta</th><th>Justificación</th></tr></thead>
+<tbody>
+<tr><td>a) Mariela obtuvo su título de Médica Veterinaria</td><td><span class="p1-l fun">Funcionamiento</span></td><td>Logro efectivamente alcanzado.</td></tr>
+<tr><td>b) El programador rechaza la oferta extranjera porque prefiere la fundación local</td><td><span class="p1-l cap">Capacidad</span></td><td>Tenía ambas opciones y eligió; lo relevante es el menú, no el plato.</td></tr>
+<tr><td>c) Jorge no logra jubilarse por aportes no registrados y sigue vendiendo sin cobertura</td><td><span class="p1-l fun">Funcionamiento</span> <span class="p1-l priv">por privación de capacidad</span></td><td>Trabajar en la vía pública es un hecho consumado que no eligió: su conjunto de capacidad estaba vacío de alternativas.</td></tr>
+<tr><td>d) Lucía tiene título y habilidades para la dirección pero decide cuidar a sus hijos</td><td><span class="p1-l cap">Capacidad</span></td><td>La capacidad existe aunque no se materialice en funcionamiento.</td></tr>
+<tr><td>e) Manuel padece diabetes por ultraprocesados porque no le alcanza para alimentos frescos</td><td><span class="p1-l fun">Funcionamiento</span> <span class="p1-l priv">por privación de capacidad</span></td><td>Estar enfermo es el logro negativo; la restricción de ingreso le impidió elegir alimentarse bien.</td></tr>
+</tbody></table>
+
+<!-- ============================================================ EJ 8 -->
+<h3><span class="num">Ej. 8</span>¿Capacidad o funcionamiento? (segunda tanda)</h3>
+
+<table class="p1-brk p1-cf">
+<thead><tr><th>Situación</th><th>Respuesta</th><th>Justificación</th></tr></thead>
+<tbody>
+<tr><td>a) El transportista de San Antonio de los Cobres montó una gran empresa</td><td><span class="p1-l fun">Funcionamiento</span></td><td>Logro concreto; ejerció una capacidad que tenía.</td></tr>
+<tr><td>b) Debía ir a votar y prefirió quedarse durmiendo</td><td><span class="p1-l cap">Capacidad</span></td><td>Tenía la libertad política y optó por no ejercerla.</td></tr>
+<tr><td>c) Víctor completó sus estudios de Economía en la UNSa</td><td><span class="p1-l fun">Funcionamiento</span></td><td>Logro alcanzado.</td></tr>
+<tr><td>d) Carlos tiene sobrepeso por consumir procesados y bebidas azucaradas</td><td><span class="p1-l fun">Funcionamiento</span></td><td>Estado efectivo. No se menciona restricción de ingreso, así que la capacidad de comer distinto estaba disponible.</td></tr>
+<tr><td>e) Un niño camina 30 km diarios para ir a la escuela en el Chaco salteño</td><td><span class="p1-l fun">Funcionamiento</span> <span class="p1-l priv">con capacidad severamente restringida</span></td><td>Asiste —el funcionamiento se cumple— pero a un costo que revela la ausencia de alternativas reales.</td></tr>
+<tr><td>f) Trabajo no registrado y demoras en el hospital público → peor salud</td><td><span class="p1-l fun">Funcionamiento</span> <span class="p1-l priv">por privación de capacidad</span></td><td>El deterioro es el resultado; la falta de cobertura y de atención oportuna es la privación.</td></tr>
+<tr><td>g) Beyoncé practica ayuno intermitente para controlar su peso</td><td><span class="p1-l cap">Capacidad</span></td><td>El caso textual del ayuno voluntario: podría comer y elige no hacerlo.</td></tr>
+<tr><td>h) Paula podría haberse postulado al sindicato y decidió priorizar su salud</td><td><span class="p1-l cap">Capacidad</span></td><td>Tenía la opción disponible y eligió otra.</td></tr>
+<tr><td>i) Joaquín rechazó una oferta tentadora porque considera que tiene otras opciones</td><td><span class="p1-l cap">Capacidad</span></td><td>Menciona explícitamente la existencia de alternativas.</td></tr>
+</tbody></table>
+
+<div class="box formula"><div class="box-title">La regla que resuelve los dos ejercicios</div>
+<p>Si el enunciado deja ver que <b>había alternativas disponibles</b>, es capacidad. Si describe <b>un hecho ya realizado</b>, es funcionamiento. Y cuando el hecho realizado es una privación forzada, corresponde decir que es un funcionamiento que refleja una capacidad restringida: <b>esa aclaración suma puntos</b>.</p></div>
+
+<div class="grid-2">
+<div class="box warn"><div class="box-title">Error típico: Manuel contra Carlos</div>
+<p>Los dos terminan con un problema de salud por comer procesados, pero no se responden igual: Manuel (7 e) no podía comprar alimentos frescos → funcionamiento <b>por privación</b>; de Carlos (8 d) no se dice nada del ingreso → funcionamiento a secas. <b>No agregues datos que el enunciado no da.</b></p></div>
+<div class="box tip"><div class="box-title">Palabras que delatan la respuesta</div>
+<p><b>Capacidad:</b> “podría”, “decide”, “prefiere”, “rechaza”, “eligió”, “tiene otras opciones”.<br><b>Funcionamiento:</b> “obtuvo”, “completó”, “montó”, “padece”, “tiene sobrepeso”.<br><b>Privación:</b> “no le alcanza”, “no logra”, “sin cobertura”, “camina 30 km”.</p></div>
+</div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · 1er Parcial 08/10/2022, teórica 1</div>
+<p>Considerar el concepto de bien-estar individual desde la perspectiva de Sen, consiste en analizar:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>Si el individuo logra un estado agradable de conciencia.<span class="why">Hedonismo.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>El nivel de utilidad alcanzado por el individuo.<span class="why">Utilitarismo.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>Si el individuo es feliz.<span class="why">Felicidad declarada: se adapta a la privación.</span></span></li>
+  <li class="correct"><span class="opt">d)</span><span>Los funcionamientos logrados por la persona.<span class="why">El bien-estar se evalúa por lo logrado; la libertad de bienestar, por las capacidades.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna opción es correcta.</span></li>
+</ul></div>
+
+<!-- ============================================================ CAF -->
+<h3><span class="num">Caso</span>Estudio de casos: servicios básicos que no llegan (Blog CAF)</h3>
+
+<div class="statement"><div class="statement-title">Consigna · TP1, estudio de casos</div>
+<p>a) Relacioná el texto con lo que observás en tu propio barrio. &nbsp; b) Identificá cinco privaciones mencionadas en el texto y la libertad instrumental que las resolvería.</p></div>
+
+<h4>a) Respuesta personal, con este esquema</h4>
+<p>La respuesta es personal y debe apoyarse en lo que observás en tu propio barrio. El esquema para construirla:</p>
+<div class="flow">
+  <div class="node"><b>1 · Carencia concreta</b>agua, cloacas, transporte, conectividad, alumbrado, centro de salud, recolección de residuos</div><div class="arrow">→</div>
+  <div class="node"><b>2 · Funcionamiento que impide</b>estar sano, aprender, trabajar, participar</div><div class="arrow">→</div>
+  <div class="node"><b>3 · Derecho vulnerado</b>y cierre con la frase de Sen</div>
+</div>
+<p class="p1-quote">La falta de acceso a servicios básicos constituye una forma de privación de capacidades, porque limita funcionamientos esenciales.</p>
+<p class="small">Modelo de redacción (completalo con tu barrio): “En mi barrio no hay [carencia]. Eso impide [funcionamiento], porque […]. Se vulnera el derecho a […]. La falta de acceso a servicios básicos constituye una forma de privación de capacidades, porque limita funcionamientos esenciales.”</p>
+
+<h4>b) Cinco privaciones del texto y la libertad instrumental que las resuelve</h4>
+
+<figure class="p1-fig88"><img src="figs/out/p1_caf_privaciones.svg">
+  <figcaption><b>Figura TP1.8.</b> Las cinco privaciones que cita el texto del Blog CAF, coloreadas por la libertad que las resuelve. Ojo: cada porcentaje tiene su propia base (población total, jóvenes de 13 a 19 años o población rural), así que las barras no se suman. La de internet está rayada porque cae en dos libertades.</figcaption></figure>
+
+<table class="p1-brk p1-tb">
+<thead><tr><th>Privación mencionada en el texto</th><th>Libertad instrumental</th><th>Por qué</th></tr></thead>
+<tbody>
+<tr><td>29,4 % de la población vive en condiciones de hacinamiento</td><td><span class="p1-l seg">Seguridad protectora</span></td><td>Vivienda y protección social.</td></tr>
+<tr><td>21,9 % de los jóvenes de 13 a 19 años no asiste a la escuela</td><td><span class="p1-l soc">Oportunidades sociales</span></td><td>Sistema educativo.</td></tr>
+<tr><td>47 % de la población rural no tiene seguro médico</td><td><span class="p1-l soc">Oportunidades sociales</span></td><td>Sistema de salud.</td></tr>
+<tr><td>Más de la mitad de la población rural sin acceso a internet</td><td><span class="p1-l tra">Garantías de transparencia</span> <span class="p1-l eco">Servicios económicos</span></td><td>Acceso a información; y conectividad como servicio para trabajar y comerciar.</td></tr>
+<tr><td>11,6 % usa leña, carbón o kerosene para cocinar (pobreza energética)</td><td><span class="p1-l eco">Servicios económicos</span></td><td>Tarifas sociales, subsidios a la conexión.</td></tr>
+</tbody></table>
+
+<p>Las soluciones que propone el propio texto encajan en esa lectura:</p>
+<table class="compact">
+<thead><tr><th>Solución que propone el texto</th><th>Libertad instrumental</th></tr></thead>
+<tbody>
+<tr><td>Tarifas sociales y subsidios de conexión</td><td><span class="p1-l eco">Servicios económicos</span></td></tr>
+<tr><td>Regulación diferenciada y participación comunitaria</td><td><span class="p1-l tra">Garantías de transparencia</span></td></tr>
+<tr><td>Accesibilidad universal y pertinencia étnico-cultural</td><td><span class="p1-l soc">Oportunidades sociales</span> de grupos que hoy quedan afuera</td></tr>
+</tbody></table>
+
+<!-- ============================================================ YEMEN -->
+<h3><span class="num">Extra</span>Práctica tipo parcial: Yemen y las libertades instrumentales</h3>
+
+<div class="statement"><div class="statement-title">Enunciado · Primer Parcial 2025 · Ej. 3 c) <span class="pts">6 ptos</span></div>
+<p>Clasifique estas afirmaciones sobre el país teniendo en cuenta las libertades instrumentales que propone Amartya Sen:</p>
+<ol style="margin-bottom:0">
+  <li>Yemen lleva más de una década sumido en una guerra civil entre los rebeldes hutíes, también conocidos como Ansar Allah, y las fuerzas gubernamentales respaldadas por Arabia Saudí y sus aliados.</li>
+  <li>Alrededor del 20 % de los niños nunca han sido vacunados, una de las peores tasas de vacunación del mundo.</li>
+  <li>Ibrahim, un hombre de 70 años, fue desplazado por las fuertes inundaciones en Ma'rib. Cuando las aguas arrasaron el asentamiento, cargó a la espalda a su hijo adulto, que vive con una discapacidad, para ponerlo a salvo. Lo perdieron todo.</li>
+</ol></div>
+
+<ol class="steps p1-si">
+  <li><span class="step-title">Afirmación 1</span>Figura TP1.5, pregunta 2: está en juego <b>quién gobierna y cómo</b>, y se dirime por las armas, no por canales democráticos.</li>
+  <li><span class="step-title">Afirmación 2</span>Pregunta 4: es acceso a <b>salud</b> (vacunación): el sistema sanitario no llega.</li>
+  <li><span class="step-title">Afirmación 3</span>Pregunta 3: una catástrofe deja a una familia sin nada: hace falta la <b>red de protección</b>, con ayuda de emergencia (ad hoc).</li>
+</ol>
+
+<table class="p1-brk p1-tb">
+<thead><tr><th>Afirmación</th><th>Libertad</th><th>Justificación</th></tr></thead>
+<tbody>
+<tr><td>1. Guerra civil entre hutíes y fuerzas gubernamentales</td><td><span class="p1-l pol">Libertades políticas</span></td><td>El conflicto es por quién gobierna y cómo, sin canales democráticos para elegir, criticar y reemplazar gobernantes.</td></tr>
+<tr><td>2. 20 % de los niños nunca vacunados</td><td><span class="p1-l soc">Oportunidades sociales</span></td><td>Falla el sistema de salud, que es el que permite vivir mejor.</td></tr>
+<tr><td>3. Ibrahim, desplazado por las inundaciones, lo perdió todo</td><td><span class="p1-l seg">Seguridad protectora</span></td><td>Red de protección y ayuda de emergencia ad hoc ante catástrofes, para que quien cae no quede en la miseria.</td></tr>
+</tbody></table>
+
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>1 → <b>libertades políticas</b> · 2 → <b>oportunidades sociales</b> · 3 → <b>seguridad protectora</b> (mecanismo ad hoc).</div></div>
+
+<div class="box warn"><div class="box-title">Error típico</div>
+<p style="margin:0">Poner “seguridad protectora” en la guerra porque “hay inseguridad”. En Sen, <i>seguridad protectora</i> no es seguridad física ni defensa: es la <b>red de protección social</b>. Y en Ibrahim, la discapacidad del hijo es un factor de conversión que agrava la privación, pero no cambia la libertad que la resuelve. <span class="muted">(Los incisos a y b del mismo ejercicio son del TP3: IDH = 0,455, bajo; IDH-D = 0,308.)</span></p></div>
+
+<div class="check"><div class="check-title">Autoevaluación</div>
+<ol>
+  <li>¿Por qué el crecimiento es “necesario pero no suficiente” para el desarrollo? <span class="muted">— Financia salud, educación y servicios, pero puede concentrarse, degradar el ambiente o no convertirse en capacidades.</span></li>
+  <li>Dos personas con el mismo ingreso, una de ellas con una discapacidad motriz: ¿tienen la misma capacidad de desplazarse? <span class="muted">— No: distinto factor de conversión; la segunda necesita más ingreso para el mismo funcionamiento.</span></li>
+  <li>“El gobierno recorta el seguro de desempleo.” ¿Qué libertad? <span class="muted">— Seguridad protectora (mecanismo institucional fijo).</span></li>
+  <li>“Ana podría estudiar medicina, pero eligió trabajar en el comercio familiar.” ¿Capacidad o funcionamiento? <span class="muted">— Capacidad: había alternativas y eligió.</span></li>
+  <li>¿Por qué la expansión de la libertad es a la vez medio y fin del desarrollo? <span class="muted">— Papel constitutivo (valor intrínseco) y papel instrumental (las libertades se refuerzan entre sí).</span></li>
+</ol></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía</div>
+<p>Sen, A. (1988), “El concepto de desarrollo” · Sen, A. (2000), <i>Desarrollo y Libertad</i>, Introducción (pp. 19-28) y cap. 2 “Los fines y los medios del desarrollo” (pp. 54-75) · Paz, <i>Teoría del desarrollo</i>, cap. 3 · Weil, cap. 1 “Los hechos” · Ray, cap. 2 “El desarrollo económico: visión panorámica” · Todaro y Smith · PNUD (2015), <i>Objetivos de desarrollo sostenible</i>.</p></div>
+
+</section>

@@ -42,7 +42,7 @@ L 97.25829 67.22247
 L 97.25829 33.466914 
 L 40.384531 33.466914 
 z
-" clip-path="url(#pa7aa2f4846)" style="fill: #2a78d6"/>
+" clip-path="url(#p57b8e9435a)" style="fill: #2a78d6"/>
    </g>
    <g id="patch_4">
     <path d="M 40.384531 121.666914 
@@ -50,7 +50,7 @@ L 103.641144 121.666914
 L 103.641144 87.911359 
 L 40.384531 87.911359 
 z
-" clip-path="url(#pa7aa2f4846)" style="fill: #eb6834"/>
+" clip-path="url(#p57b8e9435a)" style="fill: #eb6834"/>
    </g>
    <g id="matplotlib.axis_1"/>
    <g id="matplotlib.axis_2">
@@ -1078,7 +1078,7 @@ L 242.868949 67.22247
 L 242.868949 33.466914 
 L 179.612336 33.466914 
 z
-" clip-path="url(#p1c6d2c2a66)" style="fill: #2a78d6"/>
+" clip-path="url(#p3ebaa7b282)" style="fill: #2a78d6"/>
    </g>
    <g id="patch_8">
     <path d="M 179.612336 121.666914 
@@ -1086,7 +1086,7 @@ L 191.936981 121.666914
 L 191.936981 87.911359 
 L 179.612336 87.911359 
 z
-" clip-path="url(#p1c6d2c2a66)" style="fill: #eb6834"/>
+" clip-path="url(#p3ebaa7b282)" style="fill: #eb6834"/>
    </g>
    <g id="matplotlib.axis_3"/>
    <g id="matplotlib.axis_4">
@@ -1528,7 +1528,7 @@ L 329.915523 67.22247
 L 329.915523 33.466914 
 L 318.840141 33.466914 
 z
-" clip-path="url(#p943ec818d8)" style="fill: #2a78d6"/>
+" clip-path="url(#p1836abf144)" style="fill: #2a78d6"/>
    </g>
    <g id="patch_12">
     <path d="M 318.840141 121.666914 
@@ -1536,7 +1536,7 @@ L 382.096754 121.666914
 L 382.096754 87.911359 
 L 318.840141 87.911359 
 z
-" clip-path="url(#p943ec818d8)" style="fill: #eb6834"/>
+" clip-path="url(#p1836abf144)" style="fill: #eb6834"/>
    </g>
    <g id="matplotlib.axis_5"/>
    <g id="matplotlib.axis_6">
@@ -1870,13 +1870,13 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pa7aa2f4846">
+  <clipPath id="p57b8e9435a">
    <rect x="40.384531" y="29.056914" width="89.82439" height="97.02"/>
   </clipPath>
-  <clipPath id="p1c6d2c2a66">
+  <clipPath id="p3ebaa7b282">
    <rect x="179.612336" y="29.056914" width="89.82439" height="97.02"/>
   </clipPath>
-  <clipPath id="p943ec818d8">
+  <clipPath id="p1836abf144">
    <rect x="318.840141" y="29.056914" width="89.82439" height="97.02"/>
   </clipPath>
  </defs>

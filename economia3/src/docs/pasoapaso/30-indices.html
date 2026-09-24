@@ -1,0 +1,701 @@
+<section class="tema-2">
+<style>
+.s3-kb { font-family: "DejaVu Sans Mono", monospace; font-size: 0.82em; background: var(--paper-2); border: 1px solid #d3d1c9; border-bottom-width: 2px; border-radius: 4px; padding: 0.02em 0.4em; white-space: nowrap; color: var(--ink); }
+.s3-out { font-weight: 700; color: var(--blue-ink); white-space: nowrap; }
+.s3-opts { font-size: 8.7pt; color: var(--ink-2); margin: 0.3em 0 0; line-height: 1.75; }
+.s3-opts > span { display: inline-block; margin-right: 1.1em; white-space: nowrap; }
+.s3-opts > span b { color: var(--ink); }
+h4 .tag, h4 .pts { vertical-align: 0.1em; margin-left: 0.4em; }
+.s3-err table { margin: 0.2em 0 0.1em; background: #fff; }
+.s3-err td:last-child, .s3-err th:last-child { white-space: nowrap; }
+.s3-ref { font-size: 8.4pt; color: var(--ink-2); margin: -0.2em 0 0.6em; }
+.s3-head, .s3-stmt { break-inside: avoid; }
+.flow.s3-flow > .node { font-size: 8.2pt; padding: 0.4em 0.45em; }
+.s3-map td, .s3-map th { font-size: 8.4pt; }
+.s3-cells td:first-child { width: 24%; }
+.s3-cells td.s3-q { color: var(--orange-ink); font-weight: 600; }
+.s3-two { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7em; margin-top: 0.3em; }
+.s3-two > div { background: var(--paper-2); border-radius: 6px; padding: 0.3em 0.6em; }
+.s3-two > div > b:first-child { display: block; font: 700 7.6pt "Inter"; letter-spacing: 0.06em; text-transform: uppercase; }
+.s3-nam > b:first-child { color: var(--blue-ink); }
+.s3-hon > b:first-child { color: var(--orange-ink); }
+.s3-thr { display: flex; margin: 0.5em 0 0.2em; border-radius: 6px; overflow: hidden; border: 1px solid var(--rule); font-size: 8pt; text-align: center; }
+.s3-thr > div { flex: 1; padding: 0.3em 0.2em; }
+.s3-thr > div b { display: block; font-size: 8.4pt; }
+.s3-thr .b1 { background: #f4f3ef; } .s3-thr .b2 { background: #fff; } .s3-thr .b3 { background: #f4f3ef; } .s3-thr .b4 { background: #fff; }
+</style>
+
+<div class="chapter-head">
+  <div class="kicker">Tipo de ejercicio 3 · Tema 2 · Indicadores del bienestar</div>
+  <h2><span class="num">§3</span>Índices de desarrollo humano: IDH, IDH-D, pérdida, IDG</h2>
+  <p>Qué vas a poder hacer: calcular con calculadora, sin mirar nada, el IDH desde los datos crudos, el IDH ajustado por desigualdad y la pérdida; despejar lo que falte en un cuadro del PNUD (una desigualdad, un INB); clasificar y comparar países, y leer bien el índice de salud del IDG. Son los cinco ejercicios de índices de los parciales: 2023, 2024 (dos versiones), 2025 y uno sin fecha.</p>
+</div>
+
+<div class="box summary"><div class="box-title">En 30 segundos</div><ul>
+<li>El IDH es una <b>receta de cuatro pasos</b>: normalizar cada indicador entre 0 y 1, promediar los dos de educación, sacar la <b>media geométrica</b> de las tres dimensiones y clasificar.</li>
+<li>El ingreso va <b>en logaritmos</b>: \(I_{ing}=\ln(\text{INB}/100)/\ln 750\). Al revés, \(\text{INB}=100\cdot 750^{\,I}\).</li>
+<li>IDH-D: cada índice por \((1-A)\) y otra vez media geométrica. <b>A en decimales</b>: 2,7 % es 0,027, no 0,27.</li>
+<li>Pérdida \(=1-\text{IDH-D}/\text{IDH}\). No es el promedio de las A (eso es otro indicador, el coeficiente de desigualdad humana).</li>
+<li>Los niveles se leen con el <b>IDH</b>: bajo &lt; 0,550 ≤ medio &lt; 0,700 ≤ alto &lt; 0,800 ≤ muy alto.</li>
+<li>IDG: más cerca de 0 es mejor. Pero su índice de <b>salud reproductiva</b> es un logro: <b>más alto es mejor</b>.</li>
+<li>Controles de dos segundos: el IDH cae entre su índice menor y su índice mayor; el IDH-D siempre queda <b>debajo</b> del IDH.</li>
+</ul></div>
+
+<table class="compact s3-map">
+<caption>Los cinco ejercicios de esta sección</caption>
+<thead><tr><th>Ejercicio</th><th>Recetas</th><th>Qué dan</th><th>Incisos y puntos</th></tr></thead>
+<tbody>
+<tr><td>P2 · Ej. 2 (2023)</td><td>B (despejes) y A</td><td>Australia: índices ya calculados, con cinco celdas para completar</td><td>5 celdas × (+4 / −2)</td></tr>
+<tr><td>P3 · Ej. 3 (sin fecha)</td><td>A, B, D y C</td><td>Namibia y Honduras: datos crudos, desigualdades, TMM y TNA</td><td>a 11 (sólo suma) · b, c, d: +3 / −1,5</td></tr>
+<tr><td>P6 · Ej. 1 (2024)</td><td>A, B y D</td><td>Barbados con índices; Guyana con datos crudos y \(A_x\)</td><td>a 5 · b 10 · c 5 (error: resta la mitad)</td></tr>
+<tr><td>P7 · Ej. 1 (2024)</td><td>A, B y D</td><td>Barbados con índices; Jamaica con datos crudos y \(A_x\)</td><td>a 5 · b 10 · c 5 (error: resta la mitad)</td></tr>
+<tr><td>P8 · Ej. 3 (2025)</td><td>A y B</td><td>Yemen: tres índices y tres desigualdades</td><td>a 4 · b 10 (el c, de Sen, está en §4)</td></tr>
+</tbody></table>
+
+<div class="box tip"><div class="box-title">La calculadora en este tipo de ejercicio</div>
+<p>Vas a usar <span class="s3-kb">ln</span>, <span class="s3-kb">^</span> (en algunas dice \(x^y\)), los paréntesis <span class="s3-kb">( )</span>, <span class="s3-kb">Ans</span> y, para despejar el INB, <span class="s3-kb">eˣ</span> (casi siempre es <span class="s3-kb">SHIFT ln</span>). Tres reglas:</p>
+<ul>
+<li><b>La raíz cúbica, con el exponente entre paréntesis</b>: \((0{,}886\cdot 0{,}766\cdot 0{,}727)^{1/3}\) es <span class="s3-kb">( 0,886 × 0,766 × 0,727 ) ^ ( 1 ÷ 3 ) =</span> → <span class="s3-out">0,790191</span>. Sin paréntesis la máquina hace \(0{,}4934^1\div 3=0{,}164\). Si tu calculadora tiene <span class="s3-kb">∛</span>, también sirve.</li>
+<li><b>El ingreso, de un tirón</b>: <span class="s3-kb">ln ( 9357 ÷ 100 ) ÷ ln ( 750 ) =</span>. Da lo mismo usar <span class="s3-kb">log</span> en los dos lados: el cociente de logaritmos no depende de la base.</li>
+<li><b>Cuatro decimales en los pasos intermedios</b> (o encadená con Ans) y <b>redondeá a tres recién al final</b>. En este tipo de ejercicio las opciones difieren en el tercer decimal (0,591 contra 0,593; 0,709 contra 0,710).</li>
+</ul></div>
+
+<!-- ============================================================ RECETA A -->
+<div class="s3-head"><h3>Receta A · El IDH desde los datos</h3>
+<p class="s3-ref">Teoría: manual, Tema 2.4 · Práctica: TP3, parte A (y ejercicio extra E4) · Se usa en P3, P6, P7 y P8, y para el IDH que falta en P2.</p>
+
+<div class="recipe"><div class="recipe-title">Receta A: cuatro pasos y un control</div><ol>
+<li><b>Mirá qué te dan.</b> Si el cuadro ya trae los <b>índices de dimensión</b> (Australia, Barbados, Yemen), saltá al paso 5. Si trae <b>datos crudos</b> (años, dólares), empezá acá.</li>
+<li><b>Salud</b>: \(I_{s}=(\text{EV}-20)/(85-20)=(\text{EV}-20)/65\).</li>
+<li><b>Educación</b>: años esperados sobre 18 y años promedio sobre 15 (no los cruces). Si alguno supera el máximo, ese subíndice vale 1. Después, <b>promedio simple</b> de los dos: \(I_e=(I_{esp}+I_{prom})/2\).</li>
+<li><b>Ingreso</b>, en logaritmos: \(I_i=\dfrac{\ln\text{INB}-\ln 100}{\ln 75.000-\ln 100}=\dfrac{\ln(\text{INB}/100)}{\ln 750}\). Si el INB supera 75.000, vale 1.</li>
+<li><b>Media geométrica</b>: \(\text{IDH}=(I_s\cdot I_e\cdot I_i)^{1/3}\).</li>
+<li><b>Redondeá al final</b> a tres decimales (lo pide la consigna de 2024).</li>
+<li><b>Clasificá</b> con los cortes del PNUD (ver la barra de abajo).</li>
+<li><b>Control</b>: el IDH queda entre el menor y el mayor de los tres índices, y un poco por debajo de su promedio simple.</li>
+</ol></div></div>
+
+<div class="flow s3-flow">
+<div class="node"><b>1 · Datos</b>¿crudos o índices ya hechos?</div><div class="arrow">→</div>
+<div class="node"><b>2 · Normalizar</b>salud y educación lineales; ingreso con ln</div><div class="arrow">→</div>
+<div class="node"><b>3 · IDH</b>\((I_s\,I_e\,I_i)^{1/3}\)</div><div class="arrow">→</div>
+<div class="node"><b>4 · Nivel</b>cortes 0,550 · 0,700 · 0,800</div><div class="arrow">→</div>
+<div class="node"><b>5 · Control</b>mín ≤ IDH ≤ máx</div>
+</div>
+
+<div class="formula-card">
+  <div class="fc-label">Índice de desarrollo humano (metodología PNUD)</div>
+  \[ I_s=\frac{\text{EV}-20}{85-20}\qquad I_e=\frac{1}{2}\left(\frac{\text{AEE}}{18}+\frac{\text{APE}}{15}\right)\qquad I_i=\frac{\ln(\text{INB}/100)}{\ln 750}\qquad \text{IDH}=\left(I_s\cdot I_e\cdot I_i\right)^{1/3} \]
+  <div class="fc-legend"><span>EV: esperanza de vida al nacer (20 a 85 años)</span><span>AEE: años esperados de escolaridad (0 a 18)</span><span>APE: años promedio de escolaridad (0 a 15)</span><span>INB: ingreso nacional bruto per cápita, US$ PPA (100 a 75.000)</span></div>
+</div>
+
+<div class="s3-thr">
+<div class="b1"><b>Bajo</b>menos de 0,550</div><div class="b2"><b>Medio</b>0,550 a 0,699</div><div class="b3"><b>Alto</b>0,700 a 0,799</div><div class="b4"><b>Muy alto</b>0,800 o más</div>
+</div>
+<p class="small" style="margin-top:0.1em">Cortes del PNUD vigentes desde 2014 (manual, Tema 2.4). Un IDH de 0,790 es <b>alto</b>, no muy alto: el corte es 0,800.</p>
+
+<div class="grid-2">
+<div class="box warn"><div class="box-title">Cuatro trampas del IDH</div><ul>
+<li><b>Promedio simple entre dimensiones</b>: el IDH es media <i>geométrica</i> (no permite que una dimensión compense a otra). La aritmética sólo va <i>adentro</i> de educación.</li>
+<li><b>Ingreso sin logaritmo</b>: con \((9.357-100)/74.900\) Namibia tendría un índice de 0,124 y un IDH de 0,365.</li>
+<li><b>Cruzar 18 y 15</b>: años esperados van sobre 18, años promedio sobre 15.</li>
+<li><b>Clasificar con el IDH-D</b>: los niveles se leen con el IDH.</li>
+</ul></div>
+<div class="box tip"><div class="box-title">Controles rápidos</div><ul>
+<li>\(\min(I)\le \text{IDH}\le\max(I)\). Tacha de un saque las opciones que caen afuera (P6 y P7, inciso a).</li>
+<li>IDH \(\le\) promedio simple de los tres índices (la geométrica nunca supera a la aritmética).</li>
+<li>Todo índice está entre 0 y 1. Un 1,918 o un 1,074 son imposibles.</li>
+<li>Ingreso: con un INB de 5.000 a 25.000 dólares, el índice anda entre 0,59 y 0,83.</li>
+</ul></div>
+</div>
+
+<figure><img src="figs/out/s3_arbol_idh.svg">
+<figcaption><b>Figura §3.1.</b> El cálculo del IDH como árbol, con los números de Namibia (P3, inciso a). Se lee de arriba hacia abajo: cuatro datos, cuatro normalizaciones, tres índices de dimensión (educación junta dos por promedio simple) y una sola media geométrica. Fijate que la raíz (0,645) queda entre el índice más bajo (0,583) y el más alto (0,686): es el control de rango. Datos del enunciado.</figcaption></figure>
+
+
+
+<!-- ============================================================ RECETA B -->
+<div class="s3-head"><h3>Receta B · IDH-D, pérdida y despejes</h3>
+<p class="s3-ref">Teoría: manual, Tema 2.5 · Práctica: TP3, parte B (y ejercicio extra E5) · Se usa en P2, P3, P6, P7 y P8.</p>
+
+<div class="recipe"><div class="recipe-title">Receta B: ajustar por desigualdad y medir la pérdida</div><ol>
+<li><b>Pasá cada desigualdad a decimales</b> (÷ 100): \(A=2{,}7\,\%\to 0{,}027\); \(25{,}0\,\%\to 0{,}25\); \(32{,}0\,\%\to 0{,}32\). Aunque el cuadro no ponga el signo %, son porcentajes.</li>
+<li><b>Ajustá cada índice</b>: \(I^{*}_x=I_x\cdot(1-A_x)\). Si el cuadro ya trae un índice ajustado (el de ingreso de Namibia, 0,318), usalo tal cual: no lo multipliques otra vez.</li>
+<li><b>IDH-D</b> \(=(I^{*}_s\cdot I^{*}_e\cdot I^{*}_i)^{1/3}\), igual que el IDH pero con los ajustados.</li>
+<li><b>Pérdida</b> \(=1-\text{IDH-D}/\text{IDH}\), en %. Si no te dan el IDH, calculalo con la receta A.</li>
+<li><b>Si falta una pieza, despejá</b> de \(I^{*}=I(1-A)\): <span class="nowrap">\(A=1-I^{*}/I\)</span> o <span class="nowrap">\(I=I^{*}/(1-A)\)</span>. Si falta el INB: <span class="nowrap">\(\text{INB}=100\cdot 750^{\,I_i}\)</span>.</li>
+<li><b>Control</b>: IDH-D &lt; IDH; y el IDH-D tiene que dar lo mismo por la vía del manual, <span class="nowrap">\(\text{IDH}\cdot[(1-A_s)(1-A_e)(1-A_i)]^{1/3}\)</span>.</li>
+</ol></div></div>
+
+<div class="flow s3-flow">
+<div class="node"><b>1 · A en decimales</b>2,7 % → 0,027</div><div class="arrow">→</div>
+<div class="node"><b>2 · Ajustar</b>\(I^{*}=I\,(1-A)\)</div><div class="arrow">→</div>
+<div class="node"><b>3 · IDH-D</b>\((I^{*}_sI^{*}_eI^{*}_i)^{1/3}\)</div><div class="arrow">→</div>
+<div class="node"><b>4 · Pérdida</b>\(1-\text{IDH-D}/\text{IDH}\)</div><div class="arrow">→</div>
+<div class="node"><b>5 · Control</b>IDH-D &lt; IDH; vía del manual</div>
+</div>
+
+<div class="formula-card">
+  <div class="fc-label">IDH ajustado por desigualdad, pérdida y despejes</div>
+  \[ \text{IDH-D}=\big(I_s(1-A_s)\cdot I_e(1-A_e)\cdot I_i(1-A_i)\big)^{1/3}=\text{IDH}\cdot\big[(1-A_s)(1-A_e)(1-A_i)\big]^{1/3} \]
+  \[ \text{Pérdida}=1-\frac{\text{IDH-D}}{\text{IDH}}=1-\big[(1-A_s)(1-A_e)(1-A_i)\big]^{1/3} \]
+  \[ A_x=1-\frac{I^{*}_x}{I_x}\qquad\qquad \text{INB}=100\cdot 750^{\,I_i}\qquad\qquad \text{EV}=20+65\,I_s \]
+  <div class="fc-legend"><span>\(A_x\): desigualdad en la dimensión \(x\), en decimales</span><span>\(I^{*}_x\): índice ajustado</span><span>la pérdida no depende del IDH: sólo de las tres A</span></div>
+</div>
+
+<div class="grid-2">
+<div class="box warn"><div class="box-title">La trampa del 2,7 %</div>
+<p>En el cuadro del P2 dice “2,7” en la columna de desigualdad. Es 2,7 %, o sea 0,027. Con 0,27 el índice de 0,993 cae a 0,725, un número que no está entre las opciones… y hay una opción “n/a” esperándote. Regla: <b>una A mayor que 0,5 en salud o educación de un país rico es sospechosa</b>; Australia pierde poquito.</p></div>
+<div class="box tip"><div class="box-title">Controles rápidos</div><ul>
+<li>IDH-D &lt; IDH siempre que haya alguna desigualdad (IDH-D = IDH sólo si las tres A valen 0).</li>
+<li>Cada índice ajustado es menor que el suyo sin ajustar.</li>
+<li>La pérdida queda cerca del promedio de las A, pero no es igual (es otra media).</li>
+<li>El despeje del INB se verifica metiéndolo en la fórmula: tiene que devolver el índice.</li>
+</ul></div>
+</div>
+
+<!-- ============================================================ RECETA C -->
+<div class="s3-head"><h3>Receta C · El índice de salud del IDG</h3>
+<p class="s3-ref">Teoría: manual, Tema 2.5 · Práctica: TP3, parte C (y ejercicio extra E6) · Se usa en P3 d; la lectura del IDG final, en P6 y P7 c.</p>
+
+<div class="recipe"><div class="recipe-title">Receta C: salud reproductiva y lectura del IDG</div><ol>
+<li><b>Datos tal cual</b>: la tasa de mortalidad materna (TMM, muertes cada 100.000 nacidos vivos) y la tasa de natalidad o fecundidad adolescente (TNA, nacimientos cada 1.000 mujeres de 15 a 19 años). No son porcentajes: no se dividen por 100.</li>
+<li><b>Índice de salud reproductiva de las mujeres</b>: \(\left(\dfrac{10}{\text{TMM}}\cdot\dfrac{1}{\text{TNA}}\right)^{1/2}\).</li>
+<li><b>Leé la dirección</b>: es un <b>logro</b>. Menos mortalidad materna y menos embarazo adolescente lo hacen <b>más alto</b>. Más alto es mejor.</li>
+<li><b>Si piden la “salud” de la referencia estándar</b>, promediá con la de los varones, que vale 1: \((\text{índice}+1)/2\). El orden entre países no cambia.</li>
+<li><b>El IDG final se lee al revés</b>: mide desigualdad, 0 es igualdad perfecta y 1 desigualdad máxima. <b>Más cerca de 0 es mejor.</b></li>
+</ol></div></div>
+
+<div class="formula-card">
+  <div class="fc-label">IDG: la dimensión salud y el índice final (manual, Tema 2.5)</div>
+  \[ \text{Salud}_M=\left(\frac{10}{\text{TMM}}\cdot\frac{1}{\text{TNA}}\right)^{1/2}\qquad \text{Salud}_{ref}=\frac{\text{Salud}_M+1}{2}\qquad \text{IDG}=1-\frac{\text{HARM}(G_M,G_V)}{\text{Referencia}} \]
+  <div class="fc-legend"><span>\(G_M\), \(G_V\): índices de mujeres y varones (media geométrica de salud, empoderamiento y mercado laboral)</span><span>HARM: media armónica</span><span>en los parciales sólo se pidió la salud y la lectura del IDG</span></div>
+</div>
+
+<div class="versus">
+<div class="card aqua"><div class="card-title">Índice de salud reproductiva: logro</div>
+<p class="small">Más alto = mejor. P3 d: Honduras 0,0464 le gana a Namibia 0,0281.</p></div>
+<div class="vs">≠</div>
+<div class="card orange"><div class="card-title">IDG final: desigualdad</div>
+<p class="small">Más bajo = mejor. P6 y P7 c: Barbados 0,268 le gana a Guyana 0,454 y a Jamaica 0,335.</p></div>
+</div>
+
+<!-- ============================================================ RECETA D -->
+<div class="s3-head"><h3>Receta D · Comparar países</h3>
+<p class="s3-ref">Teoría: manual, Temas 2.4 y 2.5 · Práctica: TP3, partes B y C · Se usa en P3 b–c y en P6 y P7 c.</p>
+
+<div class="recipe"><div class="recipe-title">Receta D: qué número decide cada pregunta</div><ol>
+<li><b>“Nivel de desarrollo”</b>: con el <b>IDH</b> y los cortes 0,550 · 0,700 · 0,800. Nunca con el IDH-D.</li>
+<li><b>“Mejor desarrollo” mirando IDH, IDH-D y pérdida</b>: si los IDH son parecidos, decide el <b>IDH-D</b> (el desarrollo efectivamente disfrutado); la pérdida más chica lo confirma.</li>
+<li><b>“Mejor desempeño en igualdad de género”</b>: el <b>IDG más bajo</b>.</li>
+<li><b>“Mejor salud de las mujeres”</b>: el índice de salud reproductiva <b>más alto</b> (receta C).</li>
+<li><b>Escribí la frase</b> con los dos números: “Honduras: IDH casi igual (0,638 contra 0,645) pero IDH-D mayor (0,476 contra 0,418) y pérdida menor (25,5 % contra 35,3 %)”.</li>
+</ol></div></div>
+
+<figure><img src="figs/out/s3_escala.svg">
+<figcaption><b>Figura §3.2.</b> Los siete países de los parciales sobre la escala de niveles del PNUD. El punto azul (IDH) decide la franja; el círculo naranja (IDH-D) muestra cuánto queda después de descontar la desigualdad. Mirá Namibia y Honduras: casi el mismo IDH, pero Honduras pierde bastante menos. Y Jamaica: su IDH (0,709) apenas pasa el corte de 0,700. Barbados no tiene IDH-D porque el examen no lo pide. Datos: P2, P3, P6, P7 y P8, calculados en esta sección.</figcaption></figure>
+
+<table class="compact">
+<caption>Las seis preguntas de comparación que se tomaron, y el número que decide cada una</caption>
+<thead><tr><th>Pregunta</th><th>Qué número mirar</th><th>Valores</th><th>Respuesta</th></tr></thead>
+<tbody>
+<tr><td>P3 b · nivel de Namibia y Honduras</td><td>IDH y cortes</td><td>0,645 y 0,638</td><td>medio y medio</td></tr>
+<tr><td>P3 c · ¿cuál tiene mejor desarrollo?</td><td>IDH-D (y pérdida)</td><td>0,418 contra 0,476 (35,3 % contra 25,5 %)</td><td>Honduras</td></tr>
+<tr><td>P3 d · salud de las mujeres</td><td>índice de salud reproductiva: más alto</td><td>0,0281 contra 0,0464</td><td>Honduras</td></tr>
+<tr><td>P6 c · nivel e igualdad de género</td><td>IDH; IDG: más bajo</td><td>0,790 y 0,714; IDG 0,268 contra 0,454</td><td>alto; Barbados</td></tr>
+<tr><td>P7 c · nivel e igualdad de género</td><td>IDH; IDG: más bajo</td><td>0,790 y 0,709; IDG 0,268 contra 0,335</td><td>alto; Barbados</td></tr>
+<tr><td>P8 a · nivel de Yemen</td><td>IDH y cortes</td><td>0,455</td><td>bajo</td></tr>
+</tbody></table>
+
+<!-- ============================================================ P2 2023 -->
+<div class="s3-head"><h3>P2 · Ej.2 (2023) — Australia: IDH-D con celdas para completar</h3>
+<p class="s3-ref">Ver Parciales resueltos, P2 · Recetas B y A · Manual, Temas 2.4 y 2.5 · TP3, partes A y B.</p>
+
+<div class="statement s3-stmt"><div class="statement-title">Datos · 1er Parcial 2023 · Ej. 2 <span class="pts">20 ptos: +4 / −2 por celda</span></div>
+<p>El cuadro presenta valores publicados en el Informe de Desarrollo Humano del PNUD 21/22. Utilizando la metodología del índice y sus valores de referencia por dimensión, realice los cálculos pertinentes y marque la opción correcta donde corresponda.</p>
+<table class="compact s3-cells">
+<thead><tr><th>Dimensión</th><th class="num">Índice</th><th class="num">Desigualdad (%)</th><th class="num">Índice ajustado por desigualdad</th></tr></thead><tbody>
+<tr><td>Esperanza de vida</td><td class="num">0,993</td><td class="num">2,7</td><td class="num s3-q">① a) 0,954 · b) 0,966 · c) 1,918 · d) n/a</td></tr>
+<tr><td>Educación</td><td class="num">0,925</td><td class="num s3-q">② a) 3,1 · b) 5,9 · c) 5,7 · d) n/a</td><td class="num">0,896</td></tr>
+<tr><td>Estándar de vida (ingreso)</td><td class="num">0,936</td><td class="num">17,1</td><td class="num">0,776</td></tr>
+<tr><td>INB per cápita</td><td class="num s3-q" colspan="3">③ a) 25.782 · b) 122.607 · c) 9.238 · d) n/a</td></tr>
+<tr><td>IDH-D</td><td class="num s3-q" colspan="3">④ a) 0,828 · b) 0,799 · c) 0,876 · d) n/a</td></tr>
+<tr><td>Pérdida por desigualdad</td><td class="num s3-q" colspan="3">⑤ a) 6,5 % · b) 7,9 % · c) 13,0 % · d) n/a</td></tr>
+</tbody></table>
+<p class="small" style="margin:0">Valores de referencia: esperanza de vida 20 y 85; años esperados 0 y 18; años promedio 0 y 15; PBN per cápita (US$ PPA 2011) 100 y 75.000. En el examen el cuadro es una sola fila de doce columnas; acá está ordenado por dimensión. En naranja, las cinco celdas con opciones, numeradas en el orden en que conviene resolverlas.</p></div></div>
+
+<div class="box intuition"><div class="box-title">La clave del cuadro: tres ecuaciones con una incógnita cada una</div>
+<p>Cada dimensión trae tres columnas: índice, desigualdad y índice ajustado, unidas por \(I^{*}=I\,(1-A)\). En salud falta \(I^{*}\) (multiplicás); en educación falta \(A\) (despejás \(A=1-I^{*}/I\)); en ingreso están las tres y lo que falta es el <b>INB</b> detrás del índice (despejás \(\text{INB}=100\cdot 750^{\,I}\)). Después, IDH-D y pérdida. Plan: ① → ② → ③ → ④ → ⑤, unos 8 minutos.</p></div>
+
+<h4>① Índice de esperanza de vida ajustado <span class="pts">+4 / −2</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>Datos: índice de esperanza de vida 0,993; desigualdad en esperanza de vida 2,7.</p>
+<p class="s3-opts"><span><b>a)</b> 0,954</span><span><b>b)</b> 0,966</span><span><b>c)</b> 1,918</span><span><b>d)</b> n/a</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Identificá los datos y traducí el porcentaje</span>\(I_s=0{,}993\); \(A_s=2{,}7\,\%=2{,}7/100=0{,}027\). No tiene signo %, pero la columna es de porcentajes (si fuera 2,7 “por uno”, \(1-2{,}7\) daría negativo).</li>
+<li><span class="step-title">Elegí la fórmula</span>\(I^{*}_s=I_s\,(1-A_s)\).</li>
+<li><span class="step-title">Reemplazá y operá</span>\(1-0{,}027=0{,}973\); \(0{,}993\cdot 0{,}973=0{,}966189\). Calculadora: <span class="s3-kb">0,993 × ( 1 − 0,027 ) =</span> → <span class="s3-out">0,966189</span>. Dejalo en memoria: lo usás en ④.</li>
+<li><span class="step-title">Redondeá</span>0,966.</li>
+<li><span class="step-title">Control</span>Al revés: \(1-0{,}966/0{,}993=0{,}0272\approx 2{,}7\,\%\) ✓. Y con una desigualdad chica el índice tiene que bajar poquito (menos de 0,03) ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) 0,966</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Usar 27 % (0,27) en vez de 2,7 % (0,027)</td><td>\(0{,}993\cdot 0{,}73=0{,}725\): no está</td><td>d) n/a ✗</td></tr>
+<tr><td>Sumar dos índices del cuadro</td><td>\(0{,}993+0{,}925=1{,}918\) (¡un índice mayor que 1!)</td><td>c) ✗</td></tr>
+<tr><td>Restar \(0{,}993-0{,}027\) en vez de multiplicar</td><td>0,966: zafás sólo porque el índice es casi 1 (en Namibia, \(0{,}672-0{,}221=0{,}451\) contra 0,524)</td><td>b) por suerte</td></tr>
+<tr><td>—</td><td>a) 0,954 no sale de un error típico: implicaría \(A=3{,}9\,\%\)</td><td>—</td></tr>
+</tbody></table></div>
+
+<h4>② Desigualdad en educación <span class="pts">+4 / −2</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>Datos: índice de educación 0,925; índice de educación ajustado por desigualdad 0,896.</p>
+<p class="s3-opts"><span><b>a)</b> 3,1</span><span><b>b)</b> 5,9</span><span><b>c)</b> 5,7</span><span><b>d)</b> n/a</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Identificá los datos y la incógnita</span>\(I_e=0{,}925\); \(I^{*}_e=0{,}896\); falta \(A_e\).</li>
+<li><span class="step-title">Despejá de la fórmula del ajuste</span>\(I^{*}=I(1-A)\;\Rightarrow\;\dfrac{I^{*}}{I}=1-A\;\Rightarrow\;A=1-\dfrac{I^{*}}{I}\).</li>
+<li><span class="step-title">Reemplazá</span><span class="s3-kb">1 − 0,896 ÷ 0,925 =</span> → <span class="s3-out">0,031351</span> (la calculadora divide antes de restar).</li>
+<li><span class="step-title">Pasalo a porcentaje, como el resto de la columna</span>\(0{,}031351\cdot 100=3{,}14\,\%\to 3{,}1\).</li>
+<li><span class="step-title">Control</span>\(0{,}925\cdot(1-0{,}031)=0{,}925\cdot 0{,}969=0{,}896\) ✓ (devuelve el ajustado del cuadro).</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a) 3,1</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Dividir al revés, \(1-I/I^{*}\)</td><td>\(1-0{,}925/0{,}896=-3{,}2\,\%\): una desigualdad negativa no existe</td><td>—</td></tr>
+<tr><td>Restar los índices</td><td>\(0{,}925-0{,}896=0{,}029\): “2,9”, no está</td><td>a) por cercanía (suerte)</td></tr>
+<tr><td>Comparar el ajustado con el IDH (0,951) en vez de con el índice de educación</td><td>\(1-0{,}896/0{,}951=5{,}8\,\%\): cae entre b) y c)</td><td>b) o c) ✗</td></tr>
+<tr><td>—</td><td>con b) 5,9 % el ajustado sería 0,870; con c) 5,7 %, 0,872: ninguno devuelve 0,896</td><td>—</td></tr>
+</tbody></table></div>
+
+<h4>③ INB per cápita <span class="pts">+4 / −2</span><span class="tag">⏱ 2 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>Datos: índice de estándar de vida (ingreso) 0,936; valores de referencia 100 y 75.000.</p>
+<p class="s3-opts"><span><b>a)</b> 25.782</span><span><b>b)</b> 122.607</span><span><b>c)</b> 9.238</span><span><b>d)</b> n/a</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Identificá los datos y la incógnita</span>\(I_i=0{,}936\); mínimo 100 y máximo 75.000; falta el INB.</li>
+<li><span class="step-title">Escribí la fórmula en la forma cómoda</span>\(I_i=\dfrac{\ln\text{INB}-\ln 100}{\ln 75.000-\ln 100}=\dfrac{\ln(\text{INB}/100)}{\ln 750}\), porque \(\ln a-\ln b=\ln(a/b)\) y \(75.000/100=750\).</li>
+<li><span class="step-title">Despejá</span>
+<div class="calc">\[ \ln\!\left(\frac{\text{INB}}{100}\right)=I_i\cdot\ln 750\;\Longrightarrow\;\frac{\text{INB}}{100}=e^{\,I_i\ln 750}=750^{\,I_i}\;\Longrightarrow\;\text{INB}=100\cdot 750^{\,I_i} \]</div></li>
+<li><span class="step-title">Reemplazá</span>\(\ln 750=6{,}620073\); \(0{,}936\cdot 6{,}620073=6{,}196388\); \(e^{6{,}196388}=490{,}9727\); por 100: <b>49.097</b>. Calculadora, corto: <span class="s3-kb">750 ^ 0,936 =</span> → <span class="s3-out">490,97270</span> <span class="s3-kb">× 100 =</span> → <span class="s3-out">49.097,27</span>. Largo: <span class="s3-kb">SHIFT ln ( 0,936 × ln 750 ) × 100 =</span>.</li>
+<li><span class="step-title">Compará con las opciones</span>49.097 no está: la respuesta es “n/a”.</li>
+<li><span class="step-title">Control: probá cada opción en la fórmula</span>\(\ln(257{,}82)/\ln 750=0{,}839\); \(\ln(1.226{,}07)/\ln 750=1{,}074\) (más que 1: el INB pasa el máximo); \(\ln(92{,}38)/\ln 750=0{,}684\). Ninguna da 0,936 ✓. Y \(\ln(490{,}97)/\ln 750=0{,}9360\) ✓.</li>
+</ol>
+<figure class="w80"><img src="figs/out/s3_ingreso.svg">
+<figcaption><b>Figura §3.3.</b> El índice de ingreso es una curva logarítmica: sube rápido con los primeros dólares y se aplana. Para despejar se lee al revés: desde 0,936 en el eje vertical hasta la curva y de ahí abajo, a 49.097. Las tres opciones del examen (círculos) caen en otras alturas; la b) queda más allá del máximo de 75.000. Datos: P2 2023, Ej. 2.</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>d) n/a. El INB que corresponde a un índice de 0,936 es de unos US$ 49.097, y no figura.</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Olvidarte de multiplicar por 100</td><td>\(750^{0{,}936}=491\): no está</td><td>d) por suerte</td></tr>
+<tr><td>Normalizar el ingreso sin logaritmo</td><td>\(100+0{,}936\cdot 74.900=70.206\): no está</td><td>d) por suerte</td></tr>
+<tr><td>Elegir “el que parece un ingreso razonable” sin despejar</td><td>25.782 (su índice es 0,839)</td><td>a) ✗</td></tr>
+<tr><td>No ver que el índice no puede pasar de 1</td><td>122.607 (índice 1,074)</td><td>b) ✗</td></tr>
+</tbody></table>
+<p class="small" style="margin:0.3em 0 0">En esta celda los errores de cuenta te llevan a “n/a” de casualidad. En otra versión con el INB correcto entre las opciones, no te salvan.</p></div>
+
+<h4>④ IDH-D <span class="pts">+4 / −2</span><span class="tag">⏱ 1,5 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>El IDH ajustado por desigualdad, con los tres índices ajustados.</p>
+<p class="s3-opts"><span><b>a)</b> 0,828</span><span><b>b)</b> 0,799</span><span><b>c)</b> 0,876</span><span><b>d)</b> n/a</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Juntá los tres ajustados</span>\(I^{*}_s=0{,}966\) (celda ①), \(I^{*}_e=0{,}896\) y \(I^{*}_i=0{,}776\) (estos dos, del cuadro).</li>
+<li><span class="step-title">Elegí la fórmula</span>\(\text{IDH-D}=(I^{*}_s\cdot I^{*}_e\cdot I^{*}_i)^{1/3}\).</li>
+<li><span class="step-title">Multiplicá y sacá la raíz cúbica</span>
+<div class="calc">\[\begin{aligned} 0{,}966\cdot 0{,}896 &= 0{,}865536 \qquad 0{,}865536\cdot 0{,}776=0{,}671656\\ \text{IDH-D} &= 0{,}671656^{1/3}=0{,}87575 \end{aligned}\]</div>
+Calculadora: <span class="s3-kb">( 0,966 × 0,896 × 0,776 ) ^ ( 1 ÷ 3 ) =</span> → <span class="s3-out">0,875754</span> (con 0,966189 de la memoria da 0,875811: igual a tres decimales).</li>
+<li><span class="step-title">Redondeá</span>0,876.</li>
+<li><span class="step-title">Control</span>Queda entre el menor (0,776) y el mayor (0,966) de los ajustados ✓ y debajo del IDH, 0,951 (celda ⑤) ✓. Por la vía del manual: \(0{,}9509\cdot[(0{,}973)(0{,}969)(0{,}829)]^{1/3}=0{,}9509\cdot 0{,}9212=0{,}876\) ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>c) 0,876</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Arrastrar el 27 % de la celda ①</td><td>\((0{,}725\cdot 0{,}896\cdot 0{,}776)^{1/3}=0{,}796\): la más cercana es 0,799</td><td>b) ✗</td></tr>
+<tr><td>Olvidarte de la raíz cúbica</td><td>0,672: no está</td><td>d) ✗</td></tr>
+<tr><td>Usar los índices sin ajustar</td><td>0,951 (es el IDH): no está</td><td>d) ✗</td></tr>
+<tr><td>Promedio simple de los ajustados</td><td>0,879: cerca de c), pero es un error de concepto</td><td>c) por suerte</td></tr>
+<tr><td>—</td><td>a) 0,828 no sale de un error típico (daría una pérdida de 12,9 %: ver ⑤)</td><td>—</td></tr>
+</tbody></table></div>
+
+<h4>⑤ Pérdida por desigualdad <span class="pts">+4 / −2</span><span class="tag">⏱ 2 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>La pérdida porcentual de desarrollo humano debida a la desigualdad. El IDH <b>no está</b> en el cuadro.</p>
+<p class="s3-opts"><span><b>a)</b> 6,5 %</span><span><b>b)</b> 7,9 %</span><span><b>c)</b> 13,0 %</span><span><b>d)</b> n/a</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Ubicá qué falta</span>Pérdida \(=1-\text{IDH-D}/\text{IDH}\). El IDH-D sale de ④; el IDH lo calculás con los índices <b>sin ajustar</b> (receta A, paso 5).</li>
+<li><span class="step-title">IDH</span>\(0{,}993\cdot 0{,}925=0{,}918525\); \(\cdot\, 0{,}936=0{,}859739\); \(0{,}859739^{1/3}=0{,}950874\to 0{,}951\). Calculadora: <span class="s3-kb">( 0,993 × 0,925 × 0,936 ) ^ ( 1 ÷ 3 ) =</span> → <span class="s3-out">0,950874</span>.</li>
+<li><span class="step-title">Pérdida</span>
+<div class="calc">\[ \text{Pérdida}=1-\frac{0{,}875754}{0{,}950874}=1-0{,}920999=0{,}0790=7{,}9\,\% \qquad \Big(\text{con redondeados: }1-\tfrac{0{,}876}{0{,}951}=7{,}9\,\%\Big) \]</div></li>
+<li><span class="step-title">Control sin el IDH</span>La pérdida sólo depende de las tres A:
+<div class="calc">\[ 1-\big[(1-0{,}027)(1-0{,}0314)(1-0{,}171)\big]^{1/3}=1-0{,}7813^{1/3}=1-0{,}9210=0{,}079=7{,}9\,\%\ \checkmark \]</div>
+Y el PNUD publicó para Australia exactamente IDH 0,951, IDH-D 0,876 y pérdida 7,9 %.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) 7,9 %</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Venir con el IDH-D del 27 % (0,796)</td><td>\(1-0{,}796/0{,}951=16{,}3\,\%\): no está</td><td>d) n/a ✗</td></tr>
+<tr><td>Olvidar el “1 −”</td><td>\(0{,}876/0{,}951=92{,}1\,\%\): no está</td><td>d) ✗</td></tr>
+<tr><td>Restar en vez de dividir</td><td>\(0{,}951-0{,}876=0{,}075\): son puntos de índice, no %</td><td>b) por cercanía (suerte)</td></tr>
+<tr><td>Promediar las desigualdades (coeficiente de desigualdad humana)</td><td>\((2{,}7+3{,}1+17{,}1)/3=7{,}6\,\%\): es otro indicador</td><td>b) por cercanía (suerte)</td></tr>
+<tr><td>Haber marcado a) 0,828 en ④</td><td>\(1-0{,}828/0{,}951=12{,}9\,\%\approx 13{,}0\): los distractores vienen de a pares</td><td>c) ✗</td></tr>
+</tbody></table>
+<p class="small" style="margin:0.3em 0 0">La opción a) 6,5 % no sale de ninguna cuenta del ejercicio.</p></div>
+
+<div class="box exam"><div class="box-title">Un solo error, tres celdas perdidas</div>
+<p>Si en ① usás 0,27 en vez de 0,027, el error viaja por todo el cuadro. Es exactamente la combinación d–b–d que se ve marcada en una resolución que circula de este examen:</p>
+<table class="compact"><thead><tr><th>Celda</th><th class="num">Con 0,027</th><th class="num">Con 0,27</th><th>Qué marcás</th><th class="num">Puntos</th></tr></thead><tbody>
+<tr><td>① Índice de vida ajustado</td><td class="num">0,966</td><td class="num">0,725</td><td>d) n/a en vez de b)</td><td class="num">−2 en vez de +4</td></tr>
+<tr><td>④ IDH-D</td><td class="num">0,876</td><td class="num">0,796</td><td>b) 0,799 en vez de c)</td><td class="num">−2 en vez de +4</td></tr>
+<tr><td>⑤ Pérdida</td><td class="num">7,9 %</td><td class="num">16,3 %</td><td>d) n/a en vez de b)</td><td class="num">−2 en vez de +4</td></tr>
+<tr class="total"><td colspan="4">Diferencia en el ejercicio</td><td class="num">18 puntos</td></tr>
+</tbody></table></div>
+
+<table class="compact">
+<caption>El cuadro de Australia completo: lo que tenés que tener en la hoja al terminar (en verde, lo que calculaste)</caption>
+<thead><tr><th>Dimensión</th><th class="num">Índice</th><th class="num">Desigualdad</th><th class="num">Índice ajustado</th><th>Dato de origen</th></tr></thead>
+<tbody>
+<tr><td>Esperanza de vida</td><td class="num">0,993</td><td class="num">2,7 %</td><td class="num ok">0,966</td><td>—</td></tr>
+<tr><td>Educación</td><td class="num">0,925</td><td class="num ok">3,1 %</td><td class="num">0,896</td><td>—</td></tr>
+<tr><td>Estándar de vida</td><td class="num">0,936</td><td class="num">17,1 %</td><td class="num">0,776</td><td>INB <b>≈ US$ 49.097</b> (no está: n/a)</td></tr>
+<tr class="total"><td>Agregado</td><td class="num">IDH 0,951</td><td class="num">pérdida 7,9 %</td><td class="num">IDH-D 0,876</td><td>desarrollo humano muy alto</td></tr>
+</tbody></table>
+
+<!-- ============================================================ P3 -->
+<div class="s3-head"><h3>P3 · Ej.3 (sin fecha) — Namibia y Honduras: IDH, IDH-D, pérdida e IDG</h3>
+<p class="s3-ref">Ver Parciales resueltos, P3 · Recetas A, B, D y C · Manual, Temas 2.4 y 2.5 · TP3, partes A, B y C. El razonamiento de c) y d) está más desarrollado en §4.</p>
+
+<div class="statement s3-stmt"><div class="statement-title">Datos · Ejercicio N° 3 (formato 2022-2023) <span class="pts">a 11 ptos (sólo suma) · b, c, d: +3 / −1,5</span></div>
+<p>A partir de los datos de Namibia y Honduras, calcule los índices solicitados y, con sus resultados, analice su grado de desarrollo. a) Complete la tabla con IDH, IDH-D y pérdida debida a la desigualdad (%).</p>
+<table class="compact"><thead><tr><th>Indicador</th><th class="num">Namibia</th><th class="num">Honduras</th><th class="num">mín</th><th class="num">máx</th></tr></thead><tbody>
+<tr><td>Esperanza de vida al nacer (años)</td><td class="num">63,7</td><td class="num">76,3</td><td class="num">20</td><td class="num">85</td></tr>
+<tr><td>Años promedio de escolaridad</td><td class="num">7,0</td><td class="num">6,6</td><td class="num">0</td><td class="num">15</td></tr>
+<tr><td>Años esperados de escolaridad</td><td class="num">12,6</td><td class="num">10,1</td><td class="num">0</td><td class="num">18</td></tr>
+<tr><td>Ingreso nacional per cápita</td><td class="num">9.357</td><td class="num">5.308</td><td class="num">100</td><td class="num">75.000</td></tr>
+<tr><td>Desigualdad en la esperanza de vida \(A_s\) (%)</td><td class="num">22,1</td><td class="num">13,3</td><td></td><td></td></tr>
+<tr><td>Desigualdad en la educación \(A_e\) (%)</td><td class="num">25,0</td><td class="num">23,3</td><td></td><td></td></tr>
+<tr><td>Índice de ingresos ajustado por desigualdad</td><td class="num">0,318</td><td class="num">0,373</td><td></td><td></td></tr>
+</tbody></table>
+<p class="small" style="margin:0">Ojo con el orden de las filas: acá los años <b>promedio</b> van antes que los <b>esperados</b>.</p></div></div>
+
+<h4>a) Primera parte: el IDH de los dos países <span class="pts">parte de los 11 ptos</span><span class="tag">⏱ 5 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>Completar una tabla con tres filas (IDH, IDH-D y pérdida debida a la desigualdad, en %) y dos columnas (Namibia y Honduras). Los 11 puntos son por la tabla completa y sólo suman. Primero el IDH (receta A); después el IDH-D y la pérdida (receta B).</p></div>
+<ol class="steps">
+<li><span class="step-title">Identificá los datos</span>Son datos crudos (años y dólares): hay que normalizar. Las desigualdades no se usan todavía. Dos cuentas por renglón, una por país; hacelas en paralelo.</li>
+<li><span class="step-title">Salud: (EV − 20)/65</span>
+<div class="s3-two"><div class="s3-nam"><b>Namibia</b>\((63{,}7-20)/65=43{,}7/65=0{,}6723\)</div><div class="s3-hon"><b>Honduras</b>\((76{,}3-20)/65=56{,}3/65=0{,}8662\)</div></div></li>
+<li><span class="step-title">Educación: esperados/18, promedio/15, y promedio simple</span>
+<div class="s3-two"><div class="s3-nam"><b>Namibia</b>\(12{,}6/18=0{,}7000\); \(7{,}0/15=0{,}4667\)<br>\((0{,}7000+0{,}4667)/2=0{,}5833\)</div><div class="s3-hon"><b>Honduras</b>\(10{,}1/18=0{,}5611\); \(6{,}6/15=0{,}4400\)<br>\((0{,}5611+0{,}4400)/2=0{,}5006\)</div></div></li>
+<li><span class="step-title">Ingreso: ln(INB/100)/ln 750</span><span class="s3-kb">ln ( 9357 ÷ 100 ) ÷ ln ( 750 ) =</span> → <span class="s3-out">0,685598</span>; <span class="s3-kb">ln ( 5308 ÷ 100 ) ÷ ln ( 750 ) =</span> → <span class="s3-out">0,599963</span>.
+<div class="s3-two"><div class="s3-nam"><b>Namibia</b>\(\ln 93{,}57=4{,}5387\); \(4{,}5387/6{,}6201=0{,}6856\)</div><div class="s3-hon"><b>Honduras</b>\(\ln 53{,}08=3{,}9718\); \(3{,}9718/6{,}6201=0{,}6000\)</div></div></li>
+<li><span class="step-title">Media geométrica</span>
+<div class="calc">\[\begin{aligned} \text{IDH}_{Nam} &= (0{,}6723\cdot 0{,}5833\cdot 0{,}6856)^{1/3}=0{,}26886^{1/3}=0{,}6454\\ \text{IDH}_{Hon} &= (0{,}8662\cdot 0{,}5006\cdot 0{,}6000)^{1/3}=0{,}26017^{1/3}=0{,}6384 \end{aligned}\]</div>
+Calculadora: <span class="s3-kb">( 0,6723 × 0,5833 × 0,6856 ) ^ ( 1 ÷ 3 ) =</span> → <span class="s3-out">0,64542</span>.</li>
+<li><span class="step-title">Redondeá recién ahora</span>Namibia <b>0,645</b>; Honduras <b>0,638</b> (con todos los decimales de la calculadora, 0,64543 y 0,63835: lo mismo).</li>
+<li><span class="step-title">Control de rango</span>Namibia: \(0{,}583\le 0{,}645\le 0{,}686\) ✓. Honduras: \(0{,}501\le 0{,}638\le 0{,}866\) ✓. Los dos quedan debajo de su promedio simple (0,647 y 0,656) ✓.</li>
+</ol>
+
+<div class="box tip"><div class="box-title">¿Por qué la resolución que circula dice 0,646 (y 0,639)?</div>
+<p>Por redondear antes de tiempo. En Namibia, \(7/15=0{,}4667\) se redondea a 0,467; después \((0{,}467+0{,}700)/2=0{,}5835\), que otra vez se redondea, ahora para arriba, a <b>0,584</b> (el valor verdadero es 0,5833). Con ese índice de educación inflado:</p>
+<div class="calc">\[ (0{,}672\cdot 0{,}584\cdot 0{,}686)^{1/3}=0{,}6457\to 0{,}646 \qquad\text{contra}\qquad (0{,}6723\cdot 0{,}5833\cdot 0{,}6856)^{1/3}=0{,}6454\to 0{,}645 \]</div>
+<p>En Honduras pasa algo parecido: con los índices a tres decimales, \((0{,}866\cdot 0{,}501\cdot 0{,}600)^{1/3}=0{,}6385\to 0{,}639\), mientras que con cuatro da 0,6383 → 0,638. La diferencia es de un milésimo, pero en una tabla para completar puede costar la celda. Regla: cuatro decimales en los pasos y redondeo a tres sólo al final (la pérdida no cambia: 35,3 % y 25,5 % en los dos casos).</p></div>
+
+<h4>a) Segunda parte: IDH-D y pérdida <span class="pts">parte de los 11 ptos</span><span class="tag">⏱ 4 min</span></h4>
+<ol class="steps">
+<li><span class="step-title">Pasá las desigualdades a decimales</span>Namibia: \(A_s=22{,}1\,\%=0{,}221\), \(A_e=25{,}0\,\%=0{,}25\). Honduras: \(A_s=0{,}133\), \(A_e=0{,}233\). El ingreso ya viene <b>ajustado</b> (0,318 y 0,373): no hay \(A_i\) y no se multiplica por nada.</li>
+<li><span class="step-title">Ajustá salud y educación: I·(1 − A)</span>
+<div class="s3-two"><div class="s3-nam"><b>Namibia</b>\(0{,}6723\cdot 0{,}779=0{,}5237\)<br>\(0{,}5833\cdot 0{,}75=0{,}4375\)<br>ingreso: 0,318</div><div class="s3-hon"><b>Honduras</b>\(0{,}8662\cdot 0{,}867=0{,}7510\)<br>\(0{,}5006\cdot 0{,}767=0{,}3839\)<br>ingreso: 0,373</div></div></li>
+<li><span class="step-title">IDH-D: media geométrica de los ajustados</span>
+<div class="calc">\[\begin{aligned} \text{IDH-D}_{Nam} &= (0{,}5237\cdot 0{,}4375\cdot 0{,}318)^{1/3}=0{,}07286^{1/3}=0{,}4177\to 0{,}418\\ \text{IDH-D}_{Hon} &= (0{,}7510\cdot 0{,}3839\cdot 0{,}373)^{1/3}=0{,}10754^{1/3}=0{,}4755\to 0{,}476 \end{aligned}\]</div></li>
+<li><span class="step-title">Pérdida: 1 − IDH-D/IDH</span>
+<div class="calc">\[ \text{Nam: }1-\frac{0{,}4177}{0{,}6454}=1-0{,}6472=0{,}3528=35{,}3\,\% \qquad \text{Hon: }1-\frac{0{,}4755}{0{,}6384}=1-0{,}7448=0{,}2552=25{,}5\,\% \]</div>
+Calculadora: <span class="s3-kb">1 − 0,4177 ÷ 0,6454 =</span> → <span class="s3-out">0,3528</span>, por 100.</li>
+<li><span class="step-title">Control</span>IDH-D &lt; IDH en los dos ✓. Otra vía: la desigualdad de ingreso implícita en el dato ajustado es \(A_i=1-I^{*}_i/I_i\), y la pérdida sale sólo de las tres A:
+<div class="calc">\[\begin{aligned} \text{Nam: } A_i &= 1-0{,}318/0{,}6856=0{,}536 \qquad 1-(0{,}779\cdot 0{,}75\cdot 0{,}464)^{1/3}=1-0{,}6472=35{,}3\,\%\ \checkmark\\ \text{Hon: } A_i &= 1-0{,}373/0{,}6000=0{,}378 \qquad 1-(0{,}867\cdot 0{,}767\cdot 0{,}622)^{1/3}=1-0{,}7449=25{,}5\,\%\ \checkmark \end{aligned}\]</div>
+El ingreso es la dimensión más desigual en los dos países (53,6 % y 37,8 %): por eso se pierde tanto.</li>
+</ol>
+
+<figure><img src="figs/out/s3_mordisco.svg">
+<figcaption><b>Figura §3.4.</b> El “mordisco” de la desigualdad, construido en cuatro pasos. 1: ejes (tres dimensiones, índice de 0 a 1). 2: los índices sin ajustar; Honduras gana en salud y Namibia en educación e ingreso. 3: cada barra se multiplica por \(1-A\); lo rayado es lo que se pierde (en ingreso, la desigualdad implícita en el dato ajustado). 4: las medias geométricas; con IDH casi iguales, Namibia pierde 35,3 % y Honduras 25,5 %. Datos del enunciado.</figcaption></figure>
+
+<table class="compact">
+<caption>La tabla completa del inciso a</caption>
+<thead><tr><th>Resultado</th><th class="num">Namibia</th><th class="num">Honduras</th></tr></thead>
+<tbody>
+<tr><td>IDH</td><td class="num ok">0,645</td><td class="num ok">0,638</td></tr>
+<tr><td>IDH-D</td><td class="num ok">0,418</td><td class="num ok">0,476</td></tr>
+<tr><td>Pérdida debida a la desigualdad</td><td class="num ok">35,3 %</td><td class="num ok">25,5 %</td></tr>
+</tbody></table>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>IDH 0,645 y 0,638 · IDH-D 0,418 y 0,476 · pérdida 35,3 % y 25,5 % (Namibia y Honduras).</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da (Namibia)</th><th>Consecuencia</th></tr></thead><tbody>
+<tr><td>Redondear los índices en cadena</td><td>IDH 0,646 (y 0,639 en Honduras)</td><td>celda mal</td></tr>
+<tr><td>Cruzar 18 y 15 en educación</td><td>\(I_e=(12{,}6/15+7/18)/2=0{,}614\); IDH 0,657</td><td>todo mal</td></tr>
+<tr><td>Ingreso sin logaritmo</td><td>\(I_i=0{,}124\); IDH 0,365</td><td>todo mal</td></tr>
+<tr><td>Multiplicar el 0,318 otra vez por algo</td><td>el ingreso ya está ajustado: IDH-D más bajo que 0,418</td><td>IDH-D mal</td></tr>
+<tr><td>Pérdida como resta</td><td>\(0{,}645-0{,}418=0{,}227\) → “22,7 %”</td><td>pérdida mal</td></tr>
+</tbody></table></div>
+
+<h4>b) Nivel de desarrollo según el IDH <span class="pts">+3 / −1,5</span><span class="tag">⏱ 30 s</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Según la clasificación del IDH, estos países tienen un nivel de desarrollo…” Marcar con una cruz: Muy alto · Alto · Medio · Bajo, para cada país.</p></div>
+<ol class="steps">
+<li><span class="step-title">Elegí el número correcto</span>El IDH (0,645 y 0,638), no el IDH-D.</li>
+<li><span class="step-title">Compará con los cortes</span>\(0{,}550\le 0{,}645&lt;0{,}700\) y \(0{,}550\le 0{,}638&lt;0{,}700\): los dos en la franja media.</li>
+<li><span class="step-title">Control</span>En la Figura §3.2 los dos puntos azules caen en la franja “DH medio”.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>Namibia: <b>medio</b>. Honduras: <b>medio</b>.</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Clasificar con el IDH-D (0,418 y 0,476)</td><td>los dos por debajo de 0,550</td><td>Bajo ✗</td></tr>
+<tr><td>Usar el IDH mal redondeado (0,646)</td><td>sigue siendo medio: acá no cambia</td><td>Medio</td></tr>
+</tbody></table></div>
+
+<h4>c) ¿Cuál tiene mejor desarrollo? <span class="pts">+3 / −1,5</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Teniendo en cuenta la relación entre IDH e IDH-D y la pérdida por desigualdad, ¿cuál es el país con mejor desarrollo?”</p>
+<p class="s3-opts"><span><b>a.</b> Namibia</span><span><b>b.</b> Honduras</span><span><b>c.</b> No tenemos los datos suficientes</span><span><b>d.</b> Nada de lo anterior</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Juntá los tres números del inciso a</span>IDH 0,645 contra 0,638; IDH-D 0,418 contra 0,476; pérdida 35,3 % contra 25,5 %.</li>
+<li><span class="step-title">Medí las diferencias</span>IDH: \(0{,}645-0{,}638=0{,}007\) a favor de Namibia (un empate práctico). IDH-D: \(0{,}476-0{,}418=0{,}058\) a favor de Honduras, ocho veces más. Pérdida: Honduras pierde \(35{,}3-25{,}5=9{,}8\) puntos menos.</li>
+<li><span class="step-title">Decidí con la receta D</span>Con IDH parecidos decide el IDH-D, el desarrollo efectivamente disfrutado: Honduras.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b. Honduras: el mismo potencial, pero más desarrollo efectivo y menos pérdida por desigualdad.</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Mirar sólo el IDH (“0,645 es más”)</td><td>Namibia</td><td>a. ✗</td></tr>
+<tr><td>Creer que hace falta algo más (población, PBI)</td><td>la consigna define el criterio y los tres datos están</td><td>c. ✗</td></tr>
+</tbody></table></div>
+
+<h4>d) Salud de las mujeres según el IDG <span class="pts">+3 / −1,5</span><span class="tag">⏱ 2,5 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Justifique qué país tiene mejor indicador de salud en mujeres, correspondiente al IDG.” Tasa de mortalidad materna (TMM): Namibia 195, Honduras 63,6. Tasa de natalidad en adolescentes (TNA): 65 y 72,9. Se completa un casillero SALUD por país y se marca el mejor.</p></div>
+<ol class="steps">
+<li><span class="step-title">Elegí la fórmula (receta C)</span>\(\text{Salud}_M=\left(\dfrac{10}{\text{TMM}}\cdot\dfrac{1}{\text{TNA}}\right)^{1/2}\). Los datos van tal cual: no son porcentajes.</li>
+<li><span class="step-title">Namibia</span>\(10/195=0{,}051282\); \(1/65=0{,}015385\); producto \(0{,}000789\); raíz cuadrada <b>0,0281</b>. Calculadora: <span class="s3-kb">( 10 ÷ 195 ÷ 65 ) ^ 0,5 =</span> → <span class="s3-out">0,028088</span>.</li>
+<li><span class="step-title">Honduras</span>\(10/63{,}6=0{,}157233\); \(1/72{,}9=0{,}013717\); producto \(0{,}002157\); raíz <b>0,0464</b>. <span class="s3-kb">( 10 ÷ 63,6 ÷ 72,9 ) ^ 0,5 =</span> → <span class="s3-out">0,046442</span>.</li>
+<li><span class="step-title">Si la tabla pide la “salud” de la referencia estándar</span>\((0{,}0281+1)/2=0{,}514\) y \((0{,}0464+1)/2=0{,}523\). El orden no cambia.</li>
+<li><span class="step-title">Leé la dirección</span>Es un logro: más alto es mejor. Honduras (0,0464 o 0,523) supera a Namibia (0,0281 o 0,514).</li>
+<li><span class="step-title">Control con un cociente</span>\(\sqrt{\tfrac{195}{63{,}6}\cdot\tfrac{65}{72{,}9}}=\sqrt{3{,}066\cdot 0{,}892}=1{,}65\), y \(0{,}0464/0{,}0281=1{,}65\) ✓. La mortalidad materna tres veces menor pesa más que la natalidad adolescente un poco mayor.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>Honduras</b>: índice de salud reproductiva 0,0464 (0,523 con la referencia) contra 0,0281 (0,514) de Namibia, porque su mortalidad materna es tres veces menor.</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Leerlo como el IDG final (“más cerca de 0 es mejor”)</td><td>0,0281 &lt; 0,0464</td><td>Namibia ✗</td></tr>
+<tr><td>Dar vuelta la fórmula, \((\text{TMM}/10\cdot\text{TNA})^{1/2}\)</td><td>35,6 y 21,5; “más alto” sería Namibia</td><td>Namibia ✗</td></tr>
+<tr><td>Olvidarte del 10</td><td>0,0089 y 0,0147: números mal, orden bien</td><td>Honduras (casillero mal)</td></tr>
+</tbody></table>
+<p class="small" style="margin:0.3em 0 0">El primer error es el que comete la resolución manuscrita que circula de este examen.</p></div>
+
+<!-- ============================================================ P6 2024 -->
+<div class="s3-head"><h3>P6 · Ej.1 (2024) — Barbados y Guyana: IDH, IDH-D y niveles</h3>
+<p class="s3-ref">Ver Parciales resueltos, P6 · Recetas A, B y D · Manual, Temas 2.4 y 2.5 · TP3, partes A y B.</p>
+
+<div class="statement s3-stmt"><div class="statement-title">Datos · Prueba práctica 28/9/2024 · Ej. 1 <span class="pts">20 ptos · error: resta la mitad</span></div>
+<p>Informe sobre desarrollo humano de Barbados y Guyana. <i>Redondear a tres decimales.</i></p>
+<table class="compact"><thead><tr><th>Dimensión</th><th>Indicador</th><th class="num">Mín</th><th class="num">Máx</th><th class="num">Barbados: índice</th><th class="num">Guyana (datos)</th><th class="num">Guyana \(A_x\) (%)</th></tr></thead><tbody>
+<tr><td>Salud</td><td>Esperanza de vida al nacer</td><td class="num">20</td><td class="num">85</td><td class="num">0,886</td><td class="num">65,7</td><td class="num">15,8</td></tr>
+<tr><td rowspan="2">Educación</td><td>Años esperados de escolaridad</td><td class="num">0</td><td class="num">18</td><td class="num" rowspan="2">0,766</td><td class="num">12,5</td><td class="num" rowspan="2">10,4</td></tr>
+<tr><td>Años promedio de escolaridad</td><td class="num">0</td><td class="num">15</td><td class="num">8,6</td></tr>
+<tr><td>Estándar de vida</td><td>IBN per cápita (US$ PPA 2017)</td><td class="num">100</td><td class="num">75.000</td><td class="num">0,727</td><td class="num">22.465</td><td class="num">25,1</td></tr>
+</tbody></table></div></div>
+
+<h4>a) El IDH de Barbados <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p class="s3-opts" style="margin-top:0"><span><b>i)</b> 0,593</span><span><b>ii)</b> 0,79</span><span><b>iii)</b> 0,714</span><span><b>iv)</b> 0,886</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Mirá qué te dan</span>De Barbados vienen los <b>índices</b> de dimensión (0,886; 0,766, que es el de educación y ocupa las dos filas; 0,727): no hay que normalizar nada. Directo al paso 5 de la receta A.</li>
+<li><span class="step-title">Multiplicá</span>\(0{,}886\cdot 0{,}766=0{,}678676\); \(\cdot\,0{,}727=0{,}493397\).</li>
+<li><span class="step-title">Raíz cúbica</span><span class="s3-kb">( 0,886 × 0,766 × 0,727 ) ^ ( 1 ÷ 3 ) =</span> → <span class="s3-out">0,790191</span>.</li>
+<li><span class="step-title">Redondeá</span>0,790, que la opción escribe “0,79”.</li>
+<li><span class="step-title">Control de rango</span>Tiene que quedar entre 0,727 y 0,886. Afuera quedan 0,593 y 0,714; y 0,886 sólo sería posible si los tres índices fueran iguales. Queda una sola ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>ii) 0,79</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Raíz sin paréntesis: <span class="s3-kb">0,4934 ^ 1 ÷ 3</span></td><td>0,164: no está</td><td>—</td></tr>
+<tr><td>Tomar una sola dimensión</td><td>0,886 (índice de salud)</td><td>iv) ✗</td></tr>
+<tr><td>Contestar con Guyana</td><td>0,714 (IDH de Guyana) o 0,593 (su IDH-D)</td><td>iii) o i) ✗</td></tr>
+<tr><td>Promedio simple</td><td>0,793 → 0,79: acertás, pero de casualidad</td><td>ii) por suerte</td></tr>
+</tbody></table></div>
+
+<h4>b) El IDH-D de Guyana <span class="pts">10 ptos</span><span class="tag">⏱ 6 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p class="s3-opts" style="margin-top:0"><span><b>i)</b> 0,593</span><span><b>ii)</b> 0,79</span><span><b>iii)</b> 0,714</span><span><b>iv)</b> 0,886</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Identificá los datos</span>EV 65,7; años esperados 12,5; años promedio 8,6; IBN 22.465. Desigualdades: \(15{,}8\,\%\to 0{,}158\); \(10{,}4\,\%\to 0{,}104\); \(25{,}1\,\%\to 0{,}251\).</li>
+<li><span class="step-title">Índices de dimensión (receta A)</span>
+<div class="calc">\[\begin{aligned} I_s &= \frac{65{,}7-20}{65}=\frac{45{,}7}{65}=0{,}7031 \qquad I_e=\frac{12{,}5/18+8{,}6/15}{2}=\frac{0{,}6944+0{,}5733}{2}=0{,}6339\\ I_i &= \frac{\ln(22.465/100)}{\ln 750}=\frac{\ln 224{,}65}{6{,}6201}=\frac{5{,}4145}{6{,}6201}=0{,}8179 \end{aligned}\]</div></li>
+<li><span class="step-title">IDH de Guyana (lo vas a necesitar para controlar)</span>\((0{,}7031\cdot 0{,}6339\cdot 0{,}8179)^{1/3}=0{,}36453^{1/3}=0{,}7143\).</li>
+<li><span class="step-title">Ajustá: I·(1 − A)</span>\(0{,}7031\cdot 0{,}842=0{,}5920\); \(0{,}6339\cdot 0{,}896=0{,}5680\); \(0{,}8179\cdot 0{,}749=0{,}6126\).</li>
+<li><span class="step-title">IDH-D</span>\((0{,}5920\cdot 0{,}5680\cdot 0{,}6126)^{1/3}=0{,}20599^{1/3}=0{,}5906\to\) <b>0,591</b>. Calculadora: <span class="s3-kb">( 0,5920 × 0,5680 × 0,6126 ) ^ ( 1 ÷ 3 ) =</span> → <span class="s3-out">0,59058</span>.</li>
+<li><span class="step-title">Compará con las opciones</span>0,591 no está exacto. El IDH-D tiene que ser menor que el IDH de Guyana (0,714): eso descarta 0,79 y 0,886; y 0,714 es justamente el IDH <b>sin</b> ajustar, que sólo coincidiría con el IDH-D si no hubiera desigualdad. Queda 0,593, a dos milésimos de tu cuenta.</li>
+<li><span class="step-title">Control por la vía del manual</span>
+<div class="calc">\[ 0{,}7143\cdot\big[(0{,}842)(0{,}896)(0{,}749)\big]^{1/3}=0{,}7143\cdot 0{,}5651^{1/3}=0{,}7143\cdot 0{,}8267=0{,}5906\ \checkmark \]</div>
+Pérdida: <span class="nowrap">\(1-0{,}5906/0{,}7143=17{,}3\,\%\)</span>.</li>
+</ol>
+<div class="answer caution"><div class="answer-body"><span class="answer-label">Respuesta (con aclaración)</span>i) 0,593. La cuenta da 0,591 (0,5906, con o sin redondeo intermedio); se marca 0,593 porque es la más cercana y la única compatible con IDH-D &lt; IDH. La diferencia de 0,002 no se reproduce con los datos del enunciado: no pierdas tiempo buscándole otra cuenta.</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Calcular el IDH y olvidarte de ajustar</td><td>0,714</td><td>iii) ✗ (−5)</td></tr>
+<tr><td>Contestar con Barbados</td><td>0,79 (su IDH)</td><td>ii) ✗</td></tr>
+<tr><td>Usar las A en % (\(1-15{,}8\))</td><td>índices negativos: absurdo</td><td>—</td></tr>
+<tr><td>Cruzar 18 y 15 en educación</td><td>\(I_e=(12{,}5/15+8{,}6/18)/2=0{,}656\); IDH-D 0,597</td><td>i) igual, por cercanía</td></tr>
+</tbody></table></div>
+
+<h4>c) Niveles de desarrollo e IDG <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Se sabe además que el IDG de Guyana es 0,454 y el de Barbados es 0,268. Ambos países tienen un desarrollo humano [Muy alto · alto · medio · bajo]. Sin embargo, [Barbados · Guyana] muestra un mejor desempeño en DH y en las oportunidades que brinda a los hombres y las mujeres dentro de las dimensiones que estudia el IDG.”</p></div>
+<ol class="steps">
+<li><span class="step-title">Nivel con los IDH</span>Barbados 0,790 y Guyana 0,714: los dos en \([0{,}700;\ 0{,}800)\). “Alto”. Ojo: 0,79 no llega a 0,800.</li>
+<li><span class="step-title">IDG: más bajo es mejor</span>\(0{,}268&lt;0{,}454\): Barbados tiene menos desigualdad de género. Además tiene el IDH más alto, así que la frase entera cierra con Barbados.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>“Ambos países tienen un desarrollo humano <b>alto</b>. Sin embargo, <b>Barbados</b> muestra un mejor desempeño…”</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Redondear 0,79 “para arriba”</td><td>0,8</td><td>Muy alto ✗</td></tr>
+<tr><td>Clasificar a Guyana con su IDH-D (0,591)</td><td>medio</td><td>medio ✗</td></tr>
+<tr><td>Leer el IDG como el IDH (más alto, mejor)</td><td>0,454 &gt; 0,268</td><td>Guyana ✗</td></tr>
+</tbody></table></div>
+
+<!-- ============================================================ P7 2024 -->
+<div class="s3-head"><h3>P7 · Ej.1 (2024) — Barbados y Jamaica: IDH, IDH-D y niveles</h3>
+<p class="s3-ref">Ver Parciales resueltos, P7 · Recetas A, B y D · Manual, Temas 2.4 y 2.5 · TP3, partes A y B. Es la otra versión del mismo día que P6: Barbados igual; cambia el segundo país.</p>
+
+<div class="statement s3-stmt"><div class="statement-title">Datos · Prueba práctica 28/9/2024 (otra versión) · Ej. 1 <span class="pts">20 ptos · error: resta la mitad</span></div>
+<table class="compact"><thead><tr><th>Dimensión</th><th>Indicador</th><th class="num">Mín</th><th class="num">Máx</th><th class="num">Barbados: índice</th><th class="num">Jamaica (datos)</th><th class="num">Jamaica \(A_x\) (%)</th></tr></thead><tbody>
+<tr><td>Salud</td><td>Esperanza de vida al nacer</td><td class="num">20</td><td class="num">85</td><td class="num">0,886</td><td class="num">70,5</td><td class="num">8,7</td></tr>
+<tr><td rowspan="2">Educación</td><td>Años esperados de escolaridad</td><td class="num">0</td><td class="num">18</td><td class="num" rowspan="2">0,766</td><td class="num">13,4</td><td class="num" rowspan="2">6,5</td></tr>
+<tr><td>Años promedio de escolaridad</td><td class="num">0</td><td class="num">15</td><td class="num">9,2</td></tr>
+<tr><td>Estándar de vida</td><td>IBN per cápita (US$ PPA 2017)</td><td class="num">100</td><td class="num">75.000</td><td class="num">0,727</td><td class="num">8.834</td><td class="num">32,0</td></tr>
+</tbody></table></div></div>
+
+<h4>a) El IDH de Barbados <span class="pts">5 ptos</span><span class="tag">⏱ 30 s</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p class="s3-opts" style="margin-top:0"><span><b>i)</b> 0,710</span><span><b>ii)</b> 0,79</span><span><b>iii)</b> 0,678</span><span><b>iv)</b> 0,592</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Misma cuenta que P6 a</span>\((0{,}886\cdot 0{,}766\cdot 0{,}727)^{1/3}=0{,}493397^{1/3}=0{,}790191\to 0{,}790\).</li>
+<li><span class="step-title">Control de rango</span>Entre 0,727 y 0,886 sólo está 0,79: las otras tres son menores que el índice más bajo de Barbados ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>ii) 0,79</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Contestar con Jamaica</td><td>0,710 (su IDH con índices a tres decimales) o 0,592 (su IDH-D)</td><td>i) o iv) ✗</td></tr>
+<tr><td>—</td><td>0,678 no corresponde a ningún resultado del ejercicio; el control de rango la tacha</td><td>—</td></tr>
+</tbody></table></div>
+
+<h4>b) El IDH-D de Jamaica <span class="pts">10 ptos</span><span class="tag">⏱ 6 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p class="s3-opts" style="margin-top:0"><span><b>i)</b> 0,710</span><span><b>ii)</b> 0,79</span><span><b>iii)</b> 0,714</span><span><b>iv)</b> 0,592</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Identificá los datos</span>EV 70,5; años esperados 13,4; años promedio 9,2; IBN 8.834. Desigualdades: \(8{,}7\,\%\to 0{,}087\); \(6{,}5\,\%\to 0{,}065\); \(32{,}0\,\%\to 0{,}32\) (no 0,032).</li>
+<li><span class="step-title">Índices de dimensión</span>
+<div class="calc">\[\begin{aligned} I_s &= \frac{70{,}5-20}{65}=\frac{50{,}5}{65}=0{,}7769 \qquad I_e=\frac{13{,}4/18+9{,}2/15}{2}=\frac{0{,}7444+0{,}6133}{2}=0{,}6789\\ I_i &= \frac{\ln(8.834/100)}{\ln 750}=\frac{\ln 88{,}34}{6{,}6201}=\frac{4{,}4812}{6{,}6201}=0{,}6769 \end{aligned}\]</div></li>
+<li><span class="step-title">IDH de Jamaica (para controlar y para el inciso c)</span>\((0{,}7769\cdot 0{,}6789\cdot 0{,}6769)^{1/3}=0{,}35702^{1/3}=0{,}7094\to 0{,}709\).</li>
+<li><span class="step-title">Ajustá: I·(1 − A)</span>\(0{,}7769\cdot 0{,}913=0{,}7093\); \(0{,}6789\cdot 0{,}935=0{,}6348\); \(0{,}6769\cdot 0{,}68=0{,}4603\).</li>
+<li><span class="step-title">IDH-D</span>\((0{,}7093\cdot 0{,}6348\cdot 0{,}4603)^{1/3}=0{,}20726^{1/3}=0{,}5918\to\) <b>0,592</b>. <span class="s3-kb">( 0,7093 × 0,6348 × 0,4603 ) ^ ( 1 ÷ 3 ) =</span> → <span class="s3-out">0,59179</span>.</li>
+<li><span class="step-title">Control por la vía del manual</span>
+<div class="calc">\[ 0{,}7094\cdot\big[(0{,}913)(0{,}935)(0{,}68)\big]^{1/3}=0{,}7094\cdot 0{,}5805^{1/3}=0{,}7094\cdot 0{,}8342=0{,}5918\ \checkmark \]</div>
+Es menor que el IDH ✓. Pérdida: <span class="nowrap">\(1-0{,}5918/0{,}7094=16{,}6\,\%\)</span>.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv) 0,592</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Olvidarte de ajustar (y redondear los índices a tres decimales)</td><td>\((0{,}777\cdot 0{,}679\cdot 0{,}677)^{1/3}=0{,}7095\to 0{,}710\)</td><td>i) ✗ (−5)</td></tr>
+<tr><td>Copiar el resultado de la otra versión</td><td>0,714 (IDH de Guyana)</td><td>iii) ✗</td></tr>
+<tr><td>Contestar con Barbados</td><td>0,79</td><td>ii) ✗</td></tr>
+<tr><td>Leer 32,0 como 0,032</td><td>\(I^{*}_i=0{,}655\); IDH-D 0,666: no está</td><td>—</td></tr>
+</tbody></table></div>
+
+<h4>c) Niveles de desarrollo e IDG <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Se sabe además que el IDG de Jamaica es 0,335 y el de Barbados es 0,268. Ambos países tienen un desarrollo humano [Muy alto · alto · medio · bajo]. Sin embargo, [Barbados · Jamaica] muestra un mejor desempeño…”</p></div>
+<ol class="steps">
+<li><span class="step-title">Nivel con los IDH</span>Barbados 0,790 y Jamaica 0,709: los dos en \([0{,}700;\ 0{,}800)\), “alto”. Jamaica pasa el corte por nueve milésimos: con el IDH-D (0,592) sería “medio”, pero el nivel se lee con el IDH.</li>
+<li><span class="step-title">IDG</span>\(0{,}268&lt;0{,}335\): Barbados.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>“Ambos países tienen un desarrollo humano <b>alto</b>. Sin embargo, <b>Barbados</b> muestra un mejor desempeño…”</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Clasificar a Jamaica con su IDH-D</td><td>0,592: franja media</td><td>medio ✗</td></tr>
+<tr><td>Leer el IDG como el IDH</td><td>0,335 &gt; 0,268</td><td>Jamaica ✗</td></tr>
+</tbody></table></div>
+
+<!-- ============================================================ P8 2025 -->
+<div class="s3-head"><h3>P8 · Ej.3 (2025) — Yemen: IDH, nivel, IDH-D y pérdida</h3>
+<p class="s3-ref">Ver Parciales resueltos, P8 · Recetas A y B · Manual, Temas 2.4 y 2.5 · TP3, partes A y B. El inciso c (libertades instrumentales de Sen) está resuelto en §4.</p>
+
+<div class="statement s3-stmt"><div class="statement-title">Datos · 1er Parcial 2025 · Ej. 3 <span class="pts">20 ptos: a 4 · b 10 · c 6</span></div>
+<p>El cuadro presenta información sobre Yemen en el año 2021.</p>
+<table class="compact"><thead><tr><th class="num">Índice de salud (vida larga y saludable)</th><th class="num">Índice de educación</th><th class="num">Índice de ingreso</th><th class="num">Desigualdad en esperanza de vida</th><th class="num">Desigualdad en educación</th><th class="num">Desigualdad en los ingresos</th></tr></thead><tbody>
+<tr><td class="num">0,6738</td><td class="num">0,3595</td><td class="num">0,3891</td><td class="num">26,7</td><td class="num">46,1</td><td class="num">21,8</td></tr>
+</tbody></table>
+</div></div>
+
+<h4>a) IDH y nivel <span class="pts">4 ptos</span><span class="tag">⏱ 1,5 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Estime el IDH de Yemen en el año 2021. Clasifique al país según su nivel de DH.” Datos: índices de salud 0,6738, educación 0,3595 e ingreso 0,3891. Es de desarrollo: se escribe la cuenta.</p></div>
+<ol class="steps">
+<li><span class="step-title">Mirá qué te dan</span>Los tres índices de dimensión ya calculados: directo a la media geométrica.</li>
+<li><span class="step-title">Multiplicá</span>\(0{,}6738\cdot 0{,}3595=0{,}242231\); \(\cdot\,0{,}3891=0{,}094252\).</li>
+<li><span class="step-title">Raíz cúbica</span><span class="s3-kb">( 0,6738 × 0,3595 × 0,3891 ) ^ ( 1 ÷ 3 ) =</span> → <span class="s3-out">0,455090</span> → <b>0,455</b>.</li>
+<li><span class="step-title">Clasificá</span>\(0{,}455&lt;0{,}550\): desarrollo humano <b>bajo</b>.</li>
+<li><span class="step-title">Control</span>Entre 0,3595 y 0,6738 ✓, y debajo del promedio simple (0,474) ✓. La educación (0,36) es la que tira el índice para abajo.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>IDH = 0,455: desarrollo humano <b>bajo</b>.</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Consecuencia</th></tr></thead><tbody>
+<tr><td>Promedio simple</td><td>0,474 (sigue siendo bajo, pero el número está mal)</td><td>pierde puntos</td></tr>
+<tr><td>Raíz sin paréntesis</td><td>\(0{,}0943\div 3=0{,}031\)</td><td>absurdo</td></tr>
+<tr><td>Clasificar con un corte inventado (“0,5 es medio”)</td><td>—</td><td>nivel mal</td></tr>
+</tbody></table></div>
+
+<h4>b) IDH-D (y pérdida) <span class="pts">10 ptos</span><span class="tag">⏱ 4 min</span></h4>
+<div class="statement s3-stmt"><div class="statement-title">Lo que piden</div>
+<p>“Calcule el IDH-D de Yemen.” Datos: los tres índices de a) y las desigualdades 26,7 (esperanza de vida), 46,1 (educación) y 21,8 (ingresos), en %.</p></div>
+<ol class="steps">
+<li><span class="step-title">Desigualdades a decimales</span>\(26{,}7\,\%\to 0{,}267\); \(46{,}1\,\%\to 0{,}461\); \(21{,}8\,\%\to 0{,}218\). Los factores \(1-A\): 0,733; 0,539; 0,782.</li>
+<li><span class="step-title">Ajustá cada índice</span>\(0{,}6738\cdot 0{,}733=0{,}4939\); \(0{,}3595\cdot 0{,}539=0{,}1938\); \(0{,}3891\cdot 0{,}782=0{,}3043\).</li>
+<li><span class="step-title">IDH-D</span>
+<div class="calc">\[ \text{IDH-D}=(0{,}4939\cdot 0{,}1938\cdot 0{,}3043)^{1/3}=0{,}029127^{1/3}=0{,}3077\to 0{,}308 \]</div>
+<span class="s3-kb">( 0,4939 × 0,1938 × 0,3043 ) ^ ( 1 ÷ 3 ) =</span> → <span class="s3-out">0,30768</span>.</li>
+<li><span class="step-title">Pérdida (siempre conviene darla)</span>\(1-0{,}3077/0{,}4551=1-0{,}6761=0{,}3239=32{,}4\,\%\).</li>
+<li><span class="step-title">Control por la vía del manual</span>
+<div class="calc">\[\begin{aligned} \big[(0{,}733)(0{,}539)(0{,}782)\big]^{1/3} &= 0{,}30896^{1/3}=0{,}6760\\ \text{IDH-D} &= 0{,}4551\cdot 0{,}6760=0{,}3077\ \checkmark \qquad \text{Pérdida}=1-0{,}6760=32{,}4\,\%\ \checkmark \end{aligned}\]</div>
+El promedio de las A (31,5 %) es otro indicador, el coeficiente de desigualdad humana: no lo des como pérdida.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>IDH-D = 0,308; Yemen pierde el 32,4 % de su desarrollo humano por desigualdad (la más alta, en educación: 46,1 %).</div></div>
+<div class="box warn s3-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Consecuencia</th></tr></thead><tbody>
+<tr><td>Multiplicar por A en vez de por (1 − A)</td><td>\((0{,}6738\cdot 0{,}267\cdots)^{1/3}=0{,}136\)</td><td>IDH-D mal</td></tr>
+<tr><td>A sin pasar a decimal</td><td>\(0{,}6738\cdot(1-26{,}7)&lt;0\)</td><td>absurdo</td></tr>
+<tr><td>Dar el promedio de las A como pérdida</td><td>31,5 %</td><td>pérdida mal</td></tr>
+<tr><td>Pérdida como resta</td><td>\(0{,}455-0{,}308=0{,}147\) → “14,7 %”</td><td>pérdida mal</td></tr>
+</tbody></table></div>
+
+<!-- ============================================================ CIERRE -->
+<div class="avoid-break">
+<h3>Resumen: todos los resultados de §3</h3>
+<table class="compact">
+<thead><tr><th>Ejercicio</th><th>País</th><th class="num">IDH</th><th>Nivel</th><th class="num">IDH-D</th><th class="num">Pérdida</th><th>Lo que se marca</th></tr></thead>
+<tbody>
+<tr><td>P2 · 2023</td><td>Australia</td><td class="num">0,951</td><td>muy alto</td><td class="num">0,876</td><td class="num">7,9 %</td><td>b · a · d · c · b</td></tr>
+<tr><td>P3</td><td>Namibia</td><td class="num">0,645</td><td>medio</td><td class="num">0,418</td><td class="num">35,3 %</td><td rowspan="2">b: medio y medio · c: Honduras · d: Honduras</td></tr>
+<tr><td>P3</td><td>Honduras</td><td class="num">0,638</td><td>medio</td><td class="num">0,476</td><td class="num">25,5 %</td></tr>
+<tr><td>P6 y P7 · 2024</td><td>Barbados</td><td class="num">0,790</td><td>alto</td><td class="num">—</td><td class="num">—</td><td>a: 0,79</td></tr>
+<tr><td>P6 · 2024</td><td>Guyana</td><td class="num">0,714</td><td>alto</td><td class="num">0,591</td><td class="num">17,3 %</td><td>b: 0,593 · c: alto, Barbados</td></tr>
+<tr><td>P7 · 2024</td><td>Jamaica</td><td class="num">0,709</td><td>alto</td><td class="num">0,592</td><td class="num">16,6 %</td><td>b: 0,592 · c: alto, Barbados</td></tr>
+<tr><td>P8 · 2025</td><td>Yemen</td><td class="num">0,455</td><td>bajo</td><td class="num">0,308</td><td class="num">32,4 %</td><td>a y b: se escriben</td></tr>
+</tbody></table>
+</div>
+
+<div class="check"><div class="check-title">Antes de entregar un ejercicio de índices, seis preguntas</div><ol>
+<li>¿Pasé todas las desigualdades a decimales (2,7 % = 0,027; 32,0 % = 0,32)?</li>
+<li>¿Años esperados sobre 18 y años promedio sobre 15? ¿El ingreso en logaritmos, con ln 750 abajo?</li>
+<li>¿Saqué la raíz cúbica con el \(1/3\) entre paréntesis y redondeé recién al final?</li>
+<li>¿Mi IDH quedó entre el índice más bajo y el más alto? ¿Mi IDH-D quedó debajo del IDH?</li>
+<li>¿Clasifiqué con el IDH (no con el IDH-D) y con los cortes 0,550 · 0,700 · 0,800?</li>
+<li>¿Leí bien la dirección: IDG más bajo = mejor; índice de salud reproductiva más alto = mejor?</li>
+</ol></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía y material de apoyo</div>
+<p>Manual de teoría, Tema 2.4 (IDH: dimensiones, límites, cuatro pasos, cortes de clasificación) y Tema 2.5 (IDH-D, pérdida, coeficiente de desigualdad humana, IDG). PNUD (2016) <i>Notas técnicas del Informe sobre Desarrollo Humano</i> (la traducción que recomienda la cátedra); PNUD (2025) <i>Informe sobre Desarrollo Humano</i>; Paz, cap. 4 “La métrica del bienestar”; Ray, cap. 2.4. Práctica resuelta: TP3, partes A (IDH), B (IDH-D y pérdida) y C (IDG), y ejercicios extra E4 a E6. Enunciados y respuestas: <i>Parciales resueltos</i>, P2, P3, P6, P7 y P8.</p></div>
+</section>

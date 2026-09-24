@@ -5,18 +5,18 @@ from p2_util import *  # noqa: F403
 
 
 # ---------------------------------------------------------------- cuadro de valuación 2x2
-def cuadro(nombre, cols, filas, celdas, ppa_lab, tcm_lab, tcm_box, nota=None, w=6.5, h=3.05):
+def cuadro(nombre, cols, filas, celdas, ppa_lab, tcm_lab, tcm_box, nota=None, w=6.5, h=3.45):
     """cols: (col A, col B); filas: (fila A, fila B);
     celdas: dict (i, j) -> texto; i = fila (0 = A, 1 = B), j = columna (0 = precios A, 1 = precios B)."""
     fig, ax = new_fig(w, h)
     ax.set_xlim(0, 13.4)
-    ax.set_ylim(-0.95, 5.75)
+    ax.set_ylim(-1.4, 6.2)
     ax.axis("off")
-    xc = (5.55, 11.2)
-    yr = (3.85, 1.85)
-    cw, ch = 4.1, 1.3
+    xc = (5.2, 11.2)
+    yr = (4.05, 1.75)
+    cw, ch = 4.2, 1.75
     for j, t in enumerate(cols):
-        ax.text(xc[j], 5.15, t, ha="center", va="center", fontsize=8.6, fontweight="bold", color=C["ink"],
+        ax.text(xc[j], 5.65, t, ha="center", va="center", fontsize=8.6, fontweight="bold", color=C["ink"],
                 linespacing=1.25)
     for i, t in enumerate(filas):
         ax.text(0.05, yr[i], t, ha="left", va="center", fontsize=8.2, color=C["ink"], linespacing=1.3)
@@ -30,8 +30,8 @@ def cuadro(nombre, cols, filas, celdas, ppa_lab, tcm_lab, tcm_box, nota=None, w=
         flecha(ax, xc[1] - cw / 2 - 0.05, yr[i], xc[0] + cw / 2 + 0.05, yr[i], color=C["violet"], lw=1.5,
                texto=ppa_lab, tdy=0.1, size=8.3)
     # ruta del tipo de cambio de mercado
-    ybox = -0.35
-    caja(ax, xc[0], ybox, cw, 0.95, tcm_box, fc=C["red_bg"], ec=C["red"], lw=1.2, size=8.0)
+    ybox = -0.55
+    caja(ax, xc[0], ybox, cw, 1.5, tcm_box, fc=C["red_bg"], ec=C["red"], lw=1.2, size=8.0)
     ax.annotate("", xy=(xc[0] + cw / 2 + 0.05, ybox), xytext=(xc[1], yr[1] - ch / 2 - 0.03),
                 arrowprops=dict(arrowstyle="-|>", color=C["red"], lw=1.4, mutation_scale=10, shrinkA=0,
                                 shrinkB=0, connectionstyle="angle,angleA=-90,angleB=180,rad=0"))
@@ -42,42 +42,20 @@ def cuadro(nombre, cols, filas, celdas, ppa_lab, tcm_lab, tcm_box, nota=None, w=
     save(fig, nombre)
 
 
-cuadro("p2_cuadro_generico",
-       cols=("a precios del país base A\n(en US$)", "a precios del país B\n(en $)"),
-       filas=("Cantidades\ndel país A", "Cantidades\ndel país B"),
-       celdas={(0, 0): r"$\sum Q_A\,P_A$" + "\nPBI de A (US$)",
-               (0, 1): r"$\sum Q_A\,P_B$" + "\ncanasta de A a precios de B",
-               (1, 0): r"$\sum Q_B\,P_A$" + "\n= PBI de B a PPA (US$)",
-               (1, 1): r"$\sum Q_B\,P_B$" + "\nPBI de B (\\$)"},
-       ppa_lab="÷ TC PPA", tcm_lab="÷ TCm\n(sólo precio\ndel transable)",
-       tcm_box="PBI de B a TCm (US$)\nsubvalúa el no transable",
-       nota="TC PPA =\ncociente de\ncada fila")
-
 cuadro("p2_cuadro_rp",
-       cols=("a precios de Ricolandia\n(US$)", "a precios de Pobrelandia\n($)"),
-       filas=("Ricolandia\n800 t de soja\n4.800 lavados", "Pobrelandia\n500 t de soja\n3.000 lavados"),
-       celdas={(0, 0): "US$ 800.000\nPBI de Ricolandia",
-               (0, 1): "$ 1.440.000\n800·300 + 4.800·250",
-               (1, 0): "US$ 500.000\n= PBI de Pobrelandia a PPA",
-               (1, 1): "$ 900.000\nPBI de Pobrelandia"},
-       ppa_lab="÷ 1,8", tcm_lab="÷ TCm = 3",
-       tcm_box="US$ 300.000\nPBI de Pobrelandia a TCm",
-       nota="TC PPA = 1,8\nen las dos filas")
-
-cuadro("p2_cuadro_ns",
-       cols=("a precios del Norte\n(moneda Norte)", "a precios del Sur\n(moneda Sur)"),
-       filas=("Los del Norte\n500 termos\n2.500 consultas", "Los del Sur\n200 termos\n1.000 consultas"),
-       celdas={(0, 0): "400.000\nPBI del Norte",
-               (0, 1): "15.000.000\n500·15.000 + 2.500·3.000",
-               (1, 0): "160.000\n= PBI del Sur a PPA",
-               (1, 1): "6.000.000\nPBI del Sur"},
-       ppa_lab="÷ 37,5", tcm_lab="÷ TCm = 300",
-       tcm_box="20.000\nPBI del Sur a TCm",
-       nota="TC PPA = 37,5\nen las dos filas")
+       cols=("a precios de A · Ricolandia\n(en US$)", "a precios de B · Pobrelandia\n(en $)"),
+       filas=("A · Ricolandia\n800 t de soja\n4.800 lavados", "B · Pobrelandia\n500 t de soja\n3.000 lavados"),
+       celdas={(0, 0): r"$\sum Q_A\,P_A$" + "\nUS\\$ 800.000\nPBI de Ricolandia",
+               (0, 1): r"$\sum Q_A\,P_B$" + "\n\\$ 1.440.000\ncanasta de A a precios de B",
+               (1, 0): r"$\sum Q_B\,P_A$" + "\nUS\\$ 500.000\n= PBI de Pobrelandia a PPA",
+               (1, 1): r"$\sum Q_B\,P_B$" + "\n\\$ 900.000\nPBI de Pobrelandia"},
+       ppa_lab="÷ TC PPA\n= 1,8", tcm_lab="÷ TCm = 3\n(sólo el\ntransable)",
+       tcm_box="US$ 300.000\nPBI de B a TCm: subvalúa\nel no transable",
+       nota="TC PPA =\ncociente de\ncada fila")
 
 
 # ---------------------------------------------------------------- barras transable / no transable
-def barras(nombre, filas, tlab, nlab, xmax, notas, w=6.5, h=2.15, unidad="US$"):
+def barras(nombre, filas, tlab, nlab, xmax, notas, w=6.5, h=1.7, unidad="US$"):
     """filas: lista (rótulo, transable, no transable) de arriba hacia abajo."""
     fig, ax = new_fig(w, h)
     n = len(filas)
@@ -121,7 +99,7 @@ casos = [("Norte / Sur (TP2, ej. 10)", 20.0, 2.5),
          ("Norte Unidos / Argensur (parcial 2022)", 92000 / 17500, 92000 / 23000),
          ("Dolar City / Ciudad Pesos (parcial 2023)", 51000 / 18500, 51000 / 42500),
          ("Ricolandia / Pobrelandia (TP2, ej. 9)", 800000 / 300000, 800000 / 500000)]
-fig, ax = new_fig(6.5, 2.7)
+fig, ax = new_fig(6.5, 2.1)
 n = len(casos)
 for k, (lab, tcm, ppa) in enumerate(casos):
     y = n - 1 - k

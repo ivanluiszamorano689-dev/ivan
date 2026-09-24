@@ -1,0 +1,530 @@
+<style>
+.t1-ray .ic, .t1-ic .ic, .t1-4r .ic, .t1-e { font-family: "Noto Color Emoji", sans-serif; }
+.t1-ray { break-inside: avoid; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.45em; margin: 0.5em 0 0.8em; }
+.t1-ray > div { border: 1px solid var(--rule); border-radius: 8px; padding: 0.4em 0.5em 0.45em; text-align: center; font-size: 8.3pt; line-height: 1.3; background: #fff; }
+.t1-ray .ic { display: block; font-size: 14pt; line-height: 1.25; }
+.t1-icards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55em; margin: 0.6em 0 1em; }
+.t1-ic { display: flex; gap: 0.65em; align-items: flex-start; border: 1px solid var(--rule); border-left: 4px solid var(--c, var(--violet)); border-radius: 8px; padding: 0.5em 0.7em; background: #fff; break-inside: avoid; font-size: 8.8pt; line-height: 1.42; }
+.t1-ic .ic { flex: none; width: 2.05em; height: 2.05em; border-radius: 50%; background: var(--cbg, var(--violet-bg)); font-size: 13pt; display: flex; align-items: center; justify-content: center; }
+.t1-ic .t { font: 700 9.2pt "Inter"; color: var(--cink, var(--violet-ink)); display: block; margin-bottom: 0.1em; }
+.t1-ic .q { font: 600 7.6pt "Inter"; color: var(--ink-3); letter-spacing: 0.04em; text-transform: uppercase; }
+.t1-ic.wide { grid-column: 1 / -1; }
+.t1-ic.c1 { --c: var(--blue); --cbg: var(--blue-bg); --cink: var(--blue-ink); }
+.t1-ic.c2 { --c: var(--orange); --cbg: var(--orange-bg); --cink: var(--orange-ink); }
+.t1-ic.c3 { --c: var(--aqua); --cbg: var(--aqua-bg); --cink: var(--aqua-ink); }
+.t1-ic.c4 { --c: var(--yellow); --cbg: var(--yellow-bg); --cink: var(--yellow-ink); }
+.t1-ic.c5 { --c: var(--violet); --cbg: var(--violet-bg); --cink: var(--violet-ink); }
+.t1-vs .card p { margin: 0.25em 0 0; font-size: 8.9pt; }
+.t1-vs .card .t1-q { font: italic 400 8.6pt "Source Serif 4", serif; color: var(--ink-2); }
+table.t1-2v thead th.est { background: var(--blue-bg); color: var(--blue-ink); border-bottom-color: var(--blue); }
+table.t1-2v thead th.amp { background: var(--violet-bg); color: var(--violet-ink); border-bottom-color: var(--violet); }
+table.t1-2v td:first-child { font-weight: 700; width: 17%; }
+.t1-chips { margin: 0.3em 0 0.6em; line-height: 2; }
+.t1-rules { display: grid; grid-template-columns: 1fr auto 13.5em; gap: 0.3em 0.5em; align-items: center; margin: 0.6em 0 0.8em; break-inside: avoid; font-size: 8.8pt; }
+.t1-rules .k { background: #fff; border: 1px solid var(--rule); border-radius: 7px; padding: 0.3em 0.6em; }
+.t1-rules .a { color: var(--ink-3); font: 700 12pt "Inter"; }
+.t1-rules .f { border-radius: 7px; padding: 0.3em 0.6em; font-weight: 700; text-align: center; }
+.t1-rules .f.b { background: var(--blue-bg); color: var(--blue-ink); border: 1.5px solid var(--blue); }
+.t1-rules .f.o { background: var(--orange-bg); color: var(--orange-ink); border: 1.5px solid var(--orange); }
+.t1-rules .f.q { background: var(--aqua-bg); color: var(--aqua-ink); border: 1.5px solid var(--aqua); }
+.t1-rules .f.y { background: var(--yellow-bg); color: var(--yellow-ink); border: 1.5px solid var(--yellow); }
+.t1-rules .f.v { background: var(--violet-bg); color: var(--violet-ink); border: 1.5px solid var(--violet); }
+.t1-rules .hd { font: 700 7.4pt "Inter"; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-3); }
+.t1-ods { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.35em; text-align: left; }
+.t1-ods > div { border: 1px solid var(--rule); border-radius: 7px; padding: 0.3em 0.45em 0.35em; background: #fff; font-size: 7.7pt; line-height: 1.25; min-height: 3.5em; }
+.t1-ods b { display: block; font: 800 12pt/1.05 "Inter"; color: var(--aqua); margin-bottom: 0.1em; }
+.t1-ods .sen { border: 1.5px solid var(--violet); background: var(--violet-bg); }
+.t1-ods .sen b { color: var(--violet); }
+.t1-ods .sen i { display: block; font-style: normal; font-weight: 700; color: var(--violet-ink); font-size: 6.9pt; margin-top: 0.2em; }
+.t1-odm ol { margin: 0.2em 0 0; padding-left: 1.3em; font-size: 8.5pt; line-height: 1.38; }
+.t1-4r { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5em; margin: 0.6em 0 0.8em; }
+.t1-4r .card { font-size: 8.5pt; line-height: 1.38; text-align: center; }
+.t1-4r .card .ic { font-size: 15pt; display: block; line-height: 1.3; }
+.t1-4r .card p { margin: 0.15em 0 0; }
+.t1-mini th, .t1-mini td { font-size: 8.3pt; }
+.box.t1-exam { break-inside: auto; }
+.t1-exam .box-title, .t1-exam .t1-src, .t1-exam p.q { break-after: avoid; }
+.t1-exam .mcq { font-size: 8.9pt; margin: 0.3em 0 0.5em; }
+.t1-exam .mcq > li { padding: 0.18em 0.5em; }
+.t1-exam .mcq > li.wrong { background: rgba(255, 255, 255, 0.55); }
+.t1-exam .t1-src { font: 700 7.6pt "Inter"; color: var(--orange-ink); letter-spacing: 0.04em; margin: 0.6em 0 0.15em; text-transform: uppercase; }
+.t1-exam .t1-src:first-of-type { margin-top: 0.1em; }
+.t1-exam p.q { margin: 0.1em 0 0.2em; font-weight: 600; }
+.t1-quote { font: italic 400 10.5pt/1.45 "Source Serif 4", serif; color: var(--violet-ink); border-left: 3px solid var(--violet); padding: 0.2em 0 0.2em 0.9em; margin: 0.7em 0 0.9em; }
+.t1-gap { margin: 0.6em 0 0.9em; }
+.t1-keep { break-inside: avoid; }
+.t1-tagx { display: inline-block; font: 700 7.2pt "Inter"; letter-spacing: 0.05em; text-transform: uppercase; color: var(--orange-ink); background: var(--orange-bg); border-radius: 99px; padding: 0.12em 0.6em; margin-bottom: 0.4em; }
+</style>
+
+<section class="tema-1">
+
+<div class="chapter-head">
+  <div class="kicker">Tema 1 · Desarrollo y libertad</div>
+  <h2><span class="num">1</span>Desarrollo y libertad</h2>
+  <p>Qué vas a poder hacer al terminar: distinguir crecimiento de desarrollo; usar el enfoque de capacidades de Sen para resolver casos; clasificar noticias según las cinco libertades instrumentales; comparar ODM y ODS; clasificar países; y contestar las preguntas sobre crecimiento y desarrollo humano.</p>
+</div>
+
+<div class="box summary"><div class="box-title">En 30 segundos</div><ul>
+<li><b>Crecimiento</b> = aumento sostenido del PBI o la renta per cápita (una variable). <b>Desarrollo</b> = mejora generalizada y sostenida de la calidad de vida de toda la sociedad (un proceso multidimensional).</li>
+<li>Hay <b>cinco fuentes de divergencia</b> entre ambos: distribución, no comercialidad y externalidades, precios imperfectos, límite temporal y el PBI como medida de medios.</li>
+<li>Para <b>Sen</b>, el desarrollo es la <b>expansión de las libertades reales</b>. Se evalúa en el espacio de las <b>capacidades</b> (el menú), no en el de los recursos ni en el de la utilidad.</li>
+<li><b>Capacidad</b> = lo que podés ser o hacer; <b>funcionamiento</b> = lo que efectivamente sos o hacés. Ayunar y pasar hambre: mismo funcionamiento, capacidades opuestas.</li>
+<li>La libertad es <b>fin</b> (papel constitutivo) y <b>medio</b> (papel instrumental). Las cinco libertades instrumentales: políticas, servicios económicos, oportunidades sociales, transparencia y seguridad protectora.</li>
+<li>Los <b>ODS</b> (2015–2030, 17 objetivos) reemplazan a los <b>ODM</b> (2000–2015, 8 objetivos): universales, indivisibles, sostenibles y ambiciosos.</li>
+<li>El crecimiento es <b>necesario pero no suficiente</b> para el desarrollo humano: hay dos cadenas que se refuerzan (Ranis y Stewart).</li>
+</ul></div>
+
+<!-- ======================================================= 1.1 -->
+<h2><span class="num">1.1</span>Crecimiento y desarrollo no son lo mismo</h2>
+
+<div class="versus t1-vs">
+  <div class="card blue"><div class="card-title"><span class="t1-e">📈</span> Crecimiento económico</div>
+    <p>El <b>aumento sostenido del producto o la renta per cápita</b> de una economía a lo largo del tiempo.</p>
+    <p>Es una <b>variable</b>: se resume en una sola cifra.</p>
+    <p class="t1-q">¿Cuánto más se produce por persona?</p></div>
+  <div class="vs">vs</div>
+  <div class="card violet"><div class="card-title"><span class="t1-e">🌱</span> Desarrollo económico</div>
+    <p>Un proceso más amplio: la <b>mejora generalizada y sostenida de la calidad de vida del conjunto de la sociedad</b>, no de una minoría.</p>
+    <p>Es un <b>proceso multidimensional</b>.</p>
+    <p class="t1-q">¿Cómo viven las personas y qué pueden hacer?</p></div>
+</div>
+
+<div class="box intuition"><div class="box-title">La intuición</div>
+<p>El crecimiento es parte del desarrollo, pero no lo agota. Crecer es condición <b>frecuentemente necesaria y nunca suficiente</b>: un país puede aumentar su PBI per cápita concentrando el aumento en unos pocos, degradando su ambiente o sin mejorar un solo indicador de salud.</p></div>
+
+<h3>Tres autores, una misma idea</h3>
+<p><b>Ray</b> lo plantea describiendo cómo imaginamos una sociedad desarrollada:</p>
+<div class="t1-ray">
+  <div><span class="ic">🍽️</span>población bien alimentada y vestida</div>
+  <div><span class="ic">🛒</span>acceso a una variedad de productos</div>
+  <div><span class="ic">⏳</span>tiempo de ocio</div>
+  <div><span class="ic">🌳</span>un entorno saludable</div>
+  <div><span class="ic">🏥</span>asistencia médica para los enfermos</div>
+  <div><span class="ic">🏠</span>nadie viviendo en la calle</div>
+  <div><span class="ic">⚖️</span>un nivel tolerable de desigualdad</div>
+  <div><span class="ic">🤝</span>sin discriminación violenta</div>
+</div>
+<p>Ninguna de esas cosas <b>es</b> la renta; todas <b>dependen en parte</b> de ella.</p>
+
+<p><b>Todaro</b> define la economía del desarrollo como el estudio de cómo las economías se transforman del estancamiento al crecimiento y de bajos a altos ingresos, y superan la pobreza absoluta. La distingue de otras dos:</p>
+<div class="grid-3 t1-gap">
+  <div class="card blue"><div class="card-title">Economía tradicional</div><p class="small" style="margin:0">Centrada en la utilidad, la maximización de ganancias, la eficiencia y el equilibrio.</p></div>
+  <div class="card orange"><div class="card-title">Economía política</div><p class="small" style="margin:0">Agrega el contexto político a la mirada económica.</p></div>
+  <div class="card violet"><div class="card-title">Economía del desarrollo</div><p class="small" style="margin:0">Cómo se pasa del estancamiento al crecimiento, de bajos a altos ingresos, y cómo se supera la pobreza absoluta.</p></div>
+</div>
+<p><b>Paz</b>, más recientemente, insiste en un desarrollo <b>centrado en la persona</b> y no en una ficción como el “crecimiento”.</p>
+
+<h3>Las dos visiones del mundo</h3>
+<p>Esta es la oposición que la cátedra usa como <b>columna vertebral del tema</b>, y aparece una y otra vez en examen.</p>
+<table class="t1-2v">
+  <thead><tr><th></th><th class="est">Visión estricta (desarrollo = crecimiento)</th><th class="amp">Visión amplia (desarrollo = expansión de libertades)</th></tr></thead>
+  <tbody>
+    <tr><td>Tesis</td><td>El desarrollo se deriva naturalmente del crecimiento del producto per cápita</td><td>La correlación no es automática: el producto per cápita no es indicador adecuado de bienestar</td></tr>
+    <tr><td>Origen</td><td>Visión histórica de posguerra (post II Guerra Mundial)</td><td>Sen, PNUD, enfoque de desarrollo humano</td></tr>
+    <tr><td>Objetivo</td><td>El crecimiento como fin en sí mismo</td><td>La libertad real como fin, y el crecimiento como medio</td></tr>
+    <tr><td>Consecuencia práctica</td><td>Alcanza con medir el PBI per cápita</td><td>Hay que complementarlo: IDH, índices derivados, Índice de Progreso Social</td></tr>
+    <tr><td>Cómo la reconocés en una opción</td><td>“crecimiento sostenido del PIB per cápita”, “el ingreso alcanza”, “garantiza”</td><td>“libertad”, “capacidades”, “vidas que valoran”, “logros en dimensiones de la vida”</td></tr>
+  </tbody>
+</table>
+
+<h3>Las cinco fuentes de divergencia entre crecimiento y desarrollo</h3>
+<p>Esta lista responde directamente a la pregunta de la guía de lectura sobre <b>las falencias de mirar solo el crecimiento</b>. Cada fuente contesta una pregunta que el PBI no puede contestar:</p>
+<div class="t1-icards">
+  <div class="t1-ic c1"><span class="ic">⚖️</span><div><span class="q">¿Para quién?</span><span class="t">1. Distribución</span>El PBI per cápita es un <b>promedio</b>, y un promedio no dice nada sobre cómo se reparte. Una economía puede crecer concentrando todo el aumento en el decil superior.</div></div>
+  <div class="t1-ic c2"><span class="ic">🏠</span><div><span class="q">¿Qué queda afuera?</span><span class="t">2. No comercialidad y externalidades</span>Lo que no pasa por el mercado no entra en el PBI: trabajo doméstico y de cuidado, autoconsumo. Y lo que entra puede sumar mal: la contaminación de una fábrica <b>suma producto y resta bienestar</b>.</div></div>
+  <div class="t1-ic c3"><span class="ic">🏷️</span><div><span class="q">¿A qué precio?</span><span class="t">3. Mecanismos imperfectos de precios</span>Los precios de mercado no reflejan el valor social de los bienes cuando hay monopolios, subsidios o mercados incompletos.</div></div>
+  <div class="t1-ic c4"><span class="ic">⏳</span><div><span class="q">¿Hasta cuándo?</span><span class="t">4. Límite temporal</span>El PBI mide un <b>flujo anual</b> y no descuenta el agotamiento del capital natural: se puede crecer hoy destruyendo la base de la producción futura.</div></div>
+  <div class="t1-ic c5 wide"><span class="ic">🎯</span><div><span class="q">¿Para qué?</span><span class="t">5. El PBI como medida limitada</span>Mide <b>medios, no fines</b>. Registra producción e ingreso, no libertades, capacidades, salud, educación, equidad ni agencia.</div></div>
+</div>
+
+<div class="box example"><div class="box-title">Ejemplo numérico (hipotético): el promedio engaña</div>
+<p>Una economía de 10 personas: 9 ganan 60 y 1 gana 460. El PBI per cápita es \((9\cdot 60 + 460)/10 = 100\). Si la persona de arriba pasa a ganar 560 y el resto no cambia:</p>
+<div class="calc">\[ \frac{9\cdot 60 + 560}{10} = 110 \quad\Rightarrow\quad \text{el PBI per cápita creció } 10\ \%, \text{ y 9 de cada 10 personas están exactamente igual.} \]</div></div>
+
+
+<h3>La evidencia que usa la cátedra</h3>
+<p>Sen expone tres comparaciones que muestran la discordancia entre renta y vida larga y buena: los <b>sudafricanos</b> son mucho más ricos que los habitantes de <b>Sri Lanka</b>, pero viven menos; los <b>afroamericanos</b> de Estados Unidos son más pobres que los blancos, pero más ricos que los habitantes de Sri Lanka, y aun así tienen <b>menor probabilidad de llegar a la edad adulta</b> que estos últimos. La correlación entre PBI per cápita y esperanza de vida <b>existe, pero es débil, no lineal y se aplana</b> en los tramos altos de renta.</p>
+<figure><img src="figs/out/t1_renta_vida.svg" style="width:88%" alt="Renta y esperanza de vida">
+<figcaption><b>Figura 1.1.</b> Esquemático (posiciones ilustrativas, sin escala). La correlación entre PBI per cápita y esperanza de vida <b>existe</b> (la curva sube), pero es <b>débil</b> (mucha dispersión: la franja gris), <b>no lineal</b> y <b>se aplana</b> en los tramos altos de renta. Fijate en los casos de Sen: Sudáfrica y los afroamericanos están a la derecha de Sri Lanka (más renta) pero por debajo (menos vida).</figcaption></figure>
+
+<div class="box warn"><div class="box-title">Error típico</div>
+<p>Contestar que para la visión amplia “el crecimiento no importa”. No es así: el crecimiento pasa de ser el <b>fin</b> a ser un <b>medio</b>. Las opciones que dicen que el desarrollo es <i>solo</i> PBI per cápita, o que el crecimiento <i>garantiza</i> el desarrollo, son siempre falsas en esta materia.</p></div>
+
+<div class="box exam t1-exam"><div class="box-title">Así lo preguntan en el parcial</div>
+<div class="t1-src">Prueba teórica 20/9/2024 · pregunta 1</div>
+<p class="q">Para evaluar la calidad de vida y el nivel de desarrollo que ofrece una economía lo más relevante a tener en cuenta es:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El acceso equitativo de la población a servicios públicos y bienes de consumo.<span class="why">Son recursos (bienes primarios): importan, pero Sen mira lo que la persona puede hacer con ellos.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>La libertad de las personas para elegir y alcanzar vidas que valoran.<span class="why">Es la visión amplia: desarrollo como expansión de libertades reales (capacidades).</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>La felicidad alcanzada por la población.<span class="why">Utilitarismo: la felicidad se adapta a la privación (ver 1.2).</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>El crecimiento económico sostenido medido a través del PIB per cápita.<span class="why">Es la visión estricta, justo la que el tema critica.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.</span></li>
+</ul>
+<p style="margin:0">Cada distractor representa una visión: <b>recursos</b> (a), <b>utilidad</b> (c) y <b>crecimiento</b> (d). Si los reconocés, la pregunta se contesta sola.</p></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Weil, cap. 1 “Los hechos” · Ray, cap. 2 “El desarrollo económico: visión panorámica” · Paz, caps. 1 y 3 · Todaro y Smith.</p></div>
+
+<!-- ======================================================= 1.2 -->
+<h2><span class="num">1.2</span>El enfoque de capacidades de Amartya Sen</h2>
+
+<div class="box def"><div class="box-title">Definición (de memoria)</div>
+<p>Para Sen, <b>el desarrollo es un proceso de expansión de las libertades reales que disfrutan los individuos</b>. Todo el tema se ordena alrededor de esta frase.</p></div>
+
+
+
+<h3>Por qué no alcanzan las definiciones previas de bienestar</h3>
+<p>Sen descarta tres maneras habituales de definir el bienestar porque todas describen un <b>estado de felicidad</b> y no lo que la persona puede efectivamente <b>ser o hacer</b>:</p>
+<table>
+  <thead><tr><th>Enfoque</th><th>Qué mide</th><th>Por qué falla</th><th>Cómo aparece en el parcial</th></tr></thead>
+  <tbody>
+    <tr><td><b>Hedonista</b></td><td>Placer, dolor, sensaciones</td><td>Reduce el bienestar a un estado mental</td><td>“estado agradable de conciencia”</td></tr>
+    <tr><td><b>Utilitarista</b> (preferencias)</td><td>Satisfacción de deseos y gustos</td><td>El deseo se adapta a la privación: el pobre acostumbrado a su situación declara estar conforme</td><td>“nivel de utilidad”, “felicidad”</td></tr>
+    <tr><td><b>Calidad de vida</b></td><td>Va más allá del placer e incluye derechos y libertades</td><td>Es el punto de partida de Sen, pero necesita un espacio de evaluación preciso</td><td>—</td></tr>
+  </tbody>
+</table>
+<div class="box warn"><div class="box-title">El problema del utilitarismo: la adaptación de las preferencias</div>
+<p>Quien nunca tuvo acceso a la educación puede <b>no declarar insatisfacción</b> por no tenerla. Medir satisfacción declarada <b>convalida la privación</b>: el más privado, si se resignó, parecería estar “bien”.</p></div>
+
+<h3>Los tres conceptos, en orden</h3>
+<p>Este es el punto que <b>más se evalúa</b>, y el orden importa. Seguilos con un mismo ejemplo, estudiar:</p>
+<ol class="steps">
+  <li><span class="step-title">Libertad (o supracapacidad): el marco que hace posible elegir</span>El Estado garantiza el <b>derecho</b> a estudiar.</li>
+  <li><span class="step-title">Capacidad (<i>capability</i>): la posibilidad real</span>Las habilidades físicas, legales o intelectuales para ser o hacer algo. Es <b>potencial</b>: la posibilidad real de estudiar. Refleja las <b>combinaciones alternativas de funcionamientos</b> entre las que una persona puede elegir.</li>
+  <li><span class="step-title">Funcionamiento (<i>functioning</i>): lo logrado</span>Lo que la persona <b>efectivamente logra ser o hacer</b>: el acto concreto de estudiar. Es la materialización de una capacidad.</li>
+</ol>
+<p>La cadena completa: <b>recursos y bienes → capacidades → libertad real para elegir → funcionamientos</b>. La Figura 1.2 la desarrolla.</p>
+<figure><img src="figs/out/t1_cadena_sen.svg" alt="Cadena de Sen">
+<figcaption><b>Figura 1.2.</b> La cadena de Sen, con los <b>factores de conversión</b> en el medio. Leela de izquierda a derecha y mirá la fila de abajo: Rawls reparte bienes primarios (primera caja); Sen evalúa en la tercera, las capacidades, porque ahí se ve la libertad real. Entre los bienes y las capacidades está la razón de por qué dos personas con la misma renta no están igual.</figcaption></figure>
+
+<h3>El conjunto de capacidad: el menú y el plato</h3>
+<p>El <b>conjunto de capacidad</b> es el <b>menú</b>: todas las combinaciones de funcionamientos que la persona <i>podría</i> alcanzar. El <b>funcionamiento</b> es el <b>plato</b> que finalmente elige. Dos personas pueden terminar comiendo lo mismo con menús radicalmente distintos, y ahí está la diferencia de bienestar.</p>
+
+<h3>El ejemplo del ayuno: el que hay que saber sí o sí</h3>
+<p>Una persona rica que <b>ayuna por decisión propia</b> y una persona pobre que <b>pasa hambre</b> porque no tiene qué comer presentan el <b>mismo funcionamiento</b>: ambas están desnutridas. Pero tienen <b>conjuntos de capacidad opuestos</b>. La primera podía comer y eligió no hacerlo; la segunda no podía. El funcionamiento observado es idéntico; la libertad es incomparable. Por eso Sen evalúa en el <b>espacio de las capacidades</b> y no en el de los funcionamientos ni en el de los recursos.</p>
+<figure class="w80"><img src="figs/out/t1_ayuno.svg" alt="Conjuntos de capacidad en el ejemplo del ayuno">
+<figcaption><b>Figura 1.3.</b> Esquemático. Área violeta: el conjunto de capacidad (el menú); punto naranja: el funcionamiento elegido (el plato). Misma nutrición en los dos casos, pero a la izquierda el menú es enorme (podía comer bien) y a la derecha está casi vacío.</figcaption></figure>
+
+<div class="recipe"><div class="recipe-title">Receta: ¿capacidad o funcionamiento? (el molde del TP1)</div>
+<ol>
+  <li>Si el enunciado deja ver que la persona <b>pudo elegir</b> (tenía alternativas disponibles) → <b>capacidad</b>.</li>
+  <li>Si describe un <b>hecho consumado</b>, algo ya logrado o padecido → <b>funcionamiento</b>.</li>
+  <li>Si el hecho consumado es una <b>privación forzada</b> → “funcionamiento que refleja una <b>capacidad restringida</b>”. Esa aclaración suma puntos.</li>
+</ol></div>
+<table class="compact t1-mini">
+  <thead><tr><th>Caso (TP1)</th><th>Respuesta</th><th>Por qué</th></tr></thead>
+  <tbody>
+    <tr><td>Mariela obtuvo su título de Médica Veterinaria</td><td>Funcionamiento</td><td>Logro efectivamente alcanzado</td></tr>
+    <tr><td>Un programador rechaza una oferta extranjera porque prefiere la fundación local</td><td>Capacidad</td><td>Tenía ambas opciones y eligió: importa el menú</td></tr>
+    <tr><td>Lucía tiene título y habilidades para la dirección pero decide cuidar a sus hijos</td><td>Capacidad</td><td>La capacidad existe aunque no se materialice</td></tr>
+    <tr><td>Manuel padece diabetes porque no le alcanza para alimentos frescos</td><td>Funcionamiento (privación de capacidad)</td><td>Estar enfermo es el logro negativo; el ingreso no le dejó elegir</td></tr>
+  </tbody>
+</table>
+<p class="small">Todos los casos del TP1 (incluidos Marcos y Sofía, la versión del ayuno de la guía) están resueltos en la <i>Práctica resuelta</i>.</p>
+
+<div class="box intuition"><div class="box-title">Bien-estar logrado vs libertad: dos preguntas distintas</div>
+<p>Sen distingue <b>qué tan bien está</b> una persona (su <b>bien-estar logrado</b>: se mira en los <b>funcionamientos</b> que alcanzó) de <b>qué tan libre es</b> para estar bien (se mira en sus <b>capacidades</b>). El desarrollo y la calidad de vida se evalúan en el espacio de las capacidades; pero si la pregunta es por el <i>bien-estar individual</i> logrado, la respuesta son los funcionamientos. En los dos casos, lo que <b>nunca</b> es la respuesta es un estado mental (placer, utilidad, felicidad).</p></div>
+
+<div class="box exam t1-exam"><div class="box-title">Así lo preguntan en el parcial</div>
+<div class="t1-src">Parcial 08/10/2022 (Tema A) · teórica 1</div>
+<p class="q">Considerar el concepto de bien-estar individual desde la perspectiva de Sen, consiste en analizar:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>Si el individuo logra un estado agradable de conciencia.<span class="why">Hedonismo: estado mental.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>El nivel de utilidad alcanzado por el individuo.<span class="why">Utilitarismo.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>Si el individuo es feliz.<span class="why">Utilitarismo: la felicidad se adapta a la privación.</span></span></li>
+  <li class="correct"><span class="opt">d)</span><span>Los funcionamientos logrados por la persona.<span class="why">El bien-estar (<i>being well</i>) se evalúa por lo que la persona efectivamente logra ser y hacer.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna opción es correcta.</span></li>
+</ul></div>
+
+<h3>Por qué los recursos no alcanzan</h3>
+<p>No basta con medir utilidades ni con repartir <b>bienes primarios</b> al estilo de <b>Rawls</b>, porque la <b>tasa a la que cada persona convierte recursos en capacidades es distinta</b>. Influyen los <b>factores de conversión</b>:</p>
+<div class="t1-chips"><span class="tag">edad</span> <span class="tag">género</span> <span class="tag">estado de salud</span> <span class="tag">discapacidad</span> <span class="tag orange">entorno físico y social</span> <span class="tag orange">características epidemiológicas</span> <span class="tag orange">acceso a servicios públicos</span></div>
+<div class="box example"><div class="box-title">Ejemplo</div>
+<p>Una persona con discapacidad necesita <b>más ingreso</b> que otra para alcanzar el <b>mismo funcionamiento</b> de desplazarse (transporte adaptado, asistencia). Con igual renta, logra menos: importa no solo lo que se tiene, sino <b>lo que se puede hacer con eso</b>.</p></div>
+
+<div class="box exam t1-exam"><div class="box-title">Así lo preguntan en el parcial</div>
+<div class="t1-src">Parcial 2023 · teórica 1</div>
+<p class="q">Al evaluar qué tan bien está una persona hay que tener en cuenta los bienes primarios que posee, pero también su condición, es decir que es relevante:</p>
+<ul class="mcq">
+  <li class="correct"><span class="opt">b)</span><span>evaluar las características personales relevantes que determinan la conversión de los bienes primarios en la capacidad de las personas para alcanzar sus fines.<span class="why">Son los factores de conversión (Figura 1.2).</span></span></li>
+</ul>
+<p class="small" style="margin:0">Descartadas: a) la utilidad que obtiene de los bienes y de su condición (utilitarismo); c) un estado deseable o agradable de conciencia (hedonismo); d) todo lo anterior (a y c son falsas); e) ninguna.</p></div>
+
+<h3>Agencia</h3>
+<p>La <b>agencia</b> es la capacidad de ser dueño de la propia voluntad. Sen trabaja con la <b>libertad positiva</b>, que complementa a la negativa:</p>
+<div class="versus">
+  <div class="card orange"><div class="card-title">Libertad negativa</div><p style="margin:0">Ausencia de coacción: <b>nadie te impide</b> estudiar.</p></div>
+  <div class="vs">+</div>
+  <div class="card violet"><div class="card-title">Libertad positiva</div><p style="margin:0">Poder hacer o ser: tener derecho a la educación <b>y además poder ejercerlo realmente</b>.</p></div>
+</div>
+
+<div class="box exam t1-exam"><div class="box-title">Así lo preguntan en el parcial · la pregunta que más se repite</div>
+<div class="t1-src">Parcial 2025 (teórica 27/09/2025) · pregunta 1</div>
+<p class="q">Según la perspectiva de Amartya Sen, el concepto de desarrollo debe entenderse como:</p>
+<ul class="mcq">
+  <li class="correct"><span class="opt">b)</span><span>La expansión de las libertades reales que disfrutan las personas.<span class="why">Es la definición textual.</span></span></li>
+</ul>
+<p class="small" style="margin:0 0 0.3em">Descartadas: a) aumento sostenido del PBI per cápita (visión estricta); c) reducción de la deuda externa y el déficit fiscal (metas macro: medios, en todo caso); d) la felicidad (utilitarismo); e) Ninguna.</p>
+<div class="t1-src">Prueba teórica 28/9/2024 · pregunta 1</div>
+<p class="q">Teniendo en cuenta el enfoque de Sen, la evaluación de la calidad de vida como del desarrollo que ofrece una economía tiene que analizarse en términos de:</p>
+<p style="margin:0">Las mismas opciones que la del 20/9/2024 (ver 1.1), en otro orden: la correcta pasó a ser la <b>c) la libertad de las personas para elegir y alcanzar vidas que valoran</b>. Moraleja: <b>memorizá el contenido, no la letra</b>.</p></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Sen (1988) “El concepto de desarrollo” · Sen (2000) <i>Desarrollo y Libertad</i>, Introducción pp. 19-28 y cap. 2 pp. 54-75 · Paz, cap. 3.</p></div>
+
+<!-- ======================================================= 1.3 -->
+<h2><span class="num">1.3</span>Los dos papeles de la libertad y las cinco libertades instrumentales</h2>
+<p>La libertad cumple <b>dos papeles</b> en el desarrollo, y la consigna clásica de examen —<i>“¿por qué la expansión de la libertad es medio y fin del desarrollo?”</i>— se contesta exactamente con esta distinción.</p>
+
+
+
+<div class="grid-2 t1-gap">
+  <div class="box def"><div class="box-title">Papel constitutivo: la libertad como fin</div>
+  <p>Las libertades fundamentales <b>son</b> el desarrollo, no un instrumento para llegar a él. Poder evitar el hambre, estar alfabetizado, participar en la vida de la comunidad son capacidades elementales cuyo <b>valor es intrínseco</b>. Aunque no aumentaran el PBI en un peso, su expansión ya sería desarrollo.</p></div>
+  <div class="box def"><div class="box-title">Papel instrumental: la libertad como medio</div>
+  <p>Distintos tipos de derechos y oportunidades <b>se refuerzan entre sí</b> y contribuyen a expandir la libertad humana en general. Acá la libertad es el <b>motor</b>.</p></div>
+</div>
+<figure><img src="figs/out/t1_papeles.svg" alt="Los dos papeles de la libertad">
+<figcaption><b>Figura 1.4.</b> Los dos papeles desembocan en la misma definición de desarrollo: a la izquierda la libertad vale por sí misma (fin); a la derecha es el motor que produce más libertad (medio). Abajo, qué hay que remover.</figcaption></figure>
+<p>De ahí la formulación de Sen:</p>
+<div class="t1-quote">La expansión de la libertad es tanto el fin primordial como el medio principal del desarrollo.</div>
+<p>Y el corolario: <b>el desarrollo exige la eliminación de las principales fuentes de privación de libertad</b>. En la Introducción de <i>Desarrollo y Libertad</i> Sen las enumera: la pobreza y la tiranía, la escasez de oportunidades económicas y las privaciones sociales sistemáticas, el abandono de los servicios públicos y la intolerancia o el exceso de intervención de los Estados represivos.</p>
+
+<div class="box tip"><div class="box-title">Respuesta modelo · “¿por qué la libertad es medio y fin del desarrollo?”</div>
+<p>(1) Es <b>fin</b> por su <b>papel constitutivo</b>: las libertades fundamentales (evitar el hambre, estar alfabetizado, participar) tienen valor intrínseco y su expansión <i>es</i> desarrollo. (2) Es <b>medio</b> por su <b>papel instrumental</b>: los distintos tipos de libertades se refuerzan mutuamente y expanden la libertad general. (3) Por eso el desarrollo exige eliminar las fuentes de privación de libertad.</p></div>
+
+<h3>Las cinco libertades instrumentales</h3>
+<figure><img src="figs/out/t1_rueda.svg" alt="Las cinco libertades instrumentales">
+<figcaption><b>Figura 1.5.</b> Las cinco libertades alimentan la libertad general (flechas) y se refuerzan entre sí (punteado): la prensa libre (1) mejora la transparencia (4); la educación (3) permite aprovechar el crédito y los mercados (2).</figcaption></figure>
+<table>
+  <thead><tr><th style="width:20%">Libertad</th><th>Qué abarca</th><th style="width:30%">Cómo se reconoce en un caso</th></tr></thead>
+  <tbody>
+    <tr><td><b>1. Libertades políticas</b></td><td>Participación y derechos políticos propios de las democracias: votar, criticar, elegir gobernantes, libertad de prensa</td><td>Elecciones, oposición, prensa, derecho a peticionar</td></tr>
+    <tr><td><b>2. Servicios económicos</b></td><td>Derechos económicos: ingresos, acceso al crédito, condiciones de intercambio, precios relativos, funcionamiento de los mercados</td><td>Financiamiento, crédito, precios, comercio</td></tr>
+    <tr><td><b>3. Oportunidades sociales</b></td><td>Sistemas de educación y de sanidad que permiten vivir mejor y participar mejor en lo económico y lo político</td><td>Escuelas, hospitales, clínicas, alfabetización</td></tr>
+    <tr><td><b>4. Garantías de transparencia</b></td><td>Información y confianza en el trato entre las personas y con el Estado; prevención de la corrupción</td><td>Acceso a la información pública, rendición de cuentas, controles</td></tr>
+    <tr><td><b>5. Seguridad protectora</b></td><td>Red de protección social que impide que quien cae quede en la miseria absoluta</td><td>Ver el desglose abajo</td></tr>
+  </tbody>
+</table>
+<p>La quinta se subdivide, y conviene tener presente la distinción:</p>
+<div class="versus">
+  <div class="card violet"><div class="card-title"><span class="t1-e">🏛️</span> Mecanismos institucionales fijos</div><p style="margin:0">Prestaciones por desempleo, ayudas a indigentes o a sectores vulnerables. Son <b>permanentes</b> y están <b>establecidos por ley</b>.</p></div>
+  <div class="vs">vs</div>
+  <div class="card orange"><div class="card-title"><span class="t1-e">🚨</span> Mecanismos ad hoc</div><p style="margin:0">Ayudas de emergencia frente a hambrunas, empleo público de emergencia. Se <b>activan ante una crisis puntual</b>.</p></div>
+</div>
+
+<h3>Cómo resolver los casos (TP1 y parcial)</h3>
+<p>La consigna 4 del práctico pide clasificar noticias según la libertad instrumental involucrada. El criterio es preguntarse <b>qué institución falla o funciona</b>, no cuál es el tema de la noticia:</p>
+<div class="t1-rules">
+  <div class="hd">Si el núcleo del caso es…</div><div></div><div class="hd">…la libertad es</div>
+  <div class="k">información ocultada, corrupción o conflicto de intereses</div><div class="a">→</div><div class="f y">Garantías de transparencia</div>
+  <div class="k">acceso a salud o educación</div><div class="a">→</div><div class="f q">Oportunidades sociales</div>
+  <div class="k">crédito, financiamiento, precios o mercados</div><div class="a">→</div><div class="f o">Servicios económicos</div>
+  <div class="k">elecciones, reclamo público o acceso a la justicia</div><div class="a">→</div><div class="f b">Libertades políticas</div>
+  <div class="k">ayuda de emergencia o red de asistencia a los que quedaron afuera</div><div class="a">→</div><div class="f v">Seguridad protectora</div>
+</div>
+<div class="box warn"><div class="box-title">El caso ambiguo típico</div>
+<p>El reclamo de productores por <b>caminos rurales</b> en el que además piden conocer los ingresos y gastos del municipio: el tema de fondo es infraestructura, pero el pedido concreto es de <b>información y rendición de cuentas</b>, y eso lo vuelve <b>garantías de transparencia</b> (secundariamente, libertades políticas: reclamo organizado y acceso a la justicia). Clasificar por el tema y no por el mecanismo es el error que más puntos cuesta.</p></div>
+
+<div class="box exam t1-exam" style="break-inside: avoid"><div class="box-title">Así lo preguntan en el parcial</div>
+<div class="t1-src">Primer parcial 2025 · Ej. 3 c) · 6 puntos</div>
+<p class="q">Clasifique estas afirmaciones sobre Yemen teniendo en cuenta las libertades instrumentales que propone Amartya Sen:</p>
+<table class="compact" style="margin:0.3em 0 0.4em">
+  <thead><tr><th style="width:44%">Afirmación</th><th style="width:20%">Libertad</th><th>Por qué</th></tr></thead>
+  <tbody>
+    <tr><td>“Yemen lleva más de una década sumido en una guerra civil entre los rebeldes hutíes, también conocidos como Ansar Allah, y las fuerzas gubernamentales respaldadas por Arabia Saudí y sus aliados.”</td><td class="ok">Libertades políticas</td><td>El conflicto es por quién gobierna y cómo: no hay canales democráticos para elegir, criticar y reemplazar gobernantes.</td></tr>
+    <tr><td>“Alrededor del 20 % de los niños nunca han sido vacunados, una de las peores tasas de vacunación del mundo.”</td><td class="ok">Oportunidades sociales</td><td>Falla el sistema de salud.</td></tr>
+    <tr><td>“Ibrahim, un hombre de 70 años, fue desplazado por las fuertes inundaciones en Ma’rib. […] Lo perdieron todo.”</td><td class="ok">Seguridad protectora</td><td>Una catástrofe deja a una familia sin nada: hace falta la red de protección, en su versión <b>ad hoc</b> (ayuda de emergencia).</td></tr>
+  </tbody>
+</table>
+<p style="margin:0" class="small">En los incisos a) y b) del mismo ejercicio se calculaba el IDH de Yemen (0,455: desarrollo humano bajo) y su IDH-D (0,308); eso se ve en el Tema 2.</p></div>
+
+<p class="small">Los demás casos del TP1 (el laboratorio HLB, Belice, la deuda ganadera, la ONPE, Sudán) siguen la misma regla y están resueltos en la <i>Práctica resuelta</i>.</p>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Sen (2000) <i>Desarrollo y Libertad</i>, cap. 2 “Los fines y los medios del desarrollo”, pp. 54-75 (y la Introducción, pp. 19-28, para las fuentes de privación de libertad).</p></div>
+
+<!-- ======================================================= 1.4 -->
+<h2><span class="num">1.4</span>De los ODM a los Objetivos de Desarrollo Sostenible</h2>
+<p>Los ODS son la <b>traducción operativa de la visión amplia</b> del desarrollo: un conjunto de metas que no se agotan en el ingreso. Lo que suele preguntarse es la <b>comparación con su antecesor</b> y el <b>cambio de enfoque</b> que representan.</p>
+
+<figure><img src="figs/out/t1_odm_ods.svg" alt="Línea de tiempo ODM ODS">
+<figcaption><b>Figura 1.6.</b> De los ODM a los ODS. Arriba, quién los adoptó; en las barras, la estructura de cada agenda; abajo, el cambio de enfoque. El corchete marca el horizonte de la meta del ODM 1: los valores de 1990 se tomaron como base para reducirlos a la mitad en 2015.</figcaption></figure>
+
+<div class="grid-2 t1-gap">
+  <div class="card blue t1-odm"><div class="card-title">Los 8 ODM (2000–2015)</div>
+  <ol><li>Erradicar la pobreza extrema y el hambre</li><li>Lograr la enseñanza primaria universal</li><li>Promover la igualdad entre los sexos y el empoderamiento de la mujer</li><li>Reducir la mortalidad de los niños menores de 5 años</li><li>Mejorar la salud materna</li><li>Combatir el VIH/SIDA, el paludismo y otras enfermedades</li><li>Garantizar la sostenibilidad del medio ambiente</li><li>Fomentar una alianza mundial para el desarrollo</li></ol></div>
+  <div class="card orange"><div class="card-title">El ODM 1 y su balance</div>
+  <p style="margin:0.2em 0 0.3em">“Erradicar la pobreza extrema y el hambre” tenía <b>tres metas</b>:</p>
+  <ul style="font-size:8.6pt; margin-bottom:0.4em"><li>reducir a la mitad, entre 1990 y 2015, la proporción de personas con ingresos inferiores a <b>un dólar diario</b>;</li><li>lograr <b>empleo pleno y productivo</b> y trabajo decente para todos, incluidas mujeres y jóvenes;</li><li>reducir a la mitad el porcentaje de personas que <b>padecen hambre</b>.</li></ul>
+  <p style="margin:0; font-size:8.6pt">Balance de los quince años: el hambre se redujo a la mitad y la pobreza extrema casi a la mitad.</p>
+  <p class="small" style="margin:0.3em 0 0">Ojo: el informe final de Naciones Unidas sobre los ODM (2015) lo cuenta al revés —la pobreza extrema bajó <i>más</i> de la mitad y el hambre <i>casi</i> a la mitad—. Para el parcial, la idea es la misma: las dos metas se cumplieron o quedaron muy cerca.</p></div>
+</div>
+
+<h3>ODM vs ODS</h3>
+<table>
+  <thead><tr><th style="width:16%"></th><th>ODM (2000–2015)</th><th>ODS — Agenda 2030 (2015–2030)</th></tr></thead>
+  <tbody>
+    <tr><td><b>Adoptados por</b></td><td>189 países, Declaración del Milenio</td><td>193 Estados</td></tr>
+    <tr><td><b>Estructura</b></td><td>8 objetivos, 21 metas, 60 indicadores</td><td>17 objetivos, 169 metas, 230 indicadores</td></tr>
+    <tr><td><b>Alcance</b></td><td>Dirigidos sobre todo a países en desarrollo</td><td>Universales: rigen también para los países desarrollados</td></tr>
+    <tr><td><b>Dimensiones</b></td><td>Foco social (pobreza, hambre, salud, educación)</td><td>Integra las tres: económica, social y ambiental</td></tr>
+    <tr><td><b>Enfoque</b></td><td>Objetivos tratados por separado</td><td>Indivisible: ningún objetivo se logra aislado de los otros</td></tr>
+  </tbody>
+</table>
+
+<h3>Los cuatro rasgos de la Agenda 2030</h3>
+<p>La cátedra los enumera con estos nombres; conviene usarlos tal cual:</p>
+<div class="t1-4r">
+  <div class="card aqua"><span class="ic">🌍</span><div class="card-title">Universales</div><p>Tan relevantes para los países desarrollados como para los que están en vías de desarrollo.</p></div>
+  <div class="card aqua"><span class="ic">🧩</span><div class="card-title">Indivisibles</div><p>Ningún objetivo está aislado; exigen enfoques integrales y participativos.</p></div>
+  <div class="card aqua"><span class="ic">♻️</span><div class="card-title">Sostenibles</div><p>Integran las tres dimensiones del desarrollo sostenible: económica, social y ambiental.</p></div>
+  <div class="card aqua"><span class="ic">🚀</span><div class="card-title">Ambiciosos</div><p>Terminar con la pobreza y el hambre gestionando de forma sustentable los recursos naturales.</p></div>
+</div>
+<p>El lema que los resume: <b>un mundo en el cual nadie es dejado atrás</b>.</p>
+
+<h3>Los 17 objetivos</h3>
+<figure>
+<div class="t1-ods">
+  <div class="sen"><b>1</b>Fin de la pobreza<i>→ seguridad protectora</i></div>
+  <div><b>2</b>Hambre cero</div>
+  <div><b>3</b>Salud y bienestar</div>
+  <div class="sen"><b>4</b>Educación de calidad<i>→ oportunidades sociales</i></div>
+  <div><b>5</b>Igualdad de género</div>
+  <div><b>6</b>Agua limpia y saneamiento</div>
+  <div><b>7</b>Energía asequible y no contaminante</div>
+  <div><b>8</b>Trabajo decente y crecimiento económico</div>
+  <div><b>9</b>Industria, innovación e infraestructura</div>
+  <div><b>10</b>Reducción de las desigualdades</div>
+  <div><b>11</b>Ciudades y comunidades sostenibles</div>
+  <div><b>12</b>Producción y consumo responsables</div>
+  <div><b>13</b>Acción por el clima</div>
+  <div><b>14</b>Vida submarina</div>
+  <div><b>15</b>Vida de ecosistemas terrestres</div>
+  <div class="sen"><b>16</b>Paz, justicia e instituciones sólidas<i>→ garantías de transparencia</i></div>
+  <div><b>17</b>Alianzas para lograr los objetivos</div>
+</div>
+<figcaption><b>Figura 1.7.</b> Los 17 ODS. En violeta, los tres que el manual vincula explícitamente con una libertad instrumental de Sen.</figcaption></figure>
+
+<h3>El vínculo con Sen</h3>
+<p>No es una lista suelta pegada al final del tema: <b>cada ODS apunta a remover una fuente de privación de libertad</b>. El ODS 4 construye oportunidades sociales, el ODS 16 garantías de transparencia, el ODS 1 seguridad protectora.</p>
+<div class="box tip"><div class="box-title">Doble lectura de un caso</div>
+<p>Si en el parcial aparece un caso de <b>carencia de servicios básicos</b>, se puede leer simultáneamente como <b>privación de capacidades</b> (Sen) y como <b>incumplimiento de un ODS concreto</b>. Por ejemplo, un barrio sin cloacas: privación de la capacidad de estar sano y ODS 6 (agua limpia y saneamiento) incumplido.</p></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>PNUD (2015) <i>Objetivos de desarrollo sostenible</i>.</p></div>
+
+<!-- ======================================================= 1.5 -->
+<h2><span class="num">1.5</span>Clasificación de países y características estructurales del subdesarrollo</h2>
+
+<h3>Cómo se clasifican los países</h3>
+<div class="t1-keep"><p>Conviven dos criterios, y conviene no mezclarlos:</p>
+<div class="grid-2 t1-gap">
+  <div class="card blue"><div class="card-title">Por ingreso · Banco Mundial</div><p style="margin:0">Usa el <b>INB per cápita medido por el método Atlas</b> y agrupa en ingreso <b>bajo, mediano bajo, mediano alto y alto</b>. Los umbrales se actualizan cada año. Es un criterio <b>puramente monetario</b>.</p></div>
+  <div class="card violet"><div class="card-title">Por desarrollo humano · PNUD</div><p style="margin:0">Usa el <b>IDH</b> y agrupa en desarrollo humano <b>bajo, medio, alto y muy alto</b>. Incorpora <b>salud y educación</b> además del ingreso. Los cortes concretos se ven en el Tema 2.</p></div>
+</div></div>
+<p>A eso se suma la categoría de <b>países menos adelantados</b> de Naciones Unidas, que combina ingreso bajo con debilidad de capital humano y vulnerabilidad económica y ambiental.</p>
+<figure><img src="figs/out/t1_escaleras.svg" alt="Dos escaleras de clasificación">
+<figcaption><b>Figura 1.8.</b> Esquemático. Las dos “escaleras” no están alineadas: un país puede subir un escalón por ingreso (izquierda) y quedarse en el mismo escalón de desarrollo humano (derecha). Los cortes del IDH son los de la práctica; los umbrales del Banco Mundial cambian cada año.</figcaption></figure>
+<p>Que los dos criterios <b>no coincidan</b> es en sí mismo un argumento del Tema 1: un país puede subir de categoría por ingreso y no moverse en desarrollo humano.</p>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial</div>
+<p>La clasificación por IDH aparece al final de los ejercicios de cálculo. <b>Parcial 2025, Ej. 3 a:</b> Yemen, IDH = 0,455 → desarrollo humano <b>bajo</b>. <b>Namibia y Honduras, Ej. 3 b:</b> IDH 0,646 y 0,638 → ambos <b>medio</b>. <b>Prueba práctica 2024, Ej. 1 c:</b> Barbados 0,790 y Guyana 0,714 → ambos <b>alto</b>. Fijate en los bordes: 0,700 ya es alto; 0,699 todavía es medio.</p></div>
+
+<h3>Las cinco características estructurales del subdesarrollo</h3>
+<div class="t1-keep"><p>Esta es la lista que da la cátedra, y <b>cada ítem anticipa un tema posterior del programa</b> (última columna):</p>
+<table>
+  <thead><tr><th style="width:22%">Característica</th><th>En qué consiste</th><th style="width:14%">Se retoma en</th></tr></thead>
+  <tbody>
+    <tr><td><b>Ingreso bajo</b></td><td>Bajo nivel de producto per cápita, con brechas enormes respecto de los países ricos</td><td>Temas 2 y 3</td></tr>
+    <tr><td><b>Desigualdad</b></td><td>Alta concentración del ingreso; el promedio esconde la distribución</td><td>Tema 9</td></tr>
+    <tr><td><b>Transición demográfica</b></td><td>Todavía incompleta: alta fecundidad, población joven, alta tasa de dependencia</td><td>Tema 5</td></tr>
+    <tr><td><b>Estructura productiva</b></td><td>Baja diversificación, productividad heterogénea, peso del sector informal</td><td>Temas 6 y 7</td></tr>
+    <tr><td><b>Rol primario-exportador</b></td><td>Exportaciones concentradas en productos primarios, bajo contenido tecnológico, exposición a los precios internacionales</td><td>Temas 3 y 4</td></tr>
+  </tbody>
+</table></div>
+
+
+<div class="versus">
+  <div class="card orange"><div class="card-title">La teoría clásica del desarrollo</div><p style="margin:0">Estudiaba estos problemas por su <b>cara visible</b>: pobreza, trabajo precario, defunciones y enfermedades tratables, bajo nivel educativo, problemas de crecimiento.</p></div>
+  <div class="vs">→</div>
+  <div class="card violet"><div class="card-title">La mirada actual</div><p style="margin:0">Los reencuadra como <b>privaciones de capacidades</b>: lo que importa es qué dejan de poder ser o hacer las personas.</p></div>
+</div>
+
+<h3>Cómo se conecta el programa</h3>
+<p>El Tema 1 abre en general y los demás lo desagregan:</p>
+<div class="flow">
+  <div class="node"><b>Tema 1</b>concepto general</div><div class="arrow">→</div>
+  <div class="node"><b>Tema 2</b>los indicadores que lo miden</div><div class="arrow">→</div>
+  <div class="node"><b>Tema 3</b>por qué crecen las economías</div><div class="arrow">→</div>
+  <div class="node"><b>Tema 4</b>crecimiento y desarrollo humano</div><div class="arrow">→</div>
+  <div class="node"><b>Temas 5 a 9</b>población, trabajo, capital humano, pobreza, desigualdad</div>
+</div>
+<p>El Tema 2 trae los indicadores que miden todo esto; el Tema 3 explica por qué crecen las economías; el Tema 4 conecta crecimiento con desarrollo humano; y los Temas 5 a 9 son las <b>manifestaciones concretas de la falta de desarrollo</b>. Si en el parcial piden <b>relacionar temas</b>, esa es la estructura: del concepto general a los problemas particulares, pasando por la medición.</p>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Ray, cap. 2 · Todaro y Smith · Paz, caps. 1 y 3.</p></div>
+
+<!-- ======================================================= 1.6 -->
+<h2><span class="num">1.6</span>Crecimiento económico y desarrollo humano: los dos encadenamientos</h2>
+<p><span class="t1-tagx">Complemento · adelanto del Tema 4</span><br>La relación entre crecimiento económico (<b>CE</b>) y desarrollo humano (<b>DH</b>) es el Tema 4, pero ya se pregunta en la <b>teórica 4 del primer parcial</b> (2024, en las dos fechas, y 2025). La lectura clásica es la de <b>Ranis y Stewart</b>: no hay una relación automática, sino <b>dos cadenas</b> que se pueden reforzar o frenar.</p>
+
+<div class="grid-2 t1-gap">
+  <div class="box def"><div class="box-title">Cadena A: CE → DH</div>
+  <p>El crecimiento aumenta el ingreso de los hogares y los recursos del Estado. Cuánto se traduce en DH depende de <b>cómo se distribuye</b> el ingreso, de <b>en qué gastan</b> los hogares (alimentos, salud, educación) y de <b>cuánto gasto público va a prioridades sociales</b>.</p></div>
+  <div class="box def"><div class="box-title">Cadena B: DH → CE</div>
+  <p>Personas más sanas y educadas son <b>más productivas</b>, adoptan mejor la tecnología e innovan, y hacen más rentable la inversión. El DH es también un <b>insumo</b> del crecimiento, no solo un resultado.</p></div>
+</div>
+
+<figure><img src="figs/out/t1_ranis.svg" alt="Las dos cadenas de Ranis y Stewart">
+<figcaption><b>Figura 1.9.</b> Las dos cadenas forman un círculo. Arriba (A), los canales por los que el crecimiento se convierte en desarrollo humano; abajo (B), los canales por los que el desarrollo humano vuelve como crecimiento. Si alguna cadena es débil, el círculo se corta.</figcaption></figure>
+
+
+
+
+
+<div class="box intuition"><div class="box-title">La idea para el parcial</div>
+<p>El crecimiento económico es <b>necesario pero no suficiente</b> para avances <b>sostenibles</b> en desarrollo humano. En el <b>corto plazo</b> el DH puede mejorar sin crecimiento (con políticas de salud, educación y equidad), pero sin CE esas mejoras no se sostienen. Un vínculo <b>fuerte</b> es el círculo virtuoso (Figura 1.10): más ingreso <b>acompañado</b> de mejoras en salud, educación y libertades. <b>Palabras trampa</b>: el CE “es suficiente” o “garantiza” el DH; el DH “siempre” frena el crecimiento; a mayor PBI, “necesariamente” menos pobreza; el DH mejora “sostenidamente” sin crecimiento.</p></div>
+
+<figure class="w70"><img src="figs/out/t1_cuadrantes.svg" alt="Círculos virtuoso y vicioso">
+<figcaption><b>Figura 1.10.</b> Esquemático. Las cuatro combinaciones posibles. Las flechas muestran lo que encuentran Ranis y Stewart al seguir a los países en el tiempo: los que priorizaron el DH suelen terminar en el círculo virtuoso; los que crecieron sin DH suelen caer en el vicioso, porque ese crecimiento no se sostiene.</figcaption></figure>
+
+
+<div class="box exam t1-exam"><div class="box-title">Así lo preguntan en el parcial</div>
+<div class="t1-src">Prueba teórica 20/9/2024 · pregunta 4</div>
+<p class="q">¿Cuál refleja mejor la interacción entre Crecimiento Económico (CE) y Desarrollo Humano (DH)?</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El CE es suficiente para mejorar el DH, ya que incrementa el ingreso per cápita.<span class="why">“Suficiente”: falla la cadena A si el ingreso no se distribuye ni se gasta en DH.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>El DH podría mejorar sostenidamente sin crecimiento económico si se enfocan políticas en salud, educación y equidad.<span class="why">“Sostenidamente”: sin CE esas mejoras no se sostienen en el largo plazo.</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>Un alto nivel de CE es necesario, pero no suficiente, para garantizar avances sostenibles en DH.</span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Las mejoras en el DH siempre ralentizan el CE a corto plazo debido a la redistribución de recursos.<span class="why">“Siempre”, y contradice la cadena B.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.</span></li>
+</ul>
+<div class="t1-src">Prueba teórica 28/9/2024 · pregunta 4</div>
+<p class="q">Algunos de los vínculos entre CE y DH involucran alguna de estas relaciones:</p>
+<ul class="mcq">
+  <li class="correct"><span class="opt">b)</span><span>El DH podría mejorar en el corto plazo sin que existiese crecimiento económico si se enfocan políticas en salud, educación y equidad, entre otras.<span class="why">Es casi la b) de la fecha anterior, pero dice “en el corto plazo” en vez de “sostenidamente”: eso la vuelve verdadera.</span></span></li>
+</ul>
+<p class="small" style="margin:0 0 0.3em">Descartadas: a) y c) dicen que el CE es “suficiente”; d) dice que el DH “siempre” ralentiza el CE a largo plazo; e) Ninguna.</p>
+<div class="t1-src">Prueba teórica 27/09/2025 · pregunta 4</div>
+<p class="q">¿Cuál refleja un vínculo fuerte entre crecimiento económico y desarrollo humano?</p>
+<ul class="mcq">
+  <li class="correct"><span class="opt">b)</span><span>Aumento del ingreso acompañado de mejoras en salud, educación y libertades.<span class="why">Es el círculo virtuoso: las dos cadenas funcionando.</span></span></li>
+</ul>
+<p class="small" style="margin:0">Descartadas: a) “a mayor PBI per cápita, menor pobreza estructural” (no es automático: depende de la distribución); c) el crecimiento “garantiza” el DH; d) más empleo informal (es un rasgo del subdesarrollo, 1.5); e) la “única” vía es el capital físico (olvida el capital humano).</p></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Ranis, G., Stewart, F. y Ramírez, A. (2000) “Economic growth and human development”, <i>World Development</i> 28(2), pp. 197-219. Es la lectura clásica sobre el tema; la bibliografía obligatoria del Tema 4 la confirma la cátedra cuando publique el tema.</p></div>
+
+<!-- ======================================================= cierre -->
+<div class="check"><div class="check-title">Autoevaluación · Tema 1</div>
+<ol>
+<li><b>¿Por qué el PBI per cápita puede subir sin que haya desarrollo?</b> <span class="small">Por las cinco fuentes de divergencia: es un promedio (distribución), deja afuera lo no mercantil y suma externalidades negativas, usa precios imperfectos, no descuenta el agotamiento del capital natural y mide medios, no fines.</span></li>
+<li><b>Una persona rica ayuna y una pobre pasa hambre: ¿qué tienen igual y qué distinto?</b> <span class="small">Igual el funcionamiento (desnutrición); distinto el conjunto de capacidad. Por eso Sen evalúa capacidades.</span></li>
+<li><b>¿Por qué no alcanza con repartir bienes primarios?</b> <span class="small">Porque los factores de conversión (edad, género, salud, discapacidad, entorno, servicios públicos) hacen que cada persona convierta los recursos en capacidades a una tasa distinta.</span></li>
+<li><b>Un municipio se niega a publicar cuánto gastó en una obra: ¿qué libertad instrumental está en juego?</b> <span class="small">Garantías de transparencia: falla la información y la rendición de cuentas, aunque el tema sea la obra.</span></li>
+<li><b>Dos diferencias entre ODM y ODS.</b> <span class="small">8 objetivos vs 17; dirigidos a países en desarrollo vs universales; foco social vs tres dimensiones; separados vs indivisibles.</span></li>
+<li><b>¿El crecimiento es necesario para el desarrollo humano?</b> <span class="small">Necesario pero no suficiente para avances sostenibles; en el corto plazo el DH puede mejorar sin crecimiento.</span></li>
+</ol></div>
+
+</section>

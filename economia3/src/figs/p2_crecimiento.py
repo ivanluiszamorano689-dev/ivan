@@ -13,7 +13,7 @@ def disp(nombre, col, ylab, ylim, offs_log, offs_lin, par=None, yfmt=None, ytick
     pts = [(p[0], p[1], p[col]) for p in paises if p[col] is not None]
     x = np.array([p[1] for p in pts], float)
     y = np.array([p[2] for p in pts], float)
-    fig, axs = new_fig(6.5, 2.75, ncols=2)
+    fig, axs = new_fig(6.5, 2.35, ncols=2)
     fig.subplots_adjust(wspace=0.28)
     for j, ax in enumerate(axs):
         logx = j == 1
@@ -56,24 +56,24 @@ def disp(nombre, col, ylab, ylim, offs_log, offs_lin, par=None, yfmt=None, ytick
 
 
 disp("p2_disp_ev", 2, "Esperanza de vida varones (años)", (61.5, 78.5),
-     offs_log={"Estados Unidos": (-4, 7, "right"), "Uruguay": (-5, 5, "right"), "San Vicente y las Gr.": (2, 8, "center"),
-               "Ucrania": (0, -9, "center"), "Uzbekistán": (-5, 6, "right"), "Tuvalu": (3, -9, "left"),
+     offs_log={"Estados Unidos": (-4, 7, "right"), "Uruguay": (-5, 5, "right"), "San Vicente y las Gr.": (6, 0, "left"),
+               "Ucrania": (0, -9, "center"), "Uzbekistán": (-6, 0, "right"), "Tuvalu": (3, -9, "left"),
                "Tanzanía": (-2, -9, "right"), "Uganda": (0, 8, "center")},
-     offs_lin={"Estados Unidos": (-5, -8, "right"), "Uruguay": (0, 8, "center"), "San Vicente y las Gr.": (5, 6, "left"),
-               "Uzbekistán": (-2, 8, "center"), "Ucrania": (5, -5, "left"), "Uganda": (5, 6, "left"),
+     offs_lin={"Estados Unidos": (-5, -8, "right"), "Uruguay": (0, 8, "center"), "San Vicente y las Gr.": (6, 0, "left"),
+               "Uzbekistán": (0, 8, "center"), "Ucrania": (5, -5, "left"), "Uganda": (5, 6, "left"),
                "Tuvalu": (6, -6, "left", "Tanzanía y Tuvalu")},
      par={"San Vicente y las Gr.", "Uzbekistán"}, yticks=[62, 66, 70, 74, 78])
 
 disp("p2_disp_empleo", 3, "Empleo vulnerable varones (%)", (0, 88),
-     offs_log={"Estados Unidos": (-5, 3, "right"), "Uruguay": (5, 6, "left"), "San Vicente y las Gr.": (-4, -9, "center"),
+     offs_log={"Estados Unidos": (0, 9, "center", "EEUU"), "Uruguay": (5, 6, "left"), "San Vicente y las Gr.": (-4, -9, "center"),
                "Uzbekistán": (5, 5, "left"), "Tanzanía": (5, 3, "left"), "Uganda": (4, -8, "left")},
-     offs_lin={"Estados Unidos": (-4, 8, "right"), "Uruguay": (5, 5, "left"), "San Vicente y las Gr.": (5, -4, "left"),
+     offs_lin={"Estados Unidos": (0, 9, "center", "EEUU"), "Uruguay": (5, 5, "left"), "San Vicente y las Gr.": (5, -4, "left"),
                "Uzbekistán": (6, 4, "left"), "Tanzanía": (6, 2, "left"), "Uganda": (6, -3, "left")},
      yfmt=fmt_pct())
 
 # ---------------------------------------------------------------- ej. 4: tres países desde 1950
 t = np.arange(1950, 2026)
-fig, axs = new_fig(6.5, 2.8, ncols=2)
+fig, axs = new_fig(6.5, 2.35, ncols=2)
 fig.subplots_adjust(wspace=0.62)
 series = [("A · 3%", 0.03, C["blue"], "-"), ("B · 2%", 0.02, C["orange"], "-"), ("C · 1%", 0.01, C["aqua"], "-")]
 for j, ax in enumerate(axs):
@@ -111,19 +111,19 @@ Y = np.array([arg[a] for a in yrs], float)
 tasas = Y[1:] / Y[:-1] - 1
 g_geo = (Y[-1] / Y[0]) ** (1 / 13) - 1
 g_ari = tasas.mean()
-fig, axs = new_fig(6.5, 2.85, ncols=2, gridspec_kw=dict(width_ratios=[1.25, 1]))
+fig, axs = new_fig(6.5, 2.5, ncols=2, gridspec_kw=dict(width_ratios=[1.25, 1]))
 fig.subplots_adjust(wspace=0.3)
 ax = axs[0]
 ax.plot(yrs, Y / 1000, color=C["blue"], lw=LW, marker="o", ms=4, mec="white", mew=0.8, zorder=3,
         label="PBI observado")
 ax.plot(yrs, Y[0] * (1 + g_geo) ** (yrs - 2010) / 1000, color=C["ink"], lw=1.3, ls=(0, (5, 3)), zorder=2,
-        label=f"a {coma(100 * g_geo, 3)}% anual (media geométrica):\nllega justo a {miles(Y[-1] / 1000, 1)}")
+        label=f"media geométrica {coma(100 * g_geo, 3)}%:\nllega justo a {miles(Y[-1] / 1000, 1)}")
 ax.plot(yrs, Y[0] * (1 + g_ari) ** (yrs - 2010) / 1000, color=C["orange"], lw=1.5, ls=(0, (1.5, 2)), zorder=2,
-        label=f"a {coma(100 * g_ari, 3)}% anual (promedio aritmético):\nllega a {miles(Y[0] * (1 + g_ari) ** 13 / 1000, 1)}, se pasa")
-ax.legend(loc="lower left", fontsize=7.0, handlelength=2.2, borderaxespad=0.3, labelspacing=0.5)
-ax.annotate("2020: −9,9%", (2020, Y[10] / 1000), xytext=(3, -6), textcoords="offset points", ha="left",
+        label=f"promedio aritmético {coma(100 * g_ari, 3)}%:\nllega a {miles(Y[0] * (1 + g_ari) ** 13 / 1000, 1)}, se pasa")
+ax.legend(loc="lower left", fontsize=6.8, handlelength=2.0, borderaxespad=0.3, labelspacing=0.4)
+ax.annotate("2020: −9,9%", (2020, Y[10] / 1000), xytext=(5, -3), textcoords="offset points", ha="left",
             va="top", fontsize=7.4, color=C["red"])
-ax.set_ylim(560, 740)
+ax.set_ylim(540, 740)
 ax.set_xticks([2010, 2013, 2016, 2019, 2022])
 data_axes(ax, "", "PBI (miles de millones de $ de 2004)")
 ax.yaxis.label.set_size(8.2)
@@ -146,7 +146,7 @@ ax.set_title("Crecimiento acumulado desde 2010", fontsize=9.5, pad=6)
 save(fig, "p2_arg_serie")
 
 # barras período a período + comparación de promedios
-fig, axs = new_fig(6.5, 2.6, ncols=2, gridspec_kw=dict(width_ratios=[2.1, 1]))
+fig, axs = new_fig(6.5, 2.2, ncols=2, gridspec_kw=dict(width_ratios=[2.1, 1]))
 fig.subplots_adjust(wspace=0.55)
 ax = axs[0]
 cols = [C["blue"] if v >= 0 else C["red"] for v in tasas]
@@ -179,7 +179,7 @@ ax.set_title("¿Cuál es «la» tasa media?", fontsize=9.5, pad=6)
 save(fig, "p2_arg_tasas")
 
 # ---------------------------------------------------------------- ej. 6: China y Argentina
-fig, axs = new_fig(6.5, 2.55, ncols=2, gridspec_kw=dict(width_ratios=[1, 1.15]))
+fig, axs = new_fig(6.5, 2.3, ncols=2, gridspec_kw=dict(width_ratios=[1, 1.15]))
 fig.subplots_adjust(wspace=0.35)
 ax = axs[0]
 niv = {"China": (27114429, 33592045), "Argentina": (1079053, 1223376)}
@@ -196,7 +196,7 @@ ax.set_ylim(0, 38)
 ax.legend(loc="upper right", fontsize=8, handlelength=1.0)
 data_axes(ax, "", "PIB PPA (billones de US$ de 2017)")
 ax.yaxis.label.set_size(8.2)
-ax.set_title("Tamaño: China ≈ 25 veces Argentina", fontsize=9.5, pad=6)
+ax.set_title("Tamaño (nivel del PIB)", fontsize=9.5, pad=6)
 ax = axs[1]
 tas = {"China": (23.89, 5.502), "Argentina": (13.37, 3.188)}
 for k, (lab, col) in enumerate((("acumulada 2020–24", C["aqua"]), ("media anual", C["orange"]))):
@@ -211,6 +211,6 @@ ax.set_ylim(0, 30)
 ax.yaxis.set_major_formatter(fmt_pct())
 ax.legend(loc="upper right", fontsize=8, handlelength=1.0)
 data_axes(ax, "", "")
-ax.set_title("Ritmo: tasas con n = 4 períodos", fontsize=9.5, pad=6)
+ax.set_title("Ritmo (tasas, n = 4)", fontsize=9.5, pad=6)
 save(fig, "p2_china_arg")
 print("ok")

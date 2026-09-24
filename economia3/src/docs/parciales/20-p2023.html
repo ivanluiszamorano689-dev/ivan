@@ -1,0 +1,454 @@
+<section class="tema-3 x1-sec">
+<style>
+.x1-ficha .card p { margin: 0; font-size: 8.6pt; }
+.x1-ficha .card ul { margin: 0.1em 0 0; padding-left: 1.1em; font-size: 8.6pt; }
+.x1-cubre { font-size: 8.6pt; color: var(--ink-2); margin: 0.6em 0 1em; }
+.x1-cubre b { color: var(--ink); }
+.x1-sec .statement { break-inside: avoid; break-after: avoid; }
+.x1-refin { display: block; font-size: 8.1pt; color: var(--ink-2); margin-top: 0.3em; }
+.x1-ref { font-size: 8.3pt; color: var(--ink-2); margin: -0.4em 0 0.9em; }
+.statement table { background: #fff; margin: 0.5em 0 0.4em; }
+.statement .katex-display { margin: 0.35em 0; }
+.x1-grilla td:first-child { white-space: nowrap; font-weight: 600; }
+.x1-grilla td.x1-r { font-weight: 700; color: var(--green-ink); white-space: nowrap; }
+.x1-aus td:nth-child(2) { white-space: nowrap; }
+.x1-aus td.x1-q { color: var(--orange-ink); font-weight: 600; }
+.x1-g2 { display: inline-grid; width: 100%; vertical-align: top; margin-bottom: 0.5em; }
+.x1-g2 .answer { margin-bottom: 0.4em; }
+.x1-g2 .mcq > li { padding: 0.22em 0.5em; }
+</style>
+
+<div class="chapter-head">
+  <div class="kicker">Parcial 2023 · práctico + teórico</div>
+  <h2><span class="num">P2</span>1er parcial 2023 · práctico y teórico</h2>
+  <p>El examen más largo de la serie: tres ejercicios prácticos (Solow con Harrod-Domar, IDH-D de Australia y un “dos países, dos bienes”) y cuatro preguntas teóricas. Es el único que toma Harrod-Domar y el que tiene dos respuestas “Ninguna” o “n/a”.</p>
+</div>
+
+<div class="grid-3 x1-ficha">
+  <div class="card blue"><div class="card-title">Fecha y duración</div><p>1er parcial 2023. En la foto no se ve la fecha exacta ni la duración.</p></div>
+  <div class="card orange"><div class="card-title">Formato y puntaje</div>
+    <ul><li>Ej. 1: 4 incisos de 5 ptos, −2,5.</li><li>Ej. 2: 5 casilleros de 4 ptos, −2.</li><li>Ej. 3: 4 incisos de 5 ptos, −2,5.</li><li>Teórica: 4 preguntas, +10 / −5.</li><li>Total: 60 + 40 = 100 ptos.</li></ul></div>
+  <div class="card aqua"><div class="card-title">Temas que evalúa</div>
+    <ul><li>Solow sin tecnología (EE, funciones, \(\alpha\)) y Harrod-Domar.</li><li>IDH e IDH-D con datos del PNUD.</li><li>TC de mercado, TC PPA y comparación de PBI.</li><li>Sen, comparabilidad del PBI, Solow con tecnología, índices.</li></ul></div>
+</div>
+<p class="x1-cubre"><b>Lo cubren:</b> Manual de teoría Tema 1.2, Tema 2.2, Tema 2.4, Tema 2.5, Tema 2.6, Tema 3.2, Tema 3.3, Tema 3.4 y Tema 3.6 · Práctica TP1, TP2, TP3 y TP4 · Paso a paso §1 a §4.</p>
+
+<h3>Ejercicio 1 — Solow sin tecnología y Harrod-Domar</h3>
+<div class="statement"><div class="statement-title">Enunciado · P2 2023 · Ejercicio 1 <span class="pts">20 ptos</span></div>
+<p>Considere el modelo de Solow sin tecnología para una economía cuya tasa de depreciación es del 13%, la tasa de crecimiento poblacional es del 4,5%, la tasa de ahorro es del 19% y su función de producción agregada es de la forma</p>
+\[ Y = \tfrac{3}{2}\cdot K^{5/6}\cdot L^{1/6} \]
+<p>Realice los cálculos y marque la opción correcta. <b>(20 ptos.: Correcto. suma 5 ptos. Incorrecto resta 2,5 ptos.)</b></p></div>
+
+<div class="formula-card">
+  <div class="fc-label">Datos ordenados</div>
+  \[ s = 0{,}19 \quad n = 0{,}045 \quad \delta = 0{,}13 \quad A = 1{,}5 \quad \alpha = \tfrac{5}{6} \;\Rightarrow\; sA = 0{,}285 \quad n+\delta = 0{,}175 \quad \tfrac{1}{1-\alpha} = 6 \]
+  <div class="fc-legend"><span>En per cápita: \(y = 1{,}5\,k^{5/6}\)</span><span>\(k^* = \left(\frac{sA}{n+\delta}\right)^{6}\)</span><span>\(y^* = 1{,}5\,(k^*)^{5/6}\)</span></div>
+</div>
+
+<div class="statement"><div class="statement-title">Ej. 1 a) <span class="pts">5 ptos / −2,5</span></div>
+<p>El capital y la producción per cápita en estado estacionario son:</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">i.</span><span>\(k^* = 11{,}455\quad y^* = 18{,}656\)<span class="why">Los números de la opción ii con \(k^*\) e \(y^*\) intercambiados.</span></span></li>
+<li class="wrong"><span class="opt">ii.</span><span>\(k^* = 18{,}656\quad y^* = 11{,}455\)<span class="why">El \(k^*\) está bien, pero \(y^*\) es \(18{,}656^{5/6} = 11{,}4555\): olvida multiplicar por \(A = 1{,}5\).</span></span></li>
+<li class="wrong"><span class="opt">iii.</span><span>\(k^* = 1{,}637\quad y^* = 1{,}508\)<span class="why">Olvida \(A\) también en \(k^*\): \((0{,}19/0{,}175)^6 = 1{,}6379\) y \(1{,}6379^{5/6} = 1{,}5086\) (la opción trunca a 1,637 y 1,508).</span></span></li>
+<li class="wrong"><span class="opt">iv.</span><span>\(k^* = 1{,}508\quad y^* = 1{,}637\)<span class="why">Los de la iii, intercambiados.</span></span></li>
+<li class="correct"><span class="opt">v.</span><span>Ninguna de las anteriores.<span class="why">\(k^* = 18{,}657\) está en la opción ii, pero su \(y^*\) no: el correcto es 17,184.</span></span></li>
+</ul>
+<div class="calc">\[\begin{aligned} k^* &= \left(\tfrac{0{,}285}{0{,}175}\right)^{6} = 1{,}62857^{6} = 18{,}657 \\ y^* &= 1{,}5\cdot 18{,}657^{5/6} = 1{,}5\cdot 11{,}456 = 17{,}184 \\ \text{control: } y^* &= \tfrac{k^*(n+\delta)}{s} = \tfrac{18{,}657\cdot 0{,}175}{0{,}19} = 17{,}184 \end{aligned}\]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>v. Ninguna de las anteriores: \(k^* = 18{,}657\) (la opción dice 18,656, diferencia de redondeo) pero \(y^* = 17{,}184\), que no figura.<span class="x1-refin">Manual Tema 3.4 · TP4 (parte B) · Paso a paso §1.</span></div></div>
+
+<div class="statement"><div class="statement-title">Ej. 1 b) <span class="pts">5 ptos / −2,5</span></div>
+<p>Las funciones de ahorro y de depreciación son:</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">i.</span><span>\(FA = \dfrac{0{,}19}{k^{1/6}}\quad FD = 0{,}175\)<span class="why">Le falta \(A\) (0,19 es \(s\), no \(sA = 0{,}285\)) y tiene la forma de la curva en tasas, no de la función.</span></span></li>
+<li class="wrong"><span class="opt">ii.</span><span>\(FA = 0{,}19\,k^{5/6}\quad FD = 0{,}175\,k\)<span class="why">La forma en niveles es la correcta, pero olvida \(A\): \(sf(k) = sAk^{\alpha} = 0{,}285\,k^{5/6}\).</span></span></li>
+<li class="wrong"><span class="opt">iii.</span><span>\(CA = \dfrac{0{,}285}{k^{5/6}}\quad CD = 0{,}175\)<span class="why">Parece la curva en tasas, pero el exponente está mal: es \(CA = sA/k^{1-\alpha} = 0{,}285/k^{1/6}\) (usa \(\alpha\) en lugar de \(1-\alpha\)). Además se piden funciones, no curvas.</span></span></li>
+<li class="correct"><span class="opt">iv.</span><span>\(FA = 0{,}285\,k^{5/6}\quad FD = 0{,}175\,k\)<span class="why">Funciones en niveles: \(FA = sAk^{\alpha}\) y \(FD = (n+\delta)k\).</span></span></li>
+<li class="wrong"><span class="opt">v.</span><span>Ninguna de las anteriores.<span class="why">La iv es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv. \(FA = 0{,}285\,k^{5/6}\) y \(FD = 0{,}175\,k\). Se cortan en \(k^* = 18{,}66\), donde las dos valen \(0{,}175\cdot 18{,}66 = 3{,}27\).</div></div>
+
+<figure><img src="figs/out/x1_p2_solow.svg">
+  <figcaption><b>Figura P2.1.</b> Los incisos a) y b) en niveles. A la izquierda, la trampa del inciso a): en \(k^* = 18{,}66\) la producción es \(1{,}5\cdot 18{,}66^{5/6} = 17{,}18\); si te olvidás de \(A\) leés 11,46 sobre la curva punteada (opción ii). A la derecha, la opción correcta del inciso b): \(FA\) y \(FD\) se cortan en \(k^*\). Con \(\alpha = 5/6\) las dos funciones son casi rectas y se cortan en un ángulo muy chico. Datos del parcial.</figcaption></figure>
+
+<div class="statement"><div class="statement-title">Ej. 1 c) <span class="pts">5 ptos / −2,5</span></div>
+<p>Si se cuenta con un capital per cápita de 30,7; ¿cuánto tendría que ser igual el coeficiente técnico del capital para obtener un nivel de producción per cápita igual a 20,5?</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">i.</span><span>0,12<span class="why">Es \(1 - 0{,}88\): el complemento del error de la opción ii.</span></span></li>
+<li class="wrong"><span class="opt">ii.</span><span>0,88<span class="why">Olvida \(A\): \(\ln 20{,}5 / \ln 30{,}7 = 0{,}882\).</span></span></li>
+<li class="wrong"><span class="opt">iii.</span><span>0,24<span class="why">Es \(1 - 0{,}76\): la participación del trabajo, no la del capital.</span></span></li>
+<li class="correct"><span class="opt">iv.</span><span>0,76<span class="why">Despejando \(\alpha\) de \(y = 1{,}5\,k^{\alpha}\) con logaritmos.</span></span></li>
+<li class="wrong"><span class="opt">v.</span><span>Ninguna de las anteriores.<span class="why">La iv es correcta.</span></span></li>
+</ul>
+<div class="calc">\[ 20{,}5 = 1{,}5\cdot 30{,}7^{\alpha} \;\Rightarrow\; 30{,}7^{\alpha} = 13{,}667 \;\Rightarrow\; \alpha = \frac{\ln 13{,}667}{\ln 30{,}7} = \frac{2{,}6150}{3{,}4243} = 0{,}7637 \approx 0{,}76 \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv. 0,76. El “coeficiente técnico del capital” es el exponente \(\alpha\) de \(y = A\,k^{\alpha}\), la elasticidad del producto respecto del capital. \(A = 1{,}5\) se mantiene.<span class="x1-refin">Manual Tema 3.3 · TP4 (parte B) · Paso a paso §1.</span></div></div>
+
+<div class="statement"><div class="statement-title">Ej. 1 d) <span class="pts">5 ptos / −2,5</span></div>
+<p>En base al modelo de Harrod Domar, ¿para qué valor o valores de la relación capital producto se obtendría una tasa de crecimiento del producto positiva?</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">i.</span><span>\(v = 1{,}085\)<span class="why">En el umbral la tasa es exactamente cero: no es positiva.</span></span></li>
+<li class="correct"><span class="opt">ii.</span><span>\(0 &lt; v &lt; 1{,}085\)<span class="why">\(g = s/v - (n+\delta) &gt; 0\) cuando \(v &lt; s/(n+\delta)\).</span></span></li>
+<li class="wrong"><span class="opt">iii.</span><span>\(0 \le v \le 1{,}085\)<span class="why">Incluye \(v = 0\) (sin capital no hay producto y \(s/v\) no está definido) y \(v = 1{,}085\) (donde \(g = 0\)).</span></span></li>
+<li class="wrong"><span class="opt">iv.</span><span>\(v &gt; 1{,}085\)<span class="why">Del otro lado del umbral la tasa es negativa: hace falta demasiado capital por unidad de producto.</span></span></li>
+<li class="wrong"><span class="opt">v.</span><span>Ninguna de las anteriores<span class="why">La ii es correcta.</span></span></li>
+</ul>
+<div class="calc">\[ g_y = \frac{s}{v} - (n+\delta) = \frac{0{,}19}{v} - 0{,}175 &gt; 0 \iff v &lt; \frac{0{,}19}{0{,}175} = 1{,}0857 \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>ii. \(0 &lt; v &lt; 1{,}085\). Se usa la versión per cápita del modelo (\(v\) es lo que el Manual llama \(\theta\)), con los mismos \(s\), \(n\) y \(\delta\) del ejercicio. Con la versión agregada, \(g_Y = s/v - \delta\), el umbral sería 1,46, que no está entre las opciones.<span class="x1-refin">Manual Tema 3.2 · TP4 (parte A) · Paso a paso §1.</span></div></div>
+
+<figure class="w80"><img src="figs/out/x1_p2_harrod.svg">
+  <figcaption><b>Figura P2.2.</b> La tasa de crecimiento per cápita de Harrod-Domar en función de la relación capital-producto. Es positiva sólo en la franja verde: entre 0 (sin incluirlo) y 1,086 (donde vale justo cero). Mirá que un \(v\) más alto, una economía que necesita más capital para producir lo mismo, crece menos. Datos del parcial.</figcaption></figure>
+
+<h3>Ejercicio 2 — Australia: IDH-D con datos del PNUD</h3>
+<div class="statement"><div class="statement-title">Enunciado · P2 2023 · Ejercicio 2 <span class="pts">20 ptos</span></div>
+<p>El siguiente cuadro presenta valores publicados en el Informe de Desarrollo Humano del PNUD 21/22. Utilizando la metodología del índice y sus valores de referencia por dimensión, realice los cálculos pertinentes y luego marque la opción correcta en donde corresponda. <b>(20 ptos.: Correcto suma 4 ptos. Incorrecto resta 2 puntos)</b></p>
+<table class="compact x1-aus">
+<thead><tr><th>Columna del cuadro (Australia)</th><th>Dato u opciones</th></tr></thead>
+<tbody>
+<tr><td>Índice de Esp. Vida</td><td>0,993</td></tr>
+<tr><td>Des. Esp. de vida</td><td>2,7</td></tr>
+<tr><td>Índice de Esp. aj. x des.</td><td class="x1-q">a) 0,954 · b) 0,966 · c) 1,918 · d) n/a</td></tr>
+<tr><td>Índice de educación</td><td>0,925</td></tr>
+<tr><td>Des. en la educación</td><td class="x1-q">a) 3,1 · b) 5,9 · c) 5,7 · d) n/a</td></tr>
+<tr><td>Índice de educ. aj. x des.</td><td>0,896</td></tr>
+<tr><td>INB per cápita</td><td class="x1-q">a) 25.782 · b) 122.607 · c) 9.238 · d) n/a</td></tr>
+<tr><td>Índice estándar vida</td><td>0,936</td></tr>
+<tr><td>Des. ingresos</td><td>17,1</td></tr>
+<tr><td>Índice de ingr. aj. x des.</td><td>0,776</td></tr>
+<tr><td>IDH-D</td><td class="x1-q">a) 0,828 · b) 0,799 · c) 0,876 · d) n/a</td></tr>
+<tr><td>Pérdida por des.</td><td class="x1-q">a) 6,5% · b) 7,9% · c) 13,0% · d) n/a</td></tr>
+</tbody></table>
+<table class="compact">
+<thead><tr><th>Dimensión</th><th>Indicador</th><th class="num">Mínimo</th><th class="num">Máximo</th></tr></thead>
+<tbody>
+<tr><td>Salud</td><td>Esperanza de vida al nacer</td><td class="num">20</td><td class="num">85</td></tr>
+<tr><td>Educación</td><td>Años esperados de escolaridad</td><td class="num">0</td><td class="num">18</td></tr>
+<tr><td>Educación</td><td>Años promedio de escolaridad</td><td class="num">0</td><td class="num">15</td></tr>
+<tr><td>Estándar de vida</td><td>PBN per cápita (U$S PPA 2011)</td><td class="num">100</td><td class="num">75000</td></tr>
+</tbody></table>
+<p class="small">En el examen el cuadro es una sola fila horizontal; acá está traspuesto para que entre en la página. En naranja, las celdas con opciones.</p></div>
+
+<figure class="w80"><img src="figs/out/x1_p2_australia.svg">
+  <figcaption><b>Figura P2.3.</b> El cuadro del ejercicio resuelto, índice por índice: antes (azul) y después (naranja) de descontar la desigualdad (si querés resolverlo solo, tapala). Salud y educación casi no pierden; el ingreso pierde 17,1 % y es lo que arrastra al IDH-D de 0,951 a 0,876. Datos del parcial (PNUD, Informe 2021/22).</figcaption></figure>
+
+<div class="grid-2 x1-g2">
+<div>
+<div class="statement"><div class="statement-title">Ej. 2 · Índice de esp. de vida ajustado <span class="pts">4 ptos / −2</span></div>
+<p>Dato: índice de esperanza de vida 0,993; desigualdad en esperanza de vida 2,7 (%).</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">a)</span><span>0,954<span class="why">Implicaría una desigualdad de 3,9 % (\(1 - 0{,}954/0{,}993\)), no de 2,7 %.</span></span></li>
+<li class="correct"><span class="opt">b)</span><span>0,966<span class="why">\(0{,}993\cdot(1 - 0{,}027) = 0{,}966\).</span></span></li>
+<li class="wrong"><span class="opt">c)</span><span>1,918<span class="why">Un índice no puede superar 1 (1,918 es la suma 0,993 + 0,925).</span></span></li>
+<li class="wrong"><span class="opt">d)</span><span>n/a<span class="why">Se puede calcular: la b es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) 0,966. Error típico: usar 27 % en vez de 2,7 % da \(0{,}993\cdot 0{,}73 = 0{,}725\).</div></div>
+</div>
+<div>
+<div class="statement"><div class="statement-title">Ej. 2 · Desigualdad en la educación <span class="pts">4 ptos / −2</span></div>
+<p>Dato: índice de educación 0,925; índice de educación ajustado por desigualdad 0,896.</p></div>
+<ul class="mcq">
+<li class="correct"><span class="opt">a)</span><span>3,1<span class="why">\((1 - 0{,}896/0{,}925)\cdot 100 = 3{,}14\,\%\).</span></span></li>
+<li class="wrong"><span class="opt">b)</span><span>5,9<span class="why">Con 5,9 % el ajustado sería \(0{,}925\cdot 0{,}941 = 0{,}870\), no 0,896.</span></span></li>
+<li class="wrong"><span class="opt">c)</span><span>5,7<span class="why">Con 5,7 % daría \(0{,}925\cdot 0{,}943 = 0{,}872\).</span></span></li>
+<li class="wrong"><span class="opt">d)</span><span>n/a<span class="why">Se despeja de los dos índices: la a es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a) 3,1. Es la fórmula del índice ajustado despejada al revés: \(A_e = 1 - I^{*}_{e}/I_{e}\).</div></div>
+</div>
+</div>
+
+<div class="statement"><div class="statement-title">Ej. 2 · INB per cápita <span class="pts">4 ptos / −2</span></div>
+<p>Dato: índice estándar de vida 0,936; valores de referencia del ingreso 100 y 75.000.</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">a)</span><span>25.782<span class="why">Su índice sería \(\ln(257{,}82)/\ln(750) = 0{,}839\), no 0,936.</span></span></li>
+<li class="wrong"><span class="opt">b)</span><span>122.607<span class="why">Supera el máximo de 75.000: el índice daría 1,074, mayor que 1.</span></span></li>
+<li class="wrong"><span class="opt">c)</span><span>9.238<span class="why">Su índice sería 0,684.</span></span></li>
+<li class="correct"><span class="opt">d)</span><span>n/a<span class="why">El INB que corresponde a 0,936 es US$ 49.097, que no figura.</span></span></li>
+</ul>
+<div class="calc">\[ 0{,}936 = \frac{\ln(\text{INB}/100)}{\ln(750)} \;\Rightarrow\; \ln(\text{INB}/100) = 0{,}936\cdot 6{,}6201 = 6{,}1964 \;\Rightarrow\; \text{INB} = 100\cdot e^{6{,}1964} = 49.097 \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>d) n/a. El INB que da un índice de 0,936 es de unos US$ 49.100, y ninguna opción lo tiene.</div></div>
+
+<div class="grid-2 x1-g2">
+<div>
+<div class="statement"><div class="statement-title">Ej. 2 · IDH-D <span class="pts">4 ptos / −2</span></div>
+<p>Con los tres índices ajustados por desigualdad (0,966 · 0,896 · 0,776).</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">a)</span><span>0,828<span class="why">No es la media geométrica de los índices ajustados; implicaría una pérdida de 12,9 %.</span></span></li>
+<li class="wrong"><span class="opt">b)</span><span>0,799<span class="why">Tampoco: con 0,799 la pérdida sería de 16 %.</span></span></li>
+<li class="correct"><span class="opt">c)</span><span>0,876<span class="why">\((0{,}966\cdot 0{,}896\cdot 0{,}776)^{1/3} = 0{,}876\).</span></span></li>
+<li class="wrong"><span class="opt">d)</span><span>n/a<span class="why">Se puede calcular: la c es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>c) 0,876.</div></div>
+</div>
+<div>
+<div class="statement"><div class="statement-title">Ej. 2 · Pérdida por desigualdad <span class="pts">4 ptos / −2</span></div>
+<p>Hace falta el IDH, que no está en el cuadro: sale de los tres índices sin ajustar.</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">a)</span><span>6,5%<span class="why">No sale de \(1 - \text{IDH-D}/\text{IDH}\) (correspondería a un IDH-D de 0,889).</span></span></li>
+<li class="correct"><span class="opt">b)</span><span>7,9%<span class="why">\(1 - 0{,}876/0{,}951 = 7{,}9\,\%\).</span></span></li>
+<li class="wrong"><span class="opt">c)</span><span>13,0%<span class="why">Es casi la pérdida del IDH-D equivocado de la opción a (12,9 %).</span></span></li>
+<li class="wrong"><span class="opt">d)</span><span>n/a<span class="why">Se puede calcular: la b es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b) 7,9 %.</div></div>
+</div>
+</div>
+<div class="calc">\[ \text{IDH} = (0{,}993\cdot 0{,}925\cdot 0{,}936)^{1/3} = 0{,}951 \qquad \text{Pérdida} = 1 - \frac{\text{IDH-D}}{\text{IDH}} = 1 - \frac{0{,}876}{0{,}951} = 0{,}079 = 7{,}9\,\% \]</div>
+<p class="small">Los tres valores (IDH 0,951, IDH-D 0,876 y pérdida 7,9 %) coinciden con los que publicó el PNUD para Australia. Manual Tema 2.4 y Tema 2.5 · TP3 (partes A y B) · Paso a paso §3.</p>
+
+<h3>Ejercicio 3 — Dolar City y Ciudad Pesos</h3>
+<div class="statement"><div class="statement-title">Enunciado · P2 2023 · Ejercicio N°3 <span class="pts">20 ptos</span></div>
+<p>Tenemos un escenario donde analizamos a dos países, Dolar City y Ciudad Pesos. Cada uno cuenta con sus respectivas monedas, dólar y peso. Además, ambos produjeron en el año solo dos bienes: Pendrive (que se comercia internacionalmente) y Corte de cabello. De acuerdo a la siguiente información, calcule y responda <b>(20 puntos: Correcto: suma 5 puntos. Incorrecto resta 2,5 puntos.)</b>:</p>
+<table class="compact">
+<thead><tr><th>País</th><th class="num">Pendrive</th><th class="num">Corte de cabello</th><th class="num">Precio de un Pendrive</th><th class="num">Precio del corte de cabello</th></tr></thead>
+<tbody>
+<tr><td>Dolar City</td><td class="num">30</td><td class="num">240</td><td class="num">100</td><td class="num">200</td></tr>
+<tr><td>Ciudad Pesos</td><td class="num">25</td><td class="num">200</td><td class="num">2500</td><td class="num">2000</td></tr>
+</tbody></table></div>
+
+<div class="calc">\[\begin{aligned} \text{PBI}_{DC} &= 30\cdot 100 + 240\cdot 200 = 3.000 + 48.000 = \text{US\$}\,51.000 \\ \text{PBI}_{CP} &= 25\cdot 2.500 + 200\cdot 2.000 = 62.500 + 400.000 = \$\,462.500 \end{aligned}\]</div>
+
+<div class="grid-2 x1-g2">
+<div>
+<div class="statement"><div class="statement-title">Ej. 3 a) <span class="pts">5 ptos / −2,5</span></div>
+<p>El tipo de cambio de mercado en pesos por unidad de dólar es de:</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">i.</span><span>$10 por US$ 1<span class="why">Es el cociente de precios del corte (2.000/200): no transable, no cumple la ley de un solo precio.</span></span></li>
+<li class="correct"><span class="opt">ii.</span><span>$25 por US$ 1<span class="why">Ley de un solo precio en el pendrive: 2.500/100 = 25.</span></span></li>
+<li class="wrong"><span class="opt">iii.</span><span>$200 por US$ 1<span class="why">Es el precio del corte en Dolar City, no un tipo de cambio.</span></span></li>
+<li class="wrong"><span class="opt">iv.</span><span>$100 por US$ 1<span class="why">Es el precio del pendrive en Dolar City.</span></span></li>
+<li class="wrong"><span class="opt">v.</span><span>Ninguna de las anteriores.<span class="why">La ii es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>ii. $25 por US$ 1.</div></div>
+</div>
+<div>
+<div class="statement"><div class="statement-title">Ej. 3 b) <span class="pts">5 ptos / −2,5</span></div>
+<p>El PBI de Ciudad Pesos expresado en dólares, al tipo de cambio de mercado es de:</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">i.</span><span>$ 462500<span class="why">Es el PBI en pesos, sin convertir.</span></span></li>
+<li class="wrong"><span class="opt">ii.</span><span>US$ 51000<span class="why">Es el PBI de Dolar City.</span></span></li>
+<li class="wrong"><span class="opt">iii.</span><span>US$ 42500<span class="why">Es el PBI de Ciudad Pesos valuado a precios de Dolar City: el PBI a PPA, no a TC de mercado.</span></span></li>
+<li class="correct"><span class="opt">iv.</span><span>US$ 18500<span class="why">462.500 / 25 = 18.500.</span></span></li>
+<li class="wrong"><span class="opt">v.</span><span>Ninguna de las anteriores.<span class="why">La iv es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv. US$ 18.500.</div></div>
+</div>
+</div>
+
+<figure class="w80"><img src="figs/out/x1_p2_dolarcity.svg">
+  <figcaption><b>Figura P2.4.</b> El PBI de Ciudad Pesos (462.500 pesos) convertido a dólares de dos maneras. A TC de mercado parece menos de la mitad del de Dolar City; a PPA la diferencia es sólo de 1,2 veces. La distancia entre las dos barras naranjas es el efecto de los no transables baratos. Datos del parcial.</figcaption></figure>
+
+<div class="statement"><div class="statement-title">Ej. 3 c) <span class="pts">5 ptos / −2,5</span></div>
+<p>El tipo de cambio de paridad de poder adquisitivo es:</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">i.</span><span>$ 3 por US$ 1<span class="why">Fuera del rango posible: el TC PPA es un promedio de los cocientes de precios bien por bien (10 en el corte, 25 en el pendrive).</span></span></li>
+<li class="wrong"><span class="opt">ii.</span><span>$ 25 por US$ 1<span class="why">Es el TC de mercado; sólo coincidiría si el corte también cumpliera la ley de un solo precio.</span></span></li>
+<li class="correct"><span class="opt">iii.</span><span>$ 10,88 por US$ 1<span class="why">PBI de Ciudad Pesos a sus precios / PBI de Ciudad Pesos a precios de Dolar City.</span></span></li>
+<li class="wrong"><span class="opt">iv.</span><span>$ 50 por US$ 1<span class="why">También queda fuera del rango entre 10 y 25.</span></span></li>
+<li class="wrong"><span class="opt">v.</span><span>Ninguna de las anteriores.<span class="why">La iii es correcta.</span></span></li>
+</ul>
+<div class="calc">\[ \text{TC}_{PPA} = \frac{462.500}{25\cdot 100 + 200\cdot 200} = \frac{462.500}{42.500} = 10{,}88 \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iii. $10,88 por US$ 1. Queda cerca de 10 porque el corte pesa mucho en la canasta (40.000 de 42.500 dólares).</div></div>
+
+<div class="statement"><div class="statement-title">Ej. 3 d) <span class="pts">5 ptos / −2,5</span></div>
+<p>El cociente entre el PBI per cápita de Dolar City y el de Ciudad Pesos utilizando el tipo de cambio basado en la PPA es:</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">i.</span><span>3<span class="why">No corresponde a ningún cociente de estos datos: a TC de mercado da 2,76 y a PPA 1,2.</span></span></li>
+<li class="wrong"><span class="opt">ii.</span><span>2,75<span class="why">Es el cociente a TC de mercado (51.000 / 18.500 = 2,76): la trampa del inciso.</span></span></li>
+<li class="wrong"><span class="opt">iii.</span><span>1<span class="why">Diría que los dos producen lo mismo; a precios comunes Ciudad Pesos produce 42.500 frente a 51.000.</span></span></li>
+<li class="correct"><span class="opt">iv.</span><span>1,2<span class="why">51.000 / 42.500 = 1,2.</span></span></li>
+<li class="wrong"><span class="opt">v.</span><span>Ninguna de las anteriores.<span class="why">La iv es correcta.</span></span></li>
+</ul>
+<div class="calc">\[ \frac{\text{PBI}_{DC}}{\text{PBI}_{CP}/\text{TC}_{PPA}} = \frac{51.000}{462.500/10{,}8824} = \frac{51.000}{42.500} = 1{,}2 \qquad \text{(a TCm: } 51.000/18.500 = 2{,}76) \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv. 1,2 (a TCm daría 2,76). No se dan poblaciones: se comparan los PBI, como si ambos tuvieran la misma población.<span class="x1-refin">Manual Tema 2.2 · TP2 (parte C) · Paso a paso §2.</span></div></div>
+
+<h3>Parte teórica</h3>
+<div class="statement"><div class="statement-title">Enunciado · P2 2023 · Parte teórica</div>
+<p>Dadas las siguientes proposiciones, lea con atención y selecciona una opción de respuesta (Encierre dicha opción con un círculo. No hace falta realizar ninguna justificación). <b>Cada respuesta correcta vale 10 puntos y la respuesta incorrecta resta 5 puntos.</b></p></div>
+
+<div class="statement"><div class="statement-title">Pregunta 1 <span class="pts">+10 / −5</span></div>
+<p>Al evaluar que tan bien está una persona hay que tener en cuenta los bienes primarios que posee, pero también se debe observar su condición, es decir que es relevante:</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">a)</span><span>evaluar la utilidad que la persona obtiene de los bienes primarios y de su condición.<span class="why">Vuelve al utilitarismo, que Sen descarta.</span></span></li>
+<li class="correct"><span class="opt">b)</span><span>evaluar las características personales relevantes que determinan la conversión de los bienes primarios en la capacidad de las personas para alcanzar sus fines.<span class="why">Son los factores de conversión (edad, salud, discapacidad, entorno): importa lo que cada uno puede hacer con lo que tiene.</span></span></li>
+<li class="wrong"><span class="opt">c)</span><span>evaluar si la persona se encuentra en un estado deseable o agradable de conciencia.<span class="why">Visión hedonista (un estado mental).</span></span></li>
+<li class="wrong"><span class="opt">d)</span><span>Todo lo anterior.<span class="why">a y c son falsas.</span></span></li>
+<li class="wrong"><span class="opt">e)</span><span>ninguna es correcta<span class="why">La b es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b). Es la crítica de Sen a Rawls: repartir bienes primarios no alcanza, porque una persona con discapacidad necesita más ingreso que otra para lograr el mismo funcionamiento.<span class="x1-refin">Manual Tema 1.2 · TP1 · Paso a paso §4.</span></div></div>
+
+<div class="statement"><div class="statement-title">Pregunta 2 <span class="pts">+10 / −5</span></div>
+<p>Los principales problemas de comparabilidad internacional entre medidas de producto per cápita se deben a:</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">a)</span><span>existencia de distintas unidades monetarias y tipos de cambio y subestimación de las rentas per cápita en los países pobres<span class="why">Nombra la moneda y una consecuencia del TC de mercado, pero no los tres problemas: faltan precios y cantidades.</span></span></li>
+<li class="correct"><span class="opt">b)</span><span>existencia de distintas unidades monetarias; diversidad de precios y subestimación de las cantidades de bienes y servicios finales.<span class="why">Son los tres problemas de \(\text{PBI} = \sum P_i Q_i\): la moneda, los precios y las cantidades.</span></span></li>
+<li class="wrong"><span class="opt">c)</span><span>existencia de distintas unidades monetarias; diversidad de precios y diferencias en el nivel de comercio de bienes transables<span class="why">El tercer problema no es el comercio de transables sino la subestimación de las cantidades.</span></span></li>
+<li class="wrong"><span class="opt">d)</span><span>subestimación de las cantidades de bienes y servicios finales producidos debido a las diferencias en el comercio internacional.<span class="why">La subestimación de cantidades no viene del comercio internacional; y faltan los otros dos problemas.</span></span></li>
+<li class="wrong"><span class="opt">e)</span><span>ninguna es correcta<span class="why">La b es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b). Los tres problemas son los tres términos de \(\sum P_i Q_i\) en una moneda común (informalidad y autoconsumo explican la subestimación de las cantidades).<span class="x1-refin">Manual Tema 2.2 · TP2 (parte C) · Paso a paso §4.</span></div></div>
+
+<div class="statement"><div class="statement-title">Pregunta 3 <span class="pts">+10 / −5</span></div>
+<p>El modelo de crecimiento económico de Solow con tecnología explica que las variables capital y producto per cápita en el estado estacionario (EE) se incrementan debido a:</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">a)</span><span>Las políticas implementadas por el Estado en relación al ahorro/inversión.<span class="why">El ahorro tiene efecto nivel, no efecto crecimiento: no hace crecer \(k\) e \(y\) en el EE.</span></span></li>
+<li class="correct"><span class="opt">b)</span><span>Que la tecnología crece a una tasa constante y exógena.<span class="why">En el EE, \(k\) e \(y\) per cápita crecen a la tasa \(g\) de la tecnología; lo que queda constante es \(\kt = K/(AL)\).</span></span></li>
+<li class="wrong"><span class="opt">c)</span><span>No es posible que en el EE las variables en términos per cápita se modifiquen<span class="why">Eso vale para el modelo sin tecnología, no para éste.</span></span></li>
+<li class="wrong"><span class="opt">d)</span><span>Que la tecnología crece a una tasa constante y endógena y, por lo tanto, explicada por el modelo.<span class="why">En Solow la tecnología es exógena; la tecnología endógena es la de Romer.</span></span></li>
+<li class="wrong"><span class="opt">e)</span><span>Ninguna opción es correcta.<span class="why">La b es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b). Comparala con la pregunta 4 del P1: sin tecnología, “ninguna”; con tecnología, “la tecnología exógena”.<span class="x1-refin">Manual Tema 3.6 · TP4 (parte D) · Paso a paso §4.</span></div></div>
+
+<div class="statement"><div class="statement-title">Pregunta 4 <span class="pts">+10 / −5</span></div>
+<p>Los índices como el de Progreso Social o los publicados por el Programa de Naciones Unidas para el Desarrollo (PNUD), captan el concepto de bienestar de un país:</p></div>
+<ul class="mcq">
+<li class="correct"><span class="opt">a)</span><span>En la medida en la que intentan representar logros en algunas dimensiones de la vida de las personas.<span class="why">IDH, IDH-D, IDG e IPS miden logros (salud, educación, oportunidades), no medios.</span></span></li>
+<li class="wrong"><span class="opt">b)</span><span>De la misma manera en la que lo hacen medidas de ingreso como el PBI per cápita.<span class="why">El PBI mide ingreso, un medio; los índices miden logros. El IPS ni siquiera incluye variables económicas.</span></span></li>
+<li class="wrong"><span class="opt">c)</span><span>En tanto y en cuanto los ingresos per cápita sean lo suficientemente altos como para tener bienestar material.<span class="why">No dependen del nivel de ingreso: justamente muestran países con ingresos parecidos y bienestar distinto.</span></span></li>
+<li class="wrong"><span class="opt">d)</span><span>Aunque no son objetivas ni representativas para hacer comparaciones entre países.<span class="why">Están hechos para comparar países: valores de referencia comunes y metodología pública.</span></span></li>
+<li class="wrong"><span class="opt">e)</span><span>Aunque no tienen absolutamente ninguna correlación con el PBI per cápita.<span class="why">Sí están correlacionados (el IDH incluye el ingreso), aunque no perfectamente.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a). Los índices miden logros en algunas dimensiones de la vida (salud, educación, oportunidades); el PBI per cápita mide el ingreso, que es un medio.<span class="x1-refin">Manual Tema 2.4 y Tema 2.6 · TP3 (parte A) · Paso a paso §4.</span></div></div>
+
+<h3>Grilla de respuestas del P2</h3>
+<p class="small">Puntaje: Ej. 1 y Ej. 3, 5 / −2,5 por inciso · Ej. 2, 4 / −2 por casillero · teórica, +10 / −5 por pregunta.</p>
+<div class="grid-2">
+<table class="x1-grilla compact">
+<thead><tr><th>Inciso</th><th>Resp.</th><th>En una línea</th></tr></thead>
+<tbody>
+<tr><td>Ej. 1 a)</td><td class="x1-r">v.</td><td>Ninguna: \(y^* = 17{,}184\)</td></tr>
+<tr><td>Ej. 1 b)</td><td class="x1-r">iv.</td><td>\(FA = 0{,}285\,k^{5/6}\), \(FD = 0{,}175\,k\)</td></tr>
+<tr><td>Ej. 1 c)</td><td class="x1-r">iv.</td><td>\(\alpha = 0{,}76\)</td></tr>
+<tr><td>Ej. 1 d)</td><td class="x1-r">ii.</td><td>\(0 &lt; v &lt; 1{,}085\)</td></tr>
+<tr><td>Ej. 2 · esp. vida aj.</td><td class="x1-r">b)</td><td>0,966</td></tr>
+<tr><td>Ej. 2 · desig. educ.</td><td class="x1-r">a)</td><td>3,1 %</td></tr>
+<tr><td>Ej. 2 · INB pc</td><td class="x1-r">d)</td><td>n/a (daría US$ 49.097)</td></tr>
+<tr><td>Ej. 2 · IDH-D</td><td class="x1-r">c)</td><td>0,876</td></tr>
+<tr><td>Ej. 2 · pérdida</td><td class="x1-r">b)</td><td>7,9 %</td></tr>
+</tbody></table>
+<table class="x1-grilla compact">
+<thead><tr><th>Inciso</th><th>Resp.</th><th>En una línea</th></tr></thead>
+<tbody>
+<tr><td>Ej. 3 a)</td><td class="x1-r">ii.</td><td>TCm = $25 por US$</td></tr>
+<tr><td>Ej. 3 b)</td><td class="x1-r">iv.</td><td>US$ 18.500</td></tr>
+<tr><td>Ej. 3 c)</td><td class="x1-r">iii.</td><td>TC PPA = $10,88 por US$</td></tr>
+<tr><td>Ej. 3 d)</td><td class="x1-r">iv.</td><td>1,2 veces</td></tr>
+<tr><td>Teórica 1</td><td class="x1-r">b)</td><td>Factores de conversión</td></tr>
+<tr><td>Teórica 2</td><td class="x1-r">b)</td><td>Moneda, precios y cantidades</td></tr>
+<tr><td>Teórica 3</td><td class="x1-r">b)</td><td>Tecnología exógena</td></tr>
+<tr><td>Teórica 4</td><td class="x1-r">a)</td><td>Los índices miden logros</td></tr>
+</tbody></table>
+</div>
+
+<div class="box tip"><div class="box-title">Lo que enseña este parcial</div>
+<ul>
+<li><b>“Ninguna” y “n/a” también son respuestas</b>: en el Ej. 1 a) la opción tentadora olvida \(A\) en \(y^*\), y en el Ej. 2 el INB correcto no figura. Controlá siempre con \(y^* = k^*(n+\delta)/s\).</li>
+<li><b>“Funciones” son niveles</b> (\(FA = sAk^{\alpha}\), \(FD = (n+\delta)k\)); <b>“curvas” son tasas</b>, como en el P1.</li>
+<li><b>En el IDH-D, 2,7 es 2,7 %</b>: multiplicá por \((1 - 0{,}027)\), no por \((1 - 0{,}27)\).</li>
+<li><b>Harrod-Domar per cápita</b>: \(g = s/v - (n+\delta)\); “positiva” excluye el umbral y \(v = 0\). <b>A PPA la brecha es 1,2</b>, no 2,76: el cociente a TCm aparece entre las opciones como trampa.</li>
+</ul></div>
+</section>
+
+<section class="tema-3 x1-sec">
+<div class="chapter-head">
+  <div class="kicker">Parcial sin fecha visible · formato 2022-2023 · práctico</div>
+  <h2><span class="num">P3</span>Ejercicio práctico sin fecha visible — Namibia y Honduras</h2>
+  <p>Un ejercicio completo de índices: calcular IDH, IDH-D y pérdida de dos países, clasificarlos y compararlos, y cerrar con la dimensión salud del IDG. La foto no muestra la fecha; por el formato corresponde a los parciales 2022-2023.</p>
+</div>
+
+<div class="grid-3 x1-ficha">
+  <div class="card blue"><div class="card-title">Fecha y duración</div><p>Parcial sin fecha visible, formato 2022-2023. Duración no indicada.</p></div>
+  <div class="card orange"><div class="card-title">Formato y puntaje</div>
+    <ul><li>a) completar la tabla: 11 ptos, sólo suma.</li><li>b), c) y d): 3 ptos cada uno, incorrecto resta 1,5.</li><li>Total: 20 ptos.</li></ul></div>
+  <div class="card aqua"><div class="card-title">Temas que evalúa</div>
+    <ul><li>IDH e IDH-D con datos crudos.</li><li>Pérdida por desigualdad.</li><li>Clasificación por nivel de desarrollo.</li><li>Índice de salud reproductiva del IDG.</li></ul></div>
+</div>
+<p class="x1-cubre"><b>Lo cubren:</b> Manual de teoría Tema 2.4 y Tema 2.5 · Práctica TP3 (partes A, B y C) · Paso a paso §3 Índices de desarrollo humano.</p>
+
+<h3>Ejercicio 3 — Namibia y Honduras: IDH, IDH-D e IDG</h3>
+<div class="statement"><div class="statement-title">Enunciado · P3 · Ejercicio N°3 <span class="pts">20 ptos</span></div>
+<p>A partir de los siguientes datos correspondientes a países Namibia y Honduras, debe calcular los índices solicitados y, con sus resultados, analizar su grado de desarrollo. Se pide:</p>
+<p>a) Complete la tabla con los resultados de los índices (IDH, índice de desarrollo humano; IDH-D, índice de desarrollo humano ajustado por desigualdad <b>(Correcto: Completo 11 ptos, solo suma)</b></p>
+<table class="compact">
+<thead><tr><th>Indicador</th><th class="num">Namibia</th><th class="num">Honduras</th><th class="num">mín</th><th class="num">máx</th></tr></thead>
+<tbody>
+<tr><td>Esperanza de vida al nacer (años)</td><td class="num">63,7</td><td class="num">76,3</td><td class="num">20</td><td class="num">85</td></tr>
+<tr><td>Años promedios de escolaridad</td><td class="num">7,0</td><td class="num">6,6</td><td class="num">0</td><td class="num">15</td></tr>
+<tr><td>Años esperados de escolaridad</td><td class="num">12,6</td><td class="num">10,1</td><td class="num">0</td><td class="num">18</td></tr>
+<tr><td>Ingreso nacional per cápita</td><td class="num">9.357</td><td class="num">5.308</td><td class="num">100</td><td class="num">75000</td></tr>
+<tr><td>Desigualdad en la esperanza de vida: As</td><td class="num">22,1</td><td class="num">13,3</td><td></td><td></td></tr>
+<tr><td>Desigualdad en la educación: Ae</td><td class="num">25,0</td><td class="num">23,3</td><td></td><td></td></tr>
+<tr><td>Índice de ingresos ajustado por Desigualdad (Iii)</td><td class="num">0,318</td><td class="num">0,373</td><td></td><td></td></tr>
+</tbody></table>
+<p class="small">Debajo, una tabla para completar con filas <i>IDH</i>, <i>IDH-D</i> y <i>Pérdida debido a la desigualdad (%)</i>, y columnas Namibia y Honduras.</p></div>
+
+<div class="grid-2">
+<div class="calc">\[\begin{aligned} &\textbf{Namibia} \\ I_{vida} &= \tfrac{63{,}7-20}{65} = 0{,}6723 \\ I_{edu} &= \tfrac{1}{2}\left(\tfrac{7{,}0}{15} + \tfrac{12{,}6}{18}\right) = \tfrac{0{,}4667 + 0{,}7000}{2} = 0{,}5833 \\ I_{ing} &= \tfrac{\ln(9.357/100)}{\ln 750} = 0{,}6856 \\ \text{IDH} &= (0{,}6723\cdot 0{,}5833\cdot 0{,}6856)^{1/3} = 0{,}6454 \\ I^{*}_{vida} &= 0{,}6723\cdot(1-0{,}221) = 0{,}5237 \\ I^{*}_{edu} &= 0{,}5833\cdot(1-0{,}25) = 0{,}4375 \\ \text{IDH-D} &= (0{,}5237\cdot 0{,}4375\cdot 0{,}318)^{1/3} = 0{,}4177 \\ \text{Pérdida} &= 1 - 0{,}4177/0{,}6454 = 35{,}3\,\% \end{aligned}\]</div>
+<div class="calc">\[\begin{aligned} &\textbf{Honduras} \\ I_{vida} &= \tfrac{76{,}3-20}{65} = 0{,}8662 \\ I_{edu} &= \tfrac{1}{2}\left(\tfrac{6{,}6}{15} + \tfrac{10{,}1}{18}\right) = \tfrac{0{,}4400 + 0{,}5611}{2} = 0{,}5006 \\ I_{ing} &= \tfrac{\ln(5.308/100)}{\ln 750} = 0{,}6000 \\ \text{IDH} &= (0{,}8662\cdot 0{,}5006\cdot 0{,}6000)^{1/3} = 0{,}6384 \\ I^{*}_{vida} &= 0{,}8662\cdot(1-0{,}133) = 0{,}7510 \\ I^{*}_{edu} &= 0{,}5006\cdot(1-0{,}233) = 0{,}3840 \\ \text{IDH-D} &= (0{,}7510\cdot 0{,}3840\cdot 0{,}373)^{1/3} = 0{,}4756 \\ \text{Pérdida} &= 1 - 0{,}4756/0{,}6384 = 25{,}5\,\% \end{aligned}\]</div>
+</div>
+
+<table class="compact">
+<thead><tr><th>Resultado</th><th class="num">Namibia</th><th class="num">Honduras</th></tr></thead>
+<tbody>
+<tr><td>IDH</td><td class="num ok">0,645</td><td class="num ok">0,638</td></tr>
+<tr><td>IDH-D</td><td class="num ok">0,418</td><td class="num ok">0,476</td></tr>
+<tr><td>Pérdida debido a la desigualdad</td><td class="num ok">35,3 %</td><td class="num ok">25,5 %</td></tr>
+</tbody></table>
+<div class="answer caution"><div class="answer-body"><span class="answer-label">Respuesta con aclaración</span>IDH 0,645 y 0,638; IDH-D 0,418 y 0,476; pérdida 35,3 % y 25,5 %. Con todos los decimales, el IDH de Namibia es 0,6454 y el de Honduras 0,6383 (con los índices a cuatro decimales, 0,6384). Si redondeás los índices a tres decimales antes de multiplicar, el de Honduras da 0,639; y si redondeás mal el índice de educación de Namibia (0,584 en vez de 0,583) te da 0,646, como en la resolución manuscrita de la foto. Calculá con todos los decimales y redondeá al final.<span class="x1-refin">Manual Tema 2.4 y Tema 2.5 · TP3 (partes A y B) · Paso a paso §3.</span></div></div>
+
+<div class="statement"><div class="statement-title">P3 b) <span class="pts">3 ptos / −1,5</span></div>
+<p>Elija la respuesta correcta (Marque con una cruz en el espacio identificado): Según la clasificación del IDH, estos países tiene un nivel de desarrollo…</p>
+<p class="small">Grilla para marcar: filas Muy Alto, Alto, Medio y Bajo; columnas Namibia y Honduras.</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt"></span><span>Muy alto (IDH ≥ 0,800)<span class="why">Ninguno llega: están en 0,645 y 0,638.</span></span></li>
+<li class="wrong"><span class="opt"></span><span>Alto (0,700 a 0,799)<span class="why">Les faltan unos 0,06 puntos.</span></span></li>
+<li class="correct"><span class="opt"></span><span>Medio (0,550 a 0,699), para los dos países<span class="why">0,645 y 0,638 caen dentro del rango medio.</span></span></li>
+<li class="wrong"><span class="opt"></span><span>Bajo (menos de 0,550)<span class="why">Sería el caso si se clasificara con el IDH-D (0,418 y 0,476), pero la clasificación usa el IDH.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>Namibia: <b>medio</b>. Honduras: <b>medio</b>.</div></div>
+
+<div class="statement"><div class="statement-title">P3 c) <span class="pts">3 ptos / −1,5</span></div>
+<p>Teniendo en cuenta la relación entre IDH e IDH-D y la pérdida por desigualdad, ¿cuál es el país con mejor desarrollo?</p></div>
+<ul class="mcq">
+<li class="wrong"><span class="opt">a.</span><span>Namibia<span class="why">Tiene un IDH apenas mayor (0,645 contra 0,638), pero pierde 35,3 % por desigualdad y su IDH-D es menor.</span></span></li>
+<li class="correct"><span class="opt">b.</span><span>Honduras<span class="why">Con un IDH casi igual, pierde mucho menos por desigualdad (25,5 %) y su IDH-D es mayor (0,476 contra 0,418).</span></span></li>
+<li class="wrong"><span class="opt">c.</span><span>No tenemos los datos suficientes<span class="why">Los tenemos: la consigna pide justamente comparar IDH, IDH-D y pérdida.</span></span></li>
+<li class="wrong"><span class="opt">d.</span><span>Nada de lo anterior<span class="why">La b es correcta.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>b. Honduras. Cuando el IDH es casi igual, decide el IDH-D: el desarrollo que efectivamente disfruta la población una vez descontada la desigualdad.</div></div>
+
+<figure class="w60"><img src="figs/out/x1_p3_namibia.svg">
+  <figcaption><b>Figura P3.1.</b> Namibia y Honduras tienen casi el mismo IDH y los dos están en la franja de desarrollo medio (zona gris). La diferencia aparece al ajustar por desigualdad: Namibia pierde 35,3 % y queda por debajo de Honduras. Por eso la respuesta de c) es Honduras. Datos del parcial.</figcaption></figure>
+
+<div class="statement"><div class="statement-title">P3 d) <span class="pts">3 ptos / −1,5</span></div>
+<p>A partir de los siguientes datos, justifique qué país tiene mejor indicador de salud en mujeres, correspondiente al Índice de Desigualdad de Género (IDG)</p>
+<table class="compact">
+<thead><tr><th>Indicador</th><th class="num">Namibia</th><th class="num">Honduras</th></tr></thead>
+<tbody>
+<tr><td>Tasa de mortalidad materna (TMM)</td><td class="num">195</td><td class="num">63,6</td></tr>
+<tr><td>Tasa de natalidad en adolescentes (TNA)</td><td class="num">65</td><td class="num">72,9</td></tr>
+</tbody></table>
+<p class="small">Debajo, una tabla <i>SALUD</i> para completar con el valor de cada país y una fila “Mejor indicador (marcar con una cruz)”.</p></div>
+<div class="box warn"><div class="box-title">La trampa del índice de salud del IDG</div>
+<p>“Más cerca de 0 es mejor” vale para el <b>IDG final</b>, que mide desigualdad entre mujeres y varones. El <b>índice de salud reproductiva</b> es un <b>logro</b>: se construye con \(10/\text{TMM}\) y \(1/\text{TNA}\), así que menos mortalidad materna y menos embarazo adolescente lo hacen <b>más alto</b>. Más alto es mejor.</p>
+</div>
+<div class="calc">\[\begin{aligned} \text{Salud}_{M} &= \left(\frac{10}{\text{TMM}}\cdot\frac{1}{\text{TNA}}\right)^{1/2} && \text{promediado con la referencia masculina } (=1) \\ \text{Namibia: } &\left(\frac{10}{195}\cdot\frac{1}{65}\right)^{1/2} = 0{,}0281 && \frac{0{,}0281 + 1}{2} = 0{,}514 \\ \text{Honduras: } &\left(\frac{10}{63{,}6}\cdot\frac{1}{72{,}9}\right)^{1/2} = 0{,}0464 && \frac{0{,}0464 + 1}{2} = 0{,}523 \end{aligned}\]</div>
+<div class="answer caution"><div class="answer-body"><span class="answer-label">Respuesta con aclaración</span><b>Honduras</b> tiene mejor indicador de salud en mujeres: su índice es mayor (0,0464 contra 0,0281; o 0,523 contra 0,514 promediado con la referencia masculina) porque su mortalidad materna es tres veces menor, y eso pesa más que su natalidad adolescente algo más alta. La resolución manuscrita de la foto marca Namibia “porque está más cerca de 0”: está mal.<span class="x1-refin">Manual Tema 2.5 (IDG) · TP3 (parte C) · Paso a paso §3.</span></div></div>
+
+<h3>Grilla de respuestas del P3</h3>
+<table class="x1-grilla compact">
+<thead><tr><th>Inciso</th><th>Respuesta</th><th>En una línea</th><th class="num">Puntaje</th></tr></thead>
+<tbody>
+<tr><td>a) IDH</td><td class="x1-r">0,645 · 0,638</td><td>Namibia · Honduras</td><td class="num" rowspan="3">11 (sólo suma)</td></tr>
+<tr><td>a) IDH-D</td><td class="x1-r">0,418 · 0,476</td><td>Namibia · Honduras</td></tr>
+<tr><td>a) Pérdida</td><td class="x1-r">35,3 % · 25,5 %</td><td>Namibia · Honduras</td></tr>
+<tr><td>b)</td><td class="x1-r">Medio · Medio</td><td>0,550 ≤ IDH &lt; 0,700</td><td class="num">3 / −1,5</td></tr>
+<tr><td>c)</td><td class="x1-r">b. Honduras</td><td>IDH parecido, pero menos pérdida y más IDH-D</td><td class="num">3 / −1,5</td></tr>
+<tr><td>d)</td><td class="x1-r">Honduras</td><td>Índice de salud 0,0464 &gt; 0,0281 (más alto = mejor)</td><td class="num">3 / −1,5</td></tr>
+</tbody></table>
+
+<div class="box tip"><div class="box-title">Lo que enseña este parcial</div>
+<ul>
+<li><b>Las desigualdades se aplican como \((1 - A_x/100)\)</b> sobre el índice de su dimensión; el índice de ingresos ajustado ya viene dado (0,318 y 0,373) y se usa directo.</li>
+<li><b>El IDH solo no alcanza para comparar</b>: con IDH casi iguales, decide el IDH-D y la pérdida.</li>
+<li><b>No todos los índices se leen igual</b>: IDH, IDH-D e índice de salud, más alto es mejor; IDG final y pérdida, más bajo es mejor.</li>
+<li><b>Redondeá al final.</b> Los redondeos intermedios mueven el tercer decimal (0,645 contra 0,646; 0,638 contra 0,639).</li>
+</ul></div>
+</section>

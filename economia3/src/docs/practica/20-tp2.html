@@ -1,0 +1,533 @@
+<section class="tema-2">
+<style>
+  ol.steps.p2-st > li { padding: 0.36em 0.8em 0.32em 2.9em; margin-bottom: 0.4em; }
+  ol.steps.p2-st > li::before { top: 0.34em; width: 1.6em; height: 1.6em; line-height: 1.6em; font-size: 8.4pt; }
+  ol.steps.p2-st > li > .step-title { display: inline; margin-right: 0.35em; }
+  ol.steps.p2-st > li > .step-title::after { content: " ·"; color: var(--ink-3); font-weight: 400; }
+  .tema-2 .box.p2-brk { break-inside: auto; }
+  .box.p2-brk > .box-title, .box.p2-brk > p:first-of-type { break-after: avoid; }
+  figure.p2-w90 img { width: 90%; }
+  td.p2-c { background: var(--accent-bg) !important; font-weight: 700; color: var(--accent-ink); }
+  table.p2-bm { break-inside: auto; }
+  table.p2-bm tr { break-inside: avoid; }
+  table.p2-bm td, table.p2-bm th { padding: 0.24em 0.45em; font-size: 8.4pt; }
+  table.p2-bm td.pos { color: var(--blue-ink); }
+  .p2-legend { font-size: 8.2pt; color: var(--ink-2); margin: -0.4em 0 0.6em; }
+  .p2-legend .sw { display: inline-block; width: 0.9em; height: 0.9em; border-radius: 2px; vertical-align: -0.12em; margin-right: 0.3em; background: var(--accent-bg); border: 1px solid var(--accent); }
+  .p2-tight p { margin-bottom: 0.35em; }
+  .p2-tight ul, .p2-tight ol { margin-bottom: 0.3em; }
+  .box .mcq { margin: 0.3em 0 0.5em; }
+  .box table { background: #fff; }
+  .p2-num { display: inline-block; min-width: 1.4em; height: 1.4em; line-height: 1.4em; border-radius: 50%; background: var(--accent); color: #fff; font: 700 8pt/1.4em "Inter"; text-align: center; margin-right: 0.35em; }
+</style>
+
+<div class="chapter-head">
+  <div class="kicker">Trabajo práctico 2 · Tema 2 · Medición del producto y del crecimiento</div>
+  <h2><span class="num">TP2</span>Producto, crecimiento y paridad de poder adquisitivo</h2>
+  <p>Qué vas a poder hacer: distinguir PIB, PNB, real, nominal y per cápita; calcular las tres tasas de crecimiento sin equivocarte con \(n\); completar cualquier tabla del índice Big Mac; y comparar el PBI de dos países a tipo de cambio de mercado y a PPA con un bien transable y uno no transable.</p>
+</div>
+
+<div class="box summary"><div class="box-title">En 30 segundos</div>
+<ul>
+  <li><b>PIB</b> = lo producido <i>dentro</i> del país (territorial); <b>PNB</b> = lo producido por factores <i>nacionales</i> (propiedad): PNB = PIB + renta neta de factores del exterior. Para medir crecimiento, siempre el PIB <b>real</b>.</li>
+  <li>Per cápita → bienestar material promedio. Total → tamaño y peso económico.</li>
+  <li>Tres tasas: período a período, acumulada y media anual \(\bar g = (Y_T/Y_0)^{1/n}-1\), con \(n\) = cantidad de <b>períodos</b> (no de datos). Las tasas se <b>componen</b>, no se suman.</li>
+  <li>Big Mac: Precio en US$ = local / TCm · TC PPA = local / precio en EEUU · sub/sobrevaluación = (TC PPA − TCm)/TCm. Negativo = moneda <b>sub</b>valuada.</li>
+  <li>Dos países: el <b>TCm sale sólo del transable</b>; el <b>TC PPA sale de la canasta completa</b>. PBI a PPA de un país = sus cantidades × los precios del país base.</li>
+  <li>A TCm la brecha entre países ricos y pobres se <b>exagera</b> (los no transables son baratos en los países pobres); a PPA se achica. Bienestar → PPA; deuda, exportaciones → TCm.</li>
+</ul></div>
+
+<div class="flow">
+  <div class="node"><b>A · Conceptos y tasas</b>PIB/PNB, real, per cápita, dispersión, 3 tasas</div><div class="arrow">→</div>
+  <div class="node"><b>B · Índice Big Mac</b>PPA de un solo bien, sub/sobrevaluación</div><div class="arrow">→</div>
+  <div class="node"><b>C · TCm vs PPA</b>dos países, transable y no transable</div><div class="arrow">→</div>
+  <div class="node"><b>D · Estudio de casos</b>PPA 2026: ventajas y trampas</div>
+</div>
+
+<!-- =========================================================== PARTE A -->
+<h2><span class="num">TP2·A</span>Conceptos y tasas de crecimiento</h2>
+
+<div class="formula-card">
+  <div class="fc-label">Las tres tasas de crecimiento (salen de la misma definición)</div>
+  \[ g_t=\frac{Y_t-Y_{t-1}}{Y_{t-1}} \qquad\quad g_{\text{acum}}=\frac{Y_T-Y_0}{Y_0}=\frac{Y_T}{Y_0}-1 \qquad\quad \bar g=\left(\frac{Y_T}{Y_0}\right)^{1/n}-1 \]
+  <div class="fc-legend"><span>\(g_t\): período a período</span><span>\(g_{\text{acum}}\): entre el primer y el último dato</span><span>\(\bar g\): tasa media (geométrica)</span><span>\(n = T-0\): cantidad de <b>períodos</b></span></div>
+</div>
+<p>La tercera sale de componer la primera: si \(Y_{t+1}=Y_t(1+g)\), después de \(n\) períodos \(Y_T=Y_0(1+g)^n\); despejando, \(g=(Y_T/Y_0)^{1/n}-1\). Es la <b>tasa constante</b> que, aplicada año tras año, lleva del valor inicial al final.</p>
+
+<h3>Ej. 1 · Definiciones: PIB y PNB, real y nominal, per cápita</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Definí y diferenciá: a) PIB y PNB; b) PIB real y PIB nominal; c) PIB per cápita.</p></div>
+
+<div class="versus">
+  <div class="card blue"><div class="card-title">a) PIB · criterio territorial</div><p>Valor de los bienes y servicios <b>finales</b> producidos <b>dentro de las fronteras</b> del país en un período, sin importar la nacionalidad del dueño de los factores.</p></div>
+  <div class="vs">vs</div>
+  <div class="card orange"><div class="card-title">a) PNB · criterio de propiedad</div><p>Valor de lo producido por los <b>factores de propiedad nacional</b>, estén donde estén.</p></div>
+</div>
+<div class="formula-card"><div class="fc-label">Relación entre ambos</div>
+\[ \text{PNB} = \text{PIB} + \text{renta neta de factores del exterior} \]
+</div>
+<p>En un país con mucha inversión extranjera el PNB es menor que el PIB, porque parte de lo producido adentro se remite afuera como utilidades e intereses.</p>
+
+<div class="grid-3">
+  <div class="card aqua"><div class="card-title">b) PIB nominal</div><p>Valorado a <b>precios corrientes</b> (los del año en curso): \(\sum P_t\,Q_t\). Mezcla cambios de cantidades con cambios de precios.</p></div>
+  <div class="card aqua"><div class="card-title">b) PIB real</div><p>Valorado a <b>precios constantes de un año base</b>: \(\sum P_{\text{base}}\,Q_t\). Aísla el cambio en las cantidades. <b>Para medir crecimiento, siempre el real.</b></p></div>
+  <div class="card violet"><div class="card-title">c) PIB per cápita</div><p>\(\dfrac{\text{PIB total}}{\text{población total}}\): riqueza material promedio por persona. Variable estándar para comparar bienestar material entre países y épocas.</p></div>
+</div>
+
+<h3>Ej. 2 · ¿Cuándo es mejor el PBI per cápita y cuándo el PBI total?</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>¿En qué situaciones es mejor indicador el PBI per cápita y en cuáles el PBI total?</p></div>
+<div class="versus">
+  <div class="card blue"><div class="card-title">PBI per cápita → bienestar material promedio</div><ul><li>Comparar niveles de vida entre países o a lo largo del tiempo.</li><li>Clasificar países por nivel de desarrollo.</li><li>Evaluar si una población mejoró.</li></ul></div>
+  <div class="vs">vs</div>
+  <div class="card orange"><div class="card-title">PBI total → tamaño o peso agregado</div><ul><li>Capacidad de negociación comercial y peso en organismos internacionales.</li><li>Potencial militar; capacidad de repago de la deuda externa.</li><li>Atractivo como mercado para una empresa que busca volumen.</li></ul></div>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>Si la pregunta es “¿cómo vive la gente?”, per cápita; si es “¿cuánto pesa la economía?”, total. India tiene un PBI total enorme y un per cápita bajo; Suiza, lo inverso.</div></div>
+
+<h3>Ej. 3 · Diagramas de dispersión (datos 2024)</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div>
+<p>Con los datos de la tabla construí dos diagramas de dispersión con el PIB per cápita PPA en el eje horizontal: uno contra la esperanza de vida de los varones y otro contra el empleo vulnerable de los varones. ¿Qué correlación observás? ¿Hay países con resultados similares e ingresos diferentes? ¿Qué vínculos hay entre el bienestar material y el no material?</p></div>
+<div class="grid-2">
+<table class="compact">
+<thead><tr><th>País</th><th class="num">PIB pc PPA<br>(US$ 2017)</th><th class="num">Esp. de vida<br>varones</th><th class="num">Empleo vuln.<br>varones (%)</th></tr></thead>
+<tbody>
+<tr><td>Estados Unidos</td><td class="num">75.698</td><td class="num">76</td><td class="num">4,86</td></tr>
+<tr><td>Uruguay</td><td class="num">32.149</td><td class="num">74</td><td class="num">25,27</td></tr>
+<tr><td>San Vicente y las Gr.</td><td class="num">18.714</td><td class="num">69</td><td class="num">23,31</td></tr>
+<tr><td>Ucrania</td><td class="num">16.371</td><td class="num">67</td><td class="num">s/d</td></tr>
+</tbody></table>
+<table class="compact">
+<thead><tr><th>País</th><th class="num">PIB pc PPA<br>(US$ 2017)</th><th class="num">Esp. de vida<br>varones</th><th class="num">Empleo vuln.<br>varones (%)</th></tr></thead>
+<tbody>
+<tr><td>Uzbekistán</td><td class="num">10.997</td><td class="num">69</td><td class="num">39,62</td></tr>
+<tr><td>Tuvalu</td><td class="num">5.592</td><td class="num">64</td><td class="num">s/d</td></tr>
+<tr><td>Tanzanía</td><td class="num">3.713</td><td class="num">64</td><td class="num">78,34</td></tr>
+<tr><td>Uganda</td><td class="num">2.880</td><td class="num">65</td><td class="num">66,07</td></tr>
+</tbody></table>
+</div>
+<p class="p2-legend">Datos 2024. s/d: sin dato. San Vicente y las Gr. = San Vicente y las Granadinas.</p>
+
+<ol class="steps p2-st">
+  <li><span class="step-title">Armá los ejes</span>Eje X: PIB pc PPA (la variable “material”); eje Y: el logro social. Un punto por país. En el de empleo vulnerable quedan 6 puntos: Ucrania y Tuvalu no tienen dato.</li>
+  <li><span class="step-title">Mirá la nube antes de calcular</span>¿Sube o baja? ¿Es una recta o se “aplana”? Esa es la mitad de la respuesta.</li>
+  <li><span class="step-title">Calculá el coeficiente de correlación</span>En planilla: <code>=COEF.DE.CORREL(x; y)</code>. Hacelo dos veces: con el ingreso en niveles y con \(\ln(\text{ingreso})\).</li>
+  <li><span class="step-title">Buscá pares “misma altura, distinta abscisa”</span>Países con el mismo resultado social e ingresos muy distintos: son la prueba de que el ingreso no lo determina todo.</li>
+</ol>
+
+
+<table class="compact">
+<thead><tr><th>Correlación con el PIB pc PPA</th><th class="num">en niveles</th><th class="num">con ln(PIB pc)</th><th>Signo y fuerza</th></tr></thead>
+<tbody>
+<tr><td>Esperanza de vida varones (8 países)</td><td class="num">0,89</td><td class="num">0,93</td><td>positiva y fuerte</td></tr>
+<tr><td>Empleo vulnerable varones (6 países)</td><td class="num">−0,83</td><td class="num">−0,96</td><td>negativa y fuerte</td></tr>
+</tbody></table>
+<figure class="p2-w90"><img src="figs/out/p2_disp_ev.svg"><figcaption><b>Figura TP2.1.</b> Esperanza de vida de los varones contra PIB pc PPA. A la izquierda la nube se “aplana” en los ingresos altos; a la derecha, con el ingreso en logaritmos, los puntos se alinean mejor (r sube de 0,89 a 0,93). En naranja, Uzbekistán y San Vicente: 69 años los dos con ingresos que difieren 1,7 veces. Fuente: datos del TP2.</figcaption></figure>
+<figure class="p2-w90"><img src="figs/out/p2_disp_empleo.svg"><figcaption><b>Figura TP2.2.</b> Empleo vulnerable de los varones contra PIB pc PPA (6 países con dato). Relación negativa y fuerte; en logaritmos es casi una recta (r = −0,96). Fuente: datos del TP2.</figcaption></figure>
+
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>
+<p><b>Correlaciones.</b> Con la esperanza de vida, positiva y fuerte (r = 0,89; 0,93 en logaritmos). Con el empleo vulnerable, negativa y fuerte (r = −0,83; −0,96 en logaritmos). Que mejoren en logaritmos es el dato interesante: <b>la relación no es lineal</b>. Pasar de 2.880 a 10.997 dólares agrega mucha esperanza de vida; pasar de 32.149 a 75.698 agrega apenas dos años (de 74 a 76). Es la misma lógica decreciente que justifica que el IDH mida el ingreso en logaritmos.</p>
+<p><b>Resultados similares con ingresos diferentes.</b> Uzbekistán y San Vicente y las Granadinas: 69 años los dos, con 10.997 y 18.714 dólares (1,7 veces). Uganda (2.880 dólares, 65 años) supera a Tuvalu (5.592, 64 años) con la mitad del ingreso, y a Tanzanía (3.713, 64 años). Y Uganda y Uzbekistán tienen esperanzas de vida parecidas —65 y 69— con casi cuatro veces de diferencia de ingreso (3,8).</p>
+<p style="margin-bottom:0"><b>Vínculos entre bienestar material y no material.</b> Hay correlación, no determinación. El ingreso ayuda —financia salud, agua potable, educación— pero lo que decide el resultado es <b>cómo se usa</b>: la distribución del ingreso, la calidad de las políticas públicas y el acceso efectivo a los servicios. Por eso el PBI per cápita es un indicador útil pero insuficiente del desarrollo: es el argumento del Tema 1.</p>
+</div></div>
+
+<div class="box intuition"><div class="box-title">Por qué el logaritmo</div><p>Con logaritmos, lo que cuenta es el <b>porcentaje</b>: duplicar el ingreso de 2.880 a 5.760 “vale” lo mismo que de 37.849 a 75.698. Mil dólares más cambian la vida en Uganda y casi nada en Estados Unidos: rendimientos decrecientes del ingreso. Y ojo: correlación no es causalidad; el Ej. 3 muestra que con el mismo ingreso se logran resultados distintos.</p></div>
+
+<div class="box exam p2-brk"><div class="box-title">Así lo preguntan en el parcial</div>
+<p><b>Prueba teórica 20/9/2024, preg. 4:</b> “¿Cuál refleja mejor la interacción entre Crecimiento Económico (CE) y Desarrollo Humano (DH)?” → <b>c) Un alto nivel de CE es necesario, pero no suficiente, para garantizar avances sostenibles en DH</b>. La a) (“el CE es suficiente”) es justo lo que desmienten las Figuras TP2.1 y TP2.2.</p>
+<p><b>Prueba teórica 28/9/2024, preg. 4</b> (misma idea, otras opciones) → <b>b) El DH podría mejorar en el corto plazo sin crecimiento</b> si se enfocan políticas en salud, educación y equidad. <b>27/09/2025, preg. 4</b> → <b>b) aumento del ingreso acompañado de mejoras en salud, educación y libertades</b> (la c “garantiza” es falsa).</p></div>
+
+<h3>Ej. 4 · Tres países desde 1950</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Los países A, B y C tenían en 1950 el mismo PIB per cápita: US$ 8.000. Desde entonces A creció al 3% anual, B al 2% y C al 1%. Calculá el producto de cada uno en 2025 y su crecimiento acumulado, y comentá el resultado.</p></div>
+<ol class="steps p2-st">
+  <li><span class="step-title">Contá los períodos</span>De 1950 a 2025 hay \(n = 2025-1950 = 75\) períodos.</li>
+  <li><span class="step-title">Proyectá con la tasa compuesta</span>\(Y_{2025}=Y_{1950}\,(1+g)^{75}\) y \(g_{\text{acum}}=(1+g)^{75}-1\).</li>
+  <li><span class="step-title">Calculá y compará cocientes</span>El comentario sale de dividir los productos finales entre sí.</li>
+</ol>
+<div class="calc">\[\begin{aligned}
+A:&\quad 8.000\cdot 1{,}03^{75} = 8.000\cdot 9{,}1789 = 73.431{,}41 &\quad g_{\text{acum}} &= 9{,}1789-1 = 817{,}89\% \\
+B:&\quad 8.000\cdot 1{,}02^{75} = 8.000\cdot 4{,}4158 = 35.326{,}68 &\quad g_{\text{acum}} &= 4{,}4158-1 = 341{,}58\% \\
+C:&\quad 8.000\cdot 1{,}01^{75} = 8.000\cdot 2{,}1091 = 16.873{,}03 &\quad g_{\text{acum}} &= 2{,}1091-1 = 110{,}91\%
+\end{aligned}\]</div>
+<table class="compact">
+<thead><tr><th>País</th><th class="num">g anual</th><th class="num">Producto en 2025</th><th class="num">Crecimiento acumulado</th><th class="num">Se duplicó cada… (≈ 70/g)</th></tr></thead>
+<tbody>
+<tr><td>A</td><td class="num">3%</td><td class="num">US$ 73.431,41</td><td class="num">817,89%</td><td class="num">23 años</td></tr>
+<tr><td>B</td><td class="num">2%</td><td class="num">US$ 35.326,68</td><td class="num">341,58%</td><td class="num">35 años</td></tr>
+<tr><td>C</td><td class="num">1%</td><td class="num">US$ 16.873,03</td><td class="num">110,91%</td><td class="num">70 años</td></tr>
+</tbody></table>
+<figure class="p2-w90"><img src="figs/out/p2_tres_paises.svg"><figcaption><b>Figura TP2.3.</b> Las tres trayectorias. En escala lineal (izquierda) las curvas se abren cada vez más: eso es el interés compuesto. En escala logarítmica (derecha) son rectas y la pendiente es la tasa. Fuente: datos del TP2.</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta y comentario</span>A llega a US$ 73.431,41 (+817,89%), B a US$ 35.326,68 (+341,58%) y C a US$ 16.873,03 (+110,91%). <b>Un punto porcentual</b> de diferencia anual sostenido 75 años <b>duplica</b> la brecha (A/B = 2,08; B/C = 2,09); <b>dos puntos</b> (A contra C) la multiplican por <b>4,35</b>. Las tasas no se suman, se componen. Es la moraleja del tema y reaparece en el Tema 3.</div></div>
+<div class="grid-2">
+<div class="box tip"><div class="box-title">Verificación rápida</div><p>No hace falta calcular los niveles para el cociente: \(A/C=(1{,}03/1{,}01)^{75}=4{,}352\). Regla del 70: una variable que crece al \(g\%\) se duplica cada \(70/g\) años (exacto con 3%: \(\ln 2/\ln 1{,}03 = 23{,}4\)).</p></div>
+<div class="box warn"><div class="box-title">Error típico</div><p>Sumar tasas: “3% por 75 años = 225%”. Lo correcto es componer: 817,89%. <i>Corregido</i>: el original atribuía el ×4,35 a “un punto de diferencia”; entre A y C hay dos puntos.</p></div>
+</div>
+
+<h3>Ej. 5 · PBI de Argentina 2010–2023</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Con la serie del PBI de Argentina 2010–2023 (millones de pesos a precios de 2004; tabla de abajo) calculá la variación anual, la tasa de crecimiento acumulada y la tasa media anual del período. Interpretá.</p></div>
+<div class="grid-2">
+<table class="compact">
+<thead><tr><th>Año</th><th class="num">PBI</th><th class="num">Variación anual</th></tr></thead>
+<tbody>
+<tr><td>2010</td><td class="num">670.524</td><td class="num">—</td></tr>
+<tr><td>2011</td><td class="num">710.782</td><td class="num">6,00%</td></tr>
+<tr><td>2012</td><td class="num">703.486</td><td class="num">−1,03%</td></tr>
+<tr><td>2013</td><td class="num">720.407</td><td class="num">2,41%</td></tr>
+<tr><td>2014</td><td class="num">702.306</td><td class="num">−2,51%</td></tr>
+<tr><td>2015</td><td class="num">721.487</td><td class="num">2,73%</td></tr>
+<tr><td>2016</td><td class="num">706.478</td><td class="num">−2,08%</td></tr>
+</tbody></table>
+<table class="compact">
+<thead><tr><th>Año</th><th class="num">PBI</th><th class="num">Variación anual</th></tr></thead>
+<tbody>
+<tr><td>2017</td><td class="num">726.390</td><td class="num">2,82%</td></tr>
+<tr><td>2018</td><td class="num">707.377</td><td class="num">−2,62%</td></tr>
+<tr><td>2019</td><td class="num">693.224</td><td class="num">−2,00%</td></tr>
+<tr><td>2020</td><td class="num">624.591</td><td class="num">−9,90%</td></tr>
+<tr><td>2021</td><td class="num">689.810</td><td class="num">10,44%</td></tr>
+<tr><td>2022</td><td class="num">726.162</td><td class="num">5,27%</td></tr>
+<tr><td>2023</td><td class="num">714.464</td><td class="num">−1,61%</td></tr>
+</tbody></table>
+</div>
+<ol class="steps p2-st">
+  <li><span class="step-title">Variación anual (período a período)</span>Cada año contra el anterior. Ejemplo: \(g_{2011} = 710.782/670.524 - 1 = 0{,}0600 \to 6{,}00\%\). Así sale la tercera columna.</li>
+  <li><span class="step-title">Tasa acumulada y tasa media: contá bien \(n\)</span>La acumulada usa sólo el primer y el último dato. Para la media: 14 datos (2010 a 2023) = <b>13 períodos</b>, \(n = 2023-2010 = 13\).</li>
+  <li><span class="step-title">Interpretá</span>Total del período, ritmo por año, cuántos años de caída y qué pasó por habitante.</li>
+</ol>
+<div class="calc">\[\begin{aligned}
+g_{\text{acum}} &= \frac{714.464-670.524}{670.524} = 0{,}0655 \;\to\; 6{,}55\% \\
+\bar g &= \left(\frac{714.464}{670.524}\right)^{1/13}-1 = 1{,}0655^{1/13}-1 = 0{,}00489 \;\to\; 0{,}489\%
+\end{aligned}\]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta e interpretación</span>Tasa acumulada <b>6,55%</b>; tasa media anual <b>0,489%</b>. En trece años la economía argentina creció 6,55% en total, menos de medio punto por año. <b>Siete</b> de los trece años fueron de caída (2012, 2014, 2016, 2018, 2019, 2020 y 2023). Con una población que creció alrededor de 1% anual, el <b>PBI per cápita cayó</b> en el período (del orden de \(1{,}0655/1{,}01^{13}-1\approx -6\%\)): estancamiento con retroceso por habitante.</div></div>
+<div class="grid-2">
+<div class="box warn"><div class="box-title">¡Ojo con n!</div><p>Hay 14 años de datos pero <b>13 períodos</b>. Usar 14 da 0,454% (≈ 0,45%) y es el error más frecuente del ejercicio. <i>Corregido</i>: el original decía “ocho de los trece años fueron de caída”; contando la tabla son siete.</p></div>
+<div class="box tip"><div class="box-title">Verificación rápida</div><p>El producto de todos los \((1+g_t)\) tiene que dar \(1+g_{\text{acum}}\): \(1{,}0600\cdot 0{,}9897\cdots 0{,}9839 = 1{,}0655\). Y \(1{,}00489^{13} = 1{,}0655\). Si no te da, hay una tasa mal copiada.</p></div>
+</div>
+<figure class="p2-w90"><img src="figs/out/p2_arg_serie.svg"><figcaption><b>Figura TP2.4.</b> Izquierda: la serie (azul) y dos trayectorias a tasa constante desde 2010. Sólo la media geométrica (0,489%) termina exactamente en el dato de 2023; el promedio aritmético de las tasas (0,609%) “se pasa”. Derecha: crecimiento acumulado respecto de 2010, que cierra en +6,55% tras hundirse a −6,9% en 2020. Fuente: datos del TP2.</figcaption></figure>
+<figure class="p2-w90"><img src="figs/out/p2_arg_tasas.svg"><figcaption><b>Figura TP2.5.</b> Tasas período a período (azul: suba; rojo: caída) y las tres candidatas a “tasa media”. La correcta es la geométrica con \(n = 13\). Fuente: datos del TP2.</figcaption></figure>
+<div class="box intuition"><div class="box-title">Por qué la media es geométrica y no aritmética</div><p>El promedio simple de las 13 tasas es 0,609%, pero aplicado 13 años lleva a 725.626, no a 714.464: sobreestima porque ignora que cada caída se aplica sobre una base distinta. Ejemplo extremo del manual: +50% un año y −50% el siguiente dejan el producto en 75% del inicial; el promedio aritmético dice 0%, el geométrico \(\sqrt{1{,}5\cdot 0{,}5}-1=-13{,}4\%\) anual, que es la verdad.</p></div>
+
+<h3>Ej. 6 · China y Argentina 2020–2024</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Con el PIB PPA de China y Argentina (millones de US$ constantes de 2017) en 2020 y 2024, calculá la tasa de crecimiento acumulada y la tasa media anual de cada país y comentá.</p></div>
+<ol class="steps p2-st">
+  <li><span class="step-title">Períodos</span>De 2020 a 2024: \(n = 4\).</li>
+  <li><span class="step-title">Acumulada y media, país por país</span>Mismas fórmulas del Ej. 5.</li>
+</ol>
+<div class="calc">\[\begin{aligned}
+\text{China:}&\quad \frac{33.592.045}{27.114.429}-1 = 0{,}2389 \to 23{,}89\% &\qquad \left(\frac{33.592.045}{27.114.429}\right)^{1/4}-1 &= 0{,}05502 \to 5{,}502\% \\
+\text{Argentina:}&\quad \frac{1.223.376}{1.079.053}-1 = 0{,}1337 \to 13{,}37\% &\qquad \left(\frac{1.223.376}{1.079.053}\right)^{1/4}-1 &= 0{,}03188 \to 3{,}188\%
+\end{aligned}\]</div>
+<table class="compact">
+<thead><tr><th>País</th><th class="num">2020</th><th class="num">2024</th><th class="num">Tasa acumulada</th><th class="num">Tasa media anual</th></tr></thead>
+<tbody>
+<tr><td>China</td><td class="num">27.114.429</td><td class="num">33.592.045</td><td class="num">23,89%</td><td class="num">5,502%</td></tr>
+<tr><td>Argentina</td><td class="num">1.079.053</td><td class="num">1.223.376</td><td class="num">13,37%</td><td class="num">3,188%</td></tr>
+</tbody></table>
+<figure class="p2-w90"><img src="figs/out/p2_china_arg.svg"><figcaption><b>Figura TP2.6.</b> Izquierda: el tamaño (China es unas 25 veces Argentina en 2020 y 27,5 en 2024). Derecha: el ritmo; China crece 1,7 veces más rápido que Argentina. Fuente: datos del TP2.</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta y comentario</span>China: 23,89% acumulado y 5,502% anual; Argentina: 13,37% y 3,188%. Ambos crecen, pero China lo hace a casi el doble de ritmo y sobre una base <b>unas 25 veces mayor</b> (<i>corregido</i>: el original decía “treinta”). El período arranca en 2020, año de pandemia: parte del crecimiento es <b>rebote</b> y no tendencia —Argentina había caído 9,9% en 2020—. Elegir el año base cambia la conclusión, y eso conecta con el problema de la elección del año base visto en teoría.</div></div>
+<div class="grid-2">
+<div class="box warn"><div class="box-title">Error típico</div><p>Dividir la acumulada por los años: 23,89%/4 = 5,97% ≠ 5,502%. La media anual es una raíz, no una división.</p></div>
+<div class="box tip"><div class="box-title">Verificación rápida</div><p>\(1{,}05502^4 = 1{,}2389\) y \(1{,}03188^4 = 1{,}1337\): la media compuesta \(n\) veces reproduce la acumulada.</p></div>
+</div>
+
+<div class="box exam p2-brk"><div class="box-title">Así lo preguntan en el parcial · Prueba práctica 28/9/2024, Ej. 2 a) y b)</div>
+<div style="break-inside: avoid">
+<p>Datos: PBI per cápita (US$ corrientes) de Ucrania y de EEUU, 2018–2023; en la otra versión del examen, Rusia en lugar de Ucrania.</p>
+<table class="compact">
+<thead><tr><th></th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th></tr></thead>
+<tbody>
+<tr><td>Ucrania, PBI pc US$ PPA corrientes</td><td class="num">12.709</td><td class="num">14.381</td><td class="num">15.717</td><td class="num">18.040</td><td class="num">16.080</td><td class="num">18.007</td></tr>
+<tr><td>Ucrania, PBI pc US$ corrientes</td><td class="num">3.097</td><td class="num">3.661</td><td class="num">3.752</td><td class="num">4.828</td><td class="num">4.576</td><td class="num">5.181</td></tr>
+<tr><td>Rusia, PBI pc US$ PPA corrientes</td><td class="num">28.629</td><td class="num">30.964</td><td class="num">31.491</td><td class="num">38.938</td><td class="num">40.958</td><td class="num">44.104</td></tr>
+<tr><td>Rusia, PBI pc US$ corrientes</td><td class="num">11.212</td><td class="num">11.448</td><td class="num">10.108</td><td class="num">12.522</td><td class="num">15.445</td><td class="num">13.817</td></tr>
+<tr><td>EEUU, PBI pc US$ corrientes</td><td class="num">63.201</td><td class="num">65.548</td><td class="num">64.317</td><td class="num">71.056</td><td class="num">77.247</td><td class="num">81.695</td></tr>
+</tbody></table></div>
+<p><b>a) (5 ptos)</b> Tasa de crecimiento del PBI de Ucrania a TC de mercado entre 2020 y 2021: 18,21% · 2,49% · 28,68% · −5,22% · Ninguna → <b>28,68%</b> \(= 4.828/3.752-1\). Los distractores son las tasas de otros años (2018→19, 2019→20 y 2021→22). En la versión Rusia: \(12.522/10.108-1 =\) <b>23,88%</b>.</p>
+<p><b>b) (5 ptos)</b> Tasa media 2018–2023 (\(n = 5\), no 6): Ucrania \((5.181/3.097)^{1/5}-1 =\) <b>10,84%</b> y EEUU \((81.695/63.201)^{1/5}-1 =\) <b>5,27%</b> → la columna “10,84% / 5,27%”. En la versión Rusia: \((13.817/11.212)^{1/5}-1 = 4{,}27\%\) y EEUU 5,27% están en columnas distintas → <b>Ninguna opción es correcta</b>.</p>
+<p style="margin-bottom:0"><b>Para practicar la acumulada</b> con los mismos datos: Ucrania +67,29%, Rusia +23,23%, EEUU +29,26% entre 2018 y 2023. Los incisos c) y d) (“¿cuántas veces más grande?”) están en la Parte C.</p></div>
+
+<!-- =========================================================== PARTE B -->
+<h2><span class="num">TP2·B</span>El índice Big Mac</h2>
+<p>Es una PPA de <b>un solo bien</b>: si la ley de un solo precio se cumpliera, una Big Mac costaría lo mismo en dólares en todas partes. El tipo de cambio que lograría eso es el TC PPA “Big Mac”; compararlo con el de mercado dice si la moneda está sub o sobrevaluada.</p>
+
+<div class="formula-card">
+  <div class="fc-label">El procedimiento, una sola vez: tres relaciones</div>
+  \[ \underbrace{\text{(3) Precio en US\$}}_{\text{lo que cuesta afuera}} = \frac{\text{(1) Precio local}}{\text{(2) TCm}} \qquad \underbrace{\text{(4) TC PPA}}_{\text{el TC que iguala precios}} = \frac{\text{(1) Precio local}}{\text{Precio en EEUU}} \]
+  \[ \text{Sub/sobrevaluación} = \frac{(4)-(2)}{(2)} = \frac{\text{TC PPA}}{\text{TCm}}-1 = \frac{\text{Precio en US\$}}{\text{Precio en EEUU}}-1 \]
+  <div class="fc-legend"><span><b>Negativo</b> → moneda <b>SUBvaluada</b> (la Big Mac sale menos en dólares que en EEUU)</span><span><b>Positivo</b> → moneda <b>SOBREvaluada</b></span></div>
+</div>
+<div class="flow">
+  <div class="node"><b>(1) Precio local</b>dato</div><div class="arrow">÷ TCm →</div>
+  <div class="node"><b>(3) Precio en US$</b>comparalo con EEUU</div><div class="arrow">→</div>
+  <div class="node"><b>Signo</b>US$ &lt; EEUU → subvaluada<br>US$ &gt; EEUU → sobrevaluada</div>
+</div>
+<div class="grid-2">
+<div class="box tip"><div class="box-title">Truco: con dos datos salen todos</div><p>Cada fila tiene 5 números ligados por 3 relaciones. Si falta el precio local: \(P_{\text{local}} = P_{\text{US\$}}\cdot \text{TCm}\) o \(= \text{TC PPA}\cdot P_{\text{EEUU}}\). Si falta el TCm: \(\text{TCm} = P_{\text{local}}/P_{\text{US\$}}\) o \(= \text{TC PPA}/(1+s)\), con \(s\) la sub/sobrevaluación.</p></div>
+<div class="box warn"><div class="box-title">Error típico</div><p>Dividir por el TC PPA en lugar del TCm en la fórmula de sub/sobrevaluación, o leer el signo al revés. Subvaluada = barata en dólares = número negativo.</p></div>
+</div>
+
+<h3>Ej. 7 · Enero de 2021 — Big Mac en EEUU: US$ 4,89</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Completá la tabla (precio local, TCm, precio en US$, TC PPA Big Mac y sub/sobrevaluación) para enero de 2021, con la Big Mac a US$ 4,89 en Estados Unidos, y leé los resultados. En la tabla resuelta, las <b>celdas resaltadas</b> son las que había que calcular; el resto son datos.</p></div>
+<ol class="steps p2-st">
+  <li><span class="step-title">Completá lo que falte de (1), (2) o (3)</span>Con (3) = (1)/(2) despejás la que no está (ver “casos incompletos”).</li>
+  <li><span class="step-title">TC PPA</span>(4) = (1)/4,89.</li>
+  <li><span class="step-title">Sub/sobrevaluación y signo</span>[(4) − (2)]/(2). Ejemplo, Argentina:</li>
+</ol>
+<div class="calc">\[ \text{Argentina:}\quad \frac{320}{85{,}37} = \text{US\$ }3{,}75 \qquad \frac{320}{4{,}89} = 65{,}44 \qquad \frac{65{,}44-85{,}37}{85{,}37} = -0{,}2335 \to -23{,}35\% \;(\text{subvaluado}) \]</div>
+<p>Casos incompletos: en India, Israel y Japón faltaba el precio local → (1) = (3) × (2); en México, Noruega y Uruguay faltaba el TCm → (2) = (1) / (3).</p>
+<div class="calc">\[\begin{aligned}
+\text{India: } (1) &= 2{,}59\times 73{,}39 = 190{,}08 &\qquad \text{México: } (2) &= 54/2{,}68 = 20{,}15 \\
+\text{Israel: } (1) &= 5{,}35\times 3{,}18 = 17{,}01 &\qquad \text{Noruega: } (2) &= 52/6{,}09 = 8{,}54 \\
+\text{Japón: } (1) &= 3{,}74\times 104{,}30 = 390{,}08 &\qquad \text{Uruguay: } (2) &= 204/4{,}80 = 42{,}50
+\end{aligned}\]</div>
+<table class="p2-bm">
+<thead><tr><th>País</th><th class="num">(1) Precio local</th><th class="num">(2) TCm</th><th class="num">(3) Precio en US$</th><th class="num">(4) TC PPA</th><th class="num">Sub/sobre</th></tr></thead>
+<tbody>
+<tr><td>Argentina</td><td class="num">320,00</td><td class="num">85,37</td><td class="num p2-c">3,75</td><td class="num p2-c">65,44</td><td class="num p2-c">−23,35%</td></tr>
+<tr><td>Australia</td><td class="num">6,48</td><td class="num">1,30</td><td class="num p2-c">4,98</td><td class="num p2-c">1,33</td><td class="num p2-c">+1,93%</td></tr>
+<tr><td>Chile</td><td class="num">2.940,00</td><td class="num">719,43</td><td class="num p2-c">4,09</td><td class="num p2-c">601,23</td><td class="num p2-c">−16,43%</td></tr>
+<tr><td>China</td><td class="num">22,40</td><td class="num">6,48</td><td class="num p2-c">3,46</td><td class="num p2-c">4,58</td><td class="num p2-c">−29,31%</td></tr>
+<tr><td>Colombia</td><td class="num">12.950,00</td><td class="num">3.460,50</td><td class="num p2-c">3,74</td><td class="num p2-c">2.648,26</td><td class="num p2-c">−23,47%</td></tr>
+<tr><td>Costa Rica</td><td class="num">2.350,00</td><td class="num">613,77</td><td class="num p2-c">3,83</td><td class="num p2-c">480,57</td><td class="num p2-c">−21,70%</td></tr>
+<tr><td>Guatemala</td><td class="num">25,00</td><td class="num">7,80</td><td class="num p2-c">3,21</td><td class="num p2-c">5,11</td><td class="num p2-c">−34,46%</td></tr>
+<tr><td>India</td><td class="num p2-c">190,08</td><td class="num">73,39</td><td class="num">2,59</td><td class="num p2-c">38,87</td><td class="num p2-c">−47,03%</td></tr>
+<tr><td>Israel</td><td class="num p2-c">17,01</td><td class="num">3,18</td><td class="num">5,35</td><td class="num p2-c">3,48</td><td class="num p2-c">+9,41%</td></tr>
+<tr><td>Japón</td><td class="num p2-c">390,08</td><td class="num">104,30</td><td class="num">3,74</td><td class="num p2-c">79,77</td><td class="num p2-c">−23,52%</td></tr>
+<tr><td>México</td><td class="num">54,00</td><td class="num p2-c">20,15</td><td class="num">2,68</td><td class="num p2-c">11,04</td><td class="num p2-c">−45,19%</td></tr>
+<tr><td>Noruega</td><td class="num">52,00</td><td class="num p2-c">8,54</td><td class="num">6,09</td><td class="num p2-c">10,63</td><td class="num p2-c">+24,54%</td></tr>
+<tr><td>Uruguay</td><td class="num">204,00</td><td class="num p2-c">42,50</td><td class="num">4,80</td><td class="num p2-c">41,72</td><td class="num p2-c">−1,84%</td></tr>
+<tr class="total"><td>Estados Unidos</td><td class="num">4,89</td><td class="num">1,00</td><td class="num">4,89</td><td class="num">1,00</td><td class="num">—</td></tr>
+</tbody></table>
+<figure class="p2-w90"><img src="figs/out/p2_bigmac_2021.svg"><figcaption><b>Figura TP2.7.</b> Sub/sobrevaluación frente al dólar según el índice Big Mac, enero de 2021, con el 0 (EEUU) en el centro. Entre paréntesis, el precio de la Big Mac en dólares: todos los países a la izquierda tienen un precio menor que US$ 4,89. Fuente: datos del TP2.</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Lectura</span>En enero de 2021 casi todas las monedas estaban <b>subvaluadas</b> frente al dólar. Las más baratas eran la rupia india (−47%) y el peso mexicano (−45%): la Big Mac costaba allí US$ 2,59 y US$ 2,68, apenas algo más de la mitad que en Estados Unidos (53% y 55% de US$ 4,89; <i>corregido</i>: el original decía “menos de la mitad”). Las únicas sobrevaluadas eran la corona noruega (+25%), el shékel israelí (+9%) y el dólar australiano (+2%). El peso argentino estaba subvaluado un 23%.</div></div>
+<div class="box tip"><div class="box-title">Verificación rápida y redondeo</div><p>Chequeá el signo por la vía corta: \(3{,}75/4{,}89-1 = -23{,}3\%\) para Argentina. Calculá con los datos sin redondear: Israel da +9,41% con el precio local exacto (17,013); si usás el 17,01 redondeado te da +9,39%. En un multiple choice, esa diferencia no cambia la opción; en un desarrollo, aclarala.</p></div>
+
+<h3>Ej. 8 · Enero de 2025 — Big Mac en EEUU: US$ 5,79</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Misma tabla para enero de 2025, con la Big Mac a US$ 5,79 en Estados Unidos. Ahora cada fila trae <b>datos distintos</b>: en algunas falta el precio en dólares, en otras el TC PPA, en Australia y Canadá faltan el precio local y el TCm, y en Pakistán falta el TCm (pero está la sub/sobrevaluación). Celdas resaltadas = calculadas.</p></div>
+<ol class="steps p2-st">
+  <li><span class="step-title">Identificá qué dos datos “fuertes” trae la fila</span>Con dos cualesquiera de {precio local, TCm, precio en US$, TC PPA} salen los otros.</li>
+  <li><span class="step-title">Despejá los que faltan</span>Australia y Canadá traen precio en US$ y TC PPA: primero el precio local (= TC PPA × 5,79), después el TCm (= local / precio en US$).</li>
+  <li><span class="step-title">Pakistán, el caso que valida el método</span>La tabla da la sub/sobrevaluación (−34,97%) y no el TCm. Se despeja igual y se verifica.</li>
+</ol>
+<div class="calc">\[\begin{aligned}
+\text{Australia:}&\quad P_{\text{local}} = 1{,}339\times 5{,}79 = 7{,}75 &\quad \text{TCm} &= 7{,}75/4{,}870 = 1{,}591 &\quad s &= 4{,}870/5{,}79-1 = -15{,}89\% \\
+\text{Canadá:}&\quad P_{\text{local}} = 1{,}349\times 5{,}79 = 7{,}81 &\quad \text{TCm} &= 7{,}81/5{,}429 = 1{,}439 &\quad s &= 5{,}429/5{,}79-1 = -6{,}23\%
+\end{aligned}\]</div>
+<div class="calc">\[\begin{aligned}
+\text{Pakistán:}&\quad \text{TCm} = 1.050/3{,}765 = 278{,}884 &\qquad \text{control: } \tfrac{181{,}347-278{,}884}{278{,}884} &= -34{,}97\%\ \checkmark \\
+\text{Argentina:}&\quad 7.300/1.050 = \text{US\$ }6{,}952 &\qquad s = \tfrac{1.260{,}794-1.050}{1.050} &= +20{,}08\%\ (\text{sobrevaluado})
+\end{aligned}\]</div>
+<table class="p2-bm">
+<thead><tr><th>País</th><th class="num">Precio local</th><th class="num">TCm</th><th class="num">Precio en US$</th><th class="num">TC PPA</th><th class="num">Sub/sobre</th></tr></thead>
+<tbody>
+<tr><td>Argentina</td><td class="num">7.300,00</td><td class="num">1.050,00</td><td class="num p2-c">6,952</td><td class="num">1.260,794</td><td class="num p2-c">+20,08%</td></tr>
+<tr><td>Australia</td><td class="num p2-c">7,75</td><td class="num p2-c">1,591</td><td class="num">4,870</td><td class="num">1,339</td><td class="num p2-c">−15,89%</td></tr>
+<tr><td>Canadá</td><td class="num p2-c">7,81</td><td class="num p2-c">1,439</td><td class="num">5,429</td><td class="num">1,349</td><td class="num p2-c">−6,23%</td></tr>
+<tr><td>Chile</td><td class="num">4.490,00</td><td class="num">987,250</td><td class="num">4,548</td><td class="num p2-c">775,475</td><td class="num p2-c">−21,45%</td></tr>
+<tr><td>China</td><td class="num">25,50</td><td class="num">7,248</td><td class="num">3,518</td><td class="num">4,404</td><td class="num p2-c">−39,24%</td></tr>
+<tr><td>Costa Rica</td><td class="num">2.990,00</td><td class="num">506,625</td><td class="num">5,902</td><td class="num p2-c">516,408</td><td class="num p2-c">+1,93%</td></tr>
+<tr><td>Dinamarca</td><td class="num">39,00</td><td class="num">7,108</td><td class="num">5,487</td><td class="num p2-c">6,736</td><td class="num p2-c">−5,24%</td></tr>
+<tr><td>Japón</td><td class="num">480,00</td><td class="num">154,355</td><td class="num p2-c">3,110</td><td class="num">82,902</td><td class="num p2-c">−46,29%</td></tr>
+<tr><td>Corea del Sur</td><td class="num">5.500,00</td><td class="num">1.431,200</td><td class="num p2-c">3,843</td><td class="num">949,914</td><td class="num p2-c">−33,63%</td></tr>
+<tr><td>México</td><td class="num">95,00</td><td class="num">20,647</td><td class="num">4,601</td><td class="num">16,408</td><td class="num p2-c">−20,53%</td></tr>
+<tr><td>Noruega</td><td class="num">75,00</td><td class="num">11,237</td><td class="num">6,674</td><td class="num">12,953</td><td class="num p2-c">+15,27%</td></tr>
+<tr><td>Pakistán</td><td class="num">1.050,00</td><td class="num p2-c">278,884</td><td class="num">3,765</td><td class="num">181,347</td><td class="num">−34,97%</td></tr>
+<tr><td>Qatar</td><td class="num">15,00</td><td class="num">3,641</td><td class="num">4,120</td><td class="num p2-c">2,591</td><td class="num p2-c">−28,85%</td></tr>
+<tr><td>Arabia Saudita</td><td class="num">19,00</td><td class="num">3,751</td><td class="num">5,066</td><td class="num p2-c">3,282</td><td class="num p2-c">−12,52%</td></tr>
+<tr class="total"><td>Estados Unidos</td><td class="num">5,79</td><td class="num">1,00</td><td class="num">5,79</td><td class="num">1,00</td><td class="num">—</td></tr>
+</tbody></table>
+<figure class="p2-w90"><img src="figs/out/p2_bigmac_2025.svg"><figcaption><b>Figura TP2.8.</b> Índice Big Mac, enero de 2025. Argentina pasa al extremo derecho: la Big Mac más cara de la tabla (US$ 6,952, por encima de Noruega, US$ 6,674). Fuente: datos del TP2.</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Lectura</span>Pakistán valida el método: con TCm = 1.050/3,765 = 278,884 se recupera exactamente el −34,97% de la tabla; si te da otro número, la fórmula está mal aplicada. Lo más llamativo de 2025: <b>Argentina da vuelta el signo</b>. En enero de 2021 el peso estaba subvaluado un 23%; en enero de 2025 aparece sobrevaluado un 20%, con la Big Mac más cara de la tabla. Ese vuelco es el ejemplo perfecto de por qué el tipo de cambio de mercado no refleja el poder de compra real. En el otro extremo: Japón (−46%), China (−39%), Pakistán (−35%) y Corea del Sur (−34%).</div></div>
+
+<h3>Limitaciones del índice Big Mac (inciso b)</h3>
+<p>Esto se pregunta siempre. Seis razones por las que una Big Mac no es “la” PPA:</p>
+<div class="grid-2 p2-tight">
+  <div class="card blue"><div class="card-title"><span class="p2-num">1</span>Es un solo bien</div><p>No es una canasta representativa del consumo de los hogares. La PPA “en serio” compara cientos de bienes y servicios ponderados por su peso en el gasto.</p></div>
+  <div class="card blue"><div class="card-title"><span class="p2-num">2</span>Tiene componentes no transables</div><p>Alquiler del local, salarios, electricidad, logística: su peso en el precio final varía mucho entre países, y son justamente los que rompen la ley de un solo precio.</p></div>
+  <div class="card blue"><div class="card-title"><span class="p2-num">3</span>Impuestos indirectos distintos</div><p>El IVA y los impuestos al consumo entran en el precio de góndola y no tienen nada que ver con el poder adquisitivo.</p></div>
+  <div class="card blue"><div class="card-title"><span class="p2-num">4</span>Precios con poder de mercado</div><p>McDonald’s fija precios según la competencia local y el poder adquisitivo, no según costos: no es un precio de competencia perfecta.</p></div>
+  <div class="card blue"><div class="card-title"><span class="p2-num">5</span>No es el mismo bien en el consumo</div><p>En EEUU es comida barata y masiva; en un país de bajos ingresos es un producto relativamente caro, de clase media urbana. Comparar el precio no compara la misma posición en la estructura de consumo.</p></div>
+  <div class="card blue"><div class="card-title"><span class="p2-num">6</span>Barreras al arbitraje</div><p>Aranceles, costos de transporte y regulaciones sanitarias sobre los insumos (carne, lácteos) impiden el arbitraje que la teoría supone.</p></div>
+</div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Primer parcial 2025, Ej. 2 (15 ptos)</div>
+<p>“Se conoce la siguiente información sobre distintas economías donde se vende la hamburguesa Big Mac (BM) de julio de 2024. Considere que una BM costaba 5,69 dólares estadounidenses en EEUU. Complete la tabla (10 ptos)”: precio en USD, “Tipo de cambio PPA = …”, “Infra/sobre valoración frente al dólar = …” (hay que escribir también las fórmulas).</p>
+<div class="grid-2" style="align-items:center; grid-template-columns: 1.2fr 1fr">
+<table class="compact">
+<thead><tr><th>País</th><th class="num">BM local</th><th class="num">TCm</th><th class="num">BM en USD</th><th class="num">TC PPA</th><th class="num">Sub/sobre</th></tr></thead>
+<tbody>
+<tr><td>Emiratos Árabes</td><td class="num">18</td><td class="num">3,67</td><td class="num p2-c">4,90</td><td class="num p2-c">3,163</td><td class="num p2-c">−13,8%</td></tr>
+<tr><td>Australia</td><td class="num">7,75</td><td class="num">1,53</td><td class="num p2-c">5,07</td><td class="num p2-c">1,362</td><td class="num p2-c">−11,0%</td></tr>
+<tr><td>Azerbaiyán</td><td class="num">6,15</td><td class="num">1,70</td><td class="num p2-c">3,62</td><td class="num p2-c">1,081</td><td class="num p2-c">−36,4%</td></tr>
+<tr><td>Bahrein</td><td class="num">1,7</td><td class="num">0,38</td><td class="num p2-c">4,47</td><td class="num p2-c">0,299</td><td class="num p2-c">−21,4%</td></tr>
+</tbody></table>
+<figure style="margin:0"><img src="figs/out/p2_bigmac_2024jul.svg"><figcaption><b>Figura TP2.9.</b> Julio de 2024: las cuatro monedas, subvaluadas. Fuente: parcial 2025.</figcaption></figure>
+</div>
+<p><b>Fórmulas:</b> TC PPA = precio local / 5,69; infra/sobrevaloración = TC PPA/TCm − 1 (= (TC PPA − TCm)/TCm).</p>
+<p style="margin-bottom:0"><b>a) Interpretar y tachar (5 ptos):</b> “En Australia la BM es más <b>barata</b> que en EEUU (US$ 5,07 &lt; US$ 5,69). Mientras que, en Bahrein se observa una <b>infravaloración</b> de su moneda frente al dólar (−21,4%)”.</p></div>
+
+<!-- =========================================================== PARTE C -->
+<h2><span class="num">TP2·C</span>Tipo de cambio de mercado contra PPA</h2>
+<p>Los ejercicios 9 y 10 son idénticos en estructura (y también los de los parciales 2022 y 2023): dos países, dos bienes, uno <b>transable</b> (se comercia internacionalmente) y uno <b>no transable</b>. El truco es saber qué precio define cada tipo de cambio.</p>
+<div class="formula-card">
+  <div class="fc-label">El método, una sola vez</div>
+  \[ \text{TCm} = \frac{P^{B}_{\text{transable}}}{P^{A}_{\text{transable}}} \qquad\qquad \text{TC PPA} = \frac{\sum_i P^{B}_i\,Q_i}{\sum_i P^{A}_i\,Q_i}\ \ (\text{misma canasta } Q_i) \]
+  \[ \text{PBI}_B\ \text{en US\$} = \frac{\text{PBI}_B\ \text{en \$}}{\text{TCm}}\ \ \text{(a TC de mercado)} \qquad\text{o}\qquad \frac{\text{PBI}_B\ \text{en \$}}{\text{TC PPA}}\ \ \text{(a PPA)} \]
+  <div class="fc-legend"><span>1) El <b>TCm</b> sale <b>sólo del transable</b>: el arbitraje internacional iguala su precio (ley de un solo precio).</span><span>2) El <b>TC PPA</b> sale de la <b>canasta completa</b>, valuada a los precios de cada país.</span><span>3) El PBI se convierte dividiendo por el tipo de cambio.</span></div>
+</div>
+<p>La clave para no perderse es el <b>cuadro de valuación</b> de la Figura TP2.10 (en el Ej. 9): cada fila es una canasta de cantidades y cada columna un juego de precios. El <b>PBI de B a PPA es simplemente sus cantidades valuadas a los precios de A</b>; el TC PPA es el cociente entre las dos columnas de una misma fila.</p>
+
+<div class="box exam p2-brk"><div class="box-title">Así lo preguntan en el parcial (parte teórica)</div>
+<p><b>1er parcial 2022, preg. 2:</b> “Si comparamos países a través de su producto per cápita…” → <b>a) habrá mayor desigualdad entre ellos si usamos el producto per cápita a precio de mercado, debido a las diferencias en los precios que se comercian internamente</b> (los no transables, baratos en los países pobres, quedan subvaluados a TCm).</p>
+<p><b>Pruebas teóricas 20/9 y 28/9/2024, preg. 2</b> → <b>a) el uso del producto per cápita a PPA reduce las diferencias debidas a las variaciones en los precios internos</b>. La b) está al revés: a TCm las desigualdades se <i>sobre</i>estiman, no se subestiman.</p>
+<p style="margin-bottom:0"><b>1er parcial 2023, preg. 2:</b> problemas de comparabilidad internacional → <b>b) distintas unidades monetarias; diversidad de precios y subestimación de las cantidades</b>: los tres términos de PBI = Σ P·Q.</p></div>
+
+<h3>Ej. 9 · Ricolandia y Pobrelandia</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div>
+<p>Ricolandia (moneda: dólar) y Pobrelandia (moneda: peso) producen soja (bien <b>transable</b>) y lavados de autos (<b>no transable</b>).</p>
+<p style="margin-bottom:0">a) Tipo de cambio de mercado. b) PBI de Pobrelandia en dólares al TCm. c) Cocientes Ricolandia/Pobrelandia al TCm (PBI total y per cápita). d) PBI de Pobrelandia a PPA y cuántas veces más grande es Ricolandia.</p></div>
+<table class="compact">
+<thead><tr><th>País</th><th class="num">Soja (t)</th><th class="num">Precio de la soja</th><th class="num">Lavados</th><th class="num">Precio del lavado</th><th class="num">Población</th></tr></thead>
+<tbody>
+<tr><td>Ricolandia</td><td class="num">800</td><td class="num">US$ 100</td><td class="num">4.800</td><td class="num">US$ 150</td><td class="num">700</td></tr>
+<tr><td>Pobrelandia</td><td class="num">500</td><td class="num">$ 300</td><td class="num">3.000</td><td class="num">$ 250</td><td class="num">400</td></tr>
+</tbody></table>
+
+<ol class="steps p2-st">
+  <li><span class="step-title">a) TCm: sólo el transable</span>\(\text{TCm} = \dfrac{\text{precio de la soja en pesos}}{\text{precio de la soja en dólares}} = \dfrac{300}{100} = 3\) pesos por dólar.</li>
+  <li><span class="step-title">b) PBI de Pobrelandia en pesos y en dólares a TCm</span>\(500\times 300 + 3.000\times 250 = 150.000 + 750.000 = \$\,900.000\); en dólares: \(900.000/3 = \text{US\$ }300.000\).</li>
+  <li><span class="step-title">c) PBI de Ricolandia y cocientes a TCm</span>\(800\times 100 + 4.800\times 150 = 80.000 + 720.000 = \text{US\$ }800.000\).</li>
+</ol>
+<table class="compact">
+<thead><tr><th></th><th class="num">Ricolandia</th><th class="num">Pobrelandia (a TCm)</th><th class="num">Cociente R/P</th></tr></thead>
+<tbody>
+<tr><td>PBI total</td><td class="num">US$ 800.000</td><td class="num">US$ 300.000</td><td class="num"><b>2,67 veces</b></td></tr>
+<tr><td>Población</td><td class="num">700</td><td class="num">400</td><td class="num">—</td></tr>
+<tr><td>PBI per cápita</td><td class="num">US$ 1.142,86</td><td class="num">US$ 750,00</td><td class="num"><b>1,52 veces</b></td></tr>
+</tbody></table>
+<ol class="steps p2-st" start="4" style="counter-reset: step 3">
+  <li><span class="step-title">d) TC PPA con una canasta común</span>Tomando la canasta de Ricolandia (800 t de soja y 4.800 lavados), valuada a los precios de cada país:</li>
+</ol>
+<div class="calc">\[\begin{aligned}
+\text{a precios de Pobrelandia:}&\quad 800\times 300 + 4.800\times 250 = 240.000 + 1.200.000 = \$\ 1.440.000 \\
+\text{a precios de Ricolandia:}&\quad 800\times 100 + 4.800\times 150 = 80.000 + 720.000 = \text{US\$ } 800.000 \\
+\text{TC PPA} &= 1.440.000 / 800.000 = 1{,}8 \text{ pesos por dólar} \\
+\text{PBI de Pobrelandia a PPA} &= 900.000 / 1{,}8 = \text{US\$ } 500.000 \qquad \text{Cociente R/P} = 800.000/500.000 = 1{,}6
+\end{aligned}\]</div>
+<p>Si en lugar de la canasta de Ricolandia se usa la de Pobrelandia el resultado es el mismo —\(900.000/(500\times 100 + 3.000\times 150) = 900.000/500.000 = 1{,}8\)— porque las dos canastas tienen la misma proporción entre bienes (1 a 6).</p>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a) TCm = 3 pesos por dólar. b) PBI de Pobrelandia = $ 900.000 = US$ 300.000 a TCm. c) Ricolandia es 2,67 veces más grande en PBI total y 1,52 veces en per cápita, a TCm. d) TC PPA = 1,8; PBI de Pobrelandia a PPA = US$ 500.000; Ricolandia es <b>1,6 veces</b> más grande. Al tipo de cambio de mercado Ricolandia parece 2,67 veces más grande; a PPA, sólo 1,6 veces: la diferencia es exactamente la distorsión de valuar los no transables al TCm.</div></div>
+<div class="grid-2">
+<div class="box example"><div class="box-title">Agregado: per cápita a PPA</div><p>Con las poblaciones del enunciado: Pobrelandia a PPA tiene \(500.000/400 = \text{US\$ }1.250\) por habitante, <b>más</b> que Ricolandia (US$ 1.142,86). El cociente per cápita R/P a PPA es 0,91: el nombre engaña. Además \(\text{TC PPA}/\text{TCm} = 1{,}8/3 = 0{,}6\): el nivel de precios de Pobrelandia es el 60% del que sugiere el TCm.</p></div>
+<div class="box intuition"><div class="box-title">Precios relativos: la raíz del asunto</div><p>Un lavado vale 1,5 t de soja en Ricolandia (150/100) y sólo 0,83 t en Pobrelandia (250/300). El TCm “ve” la soja, que vale lo mismo en los dos lados; no ve que los servicios del país pobre son relativamente baratos.</p></div>
+</div>
+
+<figure class="w80"><img src="figs/out/p2_cuadro_rp.svg"><figcaption><b>Figura TP2.10.</b> El cuadro de valuación con los números del Ej. 9. Cada fila es una canasta de cantidades; cada columna, un juego de precios. En la diagonal están los PBI de cada país en su moneda. Pasar de la columna B a la A dentro de una misma fila es dividir por el TC PPA (1,8 en las dos filas); por eso el PBI de Pobrelandia a PPA (US$ 500.000) es su producción valuada a precios de Ricolandia. La ruta roja (÷ TCm = 3) sólo respeta el precio del transable y da US$ 300.000. Fuente: datos del TP2.</figcaption></figure>
+<figure><img src="figs/out/p2_barras_rp.svg"><figcaption><b>Figura TP2.11.</b> De dónde sale la diferencia. La soja (transable) de Pobrelandia vale US$ 50.000 con cualquier tipo de cambio; los lavados (no transables) valen US$ 250.000 a TCm y US$ 450.000 a PPA. Toda la distorsión está en el no transable. Fuente: datos del TP2.</figcaption></figure>
+<h3>Ej. 10 · Los del Norte y Los del Sur</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div>
+<p>Los del Norte y Los del Sur producen termos de acero (<b>transables</b>) y consultas médicas (<b>no transables</b>), cada uno con su moneda.</p>
+<p style="margin-bottom:0">a) Tipo de cambio de mercado. b) PBI del Sur en moneda del Norte y cociente Norte/Sur. c) Tipo de cambio PPA. d) Cociente a PPA y por qué difiere del inciso b. e) ¿Cuál conviene usar para comparar bienestar material?</p></div>
+<table class="compact">
+<thead><tr><th>País</th><th class="num">Termos</th><th class="num">Precio del termo</th><th class="num">Consultas</th><th class="num">Precio de la consulta</th></tr></thead>
+<tbody>
+<tr><td>Los del Norte</td><td class="num">500</td><td class="num">50</td><td class="num">2.500</td><td class="num">150</td></tr>
+<tr><td>Los del Sur</td><td class="num">200</td><td class="num">15.000</td><td class="num">1.000</td><td class="num">3.000</td></tr>
+</tbody></table>
+<ol class="steps p2-st">
+  <li><span class="step-title">a) TCm: sólo el transable (los termos)</span>\(\text{TCm} = 15.000/50 = 300\) unidades de moneda del Sur por unidad de moneda del Norte.</li>
+  <li><span class="step-title">b) PBI de cada país y cociente a TCm (el Sur, pasado a moneda del Norte)</span>
+  \[ \text{PBI}_{\text{Sur}} = 200\times 15.000 + 1.000\times 3.000 = 3.000.000 + 3.000.000 = 6.000.000 \;\to\; \frac{6.000.000}{300} = 20.000 \]
+  \[ \text{PBI}_{\text{Norte}} = 500\times 50 + 2.500\times 150 = 25.000 + 375.000 = 400.000 \qquad \frac{\text{Norte}}{\text{Sur}} = \frac{400.000}{20.000} = 20 \text{ veces} \]</li>
+  <li><span class="step-title">c) TC PPA con la canasta del Norte (500 termos y 2.500 consultas)</span>
+  \[ \frac{\text{a precios del Sur}}{\text{a precios del Norte}} = \frac{500\times 15.000 + 2.500\times 3.000}{500\times 50 + 2.500\times 150} = \frac{7.500.000 + 7.500.000}{25.000 + 375.000} = \frac{15.000.000}{400.000} = 37{,}5 \]</li>
+  <li><span class="step-title">d) PBI del Sur a PPA y cociente</span>\(\text{PBI}_{\text{Sur}}\) a PPA \(= 6.000.000/37{,}5 = 160.000\) (= sus cantidades a precios del Norte: \(200\times 50 + 1.000\times 150\)). Cociente Norte/Sur \(= 400.000/160.000 = 2{,}5\) veces.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a) TCm = 300. b) PBI del Sur = 20.000 en moneda del Norte; medida al TCm, la economía del Norte parece <b>20 veces</b> la del Sur. c) TC PPA = 37,5. d) A PPA el Sur vale 160.000 y el cociente es <b>2,5 veces</b>. El resultado difiere porque el TCm (300) sale únicamente del precio de los termos, el bien que cruza la frontera. Las consultas, que no se comercian, son mucho más baratas en el Sur en términos relativos: una consulta vale 3 termos en el Norte (150/50) y sólo 0,2 termos en el Sur (3.000/15.000). Convertir todo el PBI del Sur con un TC que sólo refleja el transable <b>subestima brutalmente</b> su producción de servicios. \(\text{TC PPA}/\text{TCm} = 37{,}5/300 = 0{,}125\): el nivel general de precios del Sur es apenas un 12,5% del que sugiere el TCm; la moneda del Sur compra <b>ocho veces más</b> adentro de su país que al convertirla.</div></div>
+<figure><img src="figs/out/p2_barras_ns.svg"><figcaption><b>Figura TP2.12.</b> El PBI del Sur en moneda del Norte (misma proporción 1 a 5 en las dos canastas, por eso el TC PPA es 37,5 con cualquiera de ellas): los termos valen 10.000 con cualquier tipo de cambio; las consultas valen 10.000 a TCm y 150.000 a PPA. De 20 veces a 2,5 veces. Fuente: datos del TP2.</figcaption></figure>
+<div class="box def"><div class="box-title">e) ¿Cuál conviene usar para comparar bienestar material?</div><p><b>El de PPA, sin dudas.</b> El bienestar material depende de lo que la gente <b>puede comprar con su ingreso en su propio país</b>, y eso incluye todos los bienes y servicios que consume, no sólo los transables. El TCm responde a los flujos de comercio y de capitales y sólo refleja los precios de lo que cruza fronteras; usarlo para comparar niveles de vida subestima sistemáticamente a los países pobres, donde los no transables son baratos. El TCm sigue siendo el correcto para otras preguntas: valor de las exportaciones, deuda externa en dólares, capacidad de compra internacional. <b>Cada tipo de cambio responde a una pregunta distinta.</b></p></div>
+
+<h3>Receta general: PBI de dos países con un transable y un no transable</h3>
+<div class="recipe"><div class="recipe-title">Receta: comparar dos PBI a TCm y a PPA</div><ol>
+  <li><b>Clasificá los bienes</b>: ¿cuál es transable (tablets, pendrives, soja, termos) y cuál no (tortas, cortes de pelo, lavados, consultas)? Elegí el país base (el del dólar).</li>
+  <li><b>TCm</b> = precio del transable en moneda local / precio del transable en dólares.</li>
+  <li><b>PBI de cada país a sus propios precios</b>: \(\sum P\,Q\) en su moneda.</li>
+  <li><b>PBI del país B en US$ a TCm</b> = PBI\(_B\) ($) / TCm.</li>
+  <li><b>TC PPA</b> = PBI\(_B\) a precios propios / PBI\(_B\) a precios del país base (sus cantidades × precios en dólares). Con la canasta del país base da lo mismo si las proporciones son iguales.</li>
+  <li><b>PBI de B a PPA</b> = PBI\(_B\) ($) / TC PPA (= sus cantidades a precios del país base).</li>
+  <li><b>Cocientes</b> A/B a TCm y a PPA (si hay población, también per cápita). Control: TC PPA &lt; TCm y cociente a PPA &lt; cociente a TCm cuando B tiene los no transables baratos.</li>
+</ol></div>
+<figure><img src="figs/out/p2_cocientes.svg"><figcaption><b>Figura TP2.13.</b> “¿Cuántas veces más grande es el país rico?” a TCm (naranja) y a PPA (azul) en todos los ejercicios de este tipo: TP2 y parciales 2022, 2023 y 2024. Siempre la PPA achica la brecha; cuánto la achica depende de cuán baratos son los no transables en el país pobre. Fuentes: TP2 y parciales.</figcaption></figure>
+<div class="grid-2">
+<div class="box warn"><div class="box-title">Errores típicos</div><ul><li>Calcular el TCm con el precio del no transable (o con un promedio de los dos).</li><li>Invertir el TC: dar “dólares por peso” (0,033) en vez de pesos por dólar (30,43); es un distractor clásico.</li><li>Multiplicar por el TC en vez de dividir al pasar pesos a dólares.</li></ul></div>
+<div class="box tip"><div class="box-title">Verificación rápida</div><p>El PBI de B a PPA tiene que coincidir con <b>sus cantidades valuadas a los precios del país base</b>. Si coincide, el TC PPA está bien. Y el transable de B, pasado a dólares, vale lo mismo a TCm que a precios del país base.</p></div>
+</div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · 1er parcial 2022, Ej. 2</div>
+<div style="break-inside: avoid">
+<p>Norte Unidos (dólar) y Argensur (peso) producen en 2021 sólo tablets (transables) y tortas (no transables).</p>
+<table class="compact">
+<thead><tr><th>País</th><th class="num">Cant. tablets</th><th class="num">Precio tablet</th><th class="num">Cant. tortas</th><th class="num">Precio torta</th></tr></thead>
+<tbody><tr><td>Norte Unidos</td><td class="num">200</td><td class="num">300</td><td class="num">3.200</td><td class="num">10</td></tr>
+<tr><td>Argensur</td><td class="num">50</td><td class="num">12.000</td><td class="num">800</td><td class="num">125</td></tr></tbody></table></div>
+<ul class="mcq">
+  <li class="correct"><span class="opt">a)</span><span>TC de mercado (6 ptos): <b>i) $40 por US$</b> = 12.000/300.<span class="why">Opciones: $40 · $4 · $12,5 · $400 · Ninguna.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>PBI de Argensur en dólares al TCm (7 ptos): <b>iii) US$ 17.500</b>. PBI = 50·12.000 + 800·125 = $ 700.000; /40 = 17.500.<span class="why">Trampas: “$700.000” está en pesos; US$ 92.000 es el PBI de Norte Unidos.</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>TC PPA (7 ptos): <b>iii) $30,43 por US$</b> = 700.000 / (50·300 + 800·10) = 700.000/23.000.<span class="why">Con la canasta de Norte Unidos da igual (14.000/460), porque ambos producen 16 tortas por tablet. $0,033 es el TC invertido.</span></span></li>
+</ul>
+<p style="margin-bottom:0"><b>Complemento</b> (no pedido en lo visible del examen): PBI de Argensur a PPA = US$ 23.000; Norte Unidos (US$ 92.000) es 5,26 veces Argensur a TCm y 4 veces a PPA.</p></div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · 1er parcial 2023, Ej. 3 (20 ptos)</div>
+<div style="break-inside: avoid">
+<p>Dolar City (dólar) y Ciudad Pesos (peso) producen sólo pendrives (transables) y cortes de cabello (no transables).</p>
+<table class="compact">
+<thead><tr><th>País</th><th class="num">Pendrives</th><th class="num">Cortes</th><th class="num">Precio pendrive</th><th class="num">Precio corte</th></tr></thead>
+<tbody><tr><td>Dolar City</td><td class="num">30</td><td class="num">240</td><td class="num">100</td><td class="num">200</td></tr>
+<tr><td>Ciudad Pesos</td><td class="num">25</td><td class="num">200</td><td class="num">2.500</td><td class="num">2.000</td></tr></tbody></table></div>
+<ul class="mcq">
+  <li class="correct"><span class="opt">a)</span><span>TC de mercado: <b>ii) $25 por US$</b> = 2.500/100.<span class="why">Opciones: $10 · $25 · $200 · $100 · Ninguna.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>PBI de Ciudad Pesos en US$ al TCm: <b>iv) US$ 18.500</b>. PBI = 25·2.500 + 200·2.000 = $ 462.500; /25 = 18.500.<span class="why">Trampas: US$ 51.000 es el PBI de Dolar City; US$ 42.500 es el de Ciudad Pesos a precios de Dolar City (a PPA).</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>TC PPA: <b>iii) $10,88 por US$</b> = 462.500 / (25·100 + 200·200) = 462.500/42.500.</span></li>
+  <li class="correct"><span class="opt">d)</span><span>Cociente de PBI per cápita Dolar City / Ciudad Pesos con TC PPA: <b>iv) 1,2</b> = 51.000 / (462.500/10,88) = 51.000/42.500.<span class="why">La ii) 2,75 es el cociente a TCm (51.000/18.500 = 2,76): la trampa. No se dan poblaciones, así que se comparan los PBI (equivale a suponer igual población).</span></span></li>
+</ul></div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Prueba práctica 28/9/2024, Ej. 2 c) y d)</div>
+<p>Con los datos de la Parte A (PBI per cápita de Ucrania y EEUU): “c) Considerando el TC de mercado, la economía estadounidense era ___ veces más grande que la economía ucraniana para el año 2020 (14 · 16 · 17 · 20 · Se desconoce)”; “d) Sin embargo, adoptando el TC PPA, se concluye que la economía estadounidense era ___ veces más grande (3 · 4 · 6 · Se desconoce)”.</p>
+<div class="calc">\[\begin{aligned}
+\text{Ucrania:}&\quad \text{c) } \frac{64.317}{3.752} = 17{,}14 \to \textbf{17} &\qquad \text{d) } \frac{64.317}{15.717} &= 4{,}09 \to \textbf{4} \\
+\text{versión Rusia:}&\quad \text{c) } \frac{64.317}{10.108} = 6{,}36 \to \textbf{6} &\qquad \text{d) } \frac{64.317}{31.491} &= 2{,}04 \to \textbf{2}
+\end{aligned}\]</div>
+<p style="margin-bottom:0">Para EEUU se usa el mismo dato en c) y en d) porque EEUU es la <b>base</b> de la PPA: su TC PPA = TCm = 1. Otra vez, a PPA la brecha se achica (de 17 a 4 veces).</p></div>
+
+<!-- =========================================================== ESTUDIO DE CASOS -->
+<h2><span class="num">TP2·D</span>Estudio de casos: “El mundo es más igual de lo que piensas: datos PPA 2026”</h2>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>A partir del artículo: a) ¿qué ventajas y qué riesgos tiene usar la PPA para evaluar mercados emergentes? b) ¿Cuándo puede llevar a conclusiones engañosas?</p></div>
+
+<h3>a) Ventajas y riesgos de usar la PPA para evaluar mercados emergentes</h3>
+<table>
+<thead><tr><th style="width:50%">Ventajas</th><th>Riesgos</th></tr></thead>
+<tbody>
+<tr><td>Refleja el <b>poder de compra real</b>: en 74 de 96 países de renta baja y media el salario mínimo se duplica o cuadruplica al ajustarlo por PPA.</td><td>La PPA usa una <b>canasta promedio nacional</b> que puede no parecerse en nada a la canasta del segmento objetivo de un producto.</td></tr>
+<tr><td>Dimensiona correctamente el <b>mercado potencial</b>: las economías de ingreso medio y bajo son el 53% del PBI mundial a PPA, contra 46% de las de ingreso alto.</td><td>El poder de compra <b>no es transferible al exterior</b>: una empresa que factura en moneda local y paga costos en dólares no puede gastar ese poder de compra.</td></tr>
+<tr><td>Evita descartar mercados que en cifras nominales parecen insignificantes.</td><td>Los <b>promedios ocultan la desigualdad interna</b>: el 10% más rico captura el 52% de los ingresos ajustados por PPA y el 50% más pobre apenas el 8%.</td></tr>
+<tr><td>Da una base razonable para el <i>pricing</i> regional, como hacen Netflix, Spotify y Adobe.</td><td>Las estimaciones de PPA se revisan y tienen margen de error considerable.</td></tr>
+</tbody></table>
+<figure><img src="figs/out/p2_casos.svg"><figcaption><b>Figura TP2.14.</b> Los números del caso. (a) A PPA, las economías de ingreso medio y bajo ya son más de la mitad del PBI mundial. (b) China supera a EEUU a PPA pero no a TCm (dato del manual de teoría, Tema 2.2). (c) Pero adentro de los países la desigualdad es enorme: el 10% más rico se queda con el 52% del ingreso (el 40% del medio, por diferencia, con el 40%). (d) 74 de 96 países de renta baja y media: el salario mínimo se duplica o cuadruplica a PPA. Fuentes: texto del caso y manual de teoría.</figcaption></figure>
+
+<h3>b) ¿Cuándo puede llevar a conclusiones engañosas?</h3>
+<ol class="steps p2-st">
+  <li><span class="step-title">Cuando el negocio cobra en moneda local y paga en dólares</span>Servidores, licencias, publicidad internacional y sueldos de talento global se pagan al TCm. Un SaaS que fija precios por PPA y tiene costos dolarizados puede tener un mercado “grande” y un margen negativo.</li>
+  <li><span class="step-title">Cuando el producto es un bien transable o importado</span>La ventaja de la PPA viene de los no transables. Un celular o una notebook cuestan lo mismo en todas partes (más aranceles): el poder de compra ajustado no aplica a esa categoría.</li>
+  <li><span class="step-title">Cuando se confunde el promedio con el segmento</span>La clase media de Vietnam o Colombia no consume la canasta promedio de su país. Como reconoce el propio texto, “no basta con identificar países objetivo”: hay que mirar las capas socioeconómicas internas.</li>
+  <li><span class="step-title">Cuando se proyectan ingresos en dólares para inversores</span>El <i>revenue</i> reportado se convierte al TCm, no a PPA. Un mercado que a PPA parece enorme puede aportar una facturación en dólares modesta.</li>
+  <li><span class="step-title">Cuando se olvida la volatilidad cambiaria</span>En economías con inflación alta y tipo de cambio inestable —Argentina es el caso de manual— el factor de conversión PPA/TCm se mueve muchísimo de un año a otro (compará el Big Mac argentino de 2021 y de 2025). Decidir con una foto puede ser un error caro.</li>
+</ol>
+<div class="box intuition"><div class="box-title">El punto de fondo</div><p>El artículo tiene razón en que la <b>convergencia entre países</b> es real y está subestimada por las cifras nominales, y tiene razón también en señalar que la <b>desigualdad dentro de los países</b> se agravó. Son dos fenómenos distintos, y la PPA sólo corrige el primero.</p></div>
+
+<div class="check"><div class="check-title">Autoevaluación</div><ol>
+  <li>Entre 2015 y 2020 hay 6 datos anuales. ¿Qué \(n\) usás para la tasa media? <span class="muted">→ 5 períodos.</span></li>
+  <li>Un país crece +10% un año y −10% el siguiente. ¿Volvió al punto de partida? <span class="muted">→ No: queda en 99% (1,1 × 0,9); media geométrica −0,5% anual.</span></li>
+  <li>La Big Mac cuesta 4.000 pesos, el TCm es 1.000 y en EEUU vale US$ 5. ¿Sub o sobrevaluado? <span class="muted">→ Precio en US$ 4 &lt; 5 → subvaluado 20% (TC PPA = 800).</span></li>
+  <li>¿Con qué bien se calcula el TCm en los ejercicios de dos países? <span class="muted">→ Sólo con el transable (ley de un solo precio).</span></li>
+  <li>¿Por qué el PBI de B a PPA es igual a sus cantidades valuadas a precios del país A? <span class="muted">→ Porque el TC PPA es justamente el cociente entre valuar esas cantidades a precios de B y a precios de A.</span></li>
+  <li>¿Qué medida muestra un mundo más igual, TCm o PPA? ¿Por qué? <span class="muted">→ PPA: los no transables son baratos en los países pobres y a TCm quedan subvaluados.</span></li>
+</ol></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía</div><p>Paz, cap. 4.1 “El ingreso por habitante” · Weil, cap. 1 “Los hechos” · Ray, cap. 2.2 · Krugman, cap. 16.2 “La paridad de poder adquisitivo” · Larraín y Sachs, cap. 8.2. Ver también el Manual de teoría, Temas 2.1 a 2.3.</p></div>
+</section>

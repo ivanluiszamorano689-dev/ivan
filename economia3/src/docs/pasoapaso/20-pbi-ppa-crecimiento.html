@@ -1,0 +1,706 @@
+<section class="tema-2 s2-sec">
+<style>
+.s2-kb { font-family: "DejaVu Sans Mono", monospace; font-size: 0.82em; background: var(--paper-2); border: 1px solid #d3d1c9; border-bottom-width: 2px; border-radius: 4px; padding: 0.02em 0.4em; white-space: nowrap; color: var(--ink); }
+.s2-out { font-weight: 700; color: var(--blue-ink); white-space: nowrap; }
+.s2-opts { font-size: 8.7pt; color: var(--ink-2); margin: 0.3em 0 0; line-height: 1.75; }
+.s2-opts > span { display: inline-block; margin-right: 1.1em; white-space: nowrap; }
+.s2-opts > span b { color: var(--ink); }
+.s2-sec h4 .tag, .s2-sec h4 .pts { vertical-align: 0.1em; margin-left: 0.4em; }
+.s2-err table { margin: 0.2em 0 0.1em; background: #fff; }
+.s2-err td:last-child, .s2-err th:last-child { white-space: nowrap; }
+.s2-ref { font-size: 8.4pt; color: var(--ink-2); margin: -0.2em 0 0.6em; }
+.s2-stmt, .s2-head { break-inside: avoid; }
+.s2-sec h4 { break-after: avoid; }
+.flow.s2-flow > .node { font-size: 8pt; padding: 0.4em 0.4em; }
+.flow.s2-flow > .node b { font-size: 8.4pt; }
+.flow.s2-flow > .arrow { padding: 0 0.2em; }
+table.s2-opttab { width: auto; margin: 0.35em 0 0.2em; background: #fff; }
+table.s2-opttab th, table.s2-opttab td { text-align: center; padding: 0.25em 0.9em; border: 1px solid var(--rule); }
+table.s2-opttab th:first-child { text-align: left; background: var(--paper-2); color: var(--ink); }
+table.s2-data td, table.s2-data th { font-size: 8.4pt; }
+.s2-strike { text-decoration: line-through; text-decoration-thickness: 1.4px; color: var(--ink-3); }
+.s2-keep { font-weight: 700; background: var(--green-bg); color: var(--green-ink); padding: 0 0.25em; border-radius: 3px; }
+.s2-map td, .s2-map th { font-size: 8.4pt; }
+.s2-sec .versus .card p { margin: 0.2em 0; font-size: 8.8pt; }
+</style>
+
+<div class="chapter-head">
+  <div class="kicker">Tipo de ejercicio 2 · Tema 2 · La medición del bienestar material</div>
+  <h2><span class="num">§2</span>PBI, tipo de cambio, PPA y tasas de crecimiento</h2>
+  <p>Qué vas a poder hacer: sacar el tipo de cambio de mercado y el de PPA de una tabla de dos países, pasar un PBI a
+  dólares de las dos maneras, completar una tabla del índice Big Mac con su interpretación y calcular tasas (de un período
+  y medias) y «cuántas veces más grande» es una economía que otra. Todo con divisiones y una sola potencia, cuenta por
+  cuenta, con su control y sabiendo de qué error sale cada opción incorrecta.</p>
+</div>
+
+<div class="box summary"><div class="box-title">En 30 segundos</div><ul>
+<li>El <b>TC de mercado</b> sale <b>sólo del bien transable</b>: precio en pesos ÷ precio en dólares (ley de un solo precio).</li>
+<li>El <b>TC PPA</b> valúa <b>las mismas cantidades</b> a los precios de los dos países: PBI a precios propios ÷ ese mismo PBI a precios del país base. Siempre queda entre el cociente de precios del no transable y el TC de mercado.</li>
+<li>Pasar a dólares es <b>dividir</b>: PBI en pesos ÷ TC. A PPA el país con no transables baratos «crece» y la brecha entre países se achica.</li>
+<li><b>Big Mac</b>: US$ = P local ÷ TCm; TC PPA = P local ÷ P EEUU; % = TC PPA ÷ TCm − 1. Negativo: moneda infravaluada (la BM sale barata en dólares).</li>
+<li><b>Tasas</b>: \(g = Y_1/Y_0 - 1\); media \(= (Y_T/Y_0)^{1/n} - 1\) con \(n\) = períodos = años − 1 (de 2018 a 2023, \(n = 5\)).</li>
+<li><b>«Veces más grande»</b> = cociente de PBI per cápita del mismo año. A PPA, EEUU no necesita fila propia: es la base (TC PPA = 1).</li>
+</ul></div>
+
+<table class="compact s2-map">
+<caption>Los cinco ejercicios de esta sección</caption>
+<thead><tr><th>Ejercicio</th><th>Receta</th><th>Qué piden</th><th>Incisos y puntos</th></tr></thead>
+<tbody>
+<tr><td>P1 · Ej. 2 (2022) Norte Unidos y Argensur</td><td>A</td><td>TC de mercado, PBI en US$ a TCm, TC PPA (+ complemento: PBI a PPA y cocientes)</td><td>a 6 · b 7 · c 7 ptos</td></tr>
+<tr><td>P2 · Ej. 3 (2023) Dolar City y Ciudad Pesos</td><td>A</td><td>TC de mercado, PBI en US$ a TCm, TC PPA, cociente a PPA</td><td>a–d: 4 × 5 ptos</td></tr>
+<tr><td>P6 · Ej. 2 (2024) Ucrania y EEUU</td><td>C</td><td>tasa 2020→2021, tasa media 2018–2023, «veces» a TCm y a PPA</td><td>a–d: 4 × 5 ptos</td></tr>
+<tr><td>P7 · Ej. 2 (2024) Rusia y EEUU</td><td>C</td><td>lo mismo; en b la respuesta es «Ninguna»</td><td>a–d: 4 × 5 ptos</td></tr>
+<tr><td>P8 · Ej. 2 (2025) Big Mac, julio de 2024</td><td>B</td><td>completar la tabla de 4 países e interpretar</td><td>10 + 5 ptos</td></tr>
+</tbody></table>
+
+<div class="box tip"><div class="box-title">La calculadora en este tipo de ejercicio</div>
+<p>Casi todo son divisiones: lo difícil no es la cuenta sino <b>qué</b> dividís por <b>qué</b>. Tres reglas:</p>
+<ul>
+<li><b>Escribí las unidades</b> al lado de cada número: «$», «US$», «$ por US$». Pesos ÷ ($ por US$) = US$: si las unidades no cierran, estás multiplicando donde va dividir (o al revés).</li>
+<li><b>Tasa media en tres toques</b>: cociente final ÷ inicial, después <span class="s2-kb">Ans ^ ( 1 ÷ 5 ) =</span>, después <span class="s2-kb">− 1 =</span>. La potencia es <span class="s2-kb">^</span> (en algunos modelos dice \(x^y\) o \(x^{\blacksquare}\)) y el exponente va siempre entre paréntesis: sin ellos la calculadora hace \(\text{Ans}^1 \div 5\).</li>
+<li><b>No redondees un TC que vas a volver a usar</b>: 700.000 ÷ 30,43 da 23.003,6; con <span class="s2-kb">Ans</span> (30,4347…) da 23.000 exacto. Redondeá sólo lo que escribís como respuesta.</li>
+</ul></div>
+
+<!-- ============================================================ RECETA A -->
+<div class="s2-head"><h3>Receta A · TC de mercado, PBI en dólares y PPA (dos países, dos bienes)</h3>
+<p class="s2-ref">Teoría: manual, Temas 2.1 y 2.2 · Práctica: TP2 parte C, ej. 9 y 10 · Se usa en P1 (2022) y P2 (2023).</p>
+
+<div class="recipe"><div class="recipe-title">Receta A: un transable, un no transable, dos monedas</div><ol>
+<li><b>Ordená la tabla.</b> Para cada país, cantidad y precio de cada bien, con su moneda ($ o US$). Marcá el <b>transable</b>: el enunciado lo dice («que se pueden transar», «que se comercia internacionalmente»). Ojo con el orden de las columnas: en 2023 van primero las dos cantidades y después los dos precios.</li>
+<li><b>TC de mercado</b> (ley de un solo precio): \(TC_m = P_T^{\$}/P_T^{US\$}\), <b>sólo con el transable</b>. Unidades: $ por US$.</li>
+<li><b>PBI de cada país en su moneda</b>: \(\sum P\cdot Q\) con sus propios precios y cantidades.</li>
+<li><b>PBI en dólares al TCm</b>: PBI en pesos ÷ \(TC_m\).</li>
+<li><b>TC PPA</b>: tomá las cantidades del país que convertís y valualas a los precios de los dos países. \(TC_{PPA}\) = PBI a precios propios ÷ el mismo PBI a precios del país base.</li>
+<li><b>Verificación con la canasta del país base</b>: las cantidades del país base, valuadas a los dos juegos de precios. Si los dos países producen en la misma proporción (en los parciales siempre pasó), da lo mismo.</li>
+<li><b>PBI a PPA</b>: PBI en pesos ÷ \(TC_{PPA}\). Es lo mismo que el PBI valuado a precios del país base.</li>
+<li><b>Cocientes entre países</b>: PBI del país base ÷ PBI del otro, a TCm y a PPA. Si no dan la población, se comparan los PBI (equivale a suponer igual población).</li>
+<li><b>Controles</b>: \(TC_{PPA}\) entre el cociente de precios del no transable y el \(TC_m\); PBI a PPA mayor que a TCm; cociente a PPA menor que a TCm.</li>
+</ol></div></div>
+
+<div class="flow s2-flow">
+<div class="node"><b>1 · Datos</b>¿cuál es el transable? monedas</div><div class="arrow">→</div>
+<div class="node"><b>2 · TCm</b>\(P_T^{\$} / P_T^{US\$}\)</div><div class="arrow">→</div>
+<div class="node"><b>3 · PBI en $</b>\(\sum P\cdot Q\)</div><div class="arrow">→</div>
+<div class="node"><b>4 · PBI a TCm</b>PBI$ ÷ TCm</div><div class="arrow">→</div>
+<div class="node"><b>5 · TC PPA</b>mismas \(Q\), dos precios</div><div class="arrow">→</div>
+<div class="node"><b>6 · PBI a PPA</b>PBI$ ÷ TC PPA</div><div class="arrow">→</div>
+<div class="node"><b>7 · Cocientes</b>a TCm y a PPA</div>
+</div>
+
+<div class="formula-card">
+  <div class="fc-label">Tipo de cambio de mercado, PPA y PBI en dólares</div>
+  \[ TC_m = \frac{P_T^{\$}}{P_T^{US\$}} \qquad TC_{PPA} = \frac{\sum_i P_i^{\$}\,Q_i}{\sum_i P_i^{US\$}\,Q_i} \qquad \text{PBI}^{US\$} = \frac{\text{PBI}^{\$}}{TC} \]
+  <div class="fc-legend"><span>\(P_T\): precio del bien transable</span><span>\(Q_i\): cantidades del país que convertís (las mismas arriba y abajo)</span><span>PBI a PPA \(=\sum P_i^{US\$}Q_i\)</span></div>
+</div>
+
+<div class="grid-2">
+<div class="box intuition"><div class="box-title">Por qué a TC de mercado la brecha es mayor</div>
+<p>El TCm sale sólo del transable, pero el no transable es mucho más barato en el país pobre. Al TCm, una torta de Argensur
+vale 125 ÷ 40 = US$ 3,13, contra US$ 10 en Norte Unidos; un corte de pelo de Ciudad Pesos, 2.000 ÷ 25 = US$ 80, contra
+US$ 200 en Dolar City. Convertir todo el PBI con el TCm valúa esos servicios a precio de ganga: el país barato parece más
+chico de lo que es. La PPA valúa todo a los mismos precios (los del país base) y lo único que queda es la diferencia de
+<b>cantidades</b> (Tema 2.2; es la teórica 2 de P1, P4 y P5).</p></div>
+<div class="box tip"><div class="box-title">Controles rápidos</div><ul>
+<li>El TCm sale del transable: 12.000 ÷ 300 = 40; 2.500 ÷ 100 = 25.</li>
+<li>El TC PPA queda <b>entre</b> el cociente de precios del no transable y el TCm: 12,5 ≤ 30,43 ≤ 40; 10 ≤ 10,88 ≤ 25.</li>
+<li>Con TC mayor que 1, el PBI en dólares es más chico que en pesos.</li>
+<li>PBI a PPA = cantidades a precios del país base: US$ 23.000 y US$ 42.500.</li>
+<li>Con proporciones iguales, el cociente a PPA es el cociente de cantidades: 200/50 = 4; 30/25 = 1,2.</li>
+</ul></div>
+</div>
+
+<figure><img src="figs/out/s2_valuacion.svg">
+<figcaption><b>Figura §2.1.</b> La valuación del PBI como una matriz: cada fila son las cantidades de un país y cada columna,
+los precios de un país. Las celdas de color son el PBI de cada país en su moneda; las punteadas, sus cantidades a los precios
+del otro. El TC PPA es el cociente <b>dentro de una misma fila</b> (mismas cantidades, dos juegos de precios): da lo mismo en
+las dos filas porque los dos países producen en la misma proporción (16 tortas por tablet; 8 cortes por pendrive). Fijate que
+la celda ② de arriba es justo el PBI a PPA (US$ 23.000 y US$ 42.500). Datos de los enunciados de P1 y P2.</figcaption></figure>
+
+<!-- ============================================================ RECETA B -->
+<div class="s2-head"><h3>Receta B · Índice Big Mac</h3>
+<p class="s2-ref">Teoría: manual, Tema 2.2 (el método del Big Mac) · Práctica: TP2 parte B, ej. 7 y 8 · Se usa en P8 (2025).</p>
+
+<div class="recipe"><div class="recipe-title">Receta B: completar la tabla del Big Mac</div><ol>
+<li><b>Datos por país</b>: precio de la BM en moneda local, \(P\), y TC de mercado, \(TC_m\) (moneda local por US$). Dato fijo: el precio en EEUU (julio de 2024: US$ 5,69).</li>
+<li><b>Precio en US$</b> \(= P / TC_m\): lo que cuesta la BM pagada con dólares cambiados al TC de mercado.</li>
+<li><b>TC PPA implícito</b> \(= P / P_{EEUU}\): el TC que haría que la BM costara lo mismo en los dos países (ley de un solo precio aplicada a la BM). Mismas unidades que el TCm.</li>
+<li><b>Infra/sobrevaloración</b> \(= TC_{PPA}/TC_m - 1\), en %. Es el mismo número que \(\text{precio en US\$}/5{,}69 - 1\): usalo de control.</li>
+<li><b>Signo</b>: negativo → la BM es más <b>barata</b> en dólares que en EEUU → moneda <b>infravaluada</b> (subvaluada). Positivo → más <b>cara</b> → <b>sobrevaluada</b>.</li>
+<li><b>Redondeo</b>, recién al final: US$ con 2 decimales, TC PPA con 3, porcentaje con 1.</li>
+</ol></div></div>
+
+<div class="flow s2-flow">
+<div class="node"><b>1 · Datos</b>\(P\), \(TC_m\), 5,69</div><div class="arrow">→</div>
+<div class="node"><b>2 · Precio en US$</b>\(P \div TC_m\)</div><div class="arrow">→</div>
+<div class="node"><b>3 · TC PPA</b>\(P \div 5{,}69\)</div><div class="arrow">→</div>
+<div class="node"><b>4 · %</b>\(TC_{PPA} \div TC_m - 1\)</div><div class="arrow">→</div>
+<div class="node"><b>5 · Signo</b>− infravaluada (barata) · + sobrevaluada (cara)</div>
+</div>
+
+<div class="formula-card">
+  <div class="fc-label">Índice Big Mac</div>
+  \[ \text{US\$} = \frac{P}{TC_m} \qquad TC_{PPA} = \frac{P}{P_{EEUU}} \qquad \frac{TC_{PPA}}{TC_m} - 1 = \frac{\text{US\$}}{P_{EEUU}} - 1 \]
+  <div class="fc-legend"><span>\(P\): precio en moneda local</span><span>\(TC_m\): moneda local por US$</span><span>negativo: infravaluada · positivo: sobrevaluada</span></div>
+</div>
+
+<div class="versus">
+<div class="card orange"><div class="card-title">Resultado negativo: infravaluada</div>
+<p>\(TC_{PPA} &lt; TC_m\) y precio en US$ &lt; 5,69.</p>
+<p>Con un dólar el mercado te da más moneda local de la que haría falta según la BM: la moneda vale menos en el mercado
+que por su poder de compra. La BM sale <b>barata</b> para quien paga con dólares.</p></div>
+<div class="vs">vs</div>
+<div class="card blue"><div class="card-title">Resultado positivo: sobrevaluada</div>
+<p>\(TC_{PPA} &gt; TC_m\) y precio en US$ &gt; 5,69.</p>
+<p>Con un dólar el mercado te da menos moneda local de la que haría falta: la moneda «vale de más». La BM sale
+<b>cara</b> en dólares. (En P8 no hubo ningún caso positivo: los cuatro países dan negativo.)</p></div>
+</div>
+
+<div class="box tip"><div class="box-title">Controles rápidos</div><ul>
+<li>Dos caminos, el mismo porcentaje: \(TC_{PPA}/TC_m - 1 = \text{US\$}/5{,}69 - 1\).</li>
+<li>El signo se ve sin calcular: si el precio en US$ es menor que 5,69, tiene que dar negativo.</li>
+<li>Precio en US$ razonable (entre 2 y 9 dólares): si te da 66 dólares, multiplicaste en vez de dividir.</li>
+</ul></div>
+
+<!-- ============================================================ RECETA C -->
+<div class="s2-head"><h3>Receta C · Tasas de crecimiento y «veces más grande»</h3>
+<p class="s2-ref">Teoría: manual, Tema 2.3 (y 2.2 para la PPA) · Práctica: TP2 parte A, ej. 5 y 6 · Se usa en P6 y P7 (2024).</p>
+
+<div class="recipe"><div class="recipe-title">Receta C: serie de PBI per cápita de dos países</div><ol>
+<li><b>Elegí la fila.</b> «A TC de mercado», «nominal», «US$ corrientes»: la fila en US$ corrientes. «A PPA»: la fila PPA. EEUU tiene una sola fila porque para EEUU las dos coinciden.</li>
+<li><b>Tasa de un período</b>: \(g = Y_{t+1}/Y_t - 1\) (× 100 para %). La tasa <b>acumulada</b> entre \(t\) y \(T\) es \(Y_T/Y_t - 1\); entre dos años seguidos es lo mismo que la de un período.</li>
+<li><b>Tasa media</b> (geométrica): \(\bar g = (Y_T/Y_t)^{1/n} - 1\), con \(n = T - t\) = <b>períodos</b> = datos − 1. De 2018 a 2023 hay 6 datos y \(n = 5\).</li>
+<li><b>«Veces más grande» a TCm</b>: PBI pc de EEUU ÷ PBI pc del otro país en US$ corrientes, del año que piden.</li>
+<li><b>«Veces más grande» a PPA</b>: PBI pc de EEUU ÷ PBI pc del otro <b>a PPA</b>. Para EEUU no hace falta otra fila: es el país base, su TC PPA es 1 y su PBI en US$ corrientes ya está a PPA. No es «se desconoce».</li>
+<li><b>Redondeo</b>: tasas en % con 2 decimales; «veces», al entero más cercano (las opciones son enteras).</li>
+<li><b>Controles</b>: \(Y_t\,(1+\bar g)^n = Y_T\); \(\bar g\) queda entre la menor y la mayor tasa anual; «veces» a PPA menor que a TCm.</li>
+</ol></div></div>
+
+<div class="flow s2-flow">
+<div class="node"><b>1 · Fila y años</b>¿TCm o PPA? ¿qué años?</div><div class="arrow">→</div>
+<div class="node"><b>2 · Tasa</b>\(Y_1/Y_0 - 1\)</div><div class="arrow">→</div>
+<div class="node"><b>3 · Tasa media</b>\((Y_T/Y_0)^{1/n} - 1\), \(n = 5\)</div><div class="arrow">→</div>
+<div class="node"><b>4 · Veces</b>EEUU ÷ otro, mismo año</div><div class="arrow">→</div>
+<div class="node"><b>5 · Control</b>\(Y_0(1+\bar g)^n = Y_T\)</div>
+</div>
+
+<div class="formula-card">
+  <div class="fc-label">Tasas y comparaciones</div>
+  \[ g = \frac{Y_{t+1}}{Y_t} - 1 \qquad g_{ac} = \frac{Y_T}{Y_t} - 1 \qquad \bar g = \left(\frac{Y_T}{Y_t}\right)^{1/n} - 1,\;\; n = T - t \]
+  \[ \text{veces}_{TCm} = \frac{\text{PBI pc}_{EEUU}}{\text{PBI pc}^{\,US\$ \text{ corr.}}_{X}} \qquad \text{veces}_{PPA} = \frac{\text{PBI pc}_{EEUU}}{\text{PBI pc}^{\,PPA}_{X}} \]
+  <div class="fc-legend"><span>\(n\): períodos, no datos</span><span>\(\bar g\): la tasa constante que lleva de \(Y_t\) a \(Y_T\)</span><span>EEUU: TC PPA = TCm = 1</span></div>
+</div>
+
+<div class="grid-2">
+<div class="box warn"><div class="box-title">Las tres trampas de siempre</div><ul>
+<li><b>Contar datos en vez de períodos</b>: con \(n = 6\) Ucrania da 8,95 % en vez de 10,84 %.</li>
+<li><b>Promediar las tasas anuales</b>: la media es geométrica. Crecer 50 % y caer 50 % no te deja igual, te deja en 75.</li>
+<li><b>Fila o año equivocados</b>: las opciones incorrectas de las tasas de 2024 son las tasas de los <b>otros años</b> de la misma fila. Antes de dividir, señalá con el dedo las dos celdas.</li>
+</ul></div>
+<div class="box tip"><div class="box-title">Controles rápidos</div><ul>
+<li>\(3.097\cdot 1{,}10840^5 = 5.181\) ✓: la tasa media reconstruye el último dato.</li>
+<li>La tasa media cae entre la menor y la mayor tasa anual (Ucrania: entre −5,22 % y 28,68 %).</li>
+<li>«Veces» a PPA &lt; «veces» a TCm (4 &lt; 17; 2 &lt; 6).</li>
+<li>Multiplicá de vuelta: 17 × 3.752 = 63.784 ≈ 64.317 ✓.</li>
+</ul></div>
+</div>
+
+<!-- ============================================================ P1 2022 -->
+<div class="s2-head"><h3>P1 · Ej.2 (2022) — TC de mercado y PPA: Norte Unidos y Argensur</h3>
+<p class="s2-ref">Ver <i>Parciales resueltos</i>, P1 · Receta A · Manual, Temas 2.1 y 2.2 · TP2 parte C, ej. 9 y 10.</p>
+
+<div class="statement s2-stmt"><div class="statement-title">Datos · 1er Parcial 08/10/2022, Tema A · Ej. 2 <span class="pts">a 6 · b 7 · c 7 ptos; incorrecto resta la mitad</span></div>
+<p>Norte Unidos (dólar) y Argensur (peso) produjeron en 2021 sólo dos bienes: Tablets y Tortas. Las Tablets son las que se
+pueden transar en el mercado internacional.</p>
+<table class="compact s2-data"><thead><tr><th>País</th><th class="num">Cantidad de Tablets</th><th class="num">Precio de una Tablet</th><th class="num">Cantidad de Tortas</th><th class="num">Precio de una Torta</th></tr></thead>
+<tbody><tr><td>Norte Unidos</td><td class="num">200</td><td class="num">300</td><td class="num">3.200</td><td class="num">10</td></tr>
+<tr><td>Argensur</td><td class="num">50</td><td class="num">12.000</td><td class="num">800</td><td class="num">125</td></tr></tbody></table></div></div>
+
+<h4>a) Tipo de cambio de mercado <span class="pts">6 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«El tipo de cambio de mercado en pesos por unidad de dólar es de:»</p>
+<p class="s2-opts"><span><b>i)</b> $40 por US$ 1</span><span><b>ii)</b> $4 por US$ 1</span><span><b>iii)</b> $12,5 por US$ 1</span><span><b>iv)</b> $400 por US$ 1</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Identificá el transable</span>«Las Tablets los bienes que se pueden transar»: el transable es la <b>tablet</b>. La torta es no transable y no sirve para el TCm.</li>
+<li><span class="step-title">Anotá las monedas</span>Precio de la tablet: US$ 300 en Norte Unidos y $ 12.000 en Argensur.</li>
+<li><span class="step-title">Elegí la fórmula (ley de un solo precio)</span>La misma tablet vale lo mismo en los dos países medida en la misma moneda: $ 12.000 = US$ 300. Entonces \(TC_m = P_T^{\$}/P_T^{US\$}\).</li>
+<li><span class="step-title">Reemplazá y calculá</span><span class="s2-kb">12000 ÷ 300 =</span> → <span class="s2-out">40</span>. Unidades: pesos arriba, dólares abajo → $ 40 por US$.
+<div class="calc">\[ TC_m = \frac{12.000\ \$}{300\ \text{US\$}} = 40\ \$ \text{ por US\$} \]</div></li>
+<li><span class="step-title">Control</span>US$ 300 × 40 = $ 12.000 ✓. Con las tortas daría 125/10 = 12,5, distinto: la torta no se comercia, nadie puede arbitrar su precio.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>i) $ 40 por US$ 1</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Usar el no transable (las tortas)</td><td>125 ÷ 10 = 12,5</td><td>iii)</td></tr>
+<tr><td>Dividir cantidades en vez de precios</td><td>200 ÷ 50 = 4 (o 3.200 ÷ 800)</td><td>ii)</td></tr>
+<tr><td>Un cero de más o de menos al teclear</td><td>12.000 ÷ 30 = 400</td><td>iv)</td></tr>
+<tr><td>Dar vuelta el cociente (dólares por peso)</td><td>300 ÷ 12.000 = 0,025</td><td>v) (mal)</td></tr>
+</tbody></table></div>
+
+<h4>b) PBI de Argensur en dólares, al TC de mercado <span class="pts">7 ptos</span><span class="tag">⏱ 2 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«El PBI de Argensur expresado en dólares, al tipo de cambio de mercado es de:»</p>
+<p class="s2-opts"><span><b>i)</b> $ 700000</span><span><b>ii)</b> US$ 700.000</span><span><b>iii)</b> US$ 17500</span><span><b>iv)</b> US$ 92000</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Identificá los datos</span>Argensur: 50 tablets a $ 12.000 y 800 tortas a $ 125. \(TC_m = 40\) (inciso a).</li>
+<li><span class="step-title">Elegí la fórmula</span>\(\text{PBI}^{\$} = \sum P\cdot Q\) con precios y cantidades de Argensur; después \(\text{PBI}^{US\$} = \text{PBI}^{\$}/TC_m\).</li>
+<li><span class="step-title">PBI en pesos</span><span class="s2-kb">50 × 12000 + 800 × 125 =</span> → <span class="s2-out">700000</span>.</li>
+<li><span class="step-title">Pasalo a dólares</span><span class="s2-kb">Ans ÷ 40 =</span> → <span class="s2-out">17500</span>.
+<div class="calc">\[\begin{aligned} \text{PBI}_{Arg}^{\$} &= 50\cdot 12.000 + 800\cdot 125 = 600.000 + 100.000 = \$\,700.000 \\ \text{PBI}_{Arg}^{US\$} &= \frac{700.000}{40} = \text{US\$}\,17.500 \end{aligned}\]</div></li>
+<li><span class="step-title">Control</span>En dólares el número tiene que ser más chico (TC &gt; 1) ✓. Por partes: las tablets dan 600.000 ÷ 40 = US$ 15.000 = 50 · 300 ✓ (el transable vale lo mismo en dólares en los dos países); las tortas, 100.000 ÷ 40 = US$ 2.500, cuando a precios de Norte Unidos valdrían 800 · 10 = US$ 8.000. Ahí está la subvaluación del TCm.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iii) US$ 17.500</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>No convertir: dejar el PBI en pesos</td><td>$ 700.000</td><td>i)</td></tr>
+<tr><td>Cambiar sólo el signo monetario, sin dividir</td><td>US$ 700.000</td><td>ii)</td></tr>
+<tr><td>Calcular el PBI del otro país</td><td>200 · 300 + 3.200 · 10 = US$ 92.000</td><td>iv)</td></tr>
+<tr><td>Multiplicar por el TC</td><td>700.000 × 40 = 28.000.000</td><td>v) (mal)</td></tr>
+<tr><td>Dividir por el TC PPA del inciso c</td><td>US$ 23.000 (es el PBI a PPA)</td><td>v) (mal)</td></tr>
+</tbody></table></div>
+
+<h4>c) Tipo de cambio de paridad de poder adquisitivo <span class="pts">7 ptos</span><span class="tag">⏱ 3 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«El tipo de cambio de paridad de poder adquisitivo es:»</p>
+<p class="s2-opts"><span><b>i)</b> $40 por US$ 1</span><span><b>ii)</b> $0,033 por US$ 1</span><span><b>iii)</b> $30,43 por US$ 1</span><span><b>iv)</b> $1,84 por US$ 1</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">La idea</span>El TC PPA dice cuántos pesos hacen falta en Argensur para comprar <b>lo mismo</b> que compra un dólar en Norte Unidos. «Lo mismo» = las mismas cantidades valuadas a los precios de cada país.</li>
+<li><span class="step-title">Elegí las cantidades</span>Las de Argensur (el país que convertís): 50 tablets y 800 tortas.</li>
+<li><span class="step-title">A precios de Argensur (pesos)</span>Ya lo tenés del inciso b: $ 700.000.</li>
+<li><span class="step-title">A precios de Norte Unidos (dólares)</span><span class="s2-kb">50 × 300 + 800 × 10 =</span> → <span class="s2-out">23000</span>: US$ 23.000.</li>
+<li><span class="step-title">Cociente</span><span class="s2-kb">700000 ÷ 23000 =</span> → <span class="s2-out">30,43478</span> → 30,43 $ por US$.
+<div class="calc">\[ TC_{PPA} = \frac{50\cdot 12.000 + 800\cdot 125}{50\cdot 300 + 800\cdot 10} = \frac{700.000\ \$}{23.000\ \text{US\$}} = 30{,}43\ \$ \text{ por US\$} \]</div></li>
+<li><span class="step-title">Control 1: la canasta del país base</span>Norte Unidos produce 3.200/200 = 16 tortas por tablet. La canasta «1 tablet + 16 tortas» cuesta US$ 300 + 16 · 10 = US$ 460 en Norte Unidos y $ 12.000 + 16 · 125 = $ 14.000 en Argensur: 14.000 ÷ 460 = 30,43 ✓. Da igual porque Argensur produce en la misma proporción (800/50 = 16). Con la canasta entera: 2.800.000 ÷ 92.000 = 30,43 (Figura §2.1).</li>
+<li><span class="step-title">Control 2: el rango</span>El TC PPA es un promedio ponderado de los cocientes de precios bien por bien, así que cae entre el de la torta (125/10 = 12,5) y el de la tablet (40): 12,5 ≤ 30,43 ≤ 40 ✓. Este control solo ya descarta 0,033 y 1,84.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iii) $ 30,43 por US$ 1</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Confundirlo con el TC de mercado</td><td>40</td><td>i)</td></tr>
+<tr><td>Dar vuelta el cociente (dólares por peso)</td><td>23.000 ÷ 700.000 = 0,033</td><td>ii)</td></tr>
+<tr><td>Usar canastas distintas: PBI de Argensur ÷ PBI de Norte Unidos</td><td>700.000 ÷ 92.000 = 7,61</td><td>v) (mal)</td></tr>
+<tr><td>Sumar precios sin ponderar por las cantidades</td><td>12.125 ÷ 310 = 39,11</td><td>v) (mal)</td></tr>
+<tr><td>Ningún error típico</td><td>1,84 no sale de ninguna cuenta del ejercicio: queda fuera del rango [12,5; 40]</td><td>iv)</td></tr>
+</tbody></table></div>
+
+<h4>Complemento: PBI de Argensur a PPA y cuántas veces más grande es Norte Unidos <span class="tag">⏱ 2 min</span></h4>
+<p class="s2-ref">La foto de la hoja corta después del inciso c: si había más incisos, no los tenemos. Es la continuación natural, y es lo que se preguntó en 2023 (P2 Ej.3 d) y en el TP2, ej. 9 y 10.</p>
+<ol class="steps">
+<li><span class="step-title">PBI a PPA</span>PBI en pesos ÷ TC PPA con todos los decimales: <span class="s2-kb">700000 ÷ Ans =</span> → <span class="s2-out">23000</span>. Atajo: es la celda ② de la Figura §2.1 (las cantidades de Argensur a precios de Norte Unidos). Con 30,43 redondeado da 23.003,6: por eso conviene <span class="s2-kb">Ans</span>.</li>
+<li><span class="step-title">Cociente a TCm</span><span class="s2-kb">92000 ÷ 17500 =</span> → <span class="s2-out">5,257</span> → Norte Unidos es 5,26 veces Argensur.</li>
+<li><span class="step-title">Cociente a PPA</span><span class="s2-kb">92000 ÷ 23000 =</span> → <span class="s2-out">4</span> veces.
+<div class="calc">\[ \frac{\text{PBI}_{NU}}{\text{PBI}_{Arg}}\bigg|_{TCm} = \frac{92.000}{17.500} = 5{,}26 \qquad \frac{\text{PBI}_{NU}}{\text{PBI}_{Arg}}\bigg|_{PPA} = \frac{92.000}{23.000} = 4 \]</div></li>
+<li><span class="step-title">Control</span>4 = 200/50 = 3.200/800: Norte Unidos produce 4 veces más de cada bien, y a PPA se comparan cantidades ✓. Y 5,26 &gt; 4: a TCm la brecha es mayor ✓ (Figura §2.2).</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Resultado</span>PBI de Argensur a PPA: US$ 23.000. Norte Unidos es 5,26 veces Argensur a TC de mercado y 4 veces a PPA.</div></div>
+
+<!-- ============================================================ P2 2023 -->
+<div class="s2-head"><h3>P2 · Ej.3 (2023) — TC de mercado y PPA: Dolar City y Ciudad Pesos</h3>
+<p class="s2-ref">Ver <i>Parciales resueltos</i>, P2 · Receta A · Manual, Temas 2.1 y 2.2 · TP2 parte C, ej. 9 y 10.</p>
+
+<div class="statement s2-stmt"><div class="statement-title">Datos · 1er Parcial 2023 · Ej. 3 <span class="pts">20 ptos: +5 / −2,5 por inciso</span></div>
+<p>Dolar City (dólar) y Ciudad Pesos (peso) produjeron en el año sólo dos bienes: Pendrive (que se comercia
+internacionalmente) y Corte de cabello.</p>
+<table class="compact s2-data"><thead><tr><th>País</th><th class="num">Pendrive</th><th class="num">Corte de cabello</th><th class="num">Precio de un Pendrive</th><th class="num">Precio del corte de cabello</th></tr></thead>
+<tbody><tr><td>Dolar City</td><td class="num">30</td><td class="num">240</td><td class="num">100</td><td class="num">200</td></tr>
+<tr><td>Ciudad Pesos</td><td class="num">25</td><td class="num">200</td><td class="num">2.500</td><td class="num">2.000</td></tr></tbody></table></div></div>
+
+<h4>a) Tipo de cambio de mercado <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«El tipo de cambio de mercado en pesos por unidad de dólar es de:»</p>
+<p class="s2-opts"><span><b>i)</b> $10 por US$ 1</span><span><b>ii)</b> $25 por US$ 1</span><span><b>iii)</b> $200 por US$ 1</span><span><b>iv)</b> $100 por US$ 1</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Ordená la tabla</span>Acá las columnas van <b>cantidades primero</b> (30 y 240; 25 y 200) y <b>precios después</b> (100 y 200 dólares; 2.500 y 2.000 pesos). El transable es el <b>pendrive</b>.</li>
+<li><span class="step-title">Fórmula y cuenta</span>\(TC_m = P_T^{\$}/P_T^{US\$}\): <span class="s2-kb">2500 ÷ 100 =</span> → <span class="s2-out">25</span> $ por US$.
+<div class="calc">\[ TC_m = \frac{2.500\ \$}{100\ \text{US\$}} = 25\ \$ \text{ por US\$} \]</div></li>
+<li><span class="step-title">Control</span>US$ 100 × 25 = $ 2.500 ✓. El corte daría 2.000/200 = 10: no sirve, no se comercia.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>ii) $ 25 por US$ 1</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Usar el no transable (el corte)</td><td>2.000 ÷ 200 = 10</td><td>i)</td></tr>
+<tr><td>Dividir el precio por la cantidad (o leer el precio del pendrive en Dolar City)</td><td>2.500 ÷ 25 = 100</td><td>iv)</td></tr>
+<tr><td>Leer una celda: el precio del corte en Dolar City (o los 200 cortes de Ciudad Pesos)</td><td>200</td><td>iii)</td></tr>
+<tr><td>Dividir cantidades</td><td>30 ÷ 25 = 1,2</td><td>v) (mal)</td></tr>
+</tbody></table></div>
+
+<h4>b) PBI de Ciudad Pesos en dólares, al TC de mercado <span class="pts">5 ptos</span><span class="tag">⏱ 2 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«El PBI de Ciudad Pesos expresado en dólares, al tipo de cambio de mercado es de:»</p>
+<p class="s2-opts"><span><b>i)</b> $ 462500</span><span><b>ii)</b> US$ 51000</span><span><b>iii)</b> US$ 42500</span><span><b>iv)</b> US$ 18500</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Identificá los datos</span>Ciudad Pesos: 25 pendrives a $ 2.500 y 200 cortes a $ 2.000. \(TC_m = 25\).</li>
+<li><span class="step-title">PBI en pesos</span><span class="s2-kb">25 × 2500 + 200 × 2000 =</span> → <span class="s2-out">462500</span>.</li>
+<li><span class="step-title">Pasalo a dólares</span><span class="s2-kb">Ans ÷ 25 =</span> → <span class="s2-out">18500</span>.
+<div class="calc">\[\begin{aligned} \text{PBI}_{CP}^{\$} &= 25\cdot 2.500 + 200\cdot 2.000 = 62.500 + 400.000 = \$\,462.500 \\ \text{PBI}_{CP}^{US\$} &= \frac{462.500}{25} = \text{US\$}\,18.500 \end{aligned}\]</div></li>
+<li><span class="step-title">Control</span>Pendrives: 62.500 ÷ 25 = US$ 2.500 = 25 · 100 ✓. Cortes: 400.000 ÷ 25 = US$ 16.000, cuando a precios de Dolar City valdrían 200 · 200 = US$ 40.000: el TCm «achica» los servicios baratos.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv) US$ 18.500</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>No convertir</td><td>$ 462.500</td><td>i)</td></tr>
+<tr><td>Calcular el PBI del otro país (Dolar City)</td><td>30 · 100 + 240 · 200 = US$ 51.000</td><td>ii)</td></tr>
+<tr><td>Valuar a precios de Dolar City (eso es el PBI a PPA)</td><td>25 · 100 + 200 · 200 = US$ 42.500</td><td>iii)</td></tr>
+<tr><td>Multiplicar por el TC</td><td>462.500 × 25 = 11.562.500</td><td>v) (mal)</td></tr>
+</tbody></table></div>
+
+<h4>c) Tipo de cambio de paridad de poder adquisitivo <span class="pts">5 ptos</span><span class="tag">⏱ 3 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«El tipo de cambio de paridad de poder adquisitivo es:»</p>
+<p class="s2-opts"><span><b>i)</b> $ 3 por US$ 1</span><span><b>ii)</b> $ 25 por US$ 1</span><span><b>iii)</b> $ 10,88 por US$ 1</span><span><b>iv)</b> $ 50 por US$ 1</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Cantidades</span>Las de Ciudad Pesos: 25 pendrives y 200 cortes.</li>
+<li><span class="step-title">A precios propios (pesos)</span>$ 462.500 (inciso b).</li>
+<li><span class="step-title">A precios de Dolar City (dólares)</span><span class="s2-kb">25 × 100 + 200 × 200 =</span> → <span class="s2-out">42500</span>.</li>
+<li><span class="step-title">Cociente</span><span class="s2-kb">462500 ÷ 42500 =</span> → <span class="s2-out">10,88235</span> → 10,88 $ por US$.
+<div class="calc">\[ TC_{PPA} = \frac{25\cdot 2.500 + 200\cdot 2.000}{25\cdot 100 + 200\cdot 200} = \frac{462.500\ \$}{42.500\ \text{US\$}} = 10{,}88\ \$ \text{ por US\$} \]</div></li>
+<li><span class="step-title">Control 1: la canasta del país base</span>Dolar City: 30 pendrives y 240 cortes (8 cortes por pendrive). En dólares, US$ 51.000; en pesos, 30 · 2.500 + 240 · 2.000 = 75.000 + 480.000 = $ 555.000. Cociente: 555.000 ÷ 51.000 = 10,88 ✓ (Ciudad Pesos también produce 8 cortes por pendrive: 200/25 = 8).</li>
+<li><span class="step-title">Control 2: el rango</span>Entre 2.000/200 = 10 (corte) y 25 (pendrive): 10 ≤ 10,88 ≤ 25 ✓. Queda pegado a 10 porque los cortes pesan mucho en la canasta: 40.000 de los 42.500 dólares.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iii) $ 10,88 por US$ 1</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Confundirlo con el TC de mercado</td><td>25</td><td>ii)</td></tr>
+<tr><td>Canastas distintas: PBI de Ciudad Pesos ÷ PBI de Dolar City</td><td>462.500 ÷ 51.000 = 9,07</td><td>v) (mal)</td></tr>
+<tr><td>Dar vuelta el cociente</td><td>42.500 ÷ 462.500 = 0,092</td><td>v) (mal)</td></tr>
+<tr><td>Sumar precios sin ponderar</td><td>4.500 ÷ 300 = 15</td><td>v) (mal)</td></tr>
+<tr><td>Ningún error típico</td><td>3 y 50 no salen de ninguna cuenta del ejercicio: quedan fuera del rango [10; 25]</td><td>i) · iv)</td></tr>
+</tbody></table></div>
+
+<h4>d) Cociente de PBI per cápita Dolar City / Ciudad Pesos, a PPA <span class="pts">5 ptos</span><span class="tag">⏱ 2 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«El cociente entre el PBI per cápita de Dolar City y el de Ciudad Pesos utilizando el tipo de cambio basado en la PPA es:»</p>
+<p class="s2-opts"><span><b>i)</b> 3</span><span><b>ii)</b> 2,75</span><span><b>iii)</b> 1</span><span><b>iv)</b> 1,2</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">¿Y la población?</span>El enunciado no da población de ningún país: se comparan los PBI, que es lo mismo que suponer la misma población. (Si la dieran, dividís cada PBI por su población antes del cociente.)</li>
+<li><span class="step-title">PBI de Ciudad Pesos a PPA</span><span class="s2-kb">462500 ÷ Ans =</span> (con el 10,88235… del inciso c) → <span class="s2-out">42500</span>. Es la celda ② de la Figura §2.1: sus cantidades a precios de Dolar City.</li>
+<li><span class="step-title">Cociente</span><span class="s2-kb">51000 ÷ 42500 =</span> → <span class="s2-out">1,2</span>.
+<div class="calc">\[ \frac{\text{PBI}_{DC}}{\text{PBI}_{CP}}\bigg|_{PPA} = \frac{51.000}{462.500 \div 10{,}88235\ldots} = \frac{51.000}{42.500} = 1{,}2 \qquad \text{(a TCm: } \tfrac{51.000}{18.500} = 2{,}76) \]</div></li>
+<li><span class="step-title">Control</span>30/25 = 240/200 = 1,2: Dolar City produce 1,2 veces de cada bien ✓. Y 1,2 &lt; 2,76: la PPA achica la brecha ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iv) 1,2</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Usar el PBI a TC de mercado (la trampa del ejercicio)</td><td>51.000 ÷ 18.500 = 2,757 (la opción lo escribe 2,75)</td><td>ii)</td></tr>
+<tr><td>Creer que la PPA iguala a los países (iguala precios, no cantidades)</td><td>1</td><td>iii)</td></tr>
+<tr><td>Dar vuelta el cociente</td><td>42.500 ÷ 51.000 = 0,83</td><td>v) (mal)</td></tr>
+<tr><td>Usar el PBI a TC de mercado y redondear al entero</td><td>2,757 → 3</td><td>i)</td></tr>
+</tbody></table></div>
+
+<figure><img src="figs/out/s2_barras.svg">
+<figcaption><b>Figura §2.2.</b> PBI a TC de mercado contra PBI a PPA, construido en cuatro pasos para los dos parciales (NU:
+Norte Unidos; Arg.: Argensur; DC: Dolar City; CP: Ciudad Pesos). Paso 2: el país base ya está en dólares. Paso 3: el otro
+país a TCm (rayado) queda muy abajo. Paso 4: a PPA (lleno) el mismo PBI en pesos vale más dólares, y la brecha baja de 5,26
+a 4 veces (2022) y de 2,76 a 1,2 veces (2023). Datos de los enunciados de P1 y P2.</figcaption></figure>
+
+<!-- ============================================================ P6 2024 -->
+<div class="s2-head"><h3>P6 · Ej.2 (2024) — Tasas de crecimiento y «veces más grande»: Ucrania y EEUU</h3>
+<p class="s2-ref">Ver <i>Parciales resueltos</i>, P6 · Receta C · Manual, Temas 2.2 y 2.3 · TP2 parte A, ej. 5 y 6.</p>
+
+<div class="statement s2-stmt"><div class="statement-title">Datos · Prueba práctica 28/9/2024 (versión Barbados–Guyana) · Ej. 2 <span class="pts">20 ptos: +5 / −2,5 por inciso</span></div>
+<p>PBI per cápita de Ucrania y Estados Unidos, 2018–2023.</p>
+<table class="compact s2-data"><thead><tr><th>País</th><th>Indicador</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th></tr></thead>
+<tbody>
+<tr><td>Ucrania</td><td>PBI pc US$ PPA corrientes</td><td class="num">12.709</td><td class="num">14.381</td><td class="num">15.717</td><td class="num">18.040</td><td class="num">16.080</td><td class="num">18.007</td></tr>
+<tr><td>Ucrania</td><td>PBI pc US$ corrientes</td><td class="num">3.097</td><td class="num">3.661</td><td class="num">3.752</td><td class="num">4.828</td><td class="num">4.576</td><td class="num">5.181</td></tr>
+<tr><td>EEUU</td><td>PBI pc US$ corrientes</td><td class="num">63.201</td><td class="num">65.548</td><td class="num">64.317</td><td class="num">71.056</td><td class="num">77.247</td><td class="num">81.695</td></tr>
+</tbody></table></div></div>
+
+<h4>a) Tasa de crecimiento 2020–2021, Ucrania a TC de mercado <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«La tasa de crecimiento acumulado (en porcentaje) del PBI a precios corrientes de Ucrania a tipo de cambio (TC) de mercado entre 2020 y 2021 fue:»</p>
+<p class="s2-opts"><span><b>i)</b> 18,21 %</span><span><b>ii)</b> 2,49 %</span><span><b>iii)</b> 28,68 %</span><span><b>iv)</b> −5,22 %</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Elegí la fila y las celdas</span>«A TC de mercado, precios corrientes» = fila <b>US$ corrientes</b> de Ucrania: 3.752 (2020) y 4.828 (2021).</li>
+<li><span class="step-title">«Acumulado» entre dos años seguidos</span>Es un solo período: la tasa acumulada es la tasa de ese año, \(g = Y_{2021}/Y_{2020} - 1\).</li>
+<li><span class="step-title">Calculá</span><span class="s2-kb">4828 ÷ 3752 =</span> → <span class="s2-out">1,286780</span>; <span class="s2-kb">− 1 =</span> → <span class="s2-out">0,286780</span>; × 100 → 28,678 %.
+<div class="calc">\[ g_{2020\to 2021} = \frac{4.828}{3.752} - 1 = 1{,}28678 - 1 = 0{,}28678 = 28{,}68\,\% \]</div></li>
+<li><span class="step-title">Control</span>3.752 × 1,28678 = 4.828 ✓. A PPA hubiera dado 18.040/15.717 − 1 = 14,78 %, que no está: bien elegida la fila.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iii) 28,68 %</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Años equivocados: 2018→2019</td><td>3.661 ÷ 3.097 − 1 = 18,21 %</td><td>i)</td></tr>
+<tr><td>Años equivocados: 2019→2020</td><td>3.752 ÷ 3.661 − 1 = 2,49 %</td><td>ii)</td></tr>
+<tr><td>Años equivocados: 2021→2022</td><td>4.576 ÷ 4.828 − 1 = −5,22 %</td><td>iv)</td></tr>
+<tr><td>Fila PPA</td><td>14,78 %</td><td>v) (mal)</td></tr>
+<tr><td>Dar vuelta el cociente</td><td>3.752 ÷ 4.828 − 1 = −22,29 %</td><td>v) (mal)</td></tr>
+</tbody></table></div>
+
+<h4>b) Tasa media 2018–2023 de Ucrania y de EEUU <span class="pts">5 ptos</span><span class="tag">⏱ 3 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«La tasa media de crecimiento del PBI per cápita nominal de Ucrania entre 2018 y 2023 fue …… y ese mismo indicador para EEUU fue …… (marque la opción correcta)». Casilleros, tal como están en la hoja (se marca una columna):</p>
+<table class="compact s2-opttab"><tbody>
+<tr><th>Ucrania</th><td>8,12 %</td><td>10,84 %</td><td rowspan="2">Ninguna opción es correcta</td></tr>
+<tr><th>EEUU</th><td>4,10 %</td><td>5,27 %</td></tr>
+</tbody></table></div>
+<ol class="steps">
+<li><span class="step-title">Fila</span>«Nominal» = US$ corrientes: Ucrania 3.097 → 5.181; EEUU 63.201 → 81.695.</li>
+<li><span class="step-title">Contá los períodos</span>2018, 2019, 2020, 2021, 2022, 2023: 6 datos, pero \(n = 2023 - 2018 = 5\) períodos (las flechitas del panel 3 de la Figura §2.3).</li>
+<li><span class="step-title">Fórmula</span>\(\bar g = (Y_{2023}/Y_{2018})^{1/5} - 1\).</li>
+<li><span class="step-title">Ucrania</span><span class="s2-kb">5181 ÷ 3097 =</span> → <span class="s2-out">1,672909</span>; <span class="s2-kb">Ans ^ ( 1 ÷ 5 ) =</span> → <span class="s2-out">1,108395</span>; <span class="s2-kb">− 1 =</span> → <span class="s2-out">0,108395</span> → 10,84 %.</li>
+<li><span class="step-title">EEUU</span><span class="s2-kb">81695 ÷ 63201 =</span> → <span class="s2-out">1,292622</span>; <span class="s2-kb">Ans ^ ( 1 ÷ 5 ) =</span> → <span class="s2-out">1,052675</span>; <span class="s2-kb">− 1 =</span> → 5,27 %.
+<div class="calc">\[\begin{aligned} \bar g_{Ucr} &= \left(\frac{5.181}{3.097}\right)^{1/5} - 1 = 1{,}672909^{0{,}2} - 1 = 0{,}108395 = 10{,}84\,\% \\ \bar g_{EEUU} &= \left(\frac{81.695}{63.201}\right)^{1/5} - 1 = 1{,}292622^{0{,}2} - 1 = 0{,}052675 = 5{,}27\,\% \end{aligned}\]</div></li>
+<li><span class="step-title">Control</span>Reconstruí el último dato: <span class="s2-kb">3097 × 1,108395 ^ 5 =</span> → 5.181 ✓ y 63.201 × 1,052675<sup>5</sup> = 81.695 ✓. Rango: las tasas anuales de Ucrania van de −5,22 % a 28,68 % y las de EEUU de −1,88 % a 10,48 %: las dos medias caen adentro ✓.</li>
+<li><span class="step-title">Buscá la columna</span>10,84 % y 5,27 % están en la <b>misma</b> columna (la segunda): esa es la opción.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>2.ª columna: Ucrania 10,84 % y EEUU 5,27 %</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da (Ucrania / EEUU)</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Tomar 2022 como último año (una columna corrida) con \(n = 5\)</td><td>\((4.576/3.097)^{1/5}-1 = 8{,}12\,\%\) / \((77.247/63.201)^{1/5}-1 = 4{,}10\,\%\)</td><td>1.ª columna</td></tr>
+<tr><td>Contar datos en vez de períodos (\(n = 6\))</td><td>8,95 % / 4,37 %</td><td>Ninguna (mal)</td></tr>
+<tr><td>Promediar las cinco tasas anuales</td><td>11,48 % / 5,36 %</td><td>Ninguna (mal)</td></tr>
+<tr><td>Usar la fila PPA de Ucrania</td><td>7,22 % / —</td><td>Ninguna (mal)</td></tr>
+<tr><td>Quedarse con la tasa acumulada</td><td>67,29 % / 29,26 %</td><td>Ninguna (mal)</td></tr>
+</tbody></table></div>
+
+<h4>c) ¿Cuántas veces más grande era EEUU en 2020, a TC de mercado? <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«Considerando el TC de mercado, la economía estadounidense era ___ veces más grande que la economía ucraniana para el año 2020.»</p>
+<p class="s2-opts"><span><b>i)</b> 14</span><span><b>ii)</b> 16</span><span><b>iii)</b> 17</span><span><b>iv)</b> 20</span><span><b>v)</b> Se desconoce</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Celdas</span>Año 2020, las dos en US$ corrientes: EEUU 64.317; Ucrania 3.752.</li>
+<li><span class="step-title">Cociente</span><span class="s2-kb">64317 ÷ 3752 =</span> → <span class="s2-out">17,142</span> → 17 veces.
+<div class="calc">\[ \frac{\text{PBI pc}_{EEUU,\,2020}}{\text{PBI pc}^{\,US\$}_{Ucr,\,2020}} = \frac{64.317}{3.752} = 17{,}14 \approx 17 \]</div></li>
+<li><span class="step-title">Control</span>17 × 3.752 = 63.784 y 18 × 3.752 = 67.536: 64.317 queda mucho más cerca de 17 ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iii) 17</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Año equivocado: 2018</td><td>63.201 ÷ 3.097 = 20,4</td><td>iv)</td></tr>
+<tr><td>Año equivocado: 2023 · o leer «veces más grande» como «cuánto más» y restar 1</td><td>81.695 ÷ 5.181 = 15,8 · 17,14 − 1 = 16,1</td><td>ii)</td></tr>
+<tr><td>Año equivocado: 2021 (y truncar)</td><td>71.056 ÷ 4.828 = 14,7</td><td>i)</td></tr>
+<tr><td>Creer que faltan datos</td><td>los dos están en US$ corrientes: se dividen</td><td>v)</td></tr>
+</tbody></table></div>
+
+<h4>d) ¿Y a PPA? <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«Sin embargo, adoptando el TC PPA, se concluye que la economía estadounidense era ___ veces más grande que la economía ucraniana en ese mismo año.»</p>
+<p class="s2-opts"><span><b>i)</b> 3</span><span><b>ii)</b> 4</span><span><b>iii)</b> 6</span><span><b>iv)</b> Se desconoce</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Ucrania a PPA</span>Fila PPA, 2020: 15.717.</li>
+<li><span class="step-title">EEUU «a PPA»</span>La tabla no tiene esa fila y no hace falta: EEUU es el país base de la PPA. Un dólar compra en EEUU lo que compra un dólar en EEUU, así que su TC PPA es 1 y su PBI pc a PPA es el mismo: 64.317.</li>
+<li><span class="step-title">Cociente</span><span class="s2-kb">64317 ÷ 15717 =</span> → <span class="s2-out">4,092</span> → 4 veces.
+<div class="calc">\[ \frac{\text{PBI pc}_{EEUU,\,2020}}{\text{PBI pc}^{\,PPA}_{Ucr,\,2020}} = \frac{64.317}{15.717} = 4{,}09 \approx 4 \]</div></li>
+<li><span class="step-title">Control</span>4 &lt; 17: a PPA la brecha se achica ✓. El salto es enorme porque en Ucrania los precios son bajos: 3.752/15.717 = 0,24, su nivel de precios es un 24 % del de EEUU.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>ii) 4</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Creer que falta el PBI de EEUU a PPA</td><td>—</td><td>iv)</td></tr>
+<tr><td>Restar 1 («cuánto más grande»)</td><td>4,09 − 1 = 3,09</td><td>i)</td></tr>
+<tr><td>Comparar Ucrania consigo misma: PPA ÷ TCm</td><td>15.717 ÷ 3.752 = 4,19 → ¡4 por casualidad! (en Rusia el mismo error da 3 y falla)</td><td>ii)</td></tr>
+<tr><td>Ningún error típico</td><td>6 no sale de ninguna cuenta de esta tabla: es la respuesta del inciso c de la otra versión (Rusia a TCm, P7)</td><td>iii)</td></tr>
+</tbody></table></div>
+
+<figure><img src="figs/out/s2_ucrania.svg">
+<figcaption><b>Figura §2.3.</b> La tasa media como pendiente constante, en cuatro pasos (P6). Paso 1: se indexa cada serie
+(2018 = 100) y se usa escala logarítmica, donde crecer a tasa constante es una recta. Paso 2: las trayectorias reales, con
+subas y bajas. Paso 3: la tasa media es la recta (discontinua) que une el primer y el último dato en <b>5 saltos</b>: Ucrania
+multiplica por 1,1084 cada año y EEUU por 1,0527. Paso 4: las dos sendas terminan en el mismo punto que los datos (167,3 y
+129,3), y la flecha es la tasa del inciso a. Datos del enunciado (fila US$ corrientes).</figcaption></figure>
+
+<!-- ============================================================ P7 2024 -->
+<div class="s2-head"><h3>P7 · Ej.2 (2024) — Tasas de crecimiento y «veces más grande»: Rusia y EEUU</h3>
+<p class="s2-ref">Ver <i>Parciales resueltos</i>, P7 · Receta C · Manual, Temas 2.2 y 2.3 · TP2 parte A, ej. 5 y 6.</p>
+
+<div class="statement s2-stmt"><div class="statement-title">Datos · Prueba práctica 28/9/2024 (versión Barbados–Jamaica) · Ej. 2 <span class="pts">20 ptos: +5 / −2,5 por inciso</span></div>
+<p>PBI per cápita de Rusia y Estados Unidos, 2018–2023. Misma estructura que P6: sólo cambia el país.</p>
+<table class="compact s2-data"><thead><tr><th>País</th><th>Indicador</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th></tr></thead>
+<tbody>
+<tr><td>Rusia</td><td>PBI pc US$ PPA corrientes</td><td class="num">28.629</td><td class="num">30.964</td><td class="num">31.491</td><td class="num">38.938</td><td class="num">40.958</td><td class="num">44.104</td></tr>
+<tr><td>Rusia</td><td>PBI pc US$ corrientes</td><td class="num">11.212</td><td class="num">11.448</td><td class="num">10.108</td><td class="num">12.522</td><td class="num">15.445</td><td class="num">13.817</td></tr>
+<tr><td>EEUU</td><td>PBI pc US$ corrientes</td><td class="num">63.201</td><td class="num">65.548</td><td class="num">64.317</td><td class="num">71.056</td><td class="num">77.247</td><td class="num">81.695</td></tr>
+</tbody></table></div></div>
+
+<h4>a) Tasa de crecimiento 2020–2021, Rusia a TC de mercado <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«La tasa de crecimiento acumulado (en porcentaje) del PBI a precios corrientes de Rusia a tipo de cambio (TC) de mercado entre 2020 y 2021 fue:»</p>
+<p class="s2-opts"><span><b>i)</b> 2,10 %</span><span><b>ii)</b> 23,88 %</span><span><b>iii)</b> −11,71 %</span><span><b>iv)</b> 23,34 %</span><span><b>v)</b> Ninguna</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Fila y celdas</span>Rusia, US$ corrientes: 10.108 (2020) y 12.522 (2021). Un solo período: acumulada = tasa del año.</li>
+<li><span class="step-title">Calculá</span><span class="s2-kb">12522 ÷ 10108 − 1 =</span> → <span class="s2-out">0,238821</span> → 23,88 %.
+<div class="calc">\[ g_{2020\to 2021} = \frac{12.522}{10.108} - 1 = 0{,}23882 = 23{,}88\,\% \]</div></li>
+<li><span class="step-title">Control</span>10.108 × 1,23882 = 12.522 ✓. Cuidado: 23,34 % (la tasa 2021→2022) está a medio punto, y la fila PPA daría 23,65 %. Antes de marcar, mirá que tu cuenta use 2020 abajo y 2021 arriba.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>ii) 23,88 %</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Años equivocados: 2018→2019</td><td>11.448 ÷ 11.212 − 1 = 2,10 %</td><td>i)</td></tr>
+<tr><td>Años equivocados: 2019→2020</td><td>10.108 ÷ 11.448 − 1 = −11,71 %</td><td>iii)</td></tr>
+<tr><td>Años equivocados: 2021→2022</td><td>15.445 ÷ 12.522 − 1 = 23,34 %</td><td>iv)</td></tr>
+<tr><td>Fila PPA</td><td>38.938 ÷ 31.491 − 1 = 23,65 %</td><td>v) (mal)</td></tr>
+</tbody></table></div>
+
+<h4>b) Tasa media 2018–2023 de Rusia y de EEUU <span class="pts">5 ptos</span><span class="tag">⏱ 3 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«La tasa media de crecimiento del PBI per cápita nominal de Rusia entre 2018 y 2023 fue …… y ese mismo indicador para EEUU fue …… (marque la opción correcta)». Casilleros, tal como están en la hoja (se marca una columna):</p>
+<table class="compact s2-opttab"><tbody>
+<tr><th>Rusia</th><td>4,27 %</td><td>5,91 %</td><td rowspan="2">Ninguna opción es correcta</td></tr>
+<tr><th>EEUU</th><td>6,62 %</td><td>5,27 %</td></tr>
+</tbody></table></div>
+<ol class="steps">
+<li><span class="step-title">Fila y períodos</span>Nominal = US$ corrientes. Rusia 11.212 → 13.817; EEUU 63.201 → 81.695. \(n = 5\).</li>
+<li><span class="step-title">Rusia</span><span class="s2-kb">13817 ÷ 11212 =</span> → <span class="s2-out">1,232340</span>; <span class="s2-kb">Ans ^ ( 1 ÷ 5 ) =</span> → <span class="s2-out">1,042668</span>; <span class="s2-kb">− 1 =</span> → 4,27 %.</li>
+<li><span class="step-title">EEUU</span>La misma cuenta que en la versión de Ucrania (P6): <span class="s2-kb">81695 ÷ 63201 =</span> → <span class="s2-out">1,292622</span>; <span class="s2-kb">Ans ^ ( 1 ÷ 5 ) =</span> → <span class="s2-out">1,052675</span>; <span class="s2-kb">− 1 =</span> → 5,27 %.
+<div class="calc">\[\begin{aligned} \bar g_{Rus} &= \left(\frac{13.817}{11.212}\right)^{1/5} - 1 = 1{,}232340^{0{,}2} - 1 = 0{,}042668 = 4{,}27\,\% \\ \bar g_{EEUU} &= \left(\frac{81.695}{63.201}\right)^{1/5} - 1 = 0{,}052675 = 5{,}27\,\% \end{aligned}\]</div></li>
+<li><span class="step-title">Control</span><span class="s2-kb">11212 × 1,042668 ^ 5 =</span> → 13.817 ✓ y 63.201 × 1,052675<sup>5</sup> = 81.695 ✓. Las tasas anuales de Rusia van de −11,71 % a 23,88 %: 4,27 % cae adentro ✓.</li>
+<li><span class="step-title">Cruzá con la tabla de opciones</span>Cada opción es una <b>columna entera</b> (un par Rusia–EEUU). Marcá dónde está cada valor correcto:
+<table class="compact s2-opttab"><tbody>
+<tr><th>Rusia</th><td class="ok">4,27 % ✓</td><td class="bad">5,91 % ✗</td><td rowspan="2" class="ok">Ninguna opción es correcta ✓</td></tr>
+<tr><th>EEUU</th><td class="bad">6,62 % ✗</td><td class="ok">5,27 % ✓</td></tr>
+</tbody></table>
+La 1.ª columna tiene Rusia bien y EEUU mal; la 2.ª, EEUU bien y Rusia mal. Ninguna columna tiene los dos bien.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>Ninguna opción es correcta (los dos valores correctos están en columnas distintas)</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Calcular sólo Rusia y buscar su número</td><td>4,27 %</td><td>1.ª columna</td></tr>
+<tr><td>Calcular sólo EEUU (o acordarte del 5,27 % de la otra versión)</td><td>5,27 %</td><td>2.ª columna</td></tr>
+<tr><td>Rusia bien, pero EEUU con \(n = 4\)</td><td>4,27 % / \((81.695/63.201)^{1/4}-1 = 6{,}63\,\%\), casi el 6,62 % de la hoja</td><td>1.ª columna</td></tr>
+<tr><td>Contar datos (\(n = 6\))</td><td>3,54 % / 4,37 %: no está en ninguna columna</td><td>Ninguna (de casualidad)</td></tr>
+<tr><td>Cortar las dos series en 2022 (el error de la 1.ª columna de P6)</td><td>6,62 % / 4,10 %: Rusia no coincide con su fila</td><td>Ninguna (de casualidad)</td></tr>
+</tbody></table>
+<p style="margin:0.4em 0 0">De dónde salen los números de la hoja: el <b>6,62 %</b> es exactamente la tasa media de <b>Rusia</b> cortando en 2022, \((15.445/11.212)^{1/5}-1 = 6{,}62\,\%\), pero escrito en la fila de EEUU. El <b>5,91 %</b> no sale de ninguna tasa de la tabla: el único 5,91 es 81.695 ÷ 13.817, el cociente EEUU/Rusia de 2023 (un «veces», no una tasa).</p></div>
+
+<h4>c) ¿Cuántas veces más grande era EEUU en 2020, a TC de mercado? <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«Considerando el TC de mercado, la economía estadounidense era ___ veces más grande que la economía rusa para el año 2020.»</p>
+<p class="s2-opts"><span><b>i)</b> 4</span><span><b>ii)</b> 5</span><span><b>iii)</b> 6</span><span><b>iv)</b> 7</span><span><b>v)</b> Se desconoce</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Celdas</span>2020, US$ corrientes: EEUU 64.317; Rusia 10.108.</li>
+<li><span class="step-title">Cociente</span><span class="s2-kb">64317 ÷ 10108 =</span> → <span class="s2-out">6,363</span> → 6 veces.
+<div class="calc">\[ \frac{64.317}{10.108} = 6{,}36 \approx 6 \]</div></li>
+<li><span class="step-title">Control</span>6 × 10.108 = 60.648 (le faltan 3.669) y 7 × 10.108 = 70.756 (se pasa por 6.439): más cerca de 6 ✓.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>iii) 6</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Año equivocado (2022) · o restar 1</td><td>77.247 ÷ 15.445 = 5,00 · 6,36 − 1 = 5,36</td><td>ii)</td></tr>
+<tr><td>Redondear siempre para arriba</td><td>6,36 → 7</td><td>iv)</td></tr>
+<tr><td>Usar la fila PPA (es el inciso d)</td><td>2,04</td><td>no está</td></tr>
+<tr><td>Ningún error típico</td><td>4 no sale de ninguna cuenta de esta tabla: es la respuesta del inciso d de la otra versión (Ucrania a PPA, P6)</td><td>i)</td></tr>
+</tbody></table></div>
+
+<h4>d) ¿Y a PPA? <span class="pts">5 ptos</span><span class="tag">⏱ 1 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«Sin embargo, adoptando el TC PPA, se concluye que la economía estadounidense era ___ veces más grande que la economía rusa en ese mismo año.»</p>
+<p class="s2-opts"><span><b>i)</b> 2</span><span><b>ii)</b> 3</span><span><b>iii)</b> 4</span><span><b>iv)</b> Se desconoce</span></p></div>
+<ol class="steps">
+<li><span class="step-title">Celdas</span>Rusia a PPA 2020: 31.491. EEUU: 64.317 (país base, TC PPA = 1).</li>
+<li><span class="step-title">Cociente</span><span class="s2-kb">64317 ÷ 31491 =</span> → <span class="s2-out">2,042</span> → 2 veces.
+<div class="calc">\[ \frac{64.317}{31.491} = 2{,}04 \approx 2 \]</div></li>
+<li><span class="step-title">Control</span>2 &lt; 6 ✓. La brecha se achica menos que con Ucrania (de 6,4 a 2,0, contra 17,1 a 4,1): en Rusia el nivel de precios es más alto (10.108/31.491 = 0,32 del de EEUU).</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>i) 2</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da</th><th>Marcás</th></tr></thead><tbody>
+<tr><td>Comparar Rusia consigo misma: PPA ÷ TCm</td><td>31.491 ÷ 10.108 = 3,12</td><td>ii)</td></tr>
+<tr><td>Creer que falta el PBI de EEUU a PPA</td><td>—</td><td>iv)</td></tr>
+<tr><td>Ningún error típico</td><td>4 no sale de ninguna cuenta de esta tabla: es la respuesta de este mismo inciso en la otra versión (Ucrania, P6)</td><td>iii)</td></tr>
+</tbody></table></div>
+
+<figure class="w80"><img src="figs/out/s2_rusia.svg">
+<figcaption><b>Figura §2.4.</b> Rusia y EEUU con 2018 = 100 (escala logarítmica), trayectoria real (llena) y senda a tasa media
+constante (discontinua). Mirá cómo la serie de Rusia a TCm cae en 2020, salta en 2021 (inciso a) y vuelve a caer en 2023,
+pero la recta discontinua sólo mira los extremos: termina en 123,2 (4,27 % anual), por debajo de EEUU (129,3; 5,27 %). Datos
+del enunciado (fila US$ corrientes).</figcaption></figure>
+
+<!-- ============================================================ P8 2025 -->
+<div class="s2-head"><h3>P8 · Ej.2 (2025) — Índice Big Mac (julio de 2024)</h3>
+<p class="s2-ref">Ver <i>Parciales resueltos</i>, P8 · Receta B · Manual, Tema 2.2 · TP2 parte B, ej. 7 y 8.</p>
+
+<div class="statement s2-stmt"><div class="statement-title">Datos · 1er Parcial 2025, parte práctica · Ej. 2 <span class="pts">15 ptos: tabla 10 · interpretación 5</span></div>
+<p>Big Mac (BM) en julio de 2024. Una BM costaba 5,69 dólares en EEUU. «Complete la tabla»:</p>
+<table class="compact s2-data"><thead><tr><th>País</th><th class="num">Precio de BM en moneda local</th><th class="num">TC moneda local/USD</th><th class="num">Precio de una BM en USD</th><th class="num">Tipo de cambio PPA = ……</th><th class="num">Infra/sobre valoración frente al dólar = ……</th></tr></thead>
+<tbody>
+<tr><td>Emiratos Árabes</td><td class="num">18</td><td class="num">3,67</td><td></td><td></td><td></td></tr>
+<tr><td>Australia</td><td class="num">7,75</td><td class="num">1,53</td><td></td><td></td><td></td></tr>
+<tr><td>Azerbaiyán</td><td class="num">6,15</td><td class="num">1,70</td><td></td><td></td><td></td></tr>
+<tr><td>Bahrein</td><td class="num">1,7</td><td class="num">0,38</td><td></td><td></td><td></td></tr>
+</tbody></table></div></div>
+
+<h4>Completar la tabla <span class="pts">10 ptos</span><span class="tag">⏱ 6 min</span></h4>
+<ol class="steps">
+<li><span class="step-title">Identificá los datos</span>Por fila: precio local \(P\) y \(TC_m\) (moneda local por dólar). Para todas: \(P_{EEUU} = 5{,}69\). Guardalo en memoria: <span class="s2-kb">5,69 STO A</span> (en Casio, <span class="s2-kb">SHIFT RCL A</span>); después lo llamás con <span class="s2-kb">ALPHA A</span>, que abajo se escribe «A».</li>
+<li><span class="step-title">Completá los encabezados</span>Los «= ……» piden la fórmula: <b>Tipo de cambio PPA = \(P/P_{EEUU}\)</b> e <b>Infra/sobre valoración = \(TC_{PPA}/TC_m - 1\)</b>. Escribilas: también suman.</li>
+<li><span class="step-title">Columna «precio en USD» = \(P \div TC_m\)</span>
+<span class="s2-kb">18 ÷ 3,67 =</span> → <span class="s2-out">4,9046</span> → 4,90 · <span class="s2-kb">7,75 ÷ 1,53 =</span> → <span class="s2-out">5,0654</span> → 5,07 · <span class="s2-kb">6,15 ÷ 1,70 =</span> → <span class="s2-out">3,6176</span> → 3,62 · <span class="s2-kb">1,7 ÷ 0,38 =</span> → <span class="s2-out">4,4737</span> → 4,47.</li>
+<li><span class="step-title">Columna «TC PPA» = \(P \div 5{,}69\)</span>
+<span class="s2-kb">18 ÷ A =</span> → <span class="s2-out">3,1634</span> → 3,163 · <span class="s2-kb">7,75 ÷ A =</span> → <span class="s2-out">1,3620</span> → 1,362 · <span class="s2-kb">6,15 ÷ A =</span> → <span class="s2-out">1,0808</span> → 1,081 · <span class="s2-kb">1,7 ÷ A =</span> → <span class="s2-out">0,29877</span> → 0,299.</li>
+<li><span class="step-title">Columna «infra/sobre» = \(TC_{PPA} \div TC_m - 1\)</span>Justo después de cada TC PPA, con <span class="s2-kb">Ans</span>: <span class="s2-kb">Ans ÷ 3,67 − 1 =</span> → <span class="s2-out">−0,1380</span> → −13,8 %. Igual en las otras filas:
+<div class="calc">\[\begin{aligned} \text{Emiratos: } &\tfrac{3{,}1634}{3{,}67} - 1 = -0{,}1380 = -13{,}8\,\% &\quad \text{Australia: } &\tfrac{1{,}3620}{1{,}53} - 1 = -0{,}1098 = -11{,}0\,\% \\ \text{Azerbaiyán: } &\tfrac{1{,}0808}{1{,}70} - 1 = -0{,}3642 = -36{,}4\,\% &\quad \text{Bahrein: } &\tfrac{0{,}29877}{0{,}38} - 1 = -0{,}2138 = -21{,}4\,\% \end{aligned}\]</div></li>
+<li><span class="step-title">Control por el otro camino</span>\(\text{US\$}/5{,}69 - 1\): 4,9046/5,69 − 1 = −13,8 % ✓; 5,0654/5,69 − 1 = −11,0 % ✓; 3,6176/5,69 − 1 = −36,4 % ✓; 4,4737/5,69 − 1 = −21,4 % ✓. Y el signo: los cuatro precios en dólares son menores que 5,69, así que los cuatro tienen que dar negativo ✓.</li>
+</ol>
+<table class="compact s2-data">
+<caption>La tabla completa</caption>
+<thead><tr><th>País</th><th class="num">\(P\)</th><th class="num">\(TC_m\)</th><th class="num">Precio en USD = \(P/TC_m\)</th><th class="num">TC PPA = \(P/5{,}69\)</th><th class="num">\(TC_{PPA}/TC_m - 1\)</th></tr></thead>
+<tbody>
+<tr><td>Emiratos Árabes</td><td class="num">18</td><td class="num">3,67</td><td class="num">4,90</td><td class="num">3,163</td><td class="num">−13,8 % (infra)</td></tr>
+<tr><td>Australia</td><td class="num">7,75</td><td class="num">1,53</td><td class="num">5,07</td><td class="num">1,362</td><td class="num">−11,0 % (infra)</td></tr>
+<tr><td>Azerbaiyán</td><td class="num">6,15</td><td class="num">1,70</td><td class="num">3,62</td><td class="num">1,081</td><td class="num">−36,4 % (infra)</td></tr>
+<tr><td>Bahrein</td><td class="num">1,7</td><td class="num">0,38</td><td class="num">4,47</td><td class="num">0,299</td><td class="num">−21,4 % (infra)</td></tr>
+</tbody></table>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>Precios en USD 4,90 · 5,07 · 3,62 · 4,47; TC PPA 3,163 · 1,362 · 1,081 · 0,299; infravaloración −13,8 % · −11,0 % · −36,4 % · −21,4 %. Las cuatro monedas están infravaluadas frente al dólar.</div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá (respuesta abierta: esto es lo que te daría)</div>
+<table class="compact"><thead><tr><th>Error</th><th>Lo que te da (Emiratos)</th><th>Consecuencia</th></tr></thead><tbody>
+<tr><td>Multiplicar por el TC en vez de dividir</td><td>18 × 3,67 = 66,06 dólares</td><td>absurdo: mal toda la fila</td></tr>
+<tr><td>TC PPA dado vuelta (\(5{,}69/P\))</td><td>0,316 (dólares por dirham: otra unidad que el TCm)</td><td>mal TC PPA y mal el %</td></tr>
+<tr><td>Fórmula del % al revés: \(TC_m/TC_{PPA} - 1\)</td><td>+16,0 %</td><td>signo cambiado: «sobrevaluada»</td></tr>
+<tr><td>Restar en dólares en lugar de dividir</td><td>4,90 − 5,69 = −0,79 US$</td><td>no es un porcentaje</td></tr>
+<tr><td>Redondear el TC PPA antes de dividir (3,16)</td><td>3,16/3,67 − 1 = −13,9 %</td><td>cambia el decimal</td></tr>
+</tbody></table></div>
+
+<figure><img src="figs/out/s2_bigmac.svg">
+<figcaption><b>Figura §2.5.</b> El índice Big Mac de julio de 2024, construido en cuatro pasos. Paso 1: el eje en % con el 0 en
+el medio (se cumple la PPA): a la izquierda, monedas infravaluadas; a la derecha, sobrevaluadas. Paso 2: el precio en dólares
+de cada país contra los 5,69 de EEUU: los cuatro quedan a la izquierda. Paso 3: esa distancia pasada a % (÷ 5,69). Paso 4:
+valores y las dos frases del inciso a. Azerbaiyán es la moneda más infravaluada (−36,4 %). Datos del enunciado de P8.</figcaption></figure>
+
+<h4>a) Interpretar y tachar <span class="pts">5 ptos</span><span class="tag">⏱ 2 min</span></h4>
+<div class="statement s2-stmt"><div class="statement-title">Lo que piden</div>
+<p>«Luego interprete, y tache lo que no corresponde: En Australia la BM es más <i>cara / barata</i> que en EEUU. Mientras que, en Bahrein se observa una <i>infravaloración / sobrevaloración</i> de su moneda frente al dólar.»</p></div>
+<ol class="steps">
+<li><span class="step-title">Frase 1: compará precios en la misma moneda</span>Australia: US$ 5,07; EEUU: US$ 5,69. Como 5,07 &lt; 5,69, la BM es más <b>barata</b> en Australia. (Trampa: 7,75 &gt; 5,69 compara dólares australianos con dólares de EEUU.)</li>
+<li><span class="step-title">Frase 2: mirá el signo de Bahrein</span>−21,4 %: el TC PPA (0,299) es menor que el TCm (0,38). Según la BM, un dólar debería valer 0,299 dinares (con ese TC la BM cuesta lo mismo en los dos países); el mercado te da 0,38, más dinares de los que «corresponden». El dinar vale menos en el mercado que por su poder de compra → <b>infravaloración</b>.</li>
+<li><span class="step-title">Control de coherencia</span>Negativo ⇔ precio en US$ menor que 5,69 ⇔ barata ⇔ infravaluada. Bahrein: 4,47 &lt; 5,69 ✓; Australia: −11,0 % ✓. Las dos frases salen de la misma tabla.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta · lo que queda sin tachar</span>
+<p style="margin:0.2em 0 0">«En Australia la BM es más <span class="s2-strike">cara</span> / <span class="s2-keep">barata</span> que en EEUU. Mientras que, en Bahrein se observa una <span class="s2-keep">infravaloración</span> / <span class="s2-strike">sobrevaloración</span> de su moneda frente al dólar.»</p></div></div>
+<div class="box warn s2-err"><div class="box-title">Si te equivocás acá</div>
+<table class="compact"><thead><tr><th>Error</th><th>Qué dejás sin tachar</th><th>Resultado</th></tr></thead><tbody>
+<tr><td>Comparar 7,75 con 5,69 (monedas distintas)</td><td>«cara»</td><td>mal</td></tr>
+<tr><td>Usar el % al revés (\(TC_m/TC_{PPA} - 1 = +27{,}2\,\%\) en Bahrein)</td><td>«sobrevaloración»</td><td>mal</td></tr>
+<tr><td>Pensar «precio local bajo (1,7) = moneda sobrevaluada»</td><td>«sobrevaloración»</td><td>mal</td></tr>
+</tbody></table></div>
+
+<!-- ============================================================ CIERRE -->
+<h3>Grilla de respuestas de esta sección</h3>
+<table class="compact">
+<thead><tr><th>Inciso</th><th>Respuesta</th><th>La cuenta en una línea</th></tr></thead>
+<tbody>
+<tr><td>P1 · Ej.2 a</td><td>i) $ 40</td><td>12.000 ÷ 300 (sólo el transable)</td></tr>
+<tr><td>P1 · Ej.2 b</td><td>iii) US$ 17.500</td><td>(50 · 12.000 + 800 · 125) ÷ 40 = 700.000 ÷ 40</td></tr>
+<tr><td>P1 · Ej.2 c</td><td>iii) $ 30,43</td><td>700.000 ÷ (50 · 300 + 800 · 10) = 700.000 ÷ 23.000</td></tr>
+<tr><td>P1 · complemento</td><td>US$ 23.000; 5,26 y 4 veces</td><td>92.000 ÷ 17.500 y 92.000 ÷ 23.000</td></tr>
+<tr><td>P2 · Ej.3 a</td><td>ii) $ 25</td><td>2.500 ÷ 100</td></tr>
+<tr><td>P2 · Ej.3 b</td><td>iv) US$ 18.500</td><td>(25 · 2.500 + 200 · 2.000) ÷ 25 = 462.500 ÷ 25</td></tr>
+<tr><td>P2 · Ej.3 c</td><td>iii) $ 10,88</td><td>462.500 ÷ (25 · 100 + 200 · 200) = 462.500 ÷ 42.500</td></tr>
+<tr><td>P2 · Ej.3 d</td><td>iv) 1,2</td><td>51.000 ÷ 42.500 (= 30/25)</td></tr>
+<tr><td>P6 · Ej.2 a</td><td>28,68 %</td><td>4.828 ÷ 3.752 − 1</td></tr>
+<tr><td>P6 · Ej.2 b</td><td>10,84 % y 5,27 %</td><td>(5.181/3.097)<sup>1/5</sup> − 1 y (81.695/63.201)<sup>1/5</sup> − 1</td></tr>
+<tr><td>P6 · Ej.2 c · d</td><td>17 · 4</td><td>64.317 ÷ 3.752 = 17,1 · 64.317 ÷ 15.717 = 4,1</td></tr>
+<tr><td>P7 · Ej.2 a</td><td>23,88 %</td><td>12.522 ÷ 10.108 − 1</td></tr>
+<tr><td>P7 · Ej.2 b</td><td>Ninguna</td><td>Rusia 4,27 % y EEUU 5,27 % están en columnas distintas</td></tr>
+<tr><td>P7 · Ej.2 c · d</td><td>6 · 2</td><td>64.317 ÷ 10.108 = 6,4 · 64.317 ÷ 31.491 = 2,0</td></tr>
+<tr><td>P8 · Ej.2</td><td>tabla + «barata» / «infravaloración»</td><td>US$ = P/TCm; TC PPA = P/5,69; % = TC PPA/TCm − 1</td></tr>
+</tbody></table>
+
+<div class="check"><div class="check-title">Antes de entregar un ejercicio de §2, cinco preguntas</div><ol>
+<li>¿Saqué el TC de mercado <b>sólo</b> del transable?</li>
+<li>¿Divido el PBI en pesos por el TC, y las unidades cierran (pesos ÷ pesos por dólar = dólares)?</li>
+<li>¿Mi TC PPA cae entre el cociente de precios del no transable y el TC de mercado?</li>
+<li>¿Usé la fila (TCm o PPA) y el año que pide el inciso? ¿Conté períodos y no datos (\(n = 5\) de 2018 a 2023)?</li>
+<li>En el Big Mac, ¿el signo coincide con «precio en US$ menor o mayor que en EEUU»?</li>
+</ol></div>
+
+</section>

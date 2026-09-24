@@ -1,0 +1,668 @@
+<style>
+/* ---- estilos propios del Tema 3 (3.1 a 3.5) — prefijo t3a- ---- */
+.t3a-roadmap .node { font-size: 7.9pt; padding: 0.4em 0.35em; }
+.t3a-roadmap .node b { font-size: 8.4pt; }
+.t3a-roadmap .node .t3a-sec { display: block; font: 700 7pt "Inter"; color: var(--ink-3); letter-spacing: 0.05em; margin-bottom: 0.1em; }
+.t3a-roadmap .node.t3a-later { background: #fff; border-style: dashed; }
+.t3a-kw { display: inline-block; font: 700 7.4pt "Inter"; color: #fff; background: var(--accent); border-radius: 4px; padding: 0.05em 0.45em; margin-right: 0.35em; vertical-align: 0.08em; }
+.t3a-q { font-weight: 600; }
+.t3a-ref { font-size: 8.2pt; color: var(--ink-2); margin-top: 0.3em; }
+.t3a-hechos { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; margin: 0.7em 0 0.9em; }
+.t3a-hechos .card p { font-size: 8.7pt; margin-bottom: 0.25em; }
+.t3a-hechos .card-title { display: flex; gap: 0.5em; align-items: baseline; }
+.t3a-hechos .t3a-n { flex: none; font: 800 15pt/1 "Inter"; color: var(--accent); }
+.t3a-chips { display: flex; flex-wrap: wrap; gap: 0.35em; margin: 0.5em 0 0.8em; }
+.t3a-chips span { font: 600 8.2pt "Inter"; border: 1px solid var(--rule); background: #fff; border-radius: 99px; padding: 0.2em 0.75em; color: var(--ink-2); }
+.t3a-chips span.on { border-color: var(--accent); background: var(--accent-bg); color: var(--accent-ink); }
+.t3a-chips span.on::before { content: "● "; color: var(--accent); }
+.t3a-small-cards .card p { font-size: 8.6pt; margin-bottom: 0.2em; }
+.t3a-small-cards .card .katex { font-size: 1em; }
+.t3a-glos td:first-child { white-space: nowrap; font-weight: 600; }
+.t3a-matrix td:first-child { font-weight: 650; width: 18%; }
+.t3a-matrix td { font-size: 8.4pt; }
+.t3a-fig2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; align-items: end; }
+.t3a-fig2 figure { margin: 0.4em 0 0.6em; }
+.t3a-fig2 figcaption { padding: 0; }
+figure.t3a-w75 img { width: 75%; }
+.t3a-cheat td:first-child { font-weight: 600; width: 30%; }
+.t3a-cheat td { vertical-align: middle; }
+.box .mcq { margin: 0.35em 0 0.5em; }
+.box .mcq > li { padding: 0.18em 0.5em; font-size: 8.8pt; }
+.t3a-signo { font-weight: 700; }
+.t3a-up { color: var(--green-ink); }
+.t3a-down { color: var(--red-ink); }
+.t3a-zero { color: var(--ink-2); }
+</style>
+
+<section class="tema-3">
+
+<div class="chapter-head">
+  <div class="kicker">Tema 3 · Teoría básica del crecimiento</div>
+  <h2 data-toc-label="Tema 3 — Teoría básica del crecimiento">Por qué unos países crecen y otros no: de los hechos a los modelos</h2>
+  <p>El Tema 1 dijo qué es el desarrollo y el Tema 2 cómo se mide. El Tema 3 pregunta <em>de dónde sale el crecimiento del producto per cápita</em>. Primero los hechos que hay que explicar; después los modelos: Harrod-Domar, Solow-Swan (sin y con tecnología) y Romer. Esta primera parte cubre del 3.1 al 3.5.</p>
+  <p class="goals" style="margin-top:0.5em"><b>Qué vas a poder hacer al terminar:</b></p>
+  <ul class="goals" style="margin-top:0.1em">
+    <li>Enumerar los cuatro hechos del crecimiento y dar un ejemplo de cada uno.</li>
+    <li>Usar la ecuación de Harrod-Domar, explicar el “filo de la navaja” y encontrar el umbral de \(v\) que anula el crecimiento.</li>
+    <li>Derivar la ecuación fundamental de Solow-Swan y explicar cada término.</li>
+    <li>Calcular \(k^*\), \(y^*\), \(c^*\), escribir las <b>funciones</b> (FA, FD) y las <b>curvas</b> (CA, CD) y graficarlas.</li>
+    <li>Hacer estática comparativa (\(s\), \(n\), \(\delta\), \(A\)) y distinguir efecto nivel de efecto crecimiento.</li>
+    <li>Encontrar la regla de oro y decir si una economía sub o sobreacumula capital.</li>
+  </ul>
+</div>
+
+<div class="box summary"><div class="box-title">En 30 segundos (3.1 a 3.5)</div>
+<ul>
+  <li><b>Cuatro hechos</b>: brechas enormes de ingreso entre países; tasas de crecimiento muy distintas; tasas que cambian en el tiempo; y la <b>posición relativa no es inmutable</b> (Corea subió, Argentina se quedó).</li>
+  <li><b>Harrod-Domar</b>: \(g_Y = s/v - \delta\) y, per cápita, \(g_y = s/v - \delta - n\). Relación capital-producto <b>fija</b> ⇒ la tasa garantizada y la natural no tienen por qué coincidir: crecimiento <b>en el filo de la navaja</b>.</li>
+  <li><b>Solow-Swan</b>: función neoclásica (RCE, productividad marginal decreciente, Inada). Ecuación fundamental: \(\dot k = s f(k) - (n+\delta)k\).</li>
+  <li><b>Estado estacionario</b>: \(s f(k^*) = (n+\delta)k^*\). Con \(y = Ak^{\alpha}\): \(k^* = \left(\frac{sA}{n+\delta}\right)^{1/(1-\alpha)}\). Ahí \(k\), \(y\), \(c\) <b>no crecen</b> y \(K\), \(Y\), \(C\) crecen a \(n\).</li>
+  <li><b>Funciones</b> (niveles): FA \(= sAk^{\alpha}\), FD \(= (n+\delta)k\). <b>Curvas</b> (tasas): CA \(= sA/k^{1-\alpha}\), CD \(= n+\delta\). La distancia vertical entre CA y CD es \(\gamma_k\).</li>
+  <li>\(s\), \(n\), \(\delta\) y \(A\) mueven el <b>nivel</b> de \(k^*\) e \(y^*\), <b>nunca</b> la tasa de largo plazo: efecto nivel, no efecto crecimiento. Sin progreso tecnológico no hay crecimiento per cápita sostenido.</li>
+  <li><b>Regla de oro</b>: \(f'(k_{oro}) = n+\delta\); con Cobb-Douglas, \(s_{oro} = \alpha\). Si \(s &gt; \alpha\) hay sobreacumulación (ineficiencia dinámica).</li>
+</ul></div>
+
+<div class="flow t3a-roadmap">
+  <div class="node"><span class="t3a-sec">3.1</span><b>Los hechos</b>qué hay que explicar</div><div class="arrow">→</div>
+  <div class="node"><span class="t3a-sec">3.2</span><b>Harrod-Domar</b>ahorro → capital → producto</div><div class="arrow">→</div>
+  <div class="node"><span class="t3a-sec">3.3</span><b>Solow-Swan</b>rendimientos decrecientes</div><div class="arrow">→</div>
+  <div class="node"><span class="t3a-sec">3.4</span><b>Estado estacionario</b>y estática comparativa</div><div class="arrow">→</div>
+  <div class="node"><span class="t3a-sec">3.5</span><b>Regla de oro</b>el ahorro que maximiza \(c\)</div><div class="arrow">→</div>
+  <div class="node t3a-later"><span class="t3a-sec">3.6 – 3.8</span><b>Tecnología</b>convergencia, Romer</div>
+</div>
+
+<div class="avoid-break">
+<h4>Misma cosa, distintos nombres: la notación del tema</h4>
+<table class="compact t3a-glos">
+<thead><tr><th>Símbolo</th><th>Qué es</th><th>Cómo aparece en otros lados</th></tr></thead>
+<tbody>
+<tr><td>\(\theta = K/Y\)</td><td>Relación capital-producto (Harrod-Domar)</td><td>\(v\) en el TP4 y en los parciales</td></tr>
+<tr><td>\(k = K/L\), \(y = Y/L\)</td><td>Capital y producto <b>per cápita</b> (por trabajador)</td><td>“capital por trabajador”, “intensidad de capital”</td></tr>
+<tr><td>\(g_k = \dot k/k\)</td><td>Tasa de crecimiento de \(k\)</td><td>\(\gamma_k\) en Sala-i-Martín y en los gráficos de los parciales</td></tr>
+<tr><td>\(\alpha\)</td><td>Exponente del capital en \(Y = AK^{\alpha}L^{1-\alpha}\)</td><td>participación del capital en el producto; elasticidad producto-capital; “coeficiente técnico del capital” (parcial 2023)</td></tr>
+<tr><td>FA, FD</td><td><b>Funciones</b> de ahorro y depreciación, en niveles</td><td>\(sAk^{\alpha}\) y \((n+\delta)k\)</td></tr>
+<tr><td>CA, CD</td><td><b>Curvas</b> de ahorro y depreciación, en tasas</td><td>\(sA/k^{1-\alpha}\) y \(n+\delta\)</td></tr>
+<tr><td>\(g_A\)</td><td>Tasa de progreso tecnológico (3.6)</td><td>\(x\) en el TP4, \(g\) en los parciales</td></tr>
+</tbody></table>
+</div>
+
+<!-- ======================================================================= 3.1 -->
+<h2><span class="num">3.1</span>Los hechos del crecimiento económico</h2>
+
+<p>Antes de los modelos van los hechos: son <b>lo que los modelos tienen que explicar</b>, y la cátedra los enumera en cuatro (Jones, cap. 1). Todos los números son del PBI per cápita.</p>
+
+<div class="t3a-hechos">
+  <div class="card blue"><div class="card-title"><span class="t3a-n">1</span>Hay una variación enorme en el ingreso per cápita entre las economías</div>
+  <p>Estados Unidos tenía en 2024 un PBI per cápita de <b>66.683</b> dólares constantes de 2015; Etiopía, <b>916</b>; Madagascar, <b>453</b>. Un factor de <b>más de cien</b> entre los extremos (66.683/453 ≈ 147).</p></div>
+  <div class="card orange"><div class="card-title"><span class="t3a-n">2</span>Las tasas de crecimiento varían en forma importante entre países</div>
+  <p>Entre 1981 y 2024, China creció al <b>8,1&nbsp;%</b> anual y México al <b>0,3&nbsp;%</b>. Los países de ingreso bajo, en conjunto, crecieron <b>−0,3&nbsp;%</b>: retrocedieron.</p></div>
+  <div class="card aqua"><div class="card-title"><span class="t3a-n">3</span>Las tasas de crecimiento no son necesariamente constantes en el tiempo</div>
+  <p>El mismo país crece distinto en distintas épocas. Corea: <b>7,0&nbsp;%</b> anual en 1960-1981 y <b>4,9&nbsp;%</b> en 1981-2024. Singapur pasó de 6,9&nbsp;% a 3,6&nbsp;%. Congo, de 3,0&nbsp;% a −0,6&nbsp;%.</p></div>
+  <div class="card violet"><div class="card-title"><span class="t3a-n">4</span>La posición relativa de un país en la distribución mundial del ingreso no es inmutable</div>
+  <p>El hecho <b>más importante y el que más se pregunta</b>: un país puede cambiar de lugar en el ranking mundial. <b>No hay destino.</b></p></div>
+</div>
+
+<p>Los ejemplos canónicos del hecho 4 son los <b>“milagros”</b> —Corea del Sur pasó de niveles africanos en 1960 a <b>34.121</b> dólares per cápita en 2024— y los <b>“desastres”</b> —Argentina creció <b>1,2&nbsp;%</b> anual entre 1960 y 1981 y apenas <b>0,6&nbsp;%</b> entre 1981 y 2024—. El contraste <b>Corea-Argentina</b> es el caso que usa la cátedra: dos países con ingresos per cápita comparables a comienzos de los sesenta y trayectorias divergentes a partir de ahí.</p>
+
+<div class="box intuition"><div class="box-title">La intuición · por qué unas décimas de tasa son tanto</div>
+<p>El crecimiento es <b>compuesto</b>: una tasa \(g\) duplica el ingreso cada \(\ln 2/\ln(1+g) \approx 70/g\) años (<b>regla del 70</b>). A 7&nbsp;% (Corea 1960-1981) el ingreso se duplica cada <b>10 años</b>; a 0,6&nbsp;% (Argentina 1981-2024), cada <b>116 años</b>. Por eso diferencias de tasa que parecen chicas terminan, en dos generaciones, en los saltos de la Figura 3.2.</p></div>
+
+<div class="t3a-fig2">
+<figure><img src="figs/out/t3a_hechos_niveles.svg">
+<figcaption><b>Figura 3.1.</b> Hecho 1. El eje está en escala logarítmica: cada marca multiplica por 10. Entre Estados Unidos y Madagascar hay dos “saltos” de escala. Fuente: manual de la cátedra (datos 2024).</figcaption></figure>
+<figure><img src="figs/out/t3a_corea_argentina.svg">
+<figcaption><b>Figura 3.2.</b> Hecho 4. Trayectoria que resulta de las tasas medias del manual (índice 1960 = 100). Entre 1960 y 2024 Corea multiplicó su ingreso per cápita por 32; Argentina, por 1,7. Entre los años marcados la línea es la tasa media, no la serie anual.</figcaption></figure>
+</div>
+
+<figure><img src="figs/out/t3a_hechos_tasas.svg">
+<figcaption><b>Figura 3.3.</b> Hechos 2 y 3. Izquierda: en el mismo período (1981-2024) las tasas van de 8,1&nbsp;% a −0,6&nbsp;%. Derecha: cada línea es un país; si la línea no fuera horizontal “por casualidad”, la tasa sería constante, y no lo es en ninguno. Fuente: manual de la cátedra.</figcaption></figure>
+
+
+<div class="avoid-break">
+<h3>Factores que afectan el crecimiento</h3>
+<p>La lista de la cátedra, que conviene poder enumerar:</p>
+<div class="t3a-chips">
+  <span>influencia de la religión</span><span>aspectos políticos</span><span>desempeño de las instituciones</span><span>derechos de propiedad</span><span>geografía</span><span>recursos naturales</span><span class="on">acumulación de factores productivos</span><span class="on">papel de la tecnología</span>
+</div>
+</div>
+<p>Los modelos formales del tema se concentran en los <b>dos últimos</b> —acumulación de factores y tecnología— y dejan los demás como explicaciones complementarias. Ojo, que eso se pregunta: en el parcial 2022 (teórica 4, en el 3.4) las opciones falsas son justamente religión, geografía y recursos naturales.</p>
+
+<div class="avoid-break">
+<h3>Las piezas comunes a todos los modelos</h3>
+<p>Esto ordena todo el tema. Los modelos que se estudian combinan las mismas <b>cuatro piezas</b>; lo que cambia es el supuesto sobre cada una:</p>
+<div class="grid-2 t3a-small-cards" style="grid-template-columns: repeat(4, 1fr);">
+  <div class="card blue"><div class="card-title">1 · Función de producción agregada</div><p>Cómo se combinan los insumos para generar \(Y\).</p></div>
+  <div class="card orange"><div class="card-title">2 · Acumulación de capital</div><p>Cómo varía el stock: inversión menos depreciación.</p></div>
+  <div class="card aqua"><div class="card-title">3 · Población o fuerza de trabajo</div><p>Crece a una tasa \(n\).</p></div>
+  <div class="card violet"><div class="card-title">4 · Progreso tecnológico</div><p>Cómo cambia \(A\) en el tiempo.</p></div>
+</div>
+</div>
+
+<table class="t3a-matrix">
+<thead><tr><th>Modelo</th><th>Función de producción</th><th>Tecnología</th><th>Resultado de largo plazo</th><th>Dónde</th></tr></thead>
+<tbody>
+<tr><td>Harrod-Domar</td><td>Coeficientes fijos, sin sustitución K/L</td><td>Ausente</td><td>Crecimiento inestable, “en el filo de la navaja”</td><td>3.2</td></tr>
+<tr><td>Solow-Swan</td><td>Neoclásica, con sustitución</td><td>Ausente o exógena</td><td>Estado estacionario estable; sin tecnología, \(g_y = 0\)</td><td>3.3 a 3.6</td></tr>
+<tr><td>Romer</td><td>Con ideas no rivales</td><td><b>Endógena</b></td><td>Crecimiento sostenido explicado dentro del modelo</td><td>3.8</td></tr>
+</tbody></table>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Jones, cap. 1 “Los hechos del crecimiento económico” [obligatoria] · Ray, cap. 3, pp. 49-61 [obligatoria].</p></div>
+
+<!-- ======================================================================= 3.2 -->
+<h2><span class="num">3.2</span>El modelo de Harrod-Domar</h2>
+
+<p>Harrod (1939) y Domar (1946) hicieron el <b>primer intento formal</b> de modelar el crecimiento. Su idea central sigue en pie: <b>el ahorro determina la acumulación de capital, y esta determina el crecimiento</b>.</p>
+
+<div class="flow">
+  <div class="node"><b>Producto</b>\(Y\)</div><div class="arrow">→</div>
+  <div class="node"><b>Ahorro = inversión</b>\(sY\)</div><div class="arrow">→</div>
+  <div class="node"><b>Capital nuevo</b>\(\Delta K = sY - \delta K\)</div><div class="arrow">→</div>
+  <div class="node"><b>Más producto</b>\(\Delta Y = \Delta K/\theta\)</div>
+</div>
+
+<h3>La ecuación fundamental</h3>
+<div class="formula-card">
+  <div class="fc-label">Harrod-Domar · producto agregado</div>
+  \[ g_Y = \frac{s}{\theta} - \delta \]
+  <div class="fc-legend"><span>\(g_Y\): tasa de crecimiento del producto</span><span>\(s\): tasa de ahorro</span><span>\(\theta = K/Y\): relación capital-producto (en el TP4, \(v\))</span><span>\(\delta\): depreciación</span></div>
+</div>
+<p><b>Se lee así</b>: de cada peso de producto se ahorra una fracción \(s\), que se convierte en inversión; cada peso de capital nuevo genera \(1/\theta\) pesos de producto adicional; y hay que reponer la depreciación \(\delta\).</p>
+
+<ol class="steps">
+  <li><span class="step-title">De dónde sale (dos renglones)</span>Con coeficientes fijos el producto es proporcional al capital: \(Y = K/\theta\), entonces \(\Delta Y = \Delta K/\theta\). El capital nuevo es inversión menos depreciación: \(\Delta K = sY - \delta K\).</li>
+  <li><span class="step-title">Dividir por \(Y\)</span>\(g_Y = \dfrac{\Delta Y}{Y} = \dfrac{sY - \delta K}{\theta\, Y} = \dfrac{s}{\theta} - \delta\,\dfrac{K}{\theta Y} = \dfrac{s}{\theta} - \delta\), porque \(K/Y = \theta\). Como \(\theta\) es fijo, el capital crece a la misma tasa que el producto.</li>
+</ol>
+
+<p>Cuando se trabaja en términos <b>per cápita</b> se resta además el crecimiento de la población:</p>
+<div class="formula-card">
+  <div class="fc-label">Harrod-Domar · per cápita</div>
+  \[ g_y = \frac{s}{\theta} - \delta - n \]
+</div>
+<p>Esta es la versión que pide el TP4: “la tasa de crecimiento poblacional que provoca una tasa de crecimiento económico <b>nula</b>” se despeja de acá, igualando \(g_y = 0\).</p>
+
+<div class="box example"><div class="box-title">Ejemplo numérico · TP4, ejercicio 4</div>
+<p>Datos: \(s = 25\,\%\), \(v = K/Y = 2\), \(\delta = 3{,}5\,\%\), \(n = 5\,\%\).</p>
+<div class="calc">\[\begin{aligned}
+g_Y &= \tfrac{0{,}25}{2} - 0{,}035 = 0{,}125 - 0{,}035 = 0{,}09 = 9\,\% &&\text{(producto agregado)}\\
+g_y &= 9\,\% - 5\,\% = 4\,\% &&\text{(per cápita)}\\
+g_y = 0 \;&\Rightarrow\; n = \tfrac{s}{v} - \delta = 9\,\% &&\text{(la } n \text{ que anula el crecimiento per cápita)}\\
+g_y = 0 \;&\Rightarrow\; v = \tfrac{s}{\delta + n} = \tfrac{0{,}25}{0{,}085} = 2{,}94 &&\text{(la } v \text{ que lo anula; agregado: } v = s/\delta = 7{,}14)
+\end{aligned}\]</div>
+<p>Si \(n\) sube un 25&nbsp;% desde el 9&nbsp;% (a 11,25&nbsp;%), \(g_y = 9\,\% - 11{,}25\,\% = -2{,}25\,\%\): el producto por habitante cae. Resolución completa en la <i>Práctica resuelta</i>.</p></div>
+
+<h3>El supuesto clave y por qué el resultado es inestable</h3>
+<p>El supuesto clave es que la <b>relación capital-producto es fija</b>: la función de producción es de <b>coeficientes fijos</b>, sin sustitución entre capital y trabajo. Cada unidad de producto requiere exactamente \(\theta\) unidades de capital, ni una más ni una menos, y un cierto número de trabajadores.</p>
+
+<figure class="w80"><img src="figs/out/t3a_hd_isocuantas.svg">
+<figcaption><b>Figura 3.4.</b> Qué quiere decir “sin sustitución”. Izquierda: con coeficientes fijos sólo sirve la esquina de cada isocuanta; agregar capital sin trabajo (o trabajo sin capital) no aumenta el producto, así que sobra capital (ocioso) o sobran trabajadores (desempleo). Derecha: con una función neoclásica, A y B producen lo mismo con distinta proporción \(K/L\), así que la relación capital-producto puede ajustarse. Esquemático.</figcaption></figure>
+
+<p>De ahí sale el crecimiento <b>“en el filo de la navaja”</b> (<i>knife-edge</i>), que es la expresión que hay que usar en el examen. Como nada se ajusta:</p>
+
+<div class="versus">
+  <div class="card orange"><div class="card-title">Tasa garantizada</div><p>\(g_w = s/\theta - \delta\). Es la que hace que los empresarios <b>validen sus planes de inversión</b>.</p></div>
+  <div class="vs">≠</div>
+  <div class="card aqua"><div class="card-title">Tasa natural</div><p>\(g_n = n\). Es la que permite <b>absorber el crecimiento de la población</b>.</p></div>
+</div>
+
+<p><b>Nada en el modelo hace que coincidan</b>: son parámetros independientes. Si la garantizada supera a la natural, la economía no consigue la mano de obra necesaria; si es menor, hay desempleo creciente. Y cualquier desvío <b>se amplifica</b> en vez de corregirse, porque no hay precios ni sustitución que reequilibren. El equilibrio existe, pero es un punto sobre el filo: cualquier apartamiento aleja a la economía de él.</p>
+
+<figure class="w80"><img src="figs/out/t3a_hd_filo.svg">
+<figcaption><b>Figura 3.5.</b> El filo de la navaja, esquemático. (a) La garantizada depende de \(s\), \(\theta\) y \(\delta\); la natural, sólo de \(n\): coinciden para un único valor de \(s\). (b) Con coeficientes fijos, el trabajo que la economía necesita crece a \(g_w\) y el disponible a \(n\); su cociente \(e^{(g_w - n)t}\) se aleja de 1 cada vez más, salvo en el caso justo \(g_w = n\).</figcaption></figure>
+
+<h3>Lecturas de la ecuación que se piden en el parcial</h3>
+<table>
+<thead><tr><th>Si aumenta…</th><th>…el crecimiento</th><th>Por qué</th></tr></thead>
+<tbody>
+<tr><td>la tasa de ahorro \(s\)</td><td class="t3a-signo t3a-up">sube, sin límite</td><td>No hay rendimientos decrecientes que frenen el proceso, porque \(\theta\) es constante.</td></tr>
+<tr><td>la relación capital-producto \(\theta\)</td><td class="t3a-signo t3a-down">baja</td><td>Un \(\theta\) alto es una economía que necesita mucho capital para producir poco: es <b>menos eficiente</b>, y cada peso invertido rinde menos producto.</td></tr>
+<tr><td>la depreciación \(\delta\) o la población \(n\)</td><td class="t3a-signo t3a-down">baja (per cápita)</td><td>Ambos consumen inversión que no se traduce en más capital por trabajador.</td></tr>
+</tbody></table>
+
+<div class="box warn"><div class="box-title">Errores típicos con Harrod-Domar</div>
+<ul>
+  <li>Olvidar restar \(n\) cuando piden la tasa <b>per cápita</b> (o restarla cuando piden la del producto total).</li>
+  <li>Dividir al revés: es \(s/v\), no \(v/s\). Un \(v\) más grande <b>baja</b> el crecimiento.</li>
+  <li>Poner “≤” en una pregunta de tasa <b>positiva</b>: en el umbral la tasa es cero.</li>
+  <li>Decir que el equilibrio de Harrod-Domar “no existe”: existe, pero es inestable.</li>
+</ul></div>
+
+<h3>¿Para qué valores de \(v\) crece el producto per cápita?</h3>
+<p>Es la pregunta del parcial 2023. Se pide \(g_y &gt; 0\) en la versión per cápita y se despeja \(v\) (que es positivo):</p>
+<div class="calc">\[ g_y = \frac{s}{v} - (n+\delta) &gt; 0 \iff \frac{s}{v} &gt; n+\delta \iff v &lt; \frac{s}{n+\delta} \qquad (v &gt; 0) \]</div>
+
+<figure class="w80"><img src="figs/out/t3a_hd_umbral.svg">
+<figcaption><b>Figura 3.6.</b> Con los datos del parcial 2023 (\(s = 0{,}19\), \(n + \delta = 0{,}045 + 0{,}13 = 0{,}175\)): la tasa per cápita es positiva a la izquierda del umbral \(v = 1{,}0857\) (zona verde) y negativa a la derecha. En el umbral mismo la tasa es cero, no positiva. El punto gris es el umbral de la versión agregada, que no es la que pide el ejercicio.</figcaption></figure>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Parcial 2023, Ej. 1 d)</div>
+<p class="t3a-q">Con \(s = 19\,\%\), \(n = 4{,}5\,\%\) y \(\delta = 13\,\%\): según Harrod-Domar, ¿para qué valor(es) de la relación capital-producto \(v\) se obtendría una tasa de crecimiento del producto positiva?</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">i)</span><span>\(v = 1{,}085\)<span class="why">En el umbral la tasa es exactamente 0.</span></span></li>
+  <li class="correct"><span class="opt">ii)</span><span>\(0 &lt; v &lt; 1{,}085\)<span class="why">\(g_y &gt; 0 \iff v &lt; 0{,}19/0{,}175 = 1{,}0857\), y \(v\) tiene que ser positivo.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>\(0 \le v \le 1{,}085\)<span class="why">\(v = 0\) no tiene sentido (no hay producción sin capital; \(s/v\) no está definido) y en \(v = 1{,}085\) la tasa es 0, no positiva.</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>\(v &gt; 1{,}085\)<span class="why">Es al revés: más capital por unidad de producto = menos eficiencia = menos crecimiento.</span></span></li>
+</ul>
+<p class="t3a-ref">Si usaras la versión agregada, \(g_Y = s/v - \delta &gt; 0 \iff v &lt; 0{,}19/0{,}13 = 1{,}46\), que no figura entre las opciones: el ejercicio usa la per cápita. Resolución completa en <i>Parciales resueltos</i>.</p></div>
+
+
+
+<h3>Qué se lleva Solow de acá</h3>
+<div class="versus">
+  <div class="card orange"><div class="card-title">Se queda con…</div><p>la intuición: <b>el ahorro y el capital importan</b> para crecer.</p></div>
+  <div class="vs">→</div>
+  <div class="card blue"><div class="card-title">…y le saca la rigidez</div><p>Reemplaza la relación capital-producto fija por una <b>función neoclásica</b> con sustitución entre \(K\) y \(L\). Así \(\theta\) deja de ser un parámetro y pasa a ser una <b>variable que se ajusta</b>, y el equilibrio se vuelve <b>estable</b> en lugar de estar sobre el filo.</p></div>
+</div>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Larraín y Sachs, cap. 4.1 y 4.2 [obligatoria].</p></div>
+
+<!-- ======================================================================= 3.3 -->
+<h2><span class="num">3.3</span>El modelo de Solow-Swan sin tecnología</h2>
+
+<p>Solow (1956) y Swan (1956). La idea: las economías crecen acumulando capital y sumando trabajadores, <b>pero</b> el capital enfrenta <b>rendimientos decrecientes</b>. Ese “pero” es todo el modelo.</p>
+
+<h3>Los supuestos</h3>
+<p>Tres generales: economía <b>cerrada</b>, <b>sin gobierno</b>, que produce y consume un <b>único bien homogéneo</b>. De ahí la identidad nacional y el equilibrio macroeconómico:</p>
+<div class="calc">\[\begin{aligned}
+Y_t &= Y_g &&\text{(1) producto-ingreso = demanda global-gasto}\\
+Y_t &= C_t + I_t &&\text{(2)}\\
+Y_t - C_t &= I_t \;\Rightarrow\; S_t = I_t &&\text{(3) el ahorro financia la inversión}
+\end{aligned}\]</div>
+<p>Sobre ese esqueleto se montan las tres primeras piezas del 3.1 (la cuarta, la tecnología, queda fija hasta el 3.6).</p>
+
+<h3>Pieza 1 · La función de producción agregada</h3>
+<p>Los factores son trabajo (\(L\)), capital (\(K\)) y tecnología (\(A\)). En general \(Y_t = F(L_t, K_t, A_t)\) (4); en el modelo básico se supone \(A\) constante y queda \(Y_t = F(L_t, K_t)\) (5). Es una función <b>neoclásica</b>, y eso significa tres propiedades —<b>las tres se preguntan</b>:</p>
+
+<div class="grid-3 t3a-small-cards">
+  <div class="card blue"><div class="card-title">1 · Rendimientos constantes a escala</div><p>\(F(\lambda L, \lambda K, A) = \lambda F(L, K, A)\). Duplicar todos los factores duplica el producto. Es lo que permite pasar a variables <b>per cápita</b>.</p></div>
+  <div class="card orange"><div class="card-title">2 · Productividad marginal positiva y decreciente</div><p>\(PMgK &gt; 0\) y \(PMgL &gt; 0\), pero las <b>segundas derivadas son negativas</b>: cada unidad adicional de capital produce menos que la anterior. De acá sale el estado estacionario.</p></div>
+  <div class="card aqua"><div class="card-title">3 · Condiciones de Inada</div><p>\(\lim\limits_{k\to\infty} PMgK = 0\) y \(\lim\limits_{k\to 0} PMgK = \infty\); ídem para \(L\).</p></div>
+</div>
+
+<p>Las condiciones de Inada garantizan que exista un <b>estado estacionario único y no trivial</b>: con muy poco capital, el rendimiento es enorme y la economía necesariamente acumula; con mucho capital, el rendimiento tiende a cero y la acumulación se detiene. Sin ellas, las curvas podrían no cruzarse.</p>
+
+<figure class="w70"><img src="figs/out/t3a_prod_neoclasica.svg">
+<figcaption><b>Figura 3.7.</b> Las propiedades 2 y 3 en un gráfico. (a) El mismo \(\Delta k\) agrega mucho producto cuando hay poco capital y poco cuando hay mucho: la curva es cóncava. (b) La pendiente de (a) es la \(PMgK\): arranca en infinito y tiende a cero. Esquemático (\(\alpha = 0{,}4\)).</figcaption></figure>
+
+<div class="box def"><div class="box-title">La Cobb-Douglas: la forma que usan todos los ejercicios</div>
+<p>\(Y = A\,K^{\alpha}L^{1-\alpha}\), con \(0 &lt; \alpha &lt; 1\). Cumple las tres propiedades:</p>
+<ul>
+  <li><b>RCE</b>: \(A(\lambda K)^{\alpha}(\lambda L)^{1-\alpha} = \lambda^{\alpha + 1 - \alpha}AK^{\alpha}L^{1-\alpha} = \lambda Y\) (los exponentes suman 1).</li>
+  <li><b>Per cápita</b>: dividiendo por \(L\), \(y = A\,k^{\alpha}\). En el parcial 2022, \(Y = \tfrac52 K^{3/7}L^{4/7}\) ⇒ \(y = 2{,}5\,k^{3/7}\); en el 2023, \(Y = \tfrac32 K^{5/6}L^{1/6}\) ⇒ \(y = 1{,}5\,k^{5/6}\).</li>
+  <li><b>PMgK</b> \(= \alpha A k^{\alpha-1} &gt; 0\), decreciente, con límite \(\infty\) en \(k \to 0\) y 0 en \(k \to \infty\) (Inada).</li>
+  <li>\(\alpha\) es la <b>participación del capital</b> en el producto y la <b>elasticidad producto-capital</b>: si \(k\) sube 1&nbsp;%, \(y\) sube \(\alpha\) %. El parcial 2023 lo llama “<b>coeficiente técnico del capital</b>”. Ojo: si te dan la participación del <b>trabajo</b>, \(\alpha = 1 -\) ese dato.</li>
+</ul></div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Parcial 2023, Ej. 1 c)</div>
+<p class="t3a-q">Con \(y = 1{,}5\,k^{\alpha}\) y \(k = 30{,}7\), ¿cuánto tendría que ser el coeficiente técnico del capital para obtener \(y = 20{,}5\)? &nbsp; i) 0,12 · ii) 0,88 · iii) 0,24 · <b>iv) 0,76</b> · v) Ninguna.</p>
+<p>La incógnita está en el exponente: se despeja con <b>logaritmos</b>.</p>
+<div class="calc">\[\begin{aligned}
+20{,}5 &= 1{,}5\cdot 30{,}7^{\alpha} \;\Rightarrow\; 30{,}7^{\alpha} = \tfrac{20{,}5}{1{,}5} = 13{,}667\\
+\alpha\,\ln 30{,}7 &= \ln 13{,}667 \;\Rightarrow\; \alpha = \frac{2{,}6150}{3{,}4243} = 0{,}7637 \approx 0{,}76
+\end{aligned}\]</div>
+<p><b>Respuesta iv) 0,76.</b> Fijate que 0,24 = 1 − 0,76 sería la participación del trabajo, no la del capital.</p></div>
+
+<h3>Pieza 2 · La acumulación de capital</h3>
+<p>La tasa de ahorro es <b>constante y exógena</b>, con \(0 &lt; s &lt; 1\). La depreciación también es constante y exógena, con \(0 &lt; \delta &lt; 1\): \(D = \delta K_t\). La inversión bruta es inversión neta más reposición.</p>
+<div class="calc">\[\begin{aligned}
+S_t &= s\,Y_t \;\Rightarrow\; s\,Y_t = I_t &&\text{(6)}\\
+C_t &= (1-s)\,Y_t &&\text{(6a)}\\
+I_t &= I_n + D,\ \ I_n = \dot K_t = \tfrac{dK}{dt} \;\Rightarrow\; I_t = \dot K_t + \delta K_t &&\text{(7)}
+\end{aligned}\]</div>
+<p>Sustituyendo (5), (6a) y (7) en (2):</p>
+<div class="calc">\[\begin{aligned}
+F(L_t, K_t) &= (1-s)\,F(L_t, K_t) + \dot K_t + \delta K_t\\
+\dot K_t &= s\,F(L_t, K_t) - \delta K_t &&\text{(8) ecuación de acumulación del capital}
+\end{aligned}\]</div>
+
+<h3>Pieza 3 · La población</h3>
+<p>Se supone \(N_t = L_t\) (<b>toda la población trabaja</b>) y que crece a tasa constante y exógena: \(\dot L/L = n\). Interesa el análisis en términos per cápita, con \(k = K/L\). La idea clave: si el aumento de \(K\) no acompaña al aumento de \(L\), entonces \(k\) cae. Es la <b>dilución del capital</b>.</p>
+
+<h3>La función de producción per cápita</h3>
+<p>Aprovechando los rendimientos constantes a escala (con \(\lambda = 1/L\)), se divide todo por \(L\):</p>
+<div class="calc">\[ Y_t = L_t\cdot\frac{1}{L_t}\,F(L_t, K_t) \;\Rightarrow\; \frac{Y_t}{L_t} = F\!\left(1, \frac{K_t}{L_t}\right) \;\Rightarrow\; y_t = f(k_t), \quad \frac{\partial f}{\partial k} &gt; 0 \qquad\text{(9)} \]</div>
+
+<h3>La ecuación fundamental — la derivación que hay que saber hacer</h3>
+<p>Para ver cómo evoluciona \(k_t = K_t/L_t\) se deriva respecto del tiempo:</p>
+<ol class="steps">
+  <li><span class="step-title">Regla del cociente</span>\(\dot k_t = \dfrac{\dot K_t\,L_t - K_t\,\dot L_t}{L_t^2} = \dfrac{\dot K_t}{L_t} - \dfrac{\dot L_t}{L_t}\cdot\dfrac{K_t}{L_t}\) &nbsp; (10)</li>
+  <li><span class="step-title">Reemplazar (8) y \(\dot L/L = n\)</span>\(\dot k_t = \dfrac{s\,F(L_t,K_t) - \delta K_t}{L_t} - n\,\dfrac{K_t}{L_t} = s\,\dfrac{F(L_t,K_t)}{L_t} - \delta\,\dfrac{K_t}{L_t} - n\,\dfrac{K_t}{L_t}\)</li>
+  <li><span class="step-title">Reemplazar (9) y agrupar</span>\(\dot k_t = s f(k_t) - \delta k_t - n k_t = s f(k_t) - (\delta + n)\,k_t\) &nbsp; (11)</li>
+</ol>
+
+<div class="formula-card">
+  <div class="fc-label">(11) Ecuación fundamental de Solow-Swan</div>
+  \[ \underbrace{\dot k_t}_{\text{variación de }k} \;=\; \underbrace{\textcolor{#eb6834}{s\,f(k_t)}}_{\text{inversión efectiva}} \;-\; \underbrace{\textcolor{#1baf7a}{(\delta + n)\,k_t}}_{\text{depreciación efectiva}} \]
+</div>
+
+<p><b>Qué representa cada término</b> — pregunta textual de la guía de lectura:</p>
+<div class="grid-3 t3a-small-cards">
+  <div class="card blue"><div class="card-title">\(\dot k_t\)</div><p>La <b>variación del capital por trabajador</b> en el tiempo.</p></div>
+  <div class="card orange"><div class="card-title">\(s\,f(k_t)\) · suma</div><p>La <b>inversión efectiva por trabajador</b>: lo que se ahorra del producto per cápita y se convierte en capital nuevo.</p></div>
+  <div class="card aqua"><div class="card-title">\((\delta+n)\,k_t\) · resta</div><p>La <b>depreciación efectiva</b> o inversión de reposición, por dos motivos: \(\delta k\) repone el capital que se gasta; \(nk\) es el capital que hay que darle a los trabajadores nuevos para que \(k\) no caiga (<b>dilución</b>).</p></div>
+</div>
+<p><b>En una línea</b>: el capital por trabajador aumenta cuando lo que se invierte supera lo que se pierde por desgaste y por dilución.</p>
+
+<h3>La ecuación en un gráfico: el diagrama en niveles</h3>
+<figure class="w80"><img src="figs/out/t3a_solow_niveles.svg">
+<figcaption><b>Figura 3.8.</b> Diagrama de Solow en niveles. La distancia vertical entre \(s f(k)\) (naranja) y \((n+\delta)k\) (verde) es \(\dot k\): positiva a la izquierda del cruce, negativa a la derecha; las flechas muestran que \(k\) siempre va hacia \(k^*\). En \(k^*\) el producto \(y^*\) se reparte en inversión \(i^* = s y^*\) (hasta la curva naranja) y consumo \(c^* = (1-s)y^*\) (el resto, hasta \(f(k)\)). Esquemático.</figcaption></figure>
+
+<h3>La misma ecuación como tasa de crecimiento: el diagrama en tasas</h3>
+<p>Dividiendo (11) por \(k_t\) se obtiene la tasa de crecimiento del capital per cápita (\(g_k\) en el manual, \(\gamma_k\) en Sala-i-Martín y en los parciales):</p>
+<div class="formula-card">
+  <div class="fc-label">Ecuación fundamental en tasas</div>
+  \[ \gamma_k = \frac{\dot k_t}{k_t} = \underbrace{\frac{s\,f(k_t)}{k_t}}_{\text{CA}} - \underbrace{(\delta + n)}_{\text{CD}} \qquad\xrightarrow{\;f(k)=Ak^{\alpha}\;}\qquad \gamma_k = \frac{sA}{k^{1-\alpha}} - (n+\delta) \]
+</div>
+<p>Esta versión se grafica como <b>curva de ahorro</b> CA \(= s f(k)/k\) —<b>decreciente</b>, por los rendimientos decrecientes— contra <b>curva de depreciación</b> CD \(= (\delta + n)\) —una <b>recta horizontal</b>—. La <b>distancia vertical</b> entre ambas es la tasa de crecimiento de \(k\), y el <b>cruce</b> es el estado estacionario. Es el gráfico que usa la cátedra en los parciales.</p>
+
+<figure class="w80"><img src="figs/out/t3a_solow_tasas.svg">
+<figcaption><b>Figura 3.9.</b> Diagrama de Solow en tasas (Sala-i-Martín). Leé las flechas verticales: en \(k_0\) la distancia entre CA y CD es grande (crece rápido); en \(k_0'\), más cerca de \(k^*\), es menor; en \(k^*\) es cero; en \(k_1 &gt; k^*\), CA queda debajo de CD y \(\gamma_k &lt; 0\). Esquemático.</figcaption></figure>
+
+
+
+<div class="box tip"><div class="box-title">Truco · del crecimiento de \(k\) al de \(y\)</div>
+<p>Con \(y = Ak^{\alpha}\): \(\ln y = \ln A + \alpha \ln k\) ⇒ \(\gamma_y = \alpha\,\gamma_k\). El producto per cápita crece a una fracción \(\alpha\) de lo que crece el capital per cápita, y los dos se frenan juntos.</p></div>
+
+<h3>“Funciones” vs “curvas”: la trampa de los parciales</h3>
+<p>Los enunciados usan las dos palabras con significado preciso, y las opciones mezclan una cosa con la otra. Las dos versiones describen el mismo modelo y dan el mismo \(k^*\), pero <b>no son lo mismo</b>:</p>
+<table>
+<thead><tr><th></th><th><b>Funciones</b> (niveles)</th><th><b>Curvas</b> (tasas)</th></tr></thead>
+<tbody>
+<tr><td>Ahorro</td><td>FA \(= s f(k) = sA\,k^{\alpha}\) · creciente y cóncava</td><td>CA \(= s f(k)/k = sA/k^{1-\alpha}\) · decreciente</td></tr>
+<tr><td>Depreciación</td><td>FD \(= (n+\delta)\,k\) · recta con pendiente \(n+\delta\)</td><td>CD \(= n+\delta\) · recta horizontal</td></tr>
+<tr><td>Eje vertical</td><td>\(i\), \((n+\delta)k\): unidades de capital per cápita</td><td>\(\gamma_k\): tasa de crecimiento</td></tr>
+<tr><td>Qué mide la distancia</td><td>\(\dot k\)</td><td>\(\gamma_k = \dot k/k\)</td></tr>
+<tr><td>Cómo se pasa de una a otra</td><td colspan="2" class="center">se divide por \(k\): el exponente pasa de \(\alpha\) a \(\alpha - 1\), es decir \(k^{\alpha}/k = 1/k^{1-\alpha}\)</td></tr>
+</tbody></table>
+
+<figure class="w80"><img src="figs/out/t3a_funciones_curvas.svg">
+<figcaption><b>Figura 3.10.</b> Las dos versiones con los números del parcial 2023 (\(sA = 0{,}19\cdot 1{,}5 = 0{,}285\), \(n + \delta = 0{,}175\), \(\alpha = 5/6\)): a la izquierda las funciones se cortan en \(k^* = 18{,}66\); a la derecha las curvas se cortan en el mismo \(k^*\). Fijate que el exponente de la curva de ahorro es \(1-\alpha = 1/6\), no \(5/6\).</figcaption></figure>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Parcial 2023, Ej. 1 b)</div>
+<p class="t3a-q">\(\delta = 13\,\%\), \(n = 4{,}5\,\%\), \(s = 19\,\%\), \(Y = \tfrac32 K^{5/6}L^{1/6}\). Las <b>funciones</b> de ahorro y depreciación son:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">i)</span><span>FA \(= 0{,}19/k^{1/6}\), FD \(= 0{,}175\)<span class="why">Tiene forma de <em>curva</em> (tasas), no de función, y además le falta \(A\): \(sA = 0{,}285\).</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>FA \(= 0{,}19\,k^{5/6}\), FD \(= 0{,}175\,k\)<span class="why">Forma correcta, pero se olvida de multiplicar \(s\) por \(A = 1{,}5\).</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>CA \(= 0{,}285/k^{5/6}\), CD \(= 0{,}175\)<span class="why">“Se parece” a la curva de ahorro, pero el exponente correcto es \(1 - \alpha = 1/6\): CA \(= 0{,}285/k^{1/6}\). Usa \(\alpha\) en lugar de \(1-\alpha\).</span></span></li>
+  <li class="correct"><span class="opt">iv)</span><span>FA \(= 0{,}285\,k^{5/6}\), FD \(= 0{,}175\,k\)<span class="why">FA \(= sA\,k^{\alpha} = 0{,}19\cdot 1{,}5\cdot k^{5/6}\); FD \(= (n+\delta)k = 0{,}175\,k\).</span></span></li>
+</ul>
+<p class="t3a-ref">La trampa inversa está en el parcial 2022, Ej. 1 b): ahí piden las <b>curvas</b>, y la opción “CA \(= 0{,}65k^{3/7}\), CD \(= 0{,}13k\)” es incorrecta porque son las <em>funciones</em>. La correcta es la iv): CA \(= 0{,}65/k^{4/7}\), CD \(= 0{,}13\) (ver 3.4).</p></div>
+
+<div class="box warn"><div class="box-title">Errores típicos con las curvas</div>
+<ul>
+  <li>Poner \(\alpha\) en el denominador: CA \(= sA/k^{1-\alpha}\), no \(sA/k^{\alpha}\).</li>
+  <li>Cambiar el signo del exponente: \(sA/k^{-(1-\alpha)}\) es <b>creciente</b> y nunca corta a CD desde arriba.</li>
+  <li>Dejar \(k\) en la curva de depreciación: en tasas es una constante, CD \(= n+\delta\).</li>
+  <li>Olvidar \(A\): el número de adelante es \(sA\), no \(s\).</li>
+</ul></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Sala-i-Martín, cap. 1, pp. 9-38 [obligatoria] · Larraín y Sachs, cap. 4.1 y 4.2 [obligatoria] · Jones, cap. 2, pp. 18-32 [complementaria].</p></div>
+
+<!-- ======================================================================= 3.4 -->
+<h2><span class="num">3.4</span>Estado estacionario y estática comparativa</h2>
+
+<h3>La condición de estado estacionario</h3>
+<p>El <b>estado estacionario</b> (EE) es la situación en la que el capital por trabajador deja de cambiar: \(\dot k_t = 0\). Mirando la ecuación (11):</p>
+<div class="formula-card">
+  <div class="fc-label">Condición de estado estacionario</div>
+  \[ \dot k_t = s f(k_t) - (\delta + n)\,k_t = 0 \quad\Longrightarrow\quad s f(k^*) = (\delta + n)\,k^* \]
+</div>
+<p>La <b>inversión efectiva iguala exactamente a la depreciación efectiva</b>. Gráficamente es el cruce entre la curva \(s f(k)\) —cóncava, por rendimientos decrecientes— y la recta \((\delta + n)k\) (Figura 3.8); en tasas, el cruce entre CA y CD (Figura 3.9).</p>
+
+<h3>La dinámica es estable</h3>
+<div class="grid-3 t3a-small-cards">
+  <div class="card green"><div class="card-title">Si \(k_0 &lt; k^*\)</div><p>La curva de ahorro está por encima de la recta: \(\dot k &gt; 0\) y el capital por trabajador crece. Es la <b>profundización del capital</b>.</p></div>
+  <div class="card aqua"><div class="card-title">En \(k = k^*\)</div><p>\(\dot k = 0\). El capital agregado \(K\) sigue creciendo, pero exactamente a la misma tasa que \(L\), es decir a la tasa \(n\). Es el <b>ensanchamiento del capital</b>.</p></div>
+  <div class="card red"><div class="card-title">Si \(k_0 &gt; k^*\)</div><p>La recta está por encima: \(\dot k &lt; 0\), y \(k\) cae hasta \(k^*\).</p></div>
+</div>
+
+<h3>Solow con Cobb-Douglas: el estado estacionario con números</h3>
+<p>Con \(F(K,L) = A\,K^{\alpha}L^{1-\alpha}\), la función per cápita es \(f(k) = A\,k^{\alpha}\) (12). El manual la escribe con \(A = 1\), \(f(k) = k^{\alpha}\); los parciales traen un \(A\) distinto de 1, así que conviene tener la versión general:</p>
+<ol class="steps">
+  <li><span class="step-title">Plantear la condición de EE</span>\(sA\,k^{\alpha} = (n+\delta)\,k\)</li>
+  <li><span class="step-title">Pasar \(k^{\alpha}\) dividiendo</span>\(\dfrac{sA}{n+\delta} = \dfrac{k}{k^{\alpha}} = k^{1-\alpha}\)</li>
+  <li><span class="step-title">Elevar a la \(1/(1-\alpha)\)</span>\(k^* = \left(\dfrac{sA}{n+\delta}\right)^{\frac{1}{1-\alpha}}\), y después \(y^* = A\,(k^*)^{\alpha}\).</li>
+</ol>
+<div class="formula-card">
+  <div class="fc-label">Estado estacionario con Cobb-Douglas</div>
+  \[ k^* = \left(\frac{sA}{n+\delta}\right)^{\frac{1}{1-\alpha}} \qquad y^* = A\,(k^*)^{\alpha} \qquad c^* = (1-s)\,y^* \]
+  <div class="fc-legend"><span>Con \(A = 1\) (manual): \(k^* = \left[\frac{s}{\delta+n}\right]^{\frac{1}{1-\alpha}}\), \(y^* = \left[\frac{s}{\delta+n}\right]^{\frac{\alpha}{1-\alpha}}\)</span><span>Control: \(y^* = (n+\delta)\,k^*/s\)</span></div>
+</div>
+<p>Estas fórmulas resuelven prácticamente todo el ejercicio 5 del TP4: <b>memorizarlas</b>.</p>
+
+<div class="box tip"><div class="box-title">Truco · el control de un renglón</div>
+<p>En el EE, \(s\,y^* = (n+\delta)\,k^*\). Entonces \(y^* = (n+\delta)\,k^*/s\): si tu \(y^*\) no pasa este control, te olvidaste de \(A\) o erraste un exponente. Es el error que castiga el parcial 2023 (abajo).</p></div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Parcial 2022, Ej. 1 a) <span class="pts">5 ptos</span></div>
+<p class="t3a-q">\(\delta = 9\,\%\), \(n = 4\,\%\), \(s = 26\,\%\), \(Y = \tfrac52 K^{3/7}L^{4/7}\). El capital y la producción per cápita en estado estacionario son: i) 3,363 y 1,681 · ii) 16,718 y 1,681 · <b>iii) 16,718 y 8,359</b> · iv) 1,681 y 3,363 · v) Ninguna.</p>
+<div class="calc">\[\begin{aligned}
+sA &= 0{,}26\cdot 2{,}5 = 0{,}65 \qquad n + \delta = 0{,}13 \qquad \tfrac{1}{1-\alpha} = \tfrac{1}{4/7} = \tfrac74\\
+k^* &= \left(\tfrac{0{,}65}{0{,}13}\right)^{7/4} = 5^{1{,}75} = 16{,}7185 \approx 16{,}718\\
+y^* &= 2{,}5\cdot 16{,}7185^{3/7} = 8{,}359 \qquad\text{control: } 0{,}13\cdot 16{,}7185/0{,}26 = 8{,}359\ \checkmark
+\end{aligned}\]</div>
+<p><b>Respuesta iii).</b> La ii) tiene bien \(k^*\) pero mal \(y^*\).</p></div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Parcial 2023, Ej. 1 a) <span class="pts">5 ptos</span></div>
+<p class="t3a-q">\(\delta = 13\,\%\), \(n = 4{,}5\,\%\), \(s = 19\,\%\), \(Y = \tfrac32 K^{5/6}L^{1/6}\). i) \(k^* = 11{,}455\), \(y^* = 18{,}656\) · ii) \(k^* = 18{,}656\), \(y^* = 11{,}455\) · iii) 1,637 y 1,508 · iv) 1,508 y 1,637 · <b>v) Ninguna</b>.</p>
+<div class="calc">\[\begin{aligned}
+k^* &= \left(\tfrac{0{,}19\cdot 1{,}5}{0{,}175}\right)^{6} = 1{,}62857^{6} = 18{,}657 \approx 18{,}656\\
+y^* &= 1{,}5\cdot 18{,}657^{5/6} = 1{,}5\cdot 11{,}456 = 17{,}184 \qquad\text{control: } 0{,}175\cdot 18{,}657/0{,}19 = 17{,}184\ \checkmark
+\end{aligned}\]</div>
+<p><b>Respuesta v) Ninguna.</b> La trampa es la ii): tiene el \(k^*\) correcto, pero su \(y^* = 11{,}455\) es \(k^{*\,5/6}\) <b>sin multiplicar por \(A = 1{,}5\)</b>. Con el control de arriba se detecta en diez segundos.</p></div>
+
+<h3>Las tasas de crecimiento en el estado estacionario</h3>
+<p>Acá está el <b>resultado central</b> del modelo, y es la pregunta de examen <b>más frecuente de todo el Tema 3</b>. En estado estacionario, <b>todas las variables per cápita son constantes</b>: \(g_{k^*} = g_{y^*} = g_{c^*} = 0\).</p>
+<p>Para las agregadas se aplican logaritmos y se deriva respecto del tiempo. Con \(K = k\cdot L\):</p>
+<div class="calc">\[\begin{aligned}
+\ln K &= \ln k + \ln L \;\Rightarrow\; \frac{\dot K}{K} = \frac{\dot k}{k} + \frac{\dot L}{L} \;\Rightarrow\; g_K = g_k + n\\
+\text{en EE } g_k = 0 \;&\Rightarrow\; g_K = g_Y = g_C = n \qquad (\text{igual con } Y = yL \text{ y } C = cL)
+\end{aligned}\]</div>
+
+<div class="grid-2">
+<table class="compact">
+<thead><tr><th>Variable</th><th class="num">Tasa en el EE</th></tr></thead>
+<tbody>
+<tr><td>Capital per cápita \(k\)</td><td class="num"><b>0</b></td></tr>
+<tr><td>Producto per cápita \(y\)</td><td class="num"><b>0</b></td></tr>
+<tr><td>Consumo per cápita \(c\)</td><td class="num"><b>0</b></td></tr>
+<tr><td>Capital agregado \(K\)</td><td class="num">\(n\)</td></tr>
+<tr><td>Producto agregado \(Y\)</td><td class="num">\(n\)</td></tr>
+<tr><td>Consumo agregado \(C\)</td><td class="num">\(n\)</td></tr>
+</tbody></table>
+<div class="box intuition" style="margin-top:0.6em"><div class="box-title">Una relación útil</div>
+<p>Como \(c = (1-s)\,y\) y \(s\) es constante, \(\ln c = \ln(1-s) + \ln y\) ⇒ \(g_c = g_y\) <b>siempre</b>, no sólo en el estado estacionario. El consumo per cápita crece exactamente a la misma tasa que el producto per cápita.</p></div>
+</div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Parcial 2022, teórica 4</div>
+<p class="t3a-q">“El modelo de crecimiento económico de Solow-Swan (1956) <b>básico</b> explica que, en el equilibrio de largo plazo, puede existir crecimiento de las variables capital y producto per cápita debido a:”</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>La influencia de la religión en la población de una economía.</span></li>
+  <li class="wrong"><span class="opt">b)</span><span>La ubicación geográfica de una economía.</span></li>
+  <li class="wrong"><span class="opt">c)</span><span>La disponibilidad de recursos naturales.</span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Las políticas implementadas por el Estado.</span></li>
+  <li class="correct"><span class="opt">e)</span><span>Ninguna opción es correcta.<span class="why">En el modelo básico (sin progreso tecnológico), en el estado estacionario \(k\) e \(y\) per cápita <b>no crecen</b>: \(\gamma = 0\). Sólo el progreso tecnológico exógeno genera crecimiento per cápita sostenido (3.6).</span></span></li>
+</ul>
+<p class="t3a-ref">Las opciones a) a c) salen de la lista de “factores que afectan el crecimiento” (3.1): existen, pero no están en el modelo formal; y aunque estuvieran, en el EE básico nada crece per cápita.</p></div>
+
+<h3>Estática comparativa: qué pasa si cambia un parámetro</h3>
+<table>
+<thead><tr><th>Cambio</th><th>Efecto sobre \(k^*\) e \(y^*\)</th><th>Efecto sobre \(g_y\) de largo plazo</th><th>Qué se mueve en niveles</th><th>Qué se mueve en tasas</th></tr></thead>
+<tbody>
+<tr><td>Aumenta \(s\)</td><td class="t3a-signo t3a-up">Aumentan</td><td><b>Ninguno</b>: vuelve a 0</td><td>La curva \(s f(k)\) se desplaza hacia arriba</td><td>CA sube</td></tr>
+<tr><td>Aumenta \(n\)</td><td class="t3a-signo t3a-down">Disminuyen</td><td>Ninguno</td><td>La recta \((\delta+n)k\) se hace más empinada</td><td>CD sube</td></tr>
+<tr><td>Aumenta \(\delta\)</td><td class="t3a-signo t3a-down">Disminuyen</td><td>Ninguno</td><td>La recta \((\delta+n)k\) se hace más empinada</td><td>CD sube</td></tr>
+<tr><td>Aumenta \(A\) <span class="tag">agregado</span></td><td class="t3a-signo t3a-up">Aumentan</td><td>Ninguno (salto único de \(A\))</td><td>\(f(k)\) y \(s f(k)\) se desplazan hacia arriba</td><td>CA sube</td></tr>
+</tbody></table>
+<p>En la versión de tasas de crecimiento, un aumento de \(s\) desplaza la curva CA hacia arriba y un aumento de \(n\) o \(\delta\) sube la recta CD. Un aumento de \(n\) tiene un detalle: el producto <b>agregado</b> pasa a crecer más rápido (a la nueva \(n\)), pero cada persona tiene menos capital y menos producto.</p>
+
+<figure class="t3a-w75"><img src="figs/out/t3a_ce_ahorro.svg">
+<figcaption><b>Figura 3.11.</b> Aumento de \(s\). En niveles sube \(s f(k)\) (línea discontinua) y el cruce se corre a la derecha: \(k^{*\prime} &gt; k^*\) e \(y^{*\prime} &gt; y^*\). En tasas sube CA y el cruce con CD se corre al mismo \(k^{*\prime}\). Esquemático.</figcaption></figure>
+
+<figure class="t3a-w75"><img src="figs/out/t3a_ce_depreciacion.svg">
+<figcaption><b>Figura 3.12.</b> Aumento de \(n\) o de \(\delta\). En niveles la recta \((n+\delta)k\) gira hacia arriba; en tasas la horizontal CD sube. En los dos gráficos \(k^*\) e \(y^*\) bajan. Leído al revés (\(\delta\) que baja) es el inciso c) del parcial 2022. Esquemático.</figcaption></figure>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Parcial 2022, Ej. 1 c) y d) <span class="pts">5 + 5 ptos</span></div>
+<p class="t3a-q">Con los datos del inciso a), si la tasa de depreciación se reduce a la mitad: c) los nuevos \(k^*\) e \(y^*\); d) las nuevas curvas de ahorro y depreciación.</p>
+<div class="calc">\[\begin{aligned}
+\delta' &= 0{,}045 \;\Rightarrow\; n + \delta' = 0{,}085 \qquad k^{*\prime} = \left(\tfrac{0{,}65}{0{,}085}\right)^{7/4} = 7{,}647^{1{,}75} = 35{,}165\\
+y^{*\prime} &= 2{,}5\cdot 35{,}165^{3/7} = 11{,}496 \qquad\text{control: } 0{,}085\cdot 35{,}165/0{,}26 = 11{,}496\ \checkmark
+\end{aligned}\]</div>
+<table class="compact">
+<thead><tr><th></th><th class="num">\(k^*\)</th><th class="num">\(y^*\)</th><th>Curva de ahorro CA</th><th>Curva de depreciación CD</th></tr></thead>
+<tbody>
+<tr><td>Inicial (\(\delta = 0{,}09\))</td><td class="num">16,718</td><td class="num">8,359</td><td>\(0{,}65/k^{4/7}\)</td><td>0,13</td></tr>
+<tr class="total"><td>\(\delta\) a la mitad</td><td class="num">35,165</td><td class="num">11,496</td><td>\(0{,}65/k^{4/7}\) (no cambia)</td><td>0,085 (baja)</td></tr>
+</tbody></table>
+<p><b>c) → iv)</b> \(k^* = 35{,}165\), \(y^* = 11{,}495\) (la opción i) invierte los valores). <b>d) → iv)</b> CA \(= 0{,}65/k^{4/7}\), CD \(= 0{,}085\): CA no depende de \(\delta\); sólo baja la recta horizontal. Las opciones con \(k^{3/7}\) multiplicando son <em>funciones</em>, no curvas.</p></div>
+
+<figure class="t3a-w75"><img src="figs/out/t3a_ce_tecnologia.svg">
+<figcaption><b>Figura 3.13.</b> Aumento del nivel de tecnología \(A\) (una sola vez). Suben \(f(k)\) y, con ella, \(s f(k)\); en tasas sube CA (porque CA \(= sA/k^{1-\alpha}\)). Nuevo EE con más \(k^*\) e \(y^*\), otra vez sin crecimiento per cápita: para crecer siempre, \(A\) tiene que crecer siempre (3.6). Esquemático.</figcaption></figure>
+
+
+
+<h3>Efecto nivel, no efecto crecimiento</h3>
+<p><b>La respuesta que el TP4 pide dos veces.</b> Si dos países difieren sólo en su tasa de ahorro, el modelo predice que el de mayor ahorro tendrá un <b>nivel</b> de ingreso per cápita más alto en el largo plazo, pero <b>la misma tasa de crecimiento de largo plazo: cero</b>. La frase para el examen: <mark><b>\(s\) y \(n\) determinan el nivel de \(k^*\) e \(y^*\), no su tasa de crecimiento de largo plazo.</b></mark></p>
+<p>El efecto sobre el crecimiento es <b>transitorio</b>: al subir \(s\), la economía crece más rápido durante la transición hacia el nuevo estado estacionario, y una vez que llega, \(g_y\) vuelve a cero. Eso se llama <b>efecto nivel</b>, no efecto crecimiento.</p>
+
+<figure><img src="figs/out/t3a_transicion.svg">
+<figcaption><b>Figura 3.14.</b> Simulación del modelo con los datos del parcial 2022 (\(A = 2{,}5\), \(\alpha = 3/7\), \(n + \delta = 0{,}13\)) cuando en el año 5 la tasa de ahorro sube de 26&nbsp;% a 35&nbsp;% (el aumento es ilustrativo). \(k\) e \(y\) pasan de un nivel a otro más alto (efecto nivel); la tasa \(\gamma_y\) salta a 1,93&nbsp;% y se apaga hasta volver a 0 (efecto crecimiento sólo transitorio).</figcaption></figure>
+
+<div class="box example"><div class="box-title">Ejemplo numérico · el salto de la Figura 3.14</div>
+<p>En el EE inicial, \(k^{*\,1-\alpha} = sA/(n+\delta) = 5\), o sea \(k^{*\,\alpha-1} = 1/5\). Justo después del aumento de \(s\), \(k\) todavía vale 16,72:</p>
+<div class="calc">\[\begin{aligned}
+\gamma_k &= 0{,}35\cdot 2{,}5\cdot\tfrac15 - 0{,}13 = 0{,}175 - 0{,}13 = 0{,}045 \qquad \gamma_y = \alpha\,\gamma_k = \tfrac37\cdot 0{,}045 = 1{,}93\,\%\\
+k^{*\prime} &= \left(\tfrac{0{,}875}{0{,}13}\right)^{7/4} = 28{,}13 \qquad y^{*\prime} = 2{,}5\cdot 28{,}13^{3/7} = 10{,}45 \quad (\text{un } 25\,\% \text{ más que } 8{,}36)
+\end{aligned}\]</div>
+<p>La brecha con el nuevo EE se cierra aproximadamente a la tasa \((1-\alpha)(n+\delta) = 7{,}4\,\%\) por año: la mitad del camino se recorre en unos \(\ln 2/0{,}074 \approx 9\) años (aproximación lineal, Sala-i-Martín cap. 1).</p></div>
+
+<h3>El caso histórico que lo ilustra</h3>
+<p><b>Japón y Alemania</b> terminaron la guerra en 1945 con gran parte de su stock de capital destruido: arrancaron <b>muy por debajo de su propio \(k^*\)</b>. Con altas tasas de ahorro e inversión para la reconstrucción, entre 1950 y 1973 crecieron a cerca del <b>8&nbsp;%</b> anual (Japón) y <b>5&nbsp;%</b> (Alemania). Ninguno de los dos sostuvo esas tasas: a medida que \(k\) se acercaba a \(k^*\), el crecimiento se moderó. El modelo <b>no</b> predice que siguieran creciendo así para siempre, y en efecto no lo hicieron.</p>
+
+<div class="box intuition"><div class="box-title">El principio general</div>
+<p><b>Cuanto más lejos está \(k\) de \(k^*\), mayor es la tasa de crecimiento</b>, porque \(s f(k)/k\) es mayor cuanto menor es \(k\) —rendimientos decrecientes—. En la Figura 3.9 es la flecha larga en \(k_0\) contra la corta en \(k_0'\). Esa es también la base de la <b>hipótesis de convergencia</b> (3.7).</p></div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial · Prueba teórica 20/9/2024, pregunta 3</div>
+<p class="t3a-q">“En el modelo de Solow-Swan (1956), el crecimiento de largo plazo en el capital y el producto per cápita se debe principalmente a:”</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>La tasa de ahorro y la inversión.<span class="why">Efecto nivel, no efecto crecimiento.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>La influencia cultural.</span></li>
+  <li class="wrong"><span class="opt">c)</span><span>El aumento en la población activa.<span class="why">Un \(n\) mayor <b>reduce</b> \(k^*\) e \(y^*\).</span></span></li>
+  <li class="correct"><span class="opt">d)</span><span>Las innovaciones tecnológicas que aumentan la productividad.<span class="why">Es lo único que genera crecimiento per cápita sostenido (3.6).</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.</span></li>
+</ul>
+<p class="t3a-ref">Comparala con la teórica 4 de 2022: allí el modelo es el <b>básico</b> (sin tecnología) y la respuesta es “ninguna”. Y en la prueba del 28/9/2024 (pregunta 3) la opción de ahorro vuelve a ser falsa por lo mismo, y la de tecnología también, porque agrega que “depende de la cantidad de investigadores” (eso es Romer, 3.8): allí la respuesta es e) ninguna.</p></div>
+
+<h3>El límite del modelo básico</h3>
+<p>Sin progreso tecnológico <b>no hay crecimiento sostenido del ingreso per cápita</b>. El modelo termina diciendo que \(g_y = 0\) en el largo plazo, y eso contradice lo que muestran los datos de cualquier país desarrollado (y los hechos del 3.1). De ahí la necesidad del progreso tecnológico (3.6).</p>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Larraín y Sachs, cap. 4.4, pp. 112-122 [obligatoria] · Sala-i-Martín, cap. 1, pp. 9-38 [obligatoria].</p></div>
+
+<!-- ======================================================================= 3.5 -->
+<h2><span class="num">3.5</span>La regla de oro de la acumulación</h2>
+
+<p>El modelo dice que una tasa de ahorro más alta lleva a más capital y más producto por trabajador. Surge la pregunta natural: <b>¿conviene ahorrar lo más posible?</b> La respuesta es <b>no</b>, y el argumento es la regla de oro.</p>
+<p>El objetivo de la economía no es acumular capital sino <b>consumir</b>. El consumo per cápita en el estado estacionario es lo que sobra del producto después de reponer el capital:</p>
+<div class="formula-card">
+  <div class="fc-label">Consumo de estado estacionario</div>
+  \[ c^* = f(k^*) - (\delta + n)\,k^* \]
+</div>
+<div class="versus">
+  <div class="card blue"><div class="card-title">Subir \(s\) aumenta \(f(k^*)\)</div><p>Hay más producto. Este efecto <b>domina al principio</b>.</p></div>
+  <div class="vs">vs</div>
+  <div class="card aqua"><div class="card-title">…pero también \((\delta+n)k^*\)</div><p>Hay más capital que reponer. Este <b>termina dominando</b>, porque los rendimientos del capital son decrecientes.</p></div>
+</div>
+
+<h3>La condición</h3>
+<p>Maximizando \(c^*\) respecto de \(k^*\):</p>
+<div class="formula-card">
+  <div class="fc-label">Condición de la regla de oro</div>
+  \[ \frac{dc^*}{dk^*} = f'(k^*) - (\delta + n) = 0 \quad\Longrightarrow\quad f'(k_{oro}) = \delta + n \]
+</div>
+<p>El capital de la regla de oro es aquel cuya <b>productividad marginal iguala a la tasa de depreciación efectiva</b>. En el gráfico: el punto donde la <b>pendiente de \(f(k)\) es igual a la pendiente de la recta \((\delta + n)k\)</b>, es decir, donde la distancia vertical entre las dos curvas es máxima.</p>
+
+<figure class="w80"><img src="figs/out/t3a_regla_oro.svg">
+<figcaption><b>Figura 3.15.</b> (a) El consumo es la distancia vertical entre \(f(k)\) y \((n+\delta)k\); es máxima donde la tangente a \(f\) es paralela a la recta. La tasa de ahorro que lleva la economía justo ahí es \(s_{oro}\): su curva \(s_{oro}f(k)\) corta a la recta en \(k_{oro}\). (b) El consumo de EE en función de \(s\): con \(s = 0\) no hay capital ni producto; con \(s = 1\) no se consume nada; el máximo está en \(s = \alpha\). Esquemático (\(\alpha = 0{,}35\), como en el ejemplo del manual).</figcaption></figure>
+
+<h3>Con Cobb-Douglas</h3>
+<p>Con \(f(k) = A\,k^{\alpha}\) resulta \(f'(k) = \alpha A\,k^{\alpha-1}\), y de la condición sale un resultado muy simple:</p>
+<div class="calc">\[\begin{aligned}
+\alpha A\,k^{\alpha-1} = \delta + n \;&\Rightarrow\; k_{oro} = \left(\frac{\alpha A}{\delta + n}\right)^{\frac{1}{1-\alpha}}\\
+\text{comparando con } k^* = \left(\frac{sA}{\delta + n}\right)^{\frac{1}{1-\alpha}} \;&\Rightarrow\; k^* = k_{oro} \iff s = \alpha
+\end{aligned}\]</div>
+<div class="formula-card">
+  <div class="fc-label">Tasa de ahorro de la regla de oro</div>
+  \[ s_{oro} = \alpha \]
+  <div class="fc-legend"><span>La tasa de ahorro de la regla de oro es igual a la <b>participación del capital en el producto</b>. Con \(\alpha = 0{,}35\), la tasa de ahorro que maximiza el consumo de EE es 35&nbsp;%.</span></div>
+</div>
+
+<div class="box tip"><div class="box-title">Otra forma de verlo (y de comprobarlo)</div>
+<p>Con Cobb-Douglas, el consumo de EE como función de \(s\) es</p>
+<div class="calc">\[ c^*(s) = (1-s)\,A^{\frac{1}{1-\alpha}}\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}} \;\Rightarrow\; \frac{d\ln c^*}{ds} = -\frac{1}{1-s} + \frac{\alpha}{(1-\alpha)\,s} = 0 \;\Rightarrow\; \alpha(1-s) = (1-\alpha)s \;\Rightarrow\; s = \alpha \]</div>
+<p>Es la joroba de la Figura 3.15 (b). Y como en la regla de oro \(i = \alpha\,y\), se invierte exactamente la parte del producto que remunera al capital y se consume la del trabajo: \(c_{oro} = (1-\alpha)\,y_{oro}\).</p></div>
+
+<h3>Las tres situaciones posibles</h3>
+<table>
+<thead><tr><th>Situación</th><th>Comparación</th><th>Diagnóstico</th></tr></thead>
+<tbody>
+<tr><td>\(s &lt; \alpha\)</td><td>\(k^* &lt; k_{oro}\)</td><td><b>Subacumulación.</b> Ahorrar más aumenta el consumo de largo plazo, a costa de consumir menos hoy.</td></tr>
+<tr class="total"><td>\(s = \alpha\)</td><td>\(k^* = k_{oro}\)</td><td>Regla de oro: consumo de estado estacionario <b>máximo</b>.</td></tr>
+<tr><td>\(s &gt; \alpha\)</td><td>\(k^* &gt; k_{oro}\)</td><td><b>Sobreacumulación</b> o <b>ineficiencia dinámica</b>: se ahorra tanto que el consumo cae. Bajar \(s\) aumenta el consumo <b>hoy y siempre</b>.</td></tr>
+</tbody></table>
+
+<figure class="w80"><img src="figs/out/t3a_oro_transicion.svg">
+<figcaption><b>Figura 3.16.</b> Qué pasa con el consumo per cápita cuando la economía se mueve a la regla de oro (simulación, \(\alpha = 0{,}35\), \(n+\delta = 0{,}10\), cambio en el año 5). (a) Desde la sobreacumulación: el consumo salta hacia arriba y, aunque después baja, nunca vuelve al nivel inicial. (b) Desde la subacumulación: primero cae (hay que ahorrar más) y recién después supera al inicial.</figcaption></figure>
+
+<p>El caso de <b>sobreacumulación</b> es el interesante para el examen: es una situación <b>inequívocamente ineficiente</b>, porque reducir el ahorro mejora el consumo en todos los períodos sin sacrificar nada (Figura 3.16 a). En cambio, pasar de subacumulación a la regla de oro implica un <b>costo</b>: hay que consumir menos durante la transición para consumir más después (Figura 3.16 b). Por eso la regla de oro <b>no es automáticamente el óptimo social</b>: depende de cuánto valore la sociedad el consumo presente frente al futuro.</p>
+
+<div class="box example"><div class="box-title">Ejemplo numérico · ¿la economía del parcial 2022 ahorra de más o de menos?</div>
+<p>\(A = 2{,}5\), \(\alpha = 3/7 = 0{,}4286\), \(n + \delta = 0{,}13\), \(s = 0{,}26\). Como \(s = 0{,}26 &lt; \alpha = 0{,}43\): <b>subacumulación</b>.</p>
+<div class="calc">\[\begin{aligned}
+\text{con } s = 0{,}26: &\quad c^* = (1-0{,}26)\cdot 8{,}359 = 6{,}186\\
+\text{regla de oro: } &\quad k_{oro} = \left(\tfrac{0{,}4286\cdot 2{,}5}{0{,}13}\right)^{7/4} = 40{,}09 \qquad y_{oro} = 2{,}5\cdot 40{,}09^{3/7} = 12{,}16\\
+&\quad c_{oro} = 12{,}16 - 0{,}13\cdot 40{,}09 = 6{,}949 = (1-\alpha)\,y_{oro}\ \checkmark
+\end{aligned}\]</div>
+<p>Si esa economía subiera su ahorro hasta 42,9&nbsp;%, el consumo de largo plazo pasaría de 6,19 a 6,95 (+12&nbsp;%), pero durante la transición consumiría menos. (Ejercicio de aplicación; no es un inciso del parcial.)</p></div>
+
+<p><b>Con progreso tecnológico</b> la condición se ajusta a \(f'(\kt_{oro}) = \delta + n + g_A\), con las variables medidas por unidad de trabajo efectivo (3.6), y \(s_{oro} = \alpha\) sigue valiendo.</p>
+
+<div class="box warn"><div class="box-title">Errores típicos con la regla de oro</div>
+<ul>
+  <li>Creer que “más ahorro siempre es mejor”: maximiza \(k^*\) e \(y^*\), no \(c^*\). Con \(s = 1\) el consumo es cero.</li>
+  <li>Poner la condición al revés: es \(f'(k) = n + \delta\) (pendiente de \(f\)), no \(f(k) = (n+\delta)k\) (eso es el EE con \(s = 1\)).</li>
+  <li>Confundir \(\alpha\) con la participación del trabajo cuando el enunciado da \(1-\alpha\).</li>
+  <li>Decir que la regla de oro es “el óptimo”: sólo maximiza el consumo de EE; la transición desde la subacumulación tiene costo.</li>
+</ul></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía de este punto</div>
+<p>Sala-i-Martín, cap. 1 · Larraín y Sachs, cap. 4.</p></div>
+
+<!-- ======================================================================= cierre -->
+<div class="avoid-break">
+<h3>Chuleta del 3.1 al 3.5</h3>
+<table class="t3a-cheat compact">
+<thead><tr><th>Para…</th><th>Usá</th></tr></thead>
+<tbody>
+<tr><td>Harrod-Domar (agregado / per cápita)</td><td>\(g_Y = s/v - \delta\) &nbsp;·&nbsp; \(g_y = s/v - \delta - n\)</td></tr>
+<tr><td>Umbrales de Harrod-Domar per cápita</td><td>\(g_y = 0 \iff n = s/v - \delta \iff v = s/(n+\delta)\); crece si \(0 &lt; v &lt; s/(n+\delta)\)</td></tr>
+<tr><td>Ecuación fundamental (niveles / tasas)</td><td>\(\dot k = sAk^{\alpha} - (n+\delta)k\) &nbsp;·&nbsp; \(\gamma_k = sA/k^{1-\alpha} - (n+\delta)\); \(\gamma_y = \alpha\gamma_k\)</td></tr>
+<tr><td>Funciones y curvas</td><td>FA \(= sAk^{\alpha}\), FD \(= (n+\delta)k\) &nbsp;·&nbsp; CA \(= sA/k^{1-\alpha}\), CD \(= n+\delta\)</td></tr>
+<tr><td>Estado estacionario</td><td>\(k^* = \left(\frac{sA}{n+\delta}\right)^{1/(1-\alpha)}\), \(y^* = A k^{*\alpha}\), \(c^* = (1-s)y^*\); control \(y^* = (n+\delta)k^*/s\)</td></tr>
+<tr><td>Tasas en el EE</td><td>per cápita (\(k, y, c\)): 0 &nbsp;·&nbsp; agregadas (\(K, Y, C\)): \(n\)</td></tr>
+<tr><td>Despejar \(\alpha\)</td><td>\(\alpha = \ln(y/A)/\ln k\)</td></tr>
+<tr><td>Regla de oro</td><td>\(f'(k_{oro}) = n+\delta\) &nbsp;·&nbsp; \(k_{oro} = \left(\frac{\alpha A}{n+\delta}\right)^{1/(1-\alpha)}\) &nbsp;·&nbsp; \(s_{oro} = \alpha\)</td></tr>
+</tbody></table>
+</div>
+
+<div class="check"><div class="check-title">Autoevaluación</div>
+<ol>
+  <li><b>¿Cuáles son los cuatro hechos del crecimiento y cuál es el más preguntado?</b> Variación enorme del ingreso per cápita; tasas muy distintas entre países; tasas no constantes en el tiempo; posición relativa no inmutable (el más preguntado: Corea vs Argentina).</li>
+  <li><b>¿Por qué Harrod-Domar da crecimiento “en el filo de la navaja”?</b> Porque la relación capital-producto es fija: la tasa garantizada \(s/v - \delta\) y la natural \(n\) son parámetros independientes, nada las iguala y cualquier desvío se amplifica.</li>
+  <li><b>Con \(s = 0{,}25\), \(v = 2{,}5\), \(\delta = 0{,}05\), \(n = 0{,}02\), ¿crece el producto per cápita? ¿Hasta qué \(v\)?</b> \(g_y = 0{,}10 - 0{,}07 = 3\,\%\): sí. Crece mientras \(v &lt; 0{,}25/0{,}07 = 3{,}57\).</li>
+  <li><b>\(Y = 2K^{0{,}5}L^{0{,}5}\), \(s = 0{,}2\), \(n+\delta = 0{,}1\): escribí CA y CD y calculá \(k^*\) e \(y^*\).</b> CA \(= 0{,}4/k^{0{,}5}\), CD \(= 0{,}1\); \(k^* = (0{,}4/0{,}1)^2 = 16\), \(y^* = 2\cdot 4 = 8\) (control: \(0{,}1\cdot 16/0{,}2 = 8\)).</li>
+  <li><b>Un país duplica su tasa de ahorro. ¿Qué pasa con \(\gamma_y\) en el largo plazo?</b> Nada: vuelve a 0. Sube el nivel de \(k^*\) e \(y^*\) y el crecimiento es mayor sólo durante la transición (efecto nivel).</li>
+  <li><b>Con \(\alpha = 0{,}3\) y \(s = 0{,}4\), ¿qué conviene hacer?</b> Hay sobreacumulación (\(s &gt; \alpha\)): bajar el ahorro a 0,3 aumenta el consumo hoy y siempre.</li>
+</ol></div>
+
+</section>

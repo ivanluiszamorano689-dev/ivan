@@ -1,0 +1,558 @@
+<style>
+/* ---- banco de preguntas, mapa bibliográfico y formulario (prefijo t3b-) ---- */
+.t3b-qa { display: grid; grid-template-columns: 1.9em 1fr; gap: 0.1em 0.6em; padding: 0.5em 0 0.45em; border-bottom: 1px solid var(--rule); break-inside: avoid; }
+.t3b-qa:last-of-type { border-bottom: 0; }
+.t3b-qn { width: 1.75em; height: 1.75em; border-radius: 50%; background: var(--accent); color: #fff; font: 700 8.4pt/1.75em "Inter"; text-align: center; margin-top: 0.1em; }
+.t3b-qq { font-weight: 650; margin: 0 0 0.2em; color: var(--ink); }
+.t3b-qb p { margin-bottom: 0.25em; }
+.t3b-qb p:last-child { margin-bottom: 0; }
+.t3b-see { display: inline-block; font: 700 7.2pt "Inter"; color: var(--accent-ink); background: var(--accent-bg); border-radius: 99px; padding: 0.05em 0.55em; margin-left: 0.3em; vertical-align: 0.1em; white-space: nowrap; }
+.t3b-mcqhead { font: 700 7.6pt "Inter"; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange-ink); margin: 0.2em 0 0.15em; }
+.t3b-mcq { border: 1px solid var(--rule); border-left: 4px solid var(--orange); border-radius: 8px; padding: 0.55em 0.8em 0.35em; margin: 0.6em 0 0.8em; background: #fff; break-inside: avoid; }
+.t3b-mcq > p { margin: 0 0 0.25em; font-weight: 650; }
+.t3b-mcq .mcq { margin: 0.2em 0 0.1em; font-size: 8.9pt; }
+.t3b-mcq .mcq > li { padding: 0.14em 0.5em; margin: 0.1em 0; line-height: 1.38; }
+.t3b-mcq .mcq .why { display: inline; margin-left: 0.25em; font-size: 8pt; }
+.t3b-mcq .mcq .why::before { content: "— "; color: var(--ink-3); }
+.mcq > li.t3b-true > .opt::after { content: " ≈"; color: var(--ink-3); }
+.t3b-temas { display: grid; grid-template-columns: repeat(9, 1fr); gap: 0.3em; margin: 0.6em 0 0.4em; break-inside: avoid; }
+.t3b-temas > div { border-radius: 7px; padding: 0.4em 0.3em; text-align: center; font-size: 7.4pt; line-height: 1.25; border: 1.5px solid var(--c); background: var(--cbg); min-height: 4.6em; }
+.t3b-temas > div b { display: block; font: 800 12pt "Inter"; color: var(--c); }
+.t3b-ok { --c: var(--green); --cbg: var(--green-bg); }
+.t3b-cov { --c: var(--blue); --cbg: var(--blue-bg); }
+.t3b-part { --c: var(--yellow); --cbg: var(--yellow-bg); }
+.t3b-miss { --c: var(--red); --cbg: var(--red-bg); }
+.t3b-legend { font-size: 7.8pt; color: var(--ink-2); margin-bottom: 0.8em; }
+.t3b-legend span { display: inline-block; margin-right: 1em; }
+.t3b-legend i { display: inline-block; width: 0.8em; height: 0.8em; border-radius: 2px; background: var(--c); vertical-align: -0.05em; margin-right: 0.3em; }
+/* formulario en una página */
+.t3b-form { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; font-size: 8.3pt; line-height: 1.4; }
+.t3b-form .card { padding: 0.4em 0.55em 0.35em; border-radius: 7px; }
+.t3b-form .card-title { font-size: 8pt; margin-bottom: 0.15em; }
+.t3b-form .card p { margin: 0 0 0.3em; }
+.t3b-form .katex { font-size: 1.04em; }
+.t3b-form .card p .katex { white-space: nowrap; }
+.t3b-form .t3b-span2 { grid-column: span 2; }
+.t3b-form .t3b-span3 { grid-column: span 3; }
+.t3b-form ul { margin: 0; padding-left: 1.1em; }
+.t3b-form li { margin: 0; }
+.t3b-form .t3b-t { font: 800 6.8pt "Inter"; letter-spacing: 0.06em; color: #fff; background: var(--c); border-radius: 3px; padding: 0.05em 0.35em; margin-right: 0.3em; vertical-align: 0.1em; }
+.t3b-f1 { --c: var(--violet); } .t3b-f2 { --c: var(--blue); } .t3b-f3 { --c: var(--aqua); }
+.t3b-form .card.t3b-f1 { border-top: 3px solid var(--violet); }
+.t3b-form .card.t3b-f2 { border-top: 3px solid var(--blue); }
+.t3b-form .card.t3b-f3 { border-top: 3px solid var(--aqua); }
+</style>
+
+<section class="t3b-banco">
+
+<div class="chapter-head">
+  <div class="kicker">Cierre · Repaso de los tres temas</div>
+  <h2>Banco de preguntas teóricas</h2>
+  <p>Son las preguntas de las guías de lectura de la cátedra más las que se desprenden del programa. <b>Si podés contestarlas sin mirar, el teórico está.</b> Después de las 27 preguntas de la guía, cada tema trae <b>todas las preguntas teóricas reales</b> de los parciales 2022–2025, con la opción correcta marcada y una línea de por qué falla cada una de las otras.</p>
+</div>
+
+<div class="grid-2">
+<div class="box tip"><div class="box-title">Cómo usar el banco</div>
+<p>Tapá la respuesta, contestá en voz alta o por escrito y recién después mirá. Si fallás, volvé a la sección que indica la etiqueta (<span class="t3b-see" style="margin:0">→ 1.2</span>). En las preguntas de opción múltiple, antes de mirar la marca, tratá de decir por qué cada opción incorrecta está mal: es lo que te salva cuando cambian el orden o una palabra.</p></div>
+<div class="box exam"><div class="box-title">El puntaje de la parte teórica</div>
+<p>Correcta <b>+10</b>, incorrecta <b>−5</b>. Las trampas más repetidas son palabras absolutas (“suficiente”, “siempre”, “garantiza”, “única vía”), las opciones que describen <b>otro</b> índice u <b>otro</b> modelo (IDH-D en lugar de IDG, Romer en lugar de Solow) y el “Ninguna” cuando la opción buena tiene un agregado falso.</p></div>
+</div>
+
+<!-- ======================================================================= TEMA 1 -->
+<div class="tema-1">
+<h3>Tema 1 — La economía del desarrollo</h3>
+<h4>Preguntas de la guía</h4>
+
+<div class="t3b-qa"><div class="t3b-qn">1</div><div class="t3b-qb">
+<p class="t3b-qq">¿Cuáles son las falencias de la mirada del desarrollo que se centra solo en el crecimiento? <span class="t3b-see">→ 1.1</span></p>
+<p>Las <b>cinco fuentes de divergencia</b> entre crecimiento y desarrollo: <b>distribución</b> (el promedio oculta a quién le toca); <b>no comercialidad y externalidades</b> (lo que no pasa por el mercado no se cuenta, y lo que daña no se descuenta); <b>mecanismos imperfectos de precios</b>; <b>límite temporal</b> (el PBI no mira el agotamiento de recursos ni a las generaciones futuras); y <b>el PBI como medida de medios y no de fines</b>.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">2</div><div class="t3b-qb">
+<p class="t3b-qq">¿Por qué se obtienen conclusiones distintas si se estudia desde capacidades y funcionamientos? <span class="t3b-see">→ 1.2</span></p>
+<p>Porque <b>el funcionamiento observado no revela la libertad que hubo detrás</b>. El <b>ayuno voluntario</b> y el <b>hambre forzada</b> son el mismo funcionamiento con conjuntos de capacidad opuestos. Evaluar en el espacio de las capacidades captura la libertad real; evaluar en recursos o en utilidad, no.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">3</div><div class="t3b-qb">
+<p class="t3b-qq">¿Cuáles son los tipos de libertades fundamentales? <span class="t3b-see">→ 1.3</span></p>
+<p>Las <b>cinco instrumentales</b>: <b>libertades políticas</b>, <b>servicios económicos</b>, <b>oportunidades sociales</b>, <b>garantías de transparencia</b> y <b>seguridad protectora</b> —esta última con mecanismos institucionales <b>fijos</b> y <b>ad hoc</b>—.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">4</div><div class="t3b-qb">
+<p class="t3b-qq">¿Por qué la expansión de la libertad es medio y fin del desarrollo? <span class="t3b-see">→ 1.3</span></p>
+<p><b>Papel constitutivo</b> (fin): las libertades fundamentales son el desarrollo mismo, tienen <b>valor intrínseco</b>. <b>Papel instrumental</b> (medio): los distintos derechos y oportunidades <b>se refuerzan mutuamente</b> y expanden la libertad general.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">5</div><div class="t3b-qb">
+<p class="t3b-qq">Diferencia entre capacidad y funcionamiento. <span class="t3b-see">→ 1.2</span></p>
+<p>La <b>capacidad</b> es <b>potencial</b>: el conjunto de combinaciones de funcionamientos entre las que se puede elegir (el menú). El <b>funcionamiento</b> es lo <b>efectivamente logrado</b> (el plato). <b>Regla práctica:</b> si hubo elección posible, capacidad; si es un hecho consumado, funcionamiento.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">6</div><div class="t3b-qb">
+<p class="t3b-qq">Características estructurales del subdesarrollo. <span class="t3b-see">→ 1.5</span></p>
+<p><b>Ingreso bajo</b>, <b>desigualdad</b>, <b>transición demográfica incompleta</b>, <b>estructura productiva poco diversificada</b> y <b>rol primario-exportador</b>.</p></div></div>
+
+<h4>Así lo preguntaron en el parcial</h4>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Parcial 08/10/2022 (Tema A) · teórica 1</div>
+<p>Considerar el concepto de bien-estar individual desde la perspectiva de Sen, consiste en analizar:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>Si el individuo logra un estado agradable de conciencia.<span class="why">Es la visión utilitarista del estado mental, la que Sen descarta.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>El nivel de utilidad alcanzado por el individuo.<span class="why">Utilitarismo: la utilidad no mide lo que la persona logra ser o hacer.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>Si el individuo es feliz.<span class="why">La felicidad se adapta: quien vive privado puede resignarse y “estar contento”.</span></span></li>
+  <li class="correct"><span class="opt">d)</span><span>Los funcionamientos logrados por la persona.<span class="why">Para Sen el bien-estar (<em>being well</em>) se evalúa por los funcionamientos logrados.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna opción es correcta.<span class="why">d es correcta.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Parcial 2023 · teórica 1</div>
+<p>Al evaluar qué tan bien está una persona hay que tener en cuenta los bienes primarios que posee, pero también su condición, es decir que es relevante:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>Evaluar la utilidad que la persona obtiene de los bienes primarios y de su condición.<span class="why">Vuelve al utilitarismo: la pregunta es qué puede hacer con los bienes, no cuánta utilidad le dan.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>Evaluar las características personales relevantes que determinan la conversión de los bienes primarios en la capacidad de las personas para alcanzar sus fines.<span class="why">Son los factores de conversión de Sen: con los mismos bienes, dos personas no logran lo mismo.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>Evaluar si la persona se encuentra en un estado deseable o agradable de conciencia.<span class="why">Estado mental: utilitarismo.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Todo lo anterior.<span class="why">a y c son falsas.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna es correcta.<span class="why">b es correcta.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 20/9/2024 · pregunta 1</div>
+<p>Para evaluar la calidad de vida y el nivel de desarrollo que ofrece una economía lo más relevante a tener en cuenta es:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El acceso equitativo de la población a servicios públicos y bienes de consumo.<span class="why">Son medios (bienes y recursos); Sen evalúa lo que la gente puede ser y hacer con ellos.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>La libertad de las personas para elegir y alcanzar vidas que valoran.<span class="why">Enfoque de capacidades: desarrollo como libertad.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>La felicidad alcanzada por la población.<span class="why">Utilitarismo.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>El crecimiento económico sostenido medido a través del PIB per cápita.<span class="why">Visión estricta: el crecimiento es un medio, no el desarrollo.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.<span class="why">b es correcta.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 28/9/2024 · pregunta 1 (las mismas opciones, en otro orden)</div>
+<p>Teniendo en cuenta el enfoque de Sen, la evaluación de la calidad de vida como del desarrollo que ofrece una economía tiene que analizarse en términos de:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El crecimiento económico sostenido medido a través del PIB per cápita.<span class="why">Visión estricta.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>La felicidad alcanzada por la población.<span class="why">Utilitarismo.</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>La libertad de las personas para elegir y alcanzar vidas que valoran.<span class="why">Es la misma respuesta que el 20/9, ahora en la letra c: mirá el texto, no la letra.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>El acceso equitativo de la población a servicios públicos y bienes de consumo.<span class="why">Medios, no fines.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.<span class="why">c es correcta.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 27/09/2025 · pregunta 1</div>
+<p>Según la perspectiva de Amartya Sen, el concepto de desarrollo debe entenderse como:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El aumento sostenido del PBI per cápita.<span class="why">Visión estricta: confunde desarrollo con crecimiento.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>La expansión de las libertades reales que disfrutan las personas.<span class="why">Definición de <em>Desarrollo y Libertad</em>.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>La reducción de la deuda externa y el déficit fiscal.<span class="why">Objetivos macroeconómicos: a lo sumo, medios.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>La felicidad alcanzada por la población.<span class="why">Utilitarismo.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.<span class="why">b es correcta.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 20/9/2024 · pregunta 4</div>
+<p>¿Cuál refleja mejor la interacción entre Crecimiento Económico (CE) y Desarrollo Humano (DH)?</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El CE es suficiente para mejorar el DH, ya que incrementa el ingreso per cápita.<span class="why">“Suficiente”: la relación no es automática.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>El DH podría mejorar sostenidamente sin crecimiento económico si se enfocan políticas en salud, educación y equidad.<span class="why">“Sostenidamente”: sin crecimiento no hay recursos para sostener ese gasto en el tiempo.</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>Un alto nivel de CE es necesario, pero no suficiente, para garantizar avances sostenibles en DH.<span class="why">Visión amplia (1.1): el crecimiento es un medio y la correlación con el bienestar no es automática.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Las mejoras en el DH siempre ralentizan el CE a corto plazo debido a la redistribución de recursos.<span class="why">“Siempre”; además el DH también empuja al crecimiento.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.<span class="why">c es correcta.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 28/9/2024 · pregunta 4</div>
+<p>Algunos de los vínculos entre CE y DH involucran alguna de estas relaciones:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>Un alto nivel de CE es suficiente para garantizar avances sostenibles en DH.<span class="why">“Suficiente”.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>El DH podría mejorar en el corto plazo sin que existiese crecimiento económico si se enfocan políticas en salud, educación y equidad entre otras.<span class="why">En el <b>corto plazo</b> sí (compará con la b de la prueba del 20/9, que decía “sostenidamente”).</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>El CE es suficiente para mejorar el DH, ya que incrementa el ingreso per cápita.<span class="why">“Suficiente”.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Las mejoras en el DH siempre ralentizan el CE a largo plazo debido a la redistribución de recursos.<span class="why">“Siempre”; y en el largo plazo el DH favorece el crecimiento.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.<span class="why">b es correcta.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 27/09/2025 · pregunta 4</div>
+<p>¿Cuál refleja un vínculo fuerte entre crecimiento económico y desarrollo humano?</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>A mayor PBI per cápita, menor pobreza estructural.<span class="why">La relación no es automática ni lineal: la correlación con los logros sociales es débil y se aplana.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>Aumento del ingreso acompañado de mejoras en salud, educación y libertades.<span class="why">El ingreso se vuelve desarrollo cuando se convierte en capacidades.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>El crecimiento del producto garantiza el desarrollo humano.<span class="why">“Garantiza”: visión estricta, descartada.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Aumento del empleo informal como estrategia de expansión.<span class="why">El empleo informal no es desarrollo.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>La única vía de desarrollo es el crecimiento del capital físico.<span class="why">“Única vía” y “capital físico” contradicen la visión amplia.</span></span></li>
+</ul></div>
+</div>
+
+<!-- ======================================================================= TEMA 2 -->
+<div class="tema-2">
+<h3>Tema 2 — Los indicadores del bienestar</h3>
+<h4>Preguntas de la guía</h4>
+
+<div class="t3b-qa"><div class="t3b-qn">7</div><div class="t3b-qb">
+<p class="t3b-qq">¿Por qué hay que usar tipos de cambio de paridad de poder adquisitivo para comparar PBI entre países? <span class="t3b-see">→ 2.2</span></p>
+<p>Porque el <b>tipo de cambio de mercado solo refleja los precios de los bienes que cruzan fronteras</b>. Los <b>no transables son sistemáticamente más baratos en los países pobres</b>, de modo que convertir a tipo de cambio de mercado <b>subestima su renta real</b> (y exagera la desigualdad entre países).</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">8</div><div class="t3b-qb">
+<p class="t3b-qq">¿Qué limitaciones tiene el ingreso por habitante como medida del bienestar material? <span class="t3b-see">→ 2.1</span></p>
+<p>Es un <b>promedio que oculta la distribución</b>; <b>no registra lo que no pasa por el mercado</b>; <b>no descuenta externalidades ni agotamiento de recursos</b>; y <b>mide medios, no capacidades</b>.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">9</div><div class="t3b-qb">
+<p class="t3b-qq">¿Es el PBI per cápita un buen indicador del desarrollo humano? <span class="t3b-see">→ 1.1</span></p>
+<p><b>Correlaciona positivamente</b> con la esperanza de vida y la escolaridad, pero la relación es <b>débil, no lineal y se aplana en los tramos altos</b>. Los casos de <b>Sri Lanka, Sudáfrica y Cuba</b> muestran que países con ingresos muy distintos alcanzan logros sociales parecidos, y viceversa.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">10</div><div class="t3b-qb">
+<p class="t3b-qq">¿Con qué objetivo el IDH establece valores máximos y mínimos? <span class="t3b-see">→ 2.4</span></p>
+<p>Para <b>normalizar</b> indicadores medidos en unidades incomparables (años, dólares) a una <b>escala común de 0 a 1</b>, y hacer el índice comparable entre países y en el tiempo: \(I = (x - \min)/(\max - \min)\).</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">11</div><div class="t3b-qb">
+<p class="t3b-qq">¿Por qué el IDH usa media geométrica? <span class="t3b-see">→ 2.4</span></p>
+<p>Porque <b>impide la sustitución perfecta entre dimensiones</b>: un valor bajo en cualquiera arrastra el índice, y el <b>desempeño desigual entre dimensiones queda penalizado</b>.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">12</div><div class="t3b-qb">
+<p class="t3b-qq">¿Qué muestra el Índice de Desigualdad de Género y entre qué valores varía? <span class="t3b-see">→ 2.5</span></p>
+<p>Mide la <b>pérdida de desarrollo humano por las disparidades entre varones y mujeres</b> en <b>salud reproductiva</b>, <b>empoderamiento</b> y <b>mercado laboral</b>. Varía entre <b>0 —igualdad perfecta— y 1 —desigualdad máxima—</b>.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">13</div><div class="t3b-qb">
+<p class="t3b-qq">Diferencia entre IDH, IDH-D e IDG. <span class="t3b-see">→ 2.5</span></p>
+<p>El <b>IDH</b> es el desarrollo humano <b>potencial</b>; el <b>IDH-D</b> lo descuenta por la desigualdad interna y da el desarrollo humano <b>real</b>; el <b>IDG</b> mide específicamente la pérdida por desigualdad de <b>género</b> y se lee al revés: <b>más bajo es mejor</b>.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">14</div><div class="t3b-qb">
+<p class="t3b-qq">Diferencias conceptuales y metodológicas entre IDH e IPS. <span class="t3b-see">→ 2.6</span></p>
+<p><b>Conceptual:</b> el IPS <b>excluye deliberadamente toda variable económica</b> y mide <b>resultados</b> sociales y ambientales. <b>Metodológica:</b> <b>12 componentes</b> ponderados por <b>análisis de componentes principales</b> y promediados de forma simple, en <b>escala 0-100</b>, frente a <b>4 indicadores en media geométrica y escala 0-1</b>.</p></div></div>
+
+<h4>Así lo preguntaron en el parcial</h4>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Parcial 08/10/2022 (Tema A) · teórica 2</div>
+<p>Si comparamos países a través de su producto per cápita:</p>
+<ul class="mcq">
+  <li class="correct"><span class="opt">a)</span><span>Habrá mayor desigualdad entre ellos si usamos el producto per cápita a precio de mercado, debido a las diferencias en los precios que se comercian internamente.<span class="why">Los no transables son más baratos en los pobres: a TC de mercado su producto queda subestimado y la brecha se agranda.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>Habrá mayor desigualdad si usamos el producto a precio de mercado, debido a que se usa la misma canasta de bienes.<span class="why">“La misma canasta” es la PPA, no el TC de mercado.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>Será indiferente usar precio de mercado o PPA, debido a que los precios que se comercian internacionalmente son los mismos.<span class="why">Los transables sí, pero los no transables no: por eso no es indiferente.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Habrá mayor desigualdad usando el producto per cápita a PPA, debido a los precios de los bienes que se comercian internamente.<span class="why">Al revés: la PPA achica la brecha.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Habrá mayor desigualdad si usamos PPA, debido a que se usa la misma canasta de bienes.<span class="why">Al revés: usar la misma canasta reduce la desigualdad medida.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Parcial 08/10/2022 (Tema A) · teórica 3</div>
+<p>El índice de Progreso Social intenta medir:</p>
+<ul class="mcq">
+  <li class="t3b-true"><span class="opt">a)</span><span>Indicadores exclusivamente sociales y ambientales.<span class="why">Cierta (es un principio de diseño), pero no es la única cierta.</span></span></li>
+  <li class="t3b-true"><span class="opt">b)</span><span>De manera holística el bienestar humano.<span class="why">Cierta, pero no la única.</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>Todas las premisas son correctas.<span class="why">a, b, d y e describen al IPS.</span></span></li>
+  <li class="t3b-true"><span class="opt">d)</span><span>El bienestar de un país independientemente de indicadores económicos.<span class="why">Cierta: no incluye variables económicas. Pero no es la única.</span></span></li>
+  <li class="t3b-true"><span class="opt">e)</span><span>Dimensiones de necesidades básicas, Fundamentos del bienestar y oportunidades.<span class="why">Cierta: son sus tres dimensiones. Pero no es la única.</span></span></li>
+</ul>
+<p class="small" style="font-weight:400">Marca ≈: opción verdadera pero incompleta; cuando hay un “Todas”, marcar una sola de las verdaderas cuenta como error.</p></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Parcial 2023 · teórica 2</div>
+<p>Los principales problemas de comparabilidad internacional entre medidas de producto per cápita se deben a:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>Existencia de distintas unidades monetarias y tipos de cambio y subestimación de las rentas per cápita en los países pobres.<span class="why">La subestimación es una consecuencia, no uno de los tres problemas; y falta el de los precios.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>Existencia de distintas unidades monetarias; diversidad de precios y subestimación de las cantidades de bienes y servicios finales.<span class="why">Los tres problemas de PBI = Σ P·Q: signos monetarios, precios correctos y contabilización de las cantidades.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>Existencia de distintas unidades monetarias; diversidad de precios y diferencias en el nivel de comercio de bienes transables.<span class="why">El tercer problema son las cantidades mal contadas, no el nivel de comercio.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Subestimación de las cantidades producidas debido a las diferencias en el comercio internacional.<span class="why">Sólo un problema, y con una causa equivocada.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna es correcta.<span class="why">b es correcta.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Parcial 2023 · teórica 4</div>
+<p>Los índices como el de Progreso Social o los publicados por el PNUD captan el concepto de bienestar de un país:</p>
+<ul class="mcq">
+  <li class="correct"><span class="opt">a)</span><span>En la medida en que intentan representar logros en algunas dimensiones de la vida de las personas.<span class="why">Miden logros (capacidades, resultados), no ingreso.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>De la misma manera en la que lo hacen medidas de ingreso como el PBI per cápita.<span class="why">Justamente nacen para ir más allá del ingreso.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>En tanto y en cuanto los ingresos per cápita sean lo suficientemente altos como para tener bienestar material.<span class="why">No dependen de un umbral de ingreso.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Aunque no son objetivas ni representativas para hacer comparaciones entre países.<span class="why">Están normalizadas precisamente para comparar países.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Aunque no tienen absolutamente ninguna correlación con el PBI per cápita.<span class="why">Sí correlacionan (positiva, aunque débil y no lineal).</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 20/9/2024 · pregunta 2 &nbsp;=&nbsp; Prueba teórica 28/9/2024 · pregunta 2 (idéntica)</div>
+<p>Cuando se pretende comparar países a través de su producto per cápita:</p>
+<ul class="mcq">
+  <li class="correct"><span class="opt">a)</span><span>El uso del producto per cápita a PPA reduce las diferencias debidas a las variaciones en los precios internos.<span class="why">La PPA valúa todo con la misma canasta y corrige los no transables baratos.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>Usar el producto per cápita a precios de mercado subestima las desigualdades debido a las fluctuaciones en los tipos de cambio.<span class="why">Al revés: a TC de mercado se <b>sobre</b>estiman.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>El uso de PPA tiende a sobreestimar las diferencias en el poder adquisitivo entre países con mercados y precios internos muy dispares.<span class="why">Al revés: la PPA las achica.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Es indiferente usar el producto per cápita a precio de mercado o a PPA, debido a que los precios que se comercian internacionalmente son los mismos.<span class="why">Los no transables tienen precios distintos.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Todas.<span class="why">b, c y d son falsas.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 27/09/2025 · pregunta 2</div>
+<p>¿Cuál refleja una preocupación central del Índice de Desigualdad de Género (IDG)?</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>Le da preponderancia principalmente a la participación de las mujeres en el empleo.<span class="why">El mercado laboral es una de sus tres dimensiones, no la principal.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>Se basa en las diferencias de ingresos entre hombres y mujeres, entre otros aspectos.<span class="why">El ingreso no está en el IDG.</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>Busca captar la desventaja de las mujeres en salud, empoderamiento y trabajo.<span class="why">Sus tres dimensiones: salud reproductiva, empoderamiento y mercado laboral.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Se centra en las tasas de natalidad y mortalidad infantil.<span class="why">Usa mortalidad materna y fecundidad adolescente, no infantil.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Capta las diferencias en salud, educación y nivel de vida ajustadas por la desigualdad.<span class="why">Eso describe el IDH-D.</span></span></li>
+</ul></div>
+</div>
+
+<!-- ======================================================================= TEMA 3 -->
+<div class="tema-3">
+<h3>Tema 3 — Teoría básica del crecimiento</h3>
+<h4>Preguntas de la guía</h4>
+
+<div class="t3b-qa"><div class="t3b-qn">15</div><div class="t3b-qb">
+<p class="t3b-qq">¿Cuáles son los hechos estilizados del crecimiento que identifica Jones? <span class="t3b-see">→ 3.1</span></p>
+<p><b>Variación enorme del ingreso per cápita entre países</b>; <b>tasas de crecimiento muy distintas entre países</b>; <b>tasas no constantes en el tiempo</b> dentro de un mismo país; y <b>posición relativa en la distribución mundial no inmutable</b>.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">16</div><div class="t3b-qb">
+<p class="t3b-qq">¿Qué significa que la posición relativa no sea inmutable? Dar un ejemplo. <span class="t3b-see">→ 3.1</span></p>
+<p>Que un país puede <b>ascender o descender en el ranking mundial</b> de ingreso. <b>Corea del Sur</b> pasó de niveles comparables a los africanos en 1960 a <b>34.121 dólares per cápita en 2024</b>; <b>Argentina</b> hizo el recorrido inverso en términos relativos.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">17</div><div class="t3b-qb">
+<p class="t3b-qq">¿Cuál es el supuesto clave de Harrod-Domar y por qué genera crecimiento “en el filo de la navaja”? <span class="t3b-see">→ 3.2</span></p>
+<p>La <b>relación capital-producto es fija</b>, sin sustitución entre capital y trabajo. La <b>tasa garantizada</b> \(s/\theta - \delta\) y la <b>natural</b> \(n\) son parámetros independientes y <b>nada las iguala</b>; cualquier desvío <b>se amplifica en lugar de corregirse</b>.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">18</div><div class="t3b-qb">
+<p class="t3b-qq">¿Qué son las condiciones de Inada y qué garantizan? <span class="t3b-see">→ 3.3</span></p>
+<p>Que la <b>productividad marginal del capital tienda a infinito cuando \(k \to 0\)</b>, y <b>a cero cuando \(k \to \infty\)</b> (ídem para el trabajo). Garantizan la existencia de un <b>estado estacionario único y no trivial</b>.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">19</div><div class="t3b-qb">
+<p class="t3b-qq">Derivar la ecuación fundamental de Solow-Swan y explicar cada término. <span class="t3b-see">→ 3.3</span></p>
+<p>\(\dot k = s\,f(k) - (\delta + n)\,k\). \(s\,f(k)\) es la <b>inversión efectiva por trabajador</b>; \(\delta k\) <b>repone el capital desgastado</b>; \(nk\) <b>equipa a los trabajadores nuevos</b> —dilución—. (Derivación: regla del cociente sobre \(k = K/L\) y reemplazar \(\dot K = sF - \delta K\) y \(\dot L/L = n\).)</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">20</div><div class="t3b-qb">
+<p class="t3b-qq">¿Qué condición define el estado estacionario? <span class="t3b-see">→ 3.4</span></p>
+<p>\(\dot k = 0\), es decir \(s\,f(k) = (\delta + n)\,k\): <b>la inversión efectiva iguala a la depreciación efectiva</b>.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">21</div><div class="t3b-qb">
+<p class="t3b-qq">Si dos países difieren solo en su tasa de ahorro, ¿qué predice el modelo sobre sus niveles de ingreso de largo plazo? ¿Y sobre sus tasas de crecimiento? <span class="t3b-see">→ 3.4</span></p>
+<p>El de mayor ahorro tendrá <b>mayor \(k^*\) e \(y^*\)</b>. Las tasas de crecimiento de largo plazo son <b>iguales</b>: cero sin tecnología, \(g_A\) con tecnología. La tasa de ahorro produce un <b>efecto nivel, no un efecto crecimiento</b>.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">22</div><div class="t3b-qb">
+<p class="t3b-qq">¿Por qué, sin progreso tecnológico, Solow no puede explicar un crecimiento sostenido del ingreso per cápita? <span class="t3b-see">→ 3.4 · 3.6</span></p>
+<p>Porque los <b>rendimientos decrecientes del capital</b> hacen que la inversión adicional rinda cada vez menos, hasta que alcanza apenas para cubrir depreciación y dilución. Ahí \(\dot k = 0\) y el ingreso per cápita se estanca.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">23</div><div class="t3b-qb">
+<p class="t3b-qq">En el estado estacionario con tecnología, ¿a qué tasa crece el producto per cápita? ¿Y el total? <span class="t3b-see">→ 3.6</span></p>
+<p>El per cápita a <b>\(g_A\)</b>; el total a <b>\(n + g_A\)</b>. (Por unidad de trabajo efectivo, \(\kt\) e \(\yt\), no crecen.)</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">24</div><div class="t3b-qb">
+<p class="t3b-qq">¿Qué mide el residuo de Solow y por qué se lo interpreta como progreso tecnológico? <span class="t3b-see">→ 3.7</span></p>
+<p>\(g_A = g_y - s_K\,g_k\): <b>la parte del crecimiento per cápita no explicada por la acumulación de capital por trabajador</b>. Se lo interpreta así <b>por descarte</b>, y por eso recoge también eficiencia, instituciones, capital humano y errores de medición (“la medida de nuestra ignorancia”).</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">25</div><div class="t3b-qb">
+<p class="t3b-qq">Diferencia entre convergencia absoluta y condicional. <span class="t3b-see">→ 3.7</span></p>
+<p>La <b>absoluta</b> supone parámetros iguales y un único estado estacionario: los pobres crecen más rápido <b>siempre</b>. La <b>condicional</b> admite que cada país tiene su propio \(k^*\): crece más rápido cuanto más lejos esté <b>del suyo</b>, y las rentas no se igualan. <b>Los datos respaldan la condicional.</b></p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">26</div><div class="t3b-qb">
+<p class="t3b-qq">¿Qué significa que las ideas sean un bien no rival? ¿Qué implica para los rendimientos a escala? <span class="t3b-see">→ 3.8</span></p>
+<p>Que <b>muchos pueden usarlas a la vez sin agotarlas</b>. Implica <b>rendimientos crecientes a escala en capital, trabajo e ideas tomados juntos</b>, y por lo tanto la <b>imposibilidad de competencia perfecta</b>: hace falta <b>competencia monopolística</b> y <b>protección de la propiedad intelectual</b> para financiar la investigación.</p></div></div>
+
+<div class="t3b-qa"><div class="t3b-qn">27</div><div class="t3b-qb">
+<p class="t3b-qq">¿Qué es el efecto escala en el modelo de Romer y qué crítica se le hace? <span class="t3b-see">→ 3.8</span></p>
+<p>La predicción de que <b>una economía con más investigadores debería crecer más rápido</b>. La crítica: el número de investigadores se multiplicó desde 1950 sin que la tasa de crecimiento aumentara, los países grandes no crecen sistemáticamente más, las ideas cruzan fronteras y las ideas fáciles se agotan. (La respuesta de Jones: el crecimiento depende de la tasa \(n\), no del nivel de \(L_A\).)</p></div></div>
+
+<h4>Así lo preguntaron en el parcial</h4>
+
+<div class="box tip"><div class="box-title">La misma pregunta, cinco veces: ¿de dónde sale el crecimiento de largo plazo?</div>
+<table class="compact">
+<thead><tr><th>Examen</th><th>Qué modelo pregunta</th><th>Respuesta</th><th>La clave</th></tr></thead>
+<tbody>
+<tr><td>Parcial 08/10/2022, teórica 4</td><td>Solow <b>básico</b></td><td>e) Ninguna</td><td>Sin tecnología, en el EE \(k\) e \(y\) per cápita no crecen.</td></tr>
+<tr><td>Parcial 2023, teórica 3</td><td>Solow <b>con tecnología</b></td><td>b)</td><td>Tecnología a tasa constante y <b>exógena</b>.</td></tr>
+<tr><td>Prueba 20/9/2024, pregunta 3</td><td>Solow-Swan (1956)</td><td>d)</td><td>“Innovaciones tecnológicas que aumentan la productividad”.</td></tr>
+<tr><td>Prueba 28/9/2024, pregunta 3</td><td>Solow-Swan (1956)</td><td>e) Ninguna</td><td>La opción de tecnología decía “que dependerá de la cantidad de investigadores”: eso es Romer.</td></tr>
+<tr><td>Prueba 27/09/2025, pregunta 3</td><td>Solow con tecnología</td><td>c)</td><td>Crecimiento sostenido gracias al progreso tecnológico.</td></tr>
+</tbody></table></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Parcial 08/10/2022 (Tema A) · teórica 4</div>
+<p>El modelo de crecimiento económico de Solow-Swan (1956) básico explica que, en el equilibrio de largo plazo, puede existir crecimiento de las variables capital y producto per cápita debido a:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>La influencia de la religión en la población de una economía.<span class="why">No es una variable del modelo.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>La ubicación geográfica de una economía.<span class="why">No es una variable del modelo.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>La disponibilidad de recursos naturales.<span class="why">No está en la función de producción del modelo.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Las políticas implementadas por el Estado.<span class="why">No hay Estado; y una política de ahorro sólo cambiaría el nivel de \(k^*\).</span></span></li>
+  <li class="correct"><span class="opt">e)</span><span>Ninguna opción es correcta.<span class="why">En el modelo básico, en el EE \(k\) e \(y\) per cápita <b>no crecen</b> (\(\gamma = 0\)).</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Parcial 2023 · teórica 3</div>
+<p>El modelo de Solow con tecnología explica que las variables capital y producto per cápita en el EE se incrementan debido a:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>Las políticas implementadas por el Estado en relación al ahorro/inversión.<span class="why">El ahorro tiene efecto nivel, no efecto crecimiento.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>Que la tecnología crece a una tasa constante y exógena.<span class="why">En el EE \(k\) e \(y\) per cápita crecen a \(g_A\).</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>No es posible que en el EE las variables per cápita se modifiquen.<span class="why">Vale sólo sin tecnología.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Que la tecnología crece a una tasa constante y endógena y, por lo tanto, explicada por el modelo.<span class="why">“Endógena” es Romer.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.<span class="why">b es correcta.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 20/9/2024 · pregunta 3</div>
+<p>En el modelo de Solow-Swan (1956), el crecimiento de largo plazo en el capital y el producto per cápita se debe principalmente a:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>La tasa de ahorro y la inversión.<span class="why">Efecto nivel: al llegar al nuevo EE la tasa vuelve a la de largo plazo.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>La influencia cultural.<span class="why">No está en el modelo.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>El aumento en la población activa.<span class="why">Un \(n\) mayor reduce \(k^*\) e \(y^*\): no genera crecimiento per cápita.</span></span></li>
+  <li class="correct"><span class="opt">d)</span><span>Las innovaciones tecnológicas que aumentan la productividad.<span class="why">Única fuente de crecimiento per cápita de largo plazo.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna.<span class="why">d es correcta.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 28/9/2024 · pregunta 3</div>
+<p>El crecimiento económico en el largo plazo es explicado por el modelo de Solow-Swan (1956) a partir de:</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>La influencia de las instituciones para asegurar la mejor toma de decisiones económicas.<span class="why">No hay instituciones en el modelo.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>Las mayores tasas de ahorro e inversión existentes en algunas economías.<span class="why">Efecto nivel.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>El progreso tecnológico que dependerá de la cantidad de investigadores con los que cuenta una economía.<span class="why">En Solow la tecnología es exógena; lo de los investigadores es Romer.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>El aumento en la población activa.<span class="why">No genera crecimiento per cápita (baja \(k^*\) e \(y^*\)).</span></span></li>
+  <li class="correct"><span class="opt">e)</span><span>Ninguna.<span class="why">Sólo el progreso tecnológico <b>exógeno</b> explica el crecimiento de largo plazo, y ninguna opción lo dice así.</span></span></li>
+</ul></div>
+
+<div class="t3b-mcq"><div class="t3b-mcqhead">Prueba teórica 27/09/2025 · pregunta 3</div>
+<p>¿Qué característica define al modelo de crecimiento de Solow con progreso tecnológico?</p>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El crecimiento económico depende exclusivamente del capital físico.<span class="why">Con rendimientos decrecientes, el capital solo no sostiene el crecimiento.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>La productividad total de los factores permanece constante en el tiempo.<span class="why">Al revés: \(A\) crece a \(g_A\).</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>El crecimiento sostenido de la renta per cápita es posible gracias al progreso tecnológico.<span class="why">En el EE \(g_y = g_A\).</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>El modelo no considera el rol del ahorro.<span class="why">El ahorro está en la ecuación fundamental y fija el nivel de \(\kt^*\).</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Todas.<span class="why">a, b y d son falsas.</span></span></li>
+</ul></div>
+</div>
+
+<!-- ======================================================================= MAPA BIBLIOGRÁFICO -->
+<div class="avoid-break">
+<h2>Mapa bibliográfico</h2>
+<p>Qué leer para cada punto, con el archivo donde está en <code>Desktop\CLIENTES\ECONOMIA III</code>.</p>
+
+<div class="tema-1">
+<h3 data-toc="no">Tema 1 — La economía del desarrollo</h3>
+<table class="compact">
+<thead><tr><th>Lectura</th><th>Alcance</th><th>Archivo</th></tr></thead>
+<tbody>
+<tr><td>Weil, <em>Crecimiento Económico</em>, cap. 1 “Los hechos”</td><td>Completo</td><td><code>90 – BIB_Weil</code></td></tr>
+<tr><td>Ray, <em>Economía del Desarrollo</em>, cap. 2</td><td>Completo</td><td><code>90 – BIB_Debraj Ray – cap 1 y 2</code></td></tr>
+<tr><td>Paz, <em>Teoría del desarrollo</em>, cap. 3</td><td>Completo</td><td><code>90 – BIB_Paz – cap 3</code></td></tr>
+<tr><td>Sen, “El concepto de desarrollo” (1988)</td><td>Completo</td><td><code>90 – BIB_Sen – El concepto de desarrollo</code></td></tr>
+<tr><td>Sen, <em>Desarrollo y Libertad</em> (2000)</td><td>Introducción pp. 19-28 y cap. 2 pp. 54-75</td><td><code>90 – BIB_Sen – Desarrollo y Libertad</code></td></tr>
+<tr><td>PNUD, <em>Objetivos de desarrollo sostenible</em></td><td>Completo</td><td><code>01 – T1_04</code></td></tr>
+</tbody></table>
+</div>
+</div>
+
+<div class="tema-2">
+<h3 data-toc="no">Tema 2 — Los indicadores del bienestar</h3>
+<table class="compact">
+<thead><tr><th>Lectura</th><th>Alcance</th><th>Archivo</th></tr></thead>
+<tbody>
+<tr><td>Weil, cap. 1</td><td>Completo</td><td><code>90 – BIB_Weil</code></td></tr>
+<tr><td>Ray, cap. 2</td><td>Completo — también es del Tema 1</td><td><code>90 – BIB_Debraj Ray – cap 1 y 2</code></td></tr>
+<tr><td>Paz, cap. 4.1 “El ingreso por habitante”</td><td>Completo</td><td><code>90 – BIB_Paz – cap 4.1</code></td></tr>
+<tr><td>PNUD, <em>Informe sobre Desarrollo Humano 2025</em></td><td>Resumen en español; anexo estadístico al final de la versión completa</td><td><code>90 – BIB_PNUD (resumen, es)</code> y <code>(completo, en)</code></td></tr>
+<tr><td>PNUD, <em>Notas técnicas del IDH 2016</em></td><td>Completo — la cátedra recomienda esta traducción, no las notas 2025 en inglés</td><td><code>02 – T2_05</code></td></tr>
+<tr><td>Stern, Wares y Orzell, <em>Índice de Progreso Social</em>, cap. 1</td><td>Completo</td><td><code>90 – BIB_Indice de Progreso Social – cap 1</code></td></tr>
+</tbody></table>
+</div>
+
+<div class="tema-3">
+<h3 data-toc="no">Tema 3 — Teoría básica del crecimiento</h3>
+<p>La cátedra organiza el tema en <b>seis bloques</b>. En verde y subrayado en su guía: <b>lectura obligatoria</b>. En gris: <b>complementaria</b>. La última columna dice dónde está cada bloque en este manual.</p>
+<table class="compact">
+<thead><tr><th>Bloque</th><th>Lectura obligatoria</th><th>Complementaria</th><th>En este manual</th></tr></thead>
+<tbody>
+<tr><td>1. Los hechos del crecimiento</td><td>Jones cap. 1 · Ray cap. 3 pp. 49-61</td><td>—</td><td>3.1</td></tr>
+<tr><td>2. Harrod-Domar y Solow-Swan sin tecnología</td><td>Larraín y Sachs cap. 4.1-4.2 · Sala-i-Martín cap. 1 pp. 9-38</td><td>Jones cap. 2 pp. 18-32</td><td>3.2 · 3.3</td></tr>
+<tr><td>3. Estado estacionario y estática comparativa</td><td>Larraín y Sachs cap. 4.4 pp. 112-122</td><td>—</td><td>3.4</td></tr>
+<tr><td>4. Solow con progreso tecnológico</td><td>Sala-i-Martín cap. 1 pp. 39-47</td><td>Jones cap. 3 pp. 56-63 · Weil cap. 3 pp. 57-67</td><td>3.6</td></tr>
+<tr><td>5. Contabilidad del crecimiento y convergencia</td><td>Larraín y Sachs cap. 4 pp. 104-110 y apéndice pp. 129-132 · Sala-i-Martín cap. 2 pp. 70-79</td><td>Weil cap. 3</td><td>3.7</td></tr>
+<tr><td>6. Crecimiento endógeno (Romer)</td><td>Jones caps. 4 y 5 pp. 71-101</td><td>—</td><td>3.8</td></tr>
+</tbody></table>
+<p class="small">La regla de oro (3.5) se apoya en Sala-i-Martín cap. 1 y Larraín y Sachs cap. 4. <b>Archivos:</b> <code>90 – BIB_Jones</code> · <code>90 – BIB_Larrain y Sachs</code> · <code>90 – BIB_Sala-i-Martin</code> · <code>90 – BIB_Debraj Ray – cap 3</code> · <code>90 – BIB_Weil</code>.</p>
+</div>
+
+<!-- ======================================================================= QUÉ FALTA PARA EL FINAL -->
+<h2>Qué falta para el final</h2>
+<p>El programa tiene <b>nueve temas</b> y el aula sólo publicó tres. Para los Temas 4 a 9 no hay clases ni guías subidas todavía, pero la bibliografía básica que ya está descargada cubre buena parte:</p>
+<div class="t3b-temas">
+  <div class="t3b-ok"><b>1</b>Desarrollo y libertad</div>
+  <div class="t3b-ok"><b>2</b>Indicadores del bienestar</div>
+  <div class="t3b-ok"><b>3</b>Crecimiento</div>
+  <div class="t3b-cov"><b>4</b>Crecimiento y desarrollo humano</div>
+  <div class="t3b-cov"><b>5</b>Población</div>
+  <div class="t3b-miss"><b>6</b>Mercado de trabajo</div>
+  <div class="t3b-part"><b>7</b>Capital humano</div>
+  <div class="t3b-miss"><b>8</b>Pobreza</div>
+  <div class="t3b-part"><b>9</b>Desigualdad</div>
+</div>
+<div class="t3b-legend"><span class="t3b-ok"><i></i>en este manual</span><span class="t3b-cov"><i></i>cubierto con lo que ya tenés</span><span class="t3b-part"><i></i>cubierto en parte: falta algo</span><span class="t3b-miss"><i></i>falta conseguir la bibliografía</span></div>
+<table class="compact">
+<thead><tr><th>Tema</th><th>Cubierto por lo que ya tenés</th><th>Falta conseguir</th></tr></thead>
+<tbody>
+<tr><td>4. Crecimiento y desarrollo humano</td><td>Ray · Informes del PNUD</td><td>—</td></tr>
+<tr><td>5. Población</td><td>Ray · Weil (capítulos de población y fecundidad)</td><td>—</td></tr>
+<tr><td>6. Mercado de trabajo</td><td>—</td><td>McConnell, Brue y Macpherson, <em>Economía Laboral</em></td></tr>
+<tr><td>7. Capital humano</td><td>Weil (capital humano y salud)</td><td>Johnes, <em>Economía de la educación</em> · OMS (2010)</td></tr>
+<tr><td>8. Pobreza</td><td>—</td><td>Feres y Mancero (CEPAL) · Gasparini, Cicowiez y Sosa Escudero</td></tr>
+<tr><td>9. Desigualdad</td><td>Ray · Weil</td><td>Gasparini, Cicowiez y Sosa Escudero</td></tr>
+</tbody></table>
+<div class="box tip"><div class="box-title">Dos aulas más</div>
+<p>Además hay dos aulas de la materia a las que no estás matriculado y que piden clave: <b>Exámenes – Sede Central – Economía III</b> —la más valiosa para el final, probablemente con modelos de examen— y <b>Economía III – Sede Rosario de la Frontera</b>, que puede tener el dictado completo de los nueve temas.</p></div>
+
+<!-- ======================================================================= FORMULARIO -->
+<div class="page-break"></div>
+<h2 style="margin-top:0">Formulario de teoría en una página</h2>
+<div class="t3b-form">
+
+  <div class="card t3b-f1 t3b-span3"><div class="card-title"><span class="t3b-t">T1</span>Tema 1 no tiene fórmulas: lo que se memoriza son listas</div>
+  <p><b>Cadena de Sen:</b> recursos y bienes → (factores de conversión) → capacidades → libertad real para elegir → funcionamientos. Sen evalúa en el espacio de las <b>capacidades</b>. &nbsp;<b>5 fuentes de divergencia</b> crecimiento/desarrollo: distribución · no comercialidad y externalidades · precios imperfectos · límite temporal · el PBI mide medios, no fines. &nbsp;<b>5 libertades instrumentales:</b> políticas · servicios económicos · oportunidades sociales · garantías de transparencia · seguridad protectora (fija y ad hoc). &nbsp;<b>El promedio engaña:</b> \((9\cdot 60 + 560)/10 = 110\): el PBI per cápita crece 10 % y 9 de cada 10 están igual.</p></div>
+
+  <div class="card t3b-f2"><div class="card-title"><span class="t3b-t">T2</span>PBI y comparación entre países</div>
+  <p>\(\text{PBI} = \sum P_i Q_i \qquad \text{PBI}_{pc} = \text{PBI}/\text{Pob.}\)</p>
+  <p>PBN = PBI + renta neta de factores del exterior</p>
+  <p>\(\text{PBI}_{TCm} = \dfrac{\text{PBI}(\$)}{TC_m}\) &nbsp; \(\text{PBI}_{PPA} = \dfrac{\text{PBI}(\$)}{TC_{PPA}}\)</p>
+  <p>\(TC_{PPA} = \dfrac{\sum P^{local} Q}{\sum P^{\text{US\$}} Q}\) &nbsp;(misma canasta)</p></div>
+
+  <div class="card t3b-f2"><div class="card-title"><span class="t3b-t">T2</span>Big Mac y tasas de crecimiento</div>
+  <p>\(TC_{PPA} = P_{local}/P_{EEUU}\)</p>
+  <p>\(\dfrac{TC_{PPA} - TC_m}{TC_m} \lt 0\) ⇒ subvaluada</p>
+  <p>\(g = \dfrac{Y_{t+1} - Y_t}{Y_t} \qquad g_{acum} = \dfrac{Y_T - Y_0}{Y_0}\)</p>
+  <p>\(\bar g = (Y_T/Y_0)^{1/n} - 1\) &nbsp;(\(n\) = períodos)</p>
+  <p>Regla del 70: \(T \approx 70/g\,(\%)\)</p></div>
+
+  <div class="card t3b-f2"><div class="card-title"><span class="t3b-t">T2</span>IDH</div>
+  <p>\(I = \dfrac{x - \min}{\max - \min}\)</p>
+  <p>\(I_{ing} = \dfrac{\ln x - \ln 100}{\ln 75.000 - \ln 100}\)</p>
+  <p>\(I_{edu} = (I_{AE} + I_{AP})/2\)</p>
+  <p>\(\text{IDH} = (I_s\, I_e\, I_i)^{1/3}\)</p>
+  <p>Vida 20–85 · AE 0–18 · AP 0–15 · INB 100–75.000. Cortes 0,550 · 0,700 · 0,800.</p></div>
+
+  <div class="card t3b-f2"><div class="card-title"><span class="t3b-t">T2</span>IDH-D</div>
+  <p>\(\text{IDH-D} = \text{IDH}\cdot F\), con</p>
+  <p>\(F = [(1-A_s)(1-A_e)(1-A_i)]^{1/3}\)</p>
+  <p>Pérdida \(= 1 - \text{IDH-D}/\text{IDH}\)</p>
+  <p>\(\text{CDH} = (A_s + A_e + A_i)/3\)</p></div>
+
+  <div class="card t3b-f2 t3b-span2"><div class="card-title"><span class="t3b-t">T2</span>IDG (0 = igualdad; más bajo es mejor)</div>
+  <p>\(G_M = \left[\left(\tfrac{10}{MMR}\cdot\tfrac{1}{AFR}\right)^{1/2}(PR_M SE_M)^{1/2}\, LFPR_M\right]^{1/3}\) &nbsp; \(G_V = \left[(PR_V SE_V)^{1/2}\, LFPR_V\right]^{1/3}\)</p>
+  <p>\(\text{HARM} = \left[\tfrac{1}{2}\left(\tfrac{1}{G_M} + \tfrac{1}{G_V}\right)\right]^{-1}\) &nbsp; \(\text{Ref.} = (\text{salud}\cdot\text{empod.}\cdot\text{lab.})^{1/3}\) &nbsp; \(\text{IDG} = 1 - \dfrac{\text{HARM}}{\text{Ref.}}\)</p>
+  <p>salud \(= \tfrac{1}{2}\left[\left(\tfrac{10}{MMR}\cdot\tfrac{1}{AFR}\right)^{1/2} + 1\right]\) &nbsp; empod. \(= \tfrac{1}{2}\left[(PR_M SE_M)^{1/2} + (PR_V SE_V)^{1/2}\right]\)</p>
+  <p>lab. \(= \tfrac{1}{2}(LFPR_M + LFPR_V)\). Porcentajes en tanto por uno; \(PR_V = 1 - PR_M\).</p></div>
+
+  <div class="card t3b-f3"><div class="card-title"><span class="t3b-t">T3</span>Harrod-Domar (\(v = \theta = K/Y\))</div>
+  <p>\(g_Y = \dfrac{s}{v} - \delta \qquad g_y = \dfrac{s}{v} - \delta - n\)</p>
+  <p>\(g_y \gt 0 \iff 0 \lt v \lt \dfrac{s}{n+\delta}\)</p></div>
+
+  <div class="card t3b-f3"><div class="card-title"><span class="t3b-t">T3</span>Solow sin tecnología (\(y = Ak^{\alpha}\))</div>
+  <p>\(\dot k = sAk^{\alpha} - (n+\delta)k\)</p>
+  <p>\(\gamma_k = \dfrac{sA}{k^{1-\alpha}} - (n+\delta) \qquad \gamma_y = \alpha\,\gamma_k\)</p>
+  <p>FA \(= sAk^{\alpha}\), FD \(= (n+\delta)k\) · CA \(= sA/k^{1-\alpha}\), CD \(= n+\delta\)</p></div>
+
+  <div class="card t3b-f3"><div class="card-title"><span class="t3b-t">T3</span>Estado estacionario</div>
+  <p>\(k^* = \left(\dfrac{sA}{n+\delta}\right)^{\frac{1}{1-\alpha}} \qquad y^* = A\,k^{*\alpha}\)</p>
+  <p>Control: \(y^* = (n+\delta)\,k^*/s\)</p>
+  <p>Despejar \(\alpha\): \(\alpha = \ln(y/A)/\ln k\)</p></div>
+
+  <div class="card t3b-f3"><div class="card-title"><span class="t3b-t">T3</span>Regla de oro</div>
+  <p>\(c^* = f(k^*) - (n+\delta)k^*\)</p>
+  <p>\(f'(k_{oro}) = n+\delta\)</p>
+  <p>\(k_{oro} = \left(\dfrac{\alpha A}{n+\delta}\right)^{\frac{1}{1-\alpha}} \qquad s_{oro} = \alpha\)</p>
+  <p>\(s \lt \alpha\): subacumula · \(s \gt \alpha\): sobreacumula</p></div>
+
+  <div class="card t3b-f3"><div class="card-title"><span class="t3b-t">T3</span>Solow con tecnología (\(\kt = K/AL\))</div>
+  <p>\(\yt = \kt^{\alpha} \qquad \dot{\kt} = s\kt^{\alpha} - (n+g_A+\delta)\kt\)</p>
+  <p>\(\kt^* = \left(\dfrac{s}{n+g_A+\delta}\right)^{\frac{1}{1-\alpha}} \qquad \yt^* = \kt^{*\alpha}\)</p>
+  <p>CA \(= s/\kt^{1-\alpha}\), CD \(= n+g_A+\delta\)</p>
+  <p>\(f'(\kt_{oro}) = n+g_A+\delta\) &nbsp;(\(s_{oro} = \alpha\))</p></div>
+
+  <div class="card t3b-f3"><div class="card-title"><span class="t3b-t">T3</span>Contabilidad y convergencia</div>
+  <p>\(g_Y = g_A + s_K g_K + s_L g_L\) &nbsp; (\(s_K + s_L = 1\))</p>
+  <p>\(g_A = g_y - s_K\, g_k\) &nbsp;(residuo de Solow)</p>
+  <p>\(g_k = g_K - g_L \quad g_y = g_Y - g_L\)</p>
+  <p>\(\gamma_{\kt} = s\,f(\kt)/\kt - (n+g_A+\delta)\): decrece con \(\kt\)</p></div>
+
+  <div class="card t3b-f3"><div class="card-title"><span class="t3b-t">T3</span>Romer</div>
+  <p>\(\dot A = \delta\, L_A^{\lambda} A^{\phi}\) &nbsp;(\(\delta\): productividad de la I+D)</p>
+  <p>\(g = \dfrac{\lambda\, n}{1-\phi}\)</p>
+  <p>\(\lambda\) y \(n\): efecto proporcional · \(\phi\): no lineal. Importa la <b>tasa</b> \(n\), no el nivel de \(L_A\).</p></div>
+
+  <div class="card t3b-f3 t3b-span2"><div class="card-title"><span class="t3b-t">T3</span>¿A qué tasa crece cada variable en el estado estacionario?</div>
+  <table class="compact" style="margin:0.1em 0 0.1em; font-size:8.2pt">
+  <thead><tr><th>Modelo</th><th class="num">\(\kt,\ \yt\)</th><th class="num">\(k,\ y,\ c\) (per cápita)</th><th class="num">\(K,\ Y,\ C\) (agregadas)</th></tr></thead>
+  <tbody><tr><td>Solow sin tecnología</td><td class="num">—</td><td class="num">0</td><td class="num">\(n\)</td></tr>
+  <tr><td>Solow con tecnología</td><td class="num">0</td><td class="num">\(g_A\)</td><td class="num">\(n + g_A\)</td></tr></tbody></table></div>
+
+</div>
+
+</section>

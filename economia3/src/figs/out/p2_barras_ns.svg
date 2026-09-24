@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="490.533403pt" height="145.120668pt" viewBox="0 0 490.533403 145.120668" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="490.533403pt" height="120.172668pt" viewBox="0 0 490.533403 120.172668" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
@@ -20,17 +20,17 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 145.120668 
-L 490.533403 145.120668 
-L 490.533403 0 
-L 0 0 
+   <path d="M 0 120.172668 
+L 490.533403 120.172668 
+L 490.533403 -0 
+L 0 -0 
 z
 " style="fill: #ffffff"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 110.16625 123.516 
-L 472.86625 123.516 
+    <path d="M 110.16625 98.568 
+L 472.86625 98.568 
 L 472.86625 4.32 
 L 110.16625 4.32 
 z
@@ -39,23 +39,23 @@ z
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_1">
-      <path d="M 110.16625 123.516 
+      <path d="M 110.16625 98.568 
 L 110.16625 4.32 
-" clip-path="url(#pf60fe25d73)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
+" clip-path="url(#p45dbd85e44)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
      </g>
      <g id="line2d_2">
       <defs>
-       <path id="mcaf7424bc2" d="M 0 0 
+       <path id="mc5d8c5aff1" d="M 0 0 
 L 0 3.5 
 " style="stroke: #52514e; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#mcaf7424bc2" x="110.16625" y="123.516" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
+       <use xlink:href="#mc5d8c5aff1" x="110.16625" y="98.568" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_1">
       <!-- 0 -->
-      <g style="fill: #52514e" transform="translate(107.484766 138.750375) scale(0.085 -0.085)">
+      <g style="fill: #52514e" transform="translate(107.484766 113.802375) scale(0.085 -0.085)">
        <defs>
         <path id="Inter-Regular-53d" d="M 2019 -63 
 Q 1241 -63 811 562 
@@ -85,18 +85,18 @@ z
     </g>
     <g id="xtick_2">
      <g id="line2d_3">
-      <path d="M 181.988032 123.516 
+      <path d="M 181.988032 98.568 
 L 181.988032 4.32 
-" clip-path="url(#pf60fe25d73)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
+" clip-path="url(#p45dbd85e44)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
      </g>
      <g id="line2d_4">
       <g>
-       <use xlink:href="#mcaf7424bc2" x="181.988032" y="123.516" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
+       <use xlink:href="#mc5d8c5aff1" x="181.988032" y="98.568" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_2">
       <!-- 100.000 -->
-      <g style="fill: #52514e" transform="translate(165.842681 138.750375) scale(0.085 -0.085)">
+      <g style="fill: #52514e" transform="translate(165.842681 113.802375) scale(0.085 -0.085)">
        <defs>
         <path id="Inter-Regular-53e" d="M 2041 4656 
 L 2041 0 
@@ -133,18 +133,18 @@ z
     </g>
     <g id="xtick_3">
      <g id="line2d_5">
-      <path d="M 253.809814 123.516 
+      <path d="M 253.809814 98.568 
 L 253.809814 4.32 
-" clip-path="url(#pf60fe25d73)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
+" clip-path="url(#p45dbd85e44)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
      </g>
      <g id="line2d_6">
       <g>
-       <use xlink:href="#mcaf7424bc2" x="253.809814" y="123.516" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
+       <use xlink:href="#mc5d8c5aff1" x="253.809814" y="98.568" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_3">
       <!-- 200.000 -->
-      <g style="fill: #52514e" transform="translate(236.801182 138.750375) scale(0.085 -0.085)">
+      <g style="fill: #52514e" transform="translate(236.801182 113.802375) scale(0.085 -0.085)">
        <defs>
         <path id="Inter-Regular-53f" d="M 481 0 
 L 481 428 
@@ -186,18 +186,18 @@ z
     </g>
     <g id="xtick_4">
      <g id="line2d_7">
-      <path d="M 325.631597 123.516 
+      <path d="M 325.631597 98.568 
 L 325.631597 4.32 
-" clip-path="url(#pf60fe25d73)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
+" clip-path="url(#p45dbd85e44)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
      </g>
      <g id="line2d_8">
       <g>
-       <use xlink:href="#mcaf7424bc2" x="325.631597" y="123.516" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
+       <use xlink:href="#mc5d8c5aff1" x="325.631597" y="98.568" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
       <!-- 300.000 -->
-      <g style="fill: #52514e" transform="translate(308.589761 138.750375) scale(0.085 -0.085)">
+      <g style="fill: #52514e" transform="translate(308.589761 113.802375) scale(0.085 -0.085)">
        <defs>
         <path id="Inter-Regular-541" d="M 1984 -63 
 Q 1528 -63 1175 93 
@@ -250,18 +250,18 @@ z
     </g>
     <g id="xtick_5">
      <g id="line2d_9">
-      <path d="M 397.453379 123.516 
+      <path d="M 397.453379 98.568 
 L 397.453379 4.32 
-" clip-path="url(#pf60fe25d73)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
+" clip-path="url(#p45dbd85e44)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
      </g>
      <g id="line2d_10">
       <g>
-       <use xlink:href="#mcaf7424bc2" x="397.453379" y="123.516" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
+       <use xlink:href="#mc5d8c5aff1" x="397.453379" y="98.568" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_5">
       <!-- 400.000 -->
-      <g style="fill: #52514e" transform="translate(380.291347 138.750375) scale(0.085 -0.085)">
+      <g style="fill: #52514e" transform="translate(380.291347 113.802375) scale(0.085 -0.085)">
        <defs>
         <path id="Inter-Regular-542" d="M 375 947 
 L 375 1431 
@@ -297,18 +297,18 @@ z
     </g>
     <g id="xtick_6">
      <g id="line2d_11">
-      <path d="M 469.275161 123.516 
+      <path d="M 469.275161 98.568 
 L 469.275161 4.32 
-" clip-path="url(#pf60fe25d73)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
+" clip-path="url(#p45dbd85e44)" style="fill: none; stroke: #ebe9e3; stroke-width: 0.8; stroke-linecap: round"/>
      </g>
      <g id="line2d_12">
       <g>
-       <use xlink:href="#mcaf7424bc2" x="469.275161" y="123.516" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
+       <use xlink:href="#mc5d8c5aff1" x="469.275161" y="98.568" style="fill: #52514e; stroke: #52514e; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_6">
       <!-- 500.000 -->
-      <g style="fill: #52514e" transform="translate(452.336919 138.750375) scale(0.085 -0.085)">
+      <g style="fill: #52514e" transform="translate(452.336919 113.802375) scale(0.085 -0.085)">
        <defs>
         <path id="Inter-Regular-543" d="M 1863 -63 
 Q 1453 -63 1128 98 
@@ -359,7 +359,7 @@ z
      <g id="line2d_13"/>
      <g id="text_7">
       <!-- Los del Sur a PPA (÷ 37,5) -->
-      <g style="fill: #52514e" transform="translate(6.632656 109.566798) scale(0.082 -0.082)">
+      <g style="fill: #52514e" transform="translate(6.632656 88.369721) scale(0.082 -0.082)">
        <defs>
         <path id="Inter-Regular-119" d="M 563 0 
 L 563 4656 
@@ -779,7 +779,7 @@ z
      <g id="line2d_14"/>
      <g id="text_8">
       <!-- Los del Sur a TCm (÷ 300) -->
-      <g style="fill: #52514e" transform="translate(4.32 67.889875) scale(0.082 -0.082)">
+      <g style="fill: #52514e" transform="translate(4.32 55.415875) scale(0.082 -0.082)">
        <defs>
         <path id="Inter-Regular-19b" d="M 306 4131 
 L 306 4656 
@@ -885,7 +885,7 @@ z
      <g id="line2d_15"/>
      <g id="text_9">
       <!-- Los del Norte -->
-      <g style="fill: #52514e" transform="translate(54.689781 26.212952) scale(0.082 -0.082)">
+      <g style="fill: #52514e" transform="translate(54.689781 22.462029) scale(0.082 -0.082)">
        <defs>
         <path id="Inter-Regular-12c" d="M 563 0 
 L 563 4656 
@@ -951,77 +951,77 @@ z
     </g>
    </g>
    <g id="patch_3">
-    <path d="M 110.165963 105.594923 
-L 110.166537 105.594923 
-L 110.166537 105.594923 
-L 110.165963 105.594923 
+    <path d="M 110.165963 84.397846 
+L 110.166537 84.397846 
+L 110.166537 84.397846 
+L 110.165963 84.397846 
 z
-" clip-path="url(#pf60fe25d73)" style="fill: #1baf7a"/>
+" clip-path="url(#p45dbd85e44)" style="fill: #1baf7a"/>
    </g>
    <g id="patch_4">
-    <path d="M 110.165963 105.594923 
-L 110.166537 105.594923 
-L 110.166537 105.594923 
-L 110.165963 105.594923 
+    <path d="M 110.165963 84.397846 
+L 110.166537 84.397846 
+L 110.166537 84.397846 
+L 110.165963 84.397846 
 z
-" clip-path="url(#pf60fe25d73)" style="fill: #2a78d6"/>
+" clip-path="url(#p45dbd85e44)" style="fill: #2a78d6"/>
    </g>
    <g id="patch_5">
-    <path d="M 110.16625 34.744154 
-L 128.121696 34.744154 
-L 128.121696 9.738 
-L 110.16625 9.738 
+    <path d="M 110.16625 28.376308 
+L 128.121696 28.376308 
+L 128.121696 8.604 
+L 110.16625 8.604 
 z
-" clip-path="url(#pf60fe25d73)" style="fill: #1baf7a"/>
+" clip-path="url(#p45dbd85e44)" style="fill: #1baf7a"/>
    </g>
    <g id="patch_6">
-    <path d="M 128.121696 34.744154 
-L 397.453379 34.744154 
-L 397.453379 9.738 
-L 128.121696 9.738 
+    <path d="M 128.121696 28.376308 
+L 397.453379 28.376308 
+L 397.453379 8.604 
+L 128.121696 8.604 
 z
-" clip-path="url(#pf60fe25d73)" style="fill: #2a78d6"/>
+" clip-path="url(#p45dbd85e44)" style="fill: #2a78d6"/>
    </g>
    <g id="patch_7">
-    <path d="M 110.16625 76.421077 
-L 117.348428 76.421077 
-L 117.348428 51.414923 
-L 110.16625 51.414923 
+    <path d="M 110.16625 61.330154 
+L 117.348428 61.330154 
+L 117.348428 41.557846 
+L 110.16625 41.557846 
 z
-" clip-path="url(#pf60fe25d73)" style="fill: #1baf7a"/>
+" clip-path="url(#p45dbd85e44)" style="fill: #1baf7a"/>
    </g>
    <g id="patch_8">
-    <path d="M 117.348428 76.421077 
-L 124.530606 76.421077 
-L 124.530606 51.414923 
-L 117.348428 51.414923 
+    <path d="M 117.348428 61.330154 
+L 124.530606 61.330154 
+L 124.530606 41.557846 
+L 117.348428 41.557846 
 z
-" clip-path="url(#pf60fe25d73)" style="fill: #2a78d6"/>
+" clip-path="url(#p45dbd85e44)" style="fill: #2a78d6"/>
    </g>
    <g id="patch_9">
-    <path d="M 110.16625 118.098 
-L 117.348428 118.098 
-L 117.348428 93.091846 
-L 110.16625 93.091846 
+    <path d="M 110.16625 94.284 
+L 117.348428 94.284 
+L 117.348428 74.511692 
+L 110.16625 74.511692 
 z
-" clip-path="url(#pf60fe25d73)" style="fill: #1baf7a"/>
+" clip-path="url(#p45dbd85e44)" style="fill: #1baf7a"/>
    </g>
    <g id="patch_10">
-    <path d="M 117.348428 118.098 
-L 225.081101 118.098 
-L 225.081101 93.091846 
-L 117.348428 93.091846 
+    <path d="M 117.348428 94.284 
+L 225.081101 94.284 
+L 225.081101 74.511692 
+L 117.348428 74.511692 
 z
-" clip-path="url(#pf60fe25d73)" style="fill: #2a78d6"/>
+" clip-path="url(#p45dbd85e44)" style="fill: #2a78d6"/>
    </g>
    <g id="patch_11">
-    <path d="M 110.16625 123.516 
-L 472.86625 123.516 
+    <path d="M 110.16625 98.568 
+L 472.86625 98.568 
 " style="fill: none; stroke: #52514e; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_10">
     <!-- 400.000 -->
-    <g style="fill: #1d1d1b" transform="translate(401.805779 25.260364) scale(0.083 -0.083)">
+    <g style="fill: #1d1d1b" transform="translate(401.805779 21.509441) scale(0.083 -0.083)">
      <defs>
       <path id="Inter-Bold-542" d="M 316 828 
 L 316 1581 
@@ -1088,7 +1088,7 @@ z
    </g>
    <g id="text_11">
     <!-- 375.000 -->
-    <g style="fill: #ffffff" transform="translate(248.372568 24.932971) scale(0.074 -0.074)">
+    <g style="fill: #ffffff" transform="translate(248.372568 21.182048) scale(0.074 -0.074)">
      <use xlink:href="#Inter-Regular-541"/>
      <use xlink:href="#Inter-Regular-546" transform="translate(61.765625 0)"/>
      <use xlink:href="#Inter-Regular-543" transform="translate(117.390625 0)"/>
@@ -1100,7 +1100,7 @@ z
    </g>
    <g id="text_12">
     <!-- 20.000 -->
-    <g style="fill: #1d1d1b" transform="translate(128.883006 66.937287) scale(0.083 -0.083)">
+    <g style="fill: #1d1d1b" transform="translate(128.883006 54.463287) scale(0.083 -0.083)">
      <defs>
       <path id="Inter-Bold-53f" d="M 388 0 
 L 388 688 
@@ -1139,7 +1139,7 @@ z
    </g>
    <g id="text_13">
     <!-- 160.000 -->
-    <g style="fill: #1d1d1b" transform="translate(229.433501 108.61421) scale(0.083 -0.083)">
+    <g style="fill: #1d1d1b" transform="translate(229.433501 87.417133) scale(0.083 -0.083)">
      <defs>
       <path id="Inter-Bold-53e" d="M 2341 4656 
 L 2341 0 
@@ -1203,7 +1203,7 @@ z
    </g>
    <g id="text_14">
     <!-- 150.000 -->
-    <g style="fill: #ffffff" transform="translate(157.29814 108.286818) scale(0.074 -0.074)">
+    <g style="fill: #ffffff" transform="translate(157.29814 87.089741) scale(0.074 -0.074)">
      <use xlink:href="#Inter-Regular-53e"/>
      <use xlink:href="#Inter-Regular-543" transform="translate(40.671875 0)"/>
      <use xlink:href="#Inter-Regular-53d" transform="translate(100 0)"/>
@@ -1215,16 +1215,16 @@ z
    </g>
    <g id="legend_1">
     <g id="patch_12">
-     <path d="M 368.479094 103.616859 
-L 376.279094 103.616859 
-L 376.279094 98.156859 
-L 368.479094 98.156859 
+     <path d="M 368.479094 78.668859 
+L 376.279094 78.668859 
+L 376.279094 73.208859 
+L 368.479094 73.208859 
 z
 " style="fill: #1baf7a"/>
     </g>
     <g id="text_15">
      <!-- transable: termos -->
-     <g transform="translate(382.519094 103.616859) scale(0.078 -0.078)">
+     <g transform="translate(382.519094 78.668859) scale(0.078 -0.078)">
       <defs>
        <path id="Inter-Regular-305" d="M 1056 2094 
 L 1056 0 
@@ -1321,16 +1321,16 @@ z
      </g>
     </g>
     <g id="patch_13">
-     <path d="M 368.479094 116.954555 
-L 376.279094 116.954555 
-L 376.279094 111.494555 
-L 368.479094 111.494555 
+     <path d="M 368.479094 92.006555 
+L 376.279094 92.006555 
+L 376.279094 86.546555 
+L 368.479094 86.546555 
 z
 " style="fill: #2a78d6"/>
     </g>
     <g id="text_16">
      <!-- no transable: consultas -->
-     <g transform="translate(382.519094 116.954555) scale(0.078 -0.078)">
+     <g transform="translate(382.519094 92.006555) scale(0.078 -0.078)">
       <defs>
        <path id="Inter-Regular-24a" d="M 1916 -75 
 Q 1441 -75 1083 150 
@@ -1387,8 +1387,8 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pf60fe25d73">
-   <rect x="110.16625" y="4.32" width="362.7" height="119.196"/>
+  <clipPath id="p45dbd85e44">
+   <rect x="110.16625" y="4.32" width="362.7" height="94.248"/>
   </clipPath>
  </defs>
 </svg>

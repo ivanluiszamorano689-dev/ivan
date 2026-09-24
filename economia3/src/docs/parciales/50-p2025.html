@@ -1,0 +1,456 @@
+<section class="tema-3 x3-sec">
+<style>
+.x3-ficha .card p { margin: 0 0 0.25em; font-size: 8.8pt; }
+.x3-cubre { font-size: 8.6pt; color: var(--ink-2); margin: 0.5em 0 0.9em; }
+.x3-cubre b { color: var(--ink); }
+.x3-refs { font-size: 8.3pt; color: var(--ink-3); margin: -0.4em 0 0.9em; }
+.x3-keep { break-inside: avoid; }
+.x3-sec .statement table { background: #fff; margin: 0.45em 0 0.5em; font-size: 8.3pt; }
+.x3-sec .statement table th, .x3-sec .statement table td { padding: 0.25em 0.45em; }
+.x3-sec .statement table tbody tr:nth-child(even) td { background: #fff; }
+.x3-sec .statement table.x3-grid th, .x3-sec .statement table.x3-grid td { border: 1px solid var(--rule); vertical-align: middle; }
+.x3-sec .statement table.x3-grid thead th { text-align: center; }
+.x3-sub { font: 700 7.6pt "Inter"; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 0.4em 0 -0.2em; break-after: avoid; }
+.x3-w75 img { width: 75%; }
+.x3-hoja { display: grid; grid-template-columns: 42% 1fr; gap: 1.1em; align-items: center; margin: 0.4em 0 0.2em; }
+.x3-hoja img { width: 100%; display: block; }
+.x3-hojafig { margin: 0.4em 0 0.1em; text-align: left; }
+.x3-hojafig figcaption { padding: 0; margin-top: 0.3em; }
+.x3-frase { font-family: "Source Serif 4", Georgia, serif; font-size: 9.6pt; line-height: 1.45; margin: 0 0 0.55em; }
+.x3-blank { display: inline-block; min-width: 4.5em; border-bottom: 1px dotted var(--ink-3); }
+.x3-line { display: inline-block; min-width: 7em; border-bottom: 1px solid var(--ink-3); }
+.x3-tach { font-family: "Source Serif 4", Georgia, serif; font-size: 9.8pt; line-height: 1.55; margin: 0.25em 0 0.35em; }
+.x3-tach s { color: var(--red-ink); text-decoration-thickness: 1.6px; text-decoration-color: var(--red); }
+.x3-tach mark { font-weight: 700; }
+.mcq > li > .opt.x3-val { min-width: 9.2em; font-variant-numeric: tabular-nums; }
+.x3-lev td, .x3-lev th { text-align: center; }
+.x3-libs td:nth-child(2) { font-weight: 700; color: var(--green-ink); white-space: nowrap; }
+.x3-libs td { font-size: 8.4pt; }
+.answer .x3-nota { display: block; font-size: 8.4pt; color: var(--ink-2); margin-top: 0.2em; }
+.x3-grilla td:first-child { white-space: nowrap; font-weight: 600; }
+.x3-grilla td.ok { white-space: normal; }
+.x3-grilla td { font-size: 8.3pt; }
+.x3-cmp td { font-size: 8.3pt; }
+.x3-cmp td:first-child { font-weight: 700; white-space: nowrap; }
+.x3-w90 img { width: 90%; }
+.x3-g9 td:last-child, .x3-g9 th:last-child { white-space: nowrap; }
+</style>
+
+<!-- =============================================================== P8 -->
+<div class="chapter-head">
+  <div class="kicker">2025 · Primer parcial · práctico de desarrollo</div>
+  <h2><span class="num">P8</span>Primer parcial 2025 — Solow con tecnología, Big Mac y Yemen</h2>
+  <p>El único examen de la colección sin opciones para marcar: se escribe la fórmula, se hace la cuenta, se completa una tabla y un gráfico y se tacha lo que no corresponde. Tres ejercicios en 60 minutos. La trampa más cara está en la primera línea: el dato 0,6 es la participación del <b>trabajo</b>.</p>
+</div>
+
+<div class="grid-3 x3-ficha">
+  <div class="card blue"><div class="card-title">Fecha y duración</div>
+    <p>Primer parcial 2025 (la hoja no trae el día) · 60 minutos.</p><p>Individual y sin material de consulta.</p></div>
+  <div class="card orange"><div class="card-title">Formato y puntaje</div>
+    <p>Tres ejercicios: 25 + 15 + 20 = 60 puntos. La teórica de 2025 (P9) vale 40.</p>
+    <p>Respuestas abiertas: fórmula y cuenta, completar tabla y gráfico, tachar opciones en frases.</p></div>
+  <div class="card aqua"><div class="card-title">Temas que evalúa</div>
+    <p>Ej. 1: Solow-Swan con progreso tecnológico (EE, baja del ahorro, gráfico en tasas) · Ej. 2: índice Big Mac · Ej. 3: IDH, IDH-D y libertades instrumentales de Sen.</p></div>
+</div>
+<p class="x3-cubre"><b>Dónde se estudia:</b> Manual de teoría Tema 1.3, Tema 2.2, Tema 2.4, Tema 2.5 y Tema 3.6 · Práctica TP1, TP2, TP3 y TP4 · Paso a paso §1 Solow y Harrod-Domar, §2 PBI, PPA y crecimiento y §3 Índices de desarrollo humano.</p>
+
+<div class="statement"><div class="statement-title">Enunciado · Primer Parcial de Economía III 2025 · Consigna general</div>
+<p>Ud. tiene <b>60 minutos</b> para realizar este examen. Su trabajo debe ser estrictamente individual, y sin emplear material de consulta.</p></div>
+
+<h3>Ejercicio 1 — Solow-Swan con progreso tecnológico</h3>
+<div class="statement x3-keep"><div class="statement-title">Enunciado · Parcial 2025 · Ej. 1 <span class="pts">25 ptos</span></div>
+<p>Considere el modelo de Solow-Swan con progreso tecnológico, sabiendo que la tasa de ahorro es del 15%, la tasa de depreciación: 4%, la tasa de crecimiento de la población: 6%, participación del trabajo en el producto: 0,6 y tasa de crecimiento tecnológico: 25%. Se pide:</p></div>
+<p class="small">Datos en decimales: \(s = 0{,}15\), \(\delta = 0{,}04\), \(n = 0{,}06\), \(g = 0{,}25\) y participación del trabajo \(1-\alpha = 0{,}6\), así que \(\alpha = 0{,}4\). La hoja usa \(\hat k\) e \(\hat y\) (por unidad de trabajo efectivo); en el Manual de teoría son \(\kt\) e \(\yt\).</p>
+
+<div class="x3-keep">
+<div class="statement"><div class="statement-title">Ej. 1 a) <span class="pts">8 ptos</span></div>
+<p>a) Obtenga el capital por unidad de trabajo efectivo y el producto por unidad de trabajo efectivo en estado estacionario. Indicar fórmula empleada.</p></div>
+<div class="formula-card">
+  <div class="fc-label">La fórmula que hay que escribir (suma puntos)</div>
+  \[ \hat k^* = \left(\frac{s}{n+g+\delta}\right)^{\frac{1}{1-\alpha}} \qquad\qquad \hat y^* = (\hat k^*)^{\alpha} \]
+  <div class="fc-legend"><span>\(\alpha\): participación del <b>capital</b></span><span>\(n+g+\delta\): depreciación efectiva</span><span>sale de \(s\,\hat k^{\alpha} = (n+g+\delta)\,\hat k\)</span></div>
+</div>
+</div>
+<div class="calc">\[\begin{aligned}
+\alpha &= 1-0{,}6 = 0{,}4 \qquad \hat y = \hat k^{\,0{,}4} \qquad n+g+\delta = 0{,}06+0{,}25+0{,}04 = 0{,}35 \\
+\hat k^* &= \left(\frac{0{,}15}{0{,}35}\right)^{\frac{1}{0{,}6}} = 0{,}428571^{\,1{,}6667} = 0{,}2436 \qquad
+\hat y^* = 0{,}2436^{\,0{,}4} = 0{,}5684 \\
+\text{control: }\; \hat y^* &= \frac{(n+g+\delta)\,\hat k^*}{s} = \frac{0{,}35\cdot 0{,}2436}{0{,}15} = 0{,}5684 \;\checkmark
+\end{aligned}\]</div>
+<div class="x3-sub">Qué resultado sale según cómo lo hagas</div>
+<ul class="mcq">
+  <li class="correct"><span class="opt x3-val">0,2436 y 0,5684</span><span>Fórmula bien aplicada con \(\alpha = 0{,}4\) y \(g\) dentro de la depreciación efectiva.<span class="why">Pasa el control: \((n+g+\delta)\,\hat k^*/s = 0{,}35\cdot 0{,}2436/0{,}15 = 0{,}5684 = \hat y^*\).</span></span></li>
+  <li class="wrong"><span class="opt x3-val">0,1202 y 0,2806</span><span>\((0{,}15/0{,}35)^{1/0{,}4}\) y \(\hat k^{0{,}6}\)<span class="why">Toma \(\alpha = 0{,}6\): el dato es la participación del <b>trabajo</b>, que es \(1-\alpha\). El error más caro del examen, porque se arrastra a b) y c).</span></span></li>
+  <li class="wrong"><span class="opt x3-val">1,9656 y 1,3104</span><span>\((0{,}15/0{,}10)^{1/0{,}6}\)<span class="why">Olvida \(g\): usa \(n+\delta = 0{,}10\), la depreciación del modelo sin tecnología.</span></span></li>
+  <li class="wrong"><span class="opt x3-val">4,1048 y 1,7592</span><span>\((0{,}35/0{,}15)^{1/0{,}6}\)<span class="why">Invierte el cociente: la depreciación efectiva va abajo.</span></span></li>
+  <li class="wrong"><span class="opt x3-val">0,6015 y 0,8160</span><span>\((0{,}15/0{,}35)^{0{,}6}\)<span class="why">Usa \(1-\alpha\) como exponente en lugar de \(1/(1-\alpha)\).</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(\hat k^* = \big(s/(n+g+\delta)\big)^{1/(1-\alpha)} = 0{,}2436\) y \(\hat y^* = (\hat k^*)^{\alpha} = 0{,}5684\).<span class="x3-nota">Redondeá al final. Con el cociente redondeado a 0,43 sale 0,2450 y cambia el tercer decimal.</span></div></div>
+
+<div class="x3-keep">
+<div class="statement"><div class="statement-title">Ej. 1 b) <span class="pts">7 ptos</span></div>
+<p>b) Suponga que la tasa de ahorro disminuye a 10%. Obtenga el capital por unidad de trabajo efectivo y el producto por unidad de trabajo efectivo en estado estacionario.</p></div>
+<div class="calc">\[\begin{aligned}
+\hat k^*_b &= \left(\frac{0{,}10}{0{,}35}\right)^{\frac{1}{0{,}6}} = 0{,}285714^{\,1{,}6667} = 0{,}1239 \qquad
+\hat y^*_b = 0{,}12394^{\,0{,}4} = 0{,}4338 \\
+\text{control: }\; & \frac{0{,}35\cdot 0{,}12394}{0{,}10} = 0{,}4338 \;\checkmark \qquad
+\frac{\hat k^*_b}{\hat k^*_a} = \left(\frac{0{,}10}{0{,}15}\right)^{\frac{1}{0{,}6}} = 0{,}509 \;(-49{,}1\,\%) \qquad \frac{\hat y^*_b}{\hat y^*_a} = 0{,}763 \;(-23{,}7\,\%)
+\end{aligned}\]</div>
+</div>
+<div class="x3-sub">Qué resultado sale según cómo lo leas</div>
+<ul class="mcq">
+  <li class="correct"><span class="opt x3-val">0,1239 y 0,4338</span><span>\(s = 0{,}10\); todo lo demás igual que en a).<span class="why">“Disminuye <b>a</b> 10 %” quiere decir que la tasa nueva es 10 %.</span></span></li>
+  <li class="wrong"><span class="opt x3-val">0,2044 y 0,5299</span><span>\(s = 0{,}15\cdot 0{,}9 = 0{,}135\)<span class="why">Lee “disminuye <b>un</b> 10 %”. No es lo que dice la consigna.</span></span></li>
+  <li class="wrong"><span class="opt x3-val">0,0390 y 0,2733</span><span>\(s = 0{,}15-0{,}10 = 0{,}05\)<span class="why">Resta 10 puntos porcentuales en vez de fijar la tasa en 10 %.</span></span></li>
+  <li class="wrong"><span class="opt x3-val">0,0436 y 0,1527</span><span>\((0{,}10/0{,}35)^{1/0{,}4}\)<span class="why">Arrastra el \(\alpha = 0{,}6\) mal tomado en a).</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(\hat k^*_b = 0{,}1239\) y \(\hat y^*_b = 0{,}4338\). Baja \(s\), bajan los dos: el ahorro tiene <b>efecto nivel</b>. El capital cae más que el producto (−49 % contra −24 %) porque \(\hat y = \hat k^{0{,}4}\).</div></div>
+<p class="x3-refs">Desarrollo completo de a) y b), con las teclas de la calculadora: Paso a paso §1 Solow y Harrod-Domar.</p>
+
+<div class="statement x3-keep"><div class="statement-title">Ej. 1 c) <span class="pts">10 ptos</span></div>
+<p>c) Complete el gráfico en base a la información calculada en a) y b) también indicar las ecuaciones de las curvas y rotular los ejes. Luego, de acuerdo al gráfico tache lo que no corresponda:</p>
+<figure class="x3-hojafig"><div class="x3-hoja">
+  <div><img src="figs/out/x3_solow_hoja.svg" alt="El gráfico del examen, sin rótulos"></div>
+  <div>
+    <p class="x3-frase">La flecha doble vertical muestra que la tasa de crecimiento <b><i>del capital per cápita/ producto por trabajador/ del capital por unidad de trabajo efectivo</i></b> es <b><i>positiva/ negativa/ de estado estacionario.</i></b></p>
+    <p class="x3-frase">La Curva de <b><i>Ahorro/Inversión Bruta/Depreciación/Producción</i></b> se desplazó <b><i>hacia abajo/ hacia arriba</i></b> considerando como situación inicial el inciso a.</p>
+  </div>
+</div>
+<figcaption><b>Figura P8.1.</b> El gráfico tal como viene en la hoja, sin ejes rotulados ni ecuaciones: dos curvas decrecientes, una recta horizontal, líneas punteadas desde los dos cortes y una flecha doble vertical en el corte de la izquierda, entre la recta y la curva de arriba. Redibujado con las curvas del ejercicio.</figcaption></figure></div>
+
+<h4>Primero, leé el gráfico</h4>
+<ol class="steps">
+  <li><span class="step-title">Es la versión en tasas</span>Dos curvas que bajan y una recta horizontal: \(\gamma_{\hat k} = s\,\hat k^{\alpha-1} - (n+g+\delta)\). Eje horizontal: \(\hat k\). Eje vertical: la tasa de crecimiento de \(\hat k\).</li>
+  <li><span class="step-title">Asigná cada línea</span>Con más ahorro la curva de ahorro está más alta en cada \(\hat k\): la de <b>arriba</b> es CA\(_a\) (\(s = 0{,}15\)), la de <b>abajo</b> es CA\(_b\) (\(s = 0{,}10\)). La horizontal es la CD, que no depende de \(s\) y es la misma en a) y b).</li>
+  <li><span class="step-title">Poné los cortes y medí la flecha</span>La CA de abajo corta en \(\hat k^*_b = 0{,}124\) (izquierda); la de arriba en \(\hat k^*_a = 0{,}244\) (derecha). La flecha está en 0,124 y va de la CD a la CA\(_a\).</li>
+</ol>
+<div class="calc">\[\begin{aligned}
+\gamma_{\hat k} &= \frac{\dot{\hat k}}{\hat k} = \underbrace{s\,\hat k^{\alpha-1}}_{\text{CA}} - \underbrace{(n+g+\delta)}_{\text{CD}} \\
+\text{CA}_a &= 0{,}15\,\hat k^{-0{,}6} = \frac{0{,}15}{\hat k^{\,0{,}6}} \qquad \text{CA}_b = \frac{0{,}10}{\hat k^{\,0{,}6}} \qquad \text{CD} = n+g+\delta = 0{,}35 \\
+\text{en } \hat k^*_b = 0{,}124:\;\; \hat k^{-0{,}6} &= \frac{0{,}35}{0{,}10} = 3{,}5 \;\Rightarrow\; \text{CA}_a = 0{,}15\cdot 3{,}5 = 0{,}525 \;\Rightarrow\; \gamma_{\hat k} = 0{,}525-0{,}35 = +0{,}175
+\end{aligned}\]</div>
+<figure><img src="figs/out/x3_solow_completo.svg" alt="El gráfico completado con ejes, ecuaciones, cortes y la flecha medida">
+  <figcaption><b>Figura P8.2.</b> El gráfico completado con los datos del ejercicio. Ejes: \(\hat k\) y su tasa de crecimiento \(\gamma_{\hat k}\). La baja de \(s\) corre la curva de ahorro hacia abajo (de la continua a la discontinua) y el corte se mueve de 0,244 a 0,124. La flecha doble mide lo que crecería \(\hat k\) en 0,124 si el ahorro siguiera en 15 %: \(+0{,}175\). La CD no se mueve.</figcaption></figure>
+
+<div class="x3-keep">
+<div class="x3-sub">Frase 1 · qué mide la flecha</div>
+<div class="grid-2">
+<ul class="mcq">
+  <li class="wrong"><span class="opt">i)</span><span>del capital per cápita<span class="why">El eje es \(\hat k = K/(AL)\), no \(k = K/L\). El capital per cápita también crece (a \(\gamma_{\hat k} + g = 0{,}175+0{,}25 = 42{,}5\,\%\)), pero la flecha no mide eso.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>producto por trabajador<span class="why">En el gráfico en tasas no hay ninguna curva de producto: las dos curvas son de ahorro y la recta es de depreciación.</span></span></li>
+  <li class="correct"><span class="opt">iii)</span><span>del capital por unidad de trabajo efectivo<span class="why">La distancia vertical entre CA y CD es \(\gamma_{\hat k}\).</span></span></li>
+</ul>
+<ul class="mcq">
+  <li class="correct"><span class="opt">i)</span><span>positiva<span class="why">En 0,124 la CA\(_a\) (0,525) está por encima de la CD (0,35): \(\gamma_{\hat k} = +0{,}175\).</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>negativa<span class="why">Sería con la CA por debajo de la CD, como a la derecha de cada corte (con \(s = 0{,}10\) en 0,244: \(0{,}233-0{,}35 = -0{,}117\)).</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>de estado estacionario<span class="why">En el EE la tasa es cero y no hay flecha. En 0,124 la CA\(_b\) toca a la CD, pero la flecha llega a la de arriba.</span></span></li>
+</ul>
+</div>
+</div>
+<div class="x3-keep">
+<div class="x3-sub">Frase 2 · qué curva se movió y hacia dónde</div>
+<div class="grid-2">
+<ul class="mcq">
+  <li class="correct"><span class="opt">i)</span><span>Ahorro/Inversión Bruta<span class="why">La CA \(= s\,\hat k^{-0{,}6}\) se multiplica por \(0{,}10/0{,}15 = 2/3\). Ahorro e inversión bruta son la misma curva (\(s\hat y\) es la inversión bruta): no se tacha ninguna de las dos palabras.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>Depreciación<span class="why">\(n+g+\delta = 0{,}35\) no depende de \(s\): la recta queda igual.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>Producción<span class="why">No hay curva de producción en el gráfico en tasas, y \(\hat y = \hat k^{0{,}4}\) no depende de \(s\).</span></span></li>
+</ul>
+<ul class="mcq">
+  <li class="correct"><span class="opt">i)</span><span>hacia abajo<span class="why">Pasa de \(0{,}15/\hat k^{0{,}6}\) a \(0{,}10/\hat k^{0{,}6}\): el corte se corre a la izquierda, de 0,244 a 0,124.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>hacia arriba<span class="why">Sería con más ahorro. Con el inciso a) como situación inicial, \(s\) baja de 0,15 a 0,10.</span></span></li>
+</ul>
+</div>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta · así quedan las frases</span>
+<p class="x3-tach">“La flecha doble vertical muestra que la tasa de crecimiento <s>del capital per cápita</s>/ <s>producto por trabajador</s>/ <mark>del capital por unidad de trabajo efectivo</mark> es <mark>positiva</mark>/ <s>negativa</s>/ <s>de estado estacionario</s>.”</p>
+<p class="x3-tach">“La Curva de <mark>Ahorro/Inversión Bruta</mark>/<s>Depreciación</s>/<s>Producción</s> se desplazó <mark>hacia abajo</mark>/ <s>hacia arriba</s> considerando como situación inicial el inciso a.”</p>
+<span class="x3-nota">Y en el gráfico: ejes rotulados (\(\hat k\) y \(\gamma_{\hat k}\)), CA\(_a = 0{,}15/\hat k^{0{,}6}\) arriba, CA\(_b = 0{,}10/\hat k^{0{,}6}\) abajo, CD \(= 0{,}35\), cortes en 0,124 y 0,244.</span></div></div>
+<p class="x3-refs">Manual de teoría Tema 3.6 · Práctica TP4 · Paso a paso §1 Solow y Harrod-Domar (el gráfico completado en cuatro pasos).</p>
+
+<h3>Ejercicio 2 — Índice Big Mac (julio de 2024)</h3>
+<div class="statement x3-keep"><div class="statement-title">Enunciado · Parcial 2025 · Ej. 2 <span class="pts">15 ptos</span></div>
+<p>Se conoce la siguiente información sobre distintas economías donde se vende la hamburguesa Big Mac (BM) de Julio de 2024. Considere que una BM costaba 5,69 dólares estadounidenses en EEUU. Complete la tabla: <span class="pts">10 ptos</span></p>
+<table class="x3-grid">
+  <thead><tr><th>País</th><th>Precio de BM en moneda local</th><th>Tipo de cambio moneda local/USD</th><th>Precio de una BM en USD</th><th>Tipo de cambio PPA = <span class="x3-blank">&nbsp;</span></th><th>Infra/sobre valoración frente al dólar = <span class="x3-blank">&nbsp;</span></th></tr></thead>
+  <tbody>
+    <tr><td>Emiratos Árabes</td><td class="num">18</td><td class="num">3,67</td><td></td><td></td><td></td></tr>
+    <tr><td>Australia</td><td class="num">7,75</td><td class="num">1,53</td><td></td><td></td><td></td></tr>
+    <tr><td>Azerbaiyán</td><td class="num">6,15</td><td class="num">1,70</td><td></td><td></td><td></td></tr>
+    <tr><td>Bahrein</td><td class="num">1,7</td><td class="num">0,38</td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+<p style="margin:0">Los dos casilleros punteados del encabezado son para escribir la fórmula.</p></div>
+
+<div class="formula-card">
+  <div class="fc-label">Las tres columnas que hay que completar</div>
+  \[ P_{\text{USD}} = \frac{P_{\text{local}}}{TC_m} \qquad\quad TC_{PPA} = \frac{P_{\text{local}}}{P_{\text{EEUU}}} = \frac{P_{\text{local}}}{5{,}69} \qquad\quad \text{infra/sobre} = \frac{TC_{PPA}}{TC_m} - 1 = \frac{P_{\text{USD}}}{5{,}69} - 1 \]
+  <div class="fc-legend"><span>\(TC_m\): tipo de cambio de mercado (moneda local por USD)</span><span>negativo = moneda infravaluada · positivo = sobrevaluada</span></div>
+</div>
+<div class="calc">\[\begin{aligned}
+\text{Emiratos: }\; P_{\text{USD}} &= \frac{18}{3{,}67} = 4{,}90 \qquad TC_{PPA} = \frac{18}{5{,}69} = 3{,}163 \\
+\text{infra/sobre} &= \frac{3{,}163}{3{,}67} - 1 = -13{,}8\,\% \qquad \text{control: } \frac{4{,}9046}{5{,}69} - 1 = -13{,}8\,\% \;\checkmark
+\end{aligned}\]</div>
+<table class="compact">
+  <caption>La tabla completa</caption>
+  <thead><tr><th>País</th><th class="num">Precio local</th><th class="num">\(TC_m\)</th><th class="num">Precio en USD</th><th class="num">TC PPA</th><th class="num">Infra/sobre</th><th>Lectura</th></tr></thead>
+  <tbody>
+    <tr><td>Emiratos Árabes</td><td class="num">18</td><td class="num">3,67</td><td class="num ok">4,90</td><td class="num ok">3,163</td><td class="num ok">−13,8 %</td><td>infravaluada</td></tr>
+    <tr><td>Australia</td><td class="num">7,75</td><td class="num">1,53</td><td class="num ok">5,07</td><td class="num ok">1,362</td><td class="num ok">−11,0 %</td><td>infravaluada</td></tr>
+    <tr><td>Azerbaiyán</td><td class="num">6,15</td><td class="num">1,70</td><td class="num ok">3,62</td><td class="num ok">1,081</td><td class="num ok">−36,4 %</td><td>infravaluada (la más)</td></tr>
+    <tr><td>Bahrein</td><td class="num">1,7</td><td class="num">0,38</td><td class="num ok">4,47</td><td class="num ok">0,299</td><td class="num ok">−21,4 %</td><td>infravaluada</td></tr>
+  </tbody>
+</table>
+<div class="box warn"><div class="box-title">Tres errores que dan vuelta la tabla</div>
+<ul>
+  <li><b>Invertir el cociente</b> (\(TC_m/TC_{PPA} - 1\)): da +16,0 %, +12,3 %, +57,3 % y +27,2 %, todas “sobrevaluadas”. Control: si el Big Mac cuesta menos de US$5,69, la moneda está infravaluada.</li>
+  <li><b>Dar vuelta el TC PPA</b> (\(5{,}69/P_{\text{local}}\)): queda en dólares por moneda local y no se compara con el \(TC_m\).</li>
+  <li><b>Multiplicar en vez de dividir</b> (\(18\cdot 3{,}67 = 66{,}06\)): un Big Mac de 66 dólares avisa que la cuenta está mal.</li>
+</ul></div>
+<figure class="x3-w75"><img src="figs/out/x3_bigmac.svg" alt="Barras divergentes con la infravaloración de las cuatro monedas">
+  <figcaption><b>Figura P8.3.</b> Infra/sobrevaloración frente al dólar de las cuatro monedas, en barras divergentes desde el 0 (EEUU). Las cuatro caen a la izquierda: en los cuatro países el Big Mac cuesta menos que los US$5,69 de EEUU. Las dos del inciso a) están marcadas. Datos: Parcial 2025, Ej. 2 (julio de 2024).</figcaption></figure>
+
+<div class="x3-keep">
+<div class="statement"><div class="statement-title">Ej. 2 a) <span class="pts">5 ptos</span></div>
+<p>a) Luego interprete, y tache lo que no corresponde:</p>
+<p class="x3-frase">En Australia la BM es más <b>cara/ barata</b> que en EEUU. Mientras que, en Bahrein se observa una <b>infravaloración/ sobrevaloración</b> de su moneda frente al dólar.</p></div>
+<div class="grid-2">
+<div><div class="x3-sub">Australia</div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">i)</span><span>cara<span class="why">Compará en la misma moneda: US$5,07 &lt; US$5,69. Los 7,75 dólares australianos no se comparan directo con 5,69.</span></span></li>
+  <li class="correct"><span class="opt">ii)</span><span>barata<span class="why">7,75 / 1,53 = US$5,07, menos que en EEUU.</span></span></li>
+</ul></div>
+<div><div class="x3-sub">Bahrein</div>
+<ul class="mcq">
+  <li class="correct"><span class="opt">i)</span><span>infravaloración<span class="why">TC PPA 0,2988 &lt; \(TC_m\) 0,38: 0,2988/0,38 − 1 = −21,4&nbsp;%.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>sobrevaloración<span class="why">Haría falta un Big Mac más caro que en EEUU. Sale si invertís el cociente (+27,2 %).</span></span></li>
+</ul></div>
+</div>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta · así queda la frase</span>
+<p class="x3-tach">“En Australia la BM es más <s>cara</s>/ <mark>barata</mark> que en EEUU. Mientras que, en Bahrein se observa una <mark>infravaloración</mark>/ <s>sobrevaloración</s> de su moneda frente al dólar.”</p>
+<span class="x3-nota">Es lo mismo dicho de dos maneras: Big Mac más barato en dólares ⇔ moneda infravaluada. Australia también está infravaluada (−11,0 %) y en Bahrein el Big Mac también es más barato (US$4,47).</span></div></div>
+<p class="x3-refs">Manual de teoría Tema 2.2 · Práctica TP2 (el índice Big Mac) · Paso a paso §2 PBI, PPA y crecimiento.</p>
+
+<h3>Ejercicio 3 — Yemen 2021: IDH, IDH-D y libertades instrumentales</h3>
+<div class="statement x3-keep"><div class="statement-title">Enunciado · Parcial 2025 · Ej. 3 <span class="pts">20 ptos</span></div>
+<p>El siguiente cuadro presenta información sobre Yemen en el año 2021</p>
+<table class="x3-grid">
+  <thead>
+    <tr><th rowspan="2">País</th><th colspan="3">Índice de</th><th rowspan="2">Desigualdad en la esperanza de vida</th><th rowspan="2">Desigualdad en educación</th><th rowspan="2">Desigualdad en los ingresos</th></tr>
+    <tr><th>Salud /Vida larga y saludable</th><th>Educación</th><th>Ingreso</th></tr>
+  </thead>
+  <tbody><tr><td>Yemen</td><td class="num">0,6738</td><td class="num">0,3595</td><td class="num">0,3891</td><td class="num">26,7</td><td class="num">46,1</td><td class="num">21,8</td></tr></tbody>
+</table>
+<p style="margin:0">Las desigualdades están en porcentaje: 26,7 quiere decir \(A_{\text{salud}} = 0{,}267\).</p></div>
+
+<div class="x3-keep">
+<div class="statement"><div class="statement-title">Ej. 3 a) <span class="pts">4 ptos</span></div>
+<p>a) Estime el IDH de Yemen en el año 2021. Clasifique al país según su nivel de DH.</p></div>
+<div class="calc">\[\begin{aligned}
+\text{IDH} &= \left(I_{\text{salud}}\cdot I_{\text{educ}}\cdot I_{\text{ingreso}}\right)^{1/3} = (0{,}6738\cdot 0{,}3595\cdot 0{,}3891)^{1/3} \\
+&= 0{,}094252^{1/3} = 0{,}4551 \approx 0{,}455 \;<\; 0{,}550 \;\Rightarrow\; \text{desarrollo humano bajo}
+\end{aligned}\]</div>
+<table class="compact x3-lev">
+  <thead><tr><th>Bajo</th><th>Medio</th><th>Alto</th><th>Muy alto</th></tr></thead>
+  <tbody><tr><td class="ok">IDH &lt; 0,550</td><td>0,550 a 0,699</td><td>0,700 a 0,799</td><td>0,800 o más</td></tr></tbody>
+</table>
+</div>
+<div class="x3-sub">Qué resultado sale según cómo lo hagas</div>
+<ul class="mcq">
+  <li class="correct"><span class="opt x3-val">0,455 · bajo</span><span>Media geométrica de los tres índices; 0,455 &lt; 0,550.</span></li>
+  <li class="wrong"><span class="opt x3-val">0,474 · bajo</span><span>\((0{,}6738+0{,}3595+0{,}3891)/3\)<span class="why">Media aritmética. El nivel da igual, pero el número está mal: la geométrica castiga el desbalance entre dimensiones.</span></span></li>
+  <li class="wrong"><span class="opt x3-val">0,455 · medio</span><span>cuenta bien, corte mal<span class="why">“Medio” empieza en 0,550.</span></span></li>
+  <li class="wrong"><span class="opt x3-val">0,308 · bajo</span><span>clasifica con el IDH-D<span class="why">Los niveles del PNUD se asignan con el IDH, no con el IDH-D (que es el inciso b).</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>IDH de Yemen 2021 = <b>0,455</b> → desarrollo humano <b>bajo</b>.</div></div>
+
+<div class="x3-keep">
+<div class="statement"><div class="statement-title">Ej. 3 b) <span class="pts">10 ptos</span></div>
+<p>b) Calcule el IDH-D de Yemen.</p></div>
+<div class="calc">\[\begin{aligned}
+I^*_{\text{salud}} &= 0{,}6738\,(1-0{,}267) = 0{,}4939 \qquad I^*_{\text{educ}} = 0{,}3595\,(1-0{,}461) = 0{,}1938 \\
+I^*_{\text{ingreso}} &= 0{,}3891\,(1-0{,}218) = 0{,}3043 \\
+\text{IDH-D} &= (0{,}4939\cdot 0{,}1938\cdot 0{,}3043)^{1/3} = 0{,}3077 \approx 0{,}308 \qquad \text{pérdida} = 1 - \frac{0{,}3077}{0{,}4551} = 32{,}4\,\% \\
+\text{control: }\; \text{IDH-D} &= \text{IDH}\cdot\left[(1-0{,}267)(1-0{,}461)(1-0{,}218)\right]^{1/3} = 0{,}45509\cdot 0{,}67603 = 0{,}3077 \;\checkmark
+\end{aligned}\]</div>
+</div>
+<div class="x3-sub">Qué resultado sale según cómo lo hagas</div>
+<ul class="mcq">
+  <li class="correct"><span class="opt x3-val">0,308</span><span>Cada índice multiplicado por \((1 - A_x)\) y media geométrica de los ajustados.</span></li>
+  <li class="wrong"><span class="opt x3-val">0,331</span><span>\((0{,}4939+0{,}1938+0{,}3043)/3\)<span class="why">Media aritmética de los ajustados: el mismo error del inciso a), un paso después.</span></span></li>
+  <li class="wrong"><span class="opt x3-val">0,312</span><span>\(0{,}455\,(1-0{,}315)\)<span class="why">Descuenta el promedio simple de las tres desigualdades (31,5 %). El factor correcto es la media geométrica de los \((1-A_x)\): 0,676, o sea −32,4 %.</span></span></li>
+  <li class="wrong"><span class="opt x3-val">0,455</span><span>no ajusta<span class="why">Es el IDH del inciso a): el IDH-D siempre es menor o igual.</span></span></li>
+</ul>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>IDH-D de Yemen = <b>0,308</b> (0,3077). No lo piden, pero conviene escribirlo: la desigualdad le hace perder <b>32,4 %</b> de su IDH, y la dimensión que más pierde es educación (46,1 %).</div></div>
+<figure class="x3-w90"><img src="figs/out/x3_yemen.svg" alt="Índices de Yemen sin ajustar y ajustados por desigualdad">
+  <figcaption><b>Figura P8.4.</b> Yemen 2021: cada índice sin ajustar (azul) y ajustado por su desigualdad (naranja), con el porcentaje que se pierde abajo, en rojo. A la derecha, la media geométrica: IDH 0,455 e IDH-D 0,308 (−32,4 %). La línea punteada marca el corte de 0,550: el IDH queda debajo, así que el nivel es bajo. Datos: Parcial 2025, Ej. 3.</figcaption></figure>
+<p class="x3-refs">Manual de teoría Tema 2.4 y Tema 2.5 · Práctica TP3 · Paso a paso §3 Índices de desarrollo humano.</p>
+
+<div class="statement x3-keep"><div class="statement-title">Ej. 3 c) <span class="pts">6 ptos</span></div>
+<p>c) Clasifique estas afirmaciones sobre el país teniendo en cuenta las libertades instrumentales que propone Amartya Sen:</p>
+<p>Yemen lleva más de una década sumido en una guerra civil entre los rebeldes hutíes, también conocidos como Ansar Allah, y las fuerzas gubernamentales respaldadas por Arabia Saudí y sus aliados. <span class="x3-line">&nbsp;</span></p>
+<p>Alrededor del 20% de los niños nunca han sido vacunados, una de las peores tasas de vacunación del mundo. <span class="x3-line">&nbsp;</span></p>
+<p style="margin:0">O Ibrahim, un hombre de 70 años fue desplazado por las fuertes inundaciones en Ma’rib. Cuando las aguas arrasaron el asentamiento, cargó a la espalda a su hijo adulto, que vive con una discapacidad, para ponerlo a salvo. Lo perdieron todo. <span class="x3-line">&nbsp;</span></p></div>
+<p>Las cinco libertades instrumentales de Sen son: libertades políticas, servicios económicos, oportunidades sociales, garantías de transparencia y seguridad protectora. El criterio para clasificar es preguntarse <b>qué institución falla</b>, no cuál es el tema de la noticia.</p>
+<table class="compact x3-libs">
+  <thead><tr><th style="width:24%">Afirmación</th><th>Libertad instrumental</th><th>Criterio: qué falla</th><th style="width:30%">La tentación, y por qué no</th></tr></thead>
+  <tbody>
+    <tr><td>Guerra civil entre los hutíes y el gobierno respaldado por Arabia Saudí</td><td>Libertades políticas</td><td>El conflicto es por quién gobierna y cómo: no hay canales democráticos para elegir, criticar y reemplazar gobernantes.</td><td><i>Seguridad protectora</i>: la guerra deja víctimas, pero la afirmación habla de la disputa por el poder.</td></tr>
+    <tr><td>20 % de los niños nunca vacunados</td><td>Oportunidades sociales</td><td>Falla el sistema de salud (sanidad y educación son las oportunidades sociales).</td><td><i>Seguridad protectora</i>: vacunar no es ayuda de emergencia, es salud básica y permanente.</td></tr>
+    <tr><td>Ibrahim, desplazado por las inundaciones: “lo perdieron todo”</td><td>Seguridad protectora</td><td>Una catástrofe deja a una familia sin nada: hace falta la red de protección, versión <b>ad hoc</b> (ayuda de emergencia).</td><td><i>Servicios económicos</i>: lo que falta no es crédito ni mercados, sino la red que impide caer en la miseria.</td></tr>
+  </tbody>
+</table>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>1) <b>Libertades políticas</b> · 2) <b>Oportunidades sociales</b> · 3) <b>Seguridad protectora</b>.<span class="x3-nota">Servicios económicos y garantías de transparencia no aparecen en este inciso. Para la seguridad protectora, sumá la distinción entre mecanismos fijos (por ley, permanentes) y ad hoc (ante una crisis): el caso de Ibrahim es ad hoc.</span></div></div>
+<p class="x3-refs">Manual de teoría Tema 1.3 · Práctica TP1 · Paso a paso §4 Preguntas teóricas.</p>
+
+<h3 data-toc="no">Grilla de respuestas · P8</h3>
+<table class="compact x3-grilla">
+  <thead><tr><th style="width:11%">Inciso</th><th style="width:50%">Respuesta</th><th>Cuenta o criterio clave</th></tr></thead>
+  <tbody>
+    <tr><td>Ej. 1 a)</td><td class="ok">\(\hat k^* = 0{,}2436\) · \(\hat y^* = 0{,}5684\)</td><td>\((0{,}15/0{,}35)^{1/0{,}6}\) con \(\alpha = 1-0{,}6 = 0{,}4\)</td></tr>
+    <tr><td>Ej. 1 b)</td><td class="ok">\(\hat k^* = 0{,}1239\) · \(\hat y^* = 0{,}4338\)</td><td>\((0{,}10/0{,}35)^{1/0{,}6}\): \(s\) disminuye <b>a</b> 10 %</td></tr>
+    <tr><td>Ej. 1 c)</td><td class="ok">“del capital por unidad de trabajo efectivo” · “positiva” · “Ahorro/Inversión Bruta” · “hacia abajo”</td><td>Cortes 0,124 y 0,244; flecha \(= 0{,}525 - 0{,}35 = +0{,}175\)</td></tr>
+    <tr><td>Ej. 2 tabla</td><td class="ok">US$ 4,90 · 5,07 · 3,62 · 4,47<br>TC PPA 3,163 · 1,362 · 1,081 · 0,299<br>−13,8 % · −11,0 % · −36,4 % · −21,4 %</td><td>\(P/TC_m\) · \(P/5{,}69\) · \(TC_{PPA}/TC_m - 1\), en el orden de la tabla</td></tr>
+    <tr><td>Ej. 2 a)</td><td class="ok">barata · infravaloración</td><td>US$5,07 &lt; US$5,69; Bahrein −21,4 %</td></tr>
+    <tr><td>Ej. 3 a)</td><td class="ok">0,455 · bajo</td><td>\((0{,}6738\cdot0{,}3595\cdot0{,}3891)^{1/3}\) &lt; 0,550</td></tr>
+    <tr><td>Ej. 3 b)</td><td class="ok">0,308 (pérdida 32,4 %)</td><td>\((0{,}4939\cdot0{,}1938\cdot0{,}3043)^{1/3}\)</td></tr>
+    <tr><td>Ej. 3 c)</td><td class="ok">Libertades políticas · Oportunidades sociales · Seguridad protectora</td><td>Qué falla: gobierno, salud, red de emergencia</td></tr>
+  </tbody>
+</table>
+
+<div class="box tip"><div class="box-title">Lo que enseña este parcial</div>
+<ul>
+  <li><b>Leé de quién es la participación:</b> “del trabajo 0,6” es \(\alpha = 0{,}4\). Con \(\alpha = 0{,}6\) se caen a), b) y el gráfico.</li>
+  <li><b>En el gráfico en tasas, CA − CD es \(\gamma_{\hat k}\).</b> Arriba va la CA del ahorro mayor; si baja \(s\), sólo baja la CA.</li>
+  <li><b>Big Mac en la misma moneda:</b> más barato que US$5,69 ⇔ \(TC_{PPA}/TC_m - 1 &lt; 0\) ⇔ moneda infravaluada.</li>
+  <li><b>Índices con media geométrica y nivel con el IDH;</b> las libertades de Sen, por la institución que falla.</li>
+</ul></div>
+
+<!-- =============================================================== P9 -->
+<div class="chapter-head">
+  <div class="kicker">2025 · Primera prueba parcial · parte teórica</div>
+  <h2><span class="num">P9</span>Prueba teórica del 27/09/2025</h2>
+  <p>Cuatro preguntas de opción múltiple con el molde de siempre: Sen, un índice (esta vez el IDG en lugar de la PPA), Solow y el vínculo entre crecimiento y desarrollo humano. Las opciones falsas se delatan con palabras absolutas: “exclusivamente”, “garantiza”, “la única vía”.</p>
+</div>
+
+<div class="grid-3 x3-ficha">
+  <div class="card violet"><div class="card-title">Fecha y duración</div>
+    <p>27/09/2025 · 60 minutos.</p><p>La hoja se titula “Primera prueba práctica parcial”, pero es la parte teórica.</p></div>
+  <div class="card orange"><div class="card-title">Formato y puntaje</div>
+    <p>4 proposiciones, opciones a) a e); se encierra una con un círculo, sin justificar.</p>
+    <p>Correcta <b>+10</b> · incorrecta <b>−5</b> (máximo 40).</p></div>
+  <div class="card aqua"><div class="card-title">Temas que evalúa</div>
+    <p>1) Desarrollo según Sen · 2) Índice de Desigualdad de Género · 3) Solow con progreso tecnológico · 4) Vínculo entre crecimiento económico y desarrollo humano.</p></div>
+</div>
+<p class="x3-cubre"><b>Dónde se estudia:</b> Manual de teoría Tema 1.1, Tema 1.2, Tema 2.5 y Tema 3.6 · Práctica TP1, TP3 y TP4 · Paso a paso §4 Preguntas teóricas.</p>
+
+<div class="statement"><div class="statement-title">Enunciado · Prueba teórica 27/09/2025 · Consigna general</div>
+<p>Dadas las siguientes proposiciones, lee con atención y selecciona una opción de respuesta (Encierra dicha opción con un círculo. No hace falta realizar ninguna justificación). <b>Cada respuesta correcta vale 10 puntos y la respuesta incorrecta resta 5 puntos.</b></p></div>
+
+<h3>Pregunta 1 — El desarrollo según Sen</h3>
+<div class="x3-keep">
+<div class="statement"><div class="statement-title">Pregunta 1 <span class="pts">+10 / −5</span></div>
+<p>1) Según la perspectiva de Amartya Sen, el concepto de desarrollo debe entenderse como:</p></div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El aumento sostenido del PBI per cápita.<span class="why">Es la visión estricta (crecimiento económico). Para Sen el ingreso es un medio, no la definición del desarrollo.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>La expansión de las libertades reales que disfrutan las personas.<span class="why">Es la definición de Sen, casi palabra por palabra: “el desarrollo es un proceso de expansión de las libertades reales que disfrutan los individuos”.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>La reducción de la deuda externa y el déficit fiscal.<span class="why">Son metas macroeconómicas: a lo sumo, medios. No aparecen en la definición.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>La felicidad alcanzada por la población.<span class="why">Es la visión utilitarista, que Sen descarta: los deseos se adaptan a la privación y quien está acostumbrado a su situación puede declararse feliz.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Ninguna opción es correcta.<span class="why">La b) es correcta.</span></span></li>
+</ul>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>b)</b> La expansión de las libertades reales que disfrutan las personas.</div></div>
+<p class="x3-refs">Manual de teoría Tema 1.2 · Práctica TP1 · Paso a paso §4 Preguntas teóricas.</p>
+
+<h3>Pregunta 2 — Qué mide el IDG</h3>
+<div class="x3-keep">
+<div class="statement"><div class="statement-title">Pregunta 2 <span class="pts">+10 / −5</span></div>
+<p>2) ¿Cuál de las siguientes afirmaciones refleja una preocupación central del Índice de Desigualdad de Género (IDG)?</p></div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>Le da preponderancia principalmente a la participación de las mujeres en el empleo.<span class="why">El mercado laboral es una de las tres dimensiones, no la principal.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>Se basa en las diferencias de ingresos entre hombres y mujeres, entre otros aspectos.<span class="why">El ingreso no forma parte del IDG: mide participación en la fuerza laboral, no salarios ni ingresos.</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>Busca captar la desventaja de las mujeres en salud, empoderamiento y trabajo.<span class="why">Son sus tres dimensiones: salud reproductiva, empoderamiento y mercado laboral.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Se centra en las tasas de natalidad y mortalidad infantil.<span class="why">Usa mortalidad <b>materna</b> y fecundidad <b>adolescente</b>, no mortalidad infantil, y ésa es sólo la dimensión salud.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Capta las diferencias en las dimensiones salud, educación y nivel de vida ajustadas por la desigualdad.<span class="why">Describe el IDH-D: las dimensiones del IDH ajustadas por desigualdad.</span></span></li>
+</ul>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>c)</b> Busca captar la desventaja de las mujeres en salud, empoderamiento y trabajo.</div></div>
+<div class="versus">
+  <div class="card orange"><div class="card-title">IDG · desigualdad de género</div>
+    <p style="margin:0"><b>Salud reproductiva</b> (mortalidad materna, fecundidad adolescente), <b>empoderamiento</b> (escaños, educación secundaria) y <b>mercado laboral</b> (participación laboral). 0 = igualdad: <b>más bajo es mejor</b>.</p></div>
+  <div class="vs">vs</div>
+  <div class="card blue"><div class="card-title">IDH-D · la opción e)</div>
+    <p style="margin:0"><b>Salud, educación y nivel de vida</b> ajustadas por la desigualdad <b>entre personas</b>, sin distinguir sexo. Es un logro: <b>más alto es mejor</b>, y nunca supera al IDH.</p></div>
+</div>
+<p class="x3-refs">Manual de teoría Tema 2.5 · Práctica TP3 · Paso a paso §4 Preguntas teóricas.</p>
+
+<h3>Pregunta 3 — Solow con progreso tecnológico</h3>
+<div class="x3-keep">
+<div class="statement"><div class="statement-title">Pregunta 3 <span class="pts">+10 / −5</span></div>
+<p>3) ¿Qué característica define al modelo de crecimiento de Solow con progreso tecnológico?</p></div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>El crecimiento económico depende exclusivamente del capital físico.<span class="why">Con rendimientos decrecientes, acumular capital sólo lleva a un EE sin crecimiento per cápita.</span></span></li>
+  <li class="wrong"><span class="opt">b)</span><span>La productividad total de los factores permanece constante en el tiempo.<span class="why">Al revés: la tecnología \(A\) crece a la tasa \(g\). Con \(A\) constante sería el modelo sin tecnología.</span></span></li>
+  <li class="correct"><span class="opt">c)</span><span>El crecimiento sostenido de la renta per cápita es posible gracias al progreso tecnológico.<span class="why">En el EE \(\hat k\) e \(\hat y\) son constantes, así que \(y = A\hat y\) crece a \(g\), la tasa exógena del progreso tecnológico.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>El modelo no considera el rol del ahorro.<span class="why">El ahorro está en la fórmula de \(\hat k^*\): tiene <b>efecto nivel</b> (P8, Ej. 1 b), no efecto crecimiento.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>Todas las opciones son correctas.<span class="why">a), b) y d) son falsas.</span></span></li>
+</ul>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>c)</b> El crecimiento sostenido de la renta per cápita es posible gracias al progreso tecnológico.</div></div>
+<figure class="w70"><img src="figs/out/x3_solow_largo_plazo.svg" alt="Producto per cápita en el tiempo con y sin progreso tecnológico">
+  <figcaption><b>Figura P9.1.</b> Esquemático. En escala logarítmica, una recta es crecimiento a tasa constante. Sin progreso tecnológico (naranja), el producto per cápita converge al EE y se estanca. Con progreso tecnológico (azul), converge a una recta de pendiente \(g\). Un aumento del ahorro (discontinua) sube el nivel pero deja la misma pendiente: por eso la d) es falsa y la c) es la correcta.</figcaption></figure>
+<p class="x3-refs">Manual de teoría Tema 3.6 · Práctica TP4 · Paso a paso §4 Preguntas teóricas.</p>
+
+<h3>Pregunta 4 — Crecimiento económico y desarrollo humano</h3>
+<div class="x3-keep">
+<div class="statement"><div class="statement-title">Pregunta 4 <span class="pts">+10 / −5</span></div>
+<p>4) ¿Cuál de las siguientes afirmaciones refleja un vínculo fuerte entre crecimiento económico y desarrollo humano?</p></div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">a)</span><span>A mayor PBI per cápita, menor pobreza estructural.<span class="why">La relación no es automática ni lineal: depende de cómo se distribuye y en qué se gasta el ingreso. La correlación entre PBI y esperanza de vida es débil y se aplana.</span></span></li>
+  <li class="correct"><span class="opt">b)</span><span>Aumento del ingreso acompañado de mejoras en salud, educación y libertades.<span class="why">El ingreso se traduce en desarrollo cuando se convierte en capacidades: es la visión amplia, con el crecimiento como medio.</span></span></li>
+  <li class="wrong"><span class="opt">c)</span><span>El crecimiento del producto garantiza el desarrollo humano.<span class="why">“Garantiza” es la visión estricta, la que el Tema 1 descarta: el crecimiento es necesario pero no suficiente.</span></span></li>
+  <li class="wrong"><span class="opt">d)</span><span>Aumento del empleo informal como estrategia de expansión.<span class="why">El empleo informal es un rasgo del subdesarrollo, no un vínculo virtuoso.</span></span></li>
+  <li class="wrong"><span class="opt">e)</span><span>La única vía de desarrollo es el crecimiento del capital físico.<span class="why">“La única vía” y “capital físico” contradicen la visión amplia: dejan afuera el capital humano y las libertades.</span></span></li>
+</ul>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>b)</b> Aumento del ingreso acompañado de mejoras en salud, educación y libertades.</div></div>
+<p class="small">El vínculo “fuerte” es el círculo virtuoso: las dos cadenas (del crecimiento al desarrollo humano y del desarrollo humano al crecimiento) funcionando a la vez. Es un complemento fuera de la bibliografía obligatoria (Ranis y Stewart); para la pregunta alcanza con la visión amplia del Tema 1.1.</p>
+<div class="flow">
+  <div class="node"><b>Crece el ingreso</b>más PBI per cápita</div><div class="arrow">→</div>
+  <div class="node"><b>Se convierte en capacidades</b>gasto en salud, educación, libertades</div><div class="arrow">→</div>
+  <div class="node"><b>Mejora el DH</b>personas más sanas y educadas</div><div class="arrow">→</div>
+  <div class="node"><b>Más productividad</b>y de vuelta más ingreso</div>
+</div>
+<p class="x3-refs">Manual de teoría Tema 1.1 (complemento en Tema 1.6) · Práctica TP1 · Paso a paso §4 Preguntas teóricas.</p>
+
+<h3 data-toc="no">Grilla de respuestas · P9</h3>
+<table class="compact x3-g9">
+  <thead><tr><th>Pregunta</th><th>Respuesta</th><th>Idea que decide</th><th>Dónde está</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td class="ok">b)</td><td>Sen: desarrollo = expansión de las libertades reales</td><td>Tema 1.2 · TP1</td></tr>
+    <tr><td>2</td><td class="ok">c)</td><td>IDG: salud reproductiva, empoderamiento y mercado laboral; e) es el IDH-D</td><td>Tema 2.5 · TP3</td></tr>
+    <tr><td>3</td><td class="ok">c)</td><td>Crecimiento per cápita sostenido gracias a la tecnología, que crece a \(g\) exógena</td><td>Tema 3.6 · TP4</td></tr>
+    <tr><td>4</td><td class="ok">b)</td><td>Ingreso que se convierte en salud, educación y libertades</td><td>Tema 1.1 · TP1</td></tr>
+  </tbody>
+</table>
+
+<table class="compact x3-cmp">
+  <caption>La misma teórica, 2024 contra 2025</caption>
+  <thead><tr><th>Pregunta</th><th>P4 · 20/9/2024</th><th>P5 · 28/9/2024</th><th>P9 · 27/09/2025</th></tr></thead>
+  <tbody>
+    <tr><td>1 · Sen</td><td>b) libertad para elegir vidas que valoran</td><td>c) la misma idea, otra letra</td><td>b) expansión de las libertades reales</td></tr>
+    <tr><td>2 · Índices</td><td>a) la PPA reduce las diferencias</td><td>a) idéntica a P4</td><td>c) el IDG (cambia el tema)</td></tr>
+    <tr><td>3 · Solow</td><td>d) innovaciones tecnológicas</td><td>e) Ninguna (la opción era Romer)</td><td>c) crecimiento sostenido gracias al progreso tecnológico</td></tr>
+    <tr><td>4 · CE y DH</td><td>c) necesario, no suficiente</td><td>b) en el corto plazo, sin CE</td><td>b) ingreso + salud, educación y libertades</td></tr>
+  </tbody>
+</table>
+
+<div class="box tip"><div class="box-title">Lo que enseña este parcial</div>
+<ul>
+  <li><b>La definición de Sen, de memoria:</b> “expansión de las libertades reales que disfrutan las personas”. PBI, felicidad o metas fiscales son siempre distractores.</li>
+  <li><b>IDG no es IDH-D.</b> “Salud, educación y nivel de vida ajustadas por desigualdad” es el IDH-D; el IDG mira a las mujeres en salud reproductiva, empoderamiento y trabajo, y no incluye el ingreso.</li>
+  <li><b>En Solow la tecnología crece, y el ahorro importa.</b> La PTF no es constante (crece a \(g\)); el ahorro tiene efecto nivel, no efecto crecimiento.</li>
+  <li><b>Palabras absolutas = opción falsa.</b> “Exclusivamente”, “garantiza”, “la única vía”, “todas”: en esta materia casi siempre delatan la incorrecta.</li>
+</ul></div>
+
+</section>

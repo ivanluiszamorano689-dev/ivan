@@ -1,0 +1,503 @@
+<section class="tema-2 x2-sec">
+<style>
+.x2-ficha .card p { margin: 0 0 0.25em; font-size: 8.8pt; }
+.x2-cubre { font-size: 8.6pt; color: var(--ink-2); margin: 0.5em 0 0.9em; }
+.x2-cubre b { color: var(--ink); }
+.x2-refs { font-size: 8.3pt; color: var(--ink-3); margin: -0.4em 0 0.9em; }
+.x2-keep { break-inside: avoid; }
+.x2-sec .statement table { background: #fff; margin: 0.45em 0 0.5em; font-size: 8.3pt; }
+.x2-sec .statement table th, .x2-sec .statement table td { padding: 0.25em 0.45em; }
+.x2-sec .statement ul.cols-2 { margin: 0.2em 0 0.4em; }
+.x2-sec .statement table tbody tr:nth-child(even) td { background: #fff; }
+.x2-opttab { width: auto; }
+.x2-opttab td, .x2-opttab th { text-align: center; min-width: 4.2em; border: 1px solid var(--rule); }
+.x2-opttab th { background: var(--paper-2); }
+.x2-blank { display: inline-block; min-width: 3.2em; border-bottom: 1px solid var(--ink-3); }
+.x2-sub { font: 700 7.6pt "Inter"; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 0.4em 0 -0.2em; }
+.x2-sec .x2-idhtab td, .x2-nw { white-space: nowrap; }
+.x2-sec .mcq.x2-2c { display: grid; grid-template-columns: 1fr 1fr; column-gap: 0.7em; }
+.x2-sec .mcq.x2-2c > li { margin: 0.12em 0; }
+.answer .x2-nota { display: block; font-size: 8.4pt; color: var(--ink-2); margin-top: 0.2em; }
+</style>
+
+<!-- =============================================================== P6 -->
+<div class="chapter-head">
+  <div class="kicker">2024 · Primera prueba práctica parcial · versión Barbados–Guyana</div>
+  <h2><span class="num">P6</span>Prueba práctica del 28/9/2024 — Guyana, Ucrania y Solow con g = 25 %</h2>
+  <p>Tres ejercicios de 20 puntos: IDH e IDH-D, crecimiento y PPA con datos reales, y Solow con progreso tecnológico. Hay un inciso cuya cuenta no da exactamente ninguna opción (Ej. 1 b) y otro donde, en rigor, ninguna opción está bien escrita (Ej. 3 c).</p>
+</div>
+
+<div class="grid-3 x2-ficha">
+  <div class="card blue"><div class="card-title">Fecha y duración</div>
+    <p>28/9/2024 · 60 minutos.</p><p>Individual y sin material de consulta. El mismo día se tomó la prueba teórica (P5).</p></div>
+  <div class="card orange"><div class="card-title">Formato y puntaje</div>
+    <p>3 ejercicios × 20 = 60 puntos (con la teórica de 40, suman 100). Se marca un casillero.</p>
+    <p>Correcta: suma el puntaje del inciso. Incorrecta: resta la mitad.</p></div>
+  <div class="card aqua"><div class="card-title">Temas que evalúa</div>
+    <p>Ej. 1: IDH, IDH-D e IDG · Ej. 2: tasas de crecimiento, PBI a TCm y a PPA · Ej. 3: Solow-Swan con progreso tecnológico.</p></div>
+</div>
+<p class="x2-cubre"><b>Dónde se estudia:</b> Manual de teoría Tema 2.2, Tema 2.3, Tema 2.4, Tema 2.5 y Tema 3.6 · Práctica TP2, TP3 y TP4 · Paso a paso §1 Solow y Harrod-Domar, §2 PBI, PPA y crecimiento y §3 Índices de desarrollo humano. <span class="muted">Las opciones son casilleros sin letra: acá las numeramos i), ii)… de izquierda a derecha, en el orden de la hoja.</span></p>
+
+<div class="statement"><div class="statement-title">Enunciado · Prueba práctica 28/9/2024 · Consigna general</div>
+<p><b><i>Respuesta correcta: suma el puntaje asignado a cada inciso. Respuesta incorrecta: resta la mitad del puntaje asignado al inciso.</i></b></p></div>
+
+<h3>Ejercicio 1 — IDH e IDH-D: Barbados y Guyana</h3>
+<div class="statement x2-keep"><div class="statement-title">Enunciado · Prueba práctica 28/9/2024 · Ej. 1 <span class="pts">20 ptos</span></div>
+<p>Ud está elaborando un informe sobre Desarrollo humano de los países de Barbados y Guyana. Tiene la siguiente información: <i>Redondear a tres decimales.</i></p>
+<table class="compact x2-idhtab">
+  <thead><tr><th>Dimensión</th><th>Indicador</th><th class="num">Mín</th><th class="num">Máx</th><th class="num">Barbados: índice de la dimensión</th><th class="num">Guyana (datos)</th><th class="num">Guyana (\(A_x\)) (%)</th></tr></thead>
+  <tbody>
+    <tr><td>Salud</td><td>Esperanza de vida al nacer</td><td class="num">20</td><td class="num">85</td><td class="num">0,886</td><td class="num">65,7</td><td class="num">15,8</td></tr>
+    <tr><td rowspan="2">Educación</td><td>Años esperados de escolaridad</td><td class="num">0</td><td class="num">18</td><td class="num" rowspan="2">0,766</td><td class="num">12,5</td><td class="num" rowspan="2">10,4</td></tr>
+    <tr><td>Años promedio de escolaridad</td><td class="num">0</td><td class="num">15</td><td class="num">8,6</td></tr>
+    <tr><td>Estándar de vida</td><td>IBN per cápita (US$ PPA 2017)</td><td class="num">100</td><td class="num">75.000</td><td class="num">0,727</td><td class="num">22.465</td><td class="num">25,1</td></tr>
+  </tbody>
+</table></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 1 a) <span class="pts">5 ptos</span></div>
+<p>a) El IDH de Barbados es (marque la opción correcta):</p></div>
+<ul class="mcq x2-2c">
+  <li class="wrong"><span class="opt">i)</span><span>0,593<span class="why">Es el IDH-D de Guyana (la respuesta del inciso b).</span></span></li>
+  <li class="correct"><span class="opt">ii)</span><span>0,79<span class="why">Media geométrica de los tres índices de dimensión que ya da la tabla.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>0,714<span class="why">Es el IDH de Guyana: país equivocado.</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>0,886<span class="why">Es el índice de salud de Barbados, una sola dimensión.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[ \text{IDH}_{\text{Barbados}} = (0{,}886\cdot 0{,}766\cdot 0{,}727)^{1/3} = 0{,}790 \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>ii) 0,79</b> (0,790): desarrollo humano alto.</div></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 1 b) <span class="pts">10 ptos</span></div>
+<p>b) El IDH-D de Guyana es (marque la opción correcta):</p></div>
+<ul class="mcq x2-2c">
+  <li class="correct"><span class="opt">i)</span><span>0,593<span class="why">La opción más cercana a lo que da la cuenta (0,591) y la única compatible: ver la aclaración.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>0,79<span class="why">Es el IDH de Barbados.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>0,714<span class="why">Es el IDH de Guyana <b>sin ajustar</b>: el paso previo, antes de descontar la desigualdad.</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>0,886<span class="why">Es el índice de salud de Barbados.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[\begin{aligned}
+I_{\text{salud}} &= \tfrac{65{,}7-20}{85-20} = 0{,}703 \qquad I_{\text{educ}} = \tfrac12\left(\tfrac{12{,}5}{18}+\tfrac{8{,}6}{15}\right) = \tfrac{0{,}694+0{,}573}{2} = 0{,}634 \\
+I_{\text{ingreso}} &= \tfrac{\ln(22.465/100)}{\ln(75.000/100)} = \tfrac{\ln 224{,}65}{\ln 750} = \tfrac{5{,}415}{6{,}620} = 0{,}818 \qquad \text{IDH}_{G} = (0{,}703\cdot 0{,}634\cdot 0{,}818)^{1/3} = 0{,}714 \\
+\text{ajustados: }\; & 0{,}703\,(1-0{,}158) = 0{,}592 \qquad 0{,}634\,(1-0{,}104) = 0{,}568 \qquad 0{,}818\,(1-0{,}251) = 0{,}613 \\
+\text{IDH-D}_{G} &= (0{,}592\cdot 0{,}568\cdot 0{,}613)^{1/3} = 0{,}591 \qquad \text{pérdida} = 1-\tfrac{0{,}5906}{0{,}7143} = 17{,}3\,\%
+\end{aligned}\]</div>
+<div class="answer caution"><div class="answer-body"><span class="answer-label">Respuesta (con aclaración)</span><b>i) 0,593.</b> La cuenta da <b>0,591</b> (0,5906, con o sin redondeo intermedio). Se marca 0,593 porque es la opción más cercana y la única compatible: las otras tres son valores reconocibles de otra cosa (0,714 = IDH de Guyana sin ajustar; 0,79 = IDH de Barbados; 0,886 = índice de salud de Barbados).<span class="x2-nota">La diferencia de 0,002 no se reproduce con los datos del enunciado: no le busques una cuenta “alternativa”. Cuando tu resultado cae a un paso de una opción y las demás son claramente otra cosa, marcá la más cercana.</span></div></div>
+<p class="x2-refs">Desarrollo completo: Paso a paso §3 Índices de desarrollo humano.</p>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 1 c) <span class="pts">5 ptos</span></div>
+<p>c) Se sabe además que el IDG de Guyana es 0,454 y el de Barbados es 0,268 (marque la opción correcta):</p>
+<p>“Ambos países tienen un desarrollo humano <span class="x2-blank">&nbsp;</span> [Muy alto · alto · medio · bajo]. Sin embargo, <span class="x2-blank">&nbsp;</span> [Barbados · Guyana] muestra un mejor desempeño en DH y en las oportunidades que brinda a los hombres y las mujeres dentro de las dimensiones que estudia del IDG.”</p></div>
+<div class="grid-2">
+<div><div class="x2-sub">Primer casillero</div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">i)</span><span>Muy alto<span class="why">Hace falta 0,800 o más; Barbados (0,790) no llega.</span></span></li>
+  <li class="correct"><span class="opt">ii)</span><span>alto<span class="why">0,790 y 0,714 están en [0,700; 0,800).</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>medio<span class="why">Saldría si clasificaras con el IDH-D de Guyana (0,591). Los niveles se leen con el IDH.</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>bajo<span class="why">Sería con un IDH menor que 0,550.</span></span></li>
+</ul></div>
+<div><div class="x2-sub">Segundo casillero</div>
+<ul class="mcq">
+  <li class="correct"><span class="opt">i)</span><span>Barbados<span class="why">IDG más bajo (0,268): menos desigualdad de género. Además tiene el IDH más alto.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>Guyana<span class="why">Su IDG es mayor (0,454). El IDG mide desigualdad: más cerca de 0 es mejor, al revés que el IDH.</span></span></li>
+</ul></div>
+</div>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>“Ambos países tienen un desarrollo humano <b>alto</b>. Sin embargo, <b>Barbados</b> muestra un mejor desempeño…”</div></div>
+<figure class="w80"><img src="figs/out/x2_idh_2024.svg">
+  <figcaption><b>Figura P6.1.</b> IDH (lleno) e IDH-D (hueco) sobre la escala de niveles del PNUD, e IDG a la derecha. Por su IDH los tres son de desarrollo humano alto; Guyana y Jamaica (versión P7) pierden 17,3 % y 16,6 % por desigualdad; Barbados tiene el IDG más bajo. Datos: pruebas del 28/9/2024.</figcaption></figure>
+<p class="x2-refs">Manual de teoría Tema 2.4 y Tema 2.5 · Práctica TP3 · Paso a paso §3 Índices de desarrollo humano.</p>
+
+<h3>Ejercicio 2 — PBI per cápita de Ucrania y EEUU</h3>
+<div class="statement x2-keep"><div class="statement-title">Enunciado · Prueba práctica 28/9/2024 · Ej. 2 <span class="pts">20 ptos</span></div>
+<p>Se dispone de los datos PBI per cápita de Ucrania y Estados Unidos entre los años (2018-2023). Se pide:</p>
+<table class="compact">
+  <thead><tr><th>País</th><th>Indicador</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th></tr></thead>
+  <tbody>
+    <tr><td>Ucrania</td><td>PBI per cápita US$ PPA corrientes</td><td class="num">12.709</td><td class="num">14.381</td><td class="num">15.717</td><td class="num">18.040</td><td class="num">16.080</td><td class="num">18.007</td></tr>
+    <tr><td>Ucrania</td><td>PBI per cápita US$ corrientes</td><td class="num">3.097</td><td class="num">3.661</td><td class="num">3.752</td><td class="num">4.828</td><td class="num">4.576</td><td class="num">5.181</td></tr>
+    <tr><td>EEUU</td><td>PBI per cápita US$ corrientes</td><td class="num">63.201</td><td class="num">65.548</td><td class="num">64.317</td><td class="num">71.056</td><td class="num">77.247</td><td class="num">81.695</td></tr>
+  </tbody>
+</table></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 2 a) <span class="pts">5 ptos</span></div>
+<p>a) La tasa de crecimiento acumulado (en porcentaje) del PBI a precios corrientes de Ucrania a tipo de cambio (TC) de mercado entre 2020 y 2021 fue (marque la opción correcta):</p></div>
+<ul class="mcq x2-2c">
+  <li class="wrong"><span class="opt">i)</span><span>18,21 %<span class="why">Es la tasa 2018→2019 (3.661/3.097 − 1): período equivocado.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>2,49 %<span class="why">Es la tasa 2019→2020 (3.752/3.661 − 1).</span></span></li>
+  <li class="correct"><span class="opt">iii)</span><span>28,68 %<span class="why">Fila “US$ corrientes” (a TCm), de 2020 a 2021.</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>−5,22 %<span class="why">Es la tasa 2021→2022 (4.576/4.828 − 1).</span></span></li>
+  <li class="wrong"><span class="opt">v)</span><span>Ninguna opción es correcta<span class="why">La iii) es correcta.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[ g_{2020\to 2021} = \frac{4.828}{3.752} - 1 = 0{,}2868 = 28{,}68\,\% \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>iii) 28,68 %</b>. Entre dos años consecutivos, la tasa “acumulada” coincide con la de un período. Ojo con la fila: a PPA daría 14,78 %, que no está.</div></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 2 b) <span class="pts">5 ptos</span></div>
+<p>b) La tasa media de crecimiento del PBI per cápita nominal de Ucrania entre 2018 y 2023 fue ……… y ese mismo indicador para EEUU fue ……… (marque la opción correcta). Casilleros, tal como están en la hoja:</p>
+<table class="compact x2-opttab"><tbody>
+  <tr><th>Ucrania</th><td>8,12 %</td><td>10,84 %</td><td rowspan="2">Ninguna opción es correcta</td></tr>
+  <tr><th>EEUU</th><td>4,10 %</td><td>5,27 %</td></tr>
+</tbody></table></div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">i)</span><span>1.ª columna: Ucrania 8,12 % y EEUU 4,10 %<span class="why">Es lo que da cortar en 2022 en lugar de 2023 (con el exponente 1/5): \((4.576/3.097)^{1/5}-1 = 8{,}12\,\%\) y \((77.247/63.201)^{1/5}-1 = 4{,}10\,\%\). Año final equivocado.</span></span></li>
+  <li class="correct"><span class="opt">ii)</span><span>2.ª columna: Ucrania 10,84 % y EEUU 5,27 %<span class="why">Tasa media geométrica con 5 períodos, sobre la fila en US$ corrientes (nominal).</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>Ninguna opción es correcta<span class="why">La 2.ª columna tiene los dos valores correctos.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[ \bar g_{\text{Ucrania}} = \left(\frac{5.181}{3.097}\right)^{1/5} - 1 = 1{,}6729^{0{,}2} - 1 = 10{,}84\,\% \qquad \bar g_{\text{EEUU}} = \left(\frac{81.695}{63.201}\right)^{1/5} - 1 = 1{,}2926^{0{,}2} - 1 = 5{,}27\,\% \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>ii) 10,84 % y 5,27 %</b>. De 2018 a 2023 hay 6 datos pero <b>5 períodos</b>: el exponente es 1/5.</div></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 2 c) <span class="pts">5 ptos</span></div>
+<p>c) Considerando el TC de mercado, la economía estadounidense era (marque la opción correcta) <span class="x2-blank">&nbsp;</span> [14 · 16 · 17 · 20 · Se desconoce] veces más grande que la economía ucraniana para el año 2020.</p></div>
+<ul class="mcq x2-2c">
+  <li class="wrong"><span class="opt">i)</span><span>14<span class="why">Ningún año da 14 (el mínimo es 14,7, en 2021).</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>16<span class="why">No es 2020 (se parece al cociente de 2023, 15,8).</span></span></li>
+  <li class="correct"><span class="opt">iii)</span><span>17<span class="why">64.317 / 3.752 = 17,14.</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>20<span class="why">Se parece al cociente de 2018 (20,4): año equivocado.</span></span></li>
+  <li class="wrong"><span class="opt">v)</span><span>Se desconoce<span class="why">Los datos alcanzan: los dos PBI per cápita están en US$ corrientes, directamente comparables.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[ \frac{\text{PBI pc}_{\text{EEUU}}}{\text{PBI pc}_{\text{Ucrania, TCm}}} = \frac{64.317}{3.752} = 17{,}14 \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>iii) 17</b>. Sin poblaciones, “la economía” se compara con el PBI per cápita, que es el dato disponible.</div></div>
+<figure class="w80"><img src="figs/out/x2_ucrania_indice.svg">
+  <figcaption><b>Figura P6.2.</b> PBI per cápita con 2018 = 100, en un solo eje. A TCm Ucrania termina en 167 (10,84 % anual) y EEUU en 129 (5,27 %): Ucrania crece más rápido en dólares corrientes, aunque sigue unas 16 veces por debajo. La flecha es el salto 2020→2021 del inciso a). Datos: enunciado del Ej. 2.</figcaption></figure>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 2 d) <span class="pts">5 ptos</span></div>
+<p>d) Sin embargo, adoptando el TC PPA, se concluye que la economía estadounidense era (marque la opción correcta) <span class="x2-blank">&nbsp;</span> [3 · 4 · 6 · Se desconoce] veces más grande que la economía ucraniana en ese mismo año.</p></div>
+<ul class="mcq x2-2c">
+  <li class="wrong"><span class="opt">i)</span><span>3<span class="why">Se queda corto: a PPA ningún año baja de 3,9.</span></span></li>
+  <li class="correct"><span class="opt">ii)</span><span>4<span class="why">64.317 / 15.717 = 4,09.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>6<span class="why">A PPA ningún año supera 5,0. El 6 es la respuesta del inciso c) de la otra versión (EEUU/Rusia a TCm: 6,36).</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>Se desconoce<span class="why">La tentación: falta la fila “EEUU a PPA”. Pero EEUU es el país base de la PPA (TC PPA = TCm = 1): su PBI en US$ corrientes ya está a PPA.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[ \frac{\text{PBI pc}_{\text{EEUU}}}{\text{PBI pc}_{\text{Ucrania, PPA}}} = \frac{64.317}{15.717} = 4{,}09 \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>ii) 4</b>. La brecha pasa de 17 veces a TCm a 4 veces a PPA: en Ucrania los no transables son mucho más baratos.</div></div>
+<figure class="w70"><img src="figs/out/x2_veces_2020.svg">
+  <figcaption><b>Figura P6.3.</b> Cuántas veces el PBI per cápita de EEUU supera al de Ucrania (esta versión) y al de Rusia (P7) en 2020, a TCm (lleno) y a PPA (rayado), con la opción que se marca en cada caso. Datos: enunciados del Ej. 2 de P6 y P7.</figcaption></figure>
+<p class="x2-refs">Manual de teoría Tema 2.2 y Tema 2.3 · Práctica TP2 · Paso a paso §2 PBI, PPA y crecimiento.</p>
+
+<h3>Ejercicio 3 — Solow-Swan con progreso tecnológico (g = 25 %)</h3>
+<div class="statement x2-keep"><div class="statement-title">Enunciado · Prueba práctica 28/9/2024 · Ej. 3 <span class="pts">20 ptos</span></div>
+<p>Considerando el modelo de Solow-Swan con progreso tecnológico, se cuenta con los siguientes datos:</p>
+<ul class="cols-2">
+  <li>Tasa de ahorro: 20%</li><li>Tasa de depreciación: 5%</li><li>Tasa de crecimiento poblacional: 10%</li>
+  <li>Participación del capital en la función de producción: 0,5</li><li>Tasa de crecimiento tecnológico: 25%</li><li>La función de producción agregada es Cobb-Douglas</li>
+</ul>
+<p>Se pide:</p></div>
+<p class="small">La hoja usa \(\hat k\) e \(\hat y\) (por unidad de trabajo efectivo); en el Manual de teoría son \(\kt\) e \(\yt\). Datos: \(s = 0{,}20\), \(\delta = 0{,}05\), \(n = 0{,}10\), \(\alpha = 0{,}5\), \(g = 0{,}25\).</p>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 3 a) <span class="pts">4 ptos</span></div>
+<p>a) La función de producción por unidad de trabajo efectivo es (marque la opción correcta):</p></div>
+<ul class="mcq">
+  <li class="correct"><span class="opt">i)</span><span>\(y = (\hat k)^{0{,}5}\)<span class="why">\(Y = K^{\alpha}(AL)^{1-\alpha}\); dividiendo por \(AL\): \(\hat y = \hat k^{\alpha} = \hat k^{0{,}5}\). La hoja escribe \(y\) a la izquierda, pero se refiere a \(\hat y\).</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>\((\widehat{yl})^{0{,}5}\)<span class="why">No es una función de producción: pone el producto del lado derecho y no aparece el capital.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>Ninguna opción es correcta<span class="why">La i) es correcta.</span></span></li>
+</ul>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>i)</b> \(\hat y = \hat k^{0{,}5}\).</div></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 3 b) <span class="pts">6 ptos</span></div>
+<p>b) El capital y la producción por unidad de trabajo efectivo en estado estacionario son, respectivamente (marque la opción correcta):</p></div>
+<ul class="mcq">
+  <li class="correct"><span class="opt">i)</span><span>0,25 y 0,5<span class="why">\(\hat k^* = (0{,}2/0{,}4)^2\) y \(\hat y^* = \sqrt{0{,}25}\).</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>0,76 y 0,80<span class="why">Ni siquiera es coherente: con \(\hat y = \hat k^{0{,}5}\), \(\hat k = 0{,}76\) daría \(\hat y = 0{,}87\), no 0,80.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>Ninguna opción es correcta<span class="why">La i) es correcta.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[\begin{aligned}
+n+g+\delta &= 0{,}10+0{,}25+0{,}05 = 0{,}40 \\
+\hat k^* &= \left(\frac{s}{n+g+\delta}\right)^{\frac{1}{1-\alpha}} = \left(\frac{0{,}20}{0{,}40}\right)^{2} = 0{,}25 \qquad \hat y^* = (\hat k^*)^{0{,}5} = 0{,}5 \\
+\text{control: }\; s\,\hat y^* &= 0{,}20\cdot 0{,}5 = 0{,}10 = 0{,}40\cdot 0{,}25 = (n+g+\delta)\,\hat k^* \;\checkmark
+\end{aligned}\]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>i) 0,25 y 0,5</b>. Error típico: olvidar \(g\) en la depreciación efectiva; con \(n+\delta = 0{,}15\) saldría \(\hat k = 1{,}78\).</div></div>
+<figure class="w80"><img src="figs/out/x2_solow_g25.svg">
+  <figcaption><b>Figura P6.4.</b> Solow con tecnología en tasas, con los datos del ejercicio: la curva de ahorro \(0{,}2/\hat k^{0{,}5}\) decrece y corta a la recta \(n+g+\delta = 0{,}40\) en \(\hat k^* = 0{,}25\). A la izquierda la tasa de crecimiento de \(\hat k\) es positiva; a la derecha, negativa: el estado estacionario es estable.</figcaption></figure>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 3 c) <span class="pts">10 ptos</span></div>
+<p>c) La curva de ahorro y de depreciación son, respectivamente (marque la opción correcta):</p></div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">i)</span><span>\(\dfrac{0{,}2}{\hat k^{-0{,}5}}\) y \(0{,}4\)<span class="why">Números correctos (0,2 y 0,4), pero el exponente tiene el signo cambiado: \(0{,}2/\hat k^{-0{,}5} = 0{,}2\,\hat k^{0{,}5}\), que es <b>creciente</b> (Figura P6.5). Estrictamente, no es la curva de ahorro.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>\(0{,}2\,\hat k^{\,0{,}05}\) y \(0{,}3\)<span class="why">Exponente 0,05 en lugar de −0,5 y CD = 0,3 en lugar de 0,4 (0,3 es el \(n+g+\delta\) de la otra versión, P7).</span></span></li>
+  <li class="correct"><span class="opt">iii)</span><span>Ninguna opción es correcta<span class="why">Lo correcto es CA \(= 0{,}2\,\hat k^{-0{,}5} = 0{,}2/\hat k^{0{,}5}\) y CD \(= 0{,}4\); ninguna casilla lo tiene bien escrito.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[ \gamma_{\hat k} = \frac{\dot{\hat k}}{\hat k} = \underbrace{s\,\frac{\hat y}{\hat k}}_{\text{CA}} - \underbrace{(n+g+\delta)}_{\text{CD}} = s\,\hat k^{\alpha-1} - (n+g+\delta) \;\Rightarrow\; \text{CA} = 0{,}2\,\hat k^{-0{,}5} = \frac{0{,}2}{\hat k^{0{,}5}}, \qquad \text{CD} = 0{,}40 \]</div>
+<div class="answer caution"><div class="answer-body"><span class="answer-label">Respuesta (estrictamente)</span><b>iii) Ninguna opción es correcta.</b> La i) tiene los números bien pero el signo del exponente mal.</div></div>
+<div class="box warn"><div class="box-title">Advertencia para la revisión</div>
+<p>Si la cátedra consideró la opción i) como una errata tipográfica, la esperada sería esa. En la revisión conviene argumentar con la cuenta: \(0{,}2/\hat k^{-0{,}5} = 0{,}2\,\hat k^{0{,}5}\) es creciente y no corta nunca a 0,4 desde arriba (la corta en \(\hat k = 4\), desde abajo), así que no puede ser la curva de ahorro. Compará con P7, donde la opción correcta sí está bien escrita: \(0{,}15/\hat k^{0{,}5}\).</p></div>
+<figure class="w80"><img src="figs/out/x2_solow_signo.svg">
+  <figcaption><b>Figura P6.5.</b> Por qué el signo importa. La curva de ahorro en tasas es \(s\) por el producto medio del capital, \(\hat y/\hat k\), que cae con \(\hat k\) por los rendimientos decrecientes: tiene que ser decreciente (naranja). La opción impresa (roja) crece, corta a la CD en \(\hat k = 4\) desde abajo y daría un equilibrio inestable.</figcaption></figure>
+<p class="x2-refs">Manual de teoría Tema 3.6 · Práctica TP4 · Paso a paso §1 Solow y Harrod-Domar.</p>
+
+<h3 data-toc="no">Grilla de respuestas · P6</h3>
+<table class="compact">
+  <thead><tr><th>Inciso</th><th>Respuesta</th><th>Cuenta clave</th></tr></thead>
+  <tbody>
+    <tr><td>Ej. 1 a)</td><td class="ok">0,79</td><td>\((0{,}886\cdot0{,}766\cdot0{,}727)^{1/3} = 0{,}790\)</td></tr>
+    <tr><td>Ej. 1 b)</td><td class="ok">0,593</td><td>\((0{,}592\cdot0{,}568\cdot0{,}613)^{1/3} = 0{,}591\): la opción más cercana</td></tr>
+    <tr><td>Ej. 1 c)</td><td class="ok">alto · Barbados</td><td>IDH 0,790 y 0,714; IDG 0,268 &lt; 0,454</td></tr>
+    <tr><td>Ej. 2 a)</td><td class="ok">28,68 %</td><td>4.828 / 3.752 − 1</td></tr>
+    <tr><td>Ej. 2 b)</td><td class="ok">10,84 % y 5,27 %</td><td>\((Y_{2023}/Y_{2018})^{1/5} - 1\)</td></tr>
+    <tr><td>Ej. 2 c)</td><td class="ok">17</td><td>64.317 / 3.752 = 17,14</td></tr>
+    <tr><td>Ej. 2 d)</td><td class="ok">4</td><td>64.317 / 15.717 = 4,09</td></tr>
+    <tr><td>Ej. 3 a)</td><td class="ok">\(\hat y = \hat k^{0{,}5}\)</td><td>Cobb-Douglas dividida por \(AL\)</td></tr>
+    <tr><td>Ej. 3 b)</td><td class="ok">0,25 y 0,5</td><td>\((0{,}2/0{,}4)^2 = 0{,}25\); \(\sqrt{0{,}25} = 0{,}5\)</td></tr>
+    <tr><td>Ej. 3 c)</td><td class="ok">Ninguna (estrictamente)</td><td>CA \(= 0{,}2/\hat k^{0{,}5}\), CD \(= 0{,}4\); la i) tiene el signo del exponente cambiado</td></tr>
+  </tbody>
+</table>
+
+<div class="box tip"><div class="box-title">Lo que enseña este parcial</div>
+<ul>
+  <li><b>Cada distractor es otro número del ejercicio:</b> el IDH de otro país, un índice de una sola dimensión, la tasa de otro período. Si tu resultado coincide con uno de esos, revisá qué calculaste.</li>
+  <li><b>EEUU es la base de la PPA.</b> Su PBI en US$ corrientes sirve para comparar a TCm y a PPA: “Se desconoce” es la trampa.</li>
+  <li><b>Contá períodos, no datos:</b> 2018–2023 son 5 períodos.</li>
+  <li><b>Leé los exponentes con su signo.</b> La curva de ahorro en tasas tiene que ser decreciente; si la opción crece, no es la curva de ahorro.</li>
+</ul></div>
+
+<!-- =============================================================== P7 -->
+<div class="chapter-head">
+  <div class="kicker">2024 · Primera prueba práctica parcial · versión Barbados–Jamaica</div>
+  <h2><span class="num">P7</span>Prueba práctica del 28/9/2024 — Jamaica, Rusia y Solow con g = 17 %</h2>
+  <p>La otra versión de la misma prueba: misma estructura que P6, con otros países y otros números. Esta vez la trampa fuerte está en la tasa media (Ej. 2 b), y el Ej. 3 tiene la curva de ahorro bien escrita.</p>
+</div>
+
+<div class="grid-3 x2-ficha">
+  <div class="card blue"><div class="card-title">Fecha y duración</div>
+    <p>28/9/2024 · 60 minutos.</p><p>Individual y sin material de consulta. Mismo día que la teórica (P5).</p></div>
+  <div class="card orange"><div class="card-title">Formato y puntaje</div>
+    <p>3 ejercicios × 20 = 60 puntos. Se marca un casillero.</p>
+    <p>Correcta: suma el puntaje del inciso. Incorrecta: resta la mitad.</p></div>
+  <div class="card aqua"><div class="card-title">Temas que evalúa</div>
+    <p>Ej. 1: IDH, IDH-D e IDG · Ej. 2: tasas de crecimiento, PBI a TCm y a PPA · Ej. 3: Solow-Swan con progreso tecnológico.</p></div>
+</div>
+<p class="x2-cubre"><b>Dónde se estudia:</b> Manual de teoría Tema 2.2, Tema 2.3, Tema 2.4, Tema 2.5 y Tema 3.6 · Práctica TP2, TP3 y TP4 · Paso a paso §1 Solow y Harrod-Domar, §2 PBI, PPA y crecimiento y §3 Índices de desarrollo humano. <span class="muted">Opciones numeradas i), ii)… de izquierda a derecha.</span></p>
+
+<div class="statement"><div class="statement-title">Enunciado · Prueba práctica 28/9/2024 · Consigna general</div>
+<p><b><i>Respuesta correcta: suma el puntaje asignado a cada inciso. Respuesta incorrecta: resta la mitad del puntaje asignado al inciso.</i></b></p></div>
+
+<h3>Ejercicio 1 — IDH e IDH-D: Barbados y Jamaica</h3>
+<div class="statement x2-keep"><div class="statement-title">Enunciado · Prueba práctica 28/9/2024 · Ej. 1 <span class="pts">20 ptos</span></div>
+<p>Ud está elaborando un informe sobre Desarrollo humano de los países de Barbados y Jamaica. Tiene la siguiente información: <i>Redondear a tres decimales.</i></p>
+<table class="compact x2-idhtab">
+  <thead><tr><th>Dimensión</th><th>Indicador</th><th class="num">Mín</th><th class="num">Máx</th><th class="num">índice de la dimensión Barbados</th><th class="num">Jamaica (datos)</th><th class="num">Jamaica (\(A_x\)) (%)</th></tr></thead>
+  <tbody>
+    <tr><td>Salud</td><td>Esperanza de vida al nacer</td><td class="num">20</td><td class="num">85</td><td class="num">0,886</td><td class="num">70,5</td><td class="num">8,7</td></tr>
+    <tr><td rowspan="2">Educación</td><td>Años esperados de escolaridad</td><td class="num">0</td><td class="num">18</td><td class="num" rowspan="2">0,766</td><td class="num">13,4</td><td class="num" rowspan="2">6,5</td></tr>
+    <tr><td>Años promedio de escolaridad</td><td class="num">0</td><td class="num">15</td><td class="num">9,2</td></tr>
+    <tr><td>Estándar de vida</td><td>IBN per cápita (US$ PPA 2017)</td><td class="num">100</td><td class="num">75.000</td><td class="num">0,727</td><td class="num">8.834</td><td class="num">32,0</td></tr>
+  </tbody>
+</table></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 1 a) <span class="pts">5 ptos</span></div>
+<p>a) El IDH de Barbados es (marque la opción correcta):</p></div>
+<ul class="mcq x2-2c">
+  <li class="wrong"><span class="opt">i)</span><span>0,710<span class="why">IDH de Jamaica (0,709; da 0,7095 ≈ 0,710 con los índices redondeados): país equivocado.</span></span></li>
+  <li class="correct"><span class="opt">ii)</span><span>0,79<span class="why">Los tres índices de Barbados son los mismos que en P6: su media geométrica da 0,790.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>0,678<span class="why">No sale de los datos: cae entre los índices de educación (0,679) e ingreso (0,677) de Jamaica.</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>0,592<span class="why">Es el IDH-D de Jamaica (la respuesta del inciso b).</span></span></li>
+</ul>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>ii) 0,79</b> (0,790), igual que en P6.</div></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 1 b) <span class="pts">10 ptos</span></div>
+<p>b) El IDH-D de Jamaica es (marque la opción correcta):</p></div>
+<ul class="mcq x2-2c">
+  <li class="wrong"><span class="opt">i)</span><span>0,710<span class="why">IDH de Jamaica <b>sin ajustar</b> por desigualdad (0,709; 0,7095 ≈ 0,710 con índices redondeados).</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>0,79<span class="why">Es el IDH de Barbados.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>0,714<span class="why">Es el IDH de Guyana, de la otra versión del examen: con los datos de Jamaica no sale.</span></span></li>
+  <li class="correct"><span class="opt">iv)</span><span>0,592<span class="why">Media geométrica de los tres índices ajustados por \((1-A_x)\).</span></span></li>
+</ul>
+</div>
+<div class="calc">\[\begin{aligned}
+I_{\text{salud}} &= \tfrac{70{,}5-20}{65} = 0{,}777 \qquad I_{\text{educ}} = \tfrac12\left(\tfrac{13{,}4}{18}+\tfrac{9{,}2}{15}\right) = \tfrac{0{,}744+0{,}613}{2} = 0{,}679 \\
+I_{\text{ingreso}} &= \tfrac{\ln(8.834/100)}{\ln 750} = \tfrac{\ln 88{,}34}{\ln 750} = \tfrac{4{,}481}{6{,}620} = 0{,}677 \qquad \text{IDH}_{J} = (0{,}777\cdot 0{,}679\cdot 0{,}677)^{1/3} = 0{,}709 \\
+\text{ajustados: }\; & 0{,}777\,(1-0{,}087) = 0{,}709 \qquad 0{,}679\,(1-0{,}065) = 0{,}635 \qquad 0{,}677\,(1-0{,}320) = 0{,}460 \\
+\text{IDH-D}_{J} &= (0{,}709\cdot 0{,}635\cdot 0{,}460)^{1/3} = 0{,}592 \qquad \text{pérdida} = 1-\tfrac{0{,}5918}{0{,}7094} = 16{,}6\,\%
+\end{aligned}\]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>iv) 0,592</b>. El ingreso es la dimensión que más pierde: su desigualdad es 32 %.</div></div>
+<p class="x2-refs">Desarrollo completo: Paso a paso §3 Índices de desarrollo humano.</p>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 1 c) <span class="pts">5 ptos</span></div>
+<p>c) Se sabe además que el IDG de Jamaica es 0,335 y el de Barbados es 0,268 (marque la opción correcta):</p>
+<p>“Ambos países tienen un desarrollo humano <span class="x2-blank">&nbsp;</span> [Muy alto · alto · medio · bajo]. Sin embargo, <span class="x2-blank">&nbsp;</span> [Barbados · Jamaica] muestra un mejor desempeño en DH y en las oportunidades que brinda a los hombres y las mujeres dentro de las dimensiones que estudia del IDG.”</p></div>
+<div class="grid-2">
+<div><div class="x2-sub">Primer casillero</div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">i)</span><span>Muy alto<span class="why">Ninguno llega a 0,800.</span></span></li>
+  <li class="correct"><span class="opt">ii)</span><span>alto<span class="why">0,790 y 0,709 están en [0,700; 0,800). Jamaica, por muy poco.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>medio<span class="why">Saldría clasificando con el IDH-D (0,592): los niveles se leen con el IDH.</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>bajo<span class="why">Haría falta un IDH menor que 0,550.</span></span></li>
+</ul></div>
+<div><div class="x2-sub">Segundo casillero</div>
+<ul class="mcq">
+  <li class="correct"><span class="opt">i)</span><span>Barbados<span class="why">IDG 0,268 &lt; 0,335: menos desigualdad de género (y mayor IDH).</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>Jamaica<span class="why">Su IDG es mayor; en el IDG, más cerca de 0 es mejor.</span></span></li>
+</ul></div>
+</div>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>“Ambos países tienen un desarrollo humano <b>alto</b>. Sin embargo, <b>Barbados</b> muestra un mejor desempeño…” (ver Figura P6.1, fila Jamaica).</div></div>
+<p class="x2-refs">Manual de teoría Tema 2.4 y Tema 2.5 · Práctica TP3 · Paso a paso §3 Índices de desarrollo humano.</p>
+
+<h3>Ejercicio 2 — PBI per cápita de Rusia y EEUU</h3>
+<div class="statement x2-keep"><div class="statement-title">Enunciado · Prueba práctica 28/9/2024 · Ej. 2 <span class="pts">20 ptos</span></div>
+<p>Se dispone de los datos PBI per cápita de Rusia y Estados Unidos entre los años (2018-2023). Se pide:</p>
+<table class="compact">
+  <thead><tr><th>País</th><th>Indicador</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th></tr></thead>
+  <tbody>
+    <tr><td>Rusia</td><td>PBI per cápita US$ PPA corrientes</td><td class="num">28.629</td><td class="num">30.964</td><td class="num">31.491</td><td class="num">38.938</td><td class="num">40.958</td><td class="num">44.104</td></tr>
+    <tr><td>Rusia</td><td>PBI per cápita US$ corrientes</td><td class="num">11.212</td><td class="num">11.448</td><td class="num">10.108</td><td class="num">12.522</td><td class="num">15.445</td><td class="num">13.817</td></tr>
+    <tr><td>EEUU</td><td>PBI per cápita US$ corrientes</td><td class="num">63.201</td><td class="num">65.548</td><td class="num">64.317</td><td class="num">71.056</td><td class="num">77.247</td><td class="num">81.695</td></tr>
+  </tbody>
+</table></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 2 a) <span class="pts">5 ptos</span></div>
+<p>a) La tasa de crecimiento acumulado (en porcentaje) del PBI a precios corrientes de Rusia a tipo de cambio (TC) de mercado entre 2020 y 2021 fue (marque la opción correcta):</p></div>
+<ul class="mcq x2-2c">
+  <li class="wrong"><span class="opt">i)</span><span>2,10 %<span class="why">Es la tasa 2018→2019 (11.448/11.212 − 1).</span></span></li>
+  <li class="correct"><span class="opt">ii)</span><span>23,88 %<span class="why">Fila “US$ corrientes”, de 2020 a 2021.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>−11,71 %<span class="why">Es la tasa 2019→2020 (10.108/11.448 − 1).</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>23,34 %<span class="why">Es la tasa 2021→2022 (15.445/12.522 − 1): casi igual a la correcta, pero un año corrida.</span></span></li>
+  <li class="wrong"><span class="opt">v)</span><span>Ninguna opción es correcta<span class="why">La ii) es correcta.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[ g_{2020\to 2021} = \frac{12.522}{10.108} - 1 = 0{,}2388 = 23{,}88\,\% \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>ii) 23,88 %</b>. Los otros tres números son las tasas de los otros años: la trampa es el período.</div></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 2 b) <span class="pts">5 ptos</span></div>
+<p>b) La tasa media de crecimiento del PBI per cápita nominal de Rusia entre 2018 y 2023 fue ……… y ese mismo indicador para EEUU fue ……… (marque la opción correcta). Casilleros, tal como están en la hoja:</p>
+<table class="compact x2-opttab"><tbody>
+  <tr><th>Rusia</th><td>4,27 %</td><td>5,91 %</td><td rowspan="2">Ninguna opción es correcta</td></tr>
+  <tr><th>EEUU</th><td>6,62 %</td><td>5,27 %</td></tr>
+</tbody></table></div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">i)</span><span>1.ª columna: Rusia 4,27 % y EEUU 6,62 %<span class="why">Rusia está bien, pero EEUU no: su tasa media es 5,27 %, no 6,62 %.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>2.ª columna: Rusia 5,91 % y EEUU 5,27 %<span class="why">EEUU está bien, pero Rusia no: su tasa media es 4,27 %, no 5,91 %.</span></span></li>
+  <li class="correct"><span class="opt">iii)</span><span>Ninguna opción es correcta<span class="why">Los dos valores correctos existen, pero en columnas distintas, y se marca una columna entera.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[ \bar g_{\text{Rusia}} = \left(\frac{13.817}{11.212}\right)^{1/5} - 1 = 1{,}2323^{0{,}2} - 1 = 4{,}27\,\% \qquad \bar g_{\text{EEUU}} = \left(\frac{81.695}{63.201}\right)^{1/5} - 1 = 5{,}27\,\% \]</div>
+<table class="compact x2-opttab">
+  <caption>Dónde están los valores correctos</caption>
+  <tbody>
+  <tr><th>Rusia</th><td class="ok">4,27 % ✓</td><td class="bad">5,91 % ✗</td><td rowspan="2" class="ok">Ninguna opción es correcta ✓</td></tr>
+  <tr><th>EEUU</th><td class="bad">6,62 % ✗</td><td class="ok">5,27 % ✓</td></tr>
+</tbody></table>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>iii) Ninguna opción es correcta.</b> Quien calcula sólo Rusia marca la 1.ª columna; quien calcula sólo EEUU (idéntico a P6), la 2.ª. Hay que calcular los dos.</div></div>
+<figure class="w80"><img src="figs/out/x2_rusia_indice.svg">
+  <figcaption><b>Figura P7.1.</b> PBI per cápita con 2018 = 100, en un solo eje. A TCm Rusia cae en 2020, salta en 2021 (la flecha del inciso a) y termina en 123 (4,27 % anual), por debajo de EEUU (129; 5,27 %). A PPA, en cambio, la serie de Rusia sube todos los años. Datos: enunciado del Ej. 2.</figcaption></figure>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 2 c) <span class="pts">5 ptos</span></div>
+<p>c) Considerando el TC de mercado, la economía estadounidense era (marque la opción correcta) <span class="x2-blank">&nbsp;</span> [4 · 5 · 6 · 7 · Se desconoce] veces más grande que la economía rusa para el año 2020.</p></div>
+<ul class="mcq x2-2c">
+  <li class="wrong"><span class="opt">i)</span><span>4<span class="why">Se queda corto: a TCm el cociente va de 5,0 a 6,4 entre 2018 y 2023.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>5<span class="why">Es el cociente de 2022 (77.247/15.445 = 5,0): año equivocado.</span></span></li>
+  <li class="correct"><span class="opt">iii)</span><span>6<span class="why">64.317 / 10.108 = 6,36.</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>7<span class="why">6,36 redondea a 6, no a 7.</span></span></li>
+  <li class="wrong"><span class="opt">v)</span><span>Se desconoce<span class="why">Los dos PBI per cápita están en US$ corrientes: se pueden dividir.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[ \frac{64.317}{10.108} = 6{,}36 \qquad\qquad \frac{64.317}{31.491} = 2{,}04 \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>iii) 6</b>.</div></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 2 d) <span class="pts">5 ptos</span></div>
+<p>d) Sin embargo, adoptando el TC PPA, se concluye que la economía estadounidense era (marque la opción correcta) <span class="x2-blank">&nbsp;</span> [2 · 3 · 4 · Se desconoce] veces más grande que la economía rusa en ese mismo año.</p></div>
+<ul class="mcq x2-2c">
+  <li class="correct"><span class="opt">i)</span><span>2<span class="why">64.317 / 31.491 = 2,04.</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>3<span class="why">A PPA ningún año llega a 3 (el cociente va de 1,8 a 2,2).</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>4<span class="why">Ídem; además, 4 es la respuesta de la versión Ucrania (P6).</span></span></li>
+  <li class="wrong"><span class="opt">iv)</span><span>Se desconoce<span class="why">EEUU es la base de la PPA (TC PPA = TCm = 1): su PBI en US$ corrientes ya está a PPA.</span></span></li>
+</ul>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>i) 2</b>. De 6 veces a TCm a 2 veces a PPA (Figura P6.3, barras de Rusia).</div></div>
+<p class="x2-refs">Manual de teoría Tema 2.2 y Tema 2.3 · Práctica TP2 · Paso a paso §2 PBI, PPA y crecimiento.</p>
+
+<h3>Ejercicio 3 — Solow-Swan con progreso tecnológico (g = 17 %)</h3>
+<div class="statement x2-keep"><div class="statement-title">Enunciado · Prueba práctica 28/9/2024 · Ej. 3 <span class="pts">20 ptos</span></div>
+<p>Considerando el modelo de Solow-Swan con progreso tecnológico, se cuenta con los siguientes datos:</p>
+<ul class="cols-2">
+  <li>Tasa de ahorro: 15%</li><li>Tasa de depreciación: 5%</li><li>Tasa de crecimiento poblacional: 8%</li>
+  <li>Participación del capital en la función de producción: 0,5</li><li>Tasa de crecimiento tecnológico: 17%</li><li>La función de producción agregada es Cobb-Douglas</li>
+</ul>
+<p>Se pide:</p></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 3 a) <span class="pts">4 ptos</span></div>
+<p>a) La función de producción por unidad de trabajo efectivo es (marque la opción correcta):</p></div>
+<ul class="mcq">
+  <li class="correct"><span class="opt">i)</span><span>\(y = (\hat k)^{0{,}5}\)<span class="why">Con \(\alpha = 0{,}5\): \(\hat y = \hat k^{0{,}5}\) (la \(y\) de la hoja es \(\hat y\)).</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>\((\widehat{yl})^{0{,}5}\)<span class="why">No es una función de producción: no aparece el capital.</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>Ninguna opción es correcta<span class="why">La i) es correcta.</span></span></li>
+</ul>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>i)</b> \(\hat y = \hat k^{0{,}5}\), igual que en P6.</div></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 3 b) <span class="pts">6 ptos</span></div>
+<p>b) El capital y la producción por unidad de trabajo efectivo en estado estacionario son, respectivamente (marque la opción correcta):</p></div>
+<ul class="mcq">
+  <li class="correct"><span class="opt">i)</span><span>0,25 y 0,5<span class="why">\((0{,}15/0{,}30)^2 = 0{,}25\) y \(\sqrt{0{,}25} = 0{,}5\).</span></span></li>
+  <li class="wrong"><span class="opt">ii)</span><span>4 y 2<span class="why">Invierte el cociente: \((0{,}30/0{,}15)^2 = 4\) y \(\sqrt 4 = 2\).</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>Ninguna opción es correcta<span class="why">La i) es correcta.</span></span></li>
+</ul>
+</div>
+<div class="calc">\[ n+g+\delta = 0{,}08+0{,}17+0{,}05 = 0{,}30 \qquad \hat k^* = \left(\frac{0{,}15}{0{,}30}\right)^{\frac{1}{1-0{,}5}} = 0{,}5^2 = 0{,}25 \qquad \hat y^* = 0{,}25^{0{,}5} = 0{,}5 \]</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>i) 0,25 y 0,5</b>. El mismo estado estacionario que P6: en las dos versiones \(s/(n+g+\delta) = 0{,}5\).</div></div>
+
+<div class="x2-keep">
+<div class="statement"><div class="statement-title">Ej. 3 c) <span class="pts">10 ptos</span></div>
+<p>c) La curva de ahorro y de depreciación son, respectivamente (marque la opción correcta):</p></div>
+<ul class="mcq">
+  <li class="wrong"><span class="opt">i)</span><span>\(0{,}15\,\hat k^{-0{,}05}\) y \(0{,}3\)<span class="why">La CD está bien, pero el exponente es −0,05 en lugar de \(\alpha - 1 = -0{,}5\). Esa curva casi no cae: igualarla a 0,3 da \(\hat k^{-0{,}05} = 2\), o sea \(\hat k = 2^{-20} \approx 0{,}000001\), no 0,25.</span></span></li>
+  <li class="correct"><span class="opt">ii)</span><span>\(\dfrac{0{,}15}{\hat k^{0{,}5}}\) y \(0{,}3\)<span class="why">CA \(= s\,\hat k^{\alpha-1} = 0{,}15\,\hat k^{-0{,}5}\) y CD \(= n+g+\delta = 0{,}30\).</span></span></li>
+  <li class="wrong"><span class="opt">iii)</span><span>Ninguna opción es correcta<span class="why">La ii) es correcta (acá sí está bien escrita, a diferencia de P6).</span></span></li>
+</ul>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span><b>ii)</b> CA \(= 0{,}15/\hat k^{0{,}5}\) y CD \(= 0{,}3\).</div></div>
+<figure class="w70"><img src="figs/out/x2_solow_g17.svg">
+  <figcaption><b>Figura P7.2.</b> Solow con tecnología en tasas, versión \(g = 17\,\%\): CA \(= 0{,}15/\hat k^{0{,}5}\) corta a CD \(= 0{,}30\) en \(\hat k^* = 0{,}25\). En gris, la versión P6: las dos curvas cambian, pero el corte queda en el mismo \(\hat k^*\) porque \(s/(n+g+\delta) = 0{,}5\) en ambas.</figcaption></figure>
+<p class="x2-refs">Manual de teoría Tema 3.6 · Práctica TP4 · Paso a paso §1 Solow y Harrod-Domar.</p>
+
+<h3 data-toc="no">Grilla de respuestas · P7</h3>
+<table class="compact">
+  <thead><tr><th>Inciso</th><th>Respuesta</th><th>Cuenta clave</th></tr></thead>
+  <tbody>
+    <tr><td>Ej. 1 a)</td><td class="ok">0,79</td><td>\((0{,}886\cdot0{,}766\cdot0{,}727)^{1/3} = 0{,}790\)</td></tr>
+    <tr><td>Ej. 1 b)</td><td class="ok">0,592</td><td>\((0{,}709\cdot0{,}635\cdot0{,}460)^{1/3} = 0{,}592\)</td></tr>
+    <tr><td>Ej. 1 c)</td><td class="ok">alto · Barbados</td><td>IDH 0,790 y 0,709; IDG 0,268 &lt; 0,335</td></tr>
+    <tr><td>Ej. 2 a)</td><td class="ok">23,88 %</td><td>12.522 / 10.108 − 1</td></tr>
+    <tr><td>Ej. 2 b)</td><td class="ok">Ninguna</td><td>Rusia 4,27 % (1.ª col.) y EEUU 5,27 % (2.ª col.)</td></tr>
+    <tr><td>Ej. 2 c)</td><td class="ok">6</td><td>64.317 / 10.108 = 6,36</td></tr>
+    <tr><td>Ej. 2 d)</td><td class="ok">2</td><td>64.317 / 31.491 = 2,04</td></tr>
+    <tr><td>Ej. 3 a)</td><td class="ok">\(\hat y = \hat k^{0{,}5}\)</td><td>Cobb-Douglas dividida por \(AL\)</td></tr>
+    <tr><td>Ej. 3 b)</td><td class="ok">0,25 y 0,5</td><td>\((0{,}15/0{,}30)^2 = 0{,}25\)</td></tr>
+    <tr><td>Ej. 3 c)</td><td class="ok">\(0{,}15/\hat k^{0{,}5}\) y 0,3</td><td>CA \(= s\,\hat k^{\alpha-1}\), CD \(= n+g+\delta\)</td></tr>
+  </tbody>
+</table>
+
+<div class="box tip"><div class="box-title">Lo que enseña este parcial</div>
+<ul>
+  <li><b>“Ninguna” por columnas.</b> Cuando se marca una columna entera, cada valor tiene que estar bien: calculá los dos países antes de marcar.</li>
+  <li><b>Los distractores son tasas de otros años</b> (2,10 %, −11,71 %, 23,34 %): escribí el período antes de dividir.</li>
+  <li><b>Mismo cociente, mismo estado estacionario.</b> P6 y P7 tienen distintos \(s\) y \(n+g+\delta\), pero en las dos <span class="x2-nw">\(s/(n+g+\delta) = 0{,}5\)</span>: \(\hat k^* = 0{,}25\). Si te da 4, invertiste el cociente.</li>
+  <li><b>Distractores cruzados entre versiones:</b> 0,714 (Guyana) y 4 (Ucrania a PPA) aparecen en esta versión; 6 (Rusia a TCm), en la de Ucrania.</li>
+</ul></div>
+
+</section>

@@ -1,0 +1,528 @@
+<section class="tema-2">
+<style>
+  ol.steps.p3-st > li { padding: 0.36em 0.8em 0.32em 2.9em; margin-bottom: 0.4em; }
+  ol.steps.p3-st > li::before { top: 0.34em; width: 1.6em; height: 1.6em; line-height: 1.6em; font-size: 8.4pt; }
+  ol.steps.p3-st > li > .step-title { display: inline; margin-right: 0.35em; }
+  ol.steps.p3-st > li > .step-title::after { content: " ·"; color: var(--ink-3); font-weight: 400; }
+  ol.steps.p3-st .calc { margin: 0.3em 0 0.1em; }
+  table.p3-t td, table.p3-t th { padding: 0.22em 0.45em; font-size: 8.3pt; }
+  td.p3-c { background: var(--accent-bg); font-weight: 700; color: var(--accent-ink); }
+  td.p3-bad { color: var(--red-ink); font-weight: 700; }
+  td.p3-good { color: var(--green-ink); font-weight: 700; }
+  .p3-note { font-size: 8.1pt; color: var(--ink-2); margin: -0.6em 0 0.8em; }
+  .box .calc { margin: 0.35em 0 0.45em; }
+  .box table { background: #fff; margin: 0.4em 0 0.5em; }
+  .box ul, .box ol { margin-top: 0.2em; margin-bottom: 0.3em; }
+  .box.p3-brk { break-inside: auto; }
+  .box.p3-brk > .box-title, .box.p3-brk > p:first-of-type { break-after: avoid; }
+  .p3-grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: 1em; align-items: center; margin: 0.6em 0 0.9em; }
+  .p3-grid > figure { margin: 0; }
+  .p3-grid > .box { margin: 0; }
+  .p3-dim { display: inline-block; font: 700 6.8pt "Inter"; border-radius: 3px; padding: 0 0.35em; margin-left: 0.35em; color: #fff; vertical-align: 0.08em; }
+  .p3-dim.n { background: var(--blue); } .p3-dim.f { background: var(--orange); } .p3-dim.o { background: var(--aqua); }
+  .p3-tight p { margin-bottom: 0.35em; }
+  table.p3-brkt { break-inside: auto; }
+  table.p3-brkt tr { break-inside: avoid; }
+  .card ul, .card ol { margin: 0.2em 0 0.1em; padding-left: 1.1em; }
+  .card p { margin-bottom: 0.3em; }
+</style>
+
+<div class="chapter-head">
+  <div class="kicker">Trabajo práctico 3 · Tema 2 · Indicadores del bienestar</div>
+  <h2><span class="num">TP3</span>Índices de desarrollo humano: IDH, IDH-D, IDG e IPS</h2>
+  <p>Qué vas a poder hacer: calcular el IDH de cualquier país a partir de sus cuatro indicadores (con el tope y el logaritmo bien puestos); pasar al IDH-D, la pérdida y el coeficiente de desigualdad humana; despejar el dato que falta en una tabla de parcial; calcular e interpretar el IDG sin confundir “más alto” con “mejor”; y leer los gráficos por dimensión del IDH y por componente del IPS.</p>
+</div>
+
+<div class="box summary"><div class="box-title">En 30 segundos</div>
+<ul>
+  <li><b>IDH</b> = media <b>geométrica</b> de tres índices entre 0 y 1: salud (esperanza de vida, 20–85), educación (promedio <b>aritmético</b> de años esperados 0–18 y años promedio 0–15) e ingreso (INB per cápita en <b>logaritmos</b>, 100–75.000). Un dato por encima del máximo se <b>trunca en 1</b>.</li>
+  <li>Cortes: muy alto ≥ 0,800 · alto 0,700–0,799 · medio 0,550–0,699 · bajo &lt; 0,550.</li>
+  <li><b>IDH-D</b> = IDH × \([(1-A_s)(1-A_e)(1-A_i)]^{1/3}\) = media geométrica de los índices ajustados \(I_x(1-A_x)\). Pérdida = 1 − IDH-D / IDH; CDH = promedio simple de las \(A_x\). Siempre pérdida ≥ CDH.</li>
+  <li>Las desigualdades \(A_x\) vienen en %: pasalas a tanto por uno (7,4 % → 0,074) antes de operar.</li>
+  <li><b>IDG</b> en 4 pasos: índice por sexo (geométrica) → media <b>armónica</b> entre sexos → referencia (aritmética por dimensión, geométrica entre dimensiones) → IDG = 1 − HARM / Ref. Se lee al revés: <b>0 = igualdad</b>, más bajo es mejor. Ojo: el índice de salud reproductiva del Paso 1 es un logro (más alto es mejor).</li>
+  <li><b>IPS</b>: 12 componentes en 3 dimensiones, sin ninguna variable económica, de 0 a 100. Para evaluar si un país mejoró, mirá <b>nivel y variación juntos</b>.</li>
+</ul></div>
+
+<div class="flow">
+  <div class="node"><b>A · IDH</b>conceptos, cálculo 2023 de diez países</div><div class="arrow">→</div>
+  <div class="node"><b>B · IDH-D</b>pérdida, CDH y despejes de parcial</div><div class="arrow">→</div>
+  <div class="node"><b>C · IDG y gráficos</b>IDG, Argentina 1996–2021, IPS de R. Dominicana</div><div class="arrow">→</div>
+  <div class="node"><b>Estudio de casos</b>Bután y la Felicidad Nacional Bruta</div>
+</div>
+
+<!-- =========================================================== PARTE A -->
+<h2><span class="num">TP3·A</span>Conceptos y cálculo del IDH</h2>
+
+<h3>Ej. 1 · Explicá con tus palabras</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Explicá con tus palabras: a) el IDH frente al Índice de Progreso Social; b) el IDH, el IDH-D y el IDG; c) qué significa el valor que toma el IDH.</p></div>
+
+<h4>a) IDH frente a Índice de Progreso Social</h4>
+<div class="versus">
+  <div class="card blue"><div class="card-title">IDH · PNUD</div>
+    <p><b>Conceptualmente:</b> mide capacidades básicas —vivir mucho y bien, saber, disponer de recursos— e <b>incluye el ingreso</b> como una de sus tres dimensiones.</p>
+    <p><b>Metodológicamente:</b> 4 indicadores en 3 dimensiones, normalizados de 0 a 1 con mínimos y máximos fijos, y combinados por <b>media geométrica</b>.</p></div>
+  <div class="vs">vs</div>
+  <div class="card aqua"><div class="card-title">IPS · Social Progress Imperative</div>
+    <p><b>Conceptualmente:</b> <b>excluye deliberadamente toda variable económica</b> y mide sólo resultados sociales y ambientales, para poder preguntarse cuánto progreso social logra un país <i>dado</i> su nivel de ingreso.</p>
+    <p><b>Metodológicamente:</b> 12 componentes en 3 dimensiones, con alrededor de 50 indicadores ponderados dentro de cada componente por <b>análisis de componentes principales</b>; promedio simple de los componentes dentro de cada dimensión; puntaje de 0 a 100. Mide <b>resultados y no esfuerzos</b>: no el gasto en salud sino la mortalidad.</p></div>
+</div>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta en una línea</span>El IDH pregunta “¿cuántas capacidades básicas tiene la gente, ingreso incluido?”; el IPS, “¿cuánto progreso social y ambiental consigue el país, sin mirar el ingreso?”. Por eso el IPS permite comparar países de ingreso parecido y ver cuál convierte mejor su ingreso en bienestar.</div></div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial (teoría, +10 / −5)</div>
+<p><b>Parcial 2022, preg. 3:</b> “El Índice de Progreso Social intenta medir: a) indicadores exclusivamente sociales y ambientales; b) de manera holística el bienestar humano; c) todas las premisas son correctas; d) el bienestar de un país independientemente de indicadores económicos; e) dimensiones de necesidades básicas, fundamentos del bienestar y oportunidades.” → <b>c</b>: a, b, d y e son ciertas a la vez (principio de diseño, enfoque holístico, sin variables económicas y sus tres dimensiones).</p>
+<p><b>Parcial 2023, preg. 4:</b> “Los índices como el de Progreso Social o los publicados por el PNUD captan el concepto de bienestar de un país…” → <b>a) en la medida en que intentan representar logros en algunas dimensiones de la vida de las personas</b>. No lo hacen “de la misma manera que el PBI” (b), ni dependen de que el ingreso sea alto (c), y sí están correlacionados con el PBI per cápita (e es falsa).</p>
+</div>
+
+<h4>b) IDH, IDH-D e IDG</h4>
+<table class="p3-t">
+<thead><tr><th></th><th>IDH</th><th>IDH-D</th><th>IDG</th></tr></thead>
+<tbody>
+<tr><td><b>Qué mide</b></td><td>Nivel <b>promedio</b> de desarrollo humano —el potencial—</td><td>Desarrollo humano <b>efectivo</b> tras descontar la desigualdad interna de cada dimensión</td><td>Pérdida de desarrollo humano por las disparidades entre varones y mujeres</td></tr>
+<tr><td><b>Dimensiones</b></td><td>Salud, educación, ingreso</td><td>Las mismas tres, ajustadas por su desigualdad</td><td>Salud reproductiva, empoderamiento, mercado laboral</td></tr>
+<tr><td><b>Agregación</b></td><td>Media geométrica</td><td>Media geométrica de los índices ajustados</td><td>Media geométrica por género y <b>armónica</b> entre géneros</td></tr>
+<tr><td><b>Escala</b></td><td>0 a 1, más alto mejor</td><td>0 a 1, más alto mejor; siempre ≤ IDH</td><td>0 a 1, <b>más bajo mejor</b></td></tr>
+</tbody></table>
+<p>La diferencia conceptual clave: el IDH y el IDH-D miden <b>logros</b>; el IDG mide <b>logros no realizados</b>. Y la brecha entre IDH e IDH-D es la pérdida de desarrollo humano atribuible a la desigualdad. En igualdad perfecta, IDH = IDH-D.</p>
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial (teoría 27/09/2025, preg. 2)</div>
+<p>“¿Cuál refleja una preocupación central del IDG?” → <b>c) busca captar la desventaja de las mujeres en salud, empoderamiento y trabajo</b>. La trampa es la <b>e</b> (“capta las diferencias en salud, educación y nivel de vida ajustadas por la desigualdad”): eso describe al <b>IDH-D</b>. Y la <b>b</b> falla porque el IDG no usa ingresos por sexo.</p></div>
+
+<h4>c) Qué significa el valor que toma el IDH</h4>
+<p>No es un porcentaje ni una nota: mide <b>cuán cerca está el país del máximo alcanzable</b> en las tres dimensiones simultáneamente. Un IDH de 0,865 significa que Argentina alcanzó el 86,5 % del recorrido entre el mínimo y el máximo definidos por el PNUD (en promedio geométrico de sus tres dimensiones). Sólo tiene sentido <b>comparado</b> —con otros países o con el mismo país en otro momento— y es un <b>promedio</b> que no dice nada sobre la distribución interna: de esa limitación nacen el IDH-D y el IDG.</p>
+
+<h3>Ej. 2 · Cálculo del IDH 2023</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Con los datos 2023 (esperanza de vida, años esperados y años promedio de escolaridad, INB per cápita en US$ PPA) calculá los índices de dimensión y el IDH de Suiza, Australia, Estados Unidos, Argentina, Perú, Bután, El Salvador, Senegal, Yemen y Sudán del Sur. Clasificá a cada país e interpretá.</p></div>
+
+<div class="formula-card">
+  <div class="fc-label">Las cuatro fórmulas del IDH</div>
+  \[ I_x=\frac{\text{valor}-\text{mín}}{\text{máx}-\text{mín}}\qquad I_{ing}=\frac{\ln \text{INB}-\ln 100}{\ln 75.000-\ln 100}\qquad I_{edu}=\frac{I_{esp}+I_{prom}}{2}\qquad \text{IDH}=\left(I_{s}\cdot I_{edu}\cdot I_{ing}\right)^{1/3} \]
+  <div class="fc-legend"><span>Esperanza de vida: 20–85</span><span>Años esperados: 0–18</span><span>Años promedio: 0–15</span><span>INB pc (US$ PPA): 100–75.000</span><span>Si el valor supera el máximo, \(I_x = 1\)</span></div>
+</div>
+
+<figure><img src="figs/out/p3_idh_estructura.svg" alt="Estructura del cálculo del IDH con los datos de Argentina">
+<figcaption><b>Figura TP3.1.</b> El IDH de Argentina 2023, de izquierda a derecha: cada dimensión tiene su indicador, cada indicador se convierte en un índice entre 0 y 1 y los tres índices se combinan por media geométrica. Fijate en los tres “lugares trampa”: el <b>tope</b> (18,8 años esperados superan el máximo de 18 y el índice se trunca en 1), el <b>logaritmo</b> del ingreso y los dos promedios distintos (aritmético dentro de educación, geométrico en el IDH).</figcaption></figure>
+
+<p><b>Desarrollo completo con Argentina</b>, que es el que conviene reproducir en el parcial:</p>
+<ol class="steps p3-st">
+  <li><span class="step-title">Anotá datos y límites</span>esperanza de vida 77,4 (20–85) · años esperados 18,8 (0–18) · años promedio 11,2 (0–15) · INB 25.876 (100–75.000).</li>
+  <li><span class="step-title">Salud</span>\(I_s=\dfrac{77{,}4-20}{85-20}=\dfrac{57{,}4}{65}=0{,}883\)</li>
+  <li><span class="step-title">Educación, con el tope</span>\(I_{esp}=18{,}8/18=1{,}044\ \Rightarrow\ \) se trunca en <b>1,000</b> (18,8 &gt; 18) · \(I_{prom}=11{,}2/15=0{,}747\) · \(I_{edu}=(1{,}000+0{,}747)/2=0{,}873\)</li>
+  <li><span class="step-title">Ingreso, en logaritmos</span>
+    <div class="calc">\[ I_{ing}=\frac{\ln 25.876-\ln 100}{\ln 75.000-\ln 100}=\frac{10{,}1611-4{,}6052}{11{,}2252-4{,}6052}=\frac{5{,}5559}{6{,}6200}=0{,}839 \]</div></li>
+  <li><span class="step-title">Media geométrica</span>\(\text{IDH}=(0{,}883\cdot 0{,}873\cdot 0{,}839)^{1/3}=(0{,}6468)^{1/3}=0{,}865\)</li>
+  <li><span class="step-title">Clasificá</span>0,865 ≥ 0,800 → desarrollo humano <b>muy alto</b>.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta · Argentina 2023</span>\(I_s = 0{,}883\) · \(I_{edu}=0{,}873\) · \(I_{ing}=0{,}839\) → <b>IDH = 0,865, desarrollo humano muy alto</b>.</div></div>
+
+<h4>Resultados de los diez países</h4>
+<table class="p3-t">
+<thead><tr><th>País</th><th class="num">\(I_{salud}\)</th><th class="num">\(I_{\text{años esp.}}\)</th><th class="num">\(I_{\text{años prom.}}\)</th><th class="num">\(I_{educ}\)</th><th class="num">\(I_{ingreso}\)</th><th class="num">IDH</th><th>Categoría</th></tr></thead>
+<tbody>
+<tr><td>Suiza</td><td class="num">0,985</td><td class="num">0,928</td><td class="num">0,927</td><td class="num">0,927</td><td class="num">1,000</td><td class="num p3-c">0,970</td><td>Muy alto</td></tr>
+<tr><td>Australia</td><td class="num">0,983</td><td class="num">1,000</td><td class="num">0,860</td><td class="num">0,930</td><td class="num">0,962</td><td class="num p3-c">0,958</td><td>Muy alto</td></tr>
+<tr><td>Estados Unidos</td><td class="num">0,912</td><td class="num">0,883</td><td class="num">0,927</td><td class="num">0,905</td><td class="num">0,997</td><td class="num p3-c">0,937</td><td>Muy alto</td></tr>
+<tr><td>Argentina</td><td class="num">0,883</td><td class="num">1,000</td><td class="num">0,747</td><td class="num">0,873</td><td class="num">0,839</td><td class="num p3-c">0,865</td><td>Muy alto</td></tr>
+<tr><td>Perú</td><td class="num">0,888</td><td class="num">0,828</td><td class="num">0,680</td><td class="num">0,754</td><td class="num">0,750</td><td class="num p3-c">0,795</td><td>Alto</td></tr>
+<tr><td>Bután</td><td class="num">0,815</td><td class="num">0,733</td><td class="num">0,387</td><td class="num">0,560</td><td class="num">0,745</td><td class="num p3-c">0,698</td><td>Medio</td></tr>
+<tr><td>El Salvador</td><td class="num">0,802</td><td class="num">0,617</td><td class="num">0,487</td><td class="num">0,552</td><td class="num">0,704</td><td class="num p3-c">0,678</td><td>Medio</td></tr>
+<tr><td>Senegal</td><td class="num">0,749</td><td class="num">0,506</td><td class="num">0,193</td><td class="num">0,349</td><td class="num">0,565</td><td class="num p3-c">0,529</td><td>Bajo</td></tr>
+<tr><td>Yemen</td><td class="num">0,758</td><td class="num">0,417</td><td class="num">0,367</td><td class="num">0,392</td><td class="num">0,351</td><td class="num p3-c">0,470</td><td>Bajo</td></tr>
+<tr><td>Sudán del Sur</td><td class="num">0,578</td><td class="num">0,311</td><td class="num">0,380</td><td class="num">0,346</td><td class="num">0,291</td><td class="num p3-c">0,388</td><td>Bajo</td></tr>
+</tbody></table>
+<p class="p3-note"><b>Clasificación:</b> muy alto ≥ 0,800 · alto 0,700–0,799 · medio 0,550–0,699 · bajo &lt; 0,550. Todas las filas verifican: \(I_{educ}\) es el promedio de las dos columnas anteriores y el IDH, la media geométrica de salud, educación e ingreso.</p>
+
+<div class="grid-2">
+<div class="box warn"><div class="box-title">Dos trampas del ejercicio</div>
+<p><b>Primera:</b> cuando un valor <b>supera el máximo</b>, el índice se trunca en 1. Le pasa a Argentina y Australia en años esperados —18,8 y 20,7 contra un tope de 18— y a Suiza en el INB —81.949 contra un tope de 75.000—. Si no truncás, Argentina daría \(I_{edu}=0{,}896\) e IDH = 0,872 (mal).</p>
+<p><b>Segunda:</b> el <b>ingreso va en logaritmos</b>; usarlo en niveles cambia todos los resultados: \((25.876-100)/74.900=0{,}344\) y el IDH caería a 0,643.</p></div>
+<div class="box tip"><div class="box-title">Verificación rápida</div>
+<p>El IDH siempre queda <b>entre el menor y el mayor</b> de los tres índices (0,839 ≤ 0,865 ≤ 0,883) y nunca por encima de su promedio aritmético (acá los dos dan 0,865 porque los índices son muy parejos).</p>
+<p>Atajo de calculadora para el ingreso: \(I_{ing}=\ln(\text{INB}/100)/\ln 750\). Con Argentina: \(\ln 258{,}76/\ln 750=5{,}5559/6{,}6201\).</p></div>
+</div>
+
+<figure><img src="figs/out/p3_idh_paises.svg" alt="Índices de salud, educación e ingreso y el IDH de los diez países">
+<figcaption><b>Figura TP3.2.</b> Los tres índices de dimensión de cada país (círculo, cuadrado y triángulo) y su IDH (raya negra), sobre las cuatro bandas de clasificación. La barra gris mide cuán <b>desparejo</b> es cada país: arriba las tres dimensiones casi coinciden; abajo se separan, y casi siempre la que queda atrás es la educación (cuadrado naranja). Datos: TP3 (IDH 2023).</figcaption></figure>
+
+<h4>Qué conviene comentar si el parcial pide interpretar</h4>
+<div class="grid-2">
+  <div class="card orange"><div class="card-title">La educación ordena el ranking en la cola baja</div><p>Senegal tiene un índice de ingreso de 0,565 —superior al de Yemen— pero un índice educativo de 0,349, con apenas 2,9 años promedio de escolaridad. Es lo que lo mantiene en desarrollo humano bajo: con la educación de El Salvador (0,552) su IDH sería 0,616, medio.</p></div>
+  <div class="card blue"><div class="card-title">Bután anticipa el estudio de casos</div><p>Con un ingreso similar al de Perú —13.843 contra 14.339— tiene un IDH bastante menor —0,698 contra 0,795—, por su bajo nivel educativo —5,8 años promedio—.</p></div>
+  <div class="card violet"><div class="card-title">El efecto de la media geométrica: Yemen</div><p>Su índice de salud es 0,758, perfectamente decente, pero los de educación e ingreso son 0,392 y 0,351, y el IDH resultante es 0,470. Con media aritmética daría 0,500. La geométrica <b>castiga el desempeño desparejo</b>.</p></div>
+  <div class="card aqua"><div class="card-title">El tope del ingreso aplana la punta</div><p>Suiza tiene un INB de 81.949 y Estados Unidos de 73.650, pero sus índices de ingreso son 1,000 y 0,997: casi idénticos. Es el reconocimiento explícito de que, pasado cierto umbral, más ingreso ya no agrega desarrollo humano.</p></div>
+</div>
+
+<figure><img src="figs/out/p3_idh_tope_yemen.svg" alt="Índice de ingreso en función del INB con los países del TP y el caso de Yemen">
+<figcaption><b>Figura TP3.3.</b> <b>Izquierda:</b> el índice de ingreso sube rápido con los primeros dólares y se aplana arriba; a partir de 75.000 queda fijo en 1. Los 8.299 dólares que Suiza tiene de más sobre EE.UU. suben el índice apenas 0,003; Perú y Bután, con 496 dólares de diferencia, quedan casi en el mismo punto. <b>Derecha:</b> Yemen, con una dimensión buena y dos malas: la media geométrica (0,470) queda por debajo de la aritmética (0,500). Datos: TP3.</figcaption></figure>
+
+<div class="box exam p3-brk"><div class="box-title">Así lo preguntan en el parcial · calcular y clasificar el IDH</div>
+<table class="p3-t">
+<thead><tr><th>Parcial</th><th>Qué dan</th><th>Cuenta</th><th>Respuesta</th></tr></thead>
+<tbody>
+<tr><td>Prueba práctica 28/9/2024, Ej. 1 a) <span class="pts">5 ptos</span></td><td>Barbados: índices ya calculados 0,886 · 0,766 · 0,727</td><td>\((0{,}886\cdot0{,}766\cdot0{,}727)^{1/3}\)</td><td class="p3-good">0,790 (opción “0,79”)</td></tr>
+<tr><td>Primer parcial 2025, Ej. 3 a) <span class="pts">4 ptos</span></td><td>Yemen 2021: índices 0,6738 · 0,3595 · 0,3891</td><td>\((0{,}6738\cdot0{,}3595\cdot0{,}3891)^{1/3}\)</td><td class="p3-good">0,455 → bajo</td></tr>
+<tr><td>Parcial s/f (Namibia–Honduras), a) y b)</td><td>Los cuatro indicadores de cada país</td><td>Namibia: 0,672 · 0,583 · 0,686<br>Honduras: 0,866 · 0,501 · 0,600</td><td class="p3-good">0,645 y 0,638 → ambos medio</td></tr>
+<tr><td>Prueba 28/9/2024, Ej. 1 c)</td><td>IDH de Barbados (0,790) y de Guyana (0,714) o Jamaica (0,709)</td><td>Ubicarlos en los cortes</td><td class="p3-good">ambos alto</td></tr>
+</tbody></table>
+<p>Ojo con los que están pegados a un corte: Guyana (0,714) y Jamaica (0,709) son “alto” por muy poco. Redondeá recién al final.</p></div>
+
+<!-- =========================================================== PARTE B -->
+<h2><span class="num">TP3·B</span>IDH-D, pérdida y coeficiente de desigualdad humana</h2>
+
+<h3>Ej. 3 · Cálculo del IDH ajustado por desigualdad</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Con el IDH calculado en el punto 2 y la desigualdad de cada dimensión (esperanza de vida, educación e ingresos, en %), calculá para los diez países el IDH-D, la pérdida porcentual y el coeficiente de desigualdad humana. ¿Por qué la pérdida y el coeficiente no coinciden? Interpretá.</p></div>
+
+<div class="formula-card">
+  <div class="fc-label">Las tres fórmulas</div>
+  \[ \text{IDH-D}=\big[(1-A_{s})(1-A_{e})(1-A_{i})\big]^{1/3}\cdot \text{IDH}\qquad \text{Pérdida}=1-\frac{\text{IDH-D}}{\text{IDH}}\qquad \text{CDH}=\frac{A_{s}+A_{e}+A_{i}}{3} \]
+  <div class="fc-legend"><span>\(A_x\): desigualdad de la dimensión \(x\) (0 = reparto igualitario)</span><span>CDH: coeficiente de desigualdad humana</span></div>
+</div>
+<div class="box tip"><div class="box-title">Antes de operar</div><p>Los valores de desigualdad del cuadro vienen <b>en porcentaje</b>: hay que pasarlos a tanto por uno. Suiza 3,1 → 0,031.</p></div>
+
+<p><b>Desarrollo completo con Argentina</b> (IDH = 0,865; desigualdades: esperanza de vida 7,4 % · educación 4,9 % · ingresos 22,6 %):</p>
+<ol class="steps p3-st">
+  <li><span class="step-title">Pasá a tanto por uno</span>\(A_s=0{,}074\) · \(A_e=0{,}049\) · \(A_i=0{,}226\)</li>
+  <li><span class="step-title">Factor de ajuste</span>\(\big[(1-0{,}074)(1-0{,}049)(1-0{,}226)\big]^{1/3}=\big[0{,}926\times0{,}951\times0{,}774\big]^{1/3}=(0{,}6816)^{1/3}=0{,}880\)</li>
+  <li><span class="step-title">IDH-D</span>\(0{,}880\times0{,}865=0{,}761\)</li>
+  <li><span class="step-title">Pérdida</span>\(1-(0{,}761/0{,}865)=1-0{,}880=0{,}120\ \to\ 12{,}0\,\%\)</li>
+  <li><span class="step-title">Coeficiente de desigualdad humana</span>\((0{,}074+0{,}049+0{,}226)/3=0{,}349/3=0{,}116\ \to\ 11{,}6\,\%\)</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta · Argentina</span><b>IDH-D = 0,761</b> · pérdida = <b>12,0 %</b> · CDH = <b>11,6 %</b>. Fijate que la pérdida es exactamente 1 − factor: el factor ya te dice qué fracción del IDH sobrevive a la desigualdad.</div></div>
+
+<div class="box example"><div class="box-title">El otro camino (el que usan los parciales): índices ajustados</div>
+<p>Los parciales suelen darte o pedirte los <b>índices ajustados</b> de cada dimensión, \(I_x^{*}=I_x\,(1-A_x)\). Se llega al mismo número porque la media geométrica de un producto es el producto de las medias geométricas:</p>
+<div class="calc">\[\begin{aligned} I_s^{*}&=0{,}883\times0{,}926=0{,}818 \qquad I_e^{*}=0{,}873\times0{,}951=0{,}830 \qquad I_i^{*}=0{,}839\times0{,}774=0{,}649\\ \text{IDH-D}&=(0{,}818\cdot0{,}830\cdot0{,}649)^{1/3}=0{,}761\ \checkmark \end{aligned}\]</div></div>
+
+<h4>Resultados de los diez países</h4>
+<div class="p3-grid" style="grid-template-columns: 1.2fr 0.8fr; align-items: start;">
+<table class="p3-t" style="margin:0">
+<thead><tr><th>País</th><th class="num">IDH</th><th class="num">IDH-D</th><th class="num">Pérdida</th><th class="num">CDH</th></tr></thead>
+<tbody>
+<tr><td>Suiza</td><td class="num">0,970</td><td class="num p3-c">0,894</td><td class="num">7,8 %</td><td class="num">7,5 %</td></tr>
+<tr><td>Australia</td><td class="num">0,958</td><td class="num p3-c">0,873</td><td class="num">8,9 %</td><td class="num">8,6 %</td></tr>
+<tr><td>EE.UU.</td><td class="num">0,937</td><td class="num p3-c">0,832</td><td class="num">11,2 %</td><td class="num">10,7 %</td></tr>
+<tr><td>Argentina</td><td class="num">0,865</td><td class="num p3-c">0,761</td><td class="num">12,0 %</td><td class="num">11,6 %</td></tr>
+<tr><td>Perú</td><td class="num">0,795</td><td class="num p3-c">0,633</td><td class="num">20,3 %</td><td class="num">19,9 %</td></tr>
+<tr><td>Bután</td><td class="num">0,698</td><td class="num p3-c">0,478</td><td class="num">31,5 %</td><td class="num">30,0 %</td></tr>
+<tr><td>El Salvador</td><td class="num">0,678</td><td class="num p3-c">0,555</td><td class="num">18,1 %</td><td class="num">17,8 %</td></tr>
+<tr><td>Senegal</td><td class="num">0,529</td><td class="num p3-c">0,339</td><td class="num">35,9 %</td><td class="num">34,8 %</td></tr>
+<tr><td>Yemen</td><td class="num">0,470</td><td class="num p3-c">0,325</td><td class="num">30,9 %</td><td class="num">29,8 %</td></tr>
+<tr><td>Sudán del Sur</td><td class="num">0,388</td><td class="num p3-c">0,225</td><td class="num">42,0 %</td><td class="num">41,7 %</td></tr>
+</tbody></table>
+<div class="box tip"><div class="box-title">Controles que podés hacer en el parcial</div>
+<ul>
+<li>IDH-D ≤ IDH siempre (en igualdad perfecta, iguales).</li>
+<li>Pérdida ≥ CDH siempre; la diferencia es chica salvo que las tres \(A_x\) sean muy distintas entre sí.</li>
+<li>Con la pérdida podés reconstruir el IDH-D: \(\text{IDH}\times(1-\text{pérdida})\). Ej.: Bután \(0{,}698\times0{,}685=0{,}478\).</li>
+<li>El orden por pérdida no es el orden por IDH: Bután (31,5 %) pierde más que Yemen (30,9 %).</li>
+</ul></div>
+</div>
+
+<figure><img src="figs/out/p3_idhd_barras.svg" alt="IDH e IDH-D de los diez países con la pérdida y el CDH">
+<figcaption><b>Figura TP3.4.</b> IDH (azul) contra IDH-D (naranja) de los diez países: el tramo rayado es lo que cada uno pierde por desigualdad. Mirá cómo el rayado se alarga a medida que bajás: los países pobres no sólo tienen menos desarrollo humano, además lo tienen peor repartido. A la derecha, la pérdida (en rojo las de 30 % o más) y el CDH, siempre un poco menor. Datos: TP3.</figcaption></figure>
+
+<h4>Por qué pérdida y coeficiente no coinciden</h4>
+<p>Esta es la pregunta fina del ejercicio. Los dos números son parecidos pero nunca iguales, y por una razón precisa: la <b>pérdida</b> compara dos medias <b>geométricas</b>, mientras que el <b>coeficiente de desigualdad humana</b> es una media <b>aritmética simple</b> de las tres desigualdades.</p>
+<p>La pérdida siempre resulta <b>igual o mayor</b> que el coeficiente, porque la media geométrica penaliza adicionalmente que las desigualdades estén desparejas entre dimensiones. La brecha entre ambos números mide cuán desbalanceada es la desigualdad de un país: en Bután la diferencia es de 1,5 puntos —31,5 % contra 30,0 %—, la mayor de la tabla, porque su desigualdad educativa —48,2 %— está muy por encima de la sanitaria —13,1 %—. En Sudán del Sur, donde las tres desigualdades son parecidas, los dos números casi coinciden —42,0 % y 41,7 %—.</p>
+<div class="box intuition"><div class="box-title">La intuición, con dos países inventados</div>
+<p>Dos países con el mismo CDH de 30 %. <b>Parejo</b>: \(A = 30\,\%,\ 30\,\%,\ 30\,\%\). <b>Desparejo</b>: \(A = 10\,\%,\ 50\,\%,\ 30\,\%\).</p>
+<div class="calc">\[\begin{aligned} \text{Parejo:}\quad &1-(0{,}7\cdot0{,}7\cdot0{,}7)^{1/3}=1-0{,}700=30{,}0\,\%\ =\ \text{CDH}\\ \text{Desparejo:}\quad &1-(0{,}9\cdot0{,}5\cdot0{,}7)^{1/3}=1-0{,}680=32{,}0\,\%\ >\ \text{CDH}=30\,\% \end{aligned}\]</div>
+<p>Es la desigualdad entre medias: la geométrica de los \((1-A_x)\) nunca supera a la aritmética, y sólo son iguales si las tres \(A_x\) coinciden. (Ejemplo ilustrativo, no son países reales.)</p></div>
+
+<figure><img src="figs/out/p3_idhd_cascada.svg" alt="Cascada de la pérdida por dimensión para Argentina y Bután">
+<figcaption><b>Figura TP3.5.</b> De dónde sale la pérdida. Cada escalón es la parte de la caída que aporta una dimensión (el porcentaje debajo es su peso en la pérdida total, repartida según \(\ln(1-A_x)\), así que no depende del orden). En <b>Argentina</b> dos tercios de la pérdida vienen del <b>ingreso</b>; en <b>Bután</b>, casi 60 % viene de la <b>educación</b>. En Bután la desigualdad de ingresos (28,7 %) no figura en la práctica: la deducimos del CDH, \(3\times30{,}0-48{,}2-13{,}1\), y reproduce su IDH-D de 0,478.</figcaption></figure>
+
+<h4>Interpretación de los resultados</h4>
+<div class="p3-grid" style="grid-template-columns: 1.25fr 0.75fr;">
+<div class="p3-tight">
+<p><b>La desigualdad castiga muchísimo más a los países pobres.</b> Suiza pierde 7,8 % de su desarrollo humano potencial; Sudán del Sur, 42,0 %. La desigualdad no sólo es peor en los países pobres: además los empuja más abajo.</p>
+<p><b>El ranking cambia cuando se ajusta.</b> Con el IDH, Bután (0,698) supera a El Salvador (0,678). Con el IDH-D el orden se invierte: El Salvador queda en 0,555 y Bután cae a 0,478. Bután tiene un desarrollo humano promedio mayor pero mucho peor repartido, sobre todo en educación. <b>Ese es el aporte del IDH-D: ordena por el desarrollo humano que la gente efectivamente disfruta, no por el promedio.</b></p>
+</div>
+<figure><img src="figs/out/p3_idhd_ranking.svg" alt="Pendientes del IDH al IDH-D: Bután y El Salvador se cruzan">
+<figcaption><b>Figura TP3.6.</b> Del IDH al IDH-D: la única pareja que se cruza es Bután–El Salvador.</figcaption></figure>
+</div>
+<ul>
+  <li><b>En Argentina la desigualdad es sobre todo de ingresos</b> —22,6 %, contra 7,4 % en salud y 4,9 % en educación—. El patrón típico de un país latinoamericano con cobertura amplia de salud y educación públicas y una distribución del ingreso muy desigual (Figura TP3.5).</li>
+  <li><b>Estados Unidos es el caso a señalar entre los ricos:</b> pierde 11,2 %, más que Suiza y Australia, por una desigualdad de ingresos de 23,9 % —superior incluso a la argentina—. Ser rico no protege de la desigualdad.</li>
+  <li><b>Senegal acumula desventajas en educación:</b> 47,0 % de desigualdad educativa —sólo Bután, con 48,2 %, tiene un valor más alto entre los que da la práctica— sobre un índice educativo ya muy bajo de 0,349. Su índice educativo ajustado queda en \(0{,}349\times0{,}53=0{,}185\).</li>
+</ul>
+
+<div class="box warn"><div class="box-title">Errores típicos en el IDH-D</div>
+<ul>
+<li>Usar 7,4 en vez de 0,074: \((1-7{,}4)\) da negativo y la cuenta no tiene sentido. (En el parcial 2023, usar 27 % en vez de 2,7 % lleva a 0,725, una opción trampa.)</li>
+<li>Restar en lugar de multiplicar: el índice ajustado es \(I_x(1-A_x)\), no \(I_x-A_x\).</li>
+<li>Calcular el factor y olvidarse de multiplicarlo por el IDH (el factor 0,880 no es el IDH-D).</li>
+<li>Dar el CDH cuando piden la pérdida, o al revés: se calculan distinto.</li>
+</ul></div>
+
+<h3>Del TP al parcial: la receta y los despejes</h3>
+<div class="recipe"><div class="recipe-title">Receta: IDH → IDH-D → pérdida</div>
+<ol>
+<li>Índices de dimensión: \(I_s=(EV-20)/65\); \(I_{edu}=(\tfrac{esp}{18}+\tfrac{prom}{15})/2\) con tope 1; \(I_{ing}=\ln(\text{INB}/100)/\ln 750\). Si ya te los dan, saltá este paso.</li>
+<li>IDH = media geométrica de los tres → clasificá con los cortes.</li>
+<li>Pasá las \(A_x\) a tanto por uno y ajustá cada índice: \(I_x^{*}=I_x(1-A_x)\). Si te dan un índice ajustado directamente (típico: el de ingresos), usalo tal cual.</li>
+<li>IDH-D = media geométrica de los tres índices ajustados.</li>
+<li>Pérdida = 1 − IDH-D / IDH (en %). Si piden CDH: promedio simple de las \(A_x\).</li>
+<li>Controles: IDH-D ≤ IDH; pérdida ≥ CDH; redondeá a 3 decimales <b>al final</b>.</li>
+</ol></div>
+
+<figure><img src="figs/out/p3_despejes.svg" alt="Diagrama de los despejes entre dato, índice, desigualdad e índice ajustado">
+<figcaption><b>Figura TP3.7.</b> Todo lo que puede faltar en una tabla de parcial se despeja de dos relaciones: la normalización (dato ↔ índice) y el ajuste (índice ↔ índice ajustado, con \(A_x\)). Para el ingreso la normalización es logarítmica, así que el despeje usa una potencia: \(\text{INB}=100\cdot750^{I}\).</figcaption></figure>
+
+<div class="statement"><div class="statement-title">Enunciado · Primer parcial 2023 · Ej. 2 (Australia, PNUD 2021/22) <span class="pts">20 ptos · +4 / −2 por celda</span></div>
+<p>Completá la tabla eligiendo la opción correcta en cada celda con opciones. Valores de referencia: esperanza de vida 20–85; años esperados 0–18; años promedio 0–15; INB pc 100–75.000.</p>
+<table class="p3-t">
+<thead><tr><th>Celda</th><th>Dato o opciones</th></tr></thead>
+<tbody>
+<tr><td>Índice de esperanza de vida · desigualdad</td><td>0,993 · 2,7 %</td></tr>
+<tr><td>Índice de esperanza de vida ajustado</td><td>a) 0,954 · b) 0,966 · c) 1,918 · d) n/a</td></tr>
+<tr><td>Índice de educación · desigualdad en educación</td><td>0,925 · a) 3,1 · b) 5,9 · c) 5,7 · d) n/a</td></tr>
+<tr><td>Índice de educación ajustado</td><td>0,896</td></tr>
+<tr><td>INB per cápita</td><td>a) 25.782 · b) 122.607 · c) 9.238 · d) n/a</td></tr>
+<tr><td>Índice de estándar de vida · desigualdad · ajustado</td><td>0,936 · 17,1 % · 0,776</td></tr>
+<tr><td>IDH-D</td><td>a) 0,828 · b) 0,799 · c) 0,876 · d) n/a</td></tr>
+<tr><td>Pérdida por desigualdad</td><td>a) 6,5 % · b) 7,9 % · c) 13,0 % · d) n/a</td></tr>
+</tbody></table></div>
+<ol class="steps p3-st">
+  <li><span class="step-title">Índice de vida ajustado</span>\(0{,}993\times(1-0{,}027)=0{,}966\) → <b>b</b>. (Con 27 % en vez de 2,7 % saldría 0,725: no está, pero es el error típico.)</li>
+  <li><span class="step-title">Desigualdad en educación (despeje de \(A\))</span>\(A_e=1-0{,}896/0{,}925=0{,}031\to 3{,}1\,\%\) → <b>a</b>.</li>
+  <li><span class="step-title">INB (despeje del logaritmo)</span>\(\text{INB}=100\cdot750^{0{,}936}=49.097\). No figura → <b>d) n/a</b>. Chequeo: \(\ln(490{,}97)/\ln 750=0{,}936\) ✓.</li>
+  <li><span class="step-title">IDH-D</span>\((0{,}966\cdot0{,}896\cdot0{,}776)^{1/3}=0{,}876\) → <b>c</b>.</li>
+  <li><span class="step-title">Pérdida (hace falta el IDH)</span>\(\text{IDH}=(0{,}993\cdot0{,}925\cdot0{,}936)^{1/3}=0{,}951\); pérdida \(=1-0{,}876/0{,}951=7{,}9\,\%\) → <b>b</b>.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta · Parcial 2023 Ej. 2</span>0,966 (b) · 3,1 (a) · n/a (d) · 0,876 (c) · 7,9 % (b). Coinciden con los valores publicados por el PNUD para Australia (IDH 0,951, IDH-D 0,876, pérdida 7,9 %).</div></div>
+
+<div class="box exam p3-brk"><div class="box-title">Así lo preguntan en el parcial · los otros ejercicios del mismo tipo</div>
+<p><b>Parcial s/f, Ej. 3 (Namibia y Honduras).</b> Dan los cuatro indicadores, \(A_s\), \(A_e\) y directamente el índice de ingresos ajustado. a) Completar IDH, IDH-D y pérdida <span class="pts">11 ptos</span>; b) nivel de desarrollo <span class="pts">3 ptos</span>; c) cuál tiene mejor desarrollo.</p>
+<table class="p3-t">
+<thead><tr><th></th><th class="num">\(I_s\)</th><th class="num">\(I_{edu}\)</th><th class="num">\(I_{ing}\)</th><th class="num">IDH</th><th class="num">\(I_s^{*}\)</th><th class="num">\(I_e^{*}\)</th><th class="num">\(I_i^{*}\) (dato)</th><th class="num">IDH-D</th><th class="num">Pérdida</th></tr></thead>
+<tbody>
+<tr><td>Namibia</td><td class="num">0,672</td><td class="num">0,583</td><td class="num">0,686</td><td class="num p3-c">0,645</td><td class="num">0,524</td><td class="num">0,438</td><td class="num">0,318</td><td class="num p3-c">0,418</td><td class="num p3-bad">35,3 %</td></tr>
+<tr><td>Honduras</td><td class="num">0,866</td><td class="num">0,501</td><td class="num">0,600</td><td class="num p3-c">0,638</td><td class="num">0,751</td><td class="num">0,384</td><td class="num">0,373</td><td class="num p3-c">0,476</td><td class="num">25,5 %</td></tr>
+</tbody></table>
+<p>b) Ambos <b>medio</b>. c) <b>Honduras</b>: el IDH es casi igual, pero pierde mucho menos por desigualdad y su IDH-D es mayor. (Namibia: \(I_{edu}=(12{,}6/18+7/15)/2=(0{,}700+0{,}467)/2\); \(I_{ing}=\ln 93{,}57/\ln 750\). Redondeando \(I_{edu}\) a 0,584 aparece 0,646: redondeá al final.)</p>
+<p><b>Prueba práctica 28/9/2024, Ej. 1 b) <span class="pts">10 ptos</span> — IDH-D de Guyana</b> (opciones 0,593 · 0,79 · 0,714 · 0,886). \(I_s=0{,}703\), \(I_{edu}=0{,}634\), \(I_{ing}=0{,}818\) (IDH 0,714); ajustados \(0{,}703\cdot0{,}842=0{,}592\), \(0{,}634\cdot0{,}896=0{,}568\), \(0{,}818\cdot0{,}749=0{,}613\) → IDH-D = 0,591. Se marca <b>0,593</b>, la más cercana y la única compatible: 0,714 es el IDH de Guyana sin ajustar, 0,79 el IDH de Barbados y 0,886 su índice de salud. <i>Versión Jamaica:</i> ajustados 0,709 · 0,635 · 0,460 → <b>0,592</b> (el distractor 0,710 es su IDH sin ajustar, 0,709).</p>
+<p><b>Primer parcial 2025, Ej. 3 b) <span class="pts">10 ptos</span> — Yemen 2021.</b> Desigualdades 26,7 %, 46,1 % y 21,8 %: \(0{,}6738\cdot0{,}733=0{,}4939\); \(0{,}3595\cdot0{,}539=0{,}1938\); \(0{,}3891\cdot0{,}782=0{,}3043\) → <b>IDH-D = 0,308</b>; pérdida \(=1-0{,}308/0{,}455=32{,}4\,\%\) (el CDH sería 31,5 %: otra vez menor que la pérdida).</p></div>
+
+<!-- =========================================================== PARTE C -->
+<h2><span class="num">TP3·C</span>IDG, gráficos y estudio de casos</h2>
+
+<h3>Ej. 4 · Índice de Desigualdad de Género 2023</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Calculá el IDG 2023 de Costa Rica, Argentina, Tailandia y Guinea. a) ¿En qué país hay menor desigualdad de oportunidades entre varones y mujeres? b) ¿Argentina o Tailandia tiene mejor desempeño? Fundamentá.</p></div>
+
+<div class="box tip"><div class="box-title">Antes de calcular</div><p>Todos los porcentajes van <b>en tanto por uno</b>, y la representación parlamentaria de los varones se obtiene como <b>100 − la de las mujeres</b>, porque el cuadro sólo informa la femenina. La mortalidad materna (MMR, por 100.000 nacidos vivos) y la fecundidad adolescente (AFR, por 1.000 mujeres de 15 a 19 años) entran tal cual, sin pasar a tanto por uno.</p></div>
+
+<table class="p3-t">
+<thead><tr><th>Indicador</th><th class="num">Costa Rica</th><th class="num">Argentina</th><th class="num">Tailandia</th><th class="num">Guinea</th></tr></thead>
+<tbody>
+<tr><td>Mortalidad materna (MMR)</td><td class="num">≈ 22*</td><td class="num">45</td><td class="num">29</td><td class="num">553</td></tr>
+<tr><td>Fecundidad adolescente (AFR)</td><td class="num">≈ 26,3*</td><td class="num">26,4</td><td class="num">26,1</td><td class="num">118,6</td></tr>
+<tr><td>Bancas parlamentarias de mujeres (PR_M)</td><td class="num">47,4 %</td><td class="num">43,8 %</td><td class="num">16,0 %</td><td class="num">29,6 %*</td></tr>
+<tr><td>Con secundaria o más, M / V (SE)</td><td class="num">100 / 100</td><td class="num">74,3 / 72,2</td><td class="num">51,9 / 56,7</td><td class="num">8,1 / 21,1</td></tr>
+<tr><td>Participación laboral, M / V (LFPR)</td><td class="num">43,9 / 69,7</td><td class="num">53,2 / 72,2</td><td class="num">60,6 / 76,6</td><td class="num">47,0 / 68,2*</td></tr>
+</tbody></table>
+<p class="p3-note">* No figura explícito en la resolución original; lo deducimos para que reproduzca exactamente los resultados del cuadro del TP (la MMR de Costa Rica sale de “553 es veinticinco veces la de Costa Rica”). El resto, de la práctica.</p>
+
+<div class="formula-card">
+  <div class="fc-label">IDG en cuatro pasos</div>
+  \[\begin{aligned} \textbf{1)}\ \ G_M&=\Big[\big(\tfrac{10}{MMR}\cdot\tfrac{1}{AFR}\big)^{1/2}(PR_M\,SE_M)^{1/2}\,LFPR_M\Big]^{1/3} &\qquad \textbf{2)}\ \ \text{HARM}&=\Big[\tfrac{1}{2}\big(\tfrac{1}{G_M}+\tfrac{1}{G_V}\big)\Big]^{-1}\\ G_V&=\Big[\,1\cdot(PR_V\,SE_V)^{1/2}\,LFPR_V\Big]^{1/3} & \textbf{4)}\ \ \text{IDG}&=1-\frac{\text{HARM}}{\text{Ref}}\\[4pt] \textbf{3)}\ \ \overline{\text{salud}}&=\tfrac{1}{2}\Big[\big(\tfrac{10}{MMR}\cdot\tfrac{1}{AFR}\big)^{1/2}+1\Big] & \overline{\text{empod}}&=\tfrac{1}{2}\Big[(PR_M SE_M)^{1/2}+(PR_V SE_V)^{1/2}\Big]\\ \overline{\text{lab}}&=\tfrac{1}{2}\big(LFPR_M+LFPR_V\big) & \text{Ref}&=\big(\overline{\text{salud}}\cdot\overline{\text{empod}}\cdot\overline{\text{lab}}\big)^{1/3} \end{aligned}\]
+</div>
+
+<figure><img src="figs/out/p3_idg_pasos.svg" alt="Los cuatro pasos del IDG con los datos de Argentina">
+<figcaption><b>Figura TP3.8.</b> El IDG de Argentina paso a paso. Arriba, el camino “real”: un índice por sexo (media geométrica de sus tres dimensiones) y la media armónica entre los dos, que se pega al más bajo. Abajo, la referencia que trata a los dos sexos por igual (promedio aritmético dentro de cada dimensión). El IDG mide cuánto queda la armónica por debajo de la referencia: \(0{,}4353/0{,}5912=0{,}736\), o sea una pérdida de 26,4 %.</figcaption></figure>
+
+<p><b>Desarrollo completo con Argentina</b> (MMR 45 · AFR 26,4 · PR_M 0,438 · PR_V 0,562 · SE_M 0,743 · SE_V 0,722 · LFPR_M 0,532 · LFPR_V 0,722):</p>
+<ol class="steps p3-st">
+  <li><span class="step-title">Paso 1 · Índice de cada sexo (media geométrica de las tres dimensiones)</span>
+  <div class="calc">\[\begin{aligned} \text{salud reproductiva de las mujeres}&=\big[(10/45)\cdot(1/26{,}4)\big]^{1/2}=0{,}0917 \\ \text{empoderamiento de las mujeres}&=(0{,}438\cdot0{,}743)^{1/2}=0{,}5705 \\ \text{empoderamiento de los varones}&=(0{,}562\cdot0{,}722)^{1/2}=0{,}6370\\ G_M&=(0{,}0917\cdot0{,}5705\cdot0{,}532)^{1/3}=0{,}3031 \\ G_V&=(1\cdot0{,}6370\cdot0{,}722)^{1/3}=0{,}7719 \end{aligned}\]</div></li>
+  <li><span class="step-title">Paso 2 · Media ARMÓNICA entre los dos sexos</span>
+  <div class="calc">\[ \text{HARM}=\Big[\big(1/0{,}3031+1/0{,}7719\big)/2\Big]^{-1}=\big[(3{,}2992+1{,}2955)/2\big]^{-1}=0{,}4353 \]</div></li>
+  <li><span class="step-title">Paso 3 · Referencia: promedio ARITMÉTICO por dimensión, luego media geométrica</span>
+  <div class="calc">\[\begin{aligned} \text{salud}&=(0{,}0917+1)/2=0{,}5459 \\ \text{empod}&=(0{,}5705+0{,}6370)/2=0{,}6037 \\ \text{lab}&=(0{,}532+0{,}722)/2=0{,}6270\\ \text{Ref}&=(0{,}5459\cdot0{,}6037\cdot0{,}6270)^{1/3}=0{,}5912 \end{aligned}\]</div></li>
+  <li><span class="step-title">Paso 4 · IDG</span>\(\text{IDG}=1-(0{,}4353/0{,}5912)=1-0{,}7363=0{,}264\)</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta · Argentina</span><b>IDG = 0,264</b>: Argentina pierde el 26,4 % de su desarrollo humano potencial por desigualdad de género. (El índice de salud reproductiva es 0,091747…, que redondea a <b>0,0917</b>; la práctica original ponía 0,0918. No cambia ningún otro resultado.)</div></div>
+
+<h4>Resultados de los cuatro países</h4>
+<table class="p3-t">
+<thead><tr><th>País</th><th class="num">GM</th><th class="num">GV</th><th class="num">HARM</th><th class="num">salud</th><th class="num">empod.</th><th class="num">laboral</th><th class="num">Referencia</th><th class="num">IDG</th></tr></thead>
+<tbody>
+<tr><td>Costa Rica</td><td class="num">0,3412</td><td class="num">0,7966</td><td class="num">0,4778</td><td class="num">0,5657</td><td class="num">0,7069</td><td class="num">0,5680</td><td class="num">0,6101</td><td class="num p3-c">0,217</td></tr>
+<tr><td>Argentina</td><td class="num">0,3031</td><td class="num">0,7719</td><td class="num">0,4353</td><td class="num">0,5459</td><td class="num">0,6037</td><td class="num">0,6270</td><td class="num">0,5912</td><td class="num p3-c">0,264</td></tr>
+<tr><td>Tailandia</td><td class="num">0,2718</td><td class="num">0,8086</td><td class="num">0,4068</td><td class="num">0,5575</td><td class="num">0,4891</td><td class="num">0,6860</td><td class="num">0,5719</td><td class="num p3-c">0,289</td></tr>
+<tr><td>Guinea</td><td class="num">0,0965</td><td class="num">0,6406</td><td class="num">0,1677</td><td class="num">0,5062</td><td class="num">0,2701</td><td class="num">0,5760</td><td class="num">0,4286</td><td class="num p3-c">0,609</td></tr>
+</tbody></table>
+
+<figure><img src="figs/out/p3_idg_paises.svg" alt="Índices de género por sexo, media armónica, referencia e IDG de los cuatro países; referencia por dimensión">
+<figcaption><b>Figura TP3.9.</b> <b>Izquierda:</b> en los cuatro países el índice de las mujeres (círculo) está muy por debajo del de los varones (cuadrado); la media armónica (rombo) se pega al de las mujeres, y el IDG mide cuánto queda por debajo de la referencia (raya verde). Guinea tiene la brecha más grande y el IDG más alto. <b>Derecha:</b> las dimensiones de la referencia: la gran diferencia entre países está en el <b>empoderamiento</b> (0,71 en Costa Rica, 0,27 en Guinea). Datos: TP3.</figcaption></figure>
+
+<h4>a) Interpretación: ¿dónde hay menor desigualdad de oportunidades?</h4>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta a)</span><b>En Costa Rica</b>, con un IDG de 0,217 —el más bajo de los cuatro—. La escala va de 0 —igualdad perfecta— a 1 —desigualdad máxima—, así que <b>menor valor es mejor</b>. El orden completo, de menos a más desigual: Costa Rica 0,217 · Argentina 0,264 · Tailandia 0,289 · Guinea 0,609.</div></div>
+<div class="grid-2">
+<div class="card aqua"><div class="card-title">Costa Rica: por qué sale primera</div><p>Dos cosas: <b>paridad educativa total</b> —100 % de mujeres y varones con secundaria o más— y la <b>representación parlamentaria femenina más alta</b> de la muestra, 47,4 %, prácticamente paritaria. Su punto débil es el <b>mercado laboral</b>: 43,9 % de participación femenina contra 69,7 % masculina, una brecha de casi 26 puntos (por eso su barra “laboral” es la más baja de la Figura TP3.9).</p></div>
+<div class="card red"><div class="card-title">Guinea: acumula desventajas</div><p>Mortalidad materna de 553 por cada 100.000 nacimientos —veinticinco veces la de Costa Rica—, fecundidad adolescente de 118,6 —más de cuatro veces la de Argentina (26,4) o Tailandia (26,1)— y sólo 8,1 % de mujeres con educación secundaria contra 21,1 % de varones. Su índice de género femenino es 0,0965 contra 0,6406 masculino: casi siete veces de diferencia. El IDG de 0,609 significa que Guinea <b>pierde el 60,9 % de su desarrollo humano potencial</b> por desigualdad de género.</p></div>
+</div>
+
+<h4>b) ¿Argentina o Tailandia?</h4>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta b)</span><b>Argentina tiene mejor desempeño:</b> 0,264 contra 0,289. Pero la comparación es interesante porque cada país gana en dimensiones distintas.</div></div>
+<table class="p3-t">
+<thead><tr><th>Dimensión</th><th class="num">Argentina</th><th class="num">Tailandia</th><th>Gana</th></tr></thead>
+<tbody>
+<tr><td>Mortalidad materna</td><td class="num">45</td><td class="num">29</td><td><b>Tailandia</b></td></tr>
+<tr><td>Fecundidad adolescente</td><td class="num">26,4</td><td class="num">26,1</td><td>Empate</td></tr>
+<tr><td>Representación parlamentaria femenina</td><td class="num">43,8 %</td><td class="num">16,0 %</td><td><b>Argentina, por lejos</b></td></tr>
+<tr><td>Educación secundaria (M / V)</td><td class="num">74,3 / 72,2</td><td class="num">51,9 / 56,7</td><td><b>Argentina</b> en nivel y en paridad</td></tr>
+<tr><td>Participación laboral (M / V)</td><td class="num">53,2 / 72,2</td><td class="num">60,6 / 76,6</td><td><b>Tailandia</b> en nivel; brecha similar</td></tr>
+<tr><td>Índice de empoderamiento</td><td class="num">0,6037</td><td class="num">0,4891</td><td><b>Argentina</b></td></tr>
+<tr><td>Índice de mercado laboral</td><td class="num">0,6270</td><td class="num">0,6860</td><td><b>Tailandia</b></td></tr>
+</tbody></table>
+<figure><img src="figs/out/p3_idg_arg_tha.svg" alt="Mujeres y varones en bancas, secundaria y participación laboral: Argentina y Tailandia">
+<figcaption><b>Figura TP3.10.</b> Mujeres (círculo) contra varones (cuadrado) en los tres indicadores que tienen dato por sexo. La barra gris es la brecha: en Tailandia la de las bancas parlamentarias (16 contra 84) domina todo; en Argentina casi no hay brecha educativa, y las mujeres incluso superan a los varones. Arriba a la derecha, los dos indicadores de salud reproductiva. Datos: TP3.</figcaption></figure>
+<p><b>La respuesta fundamentada:</b> Tailandia tiene mejores indicadores de salud reproductiva —mortalidad materna un 35 % menor— y mayor participación laboral femenina. Pero Argentina gana el conjunto por el <b>empoderamiento</b>, y ahí la diferencia es enorme: 43,8 % de bancas femeninas contra 16,0 %, y además las mujeres argentinas superan a los varones en educación secundaria —74,3 % contra 72,2 %— mientras que en Tailandia quedan por debajo —51,9 % contra 56,7 %—. Como el índice usa media geométrica entre dimensiones, la dimensión más débil pesa mucho, y la de Tailandia —empoderamiento, 0,4891— la arrastra hacia abajo.</p>
+
+<div class="box warn"><div class="box-title">La trampa de lectura del IDG (la que más puntos cuesta)</div>
+<p>“Más bajo es mejor” vale <b>sólo para el IDG final</b>, porque mide desigualdad. Todo lo que está adentro del Paso 1 son <b>logros</b>: el índice de salud reproductiva \((10/MMR\cdot1/AFR)^{1/2}\), el de empoderamiento y la participación laboral se leen como el IDH: <b>más alto es mejor</b>.</p></div>
+<figure><img src="figs/out/p3_idg_trampa.svg" alt="Dos escalas: índice de salud reproductiva, más alto mejor; IDG, más bajo mejor">
+<figcaption><b>Figura TP3.11.</b> Las dos escalas van en sentidos opuestos. Arriba, el índice de salud reproductiva (Namibia y Honduras, parcial s/f): gana Honduras, que tiene el valor <b>más alto</b>. Abajo, el IDG final: gana el valor <b>más bajo</b> (Barbados, Jamaica y Guyana de la prueba del 28/9/2024; en gris, los países del TP).</figcaption></figure>
+
+<div class="box exam p3-brk"><div class="box-title">Así lo preguntan en el parcial · IDG</div>
+<p><b>Parcial s/f, Ej. 3 d) <span class="pts">3 ptos / −1,5</span>:</b> “Según el IDG, ¿qué país tiene mejor salud de las mujeres?” Datos: TMM Namibia 195, Honduras 63,6; TNA 65 y 72,9.</p>
+<div class="calc">\[ \text{Namibia: } \big(\tfrac{10}{195}\cdot\tfrac{1}{65}\big)^{1/2}=0{,}0281 \qquad \text{Honduras: } \big(\tfrac{10}{63{,}6}\cdot\tfrac{1}{72{,}9}\big)^{1/2}=0{,}0464 \]</div>
+<p>→ <b>Honduras</b>: su índice es mayor (mortalidad materna tres veces menor). Error frecuente: marcar Namibia “porque está más cerca de 0”. (En la referencia estándar, la dimensión salud queda en 0,514 y 0,523: también gana Honduras.)</p>
+<p><b>Prueba práctica 28/9/2024, Ej. 1 c) <span class="pts">5 ptos</span>:</b> IDG de Guyana 0,454 (o Jamaica 0,335) y de Barbados 0,268. “Ambos países tienen un desarrollo humano <b>alto</b>. Sin embargo, <b>Barbados</b> muestra un mejor desempeño en DH y en las oportunidades que brinda a hombres y mujeres”: tiene el IDH más alto (0,790) y el IDG más bajo.</p></div>
+
+<h3>Ej. 5 · El gráfico del IDH de Argentina, 1996-2021</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Analizá el gráfico de la evolución de los índices de dimensión del IDH de Argentina entre 1996 y 2021. ¿Qué muestra cada dimensión? ¿Qué conclusiones sacás?</p></div>
+<p>El gráfico muestra las tres dimensiones por separado y <b>cuentan tres historias distintas</b>:</p>
+<figure><img src="figs/out/p3_arg_1996_2021.svg" alt="Esquema de la evolución de los índices de salud, educación e ingreso de Argentina 1996-2021">
+<figcaption><b>Figura TP3.12.</b> Esquemático: la práctica describe el gráfico con palabras y valores aproximados (“en torno a”), que son los puntos marcados; las líneas sólo siguen la forma descripta. Educación y salud suben sin retroceder; el ingreso es la única que termina <b>por debajo</b> de su nivel de 1996 (línea punteada).</figcaption></figure>
+<table class="p3-t">
+<thead><tr><th style="width:16%">Dimensión</th><th>Trayectoria</th></tr></thead>
+<tbody>
+<tr><td><b>Educación</b></td><td>La más alta y creciente: arranca en torno a 0,92 en 1996 y llega cerca de 0,99 en 2021, con mejoras sostenidas y desaceleración al final por acercarse al tope.</td></tr>
+<tr><td><b>Salud</b></td><td>Crecimiento parejo y continuo: de aproximadamente 0,81 en 1996 a 0,895 en 2021, sin retrocesos en todo el período.</td></tr>
+<tr><td><b>Ingreso</b></td><td>La única que no mejora: estancada en torno a 0,655 entre 1996 y 2006, sube a 0,695 entre 2011 y 2016, y <b>cae a cerca de 0,635 en 2021</b>, por debajo del valor de 1996.</td></tr>
+</tbody></table>
+<p><b>Qué hay que decir del gráfico, que es el punto del ejercicio:</b></p>
+<ol class="steps p3-st">
+  <li><span class="step-title">Las dimensiones no se mueven juntas</span>Salud y educación dependen de <b>stocks</b> acumulados —cobertura sanitaria, años de escolaridad de la población— que cambian despacio y rara vez retroceden. El ingreso es un <b>flujo</b> anual que responde al ciclo económico y puede caer de golpe.</li>
+  <li><span class="step-title">El ingreso es el ancla del IDH argentino</span>Con salud y educación en 0,895 y 0,99, el índice de ingreso en 0,635 es lo que impide que el IDH suba. Sin ese retroceso, Argentina estaría bastante más arriba en el ranking.</li>
+  <li><span class="step-title">Se ve el efecto de la media geométrica</span>Un país no compensa un mal desempeño en una dimensión con buenos resultados en otras. Los avances de veinticinco años en salud y educación quedan parcialmente neutralizados por la caída del ingreso.</li>
+  <li><span class="step-title">Es el argumento del Tema 1 en un gráfico</span>Crecimiento y desarrollo no son lo mismo. Argentina mejoró en capacidades básicas mientras su ingreso por habitante retrocedía.</li>
+</ol>
+<div class="box example"><div class="box-title">Ponele números a los puntos 2 y 3 (con los valores aproximados del gráfico)</div>
+<div class="calc">\[\begin{aligned} \text{IDH}_{2021}&\approx(0{,}895\cdot0{,}99\cdot0{,}635)^{1/3}=0{,}826 \qquad \text{(la media aritmética daría }0{,}840\text{)}\\ \text{si el ingreso se hubiera quedado en }0{,}695:\ \ &(0{,}895\cdot0{,}99\cdot0{,}695)^{1/3}=0{,}851 \end{aligned}\]</div>
+<p>Media geométrica: la dimensión rezagada le resta 0,014 respecto de la aritmética. Ancla: la caída del ingreso de 0,695 a 0,635 le cuesta al IDH unos 0,025. Cuenta ilustrativa: son lecturas aproximadas de un gráfico de otra fuente, no comparables uno a uno con el cálculo 2023 del Ej. 2.</p></div>
+
+<h3>Ej. 6 · Los doce componentes del IPS de República Dominicana, 2021-2023</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>Con los puntajes de los doce componentes del Índice de Progreso Social de República Dominicana para 2021, 2022 y 2023, analizá si hubo mejora en el progreso social y qué componentes destacarías.</p></div>
+<table class="p3-t">
+<thead><tr><th>Componente</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">Variación 2021-2023</th></tr></thead>
+<tbody>
+<tr><td>Sociedad inclusiva <span class="p3-dim o">O</span></td><td class="num">48,46</td><td class="num">49,17</td><td class="num">62,17</td><td class="num p3-good">+28,3 %</td></tr>
+<tr><td>Educación básica <span class="p3-dim f">F</span></td><td class="num">74,46</td><td class="num">74,31</td><td class="num">78,68</td><td class="num p3-good">+5,7 %</td></tr>
+<tr><td>Libertad y elección <span class="p3-dim o">O</span></td><td class="num">57,57</td><td class="num">57,41</td><td class="num">60,17</td><td class="num p3-good">+4,5 %</td></tr>
+<tr><td>Salud <span class="p3-dim f">F</span></td><td class="num">58,50</td><td class="num">57,28</td><td class="num">59,02</td><td class="num p3-good">+0,9 %</td></tr>
+<tr><td>Vivienda <span class="p3-dim n">N</span></td><td class="num">88,16</td><td class="num">87,72</td><td class="num">87,89</td><td class="num">−0,3 %</td></tr>
+<tr><td>Agua y saneamiento <span class="p3-dim n">N</span></td><td class="num">87,27</td><td class="num">87,28</td><td class="num">85,17</td><td class="num">−2,4 %</td></tr>
+<tr><td>Seguridad <span class="p3-dim n">N</span></td><td class="num">57,26</td><td class="num">57,75</td><td class="num">54,25</td><td class="num">−5,3 %</td></tr>
+<tr><td>Información y comunicaciones <span class="p3-dim f">F</span></td><td class="num">79,41</td><td class="num">80,72</td><td class="num">74,45</td><td class="num">−6,2 %</td></tr>
+<tr><td>Nutrición y atención médica <span class="p3-dim n">N</span></td><td class="num">90,27</td><td class="num">86,60</td><td class="num">84,13</td><td class="num">−6,8 %</td></tr>
+<tr><td>Derechos y voz <span class="p3-dim o">O</span></td><td class="num">82,88</td><td class="num">85,73</td><td class="num">71,47</td><td class="num p3-bad">−13,8 %</td></tr>
+<tr><td>Calidad medioambiental <span class="p3-dim f">F</span></td><td class="num">68,88</td><td class="num">60,28</td><td class="num">56,16</td><td class="num p3-bad">−18,5 %</td></tr>
+<tr><td>Educación avanzada <span class="p3-dim o">O</span></td><td class="num">55,36</td><td class="num">52,92</td><td class="num">40,90</td><td class="num p3-bad">−26,1 %</td></tr>
+<tr class="total"><td>Promedio simple de los 12</td><td class="num">70,71</td><td class="num">69,76</td><td class="num">67,87</td><td class="num">−4,0 %</td></tr>
+</tbody></table>
+<p class="p3-note">Dimensión de cada componente (según el manual): <span class="p3-dim n">N</span> Necesidades humanas básicas · <span class="p3-dim f">F</span> Fundamentos del bienestar · <span class="p3-dim o">O</span> Oportunidades. Variación = 2023 / 2021 − 1.</p>
+
+<figure><img src="figs/out/p3_ips_rd.svg" alt="Doce componentes del IPS de República Dominicana: nivel 2021 y 2023 y variación porcentual">
+<figcaption><b>Figura TP3.13.</b> Los doce componentes ordenados por su variación 2021–2023. <b>Izquierda:</b> de dónde parte (círculo vacío) y a dónde llega (círculo lleno) cada uno; el puntito gris es 2022. <b>Derecha:</b> la variación porcentual; sólo cuatro barras son verdes. El marcador de color al lado de cada nombre indica su dimensión. Datos: TP3.</figcaption></figure>
+
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta · ¿Hubo mejora?</span><b>No.</b> Sólo <b>4 de los 12 componentes</b> mejoraron entre 2021 y 2023. El promedio simple de los doce cayó de <b>70,71 a 67,87</b>, casi tres puntos. El balance del trienio es claramente negativo.</div></div>
+<p><b>Lo que hay que destacar:</b></p>
+<ul>
+  <li><b>La mejor noticia, y por lejos, es sociedad inclusiva:</b> +28,3 %, de 48,46 a 62,17. Es el único salto grande y además se da en el componente que estaba más bajo en 2021, así que reduce la debilidad principal del país. Casi todo el salto ocurre en 2022–2023 (+13,00 puntos).</li>
+  <li><b>La peor, educación avanzada:</b> −26,1 %, de 55,36 a 40,90. Y el deterioro se acelera: pierde 2,44 puntos entre 2021 y 2022 y 12,02 entre 2022 y 2023. En 2023 pasa a ser el componente más bajo.</li>
+  <li><b>El contraste interno en educación es llamativo:</b> la básica mejora 5,7 % mientras la avanzada se derrumba 26,1 %. El país mejora el piso y pierde el techo, lo que anticipa problemas de capital humano calificado —Tema 7—.</li>
+  <li><b>Los componentes de la dimensión Oportunidades se mueven en direcciones opuestas:</b> sociedad inclusiva +28,3 % y libertad y elección +4,5 %, contra derechos y voz −13,8 % y educación avanzada −26,1 %.</li>
+  <li><b>Calidad medioambiental cae 18,5 %</b> de forma sostenida a lo largo de los tres años: de 68,88 a 60,28 a 56,16. Es un deterioro estructural, no un año malo.</li>
+  <li><b>Nutrición y atención médica era el componente más alto en 2021 (90,27) y, pese a caer 6,8 %, sigue arriba en 2023 (84,13)</b>, ahora tercero detrás de vivienda (87,89) y agua y saneamiento (85,17). Los niveles altos pueden estar cayendo y los bajos subiendo: <b>hay que mirar el nivel y la variación juntos</b>, no uno solo. <span class="muted">(Corregido: la práctica original decía que seguía siendo el más alto en 2023.)</span></li>
+</ul>
+
+<div class="p3-grid">
+<figure><img src="figs/out/p3_ips_dim.svg" alt="Promedio de los componentes por dimensión del IPS de República Dominicana 2021-2023">
+<figcaption><b>Figura TP3.14.</b> Promedio simple de los cuatro componentes de cada dimensión (cálculo propio con los datos del TP) y de los doce.</figcaption></figure>
+<div class="box intuition"><div class="box-title">Un paso más: mirarlo por dimensión</div>
+<p>Con la metodología del manual (puntaje de dimensión = promedio simple de sus cuatro componentes) las <b>tres dimensiones caen</b> entre 2021 y 2023:</p>
+<ul>
+<li>Necesidades básicas: 80,74 → 77,86.</li>
+<li>Fundamentos del bienestar: 70,31 → 67,08.</li>
+<li>Oportunidades: 61,07 → 58,68, aun con el salto de sociedad inclusiva.</li>
+</ul>
+<p>Oportunidades es la más baja y la más volátil: sus componentes van en direcciones opuestas y se compensan sólo en parte.</p></div>
+</div>
+
+<div class="box exam"><div class="box-title">Así lo preguntan en el parcial</div>
+<p>Los parciales del período no traen un ejercicio numérico del IPS; lo toman en teoría (ver Ej. 1 a: parcial 2022 preg. 3 y parcial 2023 preg. 4). Lo que te tiene que quedar de este ejercicio para esas preguntas: el IPS mide <b>resultados sociales y ambientales</b>, sin ingreso, en tres dimensiones (necesidades básicas, fundamentos del bienestar, oportunidades) y doce componentes, y por eso sirve para detectar en qué áreas concretas un país mejora o empeora aunque su PBI crezca.</p></div>
+
+<h3>Estudio de casos · Bután</h3>
+<div class="statement"><div class="statement-title">Consigna (resumida)</div><p>A partir del caso de Bután y su índice de Felicidad Nacional Bruta: a) ventajas y limitaciones de los indicadores de bienestar integral frente a los puramente económicos; b) sostenibilidad ambiental y desarrollo humano: qué tensiones genera; c) aprendizajes para gobiernos y emprendedores.</p></div>
+
+<div class="p3-grid" style="grid-template-columns: 1fr 1fr;">
+<figure><img src="figs/out/p3_butan_peru.svg" alt="Índices de dimensión, IDH e IDH-D de Bután y Perú">
+<figcaption><b>Figura TP3.15.</b> Bután frente a Perú, con los números de las partes A y B del TP: mismo ingreso, pero la educación y la desigualdad los separan.</figcaption></figure>
+<div class="box example"><div class="box-title">Bután en los números del TP</div>
+<ul>
+<li>IDH 0,698: desarrollo humano <b>medio</b>, con un ingreso casi igual al de Perú (0,745 contra 0,750).</li>
+<li>Lo que lo frena es la <b>educación</b>: índice 0,560, apenas 5,8 años promedio de escolaridad.</li>
+<li>Pierde 31,5 % por desigualdad (IDH-D 0,478) y tiene la <b>mayor brecha entre pérdida y CDH</b> de la tabla, por su 48,2 % de desigualdad educativa.</li>
+<li>Por eso cae por debajo de El Salvador al pasar al IDH-D.</li>
+</ul></div>
+</div>
+
+<h4>a) Ventajas y limitaciones de los indicadores de bienestar integral frente a los puramente económicos</h4>
+<table class="p3-t p3-brkt">
+<thead><tr><th style="width:50%">Ventajas</th><th>Limitaciones</th></tr></thead>
+<tbody>
+<tr><td>Capturan dimensiones del bienestar que el PBI ignora: salud, educación, cultura, ambiente, salud mental</td><td>Mayor subjetividad: medir “bienestar emocional” o “preservación cultural” exige decisiones discutibles</td></tr>
+<tr><td>Alinean la medición con el objetivo real de la política: la calidad de vida, no la producción</td><td>Problemas de comparabilidad internacional: cada país define y pondera distinto</td></tr>
+<tr><td>Permiten detectar crecimiento “malo”: aumento del producto con destrucción ambiental o social</td><td>Ponderaciones arbitrarias al agregar dimensiones heterogéneas</td></tr>
+<tr><td>Orientan la política hacia resultados y no hacia agregados monetarios</td><td>Riesgo de uso político: un índice propio es fácil de diseñar para que dé bien</td></tr>
+<tr><td>Recogen la crítica de Sen: el PBI mide medios, no fines</td><td>Menos operativos para decisiones económicas concretas —política fiscal, monetaria, deuda—</td></tr>
+</tbody></table>
+<p>La <b>Felicidad Nacional Bruta</b> de Bután es el caso extremo, y la posición de Jigme Singye Wangchuck resume la idea: <b>el desarrollo económico no tiene sentido si destruye la calidad de vida de la población</b>.</p>
+
+<figure><img src="figs/out/p3_butan_fnb.svg" alt="Pilares y dominios de la Felicidad Nacional Bruta comparados con el IDH y el IPS">
+<figcaption><b>Figura TP3.16.</b> Complemento para ubicar el índice (no está en el material de la cátedra; fuente: Centre for Bhutan Studies &amp; GNH Research): la FNB se apoya en 4 pilares y se mide con 9 dominios de igual peso. En azul, los tres que también mide el IDH; en verde, los que tienen un componente parecido en el IPS; en blanco, los que sólo mide la FNB. Esa columna blanca (bienestar psicológico, uso del tiempo, cultura, vida comunitaria) es a la vez su ventaja y su limitación: capta lo que el PBI ignora, pero es lo más subjetivo y lo menos comparable entre países.</figcaption></figure>
+
+<h4>b) Sostenibilidad ambiental y desarrollo humano: qué tensiones genera</h4>
+<p>La sostenibilidad es uno de los <b>tres fundamentos del desarrollo humano</b> según el PNUD 2010 —junto con la equidad y el empoderamiento—: satisfacer las necesidades presentes sin comprometer las de las generaciones futuras. Es, además, una de las cinco fuentes de divergencia entre crecimiento y desarrollo: <b>el PBI no descuenta el agotamiento del capital natural</b>, así que se puede crecer hoy destruyendo la base productiva de mañana.</p>
+<p>Las tensiones concretas que muestra el caso:</p>
+<div class="grid-2">
+  <div class="card orange"><div class="card-title">1 · Renuncia a ingresos presentes</div><p>Bután limita el turismo con una tasa diaria de unos 100 dólares y agencias autorizadas. <b>Resigna</b> divisas y empleo hoy <b>a cambio de</b> conservar el ambiente y la identidad cultural.</p></div>
+  <div class="card aqua"><div class="card-title">2 · Restricción de la producción industrial</div><p>Mantener más del 70 % del territorio forestado —con un mínimo constitucional del 60 %— limita la expansión de sectores intensivos en recursos. El resultado —único Estado carbono negativo del planeta— es un <b>bien público global financiado por un país pobre</b>.</p></div>
+  <div class="card violet"><div class="card-title">3 · Preservación frente a libertad individual</div><p>La vestimenta típica obligatoria en oficinas y escuelas y los diseños arquitectónicos impuestos por ley protegen la cultura, pero restringen la elección personal. Desde Sen esto es problemático: el desarrollo es expansión de libertades, y preservar la cultura por decreto puede recortar la <b>agencia</b> individual.</p></div>
+  <div class="card blue"><div class="card-title">4 · El costo del aislamiento</div><p>El propio país lo está revisando: el nuevo aeropuerto de Gelephu previsto para 2029 y la “ciudad consciente” buscan conectarse con el comercio regional sin abandonar las reglas ambientales.</p></div>
+</div>
+
+<h4>c) Aprendizajes para gobiernos y emprendedores</h4>
+<ol class="steps p3-st">
+  <li><span class="step-title">Lo que se mide define lo que se persigue</span>Un gobierno que sólo mide PBI optimiza PBI. Incorporar indicadores de bienestar cambia las decisiones.</li>
+  <li><span class="step-title">Las restricciones bien diseñadas crean valor</span>El modelo de “pocos turistas, alto valor” le da a Bután ingresos por visitante altos y evita la degradación que destruyó otros destinos del Himalaya. Limitar volumen para proteger calidad es también una estrategia comercial.</li>
+  <li><span class="step-title">La diferenciación es sostenible cuando es auténtica</span>Ser el único Estado carbono negativo es un activo reputacional que no se copia.</li>
+  <li><span class="step-title">La hidroelectricidad muestra cómo compatibilizar</span>Es a la vez su principal fuente de ingresos por exportación a India y una energía limpia: la restricción ambiental y el ingreso no siempre se oponen.</li>
+  <li><span class="step-title">El límite del ejemplo, que conviene mencionar</span>Bután es un país pequeño, con población reducida y un régimen político particular. Su modelo no es trasladable sin más a una economía grande con presión demográfica y necesidades urgentes de empleo. Además, crecer despacio es una opción más fácil de sostener cuando el ingreso alcanza para cubrir las necesidades básicas.</li>
+</ol>
+
+<div class="check"><div class="check-title">Autoevaluación</div>
+<ol>
+<li>¿Por qué el índice de años esperados de Australia vale 1 y no 20,7/18 = 1,15? <span class="muted">→ Porque supera el máximo y se trunca en 1.</span></li>
+<li>Un país tiene índices de salud 0,9, educación 0,9 e ingreso 0,4. ¿Su IDH es 0,733? <span class="muted">→ No: eso es la media aritmética. La geométrica da \((0{,}9\cdot0{,}9\cdot0{,}4)^{1/3}=0{,}687\): medio, no alto.</span></li>
+<li>Si \(A_s=A_e=A_i=20\,\%\), ¿cuánto valen la pérdida y el CDH? <span class="muted">→ Los dos 20 %: sólo coinciden cuando las tres desigualdades son iguales.</span></li>
+<li>¿Qué INB corresponde a un índice de ingreso de 0,700? <span class="muted">→ \(100\cdot750^{0{,}7}=10.293\) US$ PPA.</span></li>
+<li>Namibia tiene un índice de salud reproductiva de 0,0281 y Honduras de 0,0464; Costa Rica un IDG de 0,217 y Guinea de 0,609. ¿Quién está mejor en cada caso? <span class="muted">→ Honduras (logro: más alto es mejor) y Costa Rica (desigualdad: más bajo es mejor).</span></li>
+<li>En el IPS de R. Dominicana, nutrición y atención médica cayó 6,8 %. ¿Es una debilidad del país? <span class="muted">→ No necesariamente: con 84,13 sigue entre los tres componentes más altos. Nivel y variación, juntos.</span></li>
+</ol></div>
+
+<div class="box biblio"><div class="box-title">Bibliografía</div>
+<p>PNUD (2025), <i>Informe sobre Desarrollo Humano</i> (datos 2023) · PNUD (2016), <i>Notas técnicas del Informe sobre Desarrollo Humano</i> (IDH, IDH-D e IDG; la cátedra recomienda esta traducción al español) · Paz, cap. 4 “La métrica del bienestar” · Ray, cap. 2.4 · Stern, Wares y Orzell (2014), cap. 1 “Metodología del Índice de Progreso Social 2014” · Para el estudio de casos, el pilar de sostenibilidad: PNUD (2010), <i>Informe sobre Desarrollo Humano</i>. Complemento de la Figura TP3.16: Centre for Bhutan Studies &amp; GNH Research, índice de Felicidad Nacional Bruta.</p></div>
+
+</section>
