@@ -146,7 +146,7 @@ ax.annotate("E8: s = 0,25\nc* = 1,603", (0.25, 1.603), xytext=(0.03, 2.06), ha="
             color=C["ink"], arrowprops=dict(arrowstyle="-", color=C["ink3"], lw=0.8))
 ax.annotate("regla de oro: s = α = 0,40\nc* = 1,754 (máximo)", (0.40, 1.754), xytext=(0.47, 2.06), ha="left",
             va="top", fontsize=7.9, color=C["ink"], arrowprops=dict(arrowstyle="-", color=C["ink3"], lw=0.8))
-ax.text(0.385, 0.07, "← subacumulación (s < α)", fontsize=7.6, color=C["ink2"], ha="right", va="bottom")
-ax.text(0.415, 0.07, "sobreacumulación (s > α) →", fontsize=7.6, color=C["ink2"], ha="left", va="bottom")
+ax.text(0.385, 0.07, "← subacumulación (s < α)", fontsize=7.6, color=C["ink2"], ha="right", va="bottom", bbox=dict(fc="white", ec="none", pad=0.8), zorder=6)
+ax.text(0.415, 0.07, "sobreacumulación (s > α) →", fontsize=7.6, color=C["ink2"], ha="left", va="bottom", bbox=dict(fc="white", ec="none", pad=0.8), zorder=6)
 save(fig, "p1_f_regla_oro")
 print("ok", round(g, 6), round(ks, 3))

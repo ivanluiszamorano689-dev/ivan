@@ -28,7 +28,7 @@ for ax, title, (xm, ym), py in [(axs[0], "Ayuna por decisión (persona rica)", (
 a = axs[0]
 a.text(2.25, 1.0, "conjunto de capacidad\n(el menú): amplio", ha="center", fontsize=8.2, color=C["violet"],
        fontweight="bold")
-a.annotate("elige ayunar\n(el plato)", (xf, 2.25), xytext=(1.0, 2.75), fontsize=8, color=C["ink"],
+a.annotate("elige ayunar\n(el plato)", (xf, 2.25), xytext=(1.0, 2.3), fontsize=8, color=C["ink"], va="center",
            fontweight="bold", ha="left", arrowprops=dict(arrowstyle="-", color=C["ink3"], lw=0.8))
 a.plot([3.0], [1.9], "o", ms=6.5, mfc="white", mec=C["ink2"], mew=1.3, zorder=5)
 a.annotate("podía comer bien", (3.0, 1.9), xytext=(3.2, 2.75), fontsize=7.8, color=C["ink2"], ha="left",
