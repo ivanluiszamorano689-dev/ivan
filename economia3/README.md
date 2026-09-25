@@ -7,7 +7,7 @@ Material de estudio de Economía III (FCEJyS, UNSa) para el primer parcial (Tema
 | Archivo | Qué es |
 |---|---|
 | `1_Manual_de_teoria_Temas_1_a_3.pdf` | El manual de teoría mejorado y completado: gráficos de todos los modelos, diagramas de conceptos, fórmulas, ejemplos resueltos, errores típicos y las preguntas reales de parcial de cada tema. |
-| `2_Practica_resuelta_1er_parcial.pdf` | La práctica resuelta (TP1 a TP4 y los ejercicios extra) mejorada: cada ejercicio va enunciado → pasos → cuentas → respuesta → gráfico. Suma un simulacro nuevo tipo parcial. |
+| `2_Practica_resuelta_1er_parcial.pdf` | La práctica resuelta (TP1 a TP4 y los ejercicios extra) mejorada: cada ejercicio va enunciado → pasos → cuentas → respuesta → gráfico. |
 | `3_Parciales_resueltos.pdf` | Los 9 exámenes reales del primer parcial (2022–2025), transcriptos y resueltos. Para cada opción dice por qué es o no es la correcta, y trae la grilla de respuestas. |
 | `4_Paso_a_paso_ejercicios.pdf` | Cómo se resuelve cada ejercicio de parcial, cuenta por cuenta. Incluye la receta de cada tipo de ejercicio, el uso de la calculadora, los controles y qué error lleva a cada opción incorrecta. |
 

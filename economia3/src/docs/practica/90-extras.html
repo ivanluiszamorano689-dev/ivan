@@ -1,39 +1,269 @@
 <section class="tema-2">
-<div class="chapter-head"><div class="kicker">Anexo</div><h2>Errores que hacen perder puntos y ejercicios extra</h2>
-<p>Versión preliminar: esta sección se incluye tal como está en la práctica original (págs. 48 a 59) mientras se termina su versión graficada.</p></div>
-<h3>Errores que hacen perder puntos</h3>
-<figure style="margin:0"><img src="figs/out/p9_original_p48.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
+
+<div class="chapter-head">
+<div class="kicker">Práctica · cierre</div>
+<h2>Errores que hacen perder puntos</h2>
+<p>Qué vas a poder hacer: repasar, agrupados por tema, los errores que más puntos hacen perder en los cuatro TPs y en los parciales reales, y resolver doce ejercicios extra tipo parcial con la resolución completa, paso a paso.</p>
+</div>
+
+<p>Salen de los propios ejercicios de los cuatro TPs, más los que aparecen en los parciales reales ya resueltos en este material. Vale la pena releerlos la noche anterior al parcial.</p>
+
+<h3>En tasas de crecimiento</h3>
+
+<div class="box warn"><div class="box-title">Confundir cantidad de datos con cantidad de períodos</div><p><b>Mal:</b> contar las observaciones. <b>Correcto:</b> contá los <i>períodos</i> entre ellas (observaciones menos uno). <b>Ejemplo:</b> de 2010 a 2023 hay 14 datos pero 13 períodos: la tasa media usa 13; con 14 (mal) el resultado da 0,45&nbsp;% en lugar de 0,489&nbsp;%. <b>Mismo error, otro parcial</b> <span class="tag orange">P6/P7 · Ej. 2 b)</span>: entre 2018 y 2023 hay 5 períodos, no 6; con 5, la tasa media de Ucrania es \((5.181/3.097)^{1/5}-1=10{,}84\,\%\).</p></div>
+
+<div class="box warn"><div class="box-title">Promediar aritméticamente las tasas anuales</div><p><b>Mal:</b> sacar el promedio simple de las tasas de cada año. <b>Correcto:</b> la tasa media es geométrica: \(\left(Y_f/Y_i\right)^{1/n}-1\). <b>Ejemplo:</b> crecer 50&nbsp;% y después caer 50&nbsp;% no deja la economía igual: la deja en el 75&nbsp;% del valor inicial (\(1{,}5\times 0{,}5=0{,}75\)), no en el 100&nbsp;% que sugeriría promediar \(+50\) y \(-50\).</p></div>
+
+<div class="box warn"><div class="box-title">Confundir tasa acumulada con tasa media</div><p><b>Mal:</b> usar una por la otra, o mezclarlas en la misma cuenta. <b>Correcto:</b> la acumulada es el cambio total del período completo; la media es la tasa anual constante equivalente que reproduce ese cambio. <b>Ejemplo:</b> en el ejercicio E1 de más abajo, acumulada&nbsp;=&nbsp;21,67&nbsp;% (2015→2024) y media&nbsp;=&nbsp;2,203&nbsp;% anual: son dos números distintos que responden preguntas distintas.</p></div>
+
+<div class="box warn"><div class="box-title">Usar PBI nominal para medir crecimiento</div><p><b>Mal:</b> comparar el PBI a precios corrientes de dos años. <b>Correcto:</b> usá siempre PBI real, a precios constantes, para que la tasa refleje cantidades y no inflación.</p></div>
+
+<h3>En tipo de cambio y PPA</h3>
+
+<div class="box warn"><div class="box-title">Calcular el tipo de cambio de mercado con el bien no transable</div><p><b>Mal:</b> usar cualquiera de los dos bienes. <b>Correcto:</b> el \(TC_m\) sale solo del bien <b>transable</b> (el que se comercia internacionalmente): es el único al que se le aplica la ley de un solo precio.</p></div>
+
+<div class="box warn"><div class="box-title">Invertir el tipo de cambio</div><p><b>Mal:</b> multiplicar por el \(TC\) para pasar de moneda local a dólares cuando está expresado en pesos por dólar. <b>Correcto:</b> hay que dividir. <b>Chequeo mental:</b> un país pobre no puede tener un PBI en dólares mayor que en su moneda local si el tipo de cambio es mayor que 1.</p></div>
+
+<div class="box warn"><div class="box-title">Equivocar el signo de la sub/sobrevaluación</div><p><b>Mal:</b> invertir el signo de \((TC_{ppa}-TC_m)/TC_m\). <b>Correcto:</b> negativo = subvaluada; positivo = sobrevaluada. <b>Chequeo de sentido común:</b> si la Big Mac cuesta menos en dólares que en Estados Unidos, la moneda está subvaluada. <b>Ejemplo:</b> en el E2 de más abajo, \(TC_{ppa}=1.557{,}38 > TC_m=1.180\) da \(+31{,}98\,\%\): sobrevaluada (la Big Mac sale 8,05 dólares contra 6,10 en EE.&nbsp;UU.).</p></div>
+
+<div class="box warn"><div class="box-title">Usar canastas distintas para cada país al calcular la PPA</div><p><b>Mal:</b> valuar a cada país con su propia canasta de producción. <b>Correcto:</b> la canasta tiene que ser <b>la misma</b> —típicamente la de un país de referencia— valuada a los precios de cada uno. <b>Ejemplo:</b> en el E3 de más abajo, la canasta que se compara es siempre la del Norte (400&nbsp;t de trigo, 1.200 cortes), primero a precios del Sur y después a precios del Norte.</p></div>
+
+<h3>En índices de desarrollo humano</h3>
+
+<div class="box warn"><div class="box-title">Olvidar el logaritmo en el índice de ingreso</div><p><b>Mal:</b> tratar el ingreso como las otras dos dimensiones (resta simple entre valores). <b>Correcto:</b> es la única dimensión que se normaliza en logaritmos: \(I_{ing}=\dfrac{\ln(\text{INB})-\ln(100)}{\ln(75.000)-\ln(100)}\). Omitir el logaritmo cambia todos los resultados.</p></div>
+
+<div class="box warn"><div class="box-title">No truncar en el máximo</div><p><b>Mal:</b> dejar el índice de una dimensión por encima de 1. <b>Correcto:</b> si el dato supera el máximo de la escala, el índice vale 1,000. <b>Ejemplo:</b> Argentina con 18,8 años esperados de escolaridad (tope 18) o Suiza con un INB de 81.949 (tope 75.000): en los dos casos el índice es 1,000, no más.</p></div>
+
+<div class="box warn"><div class="box-title">Promediar las dos variables de educación de forma geométrica</div><p><b>Mal:</b> usar media geométrica entre años esperados y años promedio de escolaridad. <b>Correcto:</b> entre esas dos el promedio es <b>aritmético</b>; la media geométrica se aplica recién entre las tres dimensiones (salud, educación, ingreso).</p></div>
+
+<div class="box warn"><div class="box-title">Confundir pérdida porcentual con coeficiente de desigualdad humana</div><p><b>Mal:</b> usarlos como si fueran lo mismo. <b>Correcto:</b> la pérdida compara IDH-D con IDH (dos medias geométricas); el coeficiente es el promedio aritmético simple de las tres desigualdades. Nunca coinciden exactamente. <b>Ejemplo:</b> en el E5 de más abajo, pérdida&nbsp;=&nbsp;26,3&nbsp;% y CDH&nbsp;=&nbsp;26,0&nbsp;%: parecidos, pero no iguales.</p></div>
+
+<div class="box warn"><div class="box-title">No pasar los porcentajes a tanto por uno <span class="tag orange">2023 · Ej. 2</span></div><p><b>Mal:</b> usar el número del porcentaje directamente en la fórmula: 7,4 de desigualdad como «7,4» en vez de «0,074». <b>Correcto:</b> siempre pasalo a tanto por uno antes de multiplicar. <b>Ejemplo real:</b> con una desigualdad en esperanza de vida de 2,7&nbsp;%, leerla como 27&nbsp;% da un índice ajustado de \(0{,}993\times(1-0{,}27)=0{,}725\); la cuenta correcta es \(0{,}993\times(1-0{,}027)=0{,}966\), la opción de la clave.</p></div>
+
+<div class="box warn"><div class="box-title">Leer el IDG como si fuera el IDH <span class="tag orange">Namibia/Honduras</span></div><p><b>Mal:</b> pensar «más alto es mejor» también en el IDG, o aplicarle esa misma lógica a sus índices de logro. <b>Correcto:</b> en el IDG <b>final</b>, 0 es igualdad perfecta y valores más bajos indican menos desigualdad de género (mejor); pero sus componentes —como el índice de salud reproductiva— son índices de <b>logro</b>, igual que en el IDH: ahí más alto es mejor. <b>Ejemplo real:</b> decir que el índice de salud de Namibia es mejor «porque está más cerca de 0» está mal: Honduras (0,523) tiene mejor salud reproductiva que Namibia (0,514) porque su índice es <b>mayor</b> (mortalidad materna tres veces menor).</p></div>
+
+<div class="box warn"><div class="box-title">Usar media aritmética entre GM y GV</div><p><b>Mal:</b> promediar aritméticamente los grupos de mujeres y de varones. <b>Correcto:</b> es media <b>armónica</b> —\(\left[(1/GM+1/GV)/2\right]^{-1}\)— justamente para que la desigualdad entre los dos grupos pese más que con un promedio simple.</p></div>
+
+<div class="box warn"><div class="box-title">Olvidar que \(PR_V=1-PR_M\)</div><p><b>Mal:</b> dejar sin dato la representación parlamentaria de los varones. <b>Correcto:</b> el cuadro del IDG solo informa la femenina; la de los varones es su complemento. <b>Ejemplo:</b> en el E6 de más abajo, \(PR_M=28{,}0\,\%\Rightarrow PR_V=72{,}0\,\%\).</p></div>
+
+<div class="box warn"><div class="box-title">Poner el índice de salud reproductiva de los varones en 0</div><p><b>Mal:</b> dejarlo en 0 «porque no hay dato de mortalidad materna para varones». <b>Correcto:</b> vale <b>1</b>: los varones no tienen indicador de mortalidad materna ni de fecundidad adolescente, así que esa dimensión no los penaliza.</p></div>
+
+<h3>En los modelos de crecimiento</h3>
+
+<div class="box warn"><div class="box-title">Interpretar «aumenta en un 25&nbsp;%» como sumar 25 puntos</div><p><b>Mal:</b> \(n+25\). <b>Correcto:</b> es una variación relativa sobre el valor original: \(n_{nuevo}=n\times 1{,}25\). <b>Ejemplo:</b> si \(n=9\,\%\) y aumenta 25&nbsp;%, queda \(11{,}25\,\%\), no \(34\,\%\).</p></div>
+
+<div class="box warn"><div class="box-title">Confundir el exponente del estado estacionario <span class="tag orange">2023 · Ej. 1 a)</span></div><p><b>Mal:</b> usar el mismo exponente para \(k^*\) y para \(y^*\), o calcular \(y^*=k^{*\alpha}\) sin la constante \(A\) de la función de producción. <b>Correcto:</b> \(k^*\) usa \(1/(1-\alpha)\), \(y^*\) usa \(\alpha/(1-\alpha)\) —y además \(y^*=A\cdot k^{*\alpha}\), nunca te olvides de \(A\). <b>Ejemplo:</b> con \(\alpha=0{,}65\) los exponentes son \(2{,}857\) y \(1{,}857\). <b>Ejemplo real:</b> con \(A=1{,}5\) y \(\alpha=5/6\), la opción que pone \(y^*=k^{*\,5/6}=11{,}455\) se olvidó de \(A\); el valor correcto es \(y^*=1{,}5\times 11{,}456=17{,}184\).</p></div>
+
+<div class="box warn"><div class="box-title">Decir que una mayor tasa de ahorro aumenta la tasa de crecimiento de largo plazo</div><p><b>Mal:</b> «más ahorro, más crecimiento para siempre». <b>Correcto:</b> el ahorro sube el <b>nivel</b> de \(k^*\) e \(y^*\), no la tasa de crecimiento de largo plazo del producto per cápita —que es cero sin tecnología y \(x\) con tecnología, cualquiera sea \(s\)—. Es el error conceptual que más se castiga en los parciales.</p></div>
+
+<div class="box warn"><div class="box-title">Confundir \(\gamma_k\) con \(\gamma_y\)</div><p><b>Mal:</b> usarlas como si fueran la misma tasa. <b>Correcto:</b> con Cobb-Douglas, \(\gamma_y=\alpha\cdot\gamma_k\): \(\gamma_y\) siempre es menor que \(\gamma_k\) (para \(0<\alpha<1\)).</p></div>
+
+<div class="box warn"><div class="box-title">Olvidar \(n\) en la depreciación efectiva</div><p><b>Mal:</b> usar solo \(\delta\). <b>Correcto:</b> es \((\delta+n)\) —y con tecnología, \((\delta+n+x)\)—: la población (y el progreso técnico) también diluyen el capital por trabajador.</p></div>
+
+<div class="box warn"><div class="box-title">Decir que en el estado estacionario la economía no crece</div><p><b>Mal:</b> «en el EE no hay crecimiento». <b>Correcto:</b> las variables <b>per cápita</b> no crecen sin tecnología (o crecen a \(x\) con tecnología); las <b>agregadas</b> siempre crecen: a \(n\) sin tecnología, a \(n+x\) con tecnología.</p></div>
+
+<div class="box warn"><div class="box-title">Creer que un \(x\) mayor empobrece porque baja \(\kt^*\)</div><p><b>Mal:</b> mirar solo que \(\kt^*\) cae. <b>Correcto:</b> \(\kt\) es una variable auxiliar (capital por unidad de trabajo efectivo); el capital por trabajador real es \(k=\kt\cdot A\), y \(A\) crece más rápido cuanto mayor es \(x\): el país siempre termina más rico.</p></div>
+
+<div class="box warn"><div class="box-title">En Harrod-Domar, olvidar restar \(n\) en la tasa per cápita</div><p><b>Mal:</b> usar \(g_Y=s/v-\delta\) (agregada) cuando piden la per cápita. <b>Correcto:</b> \(g_y=s/v-\delta-n\).</p></div>
+
+<div class="box warn"><div class="box-title">En Romer, poner \(\varphi\) en el numerador</div><p><b>Mal:</b> \(g=\lambda\cdot n\cdot(1-\varphi)\). <b>Correcto:</b> \(g=\lambda\cdot n/(1-\varphi)\): \(\varphi\) va en el denominador, y por eso su efecto se amplifica a medida que se acerca a 1 —no es proporcional, como el de \(\lambda\) y \(n\).</p></div>
+
+<div class="box warn"><div class="box-title">Confundir funciones con curvas <span class="tag orange">2023 · Ej. 1 b)</span></div><p><b>Mal:</b> llamar «curva de ahorro» a la función en niveles, o mezclar sus fórmulas. <b>Correcto:</b> las <b>funciones</b> (en niveles, unidades de producto) son \(FA=sAk^{\alpha}\) y \(FD=(n+\delta)k\); las <b>curvas</b> (en tasas, para el gráfico \(\gamma\) vs. \(k\)) son \(CA=sA/k^{1-\alpha}\) y \(CD=n+\delta\). No son intercambiables: la trampa típica pone en la curva el exponente \(\alpha\) de la función en lugar de \(1-\alpha\).</p></div>
+
+<div class="box warn"><div class="box-title">Tomar la participación del trabajo como \(\alpha\) <span class="tag orange">P8 · Ej. 1 a)</span></div><p><b>Mal:</b> si el dato es «la participación del trabajo en el producto es 0,6», usar directamente \(\alpha=0{,}6\). <b>Correcto:</b> \(\alpha\) es la participación del <b>capital</b>; si el dato es la del trabajo, \(\alpha=1-0{,}6=0{,}4\).</p></div>
+
+<div class="box warn"><div class="box-title">«Disminuye a 10&nbsp;%» vs. «disminuye un 10&nbsp;%» <span class="tag orange">P8 · Ej. 1 b)</span></div><p><b>Mal:</b> leer «la tasa de ahorro disminuye a 10&nbsp;%» como una caída relativa del 10&nbsp;% (\(s\) pasaría de 15&nbsp;% a 13,5&nbsp;%). <b>Correcto:</b> «a 10&nbsp;%» fija el <b>nuevo nivel</b>: \(s=0{,}10\). («Disminuye <i>un</i> 10&nbsp;%» sí sería relativo.)</p></div>
+
+<div class="box warn"><div class="box-title">Invertir el cociente en \(\kt^*\) <span class="tag orange">P7 · Ej. 3 b)</span></div><p><b>Mal:</b> calcular \((n+g+\delta)/s\) en lugar de \(s/(n+g+\delta)\). <b>Correcto:</b> \(\kt^*=\left[\dfrac{s}{n+g+\delta}\right]^{1/(1-\alpha)}\). <b>Ejemplo real:</b> con \(s=0{,}15\) y \(n+g+\delta=0{,}30\): bien da \((0{,}15/0{,}30)^2=0{,}25\); invertido da \((0{,}30/0{,}15)^2=4\) —la trampa de la opción «4 y 2» del parcial.</p></div>
+
+<div class="box warn"><div class="box-title">El signo del exponente en la curva de ahorro <span class="tag orange">P6 · Ej. 3 c)</span></div><p><b>Mal:</b> escribir \(0{,}2/\kt^{-0,5}\), que en realidad equivale a \(0{,}2\cdot\kt^{0,5}\) —creciente, nunca corta a la depreciación desde arriba—. <b>Correcto:</b> la curva de ahorro es \(CA=s\cdot\kt^{\alpha-1}=0{,}2\cdot\kt^{-0,5}=0{,}2/\kt^{0,5}\): fijate que el exponente quede positivo <b>en el denominador</b>, no como potencia negativa suelta.</p></div>
+
+<h3>De forma</h3>
+
+<div class="box warn"><div class="box-title">No interpretar el resultado</div><p><b>Mal:</b> dejar solo el número. <b>Correcto:</b> casi todas las consignas piden «explique», «interprete» o «fundamente»: un número correcto sin una línea de interpretación pierde la mitad del puntaje del inciso.</p></div>
+
+<div class="box warn"><div class="box-title">No verificar</div><p><b>Mal:</b> entregar la cuenta sin control. <b>Correcto:</b> con Cobb-Douglas siempre vale \(y^*=k^*(\delta+n)/s\): dos segundos de chequeo evitan arrastrar un error por todo el ejercicio.</p></div>
+
+<div class="box warn"><div class="box-title">No aclarar los supuestos cuando los datos son ambiguos</div><p><b>Mal:</b> inventar un resultado para que la cuenta cierre. <b>Correcto:</b> si algo no cierra con los datos dados, decirlo explícitamente suma puntos; inventarlo, resta.</p></div>
+
 <div class="page-break"></div>
 
-<figure style="margin:0"><img src="figs/out/p9_original_p49.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
-<div class="page-break"></div>
-<h3>Ejercicios extra — enunciados</h3>
-<figure style="margin:0"><img src="figs/out/p9_original_p50.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
-<div class="page-break"></div>
+<h2>Ejercicios extra</h2>
+<p>Doce ejercicios del mismo tipo que toma la cátedra, con datos distintos de los de los TPs y de los parciales. Conviene resolverlos completos —tapando la caja de respuesta— antes de mirar la resolución.</p>
 
-<figure style="margin:0"><img src="figs/out/p9_original_p51.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
-<div class="page-break"></div>
+<h3>E1 · Tasas de crecimiento</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>El PBI real de un país fue de 420.000 millones en 2015 y de 511.000 millones en 2024.
+a) Calculá la tasa de crecimiento acumulada del período. b) Calculá la tasa media anual de crecimiento. c) Si la población creció al 1,2&nbsp;% anual, ¿qué pasó con el PBI per cápita?</p></div>
+<ol class="steps">
+<li><span class="step-title">a) Tasa acumulada</span>Es el cambio total entre el primer y el último año, sobre el valor inicial.
+<div class="calc">\[ \frac{Y_{2024}-Y_{2015}}{Y_{2015}} = \frac{511.000-420.000}{420.000} = 0{,}2167 \;\to\; 21{,}67\,\% \]</div></li>
+<li><span class="step-title">b) Tasa media anual</span>Contá los períodos —2024 menos 2015 son 9, no 10— y usá la fórmula geométrica.
+<div class="calc">\[ n = 2024-2015 = 9 \qquad \left(\frac{511.000}{420.000}\right)^{1/9}-1 = 0{,}02203 \;\to\; 2{,}203\,\%\text{ anual} \]</div></li>
+<li><span class="step-title">c) Efecto de la población</span>Para pasar a per cápita dividí \((1+g_Y)\) por \((1+g_L)\), tanto en la versión anual como en la acumulada.
+<div class="calc">\[\begin{aligned} \text{anual:}&\quad \frac{1{,}02203}{1{,}012}-1 = 0{,}0099 \;\to\; 0{,}99\,\%\\ \text{acumulada:}&\quad \frac{1{,}2167}{1{,}012^{9}}-1 = 0{,}0928 \;\to\; 9{,}28\,\% \end{aligned}\]</div>
+El producto por habitante creció menos de la mitad que el producto total: casi la mitad del crecimiento se fue en absorber a la población adicional.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a)&nbsp;21,67&nbsp;% acumulada · b)&nbsp;2,203&nbsp;% anual (con 9 períodos, no 10) · c)&nbsp;0,99&nbsp;% anual per cápita (9,28&nbsp;% acumulado): la población absorbió buena parte del crecimiento.</div></div>
 
-<figure style="margin:0"><img src="figs/out/p9_original_p52.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
-<div class="page-break"></div>
-<h3>Ejercicios extra — respuestas</h3>
-<figure style="margin:0"><img src="figs/out/p9_original_p53.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
-<div class="page-break"></div>
+<h3>E2 · Índice Big Mac</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>En enero de 2026 la Big Mac cuesta US$&nbsp;6,10 en Estados Unidos. En el país X cuesta 9.500 en moneda local y el tipo de cambio de mercado es de 1.180 por dólar.
+a) ¿Cuál es el precio de la Big Mac en dólares en el país X? b) ¿Cuál es el tipo de cambio PPA implícito? c) ¿La moneda del país X está sub o sobrevaluada, y en qué porcentaje? d) Mencioná tres limitaciones del método.</p></div>
+<ol class="steps">
+<li><span class="step-title">a) Precio en dólares</span>Convertí el precio local al tipo de cambio de mercado.
+<div class="calc">\[ P^{USD} = \frac{9.500}{1.180} = 8{,}051 \]</div></li>
+<li><span class="step-title">b) Tipo de cambio PPA implícito</span>Es el que iguala el precio de la Big Mac entre los dos países.
+<div class="calc">\[ TC_{ppa} = \frac{9.500}{6{,}10} = 1.557{,}38 \]</div></li>
+<li><span class="step-title">c) Sub o sobrevaluación</span>Compará \(TC_{ppa}\) contra \(TC_m\).
+<div class="calc">\[ \frac{TC_{ppa}-TC_m}{TC_m} = \frac{1.557{,}38-1.180}{1.180} = +0{,}3198 \;\to\; \textbf{sobrevaluada } 31{,}98\,\% \]</div>
+La Big Mac cuesta 8,05 dólares en el país X contra 6,10 en Estados Unidos: en dólares es un 32&nbsp;% más cara, así que la moneda local está sobrevaluada frente al dólar.</li>
+<li><span class="step-title">d) Limitaciones del método</span>Tres alcanzan: es un solo bien, no una canasta representativa; mezcla no transables —alquiler, salarios, energía— con pesos distintos en cada país; incluye impuestos indirectos diferentes; McDonald's fija precios con poder de mercado, no solo según costos; y no ocupa el mismo lugar en el consumo de un país rico que en uno pobre.</li>
+</ol>
+<figure class="w80"><img src="figs/out/p9_bigmac.svg">
+<figcaption><b>Figura E.1.</b> Sub/sobrevaluación cambiaria según el índice Big Mac: el país X de este ejercicio (parte del gráfico, sobrevaluado) junto con los cuatro países del Ej.&nbsp;2 del Primer Parcial 2025 (todos subvaluados frente al dólar en julio de 2024). Fijate que la barra a favor (derecha) es la única sobrevaluada.</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a)&nbsp;US$&nbsp;8,051 · b)&nbsp;\(TC_{ppa}=1.557{,}38\) · c)&nbsp;sobrevaluada 31,98&nbsp;%.</div></div>
 
-<figure style="margin:0"><img src="figs/out/p9_original_p54.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
-<div class="page-break"></div>
+<h3>E3 · Tipo de cambio de mercado contra PPA</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>Dos economías producen trigo —que se comercia internacionalmente— y cortes de pelo —que no—.</p>
+<table class="compact">
+<thead><tr><th></th><th class="num">Trigo (tn)</th><th class="num">Precio trigo</th><th class="num">Cortes de pelo</th><th class="num">Precio corte</th></tr></thead>
+<tbody><tr><td>Norte</td><td class="num">400</td><td class="num">20</td><td class="num">1.200</td><td class="num">60</td></tr>
+<tr><td>Sur</td><td class="num">300</td><td class="num">900</td><td class="num">900</td><td class="num">1.500</td></tr></tbody></table>
+<p>a) Calculá el tipo de cambio de mercado, tomando la moneda del Norte como referencia. b) Expresá el PBI del Sur en moneda del Norte y calculá el cociente entre ambos PBI. c) Calculá el tipo de cambio PPA y repetí el cociente. d) Explicá por qué difieren y cuál usarías para comparar bienestar material.</p></div>
+<ol class="steps">
+<li><span class="step-title">a) Tipo de cambio de mercado</span>Sale del bien transable: precio del trigo en el Sur sobre precio del trigo en el Norte.
+<div class="calc">\[ TC_m = \frac{900}{20} = 45 \quad\text{(unidades del Sur por unidad del Norte)} \]</div></li>
+<li><span class="step-title">b) PBI a tipo de cambio de mercado</span>Cada PBI en su propia moneda, y después convertí el del Sur.
+<div class="calc">\[\begin{aligned} PBI_{Norte} &= 400\times 20 + 1.200\times 60 = 8.000+72.000 = 80.000\\ PBI_{Sur} &= 300\times 900 + 900\times 1.500 = 270.000+1.350.000 = 1.620.000\\ PBI_{Sur}^{TCm} &= 1.620.000/45 = 36.000\\ \frac{PBI_{Norte}}{PBI_{Sur}^{TCm}} &= \frac{80.000}{36.000} = 2{,}22\text{ veces} \end{aligned}\]</div></li>
+<li><span class="step-title">c) Tipo de cambio PPA</span>Valuá la canasta del Norte a los precios de cada país.
+<div class="calc">\[\begin{aligned} \text{canasta Norte a precios del Sur} &= 400\times 900+1.200\times 1.500 = 2.160.000\\ \text{canasta Norte a precios del Norte} &= 400\times 20+1.200\times 60 = 80.000\\ TC_{ppa} &= 2.160.000/80.000 = 27\\ PBI_{Sur}^{PPA} &= 1.620.000/27 = 60.000\\ \frac{PBI_{Norte}}{PBI_{Sur}^{PPA}} &= \frac{80.000}{60.000} = 1{,}33\text{ veces} \end{aligned}\]</div></li>
+<li><span class="step-title">d) Por qué difieren</span>De 2,22 a 1,33 veces. Difieren porque el tipo de cambio de mercado surge solo del trigo, el único bien que cruza la frontera: los cortes de pelo son mucho más baratos en el Sur en términos relativos —un corte vale 3 toneladas de trigo en el Norte y 1,67 en el Sur—, y al convertir todo el PBI del Sur con un tipo de cambio que solo refleja el bien transable se subestima su producción de servicios. Para comparar bienestar material conviene la PPA, porque el bienestar depende de lo que la gente puede comprar en su propio país, incluidos los no transables.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a)&nbsp;\(TC_m=45\) · b)&nbsp;cociente a TCm&nbsp;=&nbsp;2,22 veces (\(PBI_{Sur}^{TCm}=36.000\)) · c)&nbsp;\(TC_{ppa}=27\); cociente a PPA&nbsp;=&nbsp;1,33 veces · d)&nbsp;para bienestar material conviene la PPA.</div></div>
 
-<figure style="margin:0"><img src="figs/out/p9_original_p55.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
-<div class="page-break"></div>
+<h3>E4 · Índice de Desarrollo Humano</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>Un país presenta en 2023: esperanza de vida al nacer 71,5 años · años esperados de escolaridad 13,4 · años promedio de escolaridad 8,2 · INB per cápita 9.800 dólares PPA. Calculá los índices de dimensión, el IDH y clasificá al país.</p></div>
+<ol class="steps">
+<li><span class="step-title">Índice de salud</span><div class="calc">\[ I_{salud} = \frac{71{,}5-20}{65} = 0{,}792 \]</div></li>
+<li><span class="step-title">Índice de educación</span>Promedio aritmético de los dos sub-índices.
+<div class="calc">\[ I_{años\,esp} = \frac{13{,}4}{18} = 0{,}744 \qquad I_{años\,prom} = \frac{8{,}2}{15} = 0{,}547 \qquad I_{educ} = \frac{0{,}744+0{,}547}{2} = 0{,}646 \]</div></li>
+<li><span class="step-title">Índice de ingreso</span>La única dimensión en logaritmos.
+<div class="calc">\[ I_{ing} = \frac{\ln(9.800)-\ln(100)}{\ln(75.000)-\ln(100)} = \frac{9{,}1901-4{,}6052}{6{,}6200} = 0{,}693 \]</div></li>
+<li><span class="step-title">IDH</span>Media geométrica de las tres dimensiones.
+<div class="calc">\[ IDH = (0{,}792\times 0{,}646\times 0{,}693)^{1/3} = 0{,}708 \]</div>
+Clasificación: desarrollo humano <b>alto</b> —está en el rango 0,700 a 0,799, apenas por encima del corte—.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(IDH=0{,}708\) → desarrollo humano alto.</div></div>
 
-<figure style="margin:0"><img src="figs/out/p9_original_p56.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
-<div class="page-break"></div>
+<h3>E5 · IDH ajustado por desigualdad (IDH-D)</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>Para el mismo país del ejercicio anterior, las desigualdades son: en esperanza de vida 18&nbsp;% · en educación 26&nbsp;% · en ingresos 34&nbsp;%. Calculá el IDH-D, la pérdida porcentual y el coeficiente de desigualdad humana. Explicá por qué los dos últimos no coinciden.</p></div>
+<ol class="steps">
+<li><span class="step-title">Factor de ajuste</span>Media geométrica de los complementos de cada desigualdad.
+<div class="calc">\[ \text{Factor} = \left[(1-0{,}18)(1-0{,}26)(1-0{,}34)\right]^{1/3} = (0{,}82\times 0{,}74\times 0{,}66)^{1/3} = 0{,}737 \]</div></li>
+<li><span class="step-title">IDH-D y pérdida</span><div class="calc">\[ IDH\text{-}D = 0{,}737\times 0{,}708 = 0{,}522 \qquad \text{Pérdida} = 1-\frac{0{,}522}{0{,}708} = 26{,}3\,\% \]</div></li>
+<li><span class="step-title">Coeficiente de desigualdad humana (CDH)</span><div class="calc">\[ CDH = \frac{0{,}18+0{,}26+0{,}34}{3} = 26{,}0\,\% \]</div>
+Por qué no coinciden: la pérdida compara dos medias geométricas —el IDH y el IDH-D—, mientras que el CDH es la media aritmética simple de las tres desigualdades. La pérdida siempre resulta igual o mayor, porque la media geométrica penaliza además que las desigualdades estén desparejas entre dimensiones; acá la diferencia es chica —0,3 puntos— porque las tres desigualdades son relativamente parecidas. Notá también cómo el ajuste hace caer al país de desarrollo humano alto (0,708) a bajo (0,522): un buen ejemplo de por qué el promedio no alcanza.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(IDH\text{-}D=0{,}522\) · pérdida&nbsp;=&nbsp;26,3&nbsp;% · \(CDH=26{,}0\,\%\) (no coinciden porque una es geométrica y el otro es aritmético).</div></div>
 
-<figure style="margin:0"><img src="figs/out/p9_original_p57.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
-<div class="page-break"></div>
+<h3>E6 · Índice de Desigualdad de Género (IDG)</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>Calculá el IDG de un país con los siguientes datos de 2023. Interpretá el resultado y señalá cuál es la dimensión más desigual.</p>
+<table class="compact">
+<thead><tr><th>Indicador</th><th class="num">Mujeres</th><th class="num">Varones</th></tr></thead>
+<tbody><tr><td>Tasa de mortalidad materna (cada 100.000 nacidos vivos)</td><td class="num">70</td><td class="num">—</td></tr>
+<tr><td>Tasa de fecundidad adolescente (cada 1.000 mujeres 15-19)</td><td class="num">48,5</td><td class="num">—</td></tr>
+<tr><td>Representación parlamentaria (%)</td><td class="num">28,0</td><td class="num">—</td></tr>
+<tr><td>Educación secundaria y superior (%)</td><td class="num">62,0</td><td class="num">69,0</td></tr>
+<tr><td>Participación en el mercado laboral (%)</td><td class="num">49,0</td><td class="num">74,0</td></tr></tbody></table></div>
+<ol class="steps">
+<li><span class="step-title">Completar lo que falta</span>El cuadro solo informa la representación parlamentaria femenina; la de los varones es el complemento. El índice de salud reproductiva de los varones vale 1 (no tienen esa dimensión).
+<div class="calc">\[ PR_V = 1-0{,}28 = 0{,}72 \]</div></li>
+<li><span class="step-title">Índice de salud reproductiva (mujeres) y empoderamiento</span><div class="calc">\[\begin{aligned} \text{salud}_M &= \left(\frac{10}{70}\cdot\frac{1}{48{,}5}\right)^{1/2} = 0{,}0543\\ \text{empod}_M &= (0{,}28\times 0{,}62)^{1/2} = 0{,}4167 \qquad \text{empod}_V = (0{,}72\times 0{,}69)^{1/2} = 0{,}7048 \end{aligned}\]</div></li>
+<li><span class="step-title">Índices de grupo (media geométrica de las 3 dimensiones)</span><div class="calc">\[\begin{aligned} GM &= (0{,}0543\times 0{,}4167\times 0{,}49)^{1/3} = 0{,}2229\\ GV &= (1\times 0{,}7048\times 0{,}74)^{1/3} = 0{,}8050 \end{aligned}\]</div></li>
+<li><span class="step-title">Media armónica entre GM y GV</span><div class="calc">\[ HARM = \left[\frac{1/0{,}2229+1/0{,}8050}{2}\right]^{-1} = 0{,}3492 \]</div></li>
+<li><span class="step-title">Grupo de referencia (sin distinguir género)</span>Media aritmética de cada dimensión y después media geométrica entre las tres.
+<div class="calc">\[\begin{aligned} \text{salud}_{ref} &= \frac{0{,}0543+1}{2} = 0{,}5271 \qquad \text{empod}_{ref} = \frac{0{,}4167+0{,}7048}{2} = 0{,}5607 \qquad \text{lab}_{ref} = \frac{0{,}49+0{,}74}{2} = 0{,}6150\\ \text{Referencia} &= (0{,}5271\times 0{,}5607\times 0{,}6150)^{1/3} = 0{,}5665 \end{aligned}\]</div></li>
+<li><span class="step-title">IDG</span><div class="calc">\[ IDG = 1-\frac{0{,}3492}{0{,}5665} = 0{,}384 \]</div>
+Un IDG de 0,384 significa que el país pierde el 38,4&nbsp;% de su desarrollo humano potencial por desigualdad de género —apenas por encima del promedio de América Latina y el Caribe (0,38) y bastante por debajo de la media mundial (0,455)—. La dimensión más desigual es la salud reproductiva: el índice de las mujeres es 0,0543 contra 1 de los varones. Le sigue el empoderamiento —0,4167 contra 0,7048—, arrastrado por una representación parlamentaria femenina de apenas 28&nbsp;%. El mercado laboral es la dimensión más pareja, aunque igual con 25 puntos de brecha.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(IDG=0{,}384\); la dimensión más desigual es la salud reproductiva.</div></div>
 
-<figure style="margin:0"><img src="figs/out/p9_original_p58.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
-<div class="page-break"></div>
+<h3>E7 · Harrod-Domar</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>Un país tiene una tasa de ahorro del 18&nbsp;%, una relación capital-producto de 3, una tasa de depreciación del 4&nbsp;% y una tasa de crecimiento poblacional del 1,5&nbsp;%.
+a) Calculá la tasa de crecimiento del producto agregado según Harrod-Domar. b) Calculá la tasa de crecimiento per cápita. c) ¿A cuánto debería ascender la relación capital-producto para que el crecimiento per cápita sea nulo? d) Explicá por qué este modelo genera un crecimiento «en el filo de la navaja».</p></div>
+<ol class="steps">
+<li><span class="step-title">a) Crecimiento agregado</span><div class="calc">\[ g_Y = \frac{s}{v}-\delta = \frac{0{,}18}{3}-0{,}04 = 0{,}06-0{,}04 = 0{,}02 \;\to\; 2{,}00\,\% \]</div></li>
+<li><span class="step-title">b) Crecimiento per cápita</span><div class="calc">\[ g_y = g_Y - n = 2{,}00\,\%-1{,}50\,\% = 0{,}50\,\% \]</div></li>
+<li><span class="step-title">c) \(v\) para crecimiento per cápita nulo</span><div class="calc">\[ \frac{s}{v}-\delta-n=0 \;\Rightarrow\; v = \frac{s}{\delta+n} = \frac{0{,}18}{0{,}055} = 3{,}273 \]</div></li>
+<li><span class="step-title">d) El filo de la navaja</span>Porque la relación capital-producto es fija: no hay sustitución entre capital y trabajo ni precios que se ajusten. La tasa garantizada \(s/v-\delta\) y la tasa natural \(n\) son parámetros independientes, y nada en el modelo hace que coincidan. Si la garantizada supera a la natural, la economía no consigue la mano de obra que necesita; si es menor, hay desempleo creciente. Cualquier desvío se amplifica en vez de corregirse: el equilibrio existe, pero es un punto sobre el filo.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>a)&nbsp;\(g_Y=2{,}00\,\%\) · b)&nbsp;\(g_y=0{,}50\,\%\) · c)&nbsp;\(v=3{,}273\).</div></div>
 
-<figure style="margin:0"><img src="figs/out/p9_original_p59.jpg" style="width:100%;border:1px solid #e2e0da;border-radius:6px"></figure>
+<h3>E8 · Solow-Swan sin progreso tecnológico</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>La función de producción agregada es \(Y=K^{0,4}L^{0,6}\), con \(s=25\,\%\), \(n=2\,\%\) y \(\delta=6\,\%\).
+a) Hallá la función de producción per cápita. b) Calculá \(k^*\) e \(y^*\). c) Si \(k=3\), calculá \(\dot k\), \(\gamma_k\) y \(\gamma_y\). ¿La economía está creciendo o decreciendo? ¿Por qué? d) Si la tasa de ahorro sube al 35&nbsp;%, calculá el nuevo \(k^*\) e \(y^*\) y explicá qué pasa con la tasa de crecimiento en el corto y en el largo plazo.</p></div>
+<ol class="steps">
+<li><span class="step-title">a) Función per cápita</span>Dividí por \(L\): los rendimientos constantes a escala permiten pasar a per cápita.
+<div class="calc">\[ y = \frac{Y}{L} = \frac{K^{0,4}L^{0,6}}{L} = \left(\frac{K}{L}\right)^{0,4} = k^{0,4} \qquad \alpha=0{,}4 \quad \delta+n=0{,}08 \]</div></li>
+<li><span class="step-title">b) Estado estacionario</span><div class="calc">\[ k^* = \left(\frac{0{,}25}{0{,}08}\right)^{1/0,6} = 6{,}680 \qquad y^* = 6{,}680^{0,4} = 2{,}137 \]</div></li>
+<li><span class="step-title">c) En \(k=3\)</span><div class="calc">\[\begin{aligned} y(k{=}3) &= 3^{0,4} = 1{,}5518\\ \dot k &= 0{,}25\times 1{,}5518-0{,}08\times 3 = 0{,}3880-0{,}2400 = 0{,}1480\\ \gamma_k &= 0{,}1480/3 = 4{,}93\,\%\\ \gamma_y &= 0{,}4\times 4{,}93\,\% = 1{,}97\,\% \end{aligned}\]</div>
+La economía está creciendo, porque \(k=3\) está por debajo de \(k^*=6{,}680\): la inversión efectiva (0,3880) supera a la depreciación efectiva (0,2400), así que el capital por trabajador aumenta. A medida que \(k\) se acerque a \(k^*\), la tasa de crecimiento irá cayendo hasta cero.</li>
+<li><span class="step-title">d) Si \(s\) sube a 35&nbsp;%</span><div class="calc">\[ k^* = \left(\frac{0{,}35}{0{,}08}\right)^{1/0,6} = 11{,}703 \qquad y^* = 11{,}703\times\frac{0{,}08}{0{,}35} = 2{,}675 \]</div>
+A corto plazo, al subir \(s\) la curva de ahorro se desplaza hacia arriba, la economía queda por debajo de su nuevo estado estacionario y la tasa de crecimiento salta. A largo plazo, una vez alcanzado el nuevo \(k^*\), la tasa de crecimiento per cápita vuelve a cero: el efecto es de <b>nivel</b>, no de crecimiento. El país queda permanentemente más rico —\(y^*\) pasa de 2,137 a 2,675— pero no crece más rápido para siempre.</li>
+</ol>
+<figure class="w80"><img src="figs/out/p9_solow_e8.svg">
+<figcaption><b>Figura E.2.</b> Diagrama de Solow del E8, en niveles: \(f(k)\), \(sf(k)\) y \((\delta{+}n)k\). El cruce entre la curva de ahorro y la recta de depreciación marca \(k^*=6{,}68\); la altura de \(f(k)\) en ese punto es \(y^*=2{,}14\).</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(k^*=6{,}680\), \(y^*=2{,}137\). Con \(k=3\): \(\gamma_k=4{,}93\,\%\), \(\gamma_y=1{,}97\,\%\) (creciendo). Con \(s=35\,\%\): \(k^*=11{,}703\), \(y^*=2{,}675\) (más rico, no más rápido).</div></div>
+
+<h3>E9 · Regla de oro</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>Con los datos del ejercicio anterior: a) ¿Cuál es la tasa de ahorro de la regla de oro? b) Calculá \(k_{oro}\) e \(y_{oro}\). c) ¿La economía del E8 sub o sobreacumula capital? ¿Qué recomendarías y con qué costo?</p></div>
+<ol class="steps">
+<li><span class="step-title">a) Tasa de ahorro de la regla de oro</span>Maximiza el consumo de estado estacionario: se cumple cuando \(f'(k)=\delta+n\), lo que con Cobb-Douglas equivale a \(s_{oro}=\alpha\).
+<div class="calc">\[ s_{oro} = \alpha = 0{,}40 \]</div></li>
+<li><span class="step-title">b) \(k_{oro}\), \(y_{oro}\) y \(c_{oro}\)</span><div class="calc">\[\begin{aligned} k_{oro} &= \left(\frac{0{,}40}{0{,}08}\right)^{1/0,6} = 14{,}620\\ y_{oro} &= 14{,}620^{0,4} = 2{,}924\\ c_{oro} &= y_{oro}-0{,}08\times k_{oro} = 2{,}924-1{,}170 = 1{,}754 \end{aligned}\]</div></li>
+<li><span class="step-title">c) Comparación con el E8</span>La economía del E8 ahorra 25&nbsp;% contra una regla de oro de 40&nbsp;%: <b>subacumula</b> capital.
+<div class="calc">\[ c^*_{E8} = y^*-(\delta+n)k^* = 2{,}137-0{,}08\times 6{,}680 = 1{,}603 \]</div>
+Su consumo de estado estacionario (1,603) es menor al máximo alcanzable (1,754). La recomendación es aumentar la tasa de ahorro hacia el 40&nbsp;%, pero con un costo explícito: durante la transición hay que consumir menos para invertir más —el consumo cae primero y recupera después, superando el nivel original recién cuando el capital se acerque a \(k_{oro}\)—. Por eso la regla de oro no es automáticamente el óptimo social: depende de cuánto valore la sociedad el consumo presente frente al futuro. El caso inequívocamente ineficiente es el contrario —sobreacumulación, con \(s>\alpha\)—, donde bajar el ahorro aumenta el consumo hoy y siempre.</li>
+</ol>
+<figure class="w80"><img src="figs/out/p9_regla_oro_e9.svg">
+<figcaption><b>Figura E.3.</b> Consumo de estado estacionario \(c^*\) en función de \(s\), con los parámetros del E8/E9. El máximo está en \(s_{oro}=\alpha=0{,}40\) (\(c_{oro}=1{,}75\)); el punto naranja marca la situación del E8 (\(s=0{,}25\), \(c^*=1{,}60\)), por debajo del óptimo.</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(s_{oro}=40\,\%\); \(k_{oro}=14{,}620\); \(y_{oro}=2{,}924\); \(c_{oro}=1{,}754\). El E8 subacumula capital (25&nbsp;%&nbsp;&lt;&nbsp;40&nbsp;%): su consumo de EE (1,603) es menor al máximo posible.</div></div>
+
+<h3>E10 · Solow-Swan con progreso tecnológico</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>Modelo de Solow con progreso tecnológico: \(s=20\,\%\), \(\delta=5\,\%\), \(n=1\,\%\), \(x=2\,\%\), \(\alpha=1/3\).
+a) Hallá la función de producción por unidad de trabajo efectivo. b) Calculá \(\kt^*\) e \(\yt^*\). c) ¿A qué tasa crecen en el estado estacionario el producto per cápita, el producto agregado y el capital agregado? d) Si \(x\) se duplicara, ¿qué pasaría con \(\kt^*\)? ¿Y con el bienestar de largo plazo? Explicá la aparente contradicción.</p></div>
+<ol class="steps">
+<li><span class="step-title">a) Función por unidad de trabajo efectivo</span><div class="calc">\[ \yt = f(\kt) = \kt^{1/3} \qquad \delta+n+x = 0{,}08 \]</div></li>
+<li><span class="step-title">b) Estado estacionario</span><div class="calc">\[ \kt^* = \left(\frac{0{,}20}{0{,}08}\right)^{1/(2/3)} = 2{,}5^{1,5} = 3{,}953 \qquad \yt^* = 3{,}953^{1/3} = 1{,}581 \]</div></li>
+<li><span class="step-title">c) Tasas de crecimiento en el EE</span><div class="calc">\[ g_y = x = 2\,\% \qquad g_Y = n+x = 3\,\% \qquad g_K = n+x = 3\,\% \]</div>
+El producto per cápita crece a \(x\); el producto agregado y el capital agregado crecen a \(n+x\).</li>
+<li><span class="step-title">d) Si \(x\) se duplica a 4&nbsp;%</span><div class="calc">\[ \delta+n+x=0{,}10 \qquad \kt^* = \left(\frac{0{,}20}{0{,}10}\right)^{1,5} = 2^{1,5} = 2{,}828 \qquad \yt^* = 2{,}828^{1/3} = 1{,}414 \]</div>
+\(\kt^*\) cae de 3,953 a 2,828: parece que el país empeora, pero no es así. \(\kt\) no es el capital por trabajador sino el capital por unidad de trabajo <b>efectivo</b>; un progreso técnico más rápido exige más inversión solo para mantener ese cociente constante —la misma lógica de dilución que \(n\)—, y por eso el estado estacionario se alcanza con menos \(\kt\). El capital por trabajador real es \(k=\kt\cdot A\), y ahora \(A\) crece al 4&nbsp;% en vez del 2&nbsp;%: el ingreso per cápita pasa a crecer al 4&nbsp;% anual en forma permanente. En el largo plazo el país es inequívocamente más rico, y la brecha con la situación original se amplía sin límite —dos puntos porcentuales de diferencia duplican el ingreso relativo en unos 35 años—. Es el único parámetro del modelo que produce un efecto <b>crecimiento</b> y no solo un efecto <b>nivel</b>.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(\kt^*=3{,}953\), \(\yt^*=1{,}581\) (\(g_y=2\,\%\), \(g_Y=g_K=3\,\%\)). Con \(x=4\,\%\): \(\kt^*=2{,}828\) cae, pero \(k=\kt\cdot A\) crece más rápido: el país es más rico, no más pobre.</div></div>
+
+<h3>E11 · Contabilidad del crecimiento</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>En un país el producto creció 4,2&nbsp;% en el año, el empleo 1,1&nbsp;% y el stock de capital 5,6&nbsp;%. La participación del capital en el ingreso es 0,35.
+a) Calculá el crecimiento del capital por trabajador y del producto per cápita. b) Calculá el residuo de Solow. c) ¿Qué proporción del crecimiento per cápita se explica por acumulación de capital y qué proporción por productividad? d) ¿Por qué el residuo no es exactamente «progreso tecnológico»?</p></div>
+<ol class="steps">
+<li><span class="step-title">a) Variables per cápita</span><div class="calc">\[ g_k = g_K-g_L = 5{,}6\,\%-1{,}1\,\% = 4{,}50\,\% \qquad g_y = g_Y-g_L = 4{,}2\,\%-1{,}1\,\% = 3{,}10\,\% \]</div></li>
+<li><span class="step-title">b) Residuo de Solow</span><div class="calc">\[ g_A = g_y - s_K\, g_k = 3{,}10\,\%-0{,}35\times 4{,}50\,\% = 3{,}10\,\%-1{,}575\,\% = 1{,}525\,\% \]</div></li>
+<li><span class="step-title">c) Aporte de cada factor</span><div class="calc">\[ \text{aporte capital} = \frac{1{,}575}{3{,}10} = 50{,}8\,\% \qquad \text{aporte productividad} = \frac{1{,}525}{3{,}10} = 49{,}2\,\% \]</div>
+El crecimiento del producto per cápita se reparte casi en partes iguales entre acumulación de capital y mejoras de productividad.</li>
+<li><span class="step-title">d) Por qué el residuo no es exactamente progreso tecnológico</span>Porque se calcula por descarte: es lo que queda después de atribuirle al capital (y al trabajo) su contribución, así que recoge todo lo que el modelo no mide —mejoras en la eficiencia de asignación de los recursos, calidad de las instituciones, capital humano, economías de escala, cambios en la utilización de la capacidad instalada, y también los errores de medición de \(K\) y \(L\)—. Si el stock de capital está mal estimado —lo habitual—, ese error aparece íntegro en el residuo. Abramovitz lo llamó «la medida de nuestra ignorancia».</li>
+</ol>
+<figure class="w60"><img src="figs/out/p9_contabilidad_e11.svg">
+<figcaption><b>Figura E.4.</b> Descomposición del crecimiento per cápita del E11 (\(g_y=3{,}10\,\%\)) entre acumulación de capital (1,575 puntos, 50,8&nbsp;%) y productividad o residuo de Solow (1,525 puntos, 49,2&nbsp;%).</figcaption></figure>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(g_k=4{,}50\,\%\), \(g_y=3{,}10\,\%\), \(g_A=1{,}525\,\%\). El capital explica el 50,8&nbsp;% del crecimiento per cápita; la productividad, el 49,2&nbsp;%.</div></div>
+
+<h3>E12 · Modelo de Romer</h3>
+<div class="statement"><div class="statement-title">Enunciado</div><p>En el modelo de Romer, el rendimiento del trabajo empleado en producir ideas es 25&nbsp;%, la tasa de desbordamiento de ideas 20&nbsp;% y la tasa de crecimiento de los investigadores 4&nbsp;%.
+a) Calculá la tasa de crecimiento de la economía. b) Recalculá si la tasa de desbordamiento sube al 40&nbsp;% y comparalo. c) ¿Por qué el efecto de \(\varphi\) no es proporcional mientras que el de \(\lambda\) y el de \(n\) sí lo son? d) ¿Qué pasaría con el crecimiento si se duplicara de una sola vez el número de investigadores sin cambiar su tasa de crecimiento?</p></div>
+<ol class="steps">
+<li><span class="step-title">a) Tasa de crecimiento</span><div class="calc">\[ g = \frac{\lambda\, n}{1-\varphi} = \frac{0{,}25\times 0{,}04}{1-0{,}20} = \frac{0{,}01}{0{,}80} = 1{,}250\,\% \]</div></li>
+<li><span class="step-title">b) Con \(\varphi=40\,\%\)</span><div class="calc">\[ g = \frac{0{,}25\times 0{,}04}{1-0{,}40} = \frac{0{,}01}{0{,}60} = 1{,}667\,\% \qquad \text{variación} = +33{,}3\,\% \]</div></li>
+<li><span class="step-title">c) Por qué \(\varphi\) no es proporcional</span>Porque \(\lambda\) y \(n\) están en el numerador, de modo que su efecto es lineal y proporcional: duplicar cualquiera de los dos duplica el crecimiento. En cambio \(\varphi\) aparece en el denominador como \((1-\varphi)\), así que su efecto es no lineal y se amplifica a medida que \(\varphi\) se acerca a 1. Duplicar \(\varphi\) de 0,20 a 0,40 no duplica el crecimiento: lo aumenta un 33,3&nbsp;% (como se vio en b). Pero si \(\varphi\) pasara de 0,80 a 0,90, el crecimiento se duplicaría. Con \(\varphi\to 1\) el crecimiento tendería a infinito.</li>
+<li><span class="step-title">d) Duplicar los investigadores de una sola vez</span>Nada cambia en el largo plazo. El crecimiento depende de \(n\) —la tasa a la que crece el número de investigadores— y no de su nivel. Duplicar de una sola vez la cantidad de investigadores produce un aumento transitorio de la producción de ideas y deja el nivel de ingreso permanentemente más alto, pero la tasa de crecimiento vuelve a \(\lambda n/(1-\varphi)\). Por eso a este modelo se lo llama de crecimiento <b>semi-endógeno</b>, y por eso la caída de la fecundidad en los países desarrollados es, en esta lógica, una mala noticia para el crecimiento futuro.</li>
+</ol>
+<div class="answer"><div class="answer-body"><span class="answer-label">Respuesta</span>\(g=1{,}250\,\%\); con \(\varphi=40\,\%\), \(g=1{,}667\,\%\) (\(+33{,}3\,\%\)). Duplicar de una vez a los investigadores sube el nivel de ingreso, pero no la tasa de crecimiento de largo plazo.</div></div>
+
 </section>
