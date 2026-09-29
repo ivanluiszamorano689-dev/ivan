@@ -1123,7 +1123,14 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
   /* ---------- sync between people: Firebase (free), optional ---------- */
   const FB_KEY = LS_KEY + ':sync', FB_INVITE = LS_KEY + ':invite';
   // Firebase project of this installation (public web config; access is controlled by the Firestore rules).
-  const FB_BUILTIN = null;
+  const FB_BUILTIN = {
+    apiKey: 'AIzaSyCWuB-MyqtMYlc1K5tEk8euKJSIjJdCw0Q',
+    authDomain: 'cuentas-claras-65727.firebaseapp.com',
+    projectId: 'cuentas-claras-65727',
+    storageBucket: 'cuentas-claras-65727.firebasestorage.app',
+    messagingSenderId: '327650781017',
+    appId: '1:327650781017:web:d69634483eefdb61848e48'
+  };
   const fb = { cfg: null, auth: null, db: null, user: null, name: '', pendingName: '', hid: null, col: null, unsub: [], members: {}, state: 'off', err: '' };
   const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const lsSet = (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { /* storage blocked */ } };
@@ -1180,6 +1187,7 @@ service cloud.firestore {
       'auth/operation-not-allowed': 'Falta activar "Correo electrónico/contraseña" en Firebase → Authentication.',
       'auth/configuration-not-found': 'Falta activar Authentication en tu proyecto de Firebase.',
       'auth/invalid-api-key': 'La configuración de Firebase no es válida. Volvé a copiarla.',
+      'auth/unauthorized-domain': 'Falta autorizar esta dirección en Firebase → Authentication → Configuración → Dominios autorizados.',
       'auth/api-key-not-valid.-please-pass-a-valid-api-key.': 'La configuración de Firebase no es válida. Volvé a copiarla.',
       'permission-denied': 'Firebase no dio permiso. Revisá que las reglas de Firestore estén pegadas y publicadas.',
       'not-found': 'Ese hogar no existe. Pedí un link de invitación nuevo.',

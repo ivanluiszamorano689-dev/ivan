@@ -1,7 +1,7 @@
 # Cuentas Claras entre dos personas
 
 Guía para usar la app en los celulares de las dos personas, con los mismos datos, sin depender de Claude.
-Todo es gratis. Lo único que queda por hacer es crear la base de datos (unos 10 minutos, una sola vez).
+Todo es gratis. La app y la base de datos ya están listas: solo falta entrar y crear el hogar.
 
 - **La app** se publica gratis en GitHub Pages.
 - **Los datos** se guardan en Firebase, la base de datos gratuita de Google. Tu cuenta de Google solo sirve para ser
@@ -17,7 +17,10 @@ Está en GitHub Pages, gratis, en:
 Se publica desde la rama `gh-pages` del repositorio. El código queda a la vista de cualquiera, pero no incluye ningún
 dato tuyo: los datos viven en Firebase y solo los ven los miembros del hogar.
 
-## 2. Crear la base de datos en Firebase
+## 2. La base de datos ya está creada
+
+El proyecto de Firebase es `cuentas-claras-65727` (plan gratuito Spark) y su configuración ya viene
+incorporada en la app. Estos son los pasos que se siguieron, por si alguna vez hay que rehacerlo:
 
 1. Entrá a **console.firebase.google.com** con tu cuenta de Google y tocá **Crear proyecto**.
    Poné cualquier nombre, por ejemplo `cuentas-claras`. Google Analytics no hace falta. No pide tarjeta.
@@ -59,13 +62,12 @@ service cloud.firestore {
    Poné un nombre, no marques Hosting y tocá **Registrar app**.
 6. Copiá el bloque que empieza con `const firebaseConfig = {`.
 
-## 3. Conectar la app y pasar tus datos
+## 3. Pasar tus datos y crear el hogar
 
 1. Abrí la app en el celu: **https://ivanluiszamorano689-dev.github.io/ivan/finanzas/**
 2. **Ajustes → Importar copia** y elegí el archivo `cuentas-claras-copia-2026-09-29.json`. Tiene todo lo que cargaste hasta hoy.
-3. **Ajustes → Configurar sincronización**, pegá el `firebaseConfig` y tocá **Guardar y conectar**.
-4. **Entrar o crear cuenta**: poné tu nombre, tu email y una contraseña.
-5. Tocá **Crear hogar con mis datos**. Lo que tenés en el celu pasa al hogar compartido.
+3. **Ajustes → Entrar o crear cuenta**: poné tu nombre, tu email y una contraseña.
+4. Tocá **Crear hogar con mis datos**. Lo que tenés en el celu pasa al hogar compartido.
 
 ## 4. Invitar a tu pareja
 
