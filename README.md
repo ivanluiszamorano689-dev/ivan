@@ -22,6 +22,12 @@ en dos columnas. Atajos de teclado en la compu: `N` carga un movimiento, `←` /
   un aviso periódico para actualizar el monto (por ejemplo, ajuste trimestral por IPC).
 - Al cargar un monto se pueden sumar varios: `1500+830`. Acepta `15.000`, `1.500,50`, etc.
 
+**Compartir entre dos personas**
+
+La app puede sincronizarse gratis con Firebase para que dos personas (por ejemplo, una pareja) carguen y vean los
+mismos datos desde sus celulares, con conexión o sin ella. Paso a paso en [`finanzas/SINCRONIZAR.md`](finanzas/SINCRONIZAR.md).
+El SDK de Firebase va incluido en `finanzas/vendor/` (Apache-2.0), así que no depende de un CDN.
+
 **Dónde se guardan los datos**
 
 Abierta como página normal, los datos quedan en el navegador del teléfono (`localStorage`).

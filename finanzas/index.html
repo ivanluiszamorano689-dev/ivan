@@ -342,7 +342,7 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
 /* Wrappers that only group columns on wide screens */
 .col-a, .col-b, .p-a, .p-b, .aj-a, .aj-b { display: contents; }
 .sec-ledger { order: 1; } .sec-pend { order: 2; } .sec-bud { order: 3; } .sec-cats, .sec-empty { order: 4; } .sec-trend { order: 5; } .sec-recent { order: 6; }
-.aj-datos { order: 1; } .aj-proy { order: 2; } .aj-fijos { order: 3; } .aj-gastos { order: 4; } .aj-ingresos { order: 5; } .aj-arch { order: 6; } .aj-tip { order: 7; } .aj-wipe { order: 8; } #v-ajustes .colophon { order: 9; }
+.aj-sync { order: 0; } .aj-datos { order: 1; } .aj-proy { order: 2; } .aj-fijos { order: 3; } .aj-gastos { order: 4; } .aj-ingresos { order: 5; } .aj-arch { order: 6; } .aj-tip { order: 7; } .aj-wipe { order: 8; } #v-ajustes .colophon { order: 9; }
 
 /* Projection, accruals, receivables and debts */
 .pa, .pb { display: contents; }
@@ -390,6 +390,19 @@ details.dl[open] > summary > span:first-child::after { transform: rotate(90deg);
 .fx-foot strong { color: var(--ink); font-size: 1rem; }
 .check { display: flex; align-items: flex-start; gap: 10px; font-size: .92rem; color: var(--ink-2); cursor: pointer; }
 .check input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--accent); flex: none; }
+/* Sync between people */
+.sync-box { display: grid; gap: 12px; }
+.sync-state { display: flex; align-items: center; gap: 8px; font-weight: 650; }
+.sync-state i { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); flex: none; }
+.sync-state i.on { background: var(--in); }
+.sync-state i.warn { background: var(--warn); }
+.sync-box p { font-size: .92rem; color: var(--ink-2); }
+.invite { display: flex; gap: 8px; }
+.invite input { flex: 1; min-width: 0; padding: 9px 10px; border: 1px solid var(--rule); border-radius: 10px; background: var(--paper); font: .78rem/1.3 var(--f-num); color: var(--ink-2); }
+.acc-alt { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.link { background: none; border: 0; padding: 0; color: var(--accent); font-weight: 600; cursor: pointer; }
+.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: .9rem; color: var(--ink-2); }
+.field textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 11px; background: var(--paper); font: .78rem/1.4 var(--f-num); color: var(--ink); resize: vertical; }
 .row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .aj-tip { display: grid; gap: 8px; }
 .side-top, .side-foot, #movs-side { display: none; }
@@ -534,6 +547,10 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
 
     <section class="view" id="v-ajustes" aria-label="Ajustes" hidden>
       <div class="aj-a">
+      <div class="aj-sync" id="sync-group">
+        <h2 class="eyebrow">Compartir y sincronizar</h2>
+        <div class="card pad sync-box" id="sync-box"></div>
+      </div>
       <div class="aj-datos">
         <h2 class="eyebrow">Tus datos</h2>
         <div class="card pad">
@@ -541,6 +558,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
           <div class="btn-row">
             <button type="button" class="btn" id="exp-json">Exportar copia</button>
             <button type="button" class="btn" id="exp-csv">Exportar planilla</button>
+            <button type="button" class="btn" id="exp-xls">Exportar gastos para el Excel</button>
             <label class="btn" for="imp-file">Importar copia</label>
             <input type="file" id="imp-file" class="vh" accept="application/json,.json">
           </div>
@@ -570,6 +588,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
       <div class="aj-tip">
         <h2 class="eyebrow">Tenerla a mano</h2>
         <p class="tip"><b>En la compu:</b> guardá esta página en favoritos. Se acomoda al ancho de la pantalla.</p>
+        <p class="tip"><b>Para pasar gastos al Excel:</b> tocá <b>Exportar gastos para el Excel</b>, abrí el archivo y pegá las filas en la hoja Gastos variables, desde la fila 6.</p>
         <p class="tip"><b>En el celu:</b> abrila en el navegador y elegí <b>Agregar a pantalla de inicio</b> (en Safari, desde el botón Compartir). Queda como una app más.</p>
       </div>
       <div class="aj-wipe">
@@ -725,6 +744,48 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
   </form>
 </dialog>
 
+<!-- Account sheet -->
+<dialog class="sheet" id="dlg-acc" aria-labelledby="acc-title">
+  <form class="sheet-body" id="f-acc" novalidate>
+    <div class="grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 id="acc-title">Crear cuenta</h2>
+      <button type="button" class="x-btn" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <p class="hint" id="acc-lead"></p>
+    <label class="field" id="acc-name-row"><span>Tu nombre</span><input id="acc-name" autocomplete="given-name" maxlength="30" placeholder="Ej: Ivan"></label>
+    <label class="field"><span>Email</span><input id="acc-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off"></label>
+    <label class="field"><span>Contraseña</span><input id="acc-pass" type="password" autocomplete="new-password" placeholder="Mínimo 6 caracteres"></label>
+    <p class="err" id="acc-err" role="alert" hidden></p>
+    <div class="actions"><button type="submit" class="btn primary grow" id="acc-go">Crear cuenta</button></div>
+    <div class="acc-alt"><button type="button" class="link" id="acc-switch">Ya tengo cuenta</button><button type="button" class="link" id="acc-reset" hidden>Olvidé mi contraseña</button></div>
+  </form>
+</dialog>
+
+<!-- Sync setup sheet -->
+<dialog class="sheet" id="dlg-sync" aria-labelledby="sync-title">
+  <form class="sheet-body" id="f-sync" novalidate>
+    <div class="grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 id="sync-title">Configurar sincronización</h2>
+      <button type="button" class="x-btn" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <p class="hint">Se hace una sola vez. Usa Firebase de Google, que es gratis y no ocupa espacio de tu Drive. Después invitás a la otra persona con un link.</p>
+    <ol class="steps">
+      <li>Entrá a <b>console.firebase.google.com</b> con tu cuenta de Google y tocá <b>Crear proyecto</b>. No hace falta tarjeta ni Google Analytics.</li>
+      <li>En <b>Compilación → Authentication → Comenzar</b>, activá <b>Correo electrónico/contraseña</b>.</li>
+      <li>En <b>Compilación → Firestore Database → Crear base de datos</b>, elegí la edición <b>Estándar</b> si te la pregunta, la ubicación <b>southamerica-east1</b> y <b>modo de producción</b>. Después, en la pestaña <b>Reglas</b>, reemplazá todo por las reglas de abajo y tocá <b>Publicar</b>.</li>
+      <li>En el engranaje <b>⚙ → Configuración del proyecto → Tus apps</b>, tocá el ícono web <b>&lt;/&gt;</b>, poné un nombre y copiá el bloque <b>firebaseConfig</b>.</li>
+      <li>Pegalo acá abajo y tocá <b>Guardar y conectar</b>.</li>
+    </ol>
+    <label class="field"><span>Reglas de Firestore</span><textarea id="sync-rules" rows="7" readonly></textarea></label>
+    <div><button type="button" class="btn" id="sync-copy-rules">Copiar reglas</button></div>
+    <label class="field"><span>Configuración de Firebase</span><textarea id="sync-cfg" rows="7" autocapitalize="off" spellcheck="false" placeholder='const firebaseConfig = { apiKey: "…", authDomain: "…", projectId: "…", appId: "…" };'></textarea></label>
+    <p class="err" id="sync-err" role="alert" hidden></p>
+    <div class="actions"><button type="submit" class="btn primary grow">Guardar y conectar</button></div>
+  </form>
+</dialog>
+
 <!-- Confirm sheet -->
 <dialog class="sheet" id="dlg-ok" aria-labelledby="ok-title">
   <div class="sheet-body">
@@ -867,6 +928,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     if (!m.id || !(a > 0) || !/^\d{4}-\d{2}-\d{2}$/.test(String(m.d))) return null;
     const o = { id: String(m.id).slice(0, 60), t: m.t === 'i' ? 'i' : 'g', a: Math.round(a * 100) / 100, c: String(m.c || ''), d: String(m.d), n: String(m.n || '').slice(0, 80), ts: Number(m.ts) || 0 };
     if (m.fx) o.fx = String(m.fx).slice(0, 40);
+    if (m.por) o.por = String(m.por).slice(0, 30);
     return o;
   }
 
@@ -890,7 +952,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     return Object.entries(o).map(([c, a]) => ({ c, a })).sort((x, y) => y.a - x.a);
   }
   function favCat(t) {
-    const cnt = {}; for (const m of Object.values(data().movs)) if (m.t === t) cnt[m.c] = (cnt[m.c] || 0) + 1;
+    const cnt = {}; for (const m of Object.values(data().movs)) if (m.t === t && !m.fx) cnt[m.c] = (cnt[m.c] || 0) + 1;
     let best = null, n = -1;
     for (const c of activeCats(t)) { const k = cnt[c.id] || 0; if (k > n) { n = k; best = c.id; } }
     return best;
@@ -1001,9 +1063,13 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
         if (failed && cloud.lastSnap && !Object.values(cloud.pend).some(v => v > 0)) { applyCloud(cloud.lastSnap); render(); }
       });
   }
-  function persist(monthKeys, cfgChanged) {
+  // ops: [{put: mov}] / [{del: mov}] let the shared database merge single entries, so two people can load at once.
+  function persist(monthKeys, cfgChanged, ops) {
     if (!S.cfgSaved) cfgChanged = true;
-    if (mode === 'cloud') {
+    if (mode === 'fb') {
+      S.cfgSaved = true;
+      fbWrite(monthKeys, cfgChanged, ops);
+    } else if (mode === 'cloud') {
       S.cfgSaved = true;
       for (const k of new Set(monthKeys)) {
         const items = {};
@@ -1041,10 +1107,303 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
       } catch (e) { /* fall back to this browser */ }
       clearTimeout(slow);
     }
+    try { const raw = localStorage.getItem(FB_KEY); fb.cfg = raw ? JSON.parse(raw) : null; } catch (e) { fb.cfg = null; }
+    if (fb.cfg && fb.cfg.config) {
+      // Keep the loading screen while the shared household connects; fall back to this device if it takes too long.
+      fbStart();
+      setTimeout(() => { if (mode === 'loading') fbFallbackLocal('No se pudo conectar con el hogar compartido. Te muestro lo guardado en este dispositivo.'); }, 9000);
+      return;
+    }
     mode = 'local';
     loadLocal();
     ready();
   }
+
+  /* ---------- sync between people: Firebase (free), optional ---------- */
+  const FB_KEY = LS_KEY + ':sync', FB_INVITE = LS_KEY + ':invite';
+  const fb = { cfg: null, auth: null, db: null, user: null, name: '', pendingName: '', hid: null, col: null, unsub: [], members: {}, state: 'off', err: '' };
+  const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  const lsSet = (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { /* storage blocked */ } };
+  const clean = o => JSON.parse(JSON.stringify(o));
+  const b64e = str => btoa(unescape(encodeURIComponent(str))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const b64d = str => decodeURIComponent(escape(atob(str.replace(/-/g, '+').replace(/_/g, '/'))));
+  const FB_RULES = `rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    match /usuarios/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+    match /hogares/{hid} {
+      allow read: if signedIn() && request.auth.uid in resource.data.miembros;
+      allow create: if signedIn() && request.resource.data.miembros == [request.auth.uid];
+      allow update: if signedIn() && (
+        request.auth.uid in resource.data.miembros ||
+        (request.resource.data.miembros == resource.data.miembros.concat([request.auth.uid])
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['miembros', 'nombres'])
+          && request.resource.data.nombres.diff(resource.data.nombres).affectedKeys().hasOnly([request.auth.uid])
+          && resource.data.miembros.size() < 6));
+      match /datos/{doc} {
+        allow read, write: if signedIn()
+          && request.auth.uid in get(/databases/$(database)/documents/hogares/$(hid)).data.miembros;
+      }
+    }
+  }
+}`;
+  function parseFbConfig(text) {
+    const o = {};
+    for (const k of ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId']) {
+      const m = String(text).match(new RegExp('["\']?' + k + '["\']?\\s*:\\s*["\']([^"\']+)["\']'));
+      if (m) o[k] = m[1].trim();
+    }
+    if (!o.apiKey || !o.projectId || !o.appId) return null;
+    if (!o.authDomain) o.authDomain = o.projectId + '.firebaseapp.com';
+    return o;
+  }
+  function fbErrMsg(e) {
+    const c = (e && e.code) || '';
+    const map = {
+      'auth/email-already-in-use': 'Ese email ya tiene una cuenta. Tocá "Ya tengo cuenta" para entrar.',
+      'auth/invalid-email': 'El email no es válido.',
+      'auth/missing-email': 'Poné tu email.',
+      'auth/weak-password': 'La contraseña tiene que tener al menos 6 caracteres.',
+      'auth/missing-password': 'Poné una contraseña.',
+      'auth/invalid-credential': 'Email o contraseña incorrectos.',
+      'auth/invalid-login-credentials': 'Email o contraseña incorrectos.',
+      'auth/wrong-password': 'Email o contraseña incorrectos.',
+      'auth/user-not-found': 'No hay una cuenta con ese email. Tocá "Crear cuenta".',
+      'auth/too-many-requests': 'Demasiados intentos. Esperá unos minutos y probá de nuevo.',
+      'auth/network-request-failed': 'No hay conexión a internet.',
+      'auth/operation-not-allowed': 'Falta activar "Correo electrónico/contraseña" en Firebase → Authentication.',
+      'auth/configuration-not-found': 'Falta activar Authentication en tu proyecto de Firebase.',
+      'auth/invalid-api-key': 'La configuración de Firebase no es válida. Volvé a copiarla.',
+      'auth/api-key-not-valid.-please-pass-a-valid-api-key.': 'La configuración de Firebase no es válida. Volvé a copiarla.',
+      'permission-denied': 'Firebase no dio permiso. Revisá que las reglas de Firestore estén pegadas y publicadas.',
+      'not-found': 'Ese hogar no existe. Pedí un link de invitación nuevo.',
+      'unavailable': 'No hay conexión a internet. Se va a sincronizar cuando vuelva.'
+    };
+    return map[c] || 'No se pudo completar' + (c ? ` (${c})` : '') + '.';
+  }
+  function loadScript(src) {
+    return new Promise((res, rej) => { const el = document.createElement('script'); el.src = src; el.onload = res; el.onerror = () => rej(new Error('load ' + src)); document.head.appendChild(el); });
+  }
+  function fbUnsub() { fb.unsub.forEach(f => { try { f(); } catch (e) { /* already closed */ } }); fb.unsub = []; }
+  function fbFallbackLocal(msg) {
+    if (mode === 'loading') { mode = 'local'; loadLocal(); ready(); }
+    else if (mode === 'fb') { mode = 'local'; demo = null; S = { cfg: defaultCfg(), cfgSaved: false, movs: {} }; loadLocal(); render(); }
+    if (msg) toast(msg, 'err');
+    renderSync();
+  }
+  async function fbStart() {
+    fb.state = 'loading'; renderSync();
+    try {
+      for (const lib of ['app', 'auth', 'firestore']) {
+        if (!(window.firebase && (lib === 'app' || firebase[lib]))) await loadScript(`vendor/firebase-${lib}-compat.js`);
+      }
+      if (!firebase.apps.length) firebase.initializeApp(fb.cfg.config);
+      fb.auth = firebase.auth(); fb.db = firebase.firestore();
+      if (fb.cfg.emulator) { fb.auth.useEmulator('http://127.0.0.1:9099', { disableWarnings: true }); fb.db.useEmulator('127.0.0.1', 8080); }
+      try { await fb.db.enablePersistence({ synchronizeTabs: true }); } catch (e) { /* another tab or private mode: works online only */ }
+    } catch (e) {
+      console.warn(e); fb.state = 'error'; fb.err = 'No se pudo cargar la sincronización. Revisá la conexión.';
+      fbFallbackLocal(); return;
+    }
+    fb.auth.onAuthStateChanged(u => { fbUser(u).catch(err => { console.warn(err); fb.state = 'error'; fb.err = fbErrMsg(err); fbFallbackLocal(fb.err); }); });
+  }
+  async function fbUser(u) {
+    fbUnsub();
+    fb.user = u; fb.hid = null; fb.members = {};
+    if (!u) {
+      fb.state = 'out'; fbFallbackLocal();
+      if (lsGet(FB_INVITE)) openAcc('crear', true);
+      return;
+    }
+    fb.name = (u.displayName || fb.pendingName || (u.email || '').split('@')[0]).slice(0, 30);
+    const HKEY = LS_KEY + ':hogar:' + u.uid;
+    const uref = fb.db.collection('usuarios').doc(u.uid);
+    let hid = lsGet(HKEY);
+    try { const us = await uref.get(); hid = us.exists ? (us.data().hogar || null) : null; } catch (e) { /* offline: use the last known household */ }
+    const invite = lsGet(FB_INVITE);
+    if (invite && invite !== hid) {
+      const ok = !hid || await ask('Unirte al hogar', 'Ya tenés otro hogar en esta cuenta. Si te unís al nuevo, vas a ver los datos compartidos del hogar que te invitó.', 'Unirme');
+      if (ok) {
+        await fb.db.collection('hogares').doc(invite).update({ miembros: firebase.firestore.FieldValue.arrayUnion(u.uid), ['nombres.' + u.uid]: fb.name });
+        await uref.set({ hogar: invite });
+        hid = invite;
+        toast('Listo, ya comparten las cuentas.');
+      }
+      lsSet(FB_INVITE, null);
+    }
+    if (!hid) { lsSet(HKEY, null); fb.state = 'nohogar'; fbFallbackLocal(); return; }
+    lsSet(HKEY, hid);
+    fbSubscribe(hid);
+  }
+  function fbSubscribe(hid) {
+    fb.hid = hid; fb.state = 'on'; fb.err = '';
+    const href = fb.db.collection('hogares').doc(hid);
+    fb.col = href.collection('datos');
+    fb.unsub.push(href.onSnapshot(d => { fb.members = (d.exists && d.data().nombres) || {}; renderSync(); }, () => { /* not a member anymore: handled below */ }));
+    fb.unsub.push(fb.col.onSnapshot(snap => {
+      applyCloud(snap);
+      if (mode === 'loading') { mode = 'fb'; ready(); }
+      else { if (mode !== 'fb') { mode = 'fb'; demo = null; } render(); }
+      renderSync();
+    }, err => {
+      console.warn(err); fbUnsub(); fb.state = 'error'; fb.err = fbErrMsg(err);
+      fbFallbackLocal('Se cortó el acceso al hogar compartido: ' + fb.err);
+    }));
+  }
+  function fbWrite(monthKeys, cfgChanged, ops) {
+    if (!fb.col) return;
+    const del = firebase.firestore.FieldValue.delete();
+    const batch = fb.db.batch();
+    if (ops) {
+      for (const op of ops) {
+        if (op.put) batch.set(fb.col.doc('m-' + monthOf(op.put.d)), { items: { [op.put.id]: clean(op.put) } }, { merge: true });
+        if (op.del) batch.set(fb.col.doc('m-' + monthOf(op.del.d)), { items: { [op.del.id]: del } }, { merge: true });
+      }
+    } else {
+      for (const k of new Set(monthKeys)) {
+        const items = {};
+        for (const m of Object.values(S.movs)) if (monthOf(m.d) === k) items[m.id] = clean(m);
+        if (Object.keys(items).length) batch.set(fb.col.doc('m-' + k), { items }); else batch.delete(fb.col.doc('m-' + k));
+      }
+    }
+    if (cfgChanged) batch.set(fb.col.doc('config'), clean(S.cfg));
+    batch.commit().catch(e => { console.warn(e); toast('No se pudo guardar en el hogar compartido. ' + fbErrMsg(e), 'err'); });
+  }
+  async function fbCreateHogar() {
+    const u = fb.user; if (!u) return;
+    const ref = fb.db.collection('hogares').doc();
+    await ref.set({ miembros: [u.uid], nombres: { [u.uid]: fb.name }, creado: firebase.firestore.FieldValue.serverTimestamp() });
+    await fb.db.collection('usuarios').doc(u.uid).set({ hogar: ref.id });
+    // Move what is on this device (never the example data) into the new household.
+    const src = S, col = ref.collection('datos'), batch = fb.db.batch(), months = {};
+    for (const m of Object.values(src.movs)) (months[monthOf(m.d)] = months[monthOf(m.d)] || {})[m.id] = clean(m);
+    batch.set(col.doc('config'), clean(src.cfg));
+    for (const k of Object.keys(months)) batch.set(col.doc('m-' + k), { items: months[k] });
+    await batch.commit();
+    lsSet(LS_KEY + ':hogar:' + u.uid, ref.id);
+    fbUnsub(); fbSubscribe(ref.id);
+    toast('Hogar creado. Ahora invitá a la otra persona con el link.');
+  }
+  function inviteLink() {
+    const payload = { c: fb.cfg.config, h: fb.hid };
+    if (fb.cfg.emulator) payload.e = 1;
+    return location.origin + location.pathname + '#unirse=' + b64e(JSON.stringify(payload));
+  }
+  function renderSync() {
+    const box = $('#sync-box'); if (!box) return;
+    $('#sync-group').hidden = !!window.claude;
+    const names = Object.values(fb.members || {});
+    let h = '';
+    if (!fb.cfg || !fb.cfg.config) {
+      h = `<p class="sync-state"><i></i>Solo en este dispositivo</p>
+        <p>Para usarla entre dos personas (por ejemplo, vos y tu pareja) y ver lo mismo en todos los celulares, conectala a una base de datos gratis de Google Firebase. Se configura una sola vez.</p>
+        <div class="btn-row"><button type="button" class="btn primary" id="sync-setup">Configurar sincronización</button></div>`;
+    } else if (fb.state === 'loading') {
+      h = `<p class="sync-state"><i class="warn"></i>Conectando…</p>`;
+    } else if (fb.state === 'out') {
+      h = `<p class="sync-state"><i class="warn"></i>Sincronización lista, falta entrar</p>
+        <p>Entrá con tu cuenta (o creala) para compartir los datos.</p>
+        <div class="btn-row"><button type="button" class="btn primary" id="sync-login">Entrar o crear cuenta</button><button type="button" class="btn" id="sync-forget">Quitar configuración</button></div>`;
+    } else if (fb.state === 'nohogar') {
+      h = `<p class="sync-state"><i class="warn"></i>Conectado como ${esc(fb.user && fb.user.email || '')}</p>
+        <p>Creá un hogar compartido con lo que tenés en este dispositivo, o abrí el link de invitación que te mandaron.</p>
+        <div class="btn-row"><button type="button" class="btn primary" id="sync-create">Crear hogar con mis datos</button><button type="button" class="btn" id="sync-logout">Cerrar sesión</button></div>`;
+    } else if (fb.state === 'on') {
+      const who = names.length > 1 ? `Compartido entre ${esc(names.slice(0, -1).join(', '))} y ${esc(names[names.length - 1])}.` : 'Por ahora solo estás vos. Mandale el link a la otra persona.';
+      h = `<p class="sync-state"><i class="on"></i>Sincronizado</p>
+        <p>${who} Funciona sin conexión y se actualiza solo cuando vuelve internet.</p>
+        <div class="invite"><input id="sync-link" readonly aria-label="Link de invitación" value="${esc(inviteLink())}"><button type="button" class="btn" id="sync-share">Invitar</button></div>
+        <p class="hint">Compartilo solo con quien quieras que vea y cargue tus cuentas.</p>
+        <div class="btn-row"><button type="button" class="btn" id="sync-logout">Cerrar sesión (${esc(fb.name)})</button></div>`;
+    } else {
+      h = `<p class="sync-state"><i class="warn"></i>Sin conexión con el hogar</p><p>${esc(fb.err || 'Algo falló al conectar.')}</p>
+        <div class="btn-row"><button type="button" class="btn primary" id="sync-retry">Reintentar</button><button type="button" class="btn" id="sync-forget">Quitar configuración</button></div>`;
+    }
+    box.innerHTML = h;
+  }
+
+  /* ---------- account and setup sheets ---------- */
+  const dlgAcc = $('#dlg-acc');
+  let accMode = 'crear';
+  function openAcc(m, invited) {
+    accMode = m;
+    const crear = m === 'crear';
+    $('#acc-title').textContent = crear ? 'Crear cuenta' : 'Entrar';
+    $('#acc-lead').textContent = invited ? 'Te invitaron a compartir las cuentas. Creá tu cuenta (o entrá si ya tenés) y listo.' : crear ? 'Con tu cuenta, tus datos se sincronizan en todos tus dispositivos.' : 'Entrá con el email y la contraseña de tu cuenta.';
+    $('#acc-name-row').hidden = !crear;
+    $('#acc-go').textContent = crear ? 'Crear cuenta' : 'Entrar';
+    $('#acc-switch').textContent = crear ? 'Ya tengo cuenta' : 'No tengo cuenta: crear una';
+    $('#acc-reset').hidden = crear;
+    $('#acc-pass').autocomplete = crear ? 'new-password' : 'current-password';
+    $('#acc-err').hidden = true;
+    if (!dlgAcc.open) dlgAcc.showModal();
+  }
+  $('#acc-switch').addEventListener('click', () => openAcc(accMode === 'crear' ? 'entrar' : 'crear', false));
+  $('#f-acc').addEventListener('submit', async e => {
+    e.preventDefault();
+    const er = $('#acc-err'); er.hidden = true;
+    const name = $('#acc-name').value.trim(), email = $('#acc-email').value.trim(), pass = $('#acc-pass').value;
+    if (accMode === 'crear' && !name) { er.textContent = 'Poné tu nombre: así se ve quién cargó cada gasto.'; er.hidden = false; return; }
+    if (!fb.auth) { er.textContent = 'La sincronización todavía está cargando. Probá en unos segundos.'; er.hidden = false; return; }
+    const go = $('#acc-go'); go.disabled = true;
+    try {
+      if (accMode === 'crear') {
+        fb.pendingName = name;
+        const cred = await fb.auth.createUserWithEmailAndPassword(email, pass);
+        await cred.user.updateProfile({ displayName: name });
+      } else {
+        await fb.auth.signInWithEmailAndPassword(email, pass);
+      }
+      dlgAcc.close();
+    } catch (err) { er.textContent = fbErrMsg(err); er.hidden = false; }
+    go.disabled = false;
+  });
+  $('#acc-reset').addEventListener('click', async () => {
+    const er = $('#acc-err'), email = $('#acc-email').value.trim();
+    if (!email) { er.textContent = 'Escribí tu email y tocá de nuevo "Olvidé mi contraseña".'; er.hidden = false; return; }
+    try { await fb.auth.sendPasswordResetEmail(email); er.hidden = true; toast('Te mandamos un email para cambiar la contraseña.'); }
+    catch (err) { er.textContent = fbErrMsg(err); er.hidden = false; }
+  });
+  const dlgSync = $('#dlg-sync');
+  $('#sync-rules').value = FB_RULES;
+  $('#sync-copy-rules').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(FB_RULES); toast('Reglas copiadas.'); }
+    catch (e) { const t = $('#sync-rules'); t.focus(); t.select(); toast('Seleccioné las reglas: copialas con el menú del celu.'); }
+  });
+  $('#f-sync').addEventListener('submit', e => {
+    e.preventDefault();
+    const config = parseFbConfig($('#sync-cfg').value);
+    if (!config) { const er = $('#sync-err'); er.textContent = 'No encontré apiKey, projectId y appId. Copiá el bloque firebaseConfig completo.'; er.hidden = false; return; }
+    lsSet(FB_KEY, JSON.stringify({ config }));
+    location.reload();
+  });
+  $('#sync-box').addEventListener('click', async e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.id === 'sync-setup') { $('#sync-err').hidden = true; dlgSync.showModal(); }
+    else if (b.id === 'sync-login') openAcc('crear', false);
+    else if (b.id === 'sync-logout') { fbUnsub(); await fb.auth.signOut(); toast('Cerraste sesión. Ves lo guardado en este dispositivo.'); }
+    else if (b.id === 'sync-forget') {
+      if (await ask('Quitar sincronización', 'Este dispositivo deja de sincronizar. Los datos del hogar compartido no se borran.', 'Quitar')) {
+        try { if (fb.auth) await fb.auth.signOut(); } catch (err) { /* offline */ }
+        lsSet(FB_KEY, null); location.reload();
+      }
+    }
+    else if (b.id === 'sync-retry') location.reload();
+    else if (b.id === 'sync-create') {
+      b.disabled = true; b.textContent = 'Creando…';
+      try { await fbCreateHogar(); } catch (err) { console.warn(err); toast(fbErrMsg(err), 'err'); renderSync(); }
+    }
+    else if (b.id === 'sync-share') {
+      const link = inviteLink();
+      try {
+        if (navigator.share) { await navigator.share({ title: 'Cuentas Claras', text: 'Te invito a compartir las cuentas:', url: link }); return; }
+        await navigator.clipboard.writeText(link); toast('Link copiado. Mandáselo por WhatsApp.');
+      } catch (err) { if (err && err.name === 'AbortError') return; const i = $('#sync-link'); i.focus(); i.select(); toast('Seleccioné el link: copialo con el menú del celu.'); }
+    }
+  });
 
   function ready() {
     if (!S.cfgSaved && !Object.keys(S.movs).length) demo = makeDemo();
@@ -1056,14 +1415,16 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
   function beginReal() { if (demo) { demo = null; } }
   function saveMov(m, prevMonth, cfgChanged) {
     beginReal();
+    const old = S.movs[m.id];
     S.movs = { ...S.movs, [m.id]: m };
-    persist([monthOf(m.d), prevMonth].filter(Boolean), cfgChanged);
+    const ops = old && monthOf(old.d) !== monthOf(m.d) ? [{ del: old }, { put: m }] : [{ put: m }];
+    persist([monthOf(m.d), prevMonth].filter(Boolean), cfgChanged, ops);
     render();
   }
   function deleteMov(id) {
     const m = S.movs[id]; if (!m) return;
     const next = { ...S.movs }; delete next[id]; S.movs = next;
-    persist([monthOf(m.d)]);
+    persist([monthOf(m.d)], false, [{ del: m }]);
     render();
   }
   function setCats(fn) {
@@ -1257,7 +1618,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
   function movRow(m, withDate) {
     const sign = m.t === 'i' ? '+' : '−';
     return `<button type="button" class="mov" data-mov="${esc(m.id)}">
-      <span class="mov-main"><span class="mov-cat">${esc(catName(m.c))}</span>${m.n || withDate ? `<span class="mov-note">${withDate ? esc(dayLabel(m.d)) + (m.n ? ' · ' : '') : ''}${esc(m.n)}</span>` : ''}</span>
+      <span class="mov-main"><span class="mov-cat">${esc(catName(m.c))}</span>${m.n || m.por || withDate ? `<span class="mov-note">${esc([withDate ? dayLabel(m.d) : '', m.n, m.por ? 'cargó ' + m.por : ''].filter(Boolean).join(' · '))}</span>` : ''}</span>
       <span class="mov-amt num ${m.t === 'i' ? 'in-ink' : 'out-ink'}">${sign}&#8239;${money(m.a)}</span>
     </button>`;
   }
@@ -1501,7 +1862,10 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
   }
 
   function renderAjustes() {
-    $('#store-line').textContent = mode === 'cloud'
+    renderSync();
+    $('#store-line').textContent = mode === 'fb'
+      ? 'Tus datos se guardan en el hogar compartido y se sincronizan entre los celulares y compus de quienes lo comparten. Igual conviene exportar una copia cada tanto.'
+      : mode === 'cloud'
       ? 'Tus datos se guardan en tu cuenta de Claude. Son privados y los ves desde cualquier dispositivo donde abras esta app.'
       : lsOK ? 'Tus datos se guardan solo en este navegador. Exportá una copia cada tanto para no perderlos si cambiás de celu.'
         : 'Este navegador no permite guardar datos: lo que cargues se pierde al cerrar. Probá con otro navegador.';
@@ -1627,6 +1991,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     const prev = mf.id ? S.movs[mf.id] : null;
     const m = { id: mf.id || newId('m'), t: mf.t, a, c: mf.cat, d, n: $('#mov-note').value.trim().slice(0, 80), ts: prev ? prev.ts : Date.now() };
     if (mf.fx) m.fx = mf.fx;
+    if (prev && prev.por) m.por = prev.por; else if (mode === 'fb' && fb.name) m.por = fb.name;
     mf.lastT = mf.t;
     let cfgChanged = false;
     const keep = !$('#mov-fx-row').hidden && $('#mov-fx-keep').checked && fijoById(mf.fx);
@@ -1847,6 +2212,18 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
       .concat(movs.map(m => [m.d, m.t === 'i' ? 'Ingreso' : 'Gasto', name(m.c), String(m.a).replace('.', ','), m.n].map(q).join(';')));
     offerFile(`movimientos-${todayISO()}.csv`, '﻿' + lines.join('\r\n'), 'text/csv');
   });
+  // Variable expenses in the columns of the Excel sheet "Gastos variables": Fecha, Categoría, Detalle, Monto.
+  const XLS_CAT = { sup: 'Supermercado', tra: 'Transporte y nafta', sal: 'Farmacia y salud', ocio: 'Salidas y delivery', ropa: 'Ropa', hog: 'Hogar', edu: 'Educación' };
+  $('#exp-xls').addEventListener('click', () => {
+    const fixed = new Set((S.cfg.fijos || []).map(f => f.id)), fin = new Set(S.cfg.cats.filter(c => c.fin).map(c => c.id));
+    const movs = Object.values(S.movs).filter(m => m.t === 'g' && !(m.fx && fixed.has(m.fx)) && !fin.has(m.c)).sort(byDateAsc);
+    if (!movs.length) { toast('Todavía no hay gastos variables para exportar.'); return; }
+    const q = v => { const t = String(v); return /[";\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
+    const d = iso => iso.slice(8, 10) + '/' + iso.slice(5, 7) + '/' + iso.slice(0, 4);
+    const lines = [['Fecha', 'Categoría', 'Detalle', 'Monto'].join(';')]
+      .concat(movs.map(m => [d(m.d), XLS_CAT[m.c] || 'Otros', [m.n, m.por].filter(Boolean).join(' · '), String(m.a).replace('.', ',')].map(q).join(';')));
+    offerFile(`gastos-variables-${todayISO()}.csv`, '\ufeff' + lines.join('\r\n'), 'text/csv');
+  });
   $('#imp-file').addEventListener('change', async e => {
     const f = e.target.files && e.target.files[0]; e.target.value = '';
     if (!f) return;
@@ -1860,7 +2237,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     if (ok) { replaceAll(cfg, movs); toast('Copia importada.'); }
   });
   $('#wipe').addEventListener('click', async () => {
-    const ok = await ask('Borrar todos tus datos', 'Se borran todos tus movimientos, topes y categorías propias. No se puede deshacer. Si querés, primero exportá una copia.', 'Borrar todo', true);
+    const ok = await ask('Borrar todos tus datos', (mode === 'fb' ? 'Se borran para todas las personas del hogar compartido: movimientos, topes y categorías propias. ' : 'Se borran todos tus movimientos, topes y categorías propias. ') + 'No se puede deshacer. Si querés, primero exportá una copia.', 'Borrar todo', true);
     if (ok) { replaceAll(defaultCfg(), []); toast('Listo, arrancás de cero.'); }
   });
 
@@ -1925,6 +2302,16 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     }
   });
 
+  if ((location.hash || '').startsWith('#unirse=')) {
+    try {
+      const inv = JSON.parse(b64d(location.hash.slice(8)));
+      if (inv && inv.c && inv.h) {
+        lsSet(FB_KEY, JSON.stringify({ config: inv.c, emulator: !!inv.e }));
+        lsSet(FB_INVITE, inv.h);
+      }
+    } catch (e) { toast('El link de invitación está incompleto. Pedí que te lo manden de nuevo.', 'err'); }
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { location.hash = ''; }
+  }
   const startView = (location.hash || '').slice(1);
   if (['inicio', 'movs', 'presu', 'proy', 'ajustes'].includes(startView)) {
     ui.view = startView;
