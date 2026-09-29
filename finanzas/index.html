@@ -1108,6 +1108,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
       clearTimeout(slow);
     }
     try { const raw = localStorage.getItem(FB_KEY); fb.cfg = raw ? JSON.parse(raw) : null; } catch (e) { fb.cfg = null; }
+    if (!fb.cfg && FB_BUILTIN && !window.claude) fb.cfg = { config: FB_BUILTIN };
     if (fb.cfg && fb.cfg.config) {
       // Keep the loading screen while the shared household connects; fall back to this device if it takes too long.
       fbStart();
@@ -1121,6 +1122,8 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
 
   /* ---------- sync between people: Firebase (free), optional ---------- */
   const FB_KEY = LS_KEY + ':sync', FB_INVITE = LS_KEY + ':invite';
+  // Firebase project of this installation (public web config; access is controlled by the Firestore rules).
+  const FB_BUILTIN = null;
   const fb = { cfg: null, auth: null, db: null, user: null, name: '', pendingName: '', hid: null, col: null, unsub: [], members: {}, state: 'off', err: '' };
   const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const lsSet = (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { /* storage blocked */ } };
@@ -1306,7 +1309,7 @@ service cloud.firestore {
     } else if (fb.state === 'out') {
       h = `<p class="sync-state"><i class="warn"></i>Sincronización lista, falta entrar</p>
         <p>Entrá con tu cuenta (o creala) para compartir los datos.</p>
-        <div class="btn-row"><button type="button" class="btn primary" id="sync-login">Entrar o crear cuenta</button><button type="button" class="btn" id="sync-forget">Quitar configuración</button></div>`;
+        <div class="btn-row"><button type="button" class="btn primary" id="sync-login">Entrar o crear cuenta</button>${FB_BUILTIN ? '' : '<button type="button" class="btn" id="sync-forget">Quitar configuración</button>'}</div>`;
     } else if (fb.state === 'nohogar') {
       h = `<p class="sync-state"><i class="warn"></i>Conectado como ${esc(fb.user && fb.user.email || '')}</p>
         <p>Creá un hogar compartido con lo que tenés en este dispositivo, o abrí el link de invitación que te mandaron.</p>
