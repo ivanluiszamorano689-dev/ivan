@@ -1420,6 +1420,32 @@ service cloud.firestore {
     if (!S.cfgSaved && !Object.keys(S.movs).length) demo = makeDemo();
     $('#loading') && $('#loading').remove();
     render();
+    if (pendingData) { const d = pendingData; pendingData = null; importFromLink(d); }
+  }
+
+  // A backup can travel inside a link (#datos=...), compressed, so it loads with one tap on the phone.
+  let pendingData = null;
+  async function importFromLink(str) {
+    let o = null;
+    try {
+      const bin = atob(str.replace(/-/g, '+').replace(/_/g, '/'));
+      const bytes = Uint8Array.from(bin, ch => ch.charCodeAt(0));
+      const txt = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text();
+      o = JSON.parse(txt);
+    } catch (e) {
+      toast(typeof DecompressionStream === 'undefined'
+        ? 'Este navegador no puede abrir el link de datos. Usá Ajustes → Importar copia con el archivo.'
+        : 'El link de datos está incompleto. Copialo entero y probá de nuevo.', 'err');
+      return;
+    }
+    if (!o || o.app !== 'cuentas-claras' || !Array.isArray(o.movs)) { toast('Ese link no trae datos de Cuentas Claras.', 'err'); return; }
+    const movs = o.movs.map(normMov).filter(Boolean), cfg = normCfg(o.cfg);
+    const nf = (cfg.fijos || []).length;
+    const ok = await ask('Cargar tus datos', `Este link trae ${movs.length} movimientos y ${nf} movimientos fijos. Reemplaza lo que haya ahora${mode === 'fb' ? ' en el hogar compartido' : ' en este dispositivo'}.`, 'Cargar');
+    if (!ok) return;
+    replaceAll(cfg, movs);
+    ui.month = monthOf(todayISO()); go('inicio');
+    toast(mode === 'fb' ? 'Listo: tus datos están en el hogar compartido.' : 'Listo, tus datos están cargados. Ahora entrá en Ajustes → Entrar o crear cuenta para compartirlos.');
   }
 
   /* ---------- mutations ---------- */
@@ -2313,6 +2339,10 @@ service cloud.firestore {
     }
   });
 
+  if ((location.hash || '').startsWith('#datos=')) {
+    pendingData = location.hash.slice(7);
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { location.hash = ''; }
+  }
   if ((location.hash || '').startsWith('#unirse=')) {
     try {
       const inv = JSON.parse(b64d(location.hash.slice(8)));
