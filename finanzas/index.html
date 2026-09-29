@@ -339,8 +339,81 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
 .actions .grow { flex: 1; }
 .actions .btn { min-height: 48px; }
 
+/* Wrappers that only group columns on wide screens */
+.col-a, .col-b, .p-a, .p-b, .aj-a, .aj-b { display: contents; }
+.sec-ledger { order: 1; } .sec-bud { order: 2; } .sec-cats, .sec-empty { order: 3; } .sec-trend { order: 4; } .sec-recent { order: 5; }
+.aj-datos { order: 1; } .aj-gastos { order: 2; } .aj-ingresos { order: 3; } .aj-arch { order: 4; } .aj-tip { order: 5; } .aj-wipe { order: 6; } #v-ajustes .colophon { order: 7; }
+.aj-tip { display: grid; gap: 8px; }
+.side-top, .side-foot, #movs-side { display: none; }
+.movs-layout { display: grid; gap: 16px; min-width: 0; }
+#movs-body { display: grid; gap: 14px; min-width: 0; }
+.side-card h3 { font-size: .72rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 14px 16px 4px; }
+kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px solid var(--rule); border-bottom-width: 2px; border-radius: 5px; background: var(--paper); font: 600 .72rem/1.4 var(--f-num); text-align: center; color: var(--ink-2); }
+
+@media (hover: hover) {
+  .mov:hover, .cat-row:hover, .bud:hover, .set-row:hover, .col:hover { background: var(--hl); }
+  .bud-mini:hover { border-color: var(--muted); }
+  .icon-btn:hover, .btn:hover { border-color: var(--muted); }
+  .btn.primary:hover { filter: brightness(1.08); }
+}
+
 @media (min-width: 600px) {
   dialog.sheet { border-radius: 22px; bottom: 24px; }
+}
+
+/* Desktop: left sidebar, two-column content */
+@media (min-width: 1000px) {
+  .app { max-width: none; margin: 0; padding-inline: calc(248px + 40px) 40px; padding-block: 0 64px; }
+  .top, .demo, main { max-width: 1120px; margin-inline: auto; }
+  .top { padding: 28px 0 16px; }
+  .top .brand { display: none; }
+  .title { font-size: 2.35rem; }
+  .icon-btn { width: 44px; height: 44px; }
+  .view { padding-top: 20px; gap: 28px; }
+
+  #v-inicio { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start; }
+  #v-inicio .col-a, #v-inicio .col-b { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+  #v-inicio .sec-recent { grid-column: 1 / -1; }
+  .chart { height: 210px; }
+  .col .b { width: min(24px, 38%); }
+
+  #v-presu { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px; align-items: start; }
+  .p-a { display: block; position: sticky; top: 150px; }
+  .p-b { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+
+  .movs-tools { grid-template-columns: minmax(260px, 340px) minmax(0, 1fr) auto; align-items: center; }
+  .movs-layout { grid-template-columns: minmax(0, 1fr) 340px; gap: 28px; align-items: start; }
+  #movs-side { display: block; position: sticky; top: 150px; }
+  #movs-side:empty { display: none; }
+  .movs-layout:has(#movs-side:empty) { grid-template-columns: minmax(0, 1fr); }
+  .mov { padding: 12px 20px; }
+  .mov-main { grid-template-columns: minmax(150px, 230px) minmax(0, 1fr); column-gap: 20px; align-items: baseline; }
+
+  #v-ajustes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 36px; align-items: start; }
+  .aj-a, .aj-b { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+  #v-ajustes .colophon { grid-column: 1 / -1; }
+
+  .fab { display: none; }
+  .tabs {
+    top: 0; right: auto; width: 248px; display: flex; flex-direction: column; gap: 28px;
+    padding: calc(28px + env(safe-area-inset-top, 0px)) 16px calc(24px + env(safe-area-inset-bottom, 0px));
+    border-top: 0; border-right: 1px solid var(--rule); background: var(--sheet);
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+  .side-top { display: grid; gap: 22px; padding-inline: 4px; }
+  .side-top .brand { font-size: .78rem; }
+  .side-add { width: 100%; min-height: 46px; white-space: nowrap; padding-inline: 10px; }
+  .tabs-in { display: flex; flex-direction: column; gap: 4px; max-width: none; margin: 0; }
+  .tab { flex-direction: row; justify-content: flex-start; gap: 12px; padding: 10px 12px; font-size: .95rem; font-weight: 600; letter-spacing: 0; color: var(--ink-2); }
+  .tab svg { width: 22px; height: 22px; }
+  .tab:hover { background: var(--hl); }
+  .tab[aria-current="page"] { background: var(--accent-soft); color: var(--accent); }
+  .side-foot { display: block; margin-top: auto; padding-inline: 4px; font-size: .8rem; line-height: 2; color: var(--muted); }
+
+  .toast { left: calc(50% + 124px); bottom: 32px; }
+  dialog.sheet { inset: 0; margin: auto; height: fit-content; max-width: 520px; border-radius: 20px; }
+  dialog.sheet .grab { display: none; }
+  .sheet-body { padding: 24px 28px 28px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -395,13 +468,17 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
           <button type="button" class="chip-x" id="movs-catx"><span></span> <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="vh">Quitar filtro</span></button>
         </div>
       </div>
-      <div id="movs-body"></div>
+      <div class="movs-layout">
+        <div id="movs-body"></div>
+        <aside id="movs-side" aria-label="Resumen de lo filtrado"></aside>
+      </div>
     </section>
 
     <section class="view" id="v-presu" aria-label="Presupuesto" hidden></section>
 
     <section class="view" id="v-ajustes" aria-label="Ajustes" hidden>
-      <div>
+      <div class="aj-a">
+      <div class="aj-datos">
         <h2 class="eyebrow">Tus datos</h2>
         <div class="card pad">
           <p class="store-line" id="store-line"></p>
@@ -413,25 +490,29 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
           </div>
         </div>
       </div>
-      <div>
-        <h2 class="eyebrow">Categorías de gastos <button type="button" class="link" data-newcat="g">+ Nueva</button></h2>
-        <div class="card" id="cats-g"></div>
-      </div>
-      <div>
+      <div class="aj-ingresos">
         <h2 class="eyebrow">Categorías de ingresos <button type="button" class="link" data-newcat="i">+ Nueva</button></h2>
         <div class="card" id="cats-i"></div>
       </div>
-      <div id="arch-group" hidden>
+      <div class="aj-arch" id="arch-group" hidden>
         <h2 class="eyebrow">Archivadas</h2>
         <div class="card" id="cats-off"></div>
       </div>
-      <div>
-        <h2 class="eyebrow">Tenerla en el celu</h2>
-        <p class="tip">Abrí esta página en el navegador del teléfono y elegí <b>Agregar a pantalla de inicio</b> (en Safari, desde el botón Compartir). Queda como una app más.</p>
+      <div class="aj-tip">
+        <h2 class="eyebrow">Tenerla a mano</h2>
+        <p class="tip"><b>En la compu:</b> guardá esta página en favoritos. Se acomoda al ancho de la pantalla.</p>
+        <p class="tip"><b>En el celu:</b> abrila en el navegador y elegí <b>Agregar a pantalla de inicio</b> (en Safari, desde el botón Compartir). Queda como una app más.</p>
       </div>
-      <div>
+      <div class="aj-wipe">
         <h2 class="eyebrow">Empezar de nuevo</h2>
         <button type="button" class="btn danger" id="wipe">Borrar todos mis datos</button>
+      </div>
+      </div>
+      <div class="aj-b">
+      <div class="aj-gastos">
+        <h2 class="eyebrow">Categorías de gastos <button type="button" class="link" data-newcat="g">+ Nueva</button></h2>
+        <div class="card" id="cats-g"></div>
+      </div>
       </div>
       <p class="colophon">Cuentas claras conservan la amistad</p>
     </section>
@@ -441,12 +522,17 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
 <button class="fab" id="fab" type="button" aria-label="Cargar movimiento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
 
 <nav class="tabs" aria-label="Secciones">
+  <div class="side-top">
+    <span class="brand">Cuentas Claras</span>
+    <button type="button" class="btn primary side-add" id="side-add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Cargar movimiento</button>
+  </div>
   <div class="tabs-in">
     <button class="tab" type="button" data-view="inicio" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M4 9.5h16M9.5 9.5V20M13 14h4.5M13 17h4.5"/></svg>Inicio</button>
     <button class="tab" type="button" data-view="movs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><path d="M4.5 6.5h.01M4.5 12h.01M4.5 17.5h.01" stroke-width="2.6"/></svg>Movimientos</button>
     <button class="tab" type="button" data-view="presu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3.5 16.5a8.5 8.5 0 0 1 17 0"/><path d="M12 16.5l4.2-5.2"/><path d="M3.5 19.5h17"/></svg>Presupuesto</button>
     <button class="tab" type="button" data-view="ajustes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>Ajustes</button>
   </div>
+  <p class="side-foot"><kbd>N</kbd> cargar movimiento<br><kbd>←</kbd> <kbd>→</kbd> cambiar de mes</p>
 </nav>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -609,6 +695,8 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
     }
     return Math.round(total * 100) / 100;
   }
+  const wideMQ = window.matchMedia ? window.matchMedia('(min-width: 1000px)') : null;
+  const isWide = () => !!(wideMQ && wideMQ.matches);
   const amountToInput = a => String(a).replace('.', ',');
   const newId = p => (p || '') + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 
@@ -898,7 +986,9 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
     let note = '';
     if (t.i > 0 && t.s >= 0) note = `Te quedó el ${pct(t.s / t.i)} de lo que entró en ${mn}.`;
     else if (t.s < 0) note = `Gastaste ${money(-t.s)} más de lo que entró en ${mn}.`;
-    h += `<section class="card ledger" aria-label="Resumen de ${esc(mn)}">
+    const wide = isWide();
+    h += '<div class="col-a">';
+    h += `<section class="card ledger sec-ledger" aria-label="Resumen de ${esc(mn)}">
       <div class="lrow"><span>Ingresos</span><span class="num in-ink">+&#8239;${money(t.i)}</span></div>
       <div class="lrow"><span>Gastos</span><span class="num out-ink">−&#8239;${money(t.g)}</span></div>
       <div class="ltotal"><span>Saldo del mes</span><span class="big ${t.s < 0 ? 'neg' : ''}">${t.s < 0 ? '−' : ''}${money(t.s)}</span></div>
@@ -906,11 +996,12 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
     </section>`;
 
     const B = budgetInfo(k);
+    let bud = '';
     if (B.total > 0) {
       const left = B.total - B.spentAll, over = left < 0;
       const st = state(B.spentAll, B.total);
       const perDay = B.isCur && !over && B.daysLeft > 0 ? left / B.daysLeft : 0;
-      h += `<section><h2 class="eyebrow">Presupuesto <button type="button" class="link" data-go="presu">Ver detalle</button></h2>
+      bud = `<section class="sec-bud"><h2 class="eyebrow">Presupuesto <button type="button" class="link" data-go="presu">Ver detalle</button></h2>
         <button type="button" class="card bud-mini" data-go="presu">
           <span class="head"><strong class="${over ? 'over' : ''}">${over ? 'Te pasaste ' + money(-left) : 'Quedan ' + money(left)}</strong>
           <span class="pill ${st}">${st !== 'ok' ? ICON_WARN : ''}${pct(B.spentAll / B.total)} usado</span></span>
@@ -918,12 +1009,12 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
           <span class="foot"><span>${money(B.spentAll)} de ${money(B.total)}</span>${perDay ? `<span>${money(perDay)} por día</span>` : B.isCur ? `<span>Día ${B.day} de ${B.dim}</span>` : ''}</span>
         </button></section>`;
     } else {
-      h += `<section><h2 class="eyebrow">Presupuesto</h2>
+      bud = `<section class="sec-bud"><h2 class="eyebrow">Presupuesto</h2>
         <button type="button" class="card bud-mini empty" data-go="presu">Todavía no pusiste topes de gasto. <span>Armar mi presupuesto →</span></button></section>`;
     }
 
     if (!list.length) {
-      h += `<div class="card empty"><strong>${cap(mn)} está en blanco</strong><p>Tocá el botón + para anotar un gasto o un ingreso. Con unos días de datos vas a ver en qué se te va la plata.</p></div>`;
+      h += `<div class="card empty sec-empty"><strong>${cap(mn)} está en blanco</strong><p>Tocá el botón + para anotar un gasto o un ingreso. Con unos días de datos vas a ver en qué se te va la plata.</p></div>`;
     } else {
       const gastos = list.filter(m => m.t === 'g');
       if (gastos.length) {
@@ -931,7 +1022,7 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
         const top = by.slice(0, 6);
         const rest = by.slice(6).reduce((s, r) => s + r.a, 0);
         const max = top[0].a;
-        h += `<section><h2 class="eyebrow">Gastos por categoría <span class="num">${money(t.g)}</span></h2><div class="card cats">`;
+        h += `<section class="sec-cats"><h2 class="eyebrow">Gastos por categoría <span class="num">${money(t.g)}</span></h2><div class="card cats">`;
         for (const r of top) {
           h += `<button type="button" class="cat-row" data-filter-cat="${esc(r.c)}">
             <span class="cr-name">${esc(catName(r.c))}</span><span class="num">${money(r.a)}</span>
@@ -943,10 +1034,10 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
       }
     }
 
-    h += renderTrend(k);
+    h += '</div><div class="col-b">' + bud + renderTrend(k) + '</div>';
 
     if (list.length) {
-      h += `<section><h2 class="eyebrow">Últimos movimientos <button type="button" class="link" data-go="movs">Ver todos</button></h2><div class="card">${list.slice(0, 5).map(m => movRow(m, true)).join('')}</div></section>`;
+      h += `<section class="sec-recent"><h2 class="eyebrow">Últimos movimientos <button type="button" class="link" data-go="movs">Ver todos</button></h2><div class="card">${list.slice(0, wide ? 8 : 5).map(m => movRow(m, true)).join('')}</div></section>`;
     }
     $('#v-inicio').innerHTML = h;
   }
@@ -964,7 +1055,7 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
     const mx = niceMax(Math.max(...tot.map(x => Math.max(x.i, x.g))));
     const sel = ui.sel && keys.includes(ui.sel) ? ui.sel : k;
     const s = tot.find(x => x.key === sel);
-    let h = `<section><h2 class="eyebrow">Últimos 6 meses</h2><div class="card chart-card">
+    let h = `<section class="sec-trend"><h2 class="eyebrow">Últimos 6 meses</h2><div class="card chart-card">
       <div class="legend"><span><i style="background:var(--in)"></i>Ingresos</span><span><i style="background:var(--out)"></i>Gastos</span></div>
       <div class="chart">
         <div class="gl" style="top:0"><span>${compact(mx)}</span></div>
@@ -1009,6 +1100,18 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
       h += '</div>';
     }
     $('#movs-body').innerHTML = h;
+
+    let side = '';
+    if (list.length) {
+      side = `<h2 class="eyebrow">Resumen${f.cat || q || f.t !== 'all' ? ' del filtro' : ` de ${esc(monthName(ui.month))}`}</h2><div class="card side-card">`;
+      for (const [tt, label] of [['i', 'Ingresos'], ['g', 'Gastos']]) {
+        const rows = sumByCat(list.filter(m => m.t === tt));
+        if (!rows.length) continue;
+        side += `<h3>${label}</h3>` + rows.map(r => `<button type="button" class="set-row" data-filter-cat="${esc(r.c)}"><span>${esc(catName(r.c))}</span><span class="num ${tt === 'i' ? 'in-ink' : 'out-ink'}">${tt === 'i' ? '+' : '−'}&#8239;${money(r.a)}</span></button>`).join('');
+      }
+      side += `<div class="set-row" style="cursor:default"><span>Saldo</span><span class="num">${t.s < 0 ? '−' : ''}${money(t.s)}</span></div></div>`;
+    }
+    $('#movs-side').innerHTML = side;
   }
 
   function renderPresu() {
@@ -1017,14 +1120,14 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
     if (B.total > 0) {
       const left = B.total - B.spentAll, over = left < 0;
       const inc = totals(monthMovs(k)).i;
-      h += `<section class="card bud-hero" aria-label="Presupuesto de ${esc(mn)}">
+      h += `<div class="p-a"><section class="card bud-hero" aria-label="Presupuesto de ${esc(mn)}">
         <h2 class="eyebrow" style="margin:0">Presupuesto de ${esc(mn)}</h2>
         <div class="figure">${over ? `<span>Te pasaste</span><strong class="over">${money(-left)}</strong>` : `<span>Quedan</span><strong>${money(left)}</strong>`}</div>
         ${meter(B.spentAll, B.total, B.frac, B.isCur)}
         <div class="foot"><span>Gastaste ${money(B.spentAll)} de ${money(B.total)}</span>${B.isCur ? `<span>Día ${B.day} de ${B.dim}</span>` : ''}</div>
         ${B.isCur && !over && B.daysLeft > 0 ? `<p class="perday">Para no pasarte podés gastar <strong>${money(left / B.daysLeft)} por día</strong> ${B.daysLeft === 1 ? 'hoy, que es el último día' : `en los ${B.daysLeft} días que quedan`}.</p>` : ''}
         ${inc > 0 ? `<p class="note">Entraron ${money(inc)} este mes. ${inc - B.total >= 0 ? `Si cumplís el presupuesto te sobran ${money(inc - B.total)}.` : `El presupuesto supera tus ingresos por ${money(B.total - inc)}.`}</p>` : ''}
-      </section>`;
+      </section></div><div class="p-b">`;
       h += `<section><h2 class="eyebrow">Por categoría</h2><div class="card bud-list">`;
       const rows = B.rows.slice().sort((a, b) => (b.spent / b.b) - (a.spent / a.b));
       for (const r of rows) {
@@ -1037,7 +1140,7 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
       }
       h += `</div></section>`;
     } else {
-      h += `<div class="card empty"><strong>Armá tu presupuesto</strong><p>Poné un tope por mes a cada categoría de gasto. Tocá una categoría de la lista para definir cuánto querés gastar como máximo. El tope se repite todos los meses.</p></div>`;
+      h += `<div class="p-a"><div class="card empty"><strong>Armá tu presupuesto</strong><p>Poné un tope por mes a cada categoría de gasto. Tocá una categoría de la lista para definir cuánto querés gastar como máximo. El tope se repite todos los meses.</p></div></div><div class="p-b">`;
     }
     if (B.unb.length) {
       h += `<section><h2 class="eyebrow">Sin tope</h2><div class="card">`;
@@ -1047,6 +1150,7 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
       h += `</div></section>`;
     }
     if (B.total > 0 && B.isCur) h += `<p class="note">La marca <span class="tick"></span> en cada barra muestra cuánto del mes ya pasó. Si la barra la supera, venís gastando más rápido de lo planeado.</p>`;
+    h += '</div>';
     $('#v-presu').innerHTML = h;
   }
 
@@ -1308,7 +1412,12 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
     if (t.dataset.go) return go(t.dataset.go);
     if (t.dataset.mov) return openMov(t.dataset.mov);
     if (t.dataset.bud) return openBud(t.dataset.bud);
-    if (t.dataset.filterCat) { ui.filt = { t: 'g', q: '', cat: t.dataset.filterCat }; $('#movs-q').value = ''; return go('movs'); }
+    if (t.dataset.filterCat) {
+      const c = catById(t.dataset.filterCat), keepQ = ui.view === 'movs';
+      ui.filt = { t: c ? c.t : 'g', q: keepQ ? ui.filt.q : '', cat: t.dataset.filterCat };
+      if (!keepQ) $('#movs-q').value = '';
+      return keepQ ? renderMovs() : go('movs');
+    }
     if (t.dataset.col) { ui.sel = t.dataset.col; return renderInicio(); }
     if (t.dataset.cat) return openCat(t.dataset.cat);
     if (t.dataset.newcat) return openCat(null, t.dataset.newcat);
@@ -1316,6 +1425,23 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
   });
   $$('dialog').forEach(d => d.addEventListener('click', e => { if (e.target === d) d.close(); }));
   $('#fab').addEventListener('click', () => openMov(null));
+  $('#side-add').addEventListener('click', () => openMov(null));
+  if (wideMQ) {
+    const onWide = () => render();
+    if (wideMQ.addEventListener) wideMQ.addEventListener('change', onWide); else if (wideMQ.addListener) wideMQ.addListener(onWide);
+  }
+  // Keyboard shortcuts for the computer: N = new entry, arrows = change month.
+  document.addEventListener('keydown', e => {
+    if (mode === 'loading' || e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
+    const tag = (e.target && e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select' || (e.target && e.target.isContentEditable)) return;
+    if (document.querySelector('dialog[open]')) return;
+    if (e.key === 'n' || e.key === 'N') { e.preventDefault(); openMov(null); }
+    else if (ui.view !== 'ajustes' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+      e.preventDefault();
+      ui.month = addMonths(ui.month, e.key === 'ArrowLeft' ? -1 : 1); ui.sel = null; render();
+    }
+  });
   $('#m-prev').addEventListener('click', () => { ui.month = addMonths(ui.month, -1); ui.sel = null; render(); });
   $('#m-next').addEventListener('click', () => { ui.month = addMonths(ui.month, 1); ui.sel = null; render(); });
   $('#m-today').addEventListener('click', () => { ui.month = monthOf(todayISO()); ui.sel = null; render(); });

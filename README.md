@@ -3,8 +3,11 @@ Para pruebas de CLAUDE
 
 ## Cuentas Claras (`finanzas/`)
 
-App web para el celular para anotar ingresos y gastos y llevar un presupuesto mensual.
+App web para anotar ingresos y gastos y llevar un presupuesto mensual, desde el celular o la compu.
 Es un solo archivo HTML (`finanzas/index.html`), sin instalar nada.
+
+En el celular usa una barra de pestañas abajo. En pantallas anchas (compu) pasa a un menú lateral con el contenido
+en dos columnas. Atajos de teclado en la compu: `N` carga un movimiento, `←` / `→` cambian de mes.
 
 **Qué hace**
 
