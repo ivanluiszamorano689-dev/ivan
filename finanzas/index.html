@@ -341,8 +341,29 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
 
 /* Wrappers that only group columns on wide screens */
 .col-a, .col-b, .p-a, .p-b, .aj-a, .aj-b { display: contents; }
-.sec-ledger { order: 1; } .sec-bud { order: 2; } .sec-cats, .sec-empty { order: 3; } .sec-trend { order: 4; } .sec-recent { order: 5; }
-.aj-datos { order: 1; } .aj-gastos { order: 2; } .aj-ingresos { order: 3; } .aj-arch { order: 4; } .aj-tip { order: 5; } .aj-wipe { order: 6; } #v-ajustes .colophon { order: 7; }
+.sec-ledger { order: 1; } .sec-pend { order: 2; } .sec-bud { order: 3; } .sec-cats, .sec-empty { order: 4; } .sec-trend { order: 5; } .sec-recent { order: 6; }
+.aj-datos { order: 1; } .aj-fijos { order: 2; } .aj-gastos { order: 3; } .aj-ingresos { order: 4; } .aj-arch { order: 5; } .aj-tip { order: 6; } .aj-wipe { order: 7; } #v-ajustes .colophon { order: 8; }
+
+/* Recurring entries */
+.fx-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; padding: 12px 16px; border: 0; border-top: 1px solid var(--rule); background: none; }
+.fx-row:first-child { border-top: 0; }
+.fx-row:active { background: var(--hl); }
+.fx-day { width: 38px; padding: 7px 0; border-radius: 9px; background: var(--track); text-align: center; font-size: .86rem; font-weight: 600; }
+.fx-day.late { background: var(--warn-soft); color: var(--warn-ink); }
+.fx-main { display: grid; gap: 2px; min-width: 0; }
+.fx-name { font-weight: 600; overflow-wrap: anywhere; line-height: 1.3; }
+#fijos-list .set-row { flex-wrap: wrap; gap: 2px 12px; }
+#fijos-list .set-row > span:first-child { white-space: normal; }
+#fijos-list .set-row .sub { margin-left: auto; text-align: right; }
+.fx-sub { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font-size: .82rem; color: var(--muted); }
+.fx-end { display: grid; justify-items: end; gap: 5px; }
+.fx-go { font-size: .78rem; font-weight: 650; color: var(--accent); padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); }
+.fx-foot { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; padding: 13px 16px; border-top: 1px solid var(--rule); font-size: .9rem; color: var(--ink-2); }
+.fx-foot:first-child { border-top: 0; }
+.fx-foot strong { color: var(--ink); font-size: 1rem; }
+.check { display: flex; align-items: flex-start; gap: 10px; font-size: .92rem; color: var(--ink-2); cursor: pointer; }
+.check input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--accent); flex: none; }
+.row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .aj-tip { display: grid; gap: 8px; }
 .side-top, .side-foot, #movs-side { display: none; }
 .movs-layout { display: grid; gap: 16px; min-width: 0; }
@@ -351,7 +372,7 @@ fieldset legend { padding: 0; margin-bottom: 8px; }
 kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px solid var(--rule); border-bottom-width: 2px; border-radius: 5px; background: var(--paper); font: 600 .72rem/1.4 var(--f-num); text-align: center; color: var(--ink-2); }
 
 @media (hover: hover) {
-  .mov:hover, .cat-row:hover, .bud:hover, .set-row:hover, .col:hover { background: var(--hl); }
+  .mov:hover, .cat-row:hover, .bud:hover, .set-row:hover, .col:hover, .fx-row:hover { background: var(--hl); }
   .bud-mini:hover { border-color: var(--muted); }
   .icon-btn:hover, .btn:hover { border-color: var(--muted); }
   .btn.primary:hover { filter: brightness(1.08); }
@@ -509,6 +530,10 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
       </div>
       </div>
       <div class="aj-b">
+      <div class="aj-fijos">
+        <h2 class="eyebrow">Movimientos fijos <button type="button" class="link" data-newfijo="1">+ Nuevo</button></h2>
+        <div class="card" id="fijos-list"></div>
+      </div>
       <div class="aj-gastos">
         <h2 class="eyebrow">Categorías de gastos <button type="button" class="link" data-newcat="g">+ Nueva</button></h2>
         <div class="card" id="cats-g"></div>
@@ -560,6 +585,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     </fieldset>
     <label class="field"><span>Fecha</span><input type="date" id="mov-date" required></label>
     <label class="field"><span>Nota (opcional)</span><input id="mov-note" maxlength="80" placeholder="Ej: Coto, verdulería, cumple de Juli" autocomplete="off"></label>
+    <label class="check" id="mov-fx-row" hidden><input type="checkbox" id="mov-fx-keep"> <span>Usar este monto también en los próximos meses</span></label>
     <p class="err" id="mov-err" role="alert" hidden></p>
     <div class="actions">
       <button type="button" class="btn danger" id="mov-del" hidden>Eliminar</button>
@@ -602,6 +628,43 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     <p class="err" id="cat-err" role="alert" hidden></p>
     <div class="actions">
       <button type="button" class="btn danger" id="cat-del" hidden>Eliminar</button>
+      <button type="submit" class="btn primary grow">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Recurring entry sheet -->
+<dialog class="sheet" id="dlg-fijo" aria-labelledby="fijo-title">
+  <form class="sheet-body" id="f-fijo" novalidate>
+    <div class="grab" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 id="fijo-title">Movimiento fijo</h2>
+      <button type="button" class="x-btn" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="seg type" id="fijo-type" role="group" aria-label="Tipo">
+      <button type="button" data-t="g" aria-pressed="true">Gasto</button>
+      <button type="button" data-t="i" aria-pressed="false">Ingreso</button>
+    </div>
+    <label class="field"><span>Nombre</span><input id="fijo-name" maxlength="60" autocomplete="off" placeholder="Ej: Alquiler, Honorarios"></label>
+    <label class="field"><span>Monto por mes</span><div class="amount g" id="fijo-amount-wrap"><b aria-hidden="true">$</b><input id="fijo-amount" inputmode="decimal" autocomplete="off" placeholder="0"></div></label>
+    <label class="check"><input type="checkbox" id="fijo-sab"> <span>Es un monto por cada sábado del mes anterior</span></label>
+    <label class="field"><span>Categoría</span><select id="fijo-cat"></select></label>
+    <div class="row2">
+      <label class="field"><span>Día del mes</span><input id="fijo-day" type="number" inputmode="numeric" min="1" max="31" placeholder="8"></label>
+      <label class="field"><span>Desde</span><input id="fijo-desde" type="month" placeholder="2026-10"></label>
+    </div>
+    <label class="field"><span>Cuotas (opcional)</span><input id="fijo-cuotas" type="number" inputmode="numeric" min="0" placeholder="Sin fin"></label>
+    <p class="hint">Si es en cuotas, poné cuántas son en total. La primera cae en el mes “Desde”.</p>
+    <fieldset>
+      <legend>Aviso para actualizar el monto (opcional)</legend>
+      <div class="row2">
+        <label class="field"><span>Cada cuántos meses</span><input id="fijo-rec-cada" type="number" inputmode="numeric" min="1" placeholder="3"></label>
+        <label class="field"><span>Primer aviso</span><input id="fijo-rec-desde" type="month" placeholder="2026-12"></label>
+      </div>
+    </fieldset>
+    <p class="err" id="fijo-err" role="alert" hidden></p>
+    <div class="actions">
+      <button type="button" class="btn danger" id="fijo-del" hidden>Eliminar</button>
       <button type="submit" class="btn primary grow">Guardar</button>
     </div>
   </form>
@@ -708,20 +771,41 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     ['sus', 'g', 'Suscripciones'], ['imp', 'g', 'Impuestos'], ['otg', 'g', 'Otros gastos'],
     ['suel', 'i', 'Sueldo'], ['free', 'i', 'Changas y freelance'], ['vent', 'i', 'Ventas'], ['oti', 'i', 'Otros ingresos']
   ];
-  const defaultCfg = () => ({ v: 1, cats: DEFAULT_CATS.map(([id, t, name]) => ({ id, t, name, b: 0, off: false })) });
+  const defaultCfg = () => ({ v: 1, cats: DEFAULT_CATS.map(([id, t, name]) => ({ id, t, name, b: 0, off: false })), fijos: [] });
   function normCfg(c) {
     if (!c || !Array.isArray(c.cats) || !c.cats.length) return defaultCfg();
     const cats = c.cats.filter(x => x && x.id && x.name).map(x => ({
       id: String(x.id).slice(0, 40), t: x.t === 'i' ? 'i' : 'g', name: String(x.name).slice(0, 40),
       b: Math.max(0, Number(x.b) || 0), off: !!x.off
     }));
-    return cats.length ? { v: 1, cats } : defaultCfg();
+    if (!cats.length) return defaultCfg();
+    const fijos = Array.isArray(c.fijos) ? c.fijos.map(normFijo).filter(Boolean) : [];
+    return { v: 1, cats, fijos };
+  }
+  // A recurring entry: monthly on `day`, from month `desde`; optional number of installments,
+  // "per Saturday of the previous month" amounts, and a periodic reminder to update the amount.
+  function normFijo(f) {
+    if (!f || !f.id) return null;
+    const a = Number(f.a);
+    if (!(a > 0)) return null;
+    const o = {
+      id: String(f.id).slice(0, 40), t: f.t === 'i' ? 'i' : 'g', c: String(f.c || ''), a: Math.round(a * 100) / 100,
+      day: Math.min(31, Math.max(1, parseInt(f.day, 10) || 1)), n: String(f.n || '').slice(0, 60),
+      desde: /^\d{4}-\d{2}$/.test(String(f.desde)) ? String(f.desde) : monthOf(todayISO()),
+      cuotas: Math.max(0, parseInt(f.cuotas, 10) || 0), sab: !!f.sab, off: !!f.off
+    };
+    if (f.rec && /^\d{4}-\d{2}$/.test(String(f.rec.desde)) && parseInt(f.rec.cada, 10) > 0) {
+      o.rec = { desde: String(f.rec.desde), cada: parseInt(f.rec.cada, 10), txt: String(f.rec.txt || 'Actualizar monto').slice(0, 40) };
+    }
+    return o;
   }
   function normMov(m) {
     if (!m || typeof m !== 'object') return null;
     const a = Number(m.a);
     if (!m.id || !(a > 0) || !/^\d{4}-\d{2}-\d{2}$/.test(String(m.d))) return null;
-    return { id: String(m.id).slice(0, 60), t: m.t === 'i' ? 'i' : 'g', a: Math.round(a * 100) / 100, c: String(m.c || ''), d: String(m.d), n: String(m.n || '').slice(0, 80), ts: Number(m.ts) || 0 };
+    const o = { id: String(m.id).slice(0, 60), t: m.t === 'i' ? 'i' : 'g', a: Math.round(a * 100) / 100, c: String(m.c || ''), d: String(m.d), n: String(m.n || '').slice(0, 80), ts: Number(m.ts) || 0 };
+    if (m.fx) o.fx = String(m.fx).slice(0, 40);
+    return o;
   }
 
   let S = { cfg: defaultCfg(), cfgSaved: false, movs: {} };  // the viewer's real data
@@ -908,10 +992,10 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
 
   /* ---------- mutations ---------- */
   function beginReal() { if (demo) { demo = null; } }
-  function saveMov(m, prevMonth) {
+  function saveMov(m, prevMonth, cfgChanged) {
     beginReal();
     S.movs = { ...S.movs, [m.id]: m };
-    persist([monthOf(m.d), prevMonth].filter(Boolean));
+    persist([monthOf(m.d), prevMonth].filter(Boolean), cfgChanged);
     render();
   }
   function deleteMov(id) {
@@ -926,6 +1010,12 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     persist([], true);
     render();
   }
+  function setFijos(fn) {
+    beginReal();
+    S.cfg = { ...S.cfg, fijos: fn((S.cfg.fijos || []).map(f => ({ ...f }))) };
+    persist([], true);
+    render();
+  }
   function replaceAll(cfg, movsArr) {
     demo = null;
     const months = new Set(Object.values(S.movs).map(m => monthOf(m.d)));
@@ -933,6 +1023,26 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     S = { cfg, cfgSaved: false, movs };
     persist([...months], true);
     render();
+  }
+
+  /* ---------- recurring entries ---------- */
+  function monthsBetween(a, b) { const [y1, m1] = a.split('-').map(Number), [y2, m2] = b.split('-').map(Number); return (y2 - y1) * 12 + (m2 - m1); }
+  function saturdays(k) { const [y, m] = k.split('-').map(Number); let n = 0; for (let d = 1; d <= daysIn(k); d++) if (new Date(y, m - 1, d).getDay() === 6) n++; return n; }
+  const fijoById = id => (data().cfg.fijos || []).find(f => f.id === id);
+  function fijoInstance(f, k) {
+    const idx = monthsBetween(f.desde, k);
+    if (f.off || idx < 0 || (f.cuotas && idx >= f.cuotas)) return null;
+    const prev = addMonths(k, -1), ns = f.sab ? saturdays(prev) : 0;
+    let label = f.n || catName(f.c);
+    if (f.cuotas > 1) label += ` ${idx + 1}/${f.cuotas}`;
+    if (f.sab) label += ` de ${monthName(prev)} (${ns} × ${money(f.a)})`;
+    const rec = f.rec && k >= f.rec.desde && monthsBetween(f.rec.desde, k) % f.rec.cada === 0 ? f.rec.txt : '';
+    const done = Object.values(data().movs).some(m => m.fx === f.id && monthOf(m.d) === k);
+    return { f, k, a: f.sab ? f.a * ns : f.a, date: `${k}-${pad(Math.min(f.day, daysIn(k)))}`, label, rec, done };
+  }
+  function fijosFor(k) {
+    return (data().cfg.fijos || []).map(f => fijoInstance(f, k)).filter(Boolean)
+      .sort((x, y) => x.date < y.date ? -1 : x.date > y.date ? 1 : x.f.t === y.f.t ? 0 : x.f.t === 'i' ? -1 : 1);
   }
 
   /* ---------- budget math ---------- */
@@ -994,6 +1104,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
       <div class="ltotal"><span>Saldo del mes</span><span class="big ${t.s < 0 ? 'neg' : ''}">${t.s < 0 ? '−' : ''}${money(t.s)}</span></div>
       ${note ? `<p class="lnote">${esc(note)}</p>` : ''}
     </section>`;
+    h += renderFijos(k, t);
 
     const B = budgetInfo(k);
     let bud = '';
@@ -1040,6 +1151,29 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
       h += `<section class="sec-recent"><h2 class="eyebrow">Últimos movimientos <button type="button" class="link" data-go="movs">Ver todos</button></h2><div class="card">${list.slice(0, wide ? 8 : 5).map(m => movRow(m, true)).join('')}</div></section>`;
     }
     $('#v-inicio').innerHTML = h;
+  }
+
+  function renderFijos(k, t) {
+    const all = fijosFor(k);
+    if (!all.length) return '';
+    const pend = all.filter(x => !x.done);
+    const today = todayISO(), mn = monthName(k);
+    let h = `<section class="sec-pend"><h2 class="eyebrow">Fijos de ${esc(mn)} <span>${all.length - pend.length} de ${all.length} anotados</span></h2><div class="card">`;
+    if (!pend.length) {
+      h += `<p class="fx-foot">Ya anotaste todos los fijos de ${esc(mn)}.</p>`;
+    } else {
+      for (const x of pend) {
+        const late = x.date < today;
+        h += `<button type="button" class="fx-row" data-fx="${esc(x.f.id)}" data-fxk="${x.k}">
+          <span class="fx-day num ${late ? 'late' : ''}" aria-label="Día ${+x.date.slice(8)}">${x.date.slice(8)}</span>
+          <span class="fx-main"><span class="fx-name">${esc(x.label)}</span><span class="fx-sub">${esc(catName(x.f.c))}${late ? ' · ya pasó el día' : ''}${x.rec ? ` <span class="pill warn">${ICON_WARN}${esc(x.rec)}</span>` : ''}</span></span>
+          <span class="fx-end"><span class="num ${x.f.t === 'i' ? 'in-ink' : 'out-ink'}">${x.f.t === 'i' ? '+' : '−'}&#8239;${money(x.a)}</span><span class="fx-go">Anotar</span></span>
+        </button>`;
+      }
+      const proj = t.s + pend.reduce((s, x) => s + (x.f.t === 'i' ? x.a : -x.a), 0);
+      h += `<p class="fx-foot"><span>Con todos los fijos, ${esc(mn)} cierra en</span><strong class="num ${proj < 0 ? 'out-ink' : ''}">${proj < 0 ? '−' : ''}${money(proj)}</strong></p>`;
+    }
+    return h + '</div></section>';
   }
 
   function niceMax(v) {
@@ -1163,6 +1297,14 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     const row = c => `<button type="button" class="set-row" data-cat="${esc(c.id)}"><span>${esc(c.name)}</span><span class="sub">${c.t === 'g' ? (c.b > 0 ? `Tope <span class="num">${money(c.b)}</span>` : 'Sin tope') : `${usage[c.id] || 0} mov.`}</span></button>`;
     $('#cats-g').innerHTML = activeCats('g').map(row).join('');
     $('#cats-i').innerHTML = activeCats('i').map(row).join('');
+    const fj = data().cfg.fijos || [];
+    $('#fijos-list').innerHTML = fj.length ? fj.map(f => {
+      const bits = [`Día ${f.day}`];
+      if (f.cuotas > 1) bits.push(`${f.cuotas} cuotas desde ${monthShort(f.desde)} ${f.desde.slice(0, 4)}`);
+      else if (f.cuotas === 1) bits.push(`solo ${monthName(f.desde)} ${f.desde.slice(0, 4)}`);
+      else if (f.desde > monthOf(todayISO())) bits.push(`desde ${monthName(f.desde)}`);
+      return `<button type="button" class="set-row" data-fijo="${esc(f.id)}"><span>${esc(f.n || catName(f.c))}</span><span class="sub">${bits.join(' · ')} · <span class="num ${f.t === 'i' ? 'in-ink' : 'out-ink'}">${f.t === 'i' ? '+' : '−'}&#8239;${money(f.a)}${f.sab ? ' × sábado' : ''}</span></span></button>`;
+    }).join('') : `<p class="fx-foot">Sueldo, alquiler, servicios: lo que se repite todos los meses. Cada mes te los muestra en Inicio para anotarlos con un toque.</p>`;
     const off = data().cfg.cats.filter(c => c.off);
     $('#arch-group').hidden = !off.length;
     $('#cats-off').innerHTML = off.map(c => `<button type="button" class="set-row" data-restore="${esc(c.id)}"><span>${esc(c.name)}</span><span class="sub">Restaurar</span></button>`).join('');
@@ -1209,7 +1351,7 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
 
   /* ---------- movement sheet ---------- */
   const dlgMov = $('#dlg-mov');
-  const mf = { id: null, t: 'g', cat: null, delArmed: false };
+  const mf = { id: null, t: 'g', cat: null, delArmed: false, fx: null };
   function renderMovCats() {
     const cats = activeCats(mf.t);
     const cur = mf.cat && catById(mf.cat);
@@ -1236,20 +1378,23 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     else if (isNaN(v)) h.textContent = 'Escribí solo números, puntos, comas y + o −.';
     else h.innerHTML = /[+\-]/.test(raw.replace(/^[+\-]/, '')) ? `Total: <span class="num">${money(v)}</span>` : `<span class="num">${money(v)}</span>`;
   }
-  function openMov(id) {
+  function openMov(id, inst) {
     const m = id ? data().movs[id] : null;
     if (m && demo) { toast('Es un ejemplo. Tocá + para anotar el tuyo.'); return; }
-    mf.id = m ? m.id : null; mf.cat = m ? m.c : null; mf.delArmed = false;
-    $('#mov-title').textContent = m ? 'Editar movimiento' : 'Nuevo movimiento';
-    $('#mov-amount').value = m ? amountToInput(m.a) : '';
-    $('#mov-date').value = m ? m.d : defaultDate();
-    $('#mov-note').value = m ? m.n : '';
+    mf.id = m ? m.id : null; mf.cat = m ? m.c : inst ? inst.f.c : null; mf.delArmed = false;
+    mf.fx = m ? (m.fx || null) : inst ? inst.f.id : null;
+    $('#mov-title').textContent = m ? 'Editar movimiento' : inst ? 'Anotar fijo' : 'Nuevo movimiento';
+    $('#mov-amount').value = m ? amountToInput(m.a) : inst ? amountToInput(inst.a) : '';
+    $('#mov-date').value = m ? m.d : inst ? inst.date : defaultDate();
+    $('#mov-note').value = m ? m.n : inst ? inst.label : '';
     $('#mov-err').hidden = true;
+    const f = inst && !inst.f.sab ? inst.f : null;
+    $('#mov-fx-row').hidden = !f; $('#mov-fx-keep').checked = false;
     const del = $('#mov-del'); del.hidden = !m; del.textContent = 'Eliminar'; del.classList.remove('armed');
-    setMovType(m ? m.t : (mf.lastT || 'g'), !!m);
+    setMovType(m ? m.t : inst ? inst.f.t : (mf.lastT || 'g'), !!(m || inst));
     updateHint();
     dlgMov.showModal();
-    if (!m) setTimeout(() => $('#mov-amount').focus(), 60);
+    if (!m && !inst) setTimeout(() => $('#mov-amount').focus(), 60);
   }
   function movErr(msg) { const e = $('#mov-err'); e.textContent = msg; e.hidden = false; }
   $('#f-mov').addEventListener('submit', e => {
@@ -1261,8 +1406,16 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) return movErr('Elegí una fecha.');
     const prev = mf.id ? S.movs[mf.id] : null;
     const m = { id: mf.id || newId('m'), t: mf.t, a, c: mf.cat, d, n: $('#mov-note').value.trim().slice(0, 80), ts: prev ? prev.ts : Date.now() };
+    if (mf.fx) m.fx = mf.fx;
     mf.lastT = mf.t;
-    saveMov(m, prev ? monthOf(prev.d) : null);
+    let cfgChanged = false;
+    const keep = !$('#mov-fx-row').hidden && $('#mov-fx-keep').checked && fijoById(mf.fx);
+    if (keep && keep.a !== a) {
+      beginReal();
+      S.cfg = { ...S.cfg, fijos: S.cfg.fijos.map(f => f.id === mf.fx ? { ...f, a } : f) };
+      cfgChanged = true;
+    }
+    saveMov(m, prev ? monthOf(prev.d) : null, cfgChanged);
     dlgMov.close();
     let msg = prev ? 'Movimiento actualizado' : (m.t === 'g' ? 'Gasto anotado' : 'Ingreso anotado');
     if (monthOf(d) !== ui.month) msg += ` en ${monthName(monthOf(d))}`;
@@ -1352,6 +1505,69 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
     dlgCat.close(); toast(used ? `${c.name} archivada.` : `${c.name} eliminada.`);
   });
 
+  /* ---------- recurring entry sheet ---------- */
+  const dlgFijo = $('#dlg-fijo');
+  const ff = { id: null, t: 'g', armed: false };
+  function setFijoType(t, cat) {
+    ff.t = t;
+    $$('#fijo-type button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.t === t)));
+    $('#fijo-amount-wrap').className = 'amount ' + t;
+    const cats = activeCats(t), cur = cat && catById(cat);
+    if (cur && cur.off && cur.t === t) cats.push(cur);
+    $('#fijo-cat').innerHTML = cats.map(c => `<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');
+    $('#fijo-cat').value = cur && cur.t === t ? cat : (favCat(t) || '');
+  }
+  function openFijo(id) {
+    if (demo && id) { toast('Es un ejemplo.'); return; }
+    const f = id ? fijoById(id) : null;
+    ff.id = f ? f.id : null; ff.armed = false;
+    $('#fijo-title').textContent = f ? 'Editar fijo' : 'Nuevo movimiento fijo';
+    $('#fijo-name').value = f ? f.n : '';
+    $('#fijo-amount').value = f ? amountToInput(f.a) : '';
+    $('#fijo-sab').checked = f ? f.sab : false;
+    $('#fijo-day').value = f ? f.day : '';
+    $('#fijo-desde').value = f ? f.desde : monthOf(todayISO());
+    $('#fijo-cuotas').value = f && f.cuotas ? f.cuotas : '';
+    $('#fijo-rec-cada').value = f && f.rec ? f.rec.cada : '';
+    $('#fijo-rec-desde').value = f && f.rec ? f.rec.desde : '';
+    $('#fijo-err').hidden = true;
+    const del = $('#fijo-del'); del.hidden = !f; del.textContent = 'Eliminar'; del.classList.remove('armed');
+    setFijoType(f ? f.t : 'g', f ? f.c : null);
+    dlgFijo.showModal();
+  }
+  function fijoErr(msg) { const e = $('#fijo-err'); e.textContent = msg; e.hidden = false; }
+  $('#fijo-type').addEventListener('click', e => { const b = e.target.closest('button[data-t]'); if (b) setFijoType(b.dataset.t, null); });
+  $('#f-fijo').addEventListener('submit', e => {
+    e.preventDefault();
+    const n = $('#fijo-name').value.trim().slice(0, 60);
+    const a = parseAmount($('#fijo-amount').value);
+    const day = parseInt($('#fijo-day').value, 10);
+    const desde = $('#fijo-desde').value.trim();
+    const cuotasRaw = $('#fijo-cuotas').value.trim(), cuotas = cuotasRaw ? parseInt(cuotasRaw, 10) : 0;
+    const recCada = $('#fijo-rec-cada').value.trim(), recDesde = $('#fijo-rec-desde').value.trim();
+    if (!n) return fijoErr('Poné un nombre.');
+    if (!(a > 0)) return fijoErr('Poné un monto mayor a cero.');
+    if (!$('#fijo-cat').value) return fijoErr('Elegí una categoría.');
+    if (!(day >= 1 && day <= 31)) return fijoErr('El día tiene que ser entre 1 y 31.');
+    if (!/^\d{4}-\d{2}$/.test(desde)) return fijoErr('Poné el mes de inicio como AAAA-MM, por ejemplo 2026-10.');
+    if (cuotasRaw && !(cuotas >= 1)) return fijoErr('Las cuotas tienen que ser un número mayor a cero, o dejalo vacío.');
+    if ((recCada || recDesde) && !(parseInt(recCada, 10) >= 1 && /^\d{4}-\d{2}$/.test(recDesde))) return fijoErr('Para el aviso completá cada cuántos meses y el primer mes (AAAA-MM), o dejá los dos vacíos.');
+    const prev = ff.id ? fijoById(ff.id) : null;
+    const f = normFijo({
+      id: ff.id || newId('f'), t: ff.t, c: $('#fijo-cat').value, a, day, n, desde, cuotas, sab: $('#fijo-sab').checked,
+      rec: recCada ? { cada: recCada, desde: recDesde, txt: prev && prev.rec ? prev.rec.txt : 'Actualizar monto' } : null
+    });
+    setFijos(list => prev ? list.map(x => x.id === f.id ? f : x) : list.concat(f));
+    dlgFijo.close();
+    toast(prev ? 'Fijo actualizado.' : `Fijo “${n}” creado. Lo vas a ver en Inicio cada mes.`);
+  });
+  $('#fijo-del').addEventListener('click', () => {
+    const b = $('#fijo-del');
+    if (!ff.armed) { ff.armed = true; b.classList.add('armed'); b.textContent = 'Tocá de nuevo para eliminar'; return; }
+    setFijos(list => list.filter(x => x.id !== ff.id));
+    dlgFijo.close(); toast('Fijo eliminado. Lo que ya anotaste queda en tu historial.');
+  });
+
   /* ---------- export / import ---------- */
   async function offerFile(filename, text, mime) {
     const c = window.claude;
@@ -1405,12 +1621,15 @@ kbd { display: inline-block; min-width: 1.6em; padding: 1px 5px; border: 1px sol
 
   /* ---------- global events ---------- */
   document.addEventListener('click', e => {
-    const t = e.target.closest('[data-go],[data-mov],[data-bud],[data-filter-cat],[data-col],[data-cat],[data-newcat],[data-restore],[data-view],[data-close]');
+    const t = e.target.closest('[data-go],[data-mov],[data-bud],[data-filter-cat],[data-col],[data-cat],[data-newcat],[data-restore],[data-view],[data-close],[data-fx],[data-fijo],[data-newfijo]');
     if (!t) return;
     if (t.dataset.close !== undefined) { t.closest('dialog').close(); return; }
     if (t.dataset.view) return go(t.dataset.view);
     if (t.dataset.go) return go(t.dataset.go);
     if (t.dataset.mov) return openMov(t.dataset.mov);
+    if (t.dataset.fx) { const f = fijoById(t.dataset.fx), inst = f && fijoInstance(f, t.dataset.fxk); if (inst) openMov(null, inst); return; }
+    if (t.dataset.fijo) return openFijo(t.dataset.fijo);
+    if (t.dataset.newfijo) return openFijo(null);
     if (t.dataset.bud) return openBud(t.dataset.bud);
     if (t.dataset.filterCat) {
       const c = catById(t.dataset.filterCat), keepQ = ui.view === 'movs';

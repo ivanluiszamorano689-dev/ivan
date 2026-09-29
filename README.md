@@ -15,6 +15,9 @@ en dos columnas. Atajos de teclado en la compu: `N` carga un movimiento, `←` /
 - **Movimientos:** lista por día, con filtro por tipo, por categoría y búsqueda por nota.
 - **Presupuesto:** tope mensual por categoría, cuánto queda, cuánto podés gastar por día y aviso cuando te acercás o te pasás.
 - **Ajustes:** crear, renombrar y archivar categorías; exportar/importar una copia (`.json`) y exportar planilla (`.csv` para Excel).
+- **Movimientos fijos:** sueldo, cuotas, servicios y todo lo que se repite cada mes. Cada mes aparecen en Inicio para
+  anotarlos con un toque, con el saldo proyectado del mes. Admiten cuotas, montos por cada sábado del mes anterior y
+  un aviso periódico para actualizar el monto (por ejemplo, ajuste trimestral por IPC).
 - Al cargar un monto se pueden sumar varios: `1500+830`. Acepta `15.000`, `1.500,50`, etc.
 
 **Dónde se guardan los datos**
