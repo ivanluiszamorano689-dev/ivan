@@ -1,22 +1,21 @@
 # Cuentas Claras entre dos personas
 
 Guía para usar la app en los celulares de las dos personas, con los mismos datos, sin depender de Claude.
-Todo es gratis. Se hace una sola vez y lleva unos 15 minutos.
+Todo es gratis. Lo único que queda por hacer es crear la base de datos (unos 10 minutos, una sola vez).
 
 - **La app** se publica gratis en GitHub Pages.
-- **Los datos** se guardan en Firebase, la base de datos gratuita de Google. No ocupa espacio de Google Drive.
+- **Los datos** se guardan en Firebase, la base de datos gratuita de Google. Tu cuenta de Google solo sirve para ser
+  dueño de esa base: no usa ni necesita espacio de Drive, Gmail o Fotos.
 - Cada persona entra con su email y su contraseña. Comparten un **hogar**: lo que carga uno lo ve el otro al instante.
 - **Sin conexión:** la app sigue funcionando y sincroniza sola cuando vuelve internet.
 
-## 1. Publicar la app
+## 1. La app ya está publicada
 
-1. En GitHub, entrá al repositorio **ivan** → **Settings** → **Pages**.
-2. En **Build and deployment**, elegí **Source: Deploy from a branch**.
-3. En **Branch**, elegí `claude/relaxed-johnson-c30z8q` y la carpeta `/ (root)`. Tocá **Save**.
-4. En uno o dos minutos la app queda en:
-   **https://ivanluiszamorano689-dev.github.io/ivan/finanzas/**
+Está en GitHub Pages, gratis, en:
+**https://ivanluiszamorano689-dev.github.io/ivan/finanzas/**
 
-El código queda a la vista de cualquiera, pero no incluye ningún dato tuyo. Los datos viven en Firebase y solo los ven los miembros del hogar.
+Se publica desde la rama `gh-pages` del repositorio. El código queda a la vista de cualquiera, pero no incluye ningún
+dato tuyo: los datos viven en Firebase y solo los ven los miembros del hogar.
 
 ## 2. Crear la base de datos en Firebase
 
