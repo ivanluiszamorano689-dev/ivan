@@ -14,6 +14,8 @@ en dos columnas. Atajos de teclado en la compu: `N` carga un movimiento, `←` /
 - **Inicio:** saldo del mes (ingresos − gastos), estado del presupuesto, gastos por categoría y comparación de los últimos 6 meses.
 - **Movimientos:** lista por día, con filtro por tipo, por categoría y búsqueda por nota.
 - **Presupuesto:** tope mensual por categoría, cuánto queda, cuánto podés gastar por día y aviso cuando te acercás o te pasás.
+- **Proyección:** créditos (lo que te deben) y deudas al cierre de cada mes, resultado devengado del mes y saldo
+  proyectado de los próximos 12 meses con los fijos ajustados por la inflación mensual estimada.
 - **Ajustes:** crear, renombrar y archivar categorías; exportar/importar una copia (`.json`) y exportar planilla (`.csv` para Excel).
 - **Movimientos fijos:** sueldo, cuotas, servicios y todo lo que se repite cada mes. Cada mes aparecen en Inicio para
   anotarlos con un toque, con el saldo proyectado del mes. Admiten cuotas, montos por cada sábado del mes anterior y
