@@ -1420,12 +1420,36 @@ service cloud.firestore {
     if (!S.cfgSaved && !Object.keys(S.movs).length) demo = makeDemo();
     $('#loading') && $('#loading').remove();
     render();
-    if (pendingData) { const d = pendingData; pendingData = null; importFromLink(d); }
+    if (pendingData) { const d = pendingData; pendingData = null; importFromLink(d.str, d.merge); }
   }
 
-  // A backup can travel inside a link (#datos=...), compressed, so it loads with one tap on the phone.
+  // Adds what the link brings and the device does not have yet (by id). Never deletes or overwrites.
+  async function mergeData(cfg, movs) {
+    const haveCat = new Set(S.cfg.cats.map(c => c.id)), haveFijo = new Set((S.cfg.fijos || []).map(f => f.id));
+    const newCats = cfg.cats.filter(c => !haveCat.has(c.id));
+    const newFijos = (cfg.fijos || []).filter(f => !haveFijo.has(f.id));
+    const newMovs = movs.filter(m => !S.movs[m.id]);
+    if (!newCats.length && !newFijos.length && !newMovs.length) { toast('Ya tenías todo lo que trae este link.'); return; }
+    const parts = [];
+    if (newMovs.length) parts.push(`${newMovs.length} ${newMovs.length === 1 ? 'movimiento' : 'movimientos'}`);
+    if (newFijos.length) parts.push(`${newFijos.length} ${newFijos.length === 1 ? 'movimiento fijo' : 'movimientos fijos'} (${newFijos.slice(0, 3).map(f => f.n).join(', ')}${newFijos.length > 3 ? '…' : ''})`);
+    if (newCats.length) parts.push(`${newCats.length} ${newCats.length === 1 ? 'categoría' : 'categorías'}`);
+    const ok = await ask('Sumar datos', `Este link suma ${parts.join(', ')}. No borra ni cambia nada de lo que ya tenés.`, 'Sumar');
+    if (!ok) return;
+    const wasEmpty = !S.cfgSaved && !Object.keys(S.movs).length;
+    beginReal();
+    const nextCfg = { ...S.cfg, cats: S.cfg.cats.concat(newCats), fijos: (S.cfg.fijos || []).concat(newFijos) };
+    if (wasEmpty) { nextCfg.ipc = cfg.ipc; if (cfg.saldo0) nextCfg.saldo0 = cfg.saldo0; }
+    S.cfg = nextCfg;
+    const next = { ...S.movs }; newMovs.forEach(m => { next[m.id] = m; }); S.movs = next;
+    persist(newMovs.map(m => monthOf(m.d)), true, newMovs.map(m => ({ put: m })));
+    ui.month = monthOf(todayISO()); go('inicio');
+    toast(mode === 'fb' ? 'Listo, se sumó al hogar compartido.' : 'Listo, se sumó a tus datos.');
+  }
+
+  // A backup can travel inside a link (#datos=... replaces, #sumar=... adds), compressed, so it loads with one tap.
   let pendingData = null;
-  async function importFromLink(str) {
+  async function importFromLink(str, merge) {
     let o = null;
     try {
       const bin = atob(str.replace(/-/g, '+').replace(/_/g, '/'));
@@ -1440,6 +1464,7 @@ service cloud.firestore {
     }
     if (!o || o.app !== 'cuentas-claras' || !Array.isArray(o.movs)) { toast('Ese link no trae datos de Cuentas Claras.', 'err'); return; }
     const movs = o.movs.map(normMov).filter(Boolean), cfg = normCfg(o.cfg);
+    if (merge) return mergeData(cfg, movs);
     const nf = (cfg.fijos || []).length;
     const ok = await ask('Cargar tus datos', `Este link trae ${movs.length} movimientos y ${nf} movimientos fijos. Reemplaza lo que haya ahora${mode === 'fb' ? ' en el hogar compartido' : ' en este dispositivo'}.`, 'Cargar');
     if (!ok) return;
@@ -2339,8 +2364,8 @@ service cloud.firestore {
     }
   });
 
-  if ((location.hash || '').startsWith('#datos=')) {
-    pendingData = location.hash.slice(7);
+  if (/^#(datos|sumar)=/.test(location.hash || '')) {
+    pendingData = { merge: location.hash.startsWith('#sumar='), str: location.hash.slice(7) };
     try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { location.hash = ''; }
   }
   if ((location.hash || '').startsWith('#unirse=')) {
